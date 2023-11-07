@@ -2,9 +2,8 @@
 \define{theCircle}
 \editme
 
-\notes{\subsubsection{The Circle}}
-\newslide{}
+\subsection{The Circle}
 
-\includejpg{\diagramsDir/The_Circle_(Dave_Eggers_novel_-_cover_art)}{40%}
+\figure{\includejpg{\diagramsDir/The_Circle_(Dave_Eggers_novel_-_cover_art)}{40%}}{The Circle by Dave Eggers}{the-circle}
 
 \endif
