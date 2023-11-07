@@ -28,4 +28,8 @@
 \notes{But these few weeks have also given me great hope. The bogeyman arguments have rallied the wider community to be more vocal in pointing out the real challenges we face. The real social challenges are being surfaced on the fringe of the summit.}
 
 \notes{The Prime Minister has claimed that an AI safety institute will asuage our fears by addressing the risks. But given the governments failure to correctly identify the risks. They are building a bogeyman catcher.}
+
+\addblog{Boogeyman Diplomacy}{2023/10/31/ai-boogeyman}
+
+
 \endif
