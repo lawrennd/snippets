@@ -10,9 +10,9 @@
 
 \reading{@Lawrence-atomic24}{Chapter 8}
 
-\include{../_ai/includes/fire-control-systems.md}
+\include{_ai/includes/fire-control-systems.md}
 
-\include{../_books/includes/behind-the-eye.md}
+\include{_books/includes/behind-the-eye.md}
 
 \newslide{}
 
