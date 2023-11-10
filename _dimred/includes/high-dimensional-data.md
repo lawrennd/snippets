@@ -25,7 +25,7 @@ import mlai
 import pods}
 \plotcode{fig, ax = plt.subplots(figsize=(5,5))
 
-pods.access.download_url("https://github.com/lawrennd/talks/raw/gh-pages/slides/diagrams/ml/br1561_6.3.pgm",
+pods.access.download_url("https://github.com/lawrennd/slides/raw/gh-pages/diagrams/ml/br1561_6.3.pgm",
                          store_directory="\writeDiagramsDir/ml")
 six_image = mlai.load_pgm("br1561_6.3.pgm", directory ="\writeDiagramsDir/ml")
 rows = six_image.shape[0]
