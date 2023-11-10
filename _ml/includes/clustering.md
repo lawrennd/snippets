@@ -50,9 +50,10 @@
 import numpy as np}
 
 \helpercode{def write_plot(counter, caption):
-    filebase = f"ml/kmeans_clustering_{counter:0>3}"
-    plt.savefig(filebase + '.svg')
-    f = open(filebase + '.tex', 'w')
+    directory = "\writeDiagramsDir/ml"
+    filestub = f"kmeans_clustering_{counter:0>3}"
+    mlai.write_figure(filestub+".svg", directory=directory)
+    f = open(os.path.join(directory,filestub) + '.md', 'w')
     f.write(caption)
     f.close()}
     
