@@ -65,9 +65,10 @@ import notutils as nu}
 
 \slides{* Rotate a prototype }
 
-\setupcode{from scipy.misc import imrotate}
+\installcode{scikit-image}
+\setupplotcode{from skimage.transform import rotate}
 
-\code{six_image = mlai.load_pgm('br1561_6.3.pgm', directory ='\writeDiagramsDir/ml')
+\plotcode{six_image = mlai.load_pgm('br1561_6.3.pgm', directory ='\writeDiagramsDir/ml')
 six_image = np.hstack([np.zeros((rows, 3)), six_image, np.zeros((rows, 4))])
 dim_one = np.asarray(six_image.shape)
 angles = range(360)
