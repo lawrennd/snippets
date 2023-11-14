@@ -27,9 +27,10 @@ strength for the $j$th access point at robot position $x_{i, :}$ to be
 represented by $y_{i, j} = \weightVector_{j, :}^\top \latentVector_{i, :} +
 \epsilon_{i,j}$.}
 
-\setupcode{import matplotlib.pyplot as plt}
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai}
 
-\code{q = 2
+\plotcode{q = 2
 U, ell, sigma2 = ppca(Y, q)
 mu_x, C_x = posterior(Y, U, ell, sigma2)
 
@@ -39,7 +40,8 @@ ax.set_title('Latent Variable: Robot Inferred Locations')
 fig, ax = plt.subplots(figsize=(8,8))
 W = U*ell[None, :]
 ax.plot(W[:, 0], W[:, 1], 'bo')
-ax.set_title('Access Point Inferred Locations')}
+ax.set_title('Access Point Inferred Locations')
+mlai.write_figure("dem_robot_wireless_pca.svg", directory="dimred")}
 
 \code{U, ell, sigma2 = ppca(Y.T, q)}
 

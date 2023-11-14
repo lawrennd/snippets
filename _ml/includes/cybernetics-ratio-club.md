@@ -42,6 +42,8 @@ to a threshold in the neuron. Firing occurs when the sum of input
 neurons crosses a threshold in the receiving neuron. These networks can
 then be built together in cascades.}
 
+\figure{\includejpg{\diagramsDir/computing/Colossus}{70%}}{A Colossus Mark 2 codebreaking computer being operated by Dorothy Du Boisson (left) and Elsie Booker (right). Colossus was designed by Tommy Flowers, but programmed and operated by groups of Wrens based at Bletchley Park.}{colossus}
+
 \notes{In the late 1940s and early 1950s, Cyberneticists were also
 working on *digital computers*. The type of machines (such as
 Colossus, built by Tommy Flowers, and known to Turing) and the

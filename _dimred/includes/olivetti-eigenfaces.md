@@ -21,11 +21,11 @@ mlai.write_figure("olivetti_faces_data.png", directory="dimred")}
 
 \figure{\includepng{\diagramsDir/dimred/olivetti_faces_data}{60%}}{Data set from Olivetti Research Laboratory of faces.}{olivetti-faces-data}
 
-\notes{Note that to display the face we had to reshape the appropriate row of the data matrix. This is because the images are turned into vectors by stacking columns of the image on top of each other to form a vector. The operation
+\notes{Note that to display the face we had to reshape the appropriate row of the data matrix. This is because the images are turned into vectors by stacking columns of the image on top of each other to form a vector. The operation}
 
 ```im = np.reshape(Y[1, :].flatten(), (64, 64)).T}```
 
-recovers the original image into a matrix `im` by using the `np.reshape` function to return the vector to a matrix.}
+\notes{recovers the original image into a matrix `im` by using the `np.reshape` function to return the vector to a matrix.}
 
 \subsection{Visualizing the Eigenvectors}
 
