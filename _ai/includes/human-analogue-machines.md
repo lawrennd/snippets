@@ -5,7 +5,7 @@
 
 \include{_simulation/includes/the-moniac.md}
 \include{_ai/includes/donald-mackay-brain.md}
-\include{_ai/includes/human-analogue-machine-short.md}
+\include{_ai/includes/human-analogue-machines-short.md}
 \include{_ai/includes/conversation-llm.md}
 
 \notes{\include{_ai/includes/intellectual-debt-blog-post.md}}
