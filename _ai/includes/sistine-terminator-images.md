@@ -5,21 +5,8 @@
 
 \include{_art/includes/michelangelo-sistine-chapel-ceiling.md}
 \include{_art/includes/michelangelo-the-creation-of-man.md}
-
-
-
-\newslide
-
-\notes{For a time at the head of all articles about AI, an [image of the terminator](https://www.flickr.com/photos/tom-margie/2144882415/sizes/o/) was included.}
-
-\figure{\includejpg{\diagramsDir/ai/terminator-image}{70%}}{Image of James Cameron's terminator. Images like this have been used to illustrate articles about artificial intelligence.}{terminator-image}
-
-
-\newslide
-
-\notes{Sometimes, this image is even combined with that of God to create what [Beth Singler](https://bvsingler.com), a digital anthropologist who is a JRF at Hmerton College, refers to as the creation meme [@Singler-aicreation20].} 
-
-\figure{\includejpg{\diagramsDir/people/beth-singler}{80%}}{Beth Singler is a digital anthropologist who holds a JRF at Homerton College. She has explored parallels between the Michelangelo image of creation and our own notion of robotic creation}{beth-singler}
+\include{_ai/includes/terminator-image.md}
+\include{_ai/includes/beth-singler-creation.md}
 
 \notes{So in a very real sense, we can see that both God and AI are viewed by us as embodied intelligences, whether creator or created. We show these other-intelligences in a humanoid form.}
 
