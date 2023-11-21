@@ -3,25 +3,9 @@
 
 \editme
 
-\newslide
+\include{_art/includes/michelangelo-sistine-chapel-ceiling.md}
+\include{_art/includes/michelangelo-the-creation-of-man.md}
 
-\figure{\includejpg{\diagramsDir/art/sistine-chapel-ceiling}{100%}}{The ceiling of the Sistine Chapel.}{cappella-sistina-ceiling}
-
-\notes{[Patrick Boyde](https://www.mmll.cam.ac.uk/pb127)'s talks on the Sistine Chapel focussed on both the structure of the chapel ceiling, describing the impression of height it was intended to give, as well as the significance and positioning of each of the panels and the meaning of the individual figures.}
-
-\newslide
-
-\figure{\includejpg{\diagramsDir/art/the-creation-of-man-michelangelo}{80%}}{Photo of Detail of Creation of Man from the Sistine chapel ceiling.}{the-creation-of-man-michelangelo}
-
-\notes{One of the most famous panels is central in the ceiling, it's the creation of man. Here, God in the guise of a pink-robed bearded man reaches out to a languid Adam.}
-
-\newslide
-
-\notes{The representation of God in this form seems typical of the time, because elsewhere in the Vatican Museums there are similar representations.}
-
-\figure{\includejpg{\diagramsDir/art/the-creation-of-man-detail-god-michelangelo}{80%}}{Photo detail of God.}{the-creation-of-man-detail-god-michelangelo}
-
-\notes{<https://commons.wikimedia.org/wiki/File:Michelangelo,_Creation_of_Adam_04.jpg>}
 
 
 \newslide
