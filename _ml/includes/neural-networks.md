@@ -5,12 +5,12 @@
 \subsection{Neural Networks and Prediction Functions}
 
 \slides{
-*  adaptive non-linear function models inspired by simple neuron models [@McCulloch:neuron43]
+*  adaptive non-linear function models inspired by simple neuron models [@McCulloch-neuron43]
 * have become popular because of their ability to model data.
 * can be composed to form highly complex functions
 * start by focussing on one hidden layer
 }
-\notes{Neural networks are adaptive non-linear function models. Originally, they were studied (by McCulloch and Pitts [@McCulloch:neuron43]) as simple models for neurons, but over the last decade they have become popular because they are a flexible approach to modelling complex data. A particular characteristic of neural network models is that they can be composed to form highly complex functions which encode many of our expectations of the real world. They allow us to encode our assumptions about how the world works.}
+\notes{Neural networks are adaptive non-linear function models. Originally, they were studied (by McCulloch and Pitts [@McCulloch-neuron43]) as simple models for neurons, but over the last decade they have become popular because they are a flexible approach to modelling complex data. A particular characteristic of neural network models is that they can be composed to form highly complex functions which encode many of our expectations of the real world. They allow us to encode our assumptions about how the world works.}
 
 \newslide{Prediction Function of One Hidden Layer}
 
