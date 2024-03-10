@@ -7,13 +7,14 @@
 
 \figure{\includejpg{\diagramsDir/ai/NACA-LMAL-42612}{60%}}{1945 photo of the NACA test pilots, from left Mel Gough, Herb Hoover, Jack Reeder, Stefan Cavallo and Bill Gray (photo NASA, NACA LMAL 42612)}{naca-lmal-42612}
 
+\speakernotes{Bob Gilruth worked on the flying qualities of aircraft.}
 \notes{The NACA Langley Field proving ground tested US aircraft. Bob Gilruth worked on the [flying qualities of aircraft](https://ntrs.nasa.gov/search.jsp?R=19930091834). One of his collaborators suggested that
 
 > Hawker Hurricane airplane. A heavily armed fighter airplane noted for its role in the Battle of Britain, the Hurricane's flying qualities were found to be generally satisfactory. The most notable deficiencies were heavy aileron forces at high speeds and large friction in the controls.
 >
 > W. Hewitt Phillips^[monographs]
 
-[monographs]: Jorney in Aeronautical Research: A career at NASA Langley Research Center, Monograph in Aerospace History No 12 by W. Hewitt Phillips https://history.nasa.gov/monograph12/contents.htm
+[monographs]: Journey in Aeronautical Research: A career at NASA Langley Research Center, Monograph in Aerospace History No 12 by W. Hewitt Phillips https://history.nasa.gov/monograph12/contents.htm
 
 and
 
