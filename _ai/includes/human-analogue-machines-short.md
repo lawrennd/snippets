@@ -11,9 +11,7 @@
 
 \figure{\includepng{\diagramsDir/ai/human-analogue-machine}{60%}}{The human analogue machine creates a feature space which is analagous to that we use to reason, one way of doing this is to have a machine attempt to compress all human generated text in an auto-regressive manner.}{human-analogue-machine}
 
-\newslide{Human Analogue Machine}
-
-\slides{\figure{\includediagram{\diagramsDir/ai/processor-ham}{40%}}{}{human-analogue-machine-2}}
+\slides{\include{_ai/includes/processor-ham.md}}
 
 \slides{* A human-analogue machine is a machine that has created a feature space that is analagous to the "feature space" our brain uses to reason.
 
