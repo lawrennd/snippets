@@ -2,7 +2,18 @@
 \define{divingBellButterfly}
 \editme
 
-\include{_books/includes/the-diving-bell-and-the-butterfly.md}
+\notes{\subsection{The Diving Bell and the Butterfly}}
+\newslide{}
+
+\figure{\includejpg{\diagramsDir/ai/the-diving-bell-and-the-butterfly2}{60%}}{The Diving Bell and the Butterful}{the-diving-bell-and-the-butterfly-2}
+
+\notes{The Diving Bell and the Butterfly is the autobiography of Jean-Dominique Bauby.
+
+In 1995, when he was editor-in-chief of the French Elle magazine, he suffered a stroke, which destroyed his brainstem. He became almost totally physically paralyzed, but was still mentally active. He acquired what is known as locked-in syndrome.
+
+Incredibly, Bauby wrote his memoir after he became paralyzed.
+
+His left eye was the only muscle he could voluntarily move, and he wrote the entire book by winking it.}
 
 \newslide{}
 
