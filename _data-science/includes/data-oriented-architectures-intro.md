@@ -27,7 +27,7 @@
 
 \subsection{Data Oriented Principles}
 
-\figure{\includediagramclass{\diagramsDir/software/data-oriented-principles}{80%}}{For an overview of data oriented principles see @Cabrera-realworld23.}{data-oriented-principles}
+\figure{\includediagram{\diagramsDir/software/data-oriented-principles}{80%}}{For an overview of data oriented principles see @Cabrera-realworld23.}{data-oriented-principles}
 
 \notes{Our work comes from surveying machine learning case studies [@Paleyes-challenges22] identifying the challenges and then surveying papers that focus on deployment [@Cabrera-realworld23] and identifying the principles they use.}
 
