@@ -19,6 +19,8 @@
 
 \reading{@Lawrence-atomic24}{Chapter 11}
 
+\include{_ai/includes/heider-simmel.md}
+
 \newslide{Counterfeit People}
 
 \notes{The perils of developing this capability include counterfeit people, a notion that the philosopher [Daniel Dennett has described in *The Atlantic*](https://www.theatlantic.com/technology/archive/2023/05/problem-counterfeit-people/674075/). This is where computers can represent themselves as human and fool people into doing things on that basis.}
