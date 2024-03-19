@@ -19,5 +19,6 @@ When it comes to compute though, our best estimates indicate our computers are s
 
 It's difficult to get similar estimates for humans, but by some estimates the amount of compute we would require to *simulate* a human brain is equivalent to that in the UK's fastest computer [@Ananthanarayanan-cat09], the MET office machine in Exeter, which in 2018 ranked as the 11th fastest computer in the world. That machine simulates the world's weather each morning, and then simulates the world's climate in the afternoon. It is a 16-petaflop machine, processing around 1,000 *trillion* bits per second.}
 
+\addatomic{embodiment factor}{13, 29, 35, 79, 87, 105, 197, 216-217, 249, 269, 353, 369}
 
 \endif
