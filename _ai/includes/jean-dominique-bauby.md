@@ -11,4 +11,6 @@
 
 The idea behind embodiment factors is that we are all in that situation. While not as extreme as for Bauby, we all have somewhat of a locked in intelligence.}
 
+\addatomc{Bauby, Jean Dominique}{9--11, 18, 90, 99-101, 133, 186, 212--218, 234, 240, 251--257, 318, 368--369}
+
 \endif

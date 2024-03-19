@@ -15,6 +15,12 @@
 
 \figure{\includejpg{\diagramsDir/art/michelangelo-the-creation-of-man-detail-god}{80%}}{Photo detail of God.}{the-creation-of-man-detail-god-michelangelo}
 
-\notes{<https://commons.wikimedia.org/wiki/File:Michelangelo,_Creation_of_Adam_04.jpg>}
+\notes{Photo from <https://commons.wikimedia.org/wiki/File:Michelangelo,_Creation_of_Adam_04.jpg>.}
+
+\notes{My colleague Beth Singler has written about how often this image of creation appears when we talk about AI [@Singler-aicreation20].}
+
+\addatomic{7-9, 31, 91, 105--106, 121, 153, 206, 216, 350}
+
+\notes{The way we represent this "other intelligence" in the figure of a Zeus-like bearded mind demonstrates our tendency to embody intelligences in forms that are familiar to us.}
 
 \endif

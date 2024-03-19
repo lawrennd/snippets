@@ -3,7 +3,7 @@
 \editme
 
 \include{_books/includes/the-diving-bell-and-the-butterfly.md}
-
+\addatomic{9}
 \newslide{}
 
 \figure{\div{E S A R I N T U L \linebreak
@@ -16,6 +16,7 @@ It took him 10 months of four hours a day to write the book. Each word took two 
 
 Imagine doing all that thinking, but so little speaking, having all those thoughts and so little ability to communicate.
 
-The idea behind this talk is that we are all in that situation. While not as extreme as for Bauby, we all have somewhat of a locked in intelligence.}
+One challenge for the atomic human is that we are all in that situation. While not as extreme as for Bauby, when we compare ourselves to the machine, we all have a locked-in intelligence.}
 
+\addatomic{*Le Scaphandre et le paillon* (*The Diving Bell and the Butterfly*)}{10--12}
 \endif
