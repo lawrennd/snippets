@@ -96,18 +96,18 @@ accuser? My human cynicism suspects it's the servant that's going to get
 wet. Even over 3,000 years later, despite the different cultural
 landscape, we can still imagine something about the power dynamics at
 play, and my gut tells me that putting the servant through the ordeal
-will be the most palatable solution to the King.
+will be the most palatable solution to the King.}
 
-Sin-bununi's story for explaining what happened to the body of the ox
+\notes{Sin-bununi's story for explaining what happened to the body of the ox
 reads suspiciously, but while we can speculate about what happened, we
 can't know exactly what did happen -- there is uncertainty. Even at the
 time of the trial, the King felt unable to make a decision, so given he
 wasn't able to establish the truth so many years ago, we're unlikely to
 find it now. This is a cold case, so cold it's deep frozen, but anyone
 reading the story can't help but try to defrost it through the warmth of
-their human understanding.
+their human understanding.}
 
-We may think we've moved beyond the idea of trial by ordeal, but I see a
+\notes{We may think we've moved beyond the idea of trial by ordeal, but I see a
 similar trend emerging with our desire to use AI systems for
 consequential decisions. When humans feel unable to pass judgement they
 are tempted to pass the decision on to what they believe to be an
@@ -118,14 +118,7 @@ problematic because the machine can never feel the consequences of those
 errors as it is not subject to the same vulnerabilities as us. That is
 why it's vital the human remains in ultimate control. That's not to say
 the human should ignore the machine; rather, we would like the machine
-to augment our understanding. When Amelia Earhart flew her *Little Red
-Bus* she felt at one with her plane. The decisions were hers, but they
-were enacted in collaboration with the machine; it was a synergistic
-relationship. Perhaps a better analogy is found in Neil Armstrong's
-landing of *Eagle* on the Moon. There, a human with the best training
-available was assisted by a computer and an entire team of supportive
-specialists in the achievement of a goal of which all of humanity could
-be proud.}
+to augment our understanding.}
 
 
 
