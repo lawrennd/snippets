@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{The Creation of Man}
+\subsection{The Creation of Adam}
 
 \figure{\includejpg{\diagramsDir/art/michelangelo-the-creation-of-man}{80%}}{Photo of Detail of Creation of Man from the Sistine chapel ceiling.}{the-creation-of-man-michelangelo}
 
@@ -19,7 +19,7 @@
 
 \notes{My colleague Beth Singler has written about how often this image of creation appears when we talk about AI [@Singler-aicreation20].}
 
-\addatomic{7-9, 31, 91, 105--106, 121, 153, 206, 216, 350}
+\addatomic{Michelangelo, *The Creation of Adam*}{7-9, 31, 91, 105--106, 121, 153, 206, 216, 350}
 
 \notes{The way we represent this "other intelligence" in the figure of a Zeus-like bearded mind demonstrates our tendency to embody intelligences in forms that are familiar to us.}
 
