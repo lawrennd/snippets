@@ -5,9 +5,9 @@
 
 \subsection{The Sorcerer's Apprentice}
 
-\notes{See this blog }\addblog{The Open Society and its AI}{2024/02/09/the-sorcerors-apprentice}\notes{.}
+\notes{See this blog }\addblog{The Open Society and its AI}{2024/02/09/the-sorcerors-apprentice}
 
-\figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}{}{the-sorcerers-apprentice}
+\figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}}{}{the-sorcerers-apprentice}
 
 
 \notes{In Goethe’s poem The Sorcerer’s Apprentice, a young sorcerer learns
