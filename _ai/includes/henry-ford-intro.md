@@ -13,4 +13,6 @@ Car engines produce prodigious power from petrol. Machine intelligences deliver 
  
  If we devolve decision making to machines, we depend on those machines to accommodate our needs. If we don’t understand how those machines operate, we lose control over our destiny. Our mistake has been to see machine intelligence as a reflection of our intelligence. We cannot understand the smarter human without understanding the human. To understand the machine, we need to better understand ourselves.}
 
+ \addatom{Ford, Henry}{3, 16, 28, 53, 56, 84, 92}
+
 \endif
