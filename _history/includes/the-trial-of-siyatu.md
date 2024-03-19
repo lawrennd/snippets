@@ -29,7 +29,11 @@ normally a representative of the king.}
 > the house of Sin-bununi and then threw it to a dog, may Sin-bununi be
 > cleared \[of wrongdoing by the ordeal\] and the man of
 > Nergal-aha-iddina \[Siyatu\] be proved guilty.
->
+\notes{>}\slides{
+
+\newslide{}
+
+}
 > \[But\] regarding the ox of Nergal-aha-iddina which died in the house
 > of Sin-bununi:
 >

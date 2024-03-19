@@ -7,7 +7,7 @@
 
 \notes{See this blog }\addblog{The Open Society and its AI}{2024/02/09/the-sorcerors-apprentice}
 
-\figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}}{}{the-sorcerers-apprentice}
+\figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}{60%}}{the-sorcerers-apprentice}
 
 
 \notes{In Goethe’s poem The Sorcerer’s Apprentice, a young sorcerer learns
@@ -34,18 +34,6 @@ recent Horizon scandal, where neither the Post Office or Fujitsu were
 able to control the accounting system they had deployed, and we saw it
 when Facebook’s systems were manipulated to spread misinformation in
 the 2016 US election.
-
-When Disney’s Fantasia was released, the philosopher Karl Popper was
-in exile in New Zealand.  He wrote
-[The Open Society and its Enemies](https://press.princeton.edu/books/paperback/9780691210841/the-open-society-and-its-enemies)
-when his hometown of Vienna was under Nazi rule.  The book defends the
-political system of liberal democracy against totalitarianism. For
-Popper, the open society is one characterised by institutions that can
-engage in the pragmatic pursuit of solutions to social and political
-problems. Those institutions are underpinned by professions: lawyers,
-the accountants, civil administrators. To Popper these “piecemeal
-social engineers” are the pragmatic solution to how a society solves
-political and social problems.
 
 In 2019 Mark Zuckerberg [wrote an op-ed in the Washington Post](https://www.washingtonpost.com/opinions/mark-zuckerberg-the-internet-needs-new-rules-lets-start-in-these-four-areas/2019/03/29/9e6f0504-521a-11e9-a3f7-78b7525a8d5f_story.html) calling
 for regulation of social media. He was repeating the realisation of
