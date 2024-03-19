@@ -5,6 +5,7 @@
 
 \subsection{The Sorcerer's Apprentice}
 
+\notes{See this blog }\addblog{The Open Society and its AI}{2024/02/09/the-sorcerors-apprentice}\notes{.}
 
 \figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}{}{the-sorcerers-apprentice}
 
