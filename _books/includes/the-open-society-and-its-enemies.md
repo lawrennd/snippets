@@ -6,7 +6,7 @@
 
 \subsection{The Open Society and its Enemies}
 
-\figure{\includepng{\diagramsDir/books/the-open-society-and-its-enemies}{40%}}{[The Open Society and Its Enemies by Karl Popper](https://en.wikipedia.org/wiki/The_Open_Society_and_Its_Enemies) views liberal democracies as a collection of "piecemeal social engineers" who strive towards better outcomes.}{the-open-society-and-its-enemies}
+\figure{\includejpg{\diagramsDir/books/the-open-society-and-its-enemies}{40%}}{[The Open Society and Its Enemies by Karl Popper](https://en.wikipedia.org/wiki/The_Open_Society_and_Its_Enemies) views liberal democracies as a collection of "piecemeal social engineers" who strive towards better outcomes.}{the-open-society-and-its-enemies}
 
 \newslide{}
 
