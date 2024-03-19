@@ -6,7 +6,7 @@
 \subsection{The Trial of Siyatu}
 
 
-\figure{\includejpg{\diagramsdir/history/trial-of-siyatu-lineart}{15%}}{Cuneiform tablet of unknown scribe written between 1250 and 1200 bce, found in Ur, trans. Jonathan Tenney. The text is known as ‘UET 7 11’. It was excavated at the ancient city of Ur and now rests in the Iraq Museum in Baghdad. Oliver R. Gurney (1974), ‘Middle Babylonian legal documents and other texts’, Ur Excavations. Texts 7 (London: The Trustees of the Two Museums). The translation is by my col- league Dr Jonathan Tenney. For more details on the tablet see <https://cdli.mpiwg-berlin.mpg.de/artifacts/346976>}{trial-of-siyatu}
+\figure{\includejpg{\diagramsDir/history/trial-of-siyatu-lineart}{15%}}{Cuneiform tablet of unknown scribe written between 1250 and 1200 bce, found in Ur, trans. Jonathan Tenney. The text is known as ‘UET 7 11’. It was excavated at the ancient city of Ur and now rests in the Iraq Museum in Baghdad. Oliver R. Gurney (1974), ‘Middle Babylonian legal documents and other texts’, Ur Excavations. Texts 7 (London: The Trustees of the Two Museums). The translation is by my col- league Dr Jonathan Tenney. For more details on the tablet see <https://cdli.mpiwg-berlin.mpg.de/artifacts/346976>}{trial-of-siyatu}
 
 
 \notes{[Jonathan Tenney](https://www.arch.cam.ac.uk/staff/dr-jonathan-tenney) is an Assyriologist who spends his days reading these
