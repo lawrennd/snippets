@@ -125,6 +125,6 @@ be proud.}
 
 
 
-\addatomic{trial of Siyatu}{
+\addatomic{trial of Siyatu}{338--342, 349--351}
 
 \endif
