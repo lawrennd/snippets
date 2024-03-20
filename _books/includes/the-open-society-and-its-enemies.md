@@ -10,7 +10,7 @@
 
 \newslide{}
 
-\notes{Popper opened the preface to his book with the
+\notes{Popper opened the preface to his book [@Popper-open45] with the
 following words:}
 
 > If in this book harsh words are spoken about some of the greatest
@@ -19,7 +19,7 @@ following words:}
 > civilization is to survive, we must break with the habit of deference
 > to great men. Great men may make great mistakes; and as the book tries
 > to show, some of the greatest leaders of the past supported the
-> perennial attack on freedom and reason.[^1]
+> perennial attack on freedom and reason.
 
 
 \notes{He had written the book against the background of the second world war,
