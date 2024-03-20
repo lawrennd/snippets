@@ -25,4 +25,6 @@ the context. We can linearise around the operating point, we can
 perform counterfactual tests on the model. We can build empirical
 validation sets that explore fairness or accuracy of the model.}
 
+\addatomic{intellectual debt}{84, 85, 349, 365}
+
 \endif
