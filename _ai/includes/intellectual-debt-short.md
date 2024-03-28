@@ -19,4 +19,6 @@ phenomenon that occurs when a computer software system is deployed.}
 \include{_software/includes/separation-of-concerns.md}
 \endif
 
+\addatomic{intellectual debt}{84-85, 349, 365, 376}
+
 \endif

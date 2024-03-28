@@ -9,7 +9,6 @@
 \notes{Donald MacKay was a physicist who worked on naval gun targetting during the second world war. The challenge with gun targetting for ships is that both the target and the gun platform are moving. The challenge was tackled using analogue computers, for example in the US the [Mark I fire control computer](https://en.wikipedia.org/wiki/Mark_I_Fire_Control_Computer) which was a mechanical computer. MacKay worked on radar systems for gun laying, here the velocity and distance of the target could be assessed through radar and an mechanical electrical analogue computer.}
 
 \reading{@Lawrence-atomic24}{Chapter 8}
-
 \include{_ai/includes/fire-control-systems.md}
 
 \include{_books/includes/behind-the-eye.md}
@@ -48,7 +47,7 @@ his interest in the brain.
 > *Behind the Eye* pg 40. Edited version of the 1986 Gifford Lectures given by Donald M. MacKay and edited by Valerie MacKay
 }
 
-\reading{@Lawrence-atomic24}{Chapter 9}
+\addatomic{MacKay, Donald, *Behind the Eye*}{268-270, 316}
 
 \notes{Importantly, MacKay distinguishes between the *analogue*
 computer and the *digital* computer. As he mentions, his experience

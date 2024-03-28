@@ -27,4 +27,6 @@ of a complex system. But who is concerned with the overall system?}
 \notes{It is right there in our approach to software engineering. "Separation
 of concerns" means no one is concerned about the overall system itself.}
 
+\addatomic{separation of concerns}{84-85, 103, 109, 199, 284, 371}
+
 \endif

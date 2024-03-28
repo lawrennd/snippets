@@ -9,4 +9,6 @@
 
 \figure{\threeColumns{\aligncenter{\includediagramclass{\diagramsDir/logos/fujitsu-logo}{100%}}}{\aligncenter{\includepng{\diagramsDir/software/horizon-select-committee}{100%}}}{\aligncenter{\includediagramclass{\diagramsDir/logos/post-office-logo}{100%}}}{25%}{49%}{25%}}{The still is from [the 2015 select committee](https://www.parliamentlive.tv/Event/Index/d05cb9e7-04d0-4d05-8a43-ddd74b1eecc0).}{horizon-scandal}
 
+\addatomic{Horizon scandal}{371}
+
 \endif

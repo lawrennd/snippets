@@ -34,6 +34,6 @@
 
 * This might allow us to deal with the challenge of *intellectual debt* where we create machines we cannot explain.}
 
-
+\addatomic{human-analogue machine}{343–5, 346–7, 358–9, 365–8}
 
 \endif

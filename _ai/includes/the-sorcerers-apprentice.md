@@ -78,5 +78,5 @@ enable Popper’s piecemeal social engineers to come back together and
 chant “Besen, besen! Seid’s gewesen.” Before it is too late for the
 master to step in and deal with the mess the apprentice has made.}
 
-
+\addatomic{sorcerer's apprentice}{371-374}
 \endif
