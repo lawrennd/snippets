@@ -11,5 +11,6 @@
 
 \figure{\includediagram{\diagramsDir/data-science/new-flow-of-information-ham}{70%}}{The HAM now sits between us and the traditional digital computer.}{new-flow-of-information-ham}
 
+\addatomic{human-analogue machine (HAMs)}{343-347, 359-359, 365-368}
 
 \endif
