@@ -7,10 +7,11 @@
 
 \notes{The feel of an aircraft is a repeated theme in the early years of flight. In response to perceived European advances in flight in the First World War, the US introduced the National Advisory Committee on Aeronautics. Under the committee a proving ground for aircraft was formed at Langley Field in Virginia. During the Second World War Bob Gilruth published a report on the [flying qualities of aircraft](https://ntrs.nasa.gov/search.jsp?R=19930091834) that characterised how this feel could be translated into numbers.}
 
+\addatomic{Gilruth, Bob}{190-192}
 \figure{\includejpg{\diagramsDir/ai/NACA-LMAL-42612}{60%}}{1945 photo of the NACA test pilots, from left Mel Gough, Herb Hoover, Jack Reeder, Stefan Cavallo and Bill Gray (photo NASA, NACA LMAL 42612)}{naca-lmal-42612}
 
 \speakernotes{Bob Gilruth worked on the flying qualities of aircraft.}
-
+\addatomic{National Advisory Committee on Aeronautics (NACA)}{163–168}
 \notes{One of Gilruth's collaborators suggested that
 
 > Hawker Hurricane airplane. A heavily armed fighter airplane noted for its role in the Battle of Britain, the Hurricane's flying qualities were found to be generally satisfactory. The most notable deficiencies were heavy aileron forces at high speeds and large friction in the controls.
