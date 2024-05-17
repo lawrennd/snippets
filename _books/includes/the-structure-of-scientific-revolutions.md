@@ -12,7 +12,9 @@
 
 \notes{The notion of a paradigm shift has also entered common parlance, this reflects the idea that wider human  knowledge is also shared and stored, less ormally than scientific knowledge, but still with a dependence on our information infrastructure.}
 
-suggests that 
+\notes{The digital computer has brought a fundamental change in the nature of that information infrastructure. By moving information faster the modern information infrastructure is dominated not by the book, but by the machine. This brings challenges for managing and controlling this information infrastructure.}
+
+\addatomic{Kuhn, Thomas: *The Structure of Scientific Revolutions*}{295–299}
 
 
 
