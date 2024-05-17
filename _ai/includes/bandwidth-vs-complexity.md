@@ -14,6 +14,8 @@
 
 \figure{\includediagramclass{\diagramsDir/ai/bandwidth-vs-complexity}{80%}}{Bandwidth vs Complexity.}{bandwidth-vs-complexity}
 
+\notes{The challenge we face is that while speed is on the side of the machine, complexity is on the side of our ecology. Many of the risks we face are associated with the way our speed undermines our ecology and the machines speed undermines our human culture.}
+
 \addatomic{Human evolution rates}{98-99}
 \addatomic{Psychological representation of Ecologies}{323-327}
 \endif
