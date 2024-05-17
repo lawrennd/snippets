@@ -20,4 +20,6 @@
 
 \notes{Blake's vision is demonstrating the frustrations we experience when the (complex) real world doesn't manifest in the way we'd hoped.}
 
+\addatomic{Blake, William *Elohim Creating Adam*}{121, 217–18} 
+
 \endif
