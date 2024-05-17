@@ -15,6 +15,8 @@
 today’s world it could be our Apple computers that guide us back into the walled garden of Eden. Already our Apple watches can monitor our heart rates and inform us of the number of steps we need to take to maintain our health. But as we cede control to the machine, we are also losing what Adam and Eve gained by eating from the tree. We lose personal responsibility and freedom of choice. The Garden of Eden is depicted as a benevolent autocracy, but such an autocracy necessarily limits the freedoms of the indi- viduals within it. There is no one-size-fits-all set of values.
 Each of us will react differently to whether this price is worth the outcome, and our ideas will change over time. How much we each want to be constrained by a benevolent overseer may differ when we are faced with severe illness rather than being youthful and healthy. If we respect the dignity of the individual human, we need to accommodate this diversity of perspectives.}
 
+\notes{But we need to be active in our protection of individual dignity if we don't want to sleep walk back into an implicit autocracy managed through the reflected understanding that is stored in the HAMs.}
+
 \addatomic{Garden of Eden}{350-351}
 
 \endif
