@@ -34,7 +34,7 @@ scores from the given date.}
     from datetime import datetime
     date=datetime.today().strftime('%Y-%m-%d')
 else:
-    date = "2021-06-11"}
+    date = "2024-05-22"}
 
 \code{# Rerun to download impacts from Semantic Scholar
 if UPDATE_IMPACTS:
@@ -105,11 +105,11 @@ ma.write_figure(filename=date + "-citations-vs-{col}-{filt}.svg".format(filt=fil
 
 \newslide{Accepted Papers 2021}
 
-\figure{\includediagram{\diagramsDir/neurips/citations-vs-average-calibrated-quality-accept}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-accept}
+\figure{\includediagram{\diagramsDir/neurips/2021-06-11-citations-vs-average-calibrated-quality-accept}{70%}}{Citation date from 2021. Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-accept-2021-06-11}
 
 \newslide{Accepted Papers 2024}
 
-\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-calibrated-quality-accept}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-accept-2024-05-22}
+\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-calibrated-quality-accept}{70%}}{Citation data from 2024. Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-accept-2024-05-22}
 
 
 \notes{Conversely, looking at rejected papers only, we do see a slight trend,
@@ -127,11 +127,11 @@ ma.write_figure(filename=date + "-citations-vs-{col}-{filt}.svg".format(filt=fil
 
 \newslide{Rejected Papers 2021}
 
-\figure{\includediagram{\diagramsDir/neurips/citations-vs-average-calibrated-quality-reject}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for rejected papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-reject}
+\figure{\includediagram{\diagramsDir/neurips/2021-06-11-citations-vs-average-calibrated-quality-reject}{70%}}{Citation data from 2021. Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for rejected papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-reject-2021-06-11}
 
 \newslide{Rejected Papers 2024}
 
-\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-calibrated-quality-reject}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for rejected papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-reject-2024-05-22}
+\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-calibrated-quality-reject}{70%}}{Citation data from 2024. Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for rejected papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-reject-2024-05-22}
 
 
 \notes{Welling and Ghahramani introduced an "impact" score in NeurIPS 2013,
@@ -148,11 +148,11 @@ ma.write_figure(filename=date + "-citations-vs-{col}-{filt}.svg".format(filt=fil
 
 \newslide{Accepted Papers 2021}
 
-\figure{\includediagram{\diagramsDir/neurips/citations-vs-average-impact-accept}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average impact score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-impact-accept}
+\figure{\includediagram{\diagramsDir/neurips/2021-06-11-citations-vs-average-impact-accept}{70%}}{Citation data from 2021. Scatter plot of $\log_{10}(1+\text{citations})$ against the average impact score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-impact-accept-2021-06-11}
 
 \newslide{Accepted Papers 2024}
 
-\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-impact-accept}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average impact score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-impact-accept-2024-05-22}
+\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-impact-accept}{70%}}{Citation data from 2024. Scatter plot of $\log_{10}(1+\text{citations})$ against the average impact score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-impact-accept-2024-05-22}
 
 
 \notes{Finally, we also looked at correlation between the *confidence* score
@@ -172,11 +172,11 @@ ma.write_figure(filename=date + "-citations-vs-{col}-{filt}.svg".format(filt=fil
 
 \newslide{Accepted Papers 2021}
 
-\figure{\includediagram{\diagramsDir/neurips/citations-vs-average-confidence-accept}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average confidence score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-confidence-accept}
+\figure{\includediagram{\diagramsDir/neurips/2021-06-11-citations-vs-average-confidence-accept}{70%}}{Citation data from 2021. Scatter plot of $\log_{10}(1+\text{citations})$ against the average confidence score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-confidence-accept-2021-06-11}
 
 \newslide{Accepted Papers 2024}
 
-\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-confidence-accept}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average confidence score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-confidence-accept-2024-05-22}
+\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-confidence-accept}{70%}}{Citation data from 2024. Scatter plot of $\log_{10}(1+\text{citations})$ against the average confidence score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-confidence-accept-2024-05-22}
 
 
 \helpercode{def bootstrap_index(df):
