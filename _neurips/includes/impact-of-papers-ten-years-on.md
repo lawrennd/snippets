@@ -82,9 +82,13 @@ ax.set_xticks([])
 ma.write_figure(filename=date + "-citations-vs-{col}-{filt}.svg".format(filt=filter_col, col=column.replace("_", "-")),
                    directory="\writeDiagramsDir/neurips")}
 
-\newslide{All Papers}
+\newslide{All Papers 2021}
 
-\figure{\includediagram{\diagramsDir/neurips/citations-vs-average-calibrated-quality-all}{70%}}{Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for all papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-all}
+\figure{\includediagram{\diagramsDir/neurips/2021-06-11-citations-vs-average-calibrated-quality-all}{70%}}{Citation date from 2021. Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for all papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-all-2021-06-11}
+
+\newslide{All Papers 2024}
+
+\figure{\includediagram{\diagramsDir/neurips/2024-05-22-citations-vs-average-calibrated-quality-all}{70%}}{Citation date from 2024. Scatter plot of $\log_{10}(1+\text{citations})$ against the average calibrated quality score for all papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-calibrated-quality-all-2024-05-22}
 
 \notes{The correlation seems strong, but of course, we are looking at papers
 which were accepted and rejected by the conference. This is dangerous,
