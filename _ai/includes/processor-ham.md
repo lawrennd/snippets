@@ -15,4 +15,6 @@
 
 \notes{These machines are to humans what the MONIAC was the British economy. Not a replacement, but an analogue computer that captures some aspects of humanity while providing advantages of high bandwidth of the machine.}
 
+\addatomic{human analogue machine}{343, 344, 345, 346, 347, 358, 359, 365, 366, 367, 368}
+
 \endif
