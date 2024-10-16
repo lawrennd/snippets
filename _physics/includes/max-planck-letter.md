@@ -8,6 +8,10 @@
 
 \newslide{}
 
+\figure{\includepng{\diagramsDir/physics/max-planck-letter-snippet}{80%}}{Snippet of letter from Max Planck 25th October 1944}{max-planck-letter-snippet}
+
+\newslide{}
+
 > My Leader,
 >
 > I am deeply shocked by the news that my son Erwin has been sentenced to death by the People’s Court.
