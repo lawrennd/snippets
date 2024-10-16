@@ -4,12 +4,13 @@
 
 \subsection{Letter from Max Planck}
 
-\figure{\includejpg{\diagramsDir/physics/max-planck-letter-1944-10-25}{30%}}{Letter from Max Planck 25th October 1944}{max-planck-letter}
+\figure{\includejpg{\diagramsDir/physics/max-planck-letter-1944-10-25}{50%}}{Letter from Max Planck 25th October 1944}{max-planck-letter}
 
 \newslide{}
 
 \figure{\includepng{\diagramsDir/physics/max-planck-letter-snippet}{80%}}{Snippet of letter from Max Planck 25th October 1944}{max-planck-letter-snippet}
 
+\speakernotes{gez. is abbreviation for gezeichnet}
 \newslide{}
 
 > My Leader,
@@ -21,6 +22,6 @@
 >
 > Max Planck
 
-\addatomic{Letter to Adolf Hitler fromPlanck, Max}{130, 274-277, 295-296, 300, 354}
+\addatomic{Letter to Adolf Hitler from Max Planck}{130, 274-277, 295-296, 300, 354}
 
 \endif
