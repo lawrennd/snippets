@@ -7,7 +7,7 @@
 
 \notes{The Lorenzo scandal is the National Programme for IT which was intended to allow the NHS to move towards electronic health records. }
 
-\figure{\threeColumns{\aligncenter{\includediagramclass{\diagramsDir/logos/CSC_Logo}{100%}}}{\aligncenter{\includepng{\diagramsDir/software/horizon-select-committee}{100%}}}{\aligncenter{\includediagramclass{\diagramsDir/logos/nhs-logo}{100%}}}{25%}{49%}{25%}}{The still is from [the 2011 Public Accounts committee](https://www.parliamentlive.tv/Event/Index/4408002e-9daf-4def-a49f-867107134fb4).}{lorenzo-scandal}
+\figure{\threeColumns{\aligncenter{\includediagramclass{\diagramsDir/logos/CSC_Logo}{100%}}}{\aligncenter{\includepng{\diagramsDir/software/lorenzo-select-committee}{100%}}}{\aligncenter{\includediagramclass{\diagramsDir/logos/nhs-logo}{100%}}}{25%}{49%}{25%}}{The still is from [the 2011 Public Accounts committee](https://www.parliamentlive.tv/Event/Index/4408002e-9daf-4def-a49f-867107134fb4).}{lorenzo-scandal}
 
 \notes{The oral transcript can be found at <https://publications.parliament.uk/pa/cm201012/cmselect/cmpubacc/1070/11052302.htm>.
 
