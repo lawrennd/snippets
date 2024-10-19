@@ -9,6 +9,10 @@
 
 \slides{\figure{\includediagram{\diagramsDir/data-science/new-flow-of-information001}{70%}}{}{new-flow-of-information-1}}
 
+\newslide
+
+\slides{\figure{\includediagram{\diagramsDir/data-science/new-flow-of-information001a}{70%}}{}{new-flow-of-information-1a}}
+
 \newslide{Evolved Relationship}
 
 \slides{\figure{\includediagram{\diagramsDir/data-science/new-flow-of-information002}{70%}}{}{new-flow-of-information-2}}

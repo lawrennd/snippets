@@ -11,7 +11,7 @@
 
 \addatomic{Blake, William *Newton*}{121–123}
 
-\notes{The caption in teh Tate Britain reads:
+\notes{The caption in the Tate Britain reads:
 
 > Here, Blake satirises the 17th-century mathematician Isaac Newton. Portrayed as a muscular youth, Newton seems to be underwater, sitting on a rock covered with colourful coral and lichen. He crouches over a diagram, measuring it with a compass. Blake believed that Newton’s scientific approach to the world was too reductive. Here he implies Newton is so fixated on his calculations that he is blind to the world around him. This is one of only 12 large colour prints Blake made. He seems to have used an experimental hybrid of printing, drawing, and painting. 
 >

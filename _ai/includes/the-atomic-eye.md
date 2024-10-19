@@ -5,7 +5,7 @@
 
 \subsection{The Atomic Human}
 
-\figure{\includediagramsclass{\diagramsDir/ai/atomic-eye}{30%}}{The Atomic Eye, by slicing away aspects of the human that we used to believe to be unique to us, but are now the preserve of the machine, we learn something about what it means to be human.}{the-atomic-eye}
+\figure{\includediagramclass{\diagramsDir/ai/atomic-eye}{45%}}{The Atomic Eye, by slicing away aspects of the human that we used to believe to be unique to us, but are now the preserve of the machine, we learn something about what it means to be human.}{the-atomic-eye}
 
 \notes{The development of what some are calling *intelligence* in machines, raises questions around what machine intelligence means for our intelligence. The idea of the atomic human is derived from Democritus's atomism.}
 
