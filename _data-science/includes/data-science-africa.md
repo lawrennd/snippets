@@ -14,6 +14,7 @@
 \newslide{}
 
 \figure{\includediagram{\diagramsDir/dsa/dsa-events-october-2021}{60%}}{Data Science Africa meetings held up to October 2021.}{dsa-events-october-2021}
+
 \notes{Data Science Africa is a bottom up initiative for capacity building in data science, machine learning and artificial intelligence on the African continent. 
 
 As of May 2023 there have been eleven  workshops and schools, located in seven different countries: Nyeri, Kenya (twice); Kampala, Uganda; Arusha, Tanzania; Abuja, Nigeria; Addis Ababa, Ethiopia; Accra, Ghana; Kampala, Uganda and Kimberley, South Africa (virtual), and in Kigali, Rwanda.
@@ -24,10 +25,6 @@ The main notion is *end-to-end* data science. For example, going from data colle
 
 \notes{Data Science Africa is now a non-govermental organization registered in Kenya. The organising board of the meeting is entirely made up of scientists and academics based on the African continent.}
 
-\newslide{}
-
-\figure{\includepng{\diagramsDir/data-science/africa-benefit-data-revolution}{70%}}{The lack of existing physical infrastructure on the African continent makes it a particularly interesting environment for deploying solutions based on the *information infrastructure*. The idea is explored more in this Guardian op-ed on \addguardian{How African can benefit from the data revolution}{2015/aug/25/africa-benefit-data-science-information}.}{africa-benefit-data-revolution}
-
-\addguardian{Data Science Africa}{2015/aug/25/africa-benefit-data-science-information}
+\include{_data-science/includes/dsa-guardian.md}
 
 \endif
