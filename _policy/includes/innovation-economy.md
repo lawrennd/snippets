@@ -42,9 +42,6 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
    * The implementations suffered from overly rigid, top-down approaches that didn't allow for local adaptation.
    * In both cases, there was insufficient engagement with end-users and local stakeholders.}
 
-\include{_ai/includes/naca-proving.md}
-
-
 \subsection{Bridging}
 
 \notes{These examples provide valuable lessons for bridging the macro-micro gap in innovation:
@@ -99,6 +96,9 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
   - Data intermediaries for representing interests of those from whom data originates.
   - Assessment of data quality and data maturity assessments. 
 
+\notes{\include{_governance/includes/data-trusts.md}}
+\include{_governance/includes/data-trusts-initiative.md}
+
 \subsection{2. Addressing data, Comptue and Capability Gaps}
 
 **Compute: HPC Pioneer Project**
@@ -129,8 +129,7 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
   - Conduct public dialogues on AI, ensuring diverse voices are heard.
   - Data intermediaries as an approach to capturing public voices
 
-\notes{\include{_governance/includes/data-trusts.md}}
-\include{_governance/includes/data-trusts-initiative.md}
+
 
 **Cross-University Workshops**
 
