@@ -1,6 +1,8 @@
 \ifndef{innovationEconomy}
 \define{innovationEconomy}
 
+\editme 
+
 \subsection{Innovation Economy Challenges}
 
 \notes{Innovating to serve science and society requires a pipeline of interventions. As well as advances in the technical capabilities of AI technologies, engineering knowhow is required to safely deploy and monitor those solutions in practice. Regulatory frameworks need to adapt to ensure trustworthy use of these technologies. Aligning technology development with public interests demands effective stakeholder engagement to bring diverse voices and expertise into technology design.}
@@ -40,6 +42,9 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
    * The implementations suffered from overly rigid, top-down approaches that didn't allow for local adaptation.
    * In both cases, there was insufficient engagement with end-users and local stakeholders.}
 
+\include{_ai/includes/naca-proving.md}
+
+
 \subsection{Bridging}
 
 \notes{These examples provide valuable lessons for bridging the macro-micro gap in innovation:
@@ -56,6 +61,8 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
 \notes{ai@cam is a new flagship University mission that seeks to address these challenges. It recognises that development of safe and effective AI-enabled innovations requires this mix of expertise from across research domains, businesses, policy-makers, civill society, and from affected communities. AI@Cam is setting out a vision for AI-enabled innovation that benefits science, citizens and society.}
 
 \notes{This vision will be achieved through leveraging the University’s vibrant interdisciplinary research community. AI@Cam will form partnerships between researchers, practitioners, and affected communities that embed equity and inclusion. It will develop new platforms for innovation and knowledge transfer. It will deliver innovative interdisciplinary teaching and learning for students, researchers, and professionals. It will build strong connections between the University and national AI priorities.}
+
+\include{_ai/includes/ai-at-cam.md}
 
 \notes{The University operates as both an engine of AI-enabled innovation and steward of those innovations.}
 
@@ -85,20 +92,32 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
   - Example: Collaboration with Bennett Institute and Minderoo Centre on AI governance policy brief.
 
 \subsection{2. Addressing Data, Compute, and Capability Gaps}
+**Data: Data Intermediaries and maturity assessments**
 
-**HPC Pioneer Project**
+- **Challenge**: Improving liquidity of data access without compromising security.
+- **ai@cam's Approach**:
+  - Data intermediaries for representing interests of those from whom data originates.
+  - Assessment of data quality and data maturity assessments. 
+
+\subsection{2. Addressing data, Comptue and Capability Gaps}
+
+**Compute: HPC Pioneer Project**
 
 - **Challenge**: Ensuring researchers have access to necessary compute resources.
 - **ai@cam's Approach**:
   - Provide access to the Dawn supercomputer for 46 projects across 20 departments.
   - Bridge the gap between advanced compute capabilities and diverse research needs.
 
-**Accelerate Programme for Scientific Discovery**
+\newslide{2. Capability gaps contd ...}
+**Capability: Accelerate Programme for Scientific Discovery**
 
 - **Challenge**: Building AI skills across disciplines.
 - **ai@cam's Approach**:
   - Offer a range of AI training programs, from basic to advanced.
   - Equip domain experts with AI skills, bridging the capability gap.
+  - Encourage peer to peer learning and sharing of materials supporting "AI Clubs"
+
+\include{_accelerate/includes/accelerate-programme.md}
 
 \subsection{3. Stakeholder Engagement and Feedback Mechanisms}
 
@@ -108,6 +127,10 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
 - **ai@cam's Approach**:
   - Collaborate with Kavli Centre for Ethics, Science, and the Public.
   - Conduct public dialogues on AI, ensuring diverse voices are heard.
+  - Data intermediaries as an approach to capturing public voices
+
+\notes{\include{_governance/includes/data-trusts.md}}
+\include{_governance/includes/data-trusts-initiative.md}
 
 **Cross-University Workshops**
 
@@ -159,5 +182,7 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
 \notes{Our emphasis is on flexibility, phased implementation, and continuous feedback. This is to address the lessons learned from past IT implementation failures.}
 
 \notes{*But*: AI technologies and their applications will continue to evolve rapidly, we will need to remain agile, continuously assessing and adjusting our strategies to ensure we effectively bridge the gap between high-level AI capabilities and on-the-ground implementation challenges.}
+
+
 
 \endif
