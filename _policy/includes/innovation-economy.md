@@ -55,17 +55,11 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
 
 \notes{\subsection{Making AI equitable}}
 
-\notes{ai@cam is a new flagship University mission that seeks to address these challenges. It recognises that development of safe and effective AI-enabled innovations requires this mix of expertise from across research domains, businesses, policy-makers, civill society, and from affected communities. AI@Cam is setting out a vision for AI-enabled innovation that benefits science, citizens and society.}
-
-\notes{This vision will be achieved through leveraging the University’s vibrant interdisciplinary research community. AI@Cam will form partnerships between researchers, practitioners, and affected communities that embed equity and inclusion. It will develop new platforms for innovation and knowledge transfer. It will deliver innovative interdisciplinary teaching and learning for students, researchers, and professionals. It will build strong connections between the University and national AI priorities.}
-
 \include{_ai/includes/ai-at-cam.md}
 
 \notes{The University operates as both an engine of AI-enabled innovation and steward of those innovations.}
 
 \notes{AI is not a universal remedy. It is a set of tools, techniques and practices that correctly deployed can be leveraged to deliver societal benefit and mitigate social harm.}
-
-\notes{In that sense ai@cam’s mission is close in spirit to that of Panacea’s elder sister Hygeia. It is focussed on building and maintaining the hygiene of a robust and equitable AI research ecosystem.}
 
 \subsection{How ai@cam is Addressing Innovation Challenges}
 
@@ -162,8 +156,9 @@ Both cases demonstrate a significant gap between high-level policy decisions (ma
 
 - **Challenge**: Ensuring balanced guidance and oversight.
 - **ai@cam's Approach**:
-  - Establish a cross-institutional Steering Group.
+  - Workign with a [cross-institutional Steering Group](https://ai.cam.ac.uk/team/).
   - Include diverse expertise from different academic disciplines and professional services.
+  - Close interactions with other initiatives such as ELLIS and Data Science Africa.
 
 \subsection{7. Addressing the Innovation Supply Chain}
 
