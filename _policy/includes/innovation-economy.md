@@ -3,14 +3,22 @@
 
 \subsection{Innovation Economy Challenges}
 
+\notes{Innovating to serve science and society requires a pipeline of interventions. As well as advances in the technical capabilities of AI technologies, engineering knowhow is required to safely deploy and monitor those solutions in practice. Regulatory frameworks need to adapt to ensure trustworthy use of these technologies. Aligning technology development with public interests demands effective stakeholder engagement to bring diverse voices and expertise into technology design.}
+
+\notes{Building this pipeline will take coordination across research, engineering, policy and practice. It also requires action to address the digital divides that influence who benefits from AI advances. These include digital divides within the socioeconomic strata that need to be overcome – AI must not exacerbate existing equalities or create new ones. In addressing these challenges, we can be hindered by divides that exist between traditional academic disciplines. We need to develop common understanding of the problems and a shared knowledge of possible solutions.}
+
 \slides{* Over emphasis on "macro economic supply interventions"
 * Under emphasis on maping "micro economic demand" to "micro economic supply"}
+
+\subsection{Supply Chain of Ideas}
 
 \notes{Model is "supply chain of ideas" framework, particularly in the context of information technology and AI solutions like machine learning and large language models. You suggest that this idea flow, from creation to application, is similar to how physical goods move through economic supply chains.}
 
 \notes{In the realm of IT solutions, there's been an overemphasis on macro-economic "supply-side" stimulation - focusing on creating new technologies and ideas - without enough attention to the micro-economic "demand-side" - understanding and addressing real-world needs and challenges.}
 
-\subsection{Examples}
+\notes{Imagining the supply chain rather than just the notion of the Innovation Economy allows the conceptualisation of the gaps between macro and micro economic issues, enabling a different way of thinking about process innovation.}
+
+\section{Examples}
 
 
 \include{_software/includes/horizon-scandal.md}
@@ -18,33 +26,42 @@
 
 \subsection{Commonalities}
 
+\slides{**Gap between policy (macro) and on ground reality (micro)**
+* Insufficient consideration of local needs and systems.
+* Lack of effective feedback mechanisms from micro to macro.
+* Rigid top-down implementation.
+* Insufficient engagement with end users and stake-holders
+}
 \notes{Key points:
+Both cases demonstrate a significant gap between high-level policy decisions (macro) and on-the-ground realities (micro).
 
-1. Both cases demonstrate a significant gap between high-level policy decisions (macro) and on-the-ground realities (micro).
+   * The failures stemmed from insufficient consideration of local needs, capabilities, and existing systems.
+   * There was a lack of effective feedback mechanisms from the micro to macro level.
+   * The implementations suffered from overly rigid, top-down approaches that didn't allow for local adaptation.
+   * In both cases, there was insufficient engagement with end-users and local stakeholders.}
 
-2. The failures stemmed from insufficient consideration of local needs, capabilities, and existing systems.
-
-3. There was a lack of effective feedback mechanisms from the micro to macro level.
-
-4. The implementations suffered from overly rigid, top-down approaches that didn't allow for local adaptation.
-
-5. In both cases, there was insufficient engagement with end-users and local stakeholders.}
+\subsection{Bridging}
 
 \notes{These examples provide valuable lessons for bridging the macro-micro gap in innovation:
+* The importance of stakeholder engagement at all levels.
+* The need for flexibility and adaptability in system design and implementation.
+* The crucial role of effective feedback mechanisms.
+* The value of phased implementation approaches.
+* The necessity of ensuring technical competence at both policy-making and implementation levels.
+* The importance of setting realistic timelines based on technical and operational realities.
+* The potential benefit of independent, technically competent oversight.}
 
-1. The importance of stakeholder engagement at all levels.
+\notes{\subsection{Making AI equitable}}
 
-2. The need for flexibility and adaptability in system design and implementation.
+\notes{ai@cam is a new flagship University mission that seeks to address these challenges. It recognises that development of safe and effective AI-enabled innovations requires this mix of expertise from across research domains, businesses, policy-makers, civill society, and from affected communities. AI@Cam is setting out a vision for AI-enabled innovation that benefits science, citizens and society.}
 
-3. The crucial role of effective feedback mechanisms.
+\notes{This vision will be achieved through leveraging the University’s vibrant interdisciplinary research community. AI@Cam will form partnerships between researchers, practitioners, and affected communities that embed equity and inclusion. It will develop new platforms for innovation and knowledge transfer. It will deliver innovative interdisciplinary teaching and learning for students, researchers, and professionals. It will build strong connections between the University and national AI priorities.}
 
-4. The value of phased implementation approaches.
+\notes{The University operates as both an engine of AI-enabled innovation and steward of those innovations.}
 
-5. The necessity of ensuring technical competence at both policy-making and implementation levels.
+\notes{AI is not a universal remedy. It is a set of tools, techniques and practices that correctly deployed can be leveraged to deliver societal benefit and mitigate social harm.}
 
-6. The importance of setting realistic timelines based on technical and operational realities.
-
-7. The potential benefit of independent, technically competent oversight.}
+\notes{In that sense ai@cam’s mission is close in spirit to that of Panacea’s elder sister Hygeia. It is focussed on building and maintaining the hygiene of a robust and equitable AI research ecosystem.}
 
 \subsection{How ai@cam is Addressing Innovation Challenges}
 
