@@ -61,7 +61,7 @@ ca = rule_30(size, steps)}
 
 \plotcode{
 # Plot the result
-fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
+fig, ax = plt.subplots(figsize=mlai.plot.big_wide_figsize)
 ax.imshow(ca, cmap='binary')
 ax.axis('off')
 ax.tight_layout()
