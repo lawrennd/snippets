@@ -25,7 +25,7 @@ The rule number 30 in binary is: 00011110
 
 \newslide{Rule 30}
 
-\figure{\includediagram{\diagramsDir/slides/simulation/rule-030_explanation}{95%}}{Rule 30 expressed in pixel form.}{rule-030-explanation}
+\figure{\includediagram{\diagramsDir/simulation/rule-030_explanation}{95%}}{Rule 30 expressed in pixel form.}{rule-030-explanation}
 
 \setupcode{import numpy as np}
 
