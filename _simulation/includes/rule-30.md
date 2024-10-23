@@ -51,22 +51,22 @@ The rule number 30 in binary is: 00011110
 }
 
 \code{# Set parameters
-size = 401
-steps = 200
+size = 101
+steps = 50
 
 # Generate the cellular automaton
 ca = rule_30(size, steps)}
 
 \setupdisplaycode{import matplotlib.pyplot as plt}
 
-\displaycode{
+\plotcode{
 # Plot the result
-plt.figure(figsize=(10, 10))
-plt.imshow(ca, cmap='binary')
-plt.title("Rule 30 Cellular Automaton")
-plt.axis('off')
-plt.tight_layout()
-plt.show()}
+fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
+ax.imshow(ca, cmap='binary')
+ax.axis('off')
+ax.tight_layout()
+
+mlai.write_figure(filename='forrester-function.svg', directory='\writeDiagramsDir/uq')}
 
 
 \notes{
