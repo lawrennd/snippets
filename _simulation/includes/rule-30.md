@@ -25,12 +25,12 @@ The rule number 30 in binary is: 00011110
 
 \newslide{Rule 30}
 
-\figure{\includediagram{\diagramsDir/slides/simulation/rule-30_explanation}{95%}}{Rule 30 expressed in pixel form.}{rule-30-explanation}
+\figure{\includediagram{\diagramsDir/slides/simulation/rule-030_explanation}{95%}}{Rule 30 expressed in pixel form.}{rule-030-explanation}
 
 \setupcode{import numpy as np}
 
 
-\code{def rule_30(size, steps):
+\helpercode{def rule_30(size, steps):
     # Initialize the cellular automaton
     ca = np.zeros((steps, size), dtype=int)
     ca[0, size // 2] = 1  # Set the middle cell of the first row to 1
@@ -48,8 +48,9 @@ The rule number 30 in binary is: 00011110
             ca[i, j] = rule[(left, center, right)]
     
     return ca
+}
 
-# Set parameters
+\code{# Set parameters
 size = 401
 steps = 200
 

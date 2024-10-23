@@ -61,21 +61,25 @@ The rule number 1 in binary is: 00000001
 \newslide{Wolfram Automata Coding}
 
 Each bit in the binary number determines the result for one of the eight possible patterns of three cells:
-- A foreground square (■) represents a cell in state 1
-- A background square (□) represents a cell in state 0
-- The patterns are ordered from 111 (7) to 000 (0)
-- The binary number determines the next state of the center cell for each pattern
+
+* A foreground square (■) represents a cell in state 1
+* A background square (□) represents a cell in state 0
+* The patterns are ordered from 111 (7) to 000 (0)
+* The binary number determines the next state of the center cell for each pattern
 
 \newslide{Wolfram Automata Coding}
 
 For example:
-- If you see pattern '111' (■■■), the next state will be {'■' if rule_binary[0] == '1' else '□'}
-- If you see pattern '110' (■■□), the next state will be {'■' if rule_binary[1] == '1' else '□'}
+
+* If you see pattern '111' (■■■), the next state will be {'■' if rule_binary[0] == '1' else '□'}
+* If you see pattern '110' (■■□), the next state will be {'■' if rule_binary[1] == '1' else '□'}
+
 And so on...
 
 \newslide{Wolfram Automata Coding}
 
 At each time step:
+
 1. Look at each cell and its two neighbors
 2. Find this pattern in the table above
 3. The center cell becomes the value shown in the 'Result' column
@@ -146,13 +150,13 @@ At each time step:
     return svg}
 
 \displaycode{svg = generate_rule_explanation_svg(1)
-with open("\writeDiagramsDir/simulation/rule-1_explanation.svg", 'w') as f:
+with open("\writeDiagramsDir/simulation/rule-001_explanation.svg", 'w') as f:
   f.write(svg)
 }
 
 \newslide{Rule 1}
 
-\figure{\includediagram{\diagramsDir/slides/simulation/rule-1_explanation}{95%}}{Rule 1 expressed in pixel form.}{rule-1_explanation}
+\figure{\includediagram{\diagramsDir/simulation/rule-001_explanation}{95%}}{Rule 1 expressed in pixel form.}{rule-1_explanation}
 
 
 
