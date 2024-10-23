@@ -6,8 +6,26 @@
 
 \subsection{Rule 30}
 
+
+
 \notes{Wolfram explored exhaustively the different automata, and [discovered that Rule 30](But the surprising [discovery I made in the 1980s](https://content.wolfram.com/sw-publications/2020/07/origins-randomness-physical-systems.pdf)) exhibited particularly interesting behaviour.}
 
+| Pattern | Result | Binary Position | Rule Bit |
+|---------|---------|----------------|----------|
+| ■■■ | □ | 7 | 0 |
+| ■■□ | □ | 6 | 0 |
+| ■□■ | □ | 5 | 0 |
+| ■□□ | ■ | 4 | 1 |
+| □■■ | ■ | 3 | 1 |
+| □■□ | ■ | 2 | 1 |
+| □□■ | ■ | 1 | 1 |
+| □□□ | □ | 0 | 0 |
+
+The rule number 30 in binary is: 00011110
+
+\newslide{Rule 30}
+
+\figure{\includediagram{\diagramsDir/slides/simulation/rule-30_explanation}{95%}}{Rule 30 expressed in pixel form.}{rule-30-explanation}
 
 \setupcode{import numpy as np}
 
