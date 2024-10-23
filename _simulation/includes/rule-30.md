@@ -66,8 +66,16 @@ ax.imshow(ca, cmap='binary')
 ax.axis('off')
 ax.tight_layout()
 
-mlai.write_figure(filename='forrester-function.svg', directory='\writeDiagramsDir/uq')}
+mlai.write_figure(filename='rule-030-progression.svg', directory='\writeDiagramsDir/simulation')}
 
+
+\newslide{}
+
+\figure{\includediagram{\diagramsDir/simulation/rule-030-progression}{70%}}{Progression of Rule 30 with a single cell on as the initial condition.}{rule-030-progression}
+
+\subsection{Rule 30 in Cambridge}
+
+\figure{\includejpg{\diagramsDir/simulation/rule-030-cambridge-north}{70%}}{Rule 30 has been used to decorate Cambridge North station with aluminium cladding.}{rule-030-cambridge-north}
 
 \notes{
 > But the surprising [discovery I made in the 1980s](https://content.wolfram.com/sw-publications/2020/07/origins-randomness-physical-systems.pdf) by looking at things like rule 30 is that actually no such “external source” is needed: instead, it’s perfectly possible for [randomness to be generated intrinsically](https://www.wolframscience.com/nks/chap-7--mechanisms-in-programs-and-nature#sect-7-5--the-intrinsic-generation-of-randomness) within a system just through the process of applying definite underlying rules.
