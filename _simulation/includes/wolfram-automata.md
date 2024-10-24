@@ -150,14 +150,106 @@ At each time step:
     return svg}
 
 \displaycode{svg = generate_rule_explanation_svg(1)
-with open("\writeDiagramsDir/simulation/rule-001_explanation.svg", 'w') as f:
+filename = mlai.filename_join("rule-001_explanation.svg", "\writeDiagramsDir/simulation/")
+with open(filename, 'w') as f:
   f.write(svg)
 }
 
 \newslide{Rule 1}
 
-\figure{\includediagram{\diagramsDir/simulation/rule-001_explanation}{95%}}{Rule 1 expressed in pixel form.}{rule-1_explanation}
+\figure{\includediagram{\diagramsDir/simulation/rule-001_explanation}{95%}}{Rule 1 expressed in pixel form.}{rule-001_explanation}
 
 
+
+\setuphelpercode{import numpy as np}
+
+\helpercode{def get_rule_mapping(rule_number):
+    """Convert a rule number (0-255) into a dictionary of state transitions"""
+    if not 0 <= rule_number <= 255:
+        raise ValueError("Rule number must be between 0 and 255")
+    
+    # Convert rule number to 8-bit binary
+    rule_binary = format(rule_number, '08b')
+    
+    # Create mapping for all possible neighborhood combinations
+    neighborhoods = [
+        (1,1,1), (1,1,0), (1,0,1), (1,0,0),
+        (0,1,1), (0,1,0), (0,0,1), (0,0,0)
+    ]
+    
+    # Create rule dictionary
+    rule = {}
+    for i, neighborhood in enumerate(neighborhoods):
+        # Convert string '0' or '1' to integer
+        rule[neighborhood] = int(rule_binary[i])
+        
+    return rule}
+
+\helpercode{def generate_svg(ca_slice, filename, cell_size=10):
+    """Generate an SVG file for a single time slice of the automaton"""
+    width = len(ca_slice) * cell_size
+    height = cell_size
+    
+    # Start SVG file
+    svg = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}">\n'
+    
+    # Add cells
+    for i, cell in enumerate(ca_slice):
+        x = i * cell_size
+        if cell == 1:
+            svg += f'  <rect x="{x}" y="0" width="{cell_size}" height="{cell_size}" fill="black" />\n'
+    
+    svg += '</svg>'
+    
+    # Write to file
+	
+    with open(filename, 'w') as f:
+        f.write(svg)}
+
+\helpercode{def cellular_automaton(rule_number, size, steps, svg_interval=None):
+    """
+    Implement elementary cellular automaton for any rule number
+    Parameters:
+    - rule_number: integer 0-255 specifying which rule to use
+    - size: width of the automaton
+    - steps: number of time steps to evolve
+    - svg_interval: if set, generate SVG files every this many steps
+    """
+    # Initialize the cellular automaton
+    ca = np.zeros((size, steps), dtype=int)  # Note: swapped dimensions for horizontal time
+    ca[size // 2, 0] = 1  # Set the middle cell of the first column to 1
+    
+    # Get rule mapping
+    rule = get_rule_mapping(rule_number)
+    
+    # Evolve the cellular automaton
+    for t in range(1, steps):
+        for i in range(size):
+            left = ca[(i-1) % size, t-1]
+            center = ca[i, t-1]
+            right = ca[(i+1) % size, t-1]
+            ca[i, t] = rule[(left, center, right)]
+        
+        # Generate SVG if requested
+        if svg_interval and t % svg_interval == 0:
+			filename = mlai.filename_join(f"cellular-automata-rule-{rule_number:03d}-step-{:03d}.svg", "\writeDiagramsDir/simulation/")		
+            generate_svg(ca[:, t], filename)
+    
+    return ca}
+
+\setuphelpercode{import matplotlib.pyplot as plt}
+
+\helpercode{def plot_automaton(rule_number=30, size=101, steps=100, svg_interval=None):
+    # Generate the cellular automaton
+    ca = cellular_automaton(rule_number, size, steps, svg_interval)
+    
+    # Plot the result
+    fig, ax = plt.subplots(plot.big_wide_figsize)
+    ax.imshow(ca, cmap='binary', aspect='auto')
+    ax.set_title(f"Elementary Cellular Automaton - Rule {rule_number}")
+    ax.set_xlabel("Time →")
+    ax.set_ylabel("Space")
+	
+	mlai.write_figure(filename='rule-{rule_number}-progression.svg', directory='\writeDiagramsDir/simulation')}}
 
 \endif

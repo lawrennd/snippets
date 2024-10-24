@@ -61,13 +61,14 @@ ca = rule_30(size, steps)}
 
 \plotcode{
 # Plot the result
-fig, ax = plt.subplots(figsize=mlai.plot.big_wide_figsize)
+fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 ax.imshow(ca, cmap='binary')
 ax.axis('off')
 ax.tight_layout()
 
 mlai.write_figure(filename='rule-030-progression.svg', directory='\writeDiagramsDir/simulation')}
 
+\plotcode{plot_automaton(rule_number=30, size=101, steps=50)}
 
 \newslide{}
 
