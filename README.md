@@ -7,10 +7,20 @@ It was originally started in latex to avoid creating large power point decks tha
 
 ## Overview
 
-The snippets system is built around markdown files that use custom macros for handling different output formats (slides, notes, LaTeX, HTML, etc). Each snippet is a self-contained piece of content that can be included in multiple presentations. These custom macros are defined in the `lamd` package, <https://github.com/lawrennd/lamd>.
+The snippets system is built around markdown files that use custom macros for handling different output formats (slides, notes, LaTeX, HTML, etc). Each snippet is a self-contained piece of content that can be included in multiple presentations. 
 
-For some examples of how talks can be composed together see the <https://github.com/lawrennd/talks> repository which is where snippets were originally hosted. The repository contains many talks that are composed from these snippets.
 
+## Compilation
+
+The snippets are compiled using the [lamd](https://github.com/lawrennd/lamd) tool, which processes the markdown and macros to generate the desired output format.
+
+## Related Projects
+
+For related projects see:
+
+[lamd](https://github.com/lawrennd/lamd) - Contains the scripts for compiling these snippets.
+
+[talks](https://github.com/lawrennd/talks) - The original repository where the snippets were hosted and contains talks composed from these snippets.
 
 ## Key Features
 
@@ -109,17 +119,6 @@ This appears only in slides format as bullet points.
 # Closes the definition block
 ```
 
-## Compilation
-
-The snippets are compiled using the [lamd](https://github.com/lawrennd/lamd) tool, which processes the markdown and macros to generate the desired output format.
-
-## Related Projects
-
-For related projects see:
-
-[lamd](https://github.com/lawrennd/lamd) - Contains the scripts for compiling these snippets.
-
-[talks](https://github.com/lawrennd/talks) - The original repository where the snippets were hosted and contains talks composed from these snippets.
 
 ## Contributing
 
