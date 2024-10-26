@@ -21,7 +21,7 @@
 
 \newslide{Lecturers}
 
-\centerdiv{\ferencHuszarPicture{15%}\nicLanePicture{15%}\neilLawrencePicture{15%}}
+\centerdiv{\ferencHuszarPicture{15%}\nicLanePicture{15%}\neilDLawrencePicture{15%}}
 
 \notes{Our course is taught by Ferenc Huszár, Nic Lane and Neil Lawrence.}
 
