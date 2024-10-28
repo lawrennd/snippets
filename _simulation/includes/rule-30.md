@@ -81,4 +81,6 @@ mlai.write_figure(filename='rule-030-progression.svg', directory='\writeDiagrams
 \notes{
 > But the surprising [discovery I made in the 1980s](https://content.wolfram.com/sw-publications/2020/07/origins-randomness-physical-systems.pdf) by looking at things like rule 30 is that actually no such “external source” is needed: instead, it’s perfectly possible for [randomness to be generated intrinsically](https://www.wolframscience.com/nks/chap-7--mechanisms-in-programs-and-nature#sect-7-5--the-intrinsic-generation-of-randomness) within a system just through the process of applying definite underlying rules.
 }
+
+\notes{Wolfram refers to the pseudorandom pattern that emerges, in particular down the center line of hte automata as "computationally irreducible".}
 \endif
