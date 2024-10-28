@@ -174,7 +174,7 @@ from typing import List, Tuple, Dict, Optional}
     svg += '</svg>'
     return svg}
 
-\helpercode{def plot_atutomata_grid(grid: Grid, ax: plt.Axes, cell_size: int = 30):
+\helpercode{def plot_automata_grid(grid: Grid, ax: plt.Axes, cell_size: int = 30):
     """Plot a cellular automata grid with consistent styling matching SVG output
     
     Args:
