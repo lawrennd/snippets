@@ -4,7 +4,7 @@
 
 \subsection{Emukit Playground}
 
-\centerdiv{\leahHirstPicture{15%}\cliffMccollumPicture{15%}}
+\centerdiv{\leahHirstPicture{15%}\cliffMcCollumPicture{15%}}
 
 \notes{Emukit playground is a software toolkit for exploring the use of statistical emulation as a tool. It was built by [Leah Hirst](https://www.linkedin.com/in/leahhirst/), during her software engineering internship at Amazon and supervised by [Cliff McCollum](https://www.linkedin.com/in/cliffmccollum/).}
 \slides{

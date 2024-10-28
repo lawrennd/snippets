@@ -90,7 +90,7 @@
 \newslide{Access Case Study: Crash Map Kampala}
 
 \slides{
-\centerdiv{\jimmyKinyonyiPicture{15%}\michaelSmithPicture{15%}}
+\centerdiv{\bagonzaJimmyKinyonyiPicture{15%}\michaelTSmithPicture{15%}}
 \figure{\includepng{\diagramsDir/data-science/crash-map-kampala}{60%}}{Crash Map Kampala was an initiative by Michael T. Smith and Bagonza Jimmy Owa Kinyonyi to map the location, date and severity of vehicle accidents across the city of Kampala. Original storage location for the data was in police log books.}{crash-map-kampala}}
 
 \include{_data-science/includes/crash-map-kampala.md}
