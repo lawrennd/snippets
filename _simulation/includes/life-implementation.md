@@ -102,9 +102,9 @@
 
 This base implementation will be essential when we combine it with Wolfram automata, as we'll need to modify the boundary conditions to interact with the Wolfram rules.}
 
-\setupcode{import matplotlib.pyplot as plt}
+\setupplotcode{import matplotlib.pyplot as plt}
 
-\plotcode{# Demonstrate simple Life evolution
+\plotcode{# Demonstrate simple Life evolution with enhanced visualization
 # Create a simple oscillator (blinker)
 initial_state = np.zeros((5, 5))
 initial_state[2, 1:4] = 1  # Three cells in a row
@@ -113,14 +113,17 @@ history = run_life(5, 5, steps=4, initial_state=initial_state)
 
 # Visualize evolution
 fig, axes = plt.subplots(1, 4, figsize=(15, 4))
+fig.set_facecolor('white')  # White background for entire figure
+
 for i, grid in enumerate(history):
-    axes[i].imshow(grid.grid, cmap='binary')
-    axes[i].axis('off')
+    plot_automata_grid(grid, axes[i])
     axes[i].set_title(f'Step {i}')
+
 plt.tight_layout()
 
 mlai.write_figure(filename='life-blinker.svg', 
                  directory='\writeDiagramsDir/simulation')}
+
 
 \figure{\includediagram{\diagramsDir/simulation/life-blinker}{80%}}{Evolution of a simple oscillator (blinker) in the Game of Life.}{life-blinker}
 

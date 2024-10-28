@@ -174,6 +174,36 @@ from typing import List, Tuple, Dict, Optional}
     svg += '</svg>'
     return svg}
 
+\helpercode{def plot_atutomata_grid(grid: Grid, ax: plt.Axes, cell_size: int = 30):
+    """Plot a cellular automata grid with consistent styling matching SVG output
+    
+    Args:
+        grid: Grid instance to plot
+        ax: Matplotlib axes for plotting
+        cell_size: Reference size for line widths (used for proportions)
+    """
+    height, width = grid.grid.shape
+    
+    # Plot cells
+    ax.imshow(grid.grid, cmap='binary', interpolation='none')
+    
+    # Add grid lines
+    for x in range(width + 1):
+        ax.axvline(x - 0.5, color='#c0c0c0', linewidth=3/cell_size*20)
+    for y in range(height + 1):
+        ax.axhline(y - 0.5, color='#c0c0c0', linewidth=3/cell_size*20)
+    
+    # Clean up appearance
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_aspect('equal')
+    # Add white background
+    ax.set_facecolor('white')
+    # Extend grid lines to edge of plot
+    ax.set_xlim(-0.5, width - 0.5)
+    ax.set_ylim(height - 0.5, -0.5)  # Flip y-axis to match SVG orientation}
+
+
 \notes{These diagram generation functions maintain consistent styling while providing
 specialized visualizations for:
 
