@@ -122,11 +122,11 @@ from matplotlib.animation import FuncAnimation}
     fig.set_facecolor('white')
     
     # Plot initial state
-    plot_life_grid(history[0], ax)
+    plot_automata_grid(history[0], ax)
     
     def animate(frame):
         ax.clear()
-        plot_life_grid(history[frame], ax)
+        plot_automata_grid(history[frame], ax)
         ax.set_title(f"{pattern.name} - Step {frame}")
         return ax,
     

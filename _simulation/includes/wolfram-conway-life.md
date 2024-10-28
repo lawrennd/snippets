@@ -1,201 +1,206 @@
 \ifndef{wolframConwayLife}
 \define{wolframConwayLife}
 
+include{_simulation/includes/automata-base.md}
+\include{_simulation/includes/wolfram-automata.md}
+\include{_simulation/includes/game-of-life.md}
+
 \editme
 
-\setuphelpercode{import numpy as np
-import matplotlib.pyplot as plt
-from typing import Tuple}
+\subsection{Combining Wolfram and Conway}
 
-\helpercode{class FlowingAutomata:
-    def __init__(self, width: int, height: int, wolfram_portion: float = 0.5):
-        """
-        Initialize flowing display where Wolfram patterns flow into Conway's Game of Life
+\notes{We can create an interesting hybrid system by combining Wolfram's elementary cellular automata with Conway's Game of Life. The system consists of a square grid where the interior follows Conway's rules, but the border cells evolve according to a chosen Wolfram rule. The Wolfram rule wraps around the border, creating a dynamic boundary condition for the Life cells.}
 
-        Inspired by Elliot Waite <https://www.youtube.com/watch?v=IK7nBOLYzdE>
-        Args:
-            width: Total width of the display in pixels
-            height: Height of the display in pixels
-            wolfram_portion: Portion of width for Wolfram's automaton (0-1)
-        """
-        self.width = width
-        self.height = height
-        self.wolfram_portion = wolfram_portion
-        
-        # Calculate section widths
-        self.wolfram_width = int(width * wolfram_portion)
-        self.conway_width = width - self.wolfram_width
-        
-        # Initialize the full grid
-        self.grid = np.zeros((height, width), dtype=int)
-        
-        # Initialize generation counter
-        self.generation = 0
-        
-        # Store current Wolfram column for the next generation
-        self.current_wolfram_column = np.zeros(height, dtype=int)
-        self.current_wolfram_column[height // 2] = 1  # Start with middle cell active
-        
-    def _get_rule_mapping(self, rule_number: int) -> dict:
-        """
-        Convert Wolfram rule number to rule dictionary
-        """
-        if not 0 <= rule_number <= 255:
-            raise ValueError("Rule number must be between 0 and 255")
-        
-        rule_binary = format(rule_number, '08b')
-        neighborhoods = [
-            (1,1,1), (1,1,0), (1,0,1), (1,0,0),
-            (0,1,1), (0,1,0), (0,0,1), (0,0,0)
-        ]
-        return {n: int(rule_binary[i]) for i, n in enumerate(neighborhoods)}
+\setuphelpercode{from typing import Tuple, Optional, Set
+import numpy as np}
+
+\helpercode{class HybridAutomaton:
+    """Combined Wolfram-Conway automaton system
     
-    def _calculate_next_wolfram_column(self, rule_number: int) -> np.ndarray:
-        """Calculate the next Wolfram column based on current column"""
-        rule = self._get_rule_mapping(rule_number)
-        next_column = np.zeros_like(self.current_wolfram_column)
-        
-        for i in range(self.height):
-            left = self.current_wolfram_column[(i-1) % self.height]
-            center = self.current_wolfram_column[i]
-            right = self.current_wolfram_column[(i+1) % self.height]
-            next_column[i] = rule[(left, center, right)]
-            
-        return next_column
-    
-    def _count_conway_neighbors(self, x: int, y: int) -> int:
-        """
-        Count live neighbors for Conway's Game of Life
-        """
-        total = 0
-        for dy in [-1, 0, 1]:
-            for dx in [-1, 0, 1]:
-                if dx == 0 and dy == 0:
-                    continue
-                ny = (y + dy) % self.height
-                nx = x + dx
-                
-                # For any position, including looking back into Wolfram section
-                actual_x = self.wolfram_width + nx
-                if nx < 0:
-                    actual_x = self.wolfram_width + nx  # Will look into Wolfram section
-                elif nx >= self.conway_width:
-                    actual_x = self.wolfram_width + (nx % self.conway_width)
-                
-                total += self.grid[ny, actual_x]
-        return total
-    
-    def _update_conway(self):
-        """Update Conway's Game of Life portion"""
-        new_conway = np.zeros((self.height, self.conway_width), dtype=int)
-        
-        # Update all Conway cells based on rules, allowing them to read the Wolfram section
-        for y in range(self.height):
-            for x in range(self.conway_width):
-                neighbors = self._count_conway_neighbors(x, y)
-                current_state = self.grid[y, self.wolfram_width + x]
-                
-                if current_state == 1:
-                    if neighbors in [2, 3]:
-                        new_conway[y, x] = 1
-                else:
-                    if neighbors == 3:
-                        new_conway[y, x] = 1
-        
-        # Update Conway portion of the grid
-        self.grid[:, self.wolfram_width:] = new_conway
-    
-    def step(self, rule_number: int):
-        """Advance the system one generation"""
-        # Shift Wolfram portion one step right
-        self.grid[:, 1:self.wolfram_width] = self.grid[:, :self.wolfram_width-1]
-        
-        # Calculate and set new Wolfram column
-        self.current_wolfram_column = self._calculate_next_wolfram_column(rule_number)
-        self.grid[:, 0] = self.current_wolfram_column
-        
-        # Update Conway's Game of Life portion
-        self._update_conway()
-        
-        self.generation += 1
-    
-    def plot(self, figsize: Tuple[int, int] = (12, 8)):
-        """Display current state"""
-        plt.figure(figsize=figsize)
-        plt.imshow(self.grid, cmap='binary')
-        
-        # Add dividing line
-        plt.axvline(x=self.wolfram_width-0.5, color='red', linestyle='--', alpha=0.5)
-        
-        # Add titles
-        plt.text(self.wolfram_width/2, -5, "Wolfram Automaton",
-                horizontalalignment='center')
-        plt.text(self.wolfram_width + self.conway_width/2, -5, "Game of Life",
-                horizontalalignment='center')
-        
-        plt.title(f'Generation {self.generation}')
-        plt.axis('off')
-        plt.tight_layout()
-        plt.show()
-    
-    def save_svg(self, filename: str, cell_size: int = 10):
-        """Save current state as SVG"""
-        width = self.width * cell_size
-        height = self.height * cell_size
-        
-        svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}">
-        <style>
-            .cell {{ fill: black; }}
-            .divider {{ stroke: red; stroke-dasharray: 5,5; }}
-            .title {{ font: bold 14px sans-serif; }}
-        </style>
-        '''
-        
-        # Draw cells
-        for y in range(self.height):
-            for x in range(self.width):
-                if self.grid[y, x]:
-                    svg += f'<rect class="cell" x="{x * cell_size}" y="{y * cell_size}" width="{cell_size}" height="{cell_size}"/>'
-        
-        # Draw dividing line
-        divider_x = self.wolfram_width * cell_size
-        svg += f'<line class="divider" x1="{divider_x}" y1="0" x2="{divider_x}" y2="{height}"/>'
-        
-        svg += '</svg>'
-        
-        with open(filename, 'w') as f:
-            f.write(svg)}
-\helpercode{def run_flowing_demonstration(width: int = 100, height: int = 50,
-                           wolfram_portion: float = 0.3,
-                           wolfram_rule: int = 30,
-                           generations: int = 100,
-                           save_interval: int = 10):
+    A square grid where:
+    - Interior follows Conway's Game of Life rules
+    - Border follows a specified Wolfram rule
+    - Border wraps around (Wolfram rule connects at corners)
     """
-	Run a demonstration of the flowing automata
-	"""
+    def __init__(self, size: int, wolfram_rule: int):
+        """
+        Args:
+            size: Size of the square grid
+            wolfram_rule: Which Wolfram rule to use for borders (0-255)
+        """
+        self.size = size
+        self.wolfram_rule = wolfram_rule
+        self.grid = Grid(size, size)
+        self.rule_mapping = get_rule_mapping(wolfram_rule)
+        
+    def get_border_cells(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+        """Get the four borders as 1D arrays (for Wolfram rules)
+        Returns borders in order: top, right, bottom, left
+        """
+        return (
+            self.grid.grid[0, :],          # Top border
+            self.grid.grid[:, -1],         # Right border
+            self.grid.grid[-1, ::-1],      # Bottom border (reversed)
+            self.grid.grid[::-1, 0]        # Left border (reversed)
+        )
+        
+    def set_border_cells(self, top: np.ndarray, right: np.ndarray, 
+                        bottom: np.ndarray, left: np.ndarray):
+        """Set the border cells from 1D arrays"""
+        self.grid.grid[0, :] = top
+        self.grid.grid[:, -1] = right
+        self.grid.grid[-1, :] = bottom[::-1]  # Reverse to maintain correct order
+        self.grid.grid[:, 0] = left[::-1]
+        
+	def evolve_borders(self):
+		"""Evolve the border cells using a single Wolfram rule
+
+		The border is treated as a single 1D array that wraps around
+		the entire perimeter of the grid, with the rule applying 
+		continuously around corners.
+		"""
+		# Get current borders and join them into a single perimeter
+		# Going clockwise: top -> right -> bottom -> left
+		top, right, bottom, left = self.get_border_cells()
+		# Note: bottom and left are already reversed in get_border_cells
+		perimeter = np.concatenate([top, right, bottom, left])
+
+		# Evolve the entire perimeter as one continuous 1D array
+		new_perimeter = np.zeros_like(perimeter)
+		# Include wrap-around for the full perimeter
+		extended = np.hstack([perimeter[-1:], perimeter, perimeter[:1]])
+		for i in range(len(perimeter)):
+			neighborhood = (extended[i], extended[i+1], extended[i+2])
+			new_perimeter[i] = self.rule_mapping[neighborhood]
+
+		# Split the evolved perimeter back into borders
+		size = self.size
+		new_top = new_perimeter[:size]
+		new_right = new_perimeter[size:2*size]
+		new_bottom = new_perimeter[2*size:3*size][::-1]  # Reverse for bottom
+		new_left = new_perimeter[3*size:][::-1]          # Reverse for left
+
+		# Update borders
+		self.set_border_cells(new_top, new_right, new_bottom, new_left)
+
+	def evolve_interior(self):
+        """Evolve interior cells using Conway's rules"""
+        new_grid = Grid(self.size, self.size)
+        # Copy borders to new grid
+        top, right, bottom, left = self.get_border_cells()
+        new_grid.grid[0, :] = top
+        new_grid.grid[:, -1] = right
+        new_grid.grid[-1, :] = bottom[::-1]
+        new_grid.grid[:, 0] = left[::-1]
+        
+        # Evolve interior cells
+        for y in range(1, self.size-1):
+            for x in range(1, self.size-1):
+                neighbors = count_life_neighbors(self.grid, x, y, boundary='fixed')
+                if self.grid[x, y]:
+                    new_grid[x, y] = 1 if neighbors in [2, 3] else 0
+                else:
+                    new_grid[x, y] = 1 if neighbors == 3 else 0
+                    
+        self.grid = new_grid
+        
+    def step(self):
+        """Perform one step of hybrid evolution"""
+        self.evolve_borders()
+        self.evolve_interior()
+        
+    def run(self, steps: int) -> List[Grid]:
+        """Run simulation for specified number of steps
+        
+        Returns:
+            List of Grid instances representing evolution history
+        """
+        history = [self.grid.copy()]
+        for _ in range(steps):
+            self.step()
+            history.append(self.grid.copy())
+        return history}
+
+\setupcode{import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation}
+
+\helpercode{def create_hybrid_animation(size: int = 30,
+                             wolfram_rule: int = 30,
+                             steps: int = 50,
+                             interval: int = 200,
+                             initial_pattern: Optional[LifePattern] = None):
+    """Create animation of hybrid Wolfram-Conway system
     
+    Args:
+        size: Grid size
+        wolfram_rule: Wolfram rule number for borders
+        steps: Number of steps to simulate
+        interval: Animation interval in milliseconds
+        initial_pattern: Optional LifePattern to initialize interior
+    """
     # Initialize system
-    automata = FlowingAutomata(width, height, wolfram_portion)
+    hybrid = HybridAutomaton(size, wolfram_rule)
+    
+    # Set initial pattern if provided
+    if initial_pattern:
+        pattern_grid = initial_pattern.to_grid(size-2)  # Smaller to fit interior
+        hybrid.grid.grid[1:-1, 1:-1] = pattern_grid.grid
     
     # Run simulation
-    automata.plot()  # Show initial state
+    history = hybrid.run(steps)
     
-    for gen in range(generations):
-        automata.step(wolfram_rule)
-        if gen % save_interval == 0:
-            automata.plot()
-            automata.save_svg(f"flowing-automata-gen-{gen:0>{3}}.svg")
-}
+    # Create animation
+    fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
+    fig.set_facecolor('white')
+    
+    plot_automata_grid(history[0], ax)
+    
+    def animate(frame):
+        ax.clear()
+        plot_automata_grid(history[frame], ax)
+        ax.set_title(f"Hybrid Evolution - Step {frame}")
+        return ax,
+    
+    anim = FuncAnimation(
+        fig, animate,
+        frames=len(history),
+        interval=interval,
+        blit=True
+    )
+    
+    # Save animation
+    filename = f'hybrid-r{wolfram_rule}'
+    if initial_pattern:
+        filename += f'-{initial_pattern.name.lower()}'
+    anim.save(mlai.filename_join(f'{filename}.gif',
+                                '\writeDiagramsDir/simulation'),
+              writer='pillow')
+    return history}
 
-\code{run_flowing_demonstration(
-    width=100,
-    height=50,
-    wolfram_portion=0.1,
+\notes{Let's demonstrate this hybrid system with some examples. First, let's see how Rule 30 interacts with a glider:}
+
+\plotcode{# Create hybrid system with Rule 30 and a glider
+create_hybrid_animation(
+    size=30,
     wolfram_rule=30,
-    generations=100,
-    save_interval=1
+    steps=50,
+    initial_pattern=GLIDER
 )}
 
+\figure{\includegif{\diagramsDir/simulation/hybrid-r30-glider}{80%}}{A glider pattern evolving within borders governed by Rule 30. Notice how the complex border patterns influence the glider's behavior.}{hybrid-r30-glider}
 
+\notes{Now let's try a different combination - Rule 110 (another complex rule) with a loafer:}
+
+\plotcode{# Create hybrid system with Rule 110 and a loafer
+create_hybrid_animation(
+    size=30,
+    wolfram_rule=110,
+    steps=50,
+    initial_pattern=LOAFER
+)}
+
+\figure{\includegif{\diagramsDir/simulation/hybrid-r110-loafer}{80%}}{A loafer pattern evolving within borders governed by Rule 110. The border patterns create a dynamic environment that affects the loafer's movement.}{hybrid-r110-loafer}
+
+\notes{This hybrid system demonstrates how two different types of cellular automata can be combined to create new behaviours.}
 
 \endif
