@@ -49,6 +49,22 @@
             grid[x + offset_x, y + offset_y] = 1
         return grid}
 
+
+
+\subsection{Pattern Analysis}
+
+\notes{Before looking at specific examples, let's understand how these patterns behave. Life patterns can be classified by their periodic behavior and movement:
+- *Static patterns* remain unchanged from one generation to the next
+- *Oscillators* return to their initial state after a fixed number of generations (their period)
+- *Spaceships* combine oscillation with translation, moving across the grid while cycling through their states
+
+Each pattern can be characterized by:
+- Its period (how many steps before it repeats)
+- Its translation (how far it moves each period)
+- Its velocity (translation per period)}
+
+
+
 \helpercode{# Define classic patterns
 GLIDER = LifePattern(
     name="Glider",
@@ -125,26 +141,8 @@ from matplotlib.animation import FuncAnimation}
                                 '\writeDiagramsDir/simulation'),
               writer='pillow')}
 
-
-\subsection{Pattern Analysis}
-
-\notes{Before looking at specific examples, let's understand how these patterns behave. Life patterns can be classified by their periodic behavior and movement:
-- *Static patterns* remain unchanged from one generation to the next
-- *Oscillators* return to their initial state after a fixed number of generations (their period)
-- *Spaceships* combine oscillation with translation, moving across the grid while cycling through their states
-
-Each pattern can be characterized by:
-- Its period (how many steps before it repeats)
-- Its translation (how far it moves each period)
-- Its velocity (translation per period)}
-
-\plotcode{# Generate animations for each pattern
-for pattern in [GLIDER, LOAFER, GOSPER_GLIDER_GUN]:
-    generate_pattern_animations(pattern, steps=30)}
-
-\notes{\subsection{Loafers and Gliders}}
-
-\notes{John Horton Conway, as the creator of the game of life, could be seen somehow as the god of this small universe. He created the rules. The rules are so simple that in many senses he, and we, are all-knowing in this space. But despite our knowledge, this world can still 'surprise' us. From the simple rules, emergent patterns of behaviour arise. These include static patterns that don't change from one turn to the next. They also include, oscillators, that pulse between different forms across different periods of time. A particular form of oscillator is known as a 'spaceship', this is one that moves across the board as the game evolves. One of the simplest and earliest spaceships to be discovered is known as the glider.}
+\
+\notes{John Horton Conway, as the creator of the game of life, could be seen somehow as the god of this small universe. He created the rules. The rules are so simple that in many senses he, and we, are all-knowing in this space. But despite our knowledge, this world can still 'surprise' us. From the simple rules, emergent patterns of behaviour arise.}
 
 \newslide{Glider}
 
