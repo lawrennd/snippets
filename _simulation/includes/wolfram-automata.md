@@ -15,8 +15,32 @@
 
 \notes{Wolfram numbered the different cellular automata according to the output states in an 8 bit binary number, each bit indexed by the three bits of the input states (most significant bit first). So Rule 0 would give zero output regardless of the input state. Rule 1 will give an output of 1 for the input state of three zeros etc and Rule 255 will give an output of 1 regardless of the input state.}
 
-\helpercode{def generate_rule_markdown_table(rule_number):
-    """Generate a Markdown table explaining a cellular automaton rule"""
+\setuphelpercode{import numpy as np
+from typing import Dict, Tuple, List}
+
+\helpercode{def get_neighborhood_state(left: int, center: int, right: int) -> int:
+    """Convert three cells into their neighborhood state index (0-7)
+    
+    Args:
+        left: State of left cell (0 or 1)
+        center: State of center cell (0 or 1)
+        right: State of right cell (0 or 1)
+        
+    Returns:
+        Integer from 0-7 representing the neighborhood state
+    """
+    return (left << 2) | (center << 1) | right}
+
+
+\helpercode{def generate_rule_markdown_table(rule_number: int) -> str:
+    """Generate a Markdown table explaining a cellular automaton rule
+    
+    Args:
+        rule_number: Integer from 0-255 specifying the rule
+        
+    Returns:
+        Markdown formatted table explaining the rule
+    """
     rule_binary = format(rule_number, '08b')
     
     # Create table header
@@ -35,9 +59,7 @@
         result = '■' if rule_binary[i] == '1' else '□'
         table += f"| {pattern_str} | {result} | {7-i} | {rule_binary[i]} |\n"
     
-    
-    return table
-}
+    return table}
 
 \displaycode{markdown = generate_rule_markdown_table(1)
 print(markdown)}
@@ -163,8 +185,18 @@ with open(filename, 'w') as f:
 
 \setuphelpercode{import numpy as np}
 
-\helpercode{def get_rule_mapping(rule_number):
-    """Convert a rule number (0-255) into a dictionary of state transitions"""
+\helpercode{def get_rule_mapping(rule_number: int) -> Dict[Tuple[int, int, int], int]:
+    """Convert a rule number (0-255) into a dictionary of state transitions
+    
+    Args:
+        rule_number: Integer from 0-255 specifying the rule
+        
+    Returns:
+        Dictionary mapping neighborhood tuples to next state
+        
+    Raises:
+        ValueError: If rule_number is not between 0 and 255
+    """
     if not 0 <= rule_number <= 255:
         raise ValueError("Rule number must be between 0 and 255")
     
@@ -178,23 +210,24 @@ with open(filename, 'w') as f:
     ]
     
     # Create rule dictionary
-    rule = {}
-    for i, neighborhood in enumerate(neighborhoods):
-        # Convert string '0' or '1' to integer
-        rule[neighborhood] = int(rule_binary[i])
-        
-    return rule}
+    return {neighborhood: int(rule_binary[i]) for i, neighborhood in enumerate(neighborhoods)}}
 
-\helpercode{def generate_svg(ca_slice, filename, cell_size=10):
-    """Generate an SVG file for a single time slice of the automaton"""
-    width = len(ca_slice) * cell_size
+\helpercode{def generate_svg(cells: np.ndarray, filename: str, cell_size: int = 10) -> None:
+    """Generate an SVG file for a single time slice of the automaton
+    
+    Args:
+        cells: 1D numpy array representing cell states
+        filename: Path to save SVG file
+        cell_size: Size of each cell in pixels
+    """
+    width = len(cells) * cell_size
     height = cell_size
     
     # Start SVG file
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}">\n'
     
     # Add cells
-    for i, cell in enumerate(ca_slice):
+    for i, cell in enumerate(cells):
         x = i * cell_size
         if cell == 1:
             svg += f'  <rect x="{x}" y="0" width="{cell_size}" height="{cell_size}" fill="black" />\n'
@@ -202,22 +235,38 @@ with open(filename, 'w') as f:
     svg += '</svg>'
     
     # Write to file
-	
     with open(filename, 'w') as f:
         f.write(svg)}
 
-\helpercode{def cellular_automaton(rule_number, size, steps, svg_interval=None):
-    """
-    Implement elementary cellular automaton for any rule number
-    Parameters:
-    - rule_number: integer 0-255 specifying which rule to use
-    - size: width of the automaton
-    - steps: number of time steps to evolve
-    - svg_interval: if set, generate SVG files every this many steps
+\helpercode{def cellular_automaton(rule_number: int, size: int, steps: int, 
+                         initial_state: np.ndarray = None,
+                         periodic: bool = True,
+                         svg_interval: int = None) -> np.ndarray:
+    """Implement elementary cellular automaton for any rule number
+    
+    Args:
+        rule_number: Integer 0-255 specifying which rule to use
+        size: Width of the automaton
+        steps: Number of time steps to evolve
+        initial_state: Optional initial state array. If None, single center cell is set to 1
+        periodic: If True, use periodic boundary conditions
+        svg_interval: If set, generate SVG files every this many steps
+        
+    Returns:
+        2D numpy array of shape (size, steps) containing automaton history
+        
+    Notes:
+        With periodic=True, the automaton wraps around the edges
+        With periodic=False, cells outside the grid are treated as 0
     """
     # Initialize the cellular automaton
-    ca = np.zeros((size, steps), dtype=int)  # Note: swapped dimensions for horizontal time
-    ca[size // 2, 0] = 1  # Set the middle cell of the first column to 1
+    ca = np.zeros((size, steps), dtype=int)
+    
+    # Set initial state
+    if initial_state is not None:
+        ca[:, 0] = initial_state
+    else:
+        ca[size // 2, 0] = 1  # Set the middle cell of the first column to 1
     
     # Get rule mapping
     rule = get_rule_mapping(rule_number)
@@ -225,10 +274,17 @@ with open(filename, 'w') as f:
     # Evolve the cellular automaton
     for t in range(1, steps):
         for i in range(size):
-            left = ca[(i-1) % size, t-1]
+            # Get neighbor states with boundary handling
+            if periodic:
+                left = ca[(i-1) % size, t-1]
+                right = ca[(i+1) % size, t-1]
+            else:
+                left = ca[i-1, t-1] if i > 0 else 0
+                right = ca[i+1, t-1] if i < size-1 else 0
+            
             center = ca[i, t-1]
-            right = ca[(i+1) % size, t-1]
-            ca[i, t] = rule[(left, center, right)]
+            neighborhood = (left, center, right)
+            ca[i, t] = rule[neighborhood]
         
         # Generate SVG if requested
         if svg_interval and t % svg_interval == 0:
@@ -239,17 +295,47 @@ with open(filename, 'w') as f:
 
 \setuphelpercode{import matplotlib.pyplot as plt}
 
-\helpercode{def plot_automaton(rule_number=30, size=101, steps=100, svg_interval=None):
+\helpercode{def plot_automaton(rule_number: int = 30, 
+                     size: int = 101, 
+                     steps: int = 100, 
+                     initial_state: np.ndarray = None,
+                     periodic: bool = True,
+                     svg_interval: int = None,
+                     title: str = None) -> None:
+    """Plot the evolution of a cellular automaton
+    
+    Args:
+        rule_number: Rule to use (0-255)
+        size: Width of the automaton
+        steps: Number of time steps
+        initial_state: Optional initial state array
+        periodic: Whether to use periodic boundary conditions
+        svg_interval: If set, save SVGs every this many steps
+        title: Optional custom title for the plot
+    """
     # Generate the cellular automaton
-    ca = cellular_automaton(rule_number, size, steps, svg_interval)
+    ca = cellular_automaton(
+        rule_number, 
+        size, 
+        steps, 
+        initial_state=initial_state,
+        periodic=periodic,
+        svg_interval=svg_interval
+    )
     
     # Plot the result
-    fig, ax = plt.subplots(plot.big_wide_figsize)
+    fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
     ax.imshow(ca, cmap='binary', aspect='auto')
-    ax.set_title(f"Elementary Cellular Automaton - Rule {rule_number}")
+    
+    if title is None:
+        title = f"Elementary Cellular Automaton - Rule {rule_number}"
+    ax.set_title(title)
     ax.set_xlabel("Time →")
     ax.set_ylabel("Space")
-	
-	mlai.write_figure(filename='rule-{rule_number}-progression.svg', directory='\writeDiagramsDir/simulation')}}
+    
+    mlai.write_figure(
+        filename=f'rule-{rule_number:03d}-progression.svg',
+        directory='\writeDiagramsDir/simulation'
+    )}
 
 \endif
