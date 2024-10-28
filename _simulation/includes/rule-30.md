@@ -76,9 +76,9 @@ ca = rule_30_evolution(size=size, steps=steps)}
 \plotcode{
 # Plot the result
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
+fig.tight_layout()
 ax.imshow(ca, cmap='binary')
 ax.axis('off')
-ax.tight_layout()
 
 mlai.write_figure(filename='rule-030-progression.svg', directory='\writeDiagramsDir/simulation')}
 
