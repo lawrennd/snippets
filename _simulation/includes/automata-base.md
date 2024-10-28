@@ -98,6 +98,7 @@ from typing import Union, Tuple, Optional}
     return svg}
 
 \notes{These base classes and functions provide:
+
 1. A flexible grid structure that works for both 1D and 2D automata
 2. Consistent array access patterns
 3. Grid visualization tools

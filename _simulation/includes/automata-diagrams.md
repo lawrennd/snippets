@@ -176,8 +176,9 @@ from typing import List, Tuple, Dict, Optional}
 
 \notes{These diagram generation functions maintain consistent styling while providing
 specialized visualizations for:
-1. Game of Life rules and their effects
-2. Wolfram rule definitions and their outcomes
+
+1. Wolfram rule definitions and their outcomes
+2. Game of Life rules and their effects
 
 They work with the base Grid class but provide custom layouts specific to teaching
 and explaining the rules of each system.}
