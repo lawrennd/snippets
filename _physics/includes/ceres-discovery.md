@@ -77,7 +77,7 @@ mlai.write_figure('bodes-law.svg', directory='\writeDiagramsDir/physics')}
 
 \newslide{}
 
-\figure{\includegooglebook{JBw4AAAAMAAJ}{PA280}}{Page from the publication *Monatliche Correspondenz* that shows Piazzi's observations of the new planet @Piazzi:monatliche1801
+\figure{\includegooglebook{JBw4AAAAMAAJ}{PA280}}{Page from the publication *Monatliche Correspondenz* that shows Piazzi's observations of the new planet @Piazzi-monatliche1801
 .}{monatliche-correspondenz-piazzi}
 
 
@@ -151,7 +151,7 @@ mlai.write_figure('ceres-data.svg', directory='\writeDiagramsDir/ceres')}
 
 \notes{It was also here that a young German mathematician read about the international hunt for the lost planet. Carl Friedrich Gauss was a 23-year-old mathematician working from Göttingen. He combined Kepler's laws with Piazzi's data to make predictions about where the planet would be found. In doing so, he also developed the method of least squares, and incredibly was able to fit the relatively complex model to the data with a high enough degree of accuracy that astronomers were able to look to the skies to try to recover the planet.}
 
-\notes{Almost exactly one year after it was lost, Ceres was recovered by Franz von Zach. Gauss had combined model with data to make a prediction and in doing so a new planet was discovered [@Gauss:monatliche1801,@Gauss:astronomische02].}
+\notes{Almost exactly one year after it was lost, Ceres was recovered by Franz von Zach. Gauss had combined model with data to make a prediction and in doing so a new planet was discovered [@Gauss-monatliche1801,@Gauss-astronomische02].}
 
 \newslide{}
 
