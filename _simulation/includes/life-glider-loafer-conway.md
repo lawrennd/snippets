@@ -2,7 +2,7 @@
 \define{lifeGliderLoaferConway}
 
 \include{_simulation/includes/automata-base.md}
-\include{_simulation/includes/game-of-life.md}
+\include{_simulation/includes/life-implementation.md}
 
 \editme
 
