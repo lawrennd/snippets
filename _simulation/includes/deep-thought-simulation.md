@@ -1,15 +1,19 @@
-\ifndef{deepThought}
-\define{deepThought}
+\ifndef{deepThoughtSimulation}
+\define{deepThoughtSimulation}
 
 \editme
 
-\subsection{Deep Thought and the Challenge of Computation}
+\subsection{Deep Thought}
 
 \slides{* Deep Thought computed for 7.5 million years
-* Answer: "42"
-* Problem: Didn't know the question
-* Built Earth as a computer to find the question
-* Illustrates challenges with complex computations}
+* Found answer: "42"
+* Problem wasn't the computation
+* Problem was understanding the question
+* Built Earth as a computer to find question
+* Lesson: Having precise equations/answers isn't enough
+    * Need to understand emergent properties
+    * Can't compute everything directly
+    * Universe does computation for us}
 
 \notes{In Douglas Adams's *Hitchhiker's Guide to the Galaxy* the computer Deep Thought is asked to provide the answer to the 'great question' of 'life, the universe and everything'. After seven and a half million years of computation, Deep Thought has completed its program but is reluctant to give its creators the answer.
 
@@ -23,13 +27,15 @@
 > 'Yes ... !'\
 > 'Is ...'\
 > 'Yes ... !!! ... ?'\
-> 'Forty-two,' said Deep Thought, with infinite majesty and calm.}
+> 'Forty-two,' said Deep Thought, with infinite majesty and calm.
+>
+> Douglas Adams *The Hitchhiker's Guide to the Galaxy*, 1979, Chapter 27
 
-\newslide{}
-
-\notes{After a period of shock from the questioners, the machine goes on to explain:
+After a period of shock from the questioners, the machine goes on to explain:
 
 > 'I checked it very thoroughly,' said the computer, 'and that quite definitely is the answer. I think the problem, to be quite honest with you, is that you've never actually known what the question is.'
+>
+> Douglas Adams *The Hitchhiker's Guide to the Galaxy*, 1979, Chapter 28
 
 To understand the question, Deep Thought goes on to agree to design a computer which will work out what the question is. In the book that machine is the planet Earth, and its operators are mice. Deep Thought's idea is that the mice will observe the Earth and their observations will allow them to know what the Great Question is.}
 

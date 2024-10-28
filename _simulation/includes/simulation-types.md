@@ -33,7 +33,7 @@
 \subsubsection{Software System Simulations}
 
 \slides{* Used for testing production code
-* Enable "what if" scenarios
+* Enable "what if" scenarios (counterfactuals)
 * Can involve entire codebases
 * Useful for complex interacting systems}
 
