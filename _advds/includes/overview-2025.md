@@ -12,7 +12,7 @@
 
 \section{Introduction}
 
-\centerdiv{\carlHenrikEkPicture{20%}\christianCabreraPicture{20%}\neilLawrencePicture{20%}}
+\centerdiv{\carlHenrikEkPicture{20%}\christianCabreraPicture{20%}\neilDLawrencePicture{20%}}
 
 \notes{The course is lectured by Carl Henrik Ek and Christian Cabrera and Neil D. Lawrence}
 
