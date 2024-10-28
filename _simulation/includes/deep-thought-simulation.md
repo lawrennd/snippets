@@ -3,17 +3,13 @@
 
 \editme
 
-\subsection{Deep Thought}
+\subsection{Deep Thought and the Challenge of Computation}
 
 \slides{* Deep Thought computed for 7.5 million years
-* Found answer: "42"
-* Problem wasn't the computation
-* Problem was understanding the question
-* Built Earth as a computer to find question
-* Lesson: Having precise equations/answers isn't enough
-    * Need to understand emergent properties
-    * Can't compute everything directly
-    * Universe does computation for us}
+* Answer: "42"
+* Problem: Didn't know the question
+* Built Earth as a computer to find the question
+* Illustrates challenges with complex computations}
 
 \notes{In Douglas Adams's *Hitchhiker's Guide to the Galaxy* the computer Deep Thought is asked to provide the answer to the 'great question' of 'life, the universe and everything'. After seven and a half million years of computation, Deep Thought has completed its program but is reluctant to give its creators the answer.
 
