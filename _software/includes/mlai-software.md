@@ -16,6 +16,7 @@
 
 Once `mlai` is installed, it can be imported in the usual manner.}
 
-\setupcode{import mlai}
+\setupcode{import mlai
+from mlai import plot}
 
 \endif
