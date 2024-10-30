@@ -43,7 +43,7 @@
 
 \notes{Control problems are also systems that aim to achieve objectives given a set of parameters. A classic control problem is the inverted pendulum. This [python code](https://www.moorepants.info/blog/npendulum.html) generalises the standard inverted pendulum using one with $n$-links using symbolic python code.}
 \slides{
-* [Trolley & Pendulum](https://www.moorepants.info/blog/npendulum.html) using sympy (symbolic python)}
+* [Trolley & Pendulum](https://www.moorepants.info/blog/npendulum.html) using `sympy` (symbolic python)}
 
 \newslide{Examples in Python}
 
