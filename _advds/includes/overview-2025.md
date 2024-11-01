@@ -31,12 +31,12 @@
 
 \notes{The teaching is based not only on technical experience of the machine learning community, but real-world experience of deploying and/or assisting with deployments of data science solutions at Amazon, for pandemic policy advice and in the African context (particularly Uganda and Kenya).}
 
-\notes{Due dates are as follows:
+\notes{Dates are as follows:
 
 | Activity                 | Release Date (in Moodle) | Due Date (in Moodle) | Tick Date (in the Lab) |
 |--------------------------|--------------------------|-----------------------|-------------------------|
 | Refresher 1              | 01/11/2024 12:00        | -                     | -                       |
-| Practical 1              | 01/11/2024 12:00        | 07/11/2024 12:00      | 07/11/2024 15:00        |
+| Practical 1              | 04/11/2024 17:00        | 07/11/2024 12:00      | 07/11/2024 15:00        |
 | Practical 2              | 07/11/2024 15:00        | 12/11/2024 12:00      | 12/11/2024 15:00        |
 | Refresher 2              | 12/11/2024 15:00        | -                     | -                       |
 | Practical 3              | 12/11/2024 15:00        | 21/11/2024 12:00      | 21/11/2024 15:00        |
