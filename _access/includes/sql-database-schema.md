@@ -59,4 +59,43 @@ CREATE TABLE IF NOT EXISTS `pp_data` (
   `db_id` bigint(20) unsigned NOT NULL
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;}
 
+\notes{The `schema` defines an id field in the table (i.e., `db_id`), which must be unique and will play the role of [primary key](https://www.geeksforgeeks.org/primary-key-in-dbms/), which is a crucial concept in relational databases. The following code sets up the primary key for our table and makes it auto increment when a new row (i.e., record) is insterted into the table.}
+
+\code{%%sql
+--
+-- Primary key for table `pp_data`
+--
+ALTER TABLE `pp_data`
+ADD PRIMARY KEY (`db_id`);
+
+ALTER TABLE `pp_data`
+MODIFY db_id bigint(20) unsigned NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;}
+
+\notes{We've created our first table in the database with its respective primary key. Now we need to populate it. There are different methods to do that. [Some of them more efficient than others](https://dev.to/arctype/load-data-infile-vs-insert-in-mysql-why-how-when-247f#:~:text=%E2%80%8BWhen%20working%20with%20MySQL,way%20faster%20than%20INSERT%20does.). In our case, given the size of our data set, we will take advantage of the csv files we downloaded in the first part of this lab. The command `LOAD DATA LOCAL INFILE` allows uploading data to the table from a CSV file. We must specify the name of the local file, the name of the table, and the format of the CSV file we want to use (i.e., separators, enclosers, termination line characters, etc.)}
+
+\notes{The following command uploads the data of the transactions that took place in 1995.}
+
+\code{%sql USE `ads_2024`;
+%sql LOAD DATA LOCAL INFILE "./pp-1995-part1.csv" INTO TABLE `pp_data` FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED by '"' LINES STARTING BY '' TERMINATED BY '\n';
+%sql LOAD DATA LOCAL INFILE "./pp-1995-part2.csv" INTO TABLE `pp_data` FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED by '"' LINES STARTING BY '' TERMINATED BY '\n';}
+
+\notes{If we want to upload the data for all the years, we will need a command for each CSV in our dataset. Alternatively, we can use Python code together with SQL magic commands as follows:}
+
+\code{# WARNING: This code will take a long time to finish (i.e., more than 30 minutes) given our dataset's size. The print informs the uploading progress by year.
+for year in range(1996,2025):
+  print ("Uploading data for year: " + str(year))
+  for part in range(1,3):
+    file_name = "./pp-" + str(year) + "-part" + str(part) + ".csv"
+    %sql LOAD DATA LOCAL INFILE "$file_name" INTO TABLE `pp_data` FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED by '"' LINES STARTING BY '' TERMINATED BY '\n';}
+
+\notes{Now that we uploaded the data, we can retrieve it from the table. We can select the first 5 elements in the `pp_data` using this command:}
+
+\code{%%sql
+USE `ads_2024`;
+SELECT * FROM `pp_data` LIMIT 5;}
+
+\notes{We can also count the number of rows in our table. It can take more than 5 minutes to finish. There are almost 30 million of records in the dataset.}
+
+\code{%sql select count(*) from `pp_data`;}
+
 \endif
