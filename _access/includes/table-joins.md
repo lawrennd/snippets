@@ -21,7 +21,7 @@ CREATE INDEX idx_pp_postcode ON pp_data(postcode);}
 USE `ads_2024`;
 select * from pp_data as pp inner join postcode_data as po on pp.postcode = po.postcode where pp.date_of_transfer BETWEEN '2024-01-01' AND '2024-12-31' limit 5;}
 
-\exercise{The index made a difference in the time the join operation took to finish. Let's see if indexing the table `postcode_data` by `postcode` has any additional effect.}
+\exercise{The index made a difference in the time the join operation took to finish. Write the code to index the table `postcode_data` by `postcode`.}
 
 \notes{And, let's try the join again:}
 
@@ -29,7 +29,7 @@ select * from pp_data as pp inner join postcode_data as po on pp.postcode = po.p
 USE `ads_2024`;
 select * from pp_data as pp inner join postcode_data as po on pp.postcode = po.postcode where pp.date_of_transfer BETWEEN '2024-01-01' AND '2024-12-31' limit 5;}
 
-\notes{Do you see any difference after adding the new index? Why?}
+\exercise{Do you see any difference after adding the new index? Why?}
 
 \subsection{Database Python Client}
 
@@ -69,6 +69,8 @@ select * from pp_data as pp inner join postcode_data as po on pp.postcode = po.p
 
 \notes{Please add the code above to your fynesse library. We can now call this function to get a connection:}
 
+\code{#Write your code to establish a connection using your fynesee library}
+
 \notes{Now let's define a Python method that uploads to a table the data product of the join operation between the tables `pp_data` and `postcode_data`. For this, we first need to create the table that will store this data.}
 
 \code{%%sql
@@ -93,5 +95,56 @@ CREATE TABLE IF NOT EXISTS `prices_coordinates_data` (
   `longitude` decimal(10,8) NOT NULL,
   `db_id` bigint(20) unsigned NOT NULL
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;}
+
+\notes{We should define the primary key for this table too.}
+
+\code{%%sql
+ALTER TABLE `prices_coordinates_data`
+ADD PRIMARY KEY (`db_id`);
+
+ALTER TABLE `prices_coordinates_data`
+MODIFY `db_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;}
+
+\notes{Indexing the table `pp_data` by date will be useful for populating the `prices_coordinates_data`. This index can take around 8 minutes to finish.}
+
+\code{%%sql
+USE `ads_2024`;
+CREATE INDEX idx_pp_date_transfer ON pp_data(date_of_transfer);}
+
+\notes{Now that the table exists in our database, let's create a method for uploading the join data. This method will upload the data for a given year and will use the logic we have used before but in Python code.}
+
+\setupcode{import csv}
+
+\setupcode{import time}
+
+\helpercode{def housing_upload_join_data(conn, year):
+  start_date = str(year) + "-01-01"
+  end_date = str(year) + "-12-31"
+
+  cur = conn.cursor()
+  print('Selecting data for year: ' + str(year))
+  cur.execute(f'SELECT pp.price, pp.date_of_transfer, po.postcode, pp.property_type, pp.new_build_flag, pp.tenure_type, pp.locality, pp.town_city, pp.district, pp.county, po.country, po.latitude, po.longitude FROM (SELECT price, date_of_transfer, postcode, property_type, new_build_flag, tenure_type, locality, town_city, district, county FROM pp_data WHERE date_of_transfer BETWEEN "' + start_date + '" AND "' + end_date + '") AS pp INNER JOIN postcode_data AS po ON pp.postcode = po.postcode')
+  rows = cur.fetchall()
+
+  csv_file_path = 'output_file.csv'
+
+  # Write the rows to the CSV file
+  with open(csv_file_path, 'w', newline='') as csvfile:
+    csv_writer = csv.writer(csvfile)
+    # Write the data rows
+    csv_writer.writerows(rows)
+  print('Storing data for year: ' + str(year))
+  cur.execute(f"LOAD DATA LOCAL INFILE '" + csv_file_path + "' INTO TABLE `prices_coordinates_data` FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED by '\"' LINES STARTING BY '' TERMINATED BY '\n';")
+  print('Data stored for year: ' + str(year))}
+
+\notes{Now, lets upload the joined data for 2024. This upload is going to take long time given the size of our datasets:}
+
+\code{housing_upload_join_data(conn, 2024)}
+
+\exercise{Add the `housing_upload_join_data` function to your fynesse library and write the code to upload the joined data for 2023.}
+
+\subsection{Summary}
+
+\notes{In this practical, we have explored how to persist a couple of datasets in a relational database to facilitate future access. We configured a Cloud-hosted database server and had a look at two ways to interact with it. Then, we explored how to join tables using SQL and the benefits of indexing. The tables you created in this practical will be used along the course and we expect you use them for your final assignment. In the following practical, you will `assess` this data using different methods from visualisations to statistical analysis.}
 
 \endif
