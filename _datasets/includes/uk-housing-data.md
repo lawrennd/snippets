@@ -3,7 +3,7 @@
 
 \editme
 
-\section{UK Housing Datasets}
+\subsection{UK Housing Datasets}
 
 The UK Price Paid data for housing in dates back to 1995 and contains millions of transactions. This database is available at the [gov.uk site](https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads). The total data is over 4 gigabytes in size and it is available in a single file or in multiple files splitted by years and semester. For example, the first part of the data for 2018 is stored at <http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2018-part1.csv>. By applying the divide and conquer principle, we will download the splitted data because these files is less than 100MB each which makes them easier to manage.
 
