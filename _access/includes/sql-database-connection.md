@@ -35,7 +35,8 @@ port = credentials["port"]}
 
 \subsection{SQL Commands}
 
-\notes{We have all the required data to interact with our database server. There are mainly two ways how we can do that. The first one is using magic SQL commands. For this option, we need to load the sql extension:}
+\notes{We have all the required data to interact with our database server. There are mainly two ways how we can do that. The first one is using magic SQL commands. For this option, we need to install pymysql and load the sql extension:}
+\code{%pip install pymysql}
 \code{%load_ext sql}
 
 \notes{We can now test our first database server connection using magic SQL. The first line establishes the connection and the second one list the databases. For now, you should see the databases that the engine has installed by default.}
