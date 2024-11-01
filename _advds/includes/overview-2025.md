@@ -31,11 +31,24 @@
 
 \notes{The teaching is based not only on technical experience of the machine learning community, but real-world experience of deploying and/or assisting with deployments of data science solutions at Amazon, for pandemic policy advice and in the African context (particularly Uganda and Kenya).}
 
+\notes{Due dates are as follows:
+
+| Activity                 | Release Date (in Moodle) | Due Date (in Moodle) | Tick Date (in the Lab) |
+|--------------------------|--------------------------|-----------------------|-------------------------|
+| Refresher 1              | 01/11/2024 12:00        | -                     | -                       |
+| Practical 1              | 01/11/2024 12:00        | 07/11/2024 12:00      | 07/11/2024 15:00        |
+| Practical 2              | 07/11/2024 15:00        | 12/11/2024 12:00      | 12/11/2024 15:00        |
+| Refresher 2              | 12/11/2024 15:00        | -                     | -                       |
+| Practical 3              | 12/11/2024 15:00        | 21/11/2024 12:00      | 21/11/2024 15:00        |
+| Practical 4 (Assessment) | 21/11/2024 15:00        | 03/12/2024 12:00      | 03/12/2024 15:00        |
+| Final Report             | 21/11/2024 15:00        | 06/12/2024 12:00      | -                       |
+}
+
 \subsection{Week 4}
 
   1. The Data Science Landscape. Lecturer: Neil D. Lawrence 2024-11-01
-  2. The Challenges of Data Science. Lecturer: Neil D. Lawrence 2024-11-04
-  3. . Lecturer: Christian Cabrera 2024-11-06
+  2. AI and Data Science. Lecturer: Neil D. Lawrence 2024-11-04
+  3. Systems and Data Oriented Architecture. Lecturer: Christian Cabrera 2024-11-06
 
   Lab Session One 2024-11-05 (Review and Refresher)
   Practical 1: 2024-11-07 Access
@@ -43,16 +56,16 @@
 \subsection{Week 5}
 
   1. AI Deployment Challenges. Lecturer: Christian Cabrera 2024-11-08
-  2. Visualisation I. Lecturer: Neil D. Lawrence 2024-11-11
-  3. Visualisation II. Lecturer: Neil D. Lawrence 2024-11-13
+  2. Assess. Lecturer: Neil D. Lawrence 2024-11-11
+  3. Visualisation. Lecturer: Neil D. Lawrence 2024-11-13
 
   Practical 2: 2024-11-12 Access and Assess (also hand in Practical 1 & Practical One Check)
   
   
 \subsection{Week 6}
 
-  1. Introduction to Statistical Learning: Carl Henrik Ek 2024-11-15
-  2. Generalised Linear Models: Carl Henrik Ek 2024-11-18
+  1. Introduction to Statistical Learning: Neil D. Lawrence 2024-11-15
+  2. Generalised Linear Models: Neil D. Lawrence 2024-11-18
   
   Practical 3: 2024-11-19 Assess and Address (also hand in Practical 2 & Check)
   Practical 4: 2024-11-21 Address (also hand in Practical 3 & Check)
@@ -63,7 +76,7 @@
   
 \subsection{Week 8}
   
-  1. Assignment 2024-12-03
+  1. Assignment hand in 2024-12-03
 
 \subsection{Assessment}
 
