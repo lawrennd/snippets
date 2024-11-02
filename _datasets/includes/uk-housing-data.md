@@ -11,7 +11,8 @@
 
 \setupcode{import requests}
 
-\code{# Base URL where the dataset is stored 
+\code{
+    # Base URL where the dataset is stored 
     base_url = "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com"}
     # Downloading part 1 from 1995
     file_name_part_1 = "/pp-1995-part1.csv"
@@ -20,7 +21,6 @@
     if response.status_code == 200:
       with open("." + file_name_part_1, "wb") as file:
         file.write(response.content)
-
     # Downloading part 2 from 1995
     file_name_part_2 = "/pp-1995-part2.csv"
     url = base_url + file_name_part_2
@@ -35,7 +35,6 @@
     base_url = "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com"}
     # File name with placeholders
     file_name = "/pp-<year>-part<part>.csv"
-
     for year in range(1996,2011):
       print ("Downloading data for year: " + str(year))
       for part in range(1,3):
@@ -55,7 +54,6 @@
     """Download UK house price data for given year range"""
     # File name with placeholders
     file_name = "/pp-<year>-part<part>.csv"
-    
     for year in range(year_from, (year_to+1)):
         print (f"Downloading data for year: {year}")
         for part in range(1,3):
