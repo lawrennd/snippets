@@ -11,7 +11,7 @@
 
 \setupcode{import requests}
 
-\helpercode{# Base URL where the dataset is stored 
+\code{# Base URL where the dataset is stored 
     base_url = "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com"}
     # Downloading part 1 from 1995
     file_name_part_1 = "/pp-1995-part1.csv"
@@ -31,7 +31,7 @@
 
 \notes{The data is downloaded as CSV files in the files explorer of this notebook. You can see that the two pieces of code that download the data are quite similar. It makes sense to use a for loop to automate the way we access the dataset for the different years. The following code will download the data from 1996 to 2010.}
 
-\helpercode{# Base URL where the dataset is stored 
+\code{# Base URL where the dataset is stored 
     base_url = "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com"}
     # File name with placeholders
     file_name = "/pp-<year>-part<part>.csv"
