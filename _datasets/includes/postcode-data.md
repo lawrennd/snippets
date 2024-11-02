@@ -11,7 +11,8 @@
 
 \notes{You may find the following schema useful for the postcode data (developed by Christian and Neil)}
 
-\code{--
+\code{%%sql
+--
 -- Table structure for table `postcode_data`
 --
 DROP TABLE IF EXISTS `postcode_data`;
@@ -38,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `postcode_data` (
 
 \notes{And again you'll want to set up a primary key for the new table.}
 
-\code{ALTER TABLE `postcode_data`
+\code{%%sql
+ALTER TABLE `postcode_data`
 ADD PRIMARY KEY (`db_id`);
 
 ALTER TABLE `postcode_data`;
