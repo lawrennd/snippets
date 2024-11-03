@@ -7,7 +7,7 @@
 \include{_ai/includes/holborn-science-centrifugal-governor.md}
 \include{_ai/includes/watt-steam-engine.md}
 
-\notes{The centrifugal governor was made famous by Boulton and Watt when it was deployed in the steam engine. Studying stability in the governor is the main subject of James Clerk Maxwell's paper on the theoretical analysis of governors [@Maxwell:governors1867]. This paper is a founding paper of control theory. In an acknowledgment of its influence, Wiener used the name [*cybernetics*](https://en.wikipedia.org/wiki/Cybernetics) to describe the field of control and communication in animals and the machine [@Wiener:cybernetics48]. Cybernetics is the Greek word for governor, which comes from the latin for helmsman.}
+\notes{The centrifugal governor was made famous by Boulton and Watt when it was deployed in the steam engine. Studying stability in the governor is the main subject of James Clerk Maxwell's paper on the theoretical analysis of governors [@Maxwell-governors1867]. This paper is a founding paper of control theory. In an acknowledgment of its influence, Wiener used the name [*cybernetics*](https://en.wikipedia.org/wiki/Cybernetics) to describe the field of control and communication in animals and the machine [@Wiener-cybernetics48]. Cybernetics is the Greek word for governor, which comes from the latin for helmsman.}
 
 \notes{A governor is one of the simplest artificial intelligence systems. It senses the speed of an engine and acts to change the position of the valve on the engine to slow it down.}
 

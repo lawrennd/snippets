@@ -8,6 +8,7 @@
 \notes{The rank-nullity theorem provides a fundamental relationship between dimensionality representations that will be crucial for understanding dimensionality reduction methods.}
 
 \notes{We will refer to two different representations of the data:
+
 1. The original representation in its raw form where the dimensionality we talk about is the degrees of freedom of the representation
 2. The canonical representation of the data which captures the true degrees of freedom in the data
 
@@ -20,12 +21,15 @@ An example would be a line in a two dimensional representation, where the canoni
 $$\text{Rank}(\mappingFunction) + \text{Nullity}(\mappingFunction) = \text{dim}(\inputSpace)$$
 
 where:
+
 - $\text{Rank}(\mappingFunction)$ is the dimensionality of the image of $\mappingFunction$ 
 - $\text{Nullity}(\mappingFunction)$ is the dimensionality of the kernel of $\mappingFunction$
 
 For linear maps this becomes quite simple. Say that we have a map $\mappingMatrix \in \mathbb{R}^{m\times n}$, this will lead to:
 
 $$\text{Rank}(\mappingMatrix)_{\text{min}(m,n)} + \text{Nullity}(\mappingMatrix)_{\text{max}(0,n-m)} = n$$}
+
+\figure{\includediagram{\diagramsDir/dimred/rank-nullity-concept}{80%}}{The kernel and image of a linear map. From [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kernel_and_image_of_linear_map.svg).}{rank-nullity-concept}
 
 \subsection{Implications for Dimensionality Reduction}
 
