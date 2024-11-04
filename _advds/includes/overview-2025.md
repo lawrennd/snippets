@@ -33,7 +33,7 @@
 
 \notes{Dates are as follows:
 
-| Activity                 | Release Date (in Moodle) | Due Date (in Moodle) | Tick Date (in the Lab) |
+| Activity                 | Release Date (in Moodle) | Due Date (in Moodle) | Check Date (in the Lab) |
 |--------------------------|--------------------------|-----------------------|-------------------------|
 | Refresher 1              | 01/11/2024 12:00        | -                     | -                       |
 | Practical 1              | 04/11/2024 17:00        | 07/11/2024 12:00      | 07/11/2024 15:00        |
