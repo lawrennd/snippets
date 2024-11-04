@@ -143,6 +143,31 @@ CREATE INDEX idx_pp_date_transfer ON pp_data(date_of_transfer);}
 
 \exercise{Add the `housing_upload_join_data` function to your fynesse library and write the code to upload the joined data for 2023.}
 
+\notes{To finalise this lab, let's have a look at the structure of your database running the following code:}
+
+\code{tables = %sql SHOW TABLES;
+
+for row in tables:
+    table_name = row[0]
+    print(f"\nTable: {table_name}")
+    
+    table_status = %sql SHOW TABLE STATUS LIKE '{table_name}';
+    approx_row_count = table_status[0][4] if table_status else 'Unable to fetch row count'
+    print("\nApprox Row Count:", approx_row_count//100000/10, "M")
+
+    first_5_rows = %sql SELECT * FROM `{table_name}` LIMIT 5;
+    print(first_5_rows)
+    
+    indices = %sql SHOW INDEX FROM `{table_name}`;
+    if indices:
+        print("\nIndices:")
+        for index in indices:
+            print(f" - {index[2]} ({index[10]}): Column {index[4]}")
+    else:
+        print("\nNo indices set on this table.")}
+
+\exercise{Write the output of the above code:}
+
 \subsection{Summary}
 
 \notes{In this practical, we have explored how to persist a couple of datasets in a relational database to facilitate future access. We configured a Cloud-hosted database server and had a look at two ways to interact with it. Then, we explored how to join tables using SQL and the benefits of indexing. The tables you created in this practical will be used along the course and we expect you use them for your final assignment. In the following practical, you will `assess` this data using different methods from visualisations to statistical analysis.}
