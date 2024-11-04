@@ -17,7 +17,7 @@
 	* Machine learning
 	* Data science
 }
-\notes{$\text{data} + \text{model}$ is not new, it dates back to Laplace and Gauss. Gauss fitted the orbit of Ceres using Keplers laws of planetary motion to generate his basis functions, and Laplace's insights on the error function and uncertainty [@Stigler:table99]. Different fields such as Operations Research, Control, Econometrics, Statistics, Machine Learning and now Data Science and AI all rely on $\text{data} + \text{model}$. Under a Popperian view of science, and equating experiment to data, one could argue that all science has $\text{data} + \text{model}$ underpinning it.}
+\notes{$\text{data} + \text{model}$ is not new, it dates back to Laplace and Gauss. Gauss fitted the orbit of Ceres using Keplers laws of planetary motion to generate his basis functions, and Laplace's insights on the error function and uncertainty [@Stigler-table99]. Different fields such as Operations Research, Control, Econometrics, Statistics, Machine Learning and now Data Science and AI all rely on $\text{data} + \text{model}$. Under a Popperian view of science, and equating experiment to data, one could argue that all science has $\text{data} + \text{model}$ underpinning it.}
 
 \newslide{The Tribal Mentality}
 \slides{
@@ -27,7 +27,7 @@
 		* Driven by different motivations
 		* Arrive at different solutions
 }
-\notes{Different academic fields are born in different eras, driven by different motivations and arrive at different solutions. For example, both Operations Research and Control emerged from the Second World War. Operations Research, the science of decision making, driven by the need for improved logistics and supply chain. Control emerged from cybernetics, a field that was driven in the by researchers who had been involved in radar and decryption [@Wiener:cybernetics48;@Husband:mechanicalmind08]. The UK artificial intelligence community had similar origins [@Copeland:colossus06].}
+\notes{Different academic fields are born in different eras, driven by different motivations and arrive at different solutions. For example, both Operations Research and Control emerged from the Second World War. Operations Research, the science of decision making, driven by the need for improved logistics and supply chain. Control emerged from cybernetics, a field that was driven in the by researchers who had been involved in radar and decryption [@Wiener-cybernetics48;@Husband-mechanicalmind08]. The UK artificial intelligence community had similar origins [@Copeland-colossus06].}
 
 \newslide{Tribalism Can be Good}
 \slides{

@@ -15,7 +15,7 @@
 
 \newslide{}
 
-\notes{Donald MacKay was at King's College for his PhD. He was just down the road from Bill Phillips at LSE who was building the MONIAC. He was part of the Ratio Club. \ifndef{theRatioClub} A group of early career scientists who were interested in communication and control in animals and humans, or more specifically they were interested in computers and brains. The were part of an international movement known as cybernetics.\endif}
+\notes{Donald MacKay was at King's College for his PhD. He was just down the road from Bill Phillips at LSE who was building the MONIAC. He was part of the Ratio Club. \ifndef{theRatioClub} A group of early career scientists who were interested in communication and control in animals and humans, or more specifically they were interested in computers and brains. The were part of an international movement known as cybernetics.}
 
 \notes{Donald MacKay wrote of the influence that his own work on radar had on
 his interest in the brain.

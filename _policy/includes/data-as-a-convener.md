@@ -54,12 +54,12 @@ for convening a multidisciplinary conversation.}{anne-bob-data}
 
 
 \notes{Fritz Heider referred to happenings that are "*psychologically
-represented* in each of the participants" [@Heider:interpersonal58] as
+represented* in each of the participants" [@Heider-interpersonal58] as
 a prerequisite for conversation. Data is a route to that psychological
 representation.}
 
 \notes{*Note*: my introduction to Fritz Heider was through a talk by
 Nick Chater in 2010, you can read Nick's thoughts on these
-issues in his book, *The Mind is Flat* [@Chater:mindisflat19].}
+issues in his book, *The Mind is Flat* [@Chater-mindisflat19].}
 
 \endif
