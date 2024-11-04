@@ -11,7 +11,8 @@
 
 \notes{You may find the following schema useful for the postcode data (developed by Christian and Neil)}
 
-\notes{--
+\code{%%sql
+--
 -- Table structure for table `postcode_data`
 --
 DROP TABLE IF EXISTS `postcode_data`;
@@ -38,18 +39,13 @@ CREATE TABLE IF NOT EXISTS `postcode_data` (
 
 \notes{And again you'll want to set up a primary key for the new table.}
 
-\notes{ALTER TABLE `postcode_data`
+\code{%%sql
+ALTER TABLE `postcode_data`
 ADD PRIMARY KEY (`db_id`);
 
 ALTER TABLE `postcode_data`;
 MODIFY `db_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;}
 
-\notes{And you can load the CSV file into the table using this command.}
-
-\notes{LOAD DATA LOCAL INFILE 'open_postcode_geo.csv' INTO TABLE `postcode_data`
-FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED by '"'
-LINES STARTING BY '' TERMINATED BY '\n';}
-
-\exercise{Upload the postcode dataset to your database.}
+\exercise{Upload the postcode dataset to your database using the LOAD DATA LOCAL INFILE command.}
 
 \endif
