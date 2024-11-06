@@ -3,11 +3,11 @@
 
 \editme
 
-\include{public-dialogue-overview.md}
-\include{public-dialogue-health.md}
-\include{public-dialogue-education.md}
-\include{public-dialogue-policing.md}
-\include{public-dialogue-energy.md}
+\include{_dialogue/includes/public-dialogue-overview.md}
+\include{_dialogue/includes/public-dialogue-health.md}
+\include{_dialogue/includes/public-dialogue-education.md}
+\include{_dialogue/includes/public-dialogue-policing.md}
+\include{_dialogue/includes/public-dialogue-energy.md}
 
 \subsection{Summary}
 
