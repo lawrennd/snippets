@@ -30,7 +30,7 @@
 
 \notes{The Fynesse framework provides a structured approach to data science problems that aligns with systems engineering principles.}
 
-\figure{\includediagram{ads-cycle}{60%}}{The Assessment, Access, Address cycle}{ads-cycle}
+\figure{\includediagram{\diagramsDir/data-science/access-assess-address-cycle}{80%}}{The Assess, Access, Address cycle}{ads-cycle}
 
 \newslide{Implementation}
 
