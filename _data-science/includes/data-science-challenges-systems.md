@@ -21,9 +21,10 @@ Systematic tendency in methods used to geather data and computer statistics that
 
 
 * Challenges our ability to deploy safe and effective solutions:
-    * Alignment
-    * Fairness
-    * Inclusiveness
+    
+  * Alignment
+  * Fairness
+  * Inclusiveness
 
 
 \newslide{Complexity}
@@ -32,8 +33,8 @@ Systems are highly dynamic and have grown in size. The data processing pipelines
 
 Challengers our techincical ability to deploy and maintain our solutions:
 
-    * Sustainability
-    * Maintainability
+  * Sustainability
+  * Maintainability
 
 
 \newslide{Intellectual Debt}
@@ -42,8 +43,8 @@ Black-box components make systems hard to understand and threaten human control.
 
 Challenges our ability to explain our solutions
 
-    * Interpretability
-    * Accountability
+  * Interpretability
+  * Accountability
 
 
 \endif
