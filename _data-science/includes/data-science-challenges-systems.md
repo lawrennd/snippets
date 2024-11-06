@@ -3,6 +3,8 @@
 
 \editme
 
+\section{Previously}
+
 \subsection{Data Science Challenges Review}
 
 \slides{
@@ -16,23 +18,24 @@
 
 \newslide{Bias}
 
-\slides{
-* Systematic tendency in methods that generate inaccurate depictions of reality
+Systematic tendency in methods used to geather data and computer statistics that generate inaccurate depictions of reality.
+
+
 * Challenges our ability to deploy safe and effective solutions:
     * Alignment
     * Fairness
     * Inclusiveness
-}
+
 
 \newslide{Complexity}
 
-\slides{
-* Systems are highly dynamic and grown in size
-* Data processing pipelines involve hundreds/thousands of components
-* Challenges technical deployment and maintenance:
+Systems are highly dynamic and have grown in size. The data processing pipelines involve hundreds or thousands of components.
+
+Challengers our techincical ability to deploy and maintain our solutions:
+
     * Sustainability
     * Maintainability
-}
+
 
 \newslide{Intellectual Debt}
 
