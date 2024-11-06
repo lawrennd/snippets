@@ -7,12 +7,11 @@
 
 \subsection{Data Science Challenges Review}
 
-\slides{
-* Previously covered challenges:
-    * Bias
-    * Complexity 
-    * Intellectual Debt
-}
+Previously covered challenges:  
+
+* Bias
+* Complexity 
+* Intellectual Debt
 
 \notes{We begin by reviewing the key challenges in data science that motivate the need for an engineering approach:}
 
@@ -39,12 +38,12 @@ Challengers our techincical ability to deploy and maintain our solutions:
 
 \newslide{Intellectual Debt}
 
-\slides{
-* Black-box components make systems hard to understand
-* Threatens human control
-* Challenges our ability to explain solutions:
+Black-box components make systems hard to understand and threaten human control. We know how the components work but do not know how the system works.
+
+Challenges our ability to explain our solutions
+
     * Interpretability
     * Accountability
-}
+
 
 \endif
