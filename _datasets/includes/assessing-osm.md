@@ -60,3 +60,5 @@ tags = {
 \exercise{Normalise your dataframe and compute a distance matrix for the locations. Visualise it, and compare the outcode with your previous clustering results.}
 
 \exercise{Which features you included were correlated among each other? Investigate and plot a feature correlation matrix. What do these results say about your feature selection?}
+
+\endif
