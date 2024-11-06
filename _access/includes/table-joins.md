@@ -135,6 +135,7 @@ CREATE INDEX idx_pp_date_transfer ON pp_data(date_of_transfer);}
     csv_writer.writerows(rows)
   print('Storing data for year: ' + str(year))
   cur.execute(f"LOAD DATA LOCAL INFILE '" + csv_file_path + "' INTO TABLE `prices_coordinates_data` FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED by '\"' LINES STARTING BY '' TERMINATED BY '\n';")
+  conn.commit()
   print('Data stored for year: ' + str(year))}
 
 \notes{Now, lets upload the joined data for 2024. This upload is going to take long time given the size of our datasets:}
