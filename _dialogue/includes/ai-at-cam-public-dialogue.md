@@ -1,5 +1,5 @@
-\ifndef{aiCamPublicDialogue}
-\define{aiCamPublicDialogue}
+\ifndef{aiAtCamPublicDialogue}
+\define{aiAtCamPublicDialogue}
 
 \editme
 
