@@ -1,5 +1,5 @@
-\ifndef{publicDialogueAll}
-\define{publicDialogueAll}
+\ifndef{aiCamPublicDialogue}
+\define{aiCamPublicDialogue}
 
 \editme
 
