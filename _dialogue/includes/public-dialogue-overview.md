@@ -5,6 +5,8 @@
 
 \subsection{Public Dialogue on AI in Public Services}
 
+\figure{\includepng{\diagramsDir/dialogue/ai-cam-public-dialogue-forward}{90%}}{In September 2024, ai@cam convened a series of public dialogues to understand perspectives on the role of AI in delivering policy agendas.}{ai-cam-public-dialogue-forward}
+
 \notes{In September 2024, ai@cam convened a series of public dialogues to understand perspectives on the role of AI in delivering priority policy agendas. Through workshops in Cambridge and Liverpool, 40 members of the public shared their views on how AI could support delivery of four key government missions around health, crime and policing, education, and energy and net zero.}
 
 \slides{* September 2024 convened public dialogues.
