@@ -16,8 +16,11 @@
 
 \notes{Key participant quotes illustrate this balanced perspective:
 
-> "It must be so difficult for GPs to keep track of how medication reacts with other medication on an individual basis. If there's some database that shows all that, then it can only help, can't it?" Public Participant, Liverpool}
+> "It must be so difficult for GPs to keep track of how medication reacts with other medication on an individual basis. If there's some database that shows all that, then it can only help, can't it?"
+> 
+> Public Participant, Liverpool pg 10 @aicam-publicdialogue24}
 
-> "I think a lot of the ideas need to be about AI being like a co-pilot to someone. I think it has to be that. So not taking the human away." Public Participant, Liverpool
-
+> "I think a lot of the ideas need to be about AI being like a co-pilot to someone. I think it has to be that. So not taking the human away." 
+>
+> Public Participant, Liverpool pg 10 @aicam-publicdialogue24
 \endif
