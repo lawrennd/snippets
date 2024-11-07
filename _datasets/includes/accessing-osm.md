@@ -11,7 +11,7 @@
 \setupcode{%pip uninstall --yes matplotlib}
 \setupcode{%pip install matplotlib==3.7.1}
 
-\code{import osmnx as ox
+\setupcode{import osmnx as ox
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning, module='osmnx')}
@@ -109,11 +109,11 @@ area = ox.geocode_to_gdf(place_name)}
 
 \notes{Which we can then render as follows.}
 
-\code{import matplotlib.pyplot as plt
+\setupplotcode{import matplotlib.pyplot as plt
 
-!pip install --upgrade matplotlib
+!pip install --upgrade matplotlib}
 
-fig, ax = plt.subplots()
+\plotcode{fig, ax = plt.subplots()
 
 # Plot the footprint
 area.plot(ax=ax, facecolor="white")
@@ -130,7 +130,7 @@ ax.set_ylabel("latitude")
 pois.plot(ax=ax, color="blue", alpha=0.7, markersize=10)
 plt.tight_layout()}
 
-\code{# Plot a subset of the POIs (e.g., tourist places)
+\plotcode{# Plot a subset of the POIs (e.g., tourist places)
 # Create figure
 fig, ax = plt.subplots()
 
@@ -152,9 +152,9 @@ plt.tight_layout()}
 
 \notes{We have the POI information on all tourist places structured in a geodataframe. To work with them in a machine learning algorithm, it will be easier to convert them to a pandas DataFrame.}
 
-\code{import pandas as pd
+\setupcode{import pandas as pd}
 
-pois_df = pd.DataFrame(pois)
+\code{pois_df = pd.DataFrame(pois)
 pois_df['latitude'] = pois_df.apply(lambda row: row.geometry.centroid.y, axis=1)
 pois_df['longitude'] = pois_df.apply(lambda row: row.geometry.centroid.x, axis=1)
 
@@ -162,7 +162,7 @@ tourist_places_df = pois_df[pois_df.tourism.notnull()]
 print(len(tourist_places_df))
 tourist_places_df}
 
-\notes{poi_counts = {}
+\code{poi_counts = {}
 
 poi_types =["amenity", "historic", "leisure", "shop", "tourism", "religion", "memorial"]
 
