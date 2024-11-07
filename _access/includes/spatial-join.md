@@ -12,8 +12,8 @@
 \notes{The latitude and longitude of Cambridge are as follows:}
 
 \code{place_name = "Cambridge"
-    latitude = 52.1951
-    longitude = 0.1313}
+latitude = 52.1951
+longitude = 0.1313}
 
 \notes{We want to execute an SQL query on your database to select all houses in a 1km x 1km region around the centre of Cambridge that have been part of housing transactions since 2020.}
 
