@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Accessing Open Stree Maps}
+\subsection{Accessing Open Street Maps}
 
 \notes{[Open Street Maps (OSM)](https://www.openstreetmap.org/#map=6/54.91/-3.43) is an open geographic database that can provide useful information about different locations and places in the planet. In this example, we will download data about the city of Kampala, Uganda. As always, we should start by installing some Python packages.}
 
