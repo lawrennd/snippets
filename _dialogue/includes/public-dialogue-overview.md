@@ -25,5 +25,4 @@
 > "I think a lot of the ideas need to be about AI being like a co-pilot to someone. I think it has to be that. So not taking the human away." 
 > 
 > Public Participant, Liverpool pg 15 @aicam-publicdialogue24
-
 \endif

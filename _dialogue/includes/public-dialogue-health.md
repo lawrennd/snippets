@@ -18,13 +18,17 @@ Key aspirations include:
 
 Illustrative quotes show the nuanced views:
 
-> "My wife [an NHS nurse] says that the paperwork side takes longer than the actual care." Public Participant, Liverpool
->
-> pg 9 @aicam-publicdialogue24
+\newslide{}
 
-> "I wouldn't just want to rely on the technology for something big like that, because obviously it's a lifechanging situation." Public Participant, Cambridge
+> "My wife [an NHS nurse] says that the paperwork side takes longer than the actual care." 
 >
-> pg 10 @aicam-publicdialogue24
+> Public Participant, Liverpool pg 9 @aicam-publicdialogue24
+
+\newslide{}
+
+> "I wouldn't just want to rely on the technology for something big like that, because obviously it's a lifechanging situation." 
+>
+> Public Participant, Cambridge pg 10 @aicam-publicdialogue24
 
 \notes{Concerns focused particularly on maintaining human involvement in healthcare decisions and protecting patient privacy.}
 
