@@ -14,6 +14,7 @@
     * Explainability vs Efficiency}
 
 \notes{When developing solutions, four critical factors must be balanced:
+
 1. How will humans interact with and understand the system?
 2. What assumptions are we embedding in our design?
 3. How can we maintain human agency while leveraging automation?
