@@ -2,11 +2,13 @@
 \define{feedbackFailure}
 \editme
 
-\notes{\subsection{When Feedback Fails}}
+\subsection{When Feedback Fails}
 
 \notes{The contrast between physical and digital feedback becomes stark when we examine modern system failures. While test pilots could feel their aircraft's responses and adapt accordingly, modern digital systems often fail silently, with consequences that can go undetected for years.}
 
 \include{_software/includes/horizon-scandal.md}
+
+\newslide{When Feedback Fails}
 
 \slides{* Historical Examples:
     * NACA test pilots: direct feedback
