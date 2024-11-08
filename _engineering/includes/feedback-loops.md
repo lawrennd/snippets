@@ -1,12 +1,14 @@
 \ifndef{feedbackLoops}
 \define{feedbackLoops}
+
 \editme
 
-\notes{\subsection{Physical and Digital Feedback}}
 
 \include{_ai/includes/centrifugal-governor-diagram.md}
 
 \notes{The evolution of feedback in engineering systems tells us a crucial story about human-machine interaction. Test pilots like Stefan Cavallo and Amelia Earhart developed an intimate understanding of their aircraft through direct physical feedback - the vibrations, the sounds, the feel of the controls. This physical connection allowed for rapid adaptation and learning.}
+
+\subsection{Physical and Digital Feedback}
 
 \slides{* Physical Feedback:
     * Test pilots feel aircraft response
