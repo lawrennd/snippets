@@ -66,5 +66,7 @@ analogy allowed the designer to map from the real world, through
 mathematics, to a virtual world where the components reflected the
 real world through analogy.}
 
+\notes{When considering modern systems, and generative AI, Donald MacKay's insights might trigger similar speculations about how e.g. large language models such as Claude and ChatGPT are operating. They also don't seem to be quite like a digital machine, and nor do they seem to be like an analogue machine.}
+
 
 \endif
