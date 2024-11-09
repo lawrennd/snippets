@@ -14,6 +14,10 @@
 
 \notes{The Apollo 11 landing provides a crucial lesson. When program alarms indicated computer overload, it was the deep understanding of the system's priorities by the Mission Control team that allowed them to continue safely. This level of comprehension is increasingly rare in modern systems, where layers of abstraction and automation obscure the underlying mechanisms.}
 
+\notes{For service oriented architectures, as companies have grown in complexity they have more complex interactions between different services.}
+
+\include{_architectures/includes/netflix-and-amazon-soa.md}
+
 \addatomic{engineering complexity}{198-204, 342-343, 365-366}
 
 \endif
