@@ -21,7 +21,7 @@ In practice, shared dynamically linked libraries may be used for aspects such as
 
 \centerdiv{\charlieBellPicture{15%}\peterVosshallPicture{15%}}
 
-\notes{In Service Oriented Architecture, or "Software as a Service" the idea is that code bases are modularized and communicate with one another using network requests. A standard approach is to use a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer). So, rather than a single monolithic code base, the code is developed with individual services that handle the different requests.}
+\notes{In Service Oriented Architecture, or "Software as a Service" or "microservices" the idea is that code bases are modularized and communicate with one another using network requests. A standard approach is to use a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer). So, rather than a single monolithic code base, the code is developed with individual services that handle the different requests.}
 
 \figure{\includediagram{\diagramsDir/ai/ml-system-downstream-purchasing000}{60%}}{A potential path of models in a machine learning system.}{ml-system-downstream-purchasing}
 
