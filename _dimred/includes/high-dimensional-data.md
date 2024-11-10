@@ -75,11 +75,13 @@ angles = range(360)
 i = 0
 Y = np.zeros((len(angles), np.prod(dim_one)))
 for angle in angles:
-    rot_image = rotate(six_image, angle, mode='nearest')
+    rot_image = rotate(six_image, angle)
     dim_two = np.asarray(rot_image.shape)
     start = [int(round((dim_two[0] - dim_one[0])/2)), int(round((dim_two[1] - dim_one[1])/2))]
     crop_image = rot_image[start[0]+np.array(range(dim_one[0])), :][:, start[1]+np.array(range(dim_one[1]))]
-    Y[i, :] = crop_image.flatten()}
+    Y[i, :] = crop_image.flatten()
+    ax.imshow(rot_image,interpolation='none').set_cmap('gray')
+    mlai.write_figure(f"dem_six_rotate{angle:0>3}.png", directory="\writeDiagramsDir/dimred/")}
 
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('dem_six_rotate{counter:0>3}.png', directory='\writeDiagramsDir/dimred', counter=(0, 6))}
