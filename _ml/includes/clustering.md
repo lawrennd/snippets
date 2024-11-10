@@ -47,7 +47,8 @@
 * This objective is a non-convex optimization problem.
 
 \setupplotcode{import mlai
-import numpy as np}
+import numpy as np
+import os}
 
 \helpercode{def write_plot(counter, caption):
     directory = "\writeDiagramsDir/ml"
