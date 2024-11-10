@@ -47,6 +47,16 @@ $$
 if $\noiseStd^2$ is larger than any particular eigenvalue, then that eigenvalue
 (along with its corresponding eigenvector) is *discarded* from the solution.}}
 
+\subsection{PPCA as Manifold Learning}
+
+\notes{Probabilistic PCA can be viewed as a simple manifold learning algorithm. It assumes that:
+
+1. The data lies near a linear manifold (subspace) of the high-dimensional space
+2. The deviation from this manifold is Gaussian noise
+3. The intrinsic dimensionality is specified by the number of retained components
+
+This view helps explain why PPCA works well when the manifold hypothesis holds and the manifold is approximately linear. When the manifold is nonlinear, we need more sophisticated methods like kernel PCA or neural network-based approaches.}
+
 \notes{\subsection{Python Implementation of Probabilistic PCA}
 
 We will now implement this algorithm in python.}
