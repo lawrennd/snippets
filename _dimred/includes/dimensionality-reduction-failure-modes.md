@@ -38,13 +38,13 @@ def generate_swiss_roll(n_points=1000):
     y = 21 * np.random.rand(n_points)
     x = t * np.cos(t)
     z = t * np.sin(t)
-    return np.column_stack((x, y, z))
+    return np.column_stack((x, y, z)), t
 
-X = generate_swiss_roll()
+X, t = generate_swiss_roll()
 
 fig = plt.figure(figsize=plot.big_wide_figsize)
 ax = fig.add_subplot(111, projection='3d')
-scatter = ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=t)
+scatter = ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=t, cmap='viridis')
 ax.set_xlabel('$x$')
 ax.set_ylabel('$y$') 
 ax.set_zlabel('$z$')

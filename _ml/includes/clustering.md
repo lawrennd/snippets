@@ -58,7 +58,7 @@ This process is intuitive and relatively easy to implement, though it comes with
 
 It's important to understand that while this algorithm will always converge to a minimum, this minimum is not guaranteed to be either global or unique. The optimization problem is non-convex, meaning there can be multiple local minima. Different initializations of the cluster centers can lead to different final solutions, which is one of the key challenges in applying $k$-means clustering in practice.}
 
-\setupplotcode{import mlai
+\setupcode{import mlai
 import numpy as np
 import os}
 
@@ -69,8 +69,11 @@ import os}
     f = open(os.path.join(directory,filestub) + '.md', 'w')
     f.write(caption)
     f.close()}
-    
-\plotcode{fig, ax = plt.subplots(figsize=(5,5))
+
+\setupplotcode{from matplotlib import pyplot as plt
+from mlai import plot}
+
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
 fontsize = 20
 
 num_clust_points = 30
@@ -95,7 +98,7 @@ counter+=1
 write_plot(counter, 'Allocate each point to the cluster with the nearest centre')
 i = 0
 
-for i in range(6):
+for i in range(10):
     dist_mat = ((Y[:, :, None] - centres.T[None, :, :])**2).sum(1)
     ind = dist_mat.argmin(1)
     ax.cla()
@@ -112,12 +115,11 @@ for i in range(6):
           centres[j, :] = np.mean(Y[ind==j, :], 0)
     c[0].set_data(centres[:, 0], centres[:, 1])
     counter+=1
-    mlai.write_figure(f"kmeans_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml")
     write_plot(counter, 'Allocate each data point to the nearest cluster centre.')}
 
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("kmeans_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 
-                            text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 13))}
+                            text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 21))}
 
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -239,6 +241,7 @@ $$
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_018}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_019}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_020}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_021}{\width}}{\animationName}
 \endanimation
 
 *Clustering with the $k$-means clustering algorithm.*
@@ -266,34 +269,31 @@ $$
 
 \notes{Other approaches to clustering involve forming taxonomies of the cluster centers, like humans apply to animals, to form trees. Hierarchical clustering builds a tree structure showing the relationships between data points. We'll demonstrate agglomerative clustering on the oil flow data set, which contains measurements from a multiphase flow facility.}
 
+\include{_datasets/includes/oil-flow-data.md}
+
 \setupcode{import numpy as np
 from scipy.cluster.hierarchy import dendrogram, linkage
-import matplotlib.pyplot as plt
 import pods}
 
-\code{# Load the oil flow data
-data = pods.datasets.oil_flow()
-X = data['X']
-Y = data['Y']
+\code{# Perform hierarchical clustering
+linked = linkage(X, 'ward')  # Ward's method for minimum variance}
 
-# Perform hierarchical clustering
-linked = linkage(X, 'ward')  # Ward's method for minimum variance
+\setupplotcode{from matplotlib import pyplot as plt
+from mlai import plot}
 
-# Create dendrogram plot
-plt.figure(figsize=(10, 7))
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
 dendrogram(linked,
            orientation='top',
            distance_sort='descending',
            show_leaf_counts=True,
-           labels=Y.reshape(-1),
-           leaf_rotation=90)
-plt.title('Hierarchical Clustering of Oil Flow Data')
-plt.xlabel('Flow Type')
-plt.ylabel('Distance')
+           ax=ax)  # Removed labels since Y has wrong dimensions
+ax.set_title('Hierarchical Clustering of Oil Flow Data')
+ax.set_xlabel('Sample Index')
+ax.set_ylabel('Distance')
 plt.tight_layout()
-plt.savefig('\writeDiagramsDir/hierarchical-clustering-oil.svg')}
+mlai.write_figure('hierarchical-clustering-oil.svg', directory='\writeDiagramsDir/dimred')}
 
-\figure{\includediagram{\diagramsDir/hierarchical-clustering-oil}{80%}}{Hierarchical clustering applied to oil flow data. The dendrogram shows how different flow regimes are grouped based on their measurement similarities. The three main flow regimes (homogeneous, annular, and laminar) should form distinct clusters.}{hierarchical-clustering-oil}
+\figure{\includediagram{\diagramsDir/dimred/hierarchical-clustering-oil}{80%}}{Hierarchical clustering applied to oil flow data. The dendrogram shows how different flow regimes are grouped based on their measurement similarities. The three main flow regimes (homogeneous, annular, and laminar) should form distinct clusters.}{hierarchical-clustering-oil}
 
 \notes{In this example, we've applied hierarchical clustering to the oil flow data set. The data contains measurements from different flow regimes in a multiphase flow facility. The dendrogram shows how measurements naturally cluster into different flow types. Ward's linkage method is used as it tends to create compact, evenly-sized clusters. You can learn more about agglomerative clustering in this video from Alex Ihler.}
 
