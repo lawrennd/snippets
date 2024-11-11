@@ -46,6 +46,52 @@
    * Check for anomalous distances
    * Verify triangle inequality}
 
+\subsection{Understanding Matrix Structure}
+
+\notes{Learn to extract information from key matrices. Here's an example using the oil flow data:}
+
+\setupcode{import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import gridspec
+from mlai.data import oil_flow
+import mlai}
+
+\code{# Load the oil data
+_, Y = oil_flow()
+
+# Compute the Gram matrix
+gram = Y @ Y.T
+
+# Create a figure with two subplots
+fig = plt.figure(figsize=(12, 5))
+gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
+
+# Plot the Gram matrix
+ax0 = plt.subplot(gs[0])
+im = ax0.imshow(gram, cmap='viridis')
+ax0.set_title('Gram Matrix')
+plt.colorbar(im)
+
+# Plot the first two dimensions of data
+ax1 = plt.subplot(gs[1])
+ax1.scatter(Y[:, 0], Y[:, 1], alpha=0.5)
+ax1.set_title('Data Scatter Plot')
+ax1.set_xlabel('Dimension 1')
+ax1.set_ylabel('Dimension 2')
+
+plt.tight_layout()
+mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
+
+\figure{\includediagram{\diagramsDir/dimred/matrix-structure}{80%}}{The Gram matrix (left) reveals the underlying structure in our data, while the scatter plot (right) shows the first two dimensions. Notice how patterns in the Gram matrix correspond to clusters in the data.}{matrix-structure}
+
+\notes{The Gram matrix (left) reveals the underlying structure in our data, while the scatter plot (right) shows the first two dimensions. Notice how patterns in the Gram matrix correspond to clusters in the data.}
+
+\slides{
+* Learn to read Gram matrices
+* Check distance matrices
+* Look for block structure
+* Identify outliers}
+
 \subsection{Examining Projections}
 
 \notes{When working with high-dimensional data, systematically examine different projections:}

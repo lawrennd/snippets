@@ -13,9 +13,18 @@
 
 3. Images contain millions of pixels, but the actual meaningful content often lies on a much lower-dimensional manifold.}
 
+\slides{
+* Real data often has lower intrinsic dimensionality than measurements
+* Examples:
+    * Motion capture: Many coordinates but few degrees of freedom
+    * Genetic data: Thousands of genes controlled by few regulators 
+    * Images: Millions of pixels but simpler underlying structure
+}
+
 \setupcode{import numpy as np
 import matplotlib.pyplot as plt
-import mlai.plot as plot}
+import mlai.plot as plot
+import mlai}
 
 \code{# Example showing how a 1D curve appears in 2D
 t = np.linspace(0, 2*np.pi, 100)
@@ -30,8 +39,22 @@ ax[0].set_ylabel('$x_2$')
 # Plot the latent variable representation 
 ax[1].plot(t, np.zeros_like(t), 'r.')
 ax[1].set_xlabel('$z$')
-ax[1].set_yticks([])}
+ax[1].set_yticks([])
+
+mlai.write_figure('latent-variable-example.svg', directory='\writeDiagramsDir/dimred')}
+
+\newslide{Latent Variable Example}
+\figure{\includediagram{\diagramsDir/dimred/latent-variable-example}{80%}}{Data that appears 2-dimensional (left) can be described by a single latent variable $z$ (right) that traces out the curve.}{latent-variable-example}
 
 \notes{This example shows how data that appears to be 2-dimensional (left) can actually be described by a single latent variable $z$ (right) that traces out the curve. The key premise of dimensionality reduction is finding and working with these simpler underlying representations.}
+
+\newslide{Latent Variable Example}
+
+\slides{
+* Example shows 2D data described by 1D latent variable
+* Left: Data in original 2D space
+* Right: Same data represented by single latent variable $z$
+* Goal: Find these simpler underlying representations
+}
 
 \endif

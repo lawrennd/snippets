@@ -7,44 +7,56 @@
 
 \newslide{Clustering}
 
-* One common approach, not deeply covered in this course. 
-* Associate each data point, $\dataVector_{i, :}$ with one of $k$ different discrete groups.
-* For example:
-  * Clustering animals into discrete groups. Are animals discrete or continuous?
-  * Clustering into different different *political* affiliations.
-* Humans do seem to like clusters:
-  * Very useful when interacting with biologists.
-* Subtle difference between clustering and *vector quantisation*
+* Common approach for grouping data points
+* Assigns data points to discrete groups
+* Examples include:
+  * Animal classification
+  * Political affiliation grouping
 
-\newslide{Trying to Teach About Infinity}
+\notes{Clustering is a common approach to data analysis, though we will not cover it in great depth in this course. The fundamental idea is to associate each data point $\dataVector_{i, :}$ with one of $k$ different discrete groups. This approach raises interesting questions - for instance, when clustering animals into groups, we might ask whether animal traits are truly discrete or continuous in nature. Similar questions arise when clustering political affiliations.
 
-* Little anecdote.
+Humans seem to have a natural affinity for discrete clustering approaches. This makes clustering particularly useful when collaborating with biologists, who often think in terms of discrete categories. However, we should be mindful that this preference for discrete categories may sometimes oversimplify continuous variations in data.}
 
-\newslide{Clustering and Vector Quantisation}
+\newslide{Clustering vs Vector Quantisation}
 
-* To my mind difference is in clustering there should be a reduction in data density between samples.
-* This definition is not universally applied.
-* For today's purposes we merge them:
-  * Determine how to allocate each point to a group and *harder* total number of groups.
+* Clustering expects gaps between groups in data density
+* Vector quantization may not require density gaps
+* For practical purposes, both involve:
+  * Allocating points to groups
+  * Determining optimal number of groups
+
+\notes{There is a subtle but important distinction between clustering and vector quantisation. In true clustering, we typically expect to see reductions in data density between natural groups - essentially, gaps in the data that separate different clusters. This definition isn't universally applied though, and vector quantization may partition data without requiring such density gaps. For our current discussion, we'll treat them similarly, focusing on the common challenges they share: how to allocate points to groups and, more challengingly, how to determine the optimal number of groups.}
 
 \newslide{$k$-means Clustering}
 
-* Simple algorithm for allocating points to groups. 
-* *Require*: Set of $k$ cluster centres & assignment of each points to a cluster.
-1. Initialize cluster centres as randomly selected data points.
-    2. Assign each data point to *nearest* cluster centre.
-    3. Update each cluster centre by setting it to the mean of assigned data points.
-    4. Repeat 2 and 3 until cluster allocations do not change.
+* Simple iterative clustering algorithm
+* Key steps:
+  1. Initialize with random centers
+  2. Assign points to nearest center
+  3. Update centers as cluster means
+  4. Repeat until stable
+
+\notes{The $k$-means algorithm provides a straightforward approach to clustering data. It requires two key elements: a set of $k$ cluster centres and a way to assign each data point to a cluster. The algorithm follows a simple iterative process:
+
+1. First, initialize cluster centres by randomly selecting $k$ data points
+2. Assign each data point to its nearest cluster centre
+3. Update each cluster centre by computing the mean of all points assigned to it
+4. Repeat steps 2 and 3 until the cluster assignments stop changing
+
+This process is intuitive and relatively easy to implement, though it comes with certain limitations.}
 
 \newslide{Objective Function}
 
-* This minimizes the objective
+* Minimizes sum of squared distances:
   $$
   E=\sum_{j=1}^K \sum_{i\ \text{allocated to}\ j}  \left(\dataVector_{i, :} - \meanVector_{j, :}\right)^\top\left(\dataVector_{i, :} - \meanVector_{j, :}\right)
   $$
-  *i.e.* it minimizes thesum of Euclidean squared distances betwen points and their associated centres.
-* The minimum is *not* guaranteed to be *global* or *unique*.
-* This objective is a non-convex optimization problem.
+* Solution not guaranteed to be global or unique
+* Represents a non-convex optimization problem
+
+\notes{The $k$-means algorithm works by minimizing an objective function that measures the sum of squared Euclidean distances between each point and its assigned cluster center. This objective function can be written mathematically as shown above, where $\meanVector_{j, :}$ represents the mean of cluster $j$.
+
+It's important to understand that while this algorithm will always converge to a minimum, this minimum is not guaranteed to be either global or unique. The optimization problem is non-convex, meaning there can be multiple local minima. Different initializations of the cluster centers can lead to different final solutions, which is one of the key challenges in applying $k$-means clustering in practice.}
 
 \setupplotcode{import mlai
 import numpy as np
@@ -143,61 +155,39 @@ mlai.write_figure("cluster_data01.svg", directory="\writeDiagramsDir/ml/")}
 
 
 \slides{
-* *Task*:  associate each data point with a different label.
-* Label is *not* provided.
-* Quite intuitive for humans, we do it naturally.}
-\notes{Clustering methods associate each data point with a different label. Unlike in classification the label is not provided by a human annotator. It is allocated by the computer. Clustering is quite intuitive for humans, we do it naturally with our observations of the real world. For example, we cluster animals into different groups. If we encounter a new animal, we can immediately assign it to a group: bird, mammal, insect. These are certainly labels that can be provided by humans, but they were also originally invented by humans. With clustering we want the computer to recreate that process of inventing the label.}
+* *Task*: associate data points with different labels.
+* Labels are *not* provided by humans.
+* Process is intuitive for humans - we do it naturally.}
+
+\notes{Clustering methods associate data points with different labels that are allocated by the computer rather than provided by human annotators. This process is quite intuitive for humans - we naturally cluster our observations of the real world. For example, we cluster animals into groups like birds, mammals, and insects. While these labels can be provided by humans, they were originally invented through a clustering process. With computational clustering, we want to recreate that process of label invention.}
 
 \newslide{Platonic Ideals}
 \slides{
-* Names for animals originally invented by humans through 'clustering'
-* Can we have the computer to recreate that process of inventing the label?
-* Greek philosopher, Plato, thought about ideas, he considered the concept of the Platonic ideal.
-* Platonic ideal bird is the bird that is most bird-like or the chair that is most chair-like.}
-\notes{Unsupervised learning enables computers to form similar categorizations on data that is too large scale for us to process. When the Greek philosopher, Plato, was thinking about ideas, he considered the concept of the Platonic ideal. The Platonic ideal bird is the bird that is most bird-like or the chair that is most chair-like. In some sense, the task in clustering is to define different clusters, by finding their Platonic ideal (known as the cluster center) and allocate each data point to the relevant cluster center. So, allocate each animal to the class defined by its nearest cluster center.}
+* Greek philosopher Plato considered the concept of ideals
+* The Platonic ideal bird is the most bird-like bird
+* In clustering, we find these ideals as cluster centers
+* Data points are allocated to their nearest center}
 
-\newslide{Cluster Center}
+\notes{When thinking about ideas, the Greek philosopher Plato considered the concept of Platonic ideals - the most quintessential version of a thing, like the most bird-like bird or chair-like chair. In clustering, we aim to define different categories by finding their Platonic ideals (cluster centers) and allocating each data point to its nearest center. This allows computers to form categorizations of data at scales too large for human processing.}
+
+\newslide{Mathematical Formulation} 
 \slides{
-* Can define different clusters, by finding their Platonic ideal (known as the cluster center)
-* Allocate each data point to the relevant nearest cluster center.
-* Allocate each animal to the class defined by its nearest cluster center.}
-\notes{To perform clustering on a computer we need to define a notion of either similarity or distance between the objects and their Platonic ideal, the cluster center. We normally assume that our objects are represented by vectors of data, $\inputVector_i$. Similarly, we represent our cluster center for category $j$ by a vector $\meanVector_j$. This vector contains the ideal features of a bird, a chair, or whatever category $j$ is. In clustering we can either think in terms of similarity of the objects, or distances. We want objects that are similar to each other to cluster together. We want objects that are distant from each other to cluster apart.}
+* Represent objects as data vectors $\inputVector_i$
+* Represent cluster centers as vectors $\meanVector_j$
+* Define similarity/distance between objects and centers
+* Distance function: $\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j)$}
 
-\newslide{Similarity and Distance Measures}
-\slides{
-* Define a notion of either similarity or distance between the objects and their Platonic ideal.
-* If objects are vectors of data, $\inputVector_i$.
-* Represent cluster center for category $j$ by a vector $\meanVector_j$.
-* This vector contains the ideal features of a bird, a chair, or whatever category $j$ is.}
-\notes{This requires us to formalize our notion of similarity or distance. Let's focus on distances. A definition of distance between an object, $i$, and the cluster center of class $j$ is a function of two vectors, the data point, $\inputVector_i$ and the cluster center, $\meanVector_j$,
-$$
-d_{ij} = f(\inputVector_i, \meanVector_j).
-$$
-Our objective is then to find cluster centers that are close to as many data points as possible.  For example, we might want to cluster customers into their different tastes. We could represent each customer by the products they've purchased in the past. This could be a binary vector $\inputVector_i$. We can then define a distance between the cluster center and the customer.}
-
-
-\newslide{Similarity or Distance}
-\slides{
-* Can either think in terms of similarity of the objects, or distances.
-* We want objects that are similar to each other to cluster together. We want objects that are distant from each other to cluster apart.
-* Use mathematical function to formalize this notion, e.g. for distance
-$$
-\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j).
-$$}
+\notes{To implement clustering computationally, we need to mathematically represent both our objects and cluster centers as vectors ($\inputVector_i$ and $\meanVector_j$ respectively) and define a notion of either similarity or distance between them. The distance function $\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j)$ measures how far each object is from potential cluster centers. For example, we might cluster customers by representing them through their purchase history and measuring their distance to different customer archetypes.}
 
 \subsubsection{Squared Distance}
 \slides{
-* Find cluster centers that are close to as many data points as possible.
-* A commonly used distance is the squared distance,
+* Common choice: squared distance
 $$
-\distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2.
+\distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2
 $$
-* Already seen for regression.}
-\notes{A commonly used distance is the squared distance,
-$$
-\distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2.
-$$
-The squared distance comes up a lot in machine learning. In unsupervised learning it was used to measure dissimilarity between predictions and observed data. Here its being used to measure the dissimilarity between a cluster center and the data.}
+* Goal: find centers close to many data points}
+
+\notes{A commonly used distance metric is the squared distance: $\distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2$. This metric appears frequently in machine learning - we saw it earlier measuring prediction errors in regression, and here it measures dissimilarity between data points and cluster centers.}
 
 
 \newslide{Objective Function}
@@ -242,12 +232,19 @@ $$
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_011}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_012}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_014}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_015}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_016}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_017}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_018}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_019}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_020}{\width}}{\animationName}
 \endanimation
 
 *Clustering with the $k$-means clustering algorithm.*
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-13}}
+\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_020}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-020}}
 
 \newslide{$k$-Means Clustering}
 
@@ -257,52 +254,93 @@ $$
 
 
 \subsubsection{Hierarchical Clustering}
+
 \slides{
 * Form taxonomies of the cluster centers
 * Like humans apply to animals, to form *phylogenies*
+* Builds a tree structure showing relationships between data points
+* Two main approaches:
+    * Agglomerative (bottom-up): Start with individual points and merge
+    * Divisive (top-down): Start with one cluster and split
 }
-\notes{Other approaches to clustering involve forming taxonomies of the cluster centers, like humans apply to animals, to form trees. You can learn more about agglomerative clustering in this video from Alex Ihler.}
+
+\notes{Other approaches to clustering involve forming taxonomies of the cluster centers, like humans apply to animals, to form trees. Hierarchical clustering builds a tree structure showing the relationships between data points. We'll demonstrate agglomerative clustering on the oil flow data set, which contains measurements from a multiphase flow facility.}
+
+\setupcode{import numpy as np
+from scipy.cluster.hierarchy import dendrogram, linkage
+import matplotlib.pyplot as plt
+import pods}
+
+\code{# Load the oil flow data
+data = pods.datasets.oil_flow()
+X = data['X']
+Y = data['Y']
+
+# Perform hierarchical clustering
+linked = linkage(X, 'ward')  # Ward's method for minimum variance
+
+# Create dendrogram plot
+plt.figure(figsize=(10, 7))
+dendrogram(linked,
+           orientation='top',
+           distance_sort='descending',
+           show_leaf_counts=True,
+           labels=Y.reshape(-1),
+           leaf_rotation=90)
+plt.title('Hierarchical Clustering of Oil Flow Data')
+plt.xlabel('Flow Type')
+plt.ylabel('Distance')
+plt.tight_layout()
+plt.savefig('\writeDiagramsDir/hierarchical-clustering-oil.svg')}
+
+\figure{\includediagram{\diagramsDir/hierarchical-clustering-oil}{80%}}{Hierarchical clustering applied to oil flow data. The dendrogram shows how different flow regimes are grouped based on their measurement similarities. The three main flow regimes (homogeneous, annular, and laminar) should form distinct clusters.}{hierarchical-clustering-oil}
+
+\notes{In this example, we've applied hierarchical clustering to the oil flow data set. The data contains measurements from different flow regimes in a multiphase flow facility. The dendrogram shows how measurements naturally cluster into different flow types. Ward's linkage method is used as it tends to create compact, evenly-sized clusters. You can learn more about agglomerative clustering in this video from Alex Ihler.}
 
 \figure{\includeyoutube{OcoE7JlbXvY}{600}{450}}{Hierarchical Clustering by Alex Ihler.}{alex-ihler-hierarchical-clustering}
 
 \subsubsection{Phylogenetic Trees}
 \slides{
-* Perform a hierarchical clustering based on genetic data, i.e. the actual contents of the genome.
-* Perform across a number of species and produce a *phylogenetic tree*.
-* Represents a guess at actual evolution of the species.
-* Used to estimate the origin of viruses like AIDS or Bird flu
+* Hierarchical clustering of genetic sequence data
+* Creates evolutionary trees showing species relationships
+* Estimates common ancestors and mutation timelines
+* Critical for tracking viral evolution and outbreaks
 }
-\notes{Indeed, one application of machine learning techniques is performing a hierarchical clustering based on genetic data, i.e. the actual contents of the genome. If we do this across a number of species then we can produce a *phylogeny*. The phylogeny aims to represent the actual evolution of the species and some phylogenies even estimate the timing of the common ancestor between two species[^commonancestor]. Similar methods are used to estimate the origin of viruses like AIDS or Bird flu which mutate very quickly. Determining the origin of viruses can be important in containing or treating outbreaks.
+\notes{A powerful application of hierarchical clustering is in constructing phylogenetic trees from genetic sequence data. By comparing DNA/RNA sequences across species, we can reconstruct their evolutionary relationships and estimate when species diverged from common ancestors. The resulting tree structure, called a phylogeny, maps out the evolutionary history and relationships between organisms.
 
-[^commonancestor]: These models are quite a lot more complex than the simple clustering we describe here. They represent a common ancestor through a cluster center that is then allowed to evolve over time through a mutation rate. The time of separation between different species is estimated via these mutation rates. 
+Modern phylogenetic methods go beyond simple clustering - they incorporate sophisticated models of genetic mutation and molecular evolution. These models can estimate not just the structure of relationships, but also the timing of evolutionary divergence events based on mutation rates. This has important applications in tracking the origins and spread of rapidly evolving pathogens like HIV and influenza viruses. Understanding viral phylogenies helps epidemiologists trace outbreak sources, track transmission patterns, and develop targeted containment strategies.
+
+[^commonancestor]: Phylogenetic models incorporate molecular clock models that estimate mutation rates over time. By calibrating these with known divergence events from the fossil record, the timing of common ancestors can be estimated.
 }
 
 \subsubsection{Product Clustering}
 \slides{
-* Could apply hierarchical clustering to an e-commerce company's products.
-* Would give us a phylogeny of products.
-* Each cluster of products would be split into sub-clusters of products until we got down to individual products.
-    * E.g. at high level Electronics/Clothing
+* Hierarchical clustering for e-commerce products
+* Creates product taxonomy trees
+* Splits into nested categories (e.g. Electronics → Phones → Smartphones)
 }
-\notes{An e-commerce company could apply hierarchical clustering to all its products. That would  give a phylogeny of products. Each cluster of products would be split into sub-clusters of products until we got down to individual products. For example, we might expect a high level split to be Electronics/Clothing. Of course, a challenge with these tree-like structures is that many products belong in more than one parent cluster: for example running shoes should be in more than one group, they are 'sporting goods' and they are 'apparel'. A tree structure doesn't allow this allocation.}
+\notes{An e-commerce company could apply hierarchical clustering to organize their product catalog into a taxonomy tree. Products would be grouped into increasingly specific categories - for example, Electronics might split into Phones, Computers, etc., with Phones further dividing into Smartphones, Feature Phones, and so on. This creates an intuitive hierarchical organization. However, many products naturally belong in multiple categories - for instance, running shoes could reasonably be classified as both sporting equipment and footwear. The strict tree structure of hierarchical clustering doesn't allow for this kind of multiple categorization, which is a key limitation for product organization.}
 
 \subsubsection{Hierarchical Clustering Challenge}
 \slides{
-* Many products belong in more than one cluster: e.g. running shoes are 'sporting goods' and they are 'clothing'.
-* Tree structure doesn't allow this allocation.
-* Our own psychological grouping capabilities are in cognitive science.
-    * E.g. Josh Tenenbaum and collaborators cluster data in more complex ways.}
-\notes{Our own psychological grouping capabilities are studied as a domain of cognitive science. Researchers like Josh Tenenbaum have developed algorithms that decompose data in more complex ways, but they can normally only be applied to smaller data sets.}
+* Many products belong in multiple clusters (e.g. running shoes are both 'sporting goods' and 'clothing')
+* Tree structures are too rigid for natural categorization
+* Human concept learning is more flexible:
+    * Forms overlapping categories
+    * Learns abstract rules
+    * Builds causal theories}
+\notes{Our psychological ability to form categories is far more sophisticated than hierarchical trees. Research in cognitive science has revealed that humans naturally form overlapping categories and learn abstract principles that guide classification. Josh Tenenbaum's influential work demonstrates how human concept learning combines multiple forms of inference through hierarchical Bayesian models that integrate similarity-based clustering with theory-based reasoning. This computational approach aligns with foundational work by Eleanor Rosch on prototype theory and Susan Carey's research on conceptual change, showing how categorization adapts to context and goals. While these cognitively-inspired models better capture human-like categorization, their computational complexity currently limits practical applications to smaller datasets. Nevertheless, they provide important insights into more flexible clustering approaches that could eventually enhance machine learning systems.}
 
 \subsection{Other Clustering Approaches}
 
-* Spectral clustering (@Shi:normalized00,@Ng:spectral02)
-  * Allows clusters which aren't convex hulls.
-* Dirichlet process
-  * A probabilistic formulation for a clustering algorithm that is *non-parametric*. 
-  * Loosely speaking it allows infinite
-clusters
-  * In practice useful for dealing with previously unknown species (e.g. a "Black Swan Event").
+\slides{
+* Spectral clustering: Graph-based non-convex clustering
+* Dirichlet process: Infinite, non-parametric clustering
+}
+
+\notes{Spectral clustering (@Shi:normalized00,@Ng:spectral02) is a powerful technique that uses eigenvalues of similarity matrices to perform dimensionality reduction before clustering. Unlike k-means, it can identify clusters of arbitrary shape, making it effective for complex data like image segmentation or social networks.
+
+The Dirichlet process provides a Bayesian framework for clustering without pre-specifying the number of clusters. It's particularly valuable in scenarios where new, previously unseen categories may emerge over time. For example, in species discovery, it can model the probability of finding new species while accounting for known ones. This "infinite clustering" property makes it well-suited for open-ended learning problems where the total number of categories is unknown.}
 
 
 \endif

@@ -31,6 +31,6 @@ ax.set_title('Swiss Roll: Example of Global Structure')}
 
 \notes{The Swiss roll is a classic example where preserving only local structure can fail. Points that are close in the ambient space may be far apart on the manifold - this is known as the "short-circuiting" problem.}
 
-\figure{\includediagram{\diagramsDir/dimred/short_circuit_problem}}{The short-circuiting problem occurs when points that are close in the ambient space are actually far apart on the manifold.}{short-circuit-problem}
+\figure{\includediagram{\diagramsDir/dimred/short-circuit-problem}}{The short-circuiting problem occurs when points that are close in the ambient space are actually far apart on the manifold.}{short-circuit-problem}
 
 \endif
