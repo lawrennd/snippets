@@ -60,22 +60,26 @@ import mlai.plot as plot}
 
 \notes{Here's a summary of when to use each method:
 
-1. **PCA**: 
+1. **PCA**:
+    
    * When you need interpretable features
    * When computational speed is important
    * When the data has a linear structure
 
-2. **MDS**: 
+2. **MDS**:
+   
    * When you have only distance/similarity information
    * When you want to preserve all pairwise distances
    * When you need a non-linear embedding
 
 3. **t-SNE**:
+   
    * When creating visualizations is the primary goal
    * When local structure is more important than global structure
    * When you have up to a few thousand points
 
 4. **UMAP**:
+   
    * When you need faster computation than t-SNE
    * When both local and global structure are important
    * When you need a reusable transformation
