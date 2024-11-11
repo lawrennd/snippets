@@ -181,7 +181,7 @@ mlai.write_figure("cluster_data01.svg", directory="\writeDiagramsDir/ml/")}
 
 \notes{To implement clustering computationally, we need to mathematically represent both our objects and cluster centers as vectors ($\inputVector_i$ and $\meanVector_j$ respectively) and define a notion of either similarity or distance between them. The distance function $\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j)$ measures how far each object is from potential cluster centers. For example, we might cluster customers by representing them through their purchase history and measuring their distance to different customer archetypes.}
 
-\subsubsection{Squared Distance}
+\subsection{Squared Distance}
 \slides{
 * Common choice: squared distance
 $$
@@ -201,7 +201,7 @@ $$
 $$
 \slides{here $\mathbf{i}_j$ is all indices of  data points allocated to the $j$th center.}\notes{where the notation $\mathbf{i}_j$ represents all the indices of each data point which has been allocated to the $j$th cluster represented by the center $\meanVector_j$.}
 
-\subsubsection{$k$-Means Clustering}
+\subsection{$k$-Means Clustering}
 \slides{
 * *$k$-means clustering* is simple and quick to implement.
 * Very *initialisation* sensitive.
@@ -215,7 +215,7 @@ $$
 * Optimisation surface has many local optima, algorithm gets stuck in ones near initialisation.}
 \notes{One approach to minimizing this objective function is known as *$k$-means clustering*. It is simple and relatively quick to implement, but it is an initialization sensitive algorithm. Initialization is the process of choosing an initial set of parameters before optimization. For $k$-means clustering you need to choose an initial set of centers. In $k$-means clustering your final set of clusters is very sensitive to the initial choice of centers. For more technical details on $k$-means clustering you can watch a video of Alex Ihler introducing the algorithm here.}
 
-\subsubsection{$k$-Means Clustering}
+\subsection{$k$-Means Clustering}
 
 \slides{
 \define{\width}{40%}
@@ -256,7 +256,7 @@ $$
 \slides{*$k$-means clustering by Alex Ihler*}
 
 
-\subsubsection{Hierarchical Clustering}
+\subsection{Hierarchical Clustering}
 
 \slides{
 * Form taxonomies of the cluster centers
@@ -299,7 +299,7 @@ mlai.write_figure('hierarchical-clustering-oil.svg', directory='\writeDiagramsDi
 
 \figure{\includeyoutube{OcoE7JlbXvY}{600}{450}}{Hierarchical Clustering by Alex Ihler.}{alex-ihler-hierarchical-clustering}
 
-\subsubsection{Phylogenetic Trees}
+\subsection{Phylogenetic Trees}
 \slides{
 * Hierarchical clustering of genetic sequence data
 * Creates evolutionary trees showing species relationships
@@ -313,7 +313,7 @@ Modern phylogenetic methods go beyond simple clustering - they incorporate sophi
 [^commonancestor]: Phylogenetic models incorporate molecular clock models that estimate mutation rates over time. By calibrating these with known divergence events from the fossil record, the timing of common ancestors can be estimated.
 }
 
-\subsubsection{Product Clustering}
+\subsection{Product Clustering}
 \slides{
 * Hierarchical clustering for e-commerce products
 * Creates product taxonomy trees
@@ -321,7 +321,7 @@ Modern phylogenetic methods go beyond simple clustering - they incorporate sophi
 }
 \notes{An e-commerce company could apply hierarchical clustering to organize their product catalog into a taxonomy tree. Products would be grouped into increasingly specific categories - for example, Electronics might split into Phones, Computers, etc., with Phones further dividing into Smartphones, Feature Phones, and so on. This creates an intuitive hierarchical organization. However, many products naturally belong in multiple categories - for instance, running shoes could reasonably be classified as both sporting equipment and footwear. The strict tree structure of hierarchical clustering doesn't allow for this kind of multiple categorization, which is a key limitation for product organization.}
 
-\subsubsection{Hierarchical Clustering Challenge}
+\subsection{Hierarchical Clustering Challenge}
 \slides{
 * Many products belong in multiple clusters (e.g. running shoes are both 'sporting goods' and 'clothing')
 * Tree structures are too rigid for natural categorization
