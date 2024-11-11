@@ -286,7 +286,8 @@ dendrogram(linked,
            orientation='top',
            distance_sort='descending',
            show_leaf_counts=True,
-           ax=ax)  # Removed labels since Y has wrong dimensions
+           labels=[f'Class {y}' for y in Y],
+           ax=ax)
 ax.set_title('Hierarchical Clustering of Oil Flow Data')
 ax.set_xlabel('Sample Index')
 ax.set_ylabel('Distance')

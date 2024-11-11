@@ -8,7 +8,7 @@
 
 \notes{The concept of a manifold provides a mathematical framework for understanding how high-dimensional data might be organized on a lower-dimensional structure.}
 
-\subsubsection{Definition}
+\subsection{Definition}
 
 \notes{A manifold has a precise mathematical definition:}
 

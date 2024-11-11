@@ -13,12 +13,19 @@
 
 \notes{The data consists of 1000 12-dimensional observations of simulated oil flow in a pipeline. Each observation is labelled according to the multi-phase flow configuration (homogeneous, annular or laminar).}
 
-\code{data['Y'].describe()}
-
+\code{# Convert data["Y"] from [1, -1, -1] in each row to rows of 0 or 1 or 2
+Y = data["Y"]
+# Find rows with 1 in first column (class 0)
+class0 = (Y[:, 0] == 1).astype(int) * 0
+# Find rows with 1 in second column (class 1) 
+class1 = (Y[:, 1] == 1).astype(int) * 1
+# Find rows with 1 in third column (class 2)
+class2 = (Y[:, 2] == 1).astype(int) * 2
+# Combine into single array of class labels 0,1,2
+data["Y"] = class0 + class1 + class2}
+}
 \notes{The data is returned as a dictionary containing training and test inputs ('X', 'Xtst'), training and test labels ('Y', 'Ytst'), and the names of the features.}
 
-\code{print("Feature names:")
-print(data['feature_names'])}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -47,8 +54,8 @@ mlai.write_figure('oil-flow-data.svg', directory='\writeDiagramsDir/datasets')}
 
 \notes{And extra information about the data is included, as standard, under the keys `info` and `details`.}
 
-\code{print(data['info'])
-print()
-print(data['details'])}
+\code{print(data['details'])}
 
+\code{X = data['X']
+Y = data['Y']}
 \endif

@@ -4,7 +4,7 @@
 
 \editme
 
-\subsubsection{Principal Component Analysis}
+\subsection{Principal Component Analysis}
 \slides{
 * Principal component analysis (PCA) a linear dimensionality reduction technique
 * In Hotelling's formulation of PCA: a assume $\inputVector$ is a linear weighted sum of the latent factors of interest.

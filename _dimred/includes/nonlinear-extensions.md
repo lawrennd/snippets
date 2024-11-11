@@ -11,7 +11,7 @@
 
 \notes{The MDS formulation naturally leads to extensions based on modifying how distances between points are computed. Instead of using Euclidean distances in the original space, we can attempt to approximate distances along a manifold.}
 
-\subsubsection{Isomap}
+\subsection{Isomap}
 
 \notes{One of the simplest approaches is Isomap, which makes the assumption that locally (between nearby points) the Euclidean distance is a good approximation of the distance along the manifold. The algorithm proceeds as follows:
 
@@ -22,7 +22,7 @@
 
 This approach allows us to "unroll" manifolds like the Swiss roll, where Euclidean distances between distant points don't reflect the true structure of the data.}
 
-\subsubsection{Maximum Variance Unfolding}
+\subsection{Maximum Variance Unfolding}
 
 \notes{A more sophisticated approach is Maximum Variance Unfolding (MVU), which makes use of the fact that the set of positive definite matrices is convex. MVU formulates a semidefinite program that learns the Gram matrix subject to constraints that preserve local distances:
 
@@ -39,7 +39,7 @@ This provides a principled way to learn the Gram matrix while respecting local s
 
 \notes{The probabilistic interpretation of PCA suggests a different approach to non-linearization: replacing the linear mapping with a non-linear function while maintaining the probabilistic framework.}
 
-\subsubsection{Gaussian Process Latent Variable Model}
+\subsection{Gaussian Process Latent Variable Model}
 
 \notes{The GP-LVM emerges naturally from the probabilistic PCA model by:
 
