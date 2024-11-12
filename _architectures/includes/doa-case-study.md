@@ -16,7 +16,7 @@
 
 \newslide{System Architecture}
 
-\figure{\includediagram{water-monitoring-arch}{80%}}{Architecture of the water level monitoring system showing key components and data flows}{water-monitoring-arch}
+\figure{\includediagram{\diagramsDir/data-science/water-monitoring-arch}{80%}}{Architecture of the water level monitoring system showing key components and data flows}{water-monitoring-arch}
 
 \slides{
 Key Components:

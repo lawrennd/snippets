@@ -25,7 +25,7 @@ In practice, shared dynamically linked libraries may be used for aspects such as
 
 \figure{\includediagram{\diagramsDir/simulation/ml-system-monolith-simulation}{60%}}{A potential path of models in a machine learning system.}{ml-system-monolith-simulation}
 
-\includes{_software/includes/separation-of-concerns.md}
+\includes{_engineering/includes/separation-of-concerns.md}
 
 
 \subsection{Service Oriented Architecture}

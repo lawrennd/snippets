@@ -4,9 +4,18 @@
 \editme
 \subsection{Donald MacKay}
 
-\figure{\includejpg{\diagramsDir/people/DonaldMacKay1952}{40%}}{Donald M. MacKay (1922-1987), a physicist who was an early member of the cybernetics community and member of the Ratio Club.}{donald-maccrimmon-mackay}
+\figure{\includejpg{\diagramsDir/people/DonaldMacKay1952}{40%}}{Donald M. 
+MacKay (1922-1987), a physicist who was an early member of the cybernetics 
+community and member of the Ratio Club.}{donald-maccrimmon-mackay}
 
-\notes{Donald MacKay was a physicist who worked on naval gun targetting during the second world war. The challenge with gun targetting for ships is that both the target and the gun platform are moving. The challenge was tackled using analogue computers, for example in the US the [Mark I fire control computer](https://en.wikipedia.org/wiki/Mark_I_Fire_Control_Computer) which was a mechanical computer. MacKay worked on radar systems for gun laying, here the velocity and distance of the target could be assessed through radar and an mechanical electrical analogue computer.}
+\notes{Donald MacKay was a physicist who worked on naval gun targeting 
+during the Second World War. The challenge with gun targeting for ships 
+is that both the target and the gun platform are moving. This was tackled 
+using analogue computers - for example, in the US the [Mark I fire control 
+computer](https://en.wikipedia.org/wiki/Mark_I_Fire_Control_Computer), 
+which was a mechanical computer. MacKay worked on radar systems for gun 
+laying, where the velocity and distance of the target could be assessed 
+through radar and a mechanical-electrical analogue computer.}
 
 \reading{@Lawrence-atomic24}{Chapter 8}
 \include{_ai/includes/fire-control-systems.md}
@@ -15,8 +24,14 @@
 
 \newslide{}
 
-\notes{Donald MacKay was at King's College for his PhD. He was just down the road from Bill Phillips at LSE who was building the MONIAC. He was part of the Ratio Club. \ifndef{theRatioClub} A group of early career scientists who were interested in communication and control in animals and humans, or more specifically they were interested in computers and brains. The were part of an international movement known as cybernetics.}
-
+\notes{Donald MacKay completed his PhD at King's College, just down 
+the road from Bill Phillips who was building the MONIAC at LSE. He was 
+part of the Ratio Club}\ifndef{theRatioClub}\notes{ - a group of early career 
+scientists interested in communication and control in animals and humans, 
+or more specifically in computers and brains. They were part of an international 
+movement known as cybernetics}\endif
+\notes{.}
+ 
 \notes{Donald MacKay wrote of the influence that his own work on radar had on
 his interest in the brain.
 
@@ -49,24 +64,22 @@ his interest in the brain.
 
 \addatomic{MacKay, Donald, *Behind the Eye*}{268-270, 316}
 
-\notes{Importantly, MacKay distinguishes between the *analogue*
-computer and the *digital* computer. As he mentions, his experience
-was with analogue machines. An analogue machine is *literally* an
-analogue. The radar systems that Wiener and MacKay both worked on were
-made up of electronic components such as resistors, capacitors, inductors and/or  mechanical components such as cams and gears. Together these components could represent a physical system, such as an
-anti-aircraft gun and a plane. The design of the analogue computer
-required the engineer to simulate the real world in analogue
-electronics, using dualities that exist between e.g. mechanical
-circuits (mass, spring, damper) and electronic circuits (inductor,
-resistor, capacitor). The analogy between mass and a damper, between
-spring and a resistor and between capacitor and a damper works because
-the underlying mathematics is approximated with the same linear
-system: a second order differential equation. This mathematical
-analogy allowed the designer to map from the real world, through
-mathematics, to a virtual world where the components reflected the
-real world through analogy.}
+\notes{MacKay's distinction between *analogue* and *digital* computers 
+is key. As an expert in analogue machines, he understood that an 
+analogue computer is *literally* an analogue - its components (resistors, 
+capacitors, inductors, or mechanical parts like cams and gears) have states
+that are physically analogous to the states in system being modeled. Engineers 
+designed these computers by exploiting mathematical dualities between the 
+computer and the real world. For example a mechanical system (mass-spring-damper) 
+and electrical circuit (inductor-resistor-capacitor) could be described by the 
+same second-order differential equations, allowing designers to map real-world 
+problems through mathematics into virtual representations.}
 
-\notes{When considering modern systems, and generative AI, Donald MacKay's insights might trigger similar speculations about how e.g. large language models such as Claude and ChatGPT are operating. They also don't seem to be quite like a digital machine, and nor do they seem to be like an analogue machine.}
-
+\notes{MacKay's insights remain relevant when considering modern AI systems. 
+His questioning of whether the brain was truly digital or analogue might parallel 
+current debates about large language models like Claude and ChatGPT, which seem to 
+operate in ways that don't neatly fit either paradigm. His work reminds us that 
+understanding the fundamental nature of intelligent systems - whether biological 
+or artificial - requires looking beyond simple categorizations.}
 
 \endif

@@ -16,7 +16,7 @@ think is somewhat hidden from the academic community, because it is a
 phenomenon that occurs when a computer software system is deployed.}
 
 \ifndef{intellectualDebt}
-\include{_software/includes/separation-of-concerns.md}
+\include{_engineering/includes/separation-of-concerns.md}
 \endif
 
 \addatomic{intellectual debt}{84-85, 349, 365, 376}

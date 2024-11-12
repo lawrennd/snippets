@@ -31,7 +31,7 @@ system is deployed.
 The notion of the Sculley paper is that there are particular challenges
 for machine learning models around technical debt.}
 
-\include{_software/includes/mythical-man-month.md}
-\include{_software/includes/separation-of-concerns.md}
+\include{_engineering/includes/mythical-man-month.md}
+\include{_engineering/includes/separation-of-concerns.md}
 
 \endif
