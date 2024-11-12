@@ -4,6 +4,7 @@
 \editme
 
 \subsection{Uncertainty Quantification and Design of Experiments}
+
 \slides{* History of interest, see e.g. @McKay-selecting79
 * The review:
     * Random Sampling
@@ -11,21 +12,19 @@
     * Latin Hypercube Sampling
 * As approaches for Monte Carlo estimates
 }
-\notes{We're introducing you to the optimization and analysis of real-world models through emulation, this domain is part of a broader field known as surrogate modelling.}
+\notes{We're introducing you to the optimization and analysis of real-world models through emulation, a domain that is part of the broader field known as surrogate modelling. This involves creating simplified models that approximate more complex systems, allowing for efficient exploration and analysis.}
 
-\notes{Although we're approaching this from the machine learning perspective, with a computer-scientist's approach, you won't be surprised to find out that this field is not new and there are a diverse range of research communities interested in this domain.}
+\notes{Although we're approaching this from the machine learning perspective, with a computer-scientist's approach, you won't be surprised to hear that this field is not new. There are diverse research communities, including statisticians and engineers, who have long been interested in these methods.}
 
-\notes{We've been focussing on *active* experimental design. In particular, the case where we are sequentially selecting points to run our simulation based on previous results.}
+\notes{Our focus has been on *active* experimental design, where we sequentially select points to run our simulation based on previous results, optimizing the process iteratively.}
 
-\notes{Here, we pause for a moment and cover approaches to *passive* experimental design. Almost all the emulation examples we've looked at so far need some initial points to 'seed' the emulator. Selecting these is also a task of experimental design, but one we perform without running our simulator.}
+\notes{Now, we pause to explore *passive* experimental design approaches. In passive design, we select initial points to 'seed' the emulator without running the simulator. This is crucial for setting up the emulator effectively.}
 
-\notes{This type of challenge, of where to run the simulation to get the answer you require is an old challenge. One classic paper, @McKay-selecting79, reviews three different methods for designing these inputs. They are *random sampling*, *stratified sampling*, and *Latin hypercube sampling*.}
-
+\notes{The challenge of determining where to run simulations to obtain the necessary answers is longstanding. A seminal paper by @McKay-selecting79 reviews three foundational methods for designing these inputs: *random sampling*, *stratified sampling*, and *Latin hypercube sampling*. These methods provide structured ways to explore the input space and are essential for effective experimental design.}
 
 \newslide{Random Sampling}
 
-\notes{Random sampling is the default approach, this is where across the input domain of interest, we just choose to select samples randomly (perhaps uniformly, or if we believe there's an underlying distribution from which the points were drawn.} 
-
+\notes{Random sampling is the default approach, where samples are selected randomly across the input domain of interest. This can be done uniformly or based on an assumed underlying distribution. It is straightforward but may not always provide comprehensive coverage of the input space.}
 
 >  Let the input values $\inputVector_1, \dots, \inputVector_\numData$
 > be a random sample from $f(\inputVector)$. This method of sampling
@@ -33,12 +32,11 @@
 > literature may be used in making inferences regarding the
 > distribution of $Y(t)$.
 
-
 \newslide{Stratified Sampling}
 
-\notes{In statistical surveillance stratified sampling is an approach from statistics where a population is divided into sub-populations before sampling. For example, imagine that we are interested surveillance data for Covid-19 tracking. If we can only afford to track 100 people, we could sample them randomly from across the population. But we might worry that (by chance) we don't get many people from a particular age group. So instead, we could divide the population into sub-groups and sample a fixed number from each group. This ensures we get coverage across all ages, although downstream we might have to do some weighting of the samples when considering the population effect.}
+\notes{Stratified sampling involves dividing a population into sub-populations, or strata, before sampling. This ensures that all sub-populations are represented in the sample. For instance, in Covid-19 tracking, stratifying by age groups ensures coverage across all ages, which might be missed in simple random sampling.}
 
-\notes{The same ideas can be deployed in emulation, your input domain can be divided into domains of particular intererest. For example if testing the performance of a component from an F1 car, you might be interested in the performance on the straight, the performance in "fast corners" and the performance in "slow corners". Because slow corners have a very large effect on the final performance, you might take more samples from slow corners relative to the frequency that such corners appear in the actual races.}
+\notes{In emulation, similar principles apply. The input domain can be divided into areas of particular interest. For example, when testing an F1 car component, you might focus on performance in different track sections, ensuring comprehensive data collection across varied conditions.}
 
 > Using stratified sampling, all
 > areas of the sample space of $\inputVector$ are represented by
@@ -50,7 +48,7 @@
 
 \newslide{Latin Hypercube Sampling}
 
-\notes{Latin hypercube sampling is a form of stratified sampling. For a Latin square if $M$ samples are requred, then the strata are determined by dividing the area of the inputs into discrete $M$ rows and $M$ columns. Then the samples are taken so that each row and column only contains one total sample. The Latin hypercube is the generalisation of this idea to more than two dimensions.}
+\notes{Latin hypercube sampling is an advanced form of stratified sampling. It ensures that each input variable's distribution is fully represented by dividing the input space into $M$ rows and columns, with samples taken such that each row and column contains only one sample. This method extends to multiple dimensions, providing a comprehensive sampling strategy.}
 
 > The same reasoning that led to stratified sampling, ensuring that
 > all portions of $S$ were sampled, could lead further. If we wish
@@ -66,8 +64,8 @@
 > (Steinberg 1963), and can be viewed as a $K$-dimensional extension of
 > Latin square sampling (Raj 1968).
 
-\notes{The paper's rather dated reference to "Output from a Computer Code" does carry forward through this literature, which has continued to be a focus of interest for statisticians. [Tony O'Hagan](http://www.tonyohagan.co.uk/academic/), who was a colleague in Sheffield but is also one of the pioneers of Gaussian process models was developing these methods when I first arrived there [@Kennedy-bayesian01], and continued with a large EPSRC funded project for managing uncertainty in computational models, <http://www.mucm.ac.uk/>. You can see a list of [their technical reports here](http://www.mucm.ac.uk/Pages/Dissemination/TechnicalReports.html).}
+\notes{The paper's rather dated reference to "Output from a Computer Code" highlights the historical context of these methods, which remain relevant today. [Tony O'Hagan](http://www.tonyohagan.co.uk/academic/), who was a colleague in Sheffield when I first arrived there, was a pioneer in Gaussian process models, and has contributed significantly to this field, including work on managing uncertainty in computational models [@Kennedy-bayesian01]. More information can be found in the [technical reports](https://web.archive.org/web/20220308104727/http://mucm.ac.uk/Pages/Dissemination/TechnicalReports.html) from the EPSRC funded project [http://www.mucm.ac.uk/](https://web.archive.org/web/20220526104923/http://mucm.ac.uk/).}
 
-\notes{Another important group based in France is the "MASCOT-NUM Research Group", <https://www.gdr-mascotnum.fr/>. These researchers bring together statisticians, applied mathematicians and engineers in solving these problems.}
+\notes{Another key group is the "MASCOT-NUM Research Group" in France and it's follow on RT-UQ, <https://uq.math.cnrs.fr/>, which unites statisticians, applied mathematicians, and engineers to tackle these complex problems.}
 
 \endif
