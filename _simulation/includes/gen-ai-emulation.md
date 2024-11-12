@@ -22,6 +22,7 @@
 \figure{\includeyoutube{Q6fOlW-Y_Ss}{800}{600}}{YouTube video of results from the GraphCast algorithm.}{graphcast-results}
 
 \notes{As a result GraphCast can produce forecasts of similar accuracy to traditional numerical methods in seconds rather than hours. This is possible because:
+
 1. The model has seen millions of examples of how weather patterns evolve
 2. The underlying physics, while complex, has regularities that can be learned
 3. The training data comes from a consistent, high-quality source of simulations
