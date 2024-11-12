@@ -24,7 +24,7 @@
 
 \newslide{Random Sampling}
 
-\notes{Random sampling is the default approach, this is where across the input domain of interest, we just choose to select samples randomly (perhaps uniformly, or if we believe there's an underlying distribution 
+\notes{Random sampling is the default approach, this is where across the input domain of interest, we just choose to select samples randomly (perhaps uniformly, or if we believe there's an underlying distribution from which the points were drawn.} 
 
 
 >  Let the input values $\inputVector_1, \dots, \inputVector_\numData$
