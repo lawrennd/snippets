@@ -17,6 +17,8 @@
 
 \notes{Traditional numerical weather prediction requires solving complex partial differential equations on supercomputers, taking hours to complete. [GraphCast](https://deepmind.google/discover/blog/graphcast-ai-model-for-faster-and-more-accurate-global-weather-forecasting/) was trained on archived weather forecasts from the European Centre for Medium-Range Weather Forecasts (ECMWF) [@Lam-graphcast23]. This ECMWF dataset - containing millions of previous forecasts and their outcomes - allowed the model to learn the complex patterns and physics underlying weather systems.}
 
+\newslide{GraphCast Forecast}
+
 \figure{\includeyoutube{Q6fOlW-Y_Ss}{800}{600}}{YouTube video of results from the GraphCast algorithm.}{graphcast-results}
 
 \notes{As a result GraphCast can produce forecasts of similar accuracy to traditional numerical methods in seconds rather than hours. This is possible because:
