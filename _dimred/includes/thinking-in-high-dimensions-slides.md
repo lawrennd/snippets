@@ -1,212 +1,147 @@
-%{
-\begin{matlab}
-  %}
-  % Comment/MATLAB set up code
-  importTool('dimred')
-  dimredToolboxes
-  randn('seed', 1e6)
-  rand('seed', 1e6)
-  if ~isoctave
-    colordef white
-  end
-  colorFigs = false;
-  % Text width in cm.
-  textWidth = 13
-%{
-\end{matlab}
-\begin{frame}[fragile]
-  \frametitle{Mixtures of Gaussians}
+
+\subsection{Mixtures of Gaussians}
 
   \begin{figure}
-    \begin{matlab}
-    %}
-    close all
-    for j = 1:2
-      model = dimredPlotMog(20, 200);
+\setupplotcode{import mlai
+import mlai.plot as plot}
     
-      if model.d>2
-        model = mogProject(model, 2);
-      end
-    
-      modelType = model.type;
-      modelType(1) = upper(modelType(1));
-
-
-      fileName = ['demArtificial' modelType num2str(j)];
-    
-      clf
-      ax = axes('position', [0.05 0.05 0.9 0.9]);
-      hold on
-      mogTwoDPlot(model, []);
-    
-
-      piVals = linspace(-pi, pi, 200)';
-      for i=1:model.m
-        a = line(model.mean(i, 1), model.mean(i, 2), 'marker', 'o');
-        set(a, 'linewidth', 2, 'markersize', 10)
-        x = [sin(piVals) cos(piVals)];
-        el = x*model.U{i};
-        line(model.mean(i, 1) + el(:, 1), model.mean(i, 2) + el(:, 2), ...
-           'linewidth', 2);
-      end
-      xLim = [min(model.Y(:, 1)) max(model.Y(:, 1))]*1.1;
-      yLim = [min(model.Y(:, 2)) max(model.Y(:, 2))]*1.1;
-      set(ax, 'xLim', xLim);
-      set(ax, 'yLim', yLim);
-      set(ax, 'xtick', [-2 -1 0 1 2]);
-      set(ax, 'ytick', [-2 -1 0 1 2]);
-      printLatexPlot([fileName '_slides'], '../../../dimred/tex/diagrams/', 0.4*textWidth)
-    
-      figure
-      clf
-      ax = axes('position', [0.05 0.05 0.9 0.9]);
-      hold on
-      mogTwoDPlot(model, []);
-    
-      set(ax, 'xLim', xLim);
-      set(ax, 'yLim', yLim);
-      set(ax, 'xtick', [-2 -1 0 1 2]);
-      set(ax, 'ytick', [-2 -1 0 1 2]);
-      printLatexPlot([fileName 'NoOvals_slides'], '../../../dimred/tex/diagrams/', 0.4*textWidth)
-    end  
-    %{
-    \end{matlab}
-    \begin{center}
-      \only<1>{\inputdiagram{../../../dimred/tex/diagrams/demArtificialMog1NoOvals_slides}\hfill{}\inputdiagram{../../../dimred/tex/diagrams/demArtificialMog2NoOvals_slides}}    \only<2>{\inputdiagram{../../../dimred/tex/diagrams/demArtificialMog1_slides}\hfill{}\inputdiagram{../../../dimred/tex/diagrams/demArtificialMog2_slides}}
-    \end{center}
-    \caption{\only<1>{Two dimensional data sets.}  \only<2>{Complex
-        structure not a problem for mixtures of Gaussians.}}
-    
-  \end{figure}
-
-  % \begin{figure}
-  %   \begin{centering}
-  %     \includegraphics<1>[width=0.45\textwidth]{../../../dimred/tex/diagrams/demArtificialInterspeechMog1NoOvals}\only<1>{\hfill}\includegraphics<1>[width=0.45\textwidth]{../../../dimred/tex/diagrams/demArtificialInterspeechMog2NoOvals}
-  %     \includegraphics<2>[width=0.45\textwidth]{../../../dimred/tex/diagrams/demArtificialInterspeechMog1}\only<2>{\hfill}\includegraphics<2>[width=0.45\textwidth]{../../../dimred/tex/diagrams/demArtificialInterspeechMog2}
-  %   \end{centering}
-
-  %   \caption{\only<1>{Two dimensional data sets.}  \only<2>{Complex
-  %       structure not a problem for mixtures of Gaussians.}}
-  % \end{figure}
-
-\end{frame}
-
-\subsection{High Dimensional Data}
-
-\begin{frame}
-  \frametitle{Thinking in High Dimensions}
-
-  \begin{itemize}
-  \item Two dimensional plots of Gaussians can be misleading.
-  \item Our low dimensional intuitions can fail dramatically.
-  \item Two major issues:
-
-    \begin{enumerate}
-    \item In high dimensions all the data moves to a `shell'. There is nothing
-      near the mean!
-    \item Distances between points become constant.
-    \item These affects apply to many densities.
-    \end{enumerate}
-  \item Let's consider a Gaussian ``egg''.
-  \end{itemize}
+ \code{for j in range(2):
+  model = plot.mog(20, 200)
   
-\end{frame}
+  if model.d > 2:
+      model = model.project(2)
+      
+  model_type = model.type
+  model_type = model_type[0].upper() + model_type[1:]
+  
+  file_name = f'demArtificial{model_type}{j+1}'
+  
+  # First plot with ovals
+  fig, ax = plt.subplots()
+  ax.set_position([0.05, 0.05, 0.9, 0.9])
+  plot.mog_plot_2d(model, ax)
+  
+  pi_vals = np.linspace(-np.pi, np.pi, 200)
+  for i in range(model.m):
+      ax.plot(model.mean[i,0], model.mean[i,1], 'o', 
+              linewidth=2, markersize=10)
+      x = np.vstack([np.sin(pi_vals), np.cos(pi_vals)]).T
+      el = x @ model.U[i]
+      ax.plot(model.mean[i,0] + el[:,0], 
+              model.mean[i,1] + el[:,1],
+              linewidth=2)
+      
+  x_lim = np.array([model.Y[:,0].min(), model.Y[:,0].max()]) * 1.1
+  y_lim = np.array([model.Y[:,1].min(), model.Y[:,1].max()]) * 1.1
+  ax.set_xlim(x_lim)
+  ax.set_ylim(y_lim)
+  ax.set_xticks([-2, -1, 0, 1, 2])
+  ax.set_yticks([-2, -1, 0, 1, 2])
+  
+  mlai.write_figure(f'{file_name}_slides', 
+                    '\writeDiagramsDir/dimred')
+  
+  # Second plot without ovals
+  fig, ax = plt.subplots(figsize=plot.big_figsize)
+  ax.set_position([0.05, 0.05, 0.9, 0.9])
+  plot.mog_plot_2d(model, ax)
+  
+  ax.set_xlim(x_lim)
+  ax.set_ylim(y_lim) 
+  ax.set_xticks([-2, -1, 0, 1, 2])
+  ax.set_yticks([-2, -1, 0, 1, 2])
+  
+  mlai.write_figure(f'{file_name}NoOvals_slides',
+                    '\writeDiagramsDir/dimred')}
+\figure{\includediagram{\diagramsDir/dimred/demArtificialMog1NoOvals_slides}\hfill{}\includediagram{\diagramsDir/dimred/demArtificialMog2NoOvals_slides}}{Two dimensional data sets. Complex structure not a problem for mixtures of Gaussians.}{fig-dimred-demArtificialMog1NoOvals_slides}
+ 
+\section{High Dimensional Data}
 
-\begin{frame}
-  \frametitle{The Gaussian Egg}
+\subsection{Thinking in High Dimensions}
 
-  \begin{itemize}
-  \item See also Exercise 1.4 in \citep{Bishop:book95}
-  \end{itemize}
-  % 
-  \begin{figure}
-    \begin{centering}
-      \includegraphics<1>[width=0.4\textwidth]{../../../dimred/tex/diagrams/oneDgaussian_nobrown}
-      \includegraphics<2>[width=0.4\textwidth]{../../../dimred/tex/diagrams/twoDgaussian_nobrown2}
-      \includegraphics<3>[width=0.4\textwidth]{../../../dimred/tex/diagrams/threeDgaussian_nobrown.png}\\
-      \vspace{0.5cm}
-      \textbf{Volumes: }
-      \only<1>{\colorbox{lightpurple}{
-          \textcolor{yellow}{65.8\%}, \color{ironsulf}4.8\%
-          \textcolor{white}{29.4\%}}}
-      \only<2>{\colorbox{lightpurple}{\textcolor{yellow}{59.4\%},
-          \color{ironsulf}7.4\% \textcolor{white}{33.2\%}}}
-      \only<3>{\colorbox{lightpurple}{
-          \textcolor{yellow}{56.1\%}, \color{ironsulf}9.2\%,
-          \textcolor{white}{34.7\%}}}
-    \end{centering}
-    
-    \caption{\only<1>{One dimensional Gaussian
-        density.}\only<2>{Two dimensional Gaussian
-        density.}\only<3>{Three dimensional Gaussian
-        density.}}
-  \end{figure}
-\end{frame}
+* Two dimensional plots of Gaussians can be misleading.
+* Our low dimensional intuitions can fail dramatically. 
+* Two major issues:
+  1. In high dimensions all the data moves to a 'shell'. There is nothing near the mean!
+  2. Distances between points become constant.
+  3. These affects apply to many densities.
+* Let's consider a Gaussian "egg".
 
+\subsection{The Gaussian Egg}
 
+* See also Exercise 1.4 in @Bishop:book95
 
-\begin{frame}
-  \frametitle{Mathematics}
-
-  \textbf{What is the density of probability mass?}
-  \begin{columns}[c]
-    \column{4cm}
-    \only<1-3>{
-      \[
-      y_{i,k}\sim\gaussianSamp 0{\dataStd^{2}}
-      \]
-    }
-    \only<1>{
-      \[
-      \Longrightarrow\dataScalar_{i,k}^{2}\sim\dataStd^{2}\chi_{1}^{2}
-      \]
-    }\only<2>{
-      \[
-      \Longrightarrow\dataScalar_{i,k}^{2}\sim\gammaSamp{\frac{1}{2}}{\frac{1}{2\dataStd^{2}}}
-      \]
-    }\only<3>{
-      \[
-      \Longrightarrow{\color{red}\dataScalar_{i,1}^{2}+\dataScalar_{i,2}^{2}}\sim\gammaSamp{\frac{2}{2}}{\frac{1}{2\dataStd^{2}}}
-      \]
-    }\only<4>{
-      \[
-      \sum_{k=1}^{\dataDim}y_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{1}{2\dataStd^{2}}}
-      \]
-      \[
-      \Longrightarrow\left\langle \sum_{k=1}^{\dataDim}y_{i,k}^{2}\right\rangle =\dataDim\dataStd^{2}
-      \]
-    }\only<5>{
-      \[
-      \frac{1}{\dataDim}\sum_{k=1}^{\dataDim}y_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{\dataDim}{2\dataStd^{2}}}
-      \]
-      \[
-      \Longrightarrow\left\langle \frac{1}{\dataDim}\sum_{k=1}^{\dataDim}y_{i,k}^{2}\right\rangle =\dataStd^{2}
-      \]
-    }
+\figure{\threeColumns{\includediagram{\diagramsDir/one-d-gaussian-no-brown}{100%}}{\includediagram{\diagramsDir/two-d-gaussian-no-brown-2}{100%}}{\includediagram{\diagramsDir/three-d-gaussian-no-brown}{100%}}{30%}{30%}{30%}}{Volumes of Gaussian densities in one, two and three dimensions.}{fig-dimred-one-d-gaussian-no-brown}
 
 
-    \column{4cm}
-    \includegraphics<1-2>[width=3cm]{../../../dimred/tex/diagrams/distance1}
-    \includegraphics<3>[width=3cm]{../../../dimred/tex/diagrams/distance2}
-    \includegraphics<4-5>[width=3cm]{../../../dimred/tex/diagrams/distance}
-  \end{columns}
+One D: \colorbox{lightpurple}{
+        \textcolor{yellow}{65.8\%}, \color{ironsulf}4.8\%
+        \textcolor{white}{29.4\%}}}
+Two D: \colorbox{lightpurple}{\textcolor{yellow}{59.4\%},
+        \color{ironsulf}7.4\% \textcolor{white}{33.2\%}}}
 
-  \begin{center}
-    \only<1>{Square of sample from Gaussian is scaled chi-squared
-      density}
-    \only<2>{Chi squared density is a variant of the gamma
-      density with shape parameter $a=\frac{1}{2}$, rate parameter
-      $b=\frac{1}{2\dataStd^{2}}$, $\gammaDist
-      xab=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}$.}
-    \only<3-4>{Addition
-      of gamma random variables with the same rate is gamma with sum
-      of shape parameters ($y_{i,k}$s are
-      independent)}
-    \only<5>{Scaling of gamma density scales the rate
-      parameter}
-  \end{center}
+Three D: \colorbox{lightpurple}{
+        \textcolor{yellow}{56.1\%}, \color{ironsulf}9.2\%,
+        \textcolor{white}{34.7\%}}}
+ 
+\subsection{Mathematics}
 
-\end{frame}
+**What is the density of probability mass?**
+\begin{columns}[c]
+  \column{4cm}
+  \only<1-3>{
+    \[
+    y_{i,k}\sim\gaussianSamp 0{\dataStd^{2}}
+    \]
+  }
+  \only<1>{
+    \[
+    \Longrightarrow\dataScalar_{i,k}^{2}\sim\dataStd^{2}\chi_{1}^{2}
+    \]
+  }\only<2>{
+    \[
+    \Longrightarrow\dataScalar_{i,k}^{2}\sim\gammaSamp{\frac{1}{2}}{\frac{1}{2\dataStd^{2}}}
+    \]
+  }\only<3>{
+    \[
+    \Longrightarrow{\color{red}\dataScalar_{i,1}^{2}+\dataScalar_{i,2}^{2}}\sim\gammaSamp{\frac{2}{2}}{\frac{1}{2\dataStd^{2}}}
+    \]
+  }\only<4>{
+    \[
+    \sum_{k=1}^{\dataDim}y_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{1}{2\dataStd^{2}}}
+    \]
+    \[
+    \Longrightarrow\left\langle \sum_{k=1}^{\dataDim}y_{i,k}^{2}\right\rangle =\dataDim\dataStd^{2}
+    \]
+  }\only<5>{
+    \[
+    \frac{1}{\dataDim}\sum_{k=1}^{\dataDim}y_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{\dataDim}{2\dataStd^{2}}}
+    \]
+    \[
+    \Longrightarrow\left\langle \frac{1}{\dataDim}\sum_{k=1}^{\dataDim}y_{i,k}^{2}\right\rangle =\dataStd^{2}
+    \]
+  }
+
+  \column{4cm}
+  \includegraphics<1-2>[width=3cm]{../../../dimred/tex/diagrams/distance1}
+  \includegraphics<3>[width=3cm]{../../../dimred/tex/diagrams/distance2}
+  \includegraphics<4-5>[width=3cm]{../../../dimred/tex/diagrams/distance}
+\end{columns}
+
+\begin{center}
+  \only<1>{Square of sample from Gaussian is scaled chi-squared
+    density}
+  \only<2>{Chi squared density is a variant of the gamma
+    density with shape parameter $a=\frac{1}{2}$, rate parameter
+    $b=\frac{1}{2\dataStd^{2}}$, $\gammaDist
+    xab=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}$.}
+  \only<3-4>{Addition
+    of gamma random variables with the same rate is gamma with sum
+    of shape parameters ($y_{i,k}$s are
+    independent)}
+  \only<5>{Scaling of gamma density scales the rate
+    parameter}
+\end{center}
 
 \begin{frame}[fragile]
   \frametitle{Where is the Mass?}
