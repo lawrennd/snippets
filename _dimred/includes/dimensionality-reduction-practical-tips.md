@@ -109,6 +109,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 \includediagram{\diagramsDir/dimred/projection-examples}
 
 \notes{Useful projection strategies:
+
 1. Plot consecutive pairs of dimensions
 2. Project onto principal components
 3. Look at random projections
@@ -120,14 +121,15 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 \notes{Understanding local structure is crucial for many methods:}
 
 \slides{
-* Check k-nearest neighbors
+* Check $k$-nearest neighbors
 * Verify local distances
 * Look for disconnected regions
 * Examine boundary points
 }
 
 \notes{Important neighborhood checks:
-1. Are neighbors sensible for different k values?
+
+1. Are neighbors sensible for different values of $k$?
 2. Are there isolated points or clusters?
 3. Do distances make sense locally?
 4. Are there boundary effects?
@@ -145,6 +147,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 * Assuming linearity}
 
 \notes{Key things to watch out for:
+
 1. Feature scaling can dramatically affect results
 2. Outliers can dominate the analysis
 3. Choice of distance metric matters
@@ -163,6 +166,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 }
 
 \notes{Useful validation approaches:
+
 1. Compare results from different methods
 2. Check if known relationships are preserved
 3. Verify whether the reduction preserves important structure
@@ -181,6 +185,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 * Document choices}
 
 \notes{Follow these steps:
+
 1. Begin with simple methods like PCA
 2. Scale and preprocess data appropriately
 3. Check intermediate results at each step
