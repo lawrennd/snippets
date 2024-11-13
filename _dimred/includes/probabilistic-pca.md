@@ -3,7 +3,64 @@
 
 \editme
 
-\notes{\section{Probabilistic PCA}
+\subsection{Probabilistic PCA}
+
+\slides{
+* Represent data, $\dataMatrix$, with a lower dimensional set of latent variables $\latentMatrix$.
+* Assume a linear relationship of the form
+  $$
+  \dataVector_{i,:}=\mappingMatrix\latentVector_{i,:}+\noiseVector_{i,:},
+  $$
+  where
+  $$
+  \noiseVector_{i,:} \sim \gaussianSamp{\zerosVector}{\noiseStd^2\eye}
+  $$
+}
+
+
+
+\notes{This linear relationship between the observed data and the latent variables is at the heart of Hotelling's original formulation of PCA. It explicitly models the idea that the observed high-dimensional data is generated from a lower-dimensional set of latent variables, with some added noise. This perspective aligns PCA more closely with factor analysis and highlights its nature as a latent variable model.}
+
+\notes{Probabilistic PCA (PPCA) provides a probabilistic interpretation of PCA by explicitly modeling the generative process that creates the observed data. The model assumes that each high-dimensional data point $\dataVector_{i,:}$ is generated from a lower-dimensional latent variable $\latentVector_{i,:}$ through a linear transformation with added Gaussian noise:
+$$
+\dataVector_{i,:} = \mappingMatrix\latentVector_{i,:} + \noiseVector_{i,:}
+$$
+where $\noiseVector_{i,:} \sim \gaussianSamp{\zerosVector}{\noiseStd^2\eye}$ represents isotropic Gaussian noise.
+The model places a standard Gaussian prior over the latent variables:
+$$
+p(\latentVector_{i,:}) = \gaussianDist{\latentVector_{i,:}}{\zerosVector}{\eye}
+$$
+Given these assumptions, the conditional probability of observing a data point given its latent representation is:
+$$
+p(\dataVector_{i,:}|\latentVector_{i,:},\mappingMatrix) = \gaussianDist{\dataVector_{i,:}}{\mappingMatrix\latentVector_{i,:}}{\noiseStd^2\eye}
+$$
+By integrating out the latent variables, we obtain the marginal likelihood of the data:
+$$
+p(\dataVector_{i,:}|\mappingMatrix) = \gaussianDist{\dataVector_{i,:}}{\zerosVector}{\mappingMatrix\mappingMatrix^{\top}+\noiseStd^{2}\eye}
+$$
+This probabilistic formulation, developed by Tipping and Bishop [@Tipping-probpca99], provides a principled framework that not only recovers classical PCA as a special case when $\noiseStd^2 \to 0$, but also enables extensions like handling missing data and mixture models.}
+
+\slides{
+* PPCA defines a probabilistic model where:
+  * Data is generated from latent variables through linear transformation
+  * Gaussian noise is added to the transformed variables
+  * Latent variables have standard Gaussian prior
+* Maximum likelihood recovers classical PCA
+}
+
+\newslide{Graphical model representing probabilistic PCA}
+
+\setupplotcode{from mlai import plot
+import mlai
+from matplotlib import pyplot as plt}
+
+\plotcode{pgm = plot.ppca_graph()
+filename = mlai.filename_join('ppca_graph.svg', directory='\writeDiagramsDir/dimred')
+pgm.render().figure.savefig(filename, transparent=True)}
+
+\figure{\includediagram{\diagramsDir/dimred/ppca_graph}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graph}
+
+\section{Probabilistic PCA}
 
 \notes{In 1997
 [Tipping and Bishop](http://research.microsoft.com/pubs/67218/bishop-ppca-jrss.pdf)
@@ -90,8 +147,7 @@ computation of $\latentMatrix^\top\latentMatrix$ (or in the case of
 \refnotes{nonlinear regression with basis functions}{basis-functions}
 $\boldsymbol{\Phi}^\top\boldsymbol{\Phi}$).}
 
-\notes{
-\section{Posterior for Principal Component Analysis}
+\subsection{Posterior for Principal Component Analysis}
 
 \notes{Under the latent variable model
 justification for principal component analysis, we are normally interested in
@@ -126,7 +182,6 @@ $$
 $$
 }
 
-\notes{
 \writeassignment{Multiply out the terms in the brackets. Then collect
 the quadratic term and the linear terms together. Show that the posterior has
 the form
@@ -145,7 +200,7 @@ $$
 $$
 Compare this to
 the posterior for the Bayesian linear regression from last week, do they have
-similar forms? What matches and what differs?}{30}}
+similar forms? What matches and what differs?}{30}
 
 \notes{\subsection{Python Implementation of the Posterior}}
 
@@ -271,5 +326,33 @@ def posterior(Y, U, ell, sigma2, center=True):
     mu_x = np.dot(Y_cent, U)*d[None, :]
     return mu_x, C_x}
 
+
+\subsection{Scikit-learn implementation PCA}
+
+\notes{We've implemented PCA as part of supporting the learning process, but in practice we can use the `scikit-learn` implementation. Let's try it on the oil flow data.}
+
+\include{_datasets/includes/oil-flow-data.md}
+
+
+\installcode{sklearn}
+
+\setupcode{from sklearn.decomposition import PCA}
+\code{pca = PCA(n_components=2)}
+pca.fit(X)
+X_pca = pca.transform(X)}
+
+\setupplotcode{from matplotlib import pyplot as plt
+import mlai
+from mlai import plot}
+
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
+# Three labels stored in Y
+for i in range(3):
+    ax.scatter(X_pca[y==i, 0], X_pca[y==i, 1], label=f'Label {i}')
+ax.legend()
+
+plot.write_figure("oil-flow-pca-sklearn", directory='\writeDiagramsDir/dimred')}
+
+\figure{\includegraphics[width=0.5\textwidth]{\diagramsDir/dimred/oil-flow-pca_sklearn.svg}}{PCA of the oil flow data.}{oil-flow-pca-sklearn}
 
 \endif

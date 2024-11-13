@@ -44,7 +44,7 @@ Amazon is known for being longer term thinking than many companies, and a lot of
 * Data maturity assessments.
 * Data readiness levels.}
 
-\notes{We need faster, cheaper and more diverse experiments which implies we need better ecosystems for experimentation. This has led us to focus on the software frameworks we're using to develop machine learning systems including data oriented architectures (@Borchert-dataoriented20;@Lawrence-dop19;@Vorhemus-doa17;@Joshi-doa07), data maturity assessments (@Lawrence-maturity20) and data readiness levels (See this \addblog{Data Readiness Levels}{2017/01/12/data-readiness-levels} and @Lawrence-drl17;@Delve-data20)}
+\notes{We need faster, cheaper and more diverse experiments which implies we need better ecosystems for experimentation. This has led us to focus on the software frameworks we're using to develop machine learning systems including data oriented architectures (@Cabrera-realworld23,@Paleyes-challenges22,@Paleyes-flow22,@Borchert-dataoriented20;@Lawrence-dop19;@Vorhemus-doa17;@Joshi-doa07), data maturity assessments (@Lawrence-maturity20) and data readiness levels (See this \addblog{Data Readiness Levels}{2017/01/12/data-readiness-levels} and @Lawrence-drl17;@Delve-data20)}
 
 
 \endif
