@@ -19,7 +19,8 @@
 }
 
 \notes{There are several reasons for this:
-1. It's fast and deterministic
+
+1. It's fast and deterministic (up to reflections)
 2. It provides a baseline for more complex methods
 3. It can reveal linear structure you might have missed
 4. The eigenvalue spectrum gives you information about dimensionality
@@ -37,10 +38,12 @@
 }
 
 \notes{Key patterns to look for:
+
 1. In Gram matrices:
    * Block structure suggests clusters
    * Diagonal dominance suggests noise
    * Banded structure suggests ordering
+     
 2. In distance matrices:
    * Look for natural groupings
    * Check for anomalous distances
@@ -53,17 +56,18 @@
 \setupcode{import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
-from mlai.data import oil_flow
 import mlai}
 
-\code{# Load the oil data
-_, Y = oil_flow()
+\setupcode{import pods}
 
+\include{_datasets/include/oil-flow.md}
+
+\code{# Load the oil data
 # Compute the Gram matrix
-gram = Y @ Y.T
+gram = X @ X.T
 
 # Create a figure with two subplots
-fig = plt.figure(figsize=(12, 5))
+fig = plt.figure(figsize=plot.bigwide_figsize)
 gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
 
 # Plot the Gram matrix
