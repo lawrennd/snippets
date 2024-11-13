@@ -19,7 +19,8 @@
 }
 
 \notes{There are several reasons for this:
-1. It's fast and deterministic
+
+1. It's fast and deterministic (up to reflections)
 2. It provides a baseline for more complex methods
 3. It can reveal linear structure you might have missed
 4. The eigenvalue spectrum gives you information about dimensionality
@@ -37,10 +38,12 @@
 }
 
 \notes{Key patterns to look for:
+
 1. In Gram matrices:
    * Block structure suggests clusters
    * Diagonal dominance suggests noise
    * Banded structure suggests ordering
+     
 2. In distance matrices:
    * Look for natural groupings
    * Check for anomalous distances
@@ -53,17 +56,18 @@
 \setupcode{import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
-from mlai.data import oil_flow
 import mlai}
 
-\code{# Load the oil data
-_, Y = oil_flow()
+\setupcode{import pods}
 
+\include{_datasets/include/oil-flow.md}
+
+\code{# Load the oil data
 # Compute the Gram matrix
-gram = Y @ Y.T
+gram = X @ X.T
 
 # Create a figure with two subplots
-fig = plt.figure(figsize=(12, 5))
+fig = plt.figure(figsize=plot.bigwide_figsize)
 gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
 
 # Plot the Gram matrix
@@ -105,6 +109,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 \includediagram{\diagramsDir/dimred/projection-examples}
 
 \notes{Useful projection strategies:
+
 1. Plot consecutive pairs of dimensions
 2. Project onto principal components
 3. Look at random projections
@@ -116,14 +121,15 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 \notes{Understanding local structure is crucial for many methods:}
 
 \slides{
-* Check k-nearest neighbors
+* Check $k$-nearest neighbors
 * Verify local distances
 * Look for disconnected regions
 * Examine boundary points
 }
 
 \notes{Important neighborhood checks:
-1. Are neighbors sensible for different k values?
+
+1. Are neighbors sensible for different values of $k$?
 2. Are there isolated points or clusters?
 3. Do distances make sense locally?
 4. Are there boundary effects?
@@ -141,6 +147,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 * Assuming linearity}
 
 \notes{Key things to watch out for:
+
 1. Feature scaling can dramatically affect results
 2. Outliers can dominate the analysis
 3. Choice of distance metric matters
@@ -159,6 +166,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 }
 
 \notes{Useful validation approaches:
+
 1. Compare results from different methods
 2. Check if known relationships are preserved
 3. Verify whether the reduction preserves important structure
@@ -177,6 +185,7 @@ mlai.write_figure('matrix-structure.svg', directory='\writeDiagramsDir/dimred')}
 * Document choices}
 
 \notes{Follow these steps:
+
 1. Begin with simple methods like PCA
 2. Scale and preprocess data appropriately
 3. Check intermediate results at each step
