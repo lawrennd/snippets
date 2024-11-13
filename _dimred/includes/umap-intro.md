@@ -15,7 +15,7 @@
 * Supports supervised and semi-supervised learning
 }
 
-\notes{UMAP constructs a weighted graph using fuzzy simplicial sets. For points $\dataVector_i$ and $\dataVector_j$, the weight is:
+\notes{UMAP constructs a weighted graph, for points $\dataVector_i$ and $\dataVector_j$, the weight is:
 
 $$w_{ij} = \exp\left(\frac{-d(\dataVector_i, \dataVector_j) - \rho_i}{\sigma_i}\right)$$
 
