@@ -60,7 +60,7 @@ import mlai}
 
 \setupcode{import pods}
 
-\include{_datasets/include/oil-flow-data.md}
+\include{_datasets/includes/oil-flow-data.md}
 
 \code{# Load the oil data
 # Compute the Gram matrix
