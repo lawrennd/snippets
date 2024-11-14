@@ -1,16 +1,11 @@
-\ifndef{mocapPpca}
-\define{mocapPpca}
+\ifndef{osuRun1Ppca}
+\define{osuRun1Ppca}
 
 \editme
 
 \subsection{Examples: Motion Capture Data}
 
-\notes{For our first example we'll consider some motion capture data of a
-man breaking into a run. [Motion capture data](http://en.wikipedia.org/wiki/Motion_capture) involves capturing a 3-d point cloud to represent a character, often by an underlying skeleton. For this data set, from Ohio State University, we have 54 frame of motion capture, each frame containing 102 values, which are the 3-d locations of 34 different points from the subject's skeleton.}
-
-\setupcode{import pods}
-\code{data = pods.datasets.osu_run1()
-Y = data['Y']}
+\include{_datasets/includes/osu-run1-data.md}
 
 \notes{Once the data is loaded in we can examine the first two principal components as follows,}
 
