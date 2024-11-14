@@ -23,7 +23,7 @@ class1 = (Y[:, 1] == 1).astype(int) * 1
 class2 = (Y[:, 2] == 1).astype(int) * 2
 # Combine into single array of class labels 0,1,2
 data["Y"] = class0 + class1 + class2}
-}
+
 \notes{The data is returned as a dictionary containing training and test inputs ('X', 'Xtst'), training and test labels ('Y', 'Ytst'), and the names of the features.}
 
 
