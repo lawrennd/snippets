@@ -22,7 +22,7 @@ class1 = (Y[:, 1] == 1).astype(int) * 1
 # Find rows with 1 in third column (class 2)
 class2 = (Y[:, 2] == 1).astype(int) * 2
 # Combine into single array of class labels 0,1,2
-data["Y"] = class0 + class1 + class2}
+labels = class0 + class1 + class2}
 
 \notes{The data is returned as a dictionary containing training and test inputs ('X', 'Xtst'), training and test labels ('Y', 'Ytst'), and the names of the features.}
 
@@ -34,7 +34,7 @@ import numpy as np}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 # Plot first two dimensions of the data
-classes = np.unique(data['Y'])
+classes = np.unique(labels)
 colors = ['r', 'g', 'b']
 for i, cls in enumerate(classes):
     idx = data['Y'] == cls
