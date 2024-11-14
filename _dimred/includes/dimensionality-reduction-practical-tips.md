@@ -60,14 +60,14 @@ import mlai}
 
 \setupcode{import pods}
 
+\undef{oilFlowData}
 \include{_datasets/includes/oil-flow-data.md}
-
-\code{# Load the oil data
-# Compute the Gram matrix
+\newslide{Gram Matrix of Oil Flow Data}
+\code{# Compute the Gram matrix
 gram = X @ X.T
 
 # Create a figure with two subplots
-fig = plt.figure(figsize=plot.bigwide_figsize)
+fig = plt.figure(figsize=plot.big_wide_figsize)
 gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
 
 # Plot the Gram matrix
@@ -78,7 +78,7 @@ plt.colorbar(im)
 
 # Plot the first two dimensions of data
 ax1 = plt.subplot(gs[1])
-ax1.scatter(Y[:, 0], Y[:, 1], alpha=0.5)
+ax1.scatter(X[:, 0], X[:, 1], alpha=0.5)
 ax1.set_title('Data Scatter Plot')
 ax1.set_xlabel('Dimension 1')
 ax1.set_ylabel('Dimension 2')

@@ -7,12 +7,16 @@
 
 \notes{We've implemented PCA as part of supporting the learning process, but in practice we can use the `scikit-learn` implementation. Let's try it on the oil flow data.}
 
+
+
+
 \include{_datasets/includes/oil-flow-data.md}
 
 
 \installcode{scikit-learn}
 
 \setupcode{from sklearn.decomposition import PCA}
+
 \code{pca = PCA(n_components=2)
 pca.fit(X)
 X_pca = pca.transform(X)}

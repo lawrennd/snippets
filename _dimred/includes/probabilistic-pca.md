@@ -17,8 +17,6 @@
   $$
 }
 
-
-
 \notes{This linear relationship between the observed data and the latent variables is at the heart of Hotelling's original formulation of PCA. It explicitly models the idea that the observed high-dimensional data is generated from a lower-dimensional set of latent variables, with some added noise. This perspective aligns PCA more closely with factor analysis and highlights its nature as a latent variable model.}
 
 \notes{Probabilistic PCA (PPCA) provides a probabilistic interpretation of PCA by explicitly modeling the generative process that creates the observed data. The model assumes that each high-dimensional data point $\dataVector_{i,:}$ is generated from a lower-dimensional latent variable $\latentVector_{i,:}$ through a linear transformation with added Gaussian noise:
@@ -102,7 +100,7 @@ $$
 $$
 \notes{where $\noiseStd^2$ is the noise variance. Note that
 if $\noiseStd^2$ is larger than any particular eigenvalue, then that eigenvalue
-(along with its corresponding eigenvector) is *discarded* from the solution.}}
+(along with its corresponding eigenvector) is *discarded* from the solution.}
 
 \subsection{PPCA as Manifold Learning}
 
@@ -180,7 +178,6 @@ $$
 :})^\top(\dataVector_{i, :} - \mappingMatrix\latentVector_{i, :}) - \frac{1}{2}
 \latentVector_{i, :}^\top \latentVector_{i, :} + \text{const}
 $$
-}
 
 \writeassignment{Multiply out the terms in the brackets. Then collect
 the quadratic term and the linear terms together. Show that the posterior has
@@ -326,33 +323,244 @@ def posterior(Y, U, ell, sigma2, center=True):
     mu_x = np.dot(Y_cent, U)*d[None, :]
     return mu_x, C_x}
 
+\include{_dimred/includes/oil-flow-sklearn-pca.md}
 
-\subsection{Scikit-learn implementation PCA}
+\endif
+```python
+mu_x, C_x = posterior(Y, W, sigma2)
+```
+where `mu_x` and `C_x` are the posterior mean and
+posterior covariance for the given $\dataMatrix$. 
 
-\notes{We've implemented PCA as part of supporting the learning process, but in practice we can use the `scikit-learn` implementation. Let's try it on the oil flow data.}
+Don't forget to subtract the
+mean of the data `Y` inside your function before computing the posterior:
+remember we assumed at the beginning of our analysis that the data had been
+centred (i.e. the mean was removed).}{# Answer Code
+# Write code for you answer to this exercise in this box
+# Do not delete these comments, otherwise you will get zero for this answer.
+# Make sure your code has run and the answer is correct *before* submitting your notebook for marking.
+import numpy as np
+import scipy as sp
+def posterior(Y, W, sigma2):
+    Y_cent = Y - Y.mean(0)
+    # Compute posterior over X
+    C_x = 
+    mu_x = 
+    return mu_x, C_x}{20}}
 
-\include{_datasets/includes/oil-flow-data.md}
+\notes{\subsection{Numerically Stable and Efficient Version}}
 
+\notes{Just as we saw for \refnotes{linear
+regression}{linear-regression} and \refnotes{regression with basis functions}{basis-functions}
+computation of a matrix such as $\dataMatrix^\top\dataMatrix$ (or its centred
+version) can be a bad idea in terms of loss of numerical accuracy. Fortunately,
+we can find the eigenvalues and eigenvectors of the matrix
+$\dataMatrix^\top\dataMatrix$ without direct computation of the matrix. This can
+be done with the [*singular value
+decomposition*](http://en.wikipedia.org/wiki/Singular_value_decomposition). The
+singular value decompsition takes a matrix, $\mathbf{Z}$ and represents it in
+the form,
+$$
+\mathbf{Z} = \mathbf{U}\boldsymbol{\Lambda}\mathbf{V}^\top
+$$
+where
+$\mathbf{U}$ is a matrix of orthogonal vectors in the columns, meaning
+$\mathbf{U}^\top\mathbf{U} = \eye$. It has the same number of rows and
+columns as $\mathbf{Z}$. The matrices $\mathbf{\Lambda}$ and $\mathbf{V}$ are
+both square with dimensionality given by the number of columns of $\mathbf{Z}$.
+The matrix $\mathbf{\Lambda}$ is *diagonal* and $\mathbf{V}$ is an orthogonal
+matrix so $\mathbf{V}^\top\mathbf{V} = \mathbf{V}\mathbf{V}^\top = \eye$.
+The eigenvalues of the matrix $\dataMatrix^\top\dataMatrix$ are then given by the
+singular values of the matrix $\dataMatrix^\top$ squared and the eigenvectors are
+given by $\mathbf{U}$.}
 
-\installcode{sklearn}
+\notes{\subsection{Solution for $\mappingMatrix$}}
 
-\setupcode{from sklearn.decomposition import PCA}
-\code{pca = PCA(n_components=2)}
-pca.fit(X)
-X_pca = pca.transform(X)}
+\notes{Given the singular value
+decomposition of $\dataMatrix$ then we have
+$$
+\mappingMatrix =
+\mathbf{U}\mathbf{L}\mathbf{R}^\top
+$$
+where $\mathbf{R}$ is an arbitrary
+rotation matrix. This implies that the posterior is given by
+$$
+\covarianceMatrix_x =
+\left[\noiseStd^{-2}\mathbf{R}\mathbf{L}^2\mathbf{R}^\top + \eye\right]^{-1}
+$$
+because $\mathbf{U}^\top \mathbf{U} = \eye$. Since, by convention, we
+normally take $\mathbf{R} = \eye$ to ensure that the principal components
+are orthonormal we can write
+$$
+\covarianceMatrix_x = \left[\noiseStd^{-2}\mathbf{L}^2 +
+\eye\right]^{-1}
+$$
+which implies that $\covarianceMatrix_x$ is actually diagonal
+with elements given by
+$$
+c_i = \frac{\noiseStd^2}{\noiseStd^2 + \ell^2_i}
+$$
+and
+allows us to write
+$$
+\meanVector_x = [\mathbf{L}^2 + \noiseStd^2
+\eye]^{-1} \mathbf{L} \mathbf{U}^\top \dataVector_{i, :}
+$$
+$$
+\meanVector_x = \mathbf{D}\mathbf{U}^\top \dataVector_{i, :}
+$$
+where $\mathbf{D}$ is a diagonal matrix with diagonal elements given
+by $d_{i} = \frac{\ell_i}{\noiseStd^2 + \ell_i^2}$.}
 
-\setupplotcode{from matplotlib import pyplot as plt
-import mlai
-from mlai import plot}
+\setupcode{import scipy as sp
+import numpy as np}
+\code{# probabilistic PCA algorithm using SVD
+def ppca(Y, q, center=True):
+    """Probabilistic PCA through singular value decomposition"""
+    # remove mean
+    if center:
+        Y_cent = Y - Y.mean(0)
+    else:
+        Y_cent = Y
+        
+    # Comute singluar values, discard 'R' as we will assume orthogonal
+    U, sqlambd, _ = sp.linalg.svd(Y_cent.T,full_matrices=False)
+    lambd = (sqlambd**2)/Y.shape[0]
+    # Compute residual and extract eigenvectors
+    sigma2 = np.sum(lambd[q:])/(Y.shape[1]-q)
+    ell = np.sqrt(lambd[:q]-sigma2)
+    return U[:, :q], ell, sigma2
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-# Three labels stored in Y
-for i in range(3):
-    ax.scatter(X_pca[y==i, 0], X_pca[y==i, 1], label=f'Label {i}')
-ax.legend()
+def posterior(Y, U, ell, sigma2, center=True):
+    """Posterior computation for the latent variables given the eigendecomposition."""
+    if center:
+        Y_cent = Y - Y.mean(0)
+    else:
+        Y_cent = Y
+    C_x = np.diag(sigma2/(sigma2+ell**2))
+    d = ell/(sigma2+ell**2)
+    mu_x = np.dot(Y_cent, U)*d[None, :]
+    return mu_x, C_x}
 
-plot.write_figure("oil-flow-pca-sklearn", directory='\writeDiagramsDir/dimred')}
+\include{_dimred/includes/oil-flow-sklearn-pca.md}
 
-\figure{\includegraphics[width=0.5\textwidth]{\diagramsDir/dimred/oil-flow-pca_sklearn.svg}}{PCA of the oil flow data.}{oil-flow-pca-sklearn}
+\endif
+```python
+mu_x, C_x = posterior(Y, W, sigma2)
+```
+where `mu_x` and `C_x` are the posterior mean and
+posterior covariance for the given $\dataMatrix$. 
+
+Don't forget to subtract the
+mean of the data `Y` inside your function before computing the posterior:
+remember we assumed at the beginning of our analysis that the data had been
+centred (i.e. the mean was removed).}{# Answer Code
+# Write code for you answer to this exercise in this box
+# Do not delete these comments, otherwise you will get zero for this answer.
+# Make sure your code has run and the answer is correct *before* submitting your notebook for marking.
+import numpy as np
+import scipy as sp
+def posterior(Y, W, sigma2):
+    Y_cent = Y - Y.mean(0)
+    # Compute posterior over X
+    C_x = 
+    mu_x = 
+    return mu_x, C_x}{20}}
+
+\notes{\subsection{Numerically Stable and Efficient Version}}
+
+\notes{Just as we saw for \refnotes{linear
+regression}{linear-regression} and \refnotes{regression with basis functions}{basis-functions}
+computation of a matrix such as $\dataMatrix^\top\dataMatrix$ (or its centred
+version) can be a bad idea in terms of loss of numerical accuracy. Fortunately,
+we can find the eigenvalues and eigenvectors of the matrix
+$\dataMatrix^\top\dataMatrix$ without direct computation of the matrix. This can
+be done with the [*singular value
+decomposition*](http://en.wikipedia.org/wiki/Singular_value_decomposition). The
+singular value decompsition takes a matrix, $\mathbf{Z}$ and represents it in
+the form,
+$$
+\mathbf{Z} = \mathbf{U}\boldsymbol{\Lambda}\mathbf{V}^\top
+$$
+where
+$\mathbf{U}$ is a matrix of orthogonal vectors in the columns, meaning
+$\mathbf{U}^\top\mathbf{U} = \eye$. It has the same number of rows and
+columns as $\mathbf{Z}$. The matrices $\mathbf{\Lambda}$ and $\mathbf{V}$ are
+both square with dimensionality given by the number of columns of $\mathbf{Z}$.
+The matrix $\mathbf{\Lambda}$ is *diagonal* and $\mathbf{V}$ is an orthogonal
+matrix so $\mathbf{V}^\top\mathbf{V} = \mathbf{V}\mathbf{V}^\top = \eye$.
+The eigenvalues of the matrix $\dataMatrix^\top\dataMatrix$ are then given by the
+singular values of the matrix $\dataMatrix^\top$ squared and the eigenvectors are
+given by $\mathbf{U}$.}
+
+\notes{\subsection{Solution for $\mappingMatrix$}}
+
+\notes{Given the singular value
+decomposition of $\dataMatrix$ then we have
+$$
+\mappingMatrix =
+\mathbf{U}\mathbf{L}\mathbf{R}^\top
+$$
+where $\mathbf{R}$ is an arbitrary
+rotation matrix. This implies that the posterior is given by
+$$
+\covarianceMatrix_x =
+\left[\noiseStd^{-2}\mathbf{R}\mathbf{L}^2\mathbf{R}^\top + \eye\right]^{-1}
+$$
+because $\mathbf{U}^\top \mathbf{U} = \eye$. Since, by convention, we
+normally take $\mathbf{R} = \eye$ to ensure that the principal components
+are orthonormal we can write
+$$
+\covarianceMatrix_x = \left[\noiseStd^{-2}\mathbf{L}^2 +
+\eye\right]^{-1}
+$$
+which implies that $\covarianceMatrix_x$ is actually diagonal
+with elements given by
+$$
+c_i = \frac{\noiseStd^2}{\noiseStd^2 + \ell^2_i}
+$$
+and
+allows us to write
+$$
+\meanVector_x = [\mathbf{L}^2 + \noiseStd^2
+\eye]^{-1} \mathbf{L} \mathbf{U}^\top \dataVector_{i, :}
+$$
+$$
+\meanVector_x = \mathbf{D}\mathbf{U}^\top \dataVector_{i, :}
+$$
+where $\mathbf{D}$ is a diagonal matrix with diagonal elements given
+by $d_{i} = \frac{\ell_i}{\noiseStd^2 + \ell_i^2}$.}
+
+\setupcode{import scipy as sp
+import numpy as np}
+\code{# probabilistic PCA algorithm using SVD
+def ppca(Y, q, center=True):
+    """Probabilistic PCA through singular value decomposition"""
+    # remove mean
+    if center:
+        Y_cent = Y - Y.mean(0)
+    else:
+        Y_cent = Y
+        
+    # Comute singluar values, discard 'R' as we will assume orthogonal
+    U, sqlambd, _ = sp.linalg.svd(Y_cent.T,full_matrices=False)
+    lambd = (sqlambd**2)/Y.shape[0]
+    # Compute residual and extract eigenvectors
+    sigma2 = np.sum(lambd[q:])/(Y.shape[1]-q)
+    ell = np.sqrt(lambd[:q]-sigma2)
+    return U[:, :q], ell, sigma2
+
+def posterior(Y, U, ell, sigma2, center=True):
+    """Posterior computation for the latent variables given the eigendecomposition."""
+    if center:
+        Y_cent = Y - Y.mean(0)
+    else:
+        Y_cent = Y
+    C_x = np.diag(sigma2/(sigma2+ell**2))
+    d = ell/(sigma2+ell**2)
+    mu_x = np.dot(Y_cent, U)*d[None, :]
+    return mu_x, C_x}
+
+\include{_dimred/includes/oil-flow-sklearn-pca.md}
 
 \endif
