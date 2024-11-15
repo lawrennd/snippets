@@ -95,18 +95,17 @@ without bugs in the first place.}
   * Integrate the data analysis with other team activities
     * Have software engineers and domain experts work closely with data scientists}
 
-\notes{1. When you begin an analysis, behave as a debugger.
-  * Write test code as you go. Document those tests and ensure they are accessible by others.
-  * Understand the landscape of your data. Be prepared to try several different approaches to the data set.
-  * Be constantly skeptical.
-  * Use the best tools available, develop a deep understand how they work.
-  * Share your experience of what challenges you’re facing. Have others (software engineers, fellow data analysts, your manager) review your work.
-  * Never go straight for the goal: you’d never try and write the API call straight away on the discarded hard drive, so why are you launching your classification algorithm before visualizing the data?
-  * Ensure your analysis is documented and accessible. If your code does go wrong in production, you’ll need to be able to retrace to where the error crept in.
-2. When managing the data science process, don’t treat it as standard code development.
-  * Don’t deploy a traditional agile development pipeline and expect it to work the same way it does for standard code development. Think about how you handle bugs, think about how you would handle very many bugs.
-  * Don’t leave the data scientist alone to wade through the mess.
-  * Integrate the data analysis with your other team activities. Have the software engineers and domain experts work closely with the data scientists. This is vital for providing the data scientists with the technical support they need, but also managing the expectations of the engineers in terms of when and how the data will be able to deliver.}
+\notes{When you begin a data analysis approach it with the mindset of a debugger: write test code continuously as you go through your analysis, ensure that the tests are documented and accessible to those who need to review or build upon your work.
+
+Take time to thouroughly understand the context of your data before diving in. Expore multiple approaches and continually revisit your initial assumptions. Maintain a healtky skepticism about your results through the process and proactively explore potential issues or inconsistencies in the data.
+
+Leverage the best tools available and develop a deep understanding of how they work. Don't just treat the tools as black boxes, develop your understanding of tehri strengths, limmitations and appropriate use. Share challenges you are facing and progress you are making with colleagues. Seek regular views from business stakholders, software engineers, fellow data scientists and managers. Bringing in their different perspectives can help identify potential issues early.
+
+Don't rush to implementing your end-solution. Just as you wouldn't immediately write an API call for unknown code you've found on a discarded USB code, you shouldn't jump straght into running complex classsification algorithms before gaining an intuition for your data through some basic visualisation and ohter tests. The documentation of the analysis process should be such that if issues do arise in production the documentation can be used to support tracing back to where the problems have originated and rapidly rectifying them. 
+
+Always remember that the data science process differs fundamentally from standard software development, so traditional agile development pipelines may not be appropriate. You have to adapt your processes to handle inherrent uncertainty and accomidate the iterative and recursive nature of data science work. Think carefully about how you will handle not just individual bugs but systematic issues that may emerge from your data.
+
+Don't work in isolation, the complexity of data work means that close collaboration with domain experts, software engineers and other data scientists is essention. The collaboration serves multiple purposes: it provides you with the necessary technical support, helps maintain realistic expectations among stakeholders in terms of both outcome and delivery time lines. And it ensures that the solutions developed actually address the underlying business problem. }
 
 \recommendation{Anecdotally, resolving a machine learning challenge
 requires 80% of the resource to be focused on the data and perhaps 20%
