@@ -74,11 +74,11 @@ mlai.write_figure("google-trends-poisson-predictions.svg", "\writeDiagramsDir/ml
 
 \newslide{Google Trends Search Queries}
 
-\figure{\includediagrams{\diagramsDir/ml/google-trends-poisson.svg}{80%}}{Google Trends Search Queries for Xbox One, Wii U, and PS4.}{google-trends-poisson}
+\figure{\includediagram{\diagramsDir/ml/google-trends-poisson.svg}{80%}}{Google Trends Search Queries for Xbox One, Wii U, and PS4.}{google-trends-poisson}
 
 \newslide{Google Trends Search Queries Predictions}
 
-\figure{\includediagrams{\diagramsDir/ml/google-trends-poisson-predictions.svg}{80%}}{Google Trends Search Queries for Xbox One, Wii U, and PS4.}{google-trends-poisson-predictions}
+\figure{\includediagram{\diagramsDir/ml/google-trends-poisson-predictions.svg}{80%}}{Google Trends Search Queries for Xbox One, Wii U, and PS4.}{google-trends-poisson-predictions}
 
 \newslide{Synthetic Example}
 
@@ -128,6 +128,6 @@ mlai.write_figure("poisson-regression-diagnostics.svg", "\writeDiagramsDir/ml/")
 
 \newslide{Poisson Regression Diagnostics}
 
-\figure{\includediagrams{\diagramsDir/ml/poisson-regression-diagnostics.svg}{80%}}{Diagnostic plots for the Poisson regression model showing actual vs predicted counts and residual analysis.}{poisson-regression-diagnostics}
+\figure{\includediagram{\diagramsDir/ml/poisson-regression-diagnostics.svg}{80%}}{Diagnostic plots for the Poisson regression model showing actual vs predicted counts and residual analysis.}{poisson-regression-diagnostics}
 
 \endif
