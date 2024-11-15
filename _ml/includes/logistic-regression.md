@@ -25,8 +25,11 @@ assumption is that we model the *log-odds* with the basis functions.}
 
 \notes{The [odds](http://en.wikipedia.org/wiki/Odds) are defined as
 the ratio of the probability of a positive outcome, to the probability
-of a negative outcome. If the probability of a positive outcome is
-denoted by $\pi$, then the odds are computed as
+of a negative outcome. Just as we saw in our jumper (sweater) example where:
+
+$$ \log \frac{p(\text{bought})}{p(\text{not bought})} = \weightScalar_0 + \weightScalar_1 \text{age} + \weightScalar_2 \text{latitude} $$
+
+If the probability of a positive outcome is denoted by $\pi$, then the odds are computed as
 $\frac{\pi}{1-\pi}$. Odds are widely used by
 [bookmakers](http://en.wikipedia.org/wiki/Bookmaker) in gambling,
 although a bookmakers odds won't normalise: i.e. if you look at the
