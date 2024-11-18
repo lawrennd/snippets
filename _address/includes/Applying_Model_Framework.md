@@ -54,8 +54,7 @@ plt.scatter(x_values, age_df.loc['Cambridge'], label='Cambridge')
 plt.legend()
 plt.show()}
 
-\notes{Now try to use the framework that we have derived to explain the two data-sets above. There is no right or wrong answer here, what we are looking for is a motivation of why you have made the choices that you have made
-and how this effects the conclusions that you can draw.}
+\notes{Now try to use the framework that we have derived to explain the two data-sets above. There is no right or wrong answer here, what we are looking for is a motivation of why you have made the choices that you have madeand how this effects the conclusions that you can draw.}
 
 \exercise{Would it make sense to split up the data-set in different regions and fit separate models If so, what is the criteria that you split the data using?}
 

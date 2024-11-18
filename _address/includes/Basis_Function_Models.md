@@ -161,16 +161,4 @@ plt.show()}
 
 \notes{As you can see from the the last example if we have multiple possible explanations we end up with a model where there are several symmetric explanations that cannot be differentiated under the objective function. To overcome we have to encode a *preference* to the solution we want.}  
 
-\exercise{What happens if you expand the design matrix with a `sin(x**2/20)` and a `sin(x**3)` term? Why do you get the results that you get?}
-
-\notes{Let's say we create a design matrix as follows:}
-
-$$
-y = \beta_0 \sin(x) + \beta_1 \sin\left(\frac{x^2}{40}\right) + \beta_2 x + \beta_0(-\sin(x)).
-$$
-
-\exercise{What happens if you create the above design matrix and fit a linear model to the data? What do you observe?}
-
-\exercise{Explain why you get the coefficients you do.}
-
 \endif
