@@ -175,10 +175,6 @@ space = ParameterSpace(
            ContinuousParameter('velocity_parameter', *velocity_domain),
            ContinuousParameter('constant', *constant_domain)])}
 
-<!--\code{space= [{'name':'linear_1', 'type':'continuous', 'domain':(-1/1.2, +1)},
-        {'name':'linear_2', 'type':'continuous', 'domain':(-1/0.07, +1/0.07)},
-        {'name':'constant', 'type':'continuous', 'domain':(-1, +1)}]-->
-
 \setupcode{from emukit.core.initial_designs import RandomDesign}
 
 \code{design = RandomDesign(space)
