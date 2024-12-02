@@ -12,15 +12,20 @@ extends the linear basis function models we've already
 explored. Rather than modeling the output of the function directly the
 assumption is that we model the *log-odds* with the basis functions.}
 
-\newslide{Logistic Regression and GLMs}
+\newslide{Logistic Regression and GLMs - 1}
 
 \slides{
-* Modelling entire density allows any question to be answered (also missing data).
-* Comes at the possible expense of *strong* assumptions about data generation distribution.
-* In regression we model probability of $\dataScalar_i |\inputVector_i$ directly.
-  * **Allows less flexibility in the question, but more flexibility in the model assumptions.**
-* Can do this not just for regression, but classification.
-* Framework is known as *generalized linear models*.
+* Modelling entire density allows any question to be answered
+* Also handles missing data
+* Comes at possible expense of *strong* assumptions about data generation distribution
+}
+
+\newslide{Logistic Regression and GLMs - 2}
+
+\slides{
+* In regression we model probability of $\dataScalar_i |\inputVector_i$ directly
+* Allows less flexibility in questions, but more flexibility in model assumptions
+* Framework known as *generalized linear models*
 }
 
 \notes{The [odds](http://en.wikipedia.org/wiki/Odds) are defined as
@@ -50,15 +55,22 @@ known as the [logit function](http://en.wikipedia.org/wiki/Logit),
 $g^{-1}(p_i) = \log\frac{p_i}{1-p_i}$. This function is known as a
 *link function*.}
 
-\newslide{Log Odds}
+\newslide{Log Odds - 1}
 \slides{
-* model the *log-odds* with the basis functions.
-* [odds](http://en.wikipedia.org/wiki/Odds) are defined as the ratio of the
-probability of a positive outcome, to the probability of a negative outcome. 
-* Probability is between zero and one, odds are:
-  $$ \frac{\pi}{1-\pi} $$
-* Odds are between $0$ and $\infty$. 
-* Logarithm of odds maps them to $-\infty$ to $\infty$.
+* Model the *log-odds* with basis functions
+* [Odds](http://en.wikipedia.org/wiki/Odds) are ratio of probability of positive vs negative outcome
+}
+
+\newslide{Log Odds - 2} 
+\slides{
+* Probability is between zero and one
+* Odds are: $$ \frac{\pi}{1-\pi} $$
+}
+
+\newslide{Log Odds - 3}
+\slides{
+* Odds are between $0$ and $\infty$
+* Logarithm of odds maps them to $-\infty$ to $\infty$
 }
 
 \notes{For a standard regression we take,
@@ -88,39 +100,34 @@ $$
 \basisVector(\inputVector)).
 $$}
 
-\newslide{Logit Link Function}
+\newslide{Logit Link Function - 1}
 \slides{
-* The [Logit function](http://en.wikipedia.org/wiki/Logit), $$g^{-1}(\pi_i) = \log\frac{\pi_i}{1-\pi_i}.$$ This function is known as a *link function*.
-* For a standard regression we take,
-  $$f(\inputVector_i) = \mappingVector^\top \basisVector(\inputVector_i),$$
-* For classification we perform a logistic regression. 
-  $$\log \frac{\pi_i}{1-\pi_i} = \mappingVector^\top \basisVector(\inputVector_i)$$
+* The [Logit function](http://en.wikipedia.org/wiki/Logit) is our link function
+* $$g^{-1}(\pi_i) = \log\frac{\pi_i}{1-\pi_i}$$
 }
 
-\newslide{Inverse Link Function}
+\newslide{Logit Link Function - 2}
 \slides{
-We have defined the link function as taking the form $g^{-1}(\cdot)$ implying that the inverse link function is given by $g(\cdot)$. Since we have defined,
-$$
-g^{-1}(\pi(\inputVector)) = \mappingVector^\top\basisVector(\inputVector)
-$$
-we can write $\pi$ in terms of the *inverse link* function, $g(\cdot)$ as 
-$$
-\pi(\inputVector) = g(\mappingVector^\top\basisVector(\inputVector)).
-$$
+* For standard regression:
+* $$f(\inputVector_i) = \mappingVector^\top \basisVector(\inputVector_i)$$
 }
 
 \setupplotcode{import mlai.plot as plot}
 
 \plotcode{plot.logistic('\writeDiagramsDir/ml/logistic.svg')}
 
-\newslide{Logistic function}
+\newslide{Logistic function - 3}
 \slides{
 * [Logistic](http://en.wikipedia.org/wiki/Logistic_function) (or sigmoid) squashes
 real line to between 0  & 1. Sometimes also called a 'squashing function'.
 \includediagram{\diagramsDir/ml/logistic}
 }
+\newslide{Logistic funciton - 4}
 
-\subsection{Basis Function}
+\slides{
+* For classification (logistic regression):
+* $$\log \frac{\pi_i}{1-\pi_i} = \mappingVector^\top \basisVector(\inputVector_i)$$
+}
 
 \notes{We'll define our prediction, objective and gradient functions below. But before we start, we need to define a basis function for our model. Let's start with the linear basis.
 

@@ -48,37 +48,9 @@ This formulation is known as a log-linear or log-additive model because we're ad
 
 This multiplicative nature has important implications for interpretation. For example, if we increase one input variable, it has a multiplicative effect on the rate, not an additive one. This can lead to rapid growth in the predicted counts as input values increase.}
 
-\setupcode{import pods
-import statsmodels.api as sm}
 
-\code{data = pods.datasets.google_trends(['xbox one', 'wii u', 'ps4'])
-x = data['X']
-y = data['Y']
-model = sm.GLM(y, sm.add_constant(x), family=sm.families.Poisson())
-result = model.fit()}
 
-\notes{The `statsmodels` library in Python provides a convenient way to fit Poisson regression models. The `sm.GLM` function is used to fit generalized linear models, and we specify the Poisson family to indicate that we're modeling count data. The `sm.add_constant(x)` function adds a column of ones to the design matrix to account for the intercept term.}
 
-\setupplotcode{import matplotlib.pyplot as plt
-import mlai
-from mlai import plot}
-
-\plotcode{fig, ax = plt.subplots(figsize=mlai.plot.big_wide_figsize)
-plot.scatter(x, y, ax=ax)
-ax.set_xlabel('Time')
-ax.set_ylabel('Search Queries')
-plt.show()
-mlai.write_figure("google-trends-poisson.svg", "\writeDiagramsDir/ml/")
-plot.scatter(x, result.predict(sm.add_constant(x)), ax=ax)
-mlai.write_figure("google-trends-poisson-predictions.svg", "\writeDiagramsDir/ml/")}
-
-\newslide{Google Trends Search Queries}
-
-\figure{\includediagram{\diagramsDir/ml/google-trends-poisson.svg}{80%}}{Google Trends Search Queries for Xbox One, Wii U, and PS4.}{google-trends-poisson}
-
-\newslide{Google Trends Search Queries Predictions}
-
-\figure{\includediagram{\diagramsDir/ml/google-trends-poisson-predictions.svg}{80%}}{Google Trends Search Queries for Xbox One, Wii U, and PS4.}{google-trends-poisson-predictions}
 
 \newslide{Synthetic Example}
 
@@ -102,7 +74,10 @@ y = np.random.poisson(lambda_true)
 model_synthetic = sm.GLM(y, sm.add_constant(X), family=sm.families.Poisson())
 result_synthetic = model_synthetic.fit()}
 
-\notes{In this synthetic example, we generate count data that follows a Poisson distribution where the rate parameter λ depends on two predictor variables. This demonstrates how Poisson regression can model count data with multiple predictors.}
+\notes{The `statsmodels` library in Python provides a convenient way to fit Poisson regression models. The `sm.GLM` function is used to fit generalized linear models, and we specify the Poisson family to indicate that we're modeling count data. The `sm.add_constant(x)` function adds a column of ones to the design matrix to account for the intercept term.}
+
+
+\notes{In this synthetic example, we generate count data that follows a Poisson distribution where the rate parameter $\lambda$ depends on two predictor variables. This demonstrates how Poisson regression can model count data with multiple predictors.}
 
 \plotcode{fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
@@ -124,7 +99,7 @@ ax2.set_title('Residual Plot')
 
 plt.tight_layout()
 plt.show()
-mlai.write_figure("poisson-regression-diagnostics.svg", "\writeDiagramsDir/ml/")}
+mlai.write_figure("poisson-regression-diagnostics.svg", directory="\writeDiagramsDir/ml/")}
 
 \newslide{Poisson Regression Diagnostics}
 

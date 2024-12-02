@@ -19,22 +19,23 @@ Humans seem to have a natural affinity for discrete clustering approaches. This 
 
 \newslide{Clustering vs Vector Quantisation}
 
-* Clustering expects gaps between groups in data density
+\slides{* Clustering expects gaps between groups in data density
 * Vector quantization may not require density gaps
 * For practical purposes, both involve:
   * Allocating points to groups
   * Determining optimal number of groups
+}
 
 \notes{There is a subtle but important distinction between clustering and vector quantisation. In true clustering, we typically expect to see reductions in data density between natural groups - essentially, gaps in the data that separate different clusters. This definition isn't universally applied though, and vector quantization may partition data without requiring such density gaps. For our current discussion, we'll treat them similarly, focusing on the common challenges they share: how to allocate points to groups and, more challengingly, how to determine the optimal number of groups.}
 
 \newslide{$k$-means Clustering}
 
-* Simple iterative clustering algorithm
+\slides{* Simple iterative clustering algorithm
 * Key steps:
   1. Initialize with random centers
   2. Assign points to nearest center
   3. Update centers as cluster means
-  4. Repeat until stable
+  4. Repeat until stable}
 
 \notes{The $k$-means algorithm provides a straightforward approach to clustering data. It requires two key elements: a set of $k$ cluster centres and a way to assign each data point to a cluster. The algorithm follows a simple iterative process:
 
@@ -47,12 +48,12 @@ This process is intuitive and relatively easy to implement, though it comes with
 
 \newslide{Objective Function}
 
-* Minimizes sum of squared distances:
+\slides{* Minimizes sum of squared distances:
   $$
   E=\sum_{j=1}^K \sum_{i\ \text{allocated to}\ j}  \left(\dataVector_{i, :} - \meanVector_{j, :}\right)^\top\left(\dataVector_{i, :} - \meanVector_{j, :}\right)
   $$
 * Solution not guaranteed to be global or unique
-* Represents a non-convex optimization problem
+* Represents a non-convex optimization problem}
 
 \notes{The $k$-means algorithm works by minimizing an objective function that measures the sum of squared Euclidean distances between each point and its assigned cluster center. This objective function can be written mathematically as shown above, where $\meanVector_{j, :}$ represents the mean of cluster $j$.
 
@@ -155,9 +156,9 @@ mlai.write_figure("cluster_data01.svg", directory="\writeDiagramsDir/ml/")}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('cluster_data{counter:0>2}.svg', directory='\writeDiagramsDir/ml', counter=(0, 1))}
 
+\newslide{Task}
 
-\slides{
-* *Task*: associate data points with different labels.
+\slides{* *Task*: associate data points with different labels.
 * Labels are *not* provided by humans.
 * Process is intuitive for humans - we do it naturally.}
 
@@ -286,11 +287,13 @@ dendrogram(linked,
            orientation='top',
            distance_sort='descending',
            show_leaf_counts=True,
-           labels=[f'Class {y}' for y in Y],
+           leaf_rotation=45,  # Rotate labels
+           leaf_font_size=8,  # Reduce font size
            ax=ax)
 ax.set_title('Hierarchical Clustering of Oil Flow Data')
 ax.set_xlabel('Sample Index')
 ax.set_ylabel('Distance')
+plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels
 plt.tight_layout()
 mlai.write_figure('hierarchical-clustering-oil.svg', directory='\writeDiagramsDir/dimred')}
 

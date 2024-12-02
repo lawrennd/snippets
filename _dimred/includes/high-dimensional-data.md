@@ -68,7 +68,8 @@ import notutils as nu}
 \installcode{scikit-image}
 \setupplotcode{from skimage.transform import rotate}
 
-\plotcode{six_image = mlai.load_pgm('br1561_6.3.pgm', directory ='\writeDiagramsDir/ml')
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
+six_image = mlai.load_pgm('br1561_6.3.pgm', directory ='\writeDiagramsDir/ml')
 six_image = np.hstack([np.zeros((rows, 3)), six_image, np.zeros((rows, 4))])
 dim_one = np.asarray(six_image.shape)
 angles = range(360)
