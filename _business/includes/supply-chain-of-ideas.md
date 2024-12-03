@@ -16,7 +16,7 @@
 \newslide{Supply Chain of Ideas}
 
 \slides{* Current imbalance between supply and demand sides
-* Over-focus on creating new technologies
+* Current focus on creating new technologies/companies
 * Under-focus on real-world needs}
 
 \notes{Imagining the supply chain rather than just the notion of the Innovation Economy allows the conceptualisation of the gaps between macro and micro economic issues, enabling a different way of thinking about process innovation.}

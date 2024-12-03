@@ -7,7 +7,7 @@
 
 \figure{\includepng{\diagramsDir/accelerate/accelerate-website}{70%}}{The Accelerate Programme for Scientific Discovery covers research, education and training, engagement. Our aim is to bring about a step change in scientific discovery through AI. <http://science.ai.cam.ac.uk>}{accelerate-website}
 
-\newslide{}
+\newslide{The Accelerate Programme}
 
 \slides{* Research
 * Teaching and learning
@@ -43,7 +43,7 @@ sciences and humanities.}
 
 * Created a research agenda and roadmap for the development of AI in science. 
 
-* Funded 9 interdisciplinary projects:
+* Funded interdisciplinary projects, e.g. in first round:
 
   * Antimicrobial resistance in farming
 
@@ -75,11 +75,8 @@ learning in their work. }
 Teaching and learning
 
 * Brought over 250 participants from over 30 departments through tailored data science and machine learning for science training (Data Science Residency and Machine Learning Academy);
-
 * Convened workshops with over 80 researchers across the University on the development of data pipelines for science;
-
 * Delivered University courses to over 100 students in Advanced Data Science and Machine Learning and the Physical World.
-
 * Online training course in Python and Pandas accessed by over 380 researchers.
 }
 
@@ -93,11 +90,8 @@ variety of events and activities in support of this.}
 \notes{Progress so far includes:
 
 * Launched a Machine Learning Engineering Clinic that has supported over 40 projects across the University with MLE troubleshooting and advice;
-
 * Hosted and participated in events reaching over 300 people in Cambridge;
-
 * Led international workshops at Dagstuhl and Oberwolfach, convening over 60 leading researchers;
-
 * Engaged over 70 researchers through outreach sessions and workshops with the School of Clinical Medicine, the Faculty of Education, Cambridge Digital Humanities and the School of Biological Sciences.  }
 
 
