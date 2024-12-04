@@ -7,12 +7,18 @@
 \editme
 
 \subsection{Experimental Design for the Catapult}
-\slides{* First build an experimental design loop.
-* Start with model free design.
-    * Random design
-	* Latin hypercube sambling
-	* Sobol sequences
-	* Orthogonal design}
+\slides{* First build an experimental design loop
+* Start with model-free design (random, Latin hypercube, Sobol, orthogonal)
+* Initialize with 5 random samples
+* Build Gaussian process model
+* Use model to guide further sampling}
+
+\newslide{Model Based Design}
+
+\slides{* Two sampling strategies:
+* Integrated variance reduction (minimize overall uncertainty)
+* Uncertainty sampling (sample highest variance points)
+* Trade-off between accuracy and computation speed}
 	
 \notes{Now we will build an emulator for the catapult using the experimental design loop.}
 
@@ -41,10 +47,6 @@ display(model_gpy)}
 model_emukit.optimize()}
 
 \code{display(model_gpy)}
-
-\newslide{Model Based Design}
-\slides{* Use integrated variance reduction.
-* Try afterwards with uncertainty sampling.}
 
 \notes{Now we set up the model loop. We'll use integrated variance reduction as the acquisition function for our model-based design loop.}
 

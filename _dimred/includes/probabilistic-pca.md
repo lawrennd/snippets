@@ -87,8 +87,7 @@ $$
 $$
 \notes{where $\mathbf{U}$ is the eigenvectors of the empirical covariance matrix }
 $$
-\mathbf{S} = \sum_{i=1}^\numData (\dataVector_{i, :} - \meanVector)(\dataVector_{i,
-:} - \meanVector)^\top,
+\mathbf{S} = \sum_{i=1}^\numData (\dataVector_{i, :} - \meanVector)(\dataVector_{i,:} - \meanVector)^\top,
 $$ 
 \notes{which can be written $\mathbf{S} = \frac{1}{\numData}
 \dataMatrix^\top\dataMatrix$ if the data is zero mean. The matrix $\mathbf{L}$ is
@@ -203,7 +202,6 @@ similar forms? What matches and what differs?}{30}
 
 \notes{Now let's implement the system in code.}
 
-\notes{
 \codeassignment{Use the values for $\mappingMatrix$ and $\noiseStd^2$ you
 have computed, along with the data set $\dataMatrix$ to compute the posterior
 density over $\latentMatrix$. Write a function of the form
@@ -211,7 +209,7 @@ density over $\latentMatrix$. Write a function of the form
 mu_x, C_x = posterior(Y, W, sigma2)
 ```
 where `mu_x` and `C_x` are the posterior mean and
-posterior covariance for the given $\dataMatrix$. 
+posterior covariance for the given $\dataMatrix$.
 
 Don't forget to subtract the
 mean of the data `Y` inside your function before computing the posterior:
@@ -227,7 +225,7 @@ def posterior(Y, W, sigma2):
     # Compute posterior over X
     C_x = 
     mu_x = 
-    return mu_x, C_x}{20}}
+    return mu_x, C_x}{20}
 
 \notes{\subsection{Numerically Stable and Efficient Version}}
 

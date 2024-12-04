@@ -5,7 +5,8 @@
 
 \subsection{Supply Chain of Ideas}
 
-\notes{A different way of thinking is a "supply chain of ideas" framework, particularly in the context of information technology and AI solutions like machine learning and large language models. This suggests that this idea flow, from creation to application, is similar to how physical goods move through economic supply chains.}
+\notes{Model is "supply chain of ideas" framework, particularly in the context of information technology and AI solutions like machine learning and large language models. You suggest that this idea flow, from creation to application, is similar to how physical goods move through economic supply chains.}
+
 
 \slides{* Ideas flow from creation to application like physical supply chains
 * Parallels with traditional economic supply chain management
