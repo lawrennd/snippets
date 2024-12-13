@@ -183,6 +183,7 @@ ma.write_figure(filename=date + "-citations-vs-{col}-{filt}.svg".format(filt=fil
 \figure{\includediagram{\diagramsDir/neurips/2024-12-12-citations-vs-average-confidence-accept}{70%}}{Citation data from 2024. Scatter plot of $\log_{10}(1+\text{citations})$ against the average confidence score for accepted papers. To prevent reidentification of individual papers quality scores and citation count, each point is corrupted by differentially private noise in the plot (correlation is computed before adding differentially private noise).}{citations-vs-average-confidence-accept-2024-12-12}
 
 
+
 \helpercode{def bootstrap_index(df):
     n = len(df.index)
     return df.index[np.random.randint(n, size=n)]}
