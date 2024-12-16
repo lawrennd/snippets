@@ -7,7 +7,7 @@
 
 \newslide{} 
 
-\figure{\includepng{\diagramsDir/data-science-africa-logo}{30%}}{Data Science Africa <http://datascienceafrica.org> is a ground up initiative for capacity building around data science, machine learning and artificial intelligence on the African continent.}{data-science-africa}
+\figure{\includepng{\diagramsDir/data-science-africa-logo}{30%}}{Data Science Africa <https://datascienceafrica.org> is a ground up initiative for capacity building around data science, machine learning and artificial intelligence on the African continent.}{data-science-africa}
 
 \slides{Data Science Africa is a bottom up initiative for capacity building in data science, machine learning and AI on the African continent}
 
