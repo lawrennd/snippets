@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Two Types of Stochastic Parrots}
+\subsection{Two Types of Stochastic Parrot}
 
 \include{_atomic-human/includes/enlightenment-scribeysense.md}
 
