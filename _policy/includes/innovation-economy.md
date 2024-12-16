@@ -12,11 +12,6 @@
 \slides{* Over emphasis on "macro economic supply interventions"
 * Under emphasis on maping "micro economic demand" to "micro economic supply"}
 
-<<<<<<< HEAD
-\include{_business/includes/supply-chain-of-ideas.md}
-
-=======
->>>>>>> 4eb5f843ea2e55dc18c79434479364919600d5a4
 \include{_business/includes/digital-economy-failures.md}
 
 
