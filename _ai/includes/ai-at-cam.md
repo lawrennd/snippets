@@ -7,8 +7,6 @@
 
 \notes{The ai@cam vision is being achieved in a manner that is modelled on other grass roots initiatives like Data Science Africa. Through leveraging the University’s vibrant interdisciplinary research community. ai@cam has formed partnerships between researchers, practitioners, and affected communities that embed equity and inclusion. It is developing new platforms for innovation and knowledge transfer. It is delivering innovative interdisciplinary teaching and learning for students, researchers, and professionals. It is building strong connections between the University and national AI priorities.}
 
-\notes{The University operates as both an engine of AI-enabled innovation and steward of those innovations.}
-
 \figure{\includepng{\diagramsDir/ai/ai-at-cam-report}{40%}}{[ai@cam](https://www.cam.ac.uk/system/files/aicam_review_april22.pdf) is a Flagship Programme that supports AI research [across the University](https://www.cam.ac.uk/stories/ai-at-cam).}{ai-at-cam-flagship}
 
 \notes{We are working across the University to empower the diversity of expertise and capability we have to focus on these broad societal problems. In April 2022 we shared an ai@cam with a vision document that outlines these challenges for the University.}
@@ -29,6 +27,7 @@
 * HPC Pioneer projects (with RCS, C2D3)
 * Accelerate programme (Schmidt Sciences funded)
 }
+
 \notes{
 \subsection{1. Bridging Macro and Micro Levels}
 
