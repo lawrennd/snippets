@@ -9,6 +9,8 @@
 
 \notes{But because many tasks/roles are not uniquely defined, imagining that you can rank these roles is flawed. If there is a ranking, it's subjective according to how different people perceive the role. And under individuals different perception of the role, we *can* all be better than average, because we each have a different idea of what the ideal looks like.}
 
+\installcode{mlai}
+
 \setupcode{import numpy as np
 import matplotlib.pyplot as plt}
 
@@ -80,6 +82,8 @@ def generate_spider_plots(data, categories, max_value=10, min_value=0):
 
     plt.tight_layout()
     plt.show()
+	
+	return fig
 }
 
 \code{# Example for academics
@@ -96,7 +100,7 @@ def plot_academics():
         "Well-Rounded Academic": [5, 6, 7, 7, 7, 6, 5, 5]
     }
 
-    generate_spider_plots(academic_profiles, categories)
+    return generate_spider_plots(academic_profiles, categories)
 }
 
 \code{# Example for drivers
@@ -113,16 +117,16 @@ def plot_drivers():
         "Balanced Driver": [6, 7, 6, 7, 7, 4, 5, 6]
     }
 
-    generate_spider_plots(driver_profiles, categories)
+    return generate_spider_plots(driver_profiles, categories)
 }
 
 \setupplotcode{import mlai}
 
 \plotcode{# Call both plots for demonstration
-plot_academics()
-mlai.write_figure("academic_capability_plots.svg", directory="\writeDiagramsDir/business")
-plot_drivers()
-mlai.write_figure("driver_capability_plots.svg", directory="\writeDiagramsDir/business")}
+fig = plot_academics()
+mlai.write_figure(filename="academic_capability_plots.svg", figure=fig, directory="./business")
+fig = plot_drivers()
+mlai.write_figure(filename="driver_capability_plots.svg", figure=fig, directory="./business")}
 
 \figure{\includediagram{\diagramsDir/business/academic_capability_plots}{50%}}{There is no first principles definition of what it means to be a good academic.}{academic-capability-plots}
 
