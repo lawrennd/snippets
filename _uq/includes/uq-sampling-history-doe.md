@@ -24,6 +24,10 @@
 
 \newslide{Random Sampling}
 
+\slides{* Samples selected randomly across input domain
+* Can be uniform or based on assumed distribution
+* Simple but may miss important regions}
+
 \notes{Random sampling is the default approach, where samples are selected randomly across the input domain of interest. This can be done uniformly or based on an assumed underlying distribution. It is straightforward but may not always provide comprehensive coverage of the input space.}
 
 >  Let the input values $\inputVector_1, \dots, \inputVector_\numData$
@@ -33,6 +37,11 @@
 > distribution of $Y(t)$.
 
 \newslide{Stratified Sampling}
+
+\slides{* Divides input space into sub-populations (strata)
+* Ensures sampling from each stratum
+* Better coverage than random sampling
+* Example: Covid-19 tracking by age groups}
 
 \notes{Stratified sampling involves dividing a population into sub-populations, or strata, before sampling. This ensures that all sub-populations are represented in the sample. For instance, in Covid-19 tracking, stratifying by age groups ensures coverage across all ages, which might be missed in simple random sampling.}
 
@@ -47,6 +56,11 @@
 > sample space.
 
 \newslide{Latin Hypercube Sampling}
+
+\slides{* Advanced form of stratified sampling
+* Divides each input dimension into equal probability bins
+* One sample per row/column in each dimension
+* Ensures full coverage of marginal distributions}
 
 \notes{Latin hypercube sampling is an advanced form of stratified sampling. It ensures that each input variable's distribution is fully represented by dividing the input space into $M$ rows and columns, with samples taken such that each row and column contains only one sample. This method extends to multiple dimensions, providing a comprehensive sampling strategy.}
 

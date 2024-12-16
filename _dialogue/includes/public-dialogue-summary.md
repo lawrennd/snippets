@@ -7,7 +7,6 @@
 
 \slides{* Enhance, don't replace humans
 * Strong governance first
-* Transparent and engaging
 * Fair distribution of benefits
 * Keep human-centered services}
 

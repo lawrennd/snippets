@@ -11,9 +11,19 @@
 
 \figure{\includepng{\diagramsDir/uq/catapult-simulation}{80%}}{A catapult simulation for experimenting with surrogate models, kindly provided by Nicolas Durrande}{catapult-simulation}
 
+\newslide{Catapult Parameters}
+
+\slides{* Four key parameters control the catapult:
+  * `rotation_axis`: Axis the arm rotates around
+  * `arm_stop`: Position where arm stops
+  * `spring_binding_1`: First spring attachment point  
+  * `spring_binding_2`: Second spring attachment point}
+
 \notes{The simulator allows you to set various parameters of the catapult including the axis of rotation, `roation_axis`, the position of the arm stop, `arm_stop`, and the location of the two bindings of the catapult's spring, `spring_binding_1` and `spring_binding_2`.}
 
-\newslide{}
+\newslide{Parameter Vector}
+
+\slides{* Parameters combined into vector:}
 
 \notes{These parameters are then collated in a vector,}
 $$
@@ -24,6 +34,12 @@ $$
 \texttt{spring_binding_2}
 \end{bmatrix}
 $$
+
+\newslide{Running Experiments}
+
+\slides{* Fire catapult with chosen parameters
+* Record distance traveled
+* Helper function requests distance for each configuration}
 
 \notes{Having set those parameters, you can run an experiment, by firing the catapult. This will show you how far it goes.}
 
@@ -47,6 +63,11 @@ $$
         print('x_4 = {spring_binding_2:.2f} (spring binding 2)'.format(spring_binding_2=spring_binding_2))
         y[i, 0] = float(input('What is the distance? '))
     return y}
+
+\newslide{Parameter Space}
+
+\slides{* All parameters scaled to [0,1] range
+* Define continuous parameter space for optimization}
 
 \notes{We can also set the parameter space for the model. Each of these variables is scaled to operate $\in [0, 1]$.}
 

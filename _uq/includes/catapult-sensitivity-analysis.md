@@ -13,6 +13,13 @@
 
 \subsection{Sensitivity Analysis of a Catapult Simulation}
 
+\slides{* We'll use Monte Carlo sensitivity analysis to understand which parameters matter most
+* This helps us identify which parameters we should focus on when optimizing the catapult
+* We'll use our GP emulator to efficiently estimate Sobol indices
+* Two types of indices:
+    * First order - direct influence of each parameter
+    * Total effects - includes parameter interactions}
+
 \notes{The final step is to compute the coefficients using the class `ModelBasedMonteCarloSensitivity` which directly calls the model and uses its predictive mean to compute the Monte Carlo estimates of the Sobol indices. We plot the estimates of the Sobol indices computed using a Gaussian process model trained on the observations we've acquired.}
 
 \code{num_mc = 10000
@@ -36,7 +43,13 @@ plt.ylabel('% of explained output variance')
 
 mlai.write_figure(filename='first-order-sobol-indices-gp-catapult.svg', directory='./uq')}
 
+\newslide{First Order Sobol Indices}
 
+\slides{* First order Sobol indices show direct parameter effects
+* Higher percentage = parameter has stronger direct influence on catapult distance
+* Helps identify which parameters to prioritize for optimization}
+
+\newslide{First Order Sobol Indices}
 \figure{\includediagram{\diagramsDir/uq/first-order-sobol-indices-gp-catapult}{80%}}{First Order sobol indices as estimated by GP-emulator based Monte Carlo on the catapult.}{first-order-sobol-indices-gp-catapult}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
@@ -50,8 +63,13 @@ ax.set_ylabel('% of explained output variance')
 
 mlai.write_figure(filename='total-effects-sobol-indices-gp-catapult.svg', directory='\writeDiagramsDir/uq')}
 
-\newslide{}
+\newslide{Total Effects Sobol Indices}
 
+\slides{* Total effects include both direct influence and parameter interactions
+* Larger difference between total and first order effects indicates strong parameter interactions
+* Understanding interactions helps with joint parameter optimization}
+
+\newslide{Total Effects Sobol Indices}
 \figure{\includediagram{\diagramsDir/uq/total-effects-sobol-indices-gp-catapult}{80%}}{Total effects as estimated by GP based Monte Carlo on the catapult.}{total-effects-sobol-indices-gp-catapult}
 
 
