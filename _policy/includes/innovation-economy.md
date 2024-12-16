@@ -12,13 +12,7 @@
 \slides{* Over emphasis on "macro economic supply interventions"
 * Under emphasis on maping "micro economic demand" to "micro economic supply"}
 
-\subsection{Supply Chain of Ideas}
-
-\notes{Model is "supply chain of ideas" framework, particularly in the context of information technology and AI solutions like machine learning and large language models. You suggest that this idea flow, from creation to application, is similar to how physical goods move through economic supply chains.}
-
-\notes{In the realm of IT solutions, there's been an overemphasis on macro-economic "supply-side" stimulation - focusing on creating new technologies and ideas - without enough attention to the micro-economic "demand-side" - understanding and addressing real-world needs and challenges.}
-
-\notes{Imagining the supply chain rather than just the notion of the Innovation Economy allows the conceptualisation of the gaps between macro and micro economic issues, enabling a different way of thinking about process innovation.}
+\include{_business/includes/supply-chain-of-ideas.md}
 
 \include{_business/includes/digital-economy-failures.md}
 
