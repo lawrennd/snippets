@@ -16,6 +16,7 @@ One quote from 16:54:33 in the committee discussion captures the top-down nature
 > Q117   Austin Mitchell: You said, Sir David, the problems came from the middle range, but surely they were implicit from the start, because this project was rushed into. The Prime Minister [Tony Blair] was very keen, the delivery unit was very keen, it was very fashionable to computerise things like this. An appendix indicating the cost would be £5 billion was missed out of the original report as published, so you have a very high estimate there in the first place. Then, Richard Granger, the Director of IT, rushed through, without consulting the professions. This was a kind of computer enthusiast's bit, was it not? The professionals who were going to have to work it were not consulted, because consultation would have made it clear that they were going to ask more from it and expect more from it, and then contracts for £1 billion were let pretty well straightaway, in May 2003. That was very quick. Now, why were the contracts let before the professionals were consulted?
 }
 
+\notes{A further sense of the bullish approach taken can be found in this report from digitalhealth.net (dated May 2008). https://www.digitalhealth.net/2008/02/six-years-since-blair-seminar-began-npfit/}
 
 \notes{An analysis of the problems was published by @Justinia-npfit17. Based on the paper, the key challenges faced in the UK's National Programme for IT (NPfIT) included:
 
