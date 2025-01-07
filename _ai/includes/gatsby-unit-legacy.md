@@ -4,7 +4,7 @@
 
 \subsection{The Gatsby Unit}
 
-\figure{\includepng{\diagramsDir/ai/they-dont-just-fall-out-of-trees}{40%}}{The Gatsby Computational Neuroscience Unit at University College London was founded by Geoffrey Hinton, who would later win the 2024 Nobel Prize in Physics, the Unit became "a phenomenal draw" for talent as described in this [Guardian article](https://www.theguardian.com/science/2024/oct/11/nobel-awards-highlight-britains-ai-pedigree-demis-hassabis-geoffrey-hinton).}{gatsby-unit-legacy}
+\figure{\includepng{\diagramsDir/ai/they-dont-just-fall-out-of-trees}{70%}}{The Gatsby Computational Neuroscience Unit at University College London was founded by Geoffrey Hinton, who would later win the 2024 Nobel Prize in Physics, the Unit became "a phenomenal draw" for talent as described in this [Guardian article](https://www.theguardian.com/science/2024/oct/11/nobel-awards-highlight-britains-ai-pedigree-demis-hassabis-geoffrey-hinton).}{gatsby-unit-legacy}
 
 \notes{The Gatsby Computational Neuroscience Unit at University College London was founded by Geoffrey Hinton, who would later win the 2024 Nobel Prize in Physics, the Unit became "a phenomenal draw" for talent. Its impact is evident in its role nurturing future leaders in AI. Demis Hassabis conducted his postdoctoral research there.}
 
