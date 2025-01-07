@@ -44,7 +44,7 @@ academia, we are equally guilty of relying too much on empirical
 studies or theory without ensuring they are reconciled. The
 theoreticians' disbelief of what the experimenter tells them is
 encapsulated in Kahnemann's idea of "theory induced blindness"
-[@Kahneman:fastslow11]. Fortunately, the evidence for good
+[@Kahneman-fastslow11]. Fortunately, the evidence for good
 generalization in these mammoth models is now large enough that the
 theory-blinders are falling away, and a serious look is being taken and
 how and why these models can generalize well.}

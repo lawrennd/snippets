@@ -40,7 +40,7 @@
 
 \notes{In the moment of policy crisis such as what we've seen in Covid-19 it also has people who are used to keeping the score. Public health professionals are experienced in disease interventions. Many of them having seen how scientific ideas pan out in practice, which turn out to be successful and which sound promising but repeatedly fail to deliver.}
 
-\notes{Kahneman refers to our awe of theory as *theory induces blindness* [@Kahneman:fastslow11], but I feel a more appropriate phrase is model-induced blindness or "model-blinkers".}
+\notes{Kahneman refers to our awe of theory as *theory induces blindness* [@Kahneman-fastslow11], but I feel a more appropriate phrase is model-induced blindness or "model-blinkers".}
 
 \addatomic{theory induced blindness}{301}
 \addatomic{model-blinkers}{301,302,308}
