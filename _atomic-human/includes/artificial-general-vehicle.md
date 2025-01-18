@@ -5,8 +5,7 @@
 
 \subsection{Artificial General Vehicle}
 
-\figure{\includepng{\diagramsDir/atomic-human/Artificial_General_Vehicle_211224_Final.png}{70%}}{The notion of artificial general intelligence is as absurd as the notion of an artifical general vehicle. 
----
+\figure{\includepng{\diagramsDir/atomic-human/Artificial_General_Vehicle_211224_Final.png}{70%}}{The notion of artificial general intelligence is as absurd as the notion of an artifical general vehicle.}{artificial-general-vehicle}
 
 \notes{I often turn up to book talks with my Brompton bicycle. Embarrassingly I even took it to Google which is only a 30 second walk from King's Cross station. That made me realise it's become a sort of security blanket. I like having it because it's such a flexible means of transport.}
 
