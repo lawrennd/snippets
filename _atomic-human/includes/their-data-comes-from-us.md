@@ -7,7 +7,7 @@
 
 \figure{\includepng{\diagramsDir/atomic-human/Atomic_H_5_Enlightenment}{60%}}{This is the drawing Dan was inspired to create for Chapter 5. It celebrates the stochastic parrots paper [@Bender-parrots21] but also captures how the feedback of this parrotry is damaging the quality of the international debate.}{stochastic-parrots-scribeysense}
 
-\notes{See }\addatomicblog{Two Types of Stochastic Parrots}{/reflections/two-types-of-stochastic-parrot/}\notes{.}
+\notes{See }\addatomicblog{Two Types of Stochastic Parrots}{/reflections/two-types-of-stochastic-parrot/}
 
 \notes{The stochastic parrots paper [@Bender-parrots21] was the moment that the research community, through a group of brave researchers, some of whom paid with their jobs, raised the first warnings about these technologies. Despite their bravery, at least in the UK, their voices and those of many other female researchers were erased from the public debate around AI.}
 
