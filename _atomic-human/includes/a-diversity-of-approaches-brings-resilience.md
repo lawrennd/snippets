@@ -5,14 +5,13 @@
 
 \newslide
 
-\figure{\includepng{\diagramsDir/atomic-human/Atomic_H_6_Gremlin}{60%}}{This is the drawing Dan was inspired to create for Chapter 6. It highlights how uncertainty means that a diversity of approaches brings resilience.}{trick-doesnt-replace-truth-scribeysense}
+\figure{\includepng{\diagramsDir/atomic-human/Atomic_H_6_Gremlin}{60%}}{This is the drawing Dan was inspired to create for Chapter 6. It highlights how uncertainty means that a diversity of approaches brings resilience.}{a-diversity-of-approaches-brings-resilience}
 
-\notes{See }\addatomicblog{Racing, Fast and Slow}{/reflections/racing-fast-and-slow/}.
+\notes{See }\addatomicblog{Balancing Reflective and Reflexive}{/reflections/balancing-reflective-and-reflexive/}.
 
+\notes{From motor intelligence to mathematical instinct, it feels like there’s a full spectrum of decision-making approaches that can be deployed and that best performance is when they are judiciously deployed according to the circumstances. The Atomic Human tries to explore this in different contexts and I think Dan Andrews did a great job of capturing some of those explorations in his image for Chapter 7.}
 
-\notes{Individuals and cultures can be more dominated by their reflexive or their reflective self. The arguments I make in The Gremlin of Uncertainty suggest that McLaren and Ferrari (in previous incarnations when then were dominating the F1 championship) were respectively dominated by planning and improvisational approaches. Similarly, I describe my father and brother’s approach as being respectively dominated by planning and improvisational approaches. There’s even a roundabout connection to how an individual chooses to react to a situation, with a reflexive or a reflective response. What Kahneman called slow or fast thinking.}
-
-\notes{Without knowing how much uncertainty we are facing, we don’t know which approach is better. In practice we see across individuals, cultures, nations and species that a diversity of approaches is taken. When we are certain planning can be more efficient, but it is less robust.}
+\notes{I think the reason why they relate is because in both cases there is time pressure, it’s from the outside world that pressures come and require us to deliver a conclusion on a particular timeframe. What I find remarkable in human intelligence is how we sustain both these fast and slow answers together, so that we’re ready to go with some form of answer at any given moment. That means that as individuals we are filled with contradictions, differences between the versions of our selves we imagine versus how we behave in practice.}
 
 
 \endif
