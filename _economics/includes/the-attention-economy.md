@@ -11,5 +11,4 @@
 
 \notes{The power associated with control of information dates back to the invention of writing. By pressing reeds into clay tablets Sumerian scribes stored information and controlled the flow of information.}
 
-
 \endif
