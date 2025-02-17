@@ -1,11 +1,11 @@
-\ifndef{aDiversityOfApproachesBringsResilience}
-\define{aDiversityOfApproachesBringsResilience}
+\ifndef{reflectiveOrReactive}
+\define{reflectiveOrReactive}
 
 \editme
 
 \newslide
 
-\figure{\includepng{\diagramsDir/atomic-human/Atomic_H_6_Gremlin}{60%}}{This is the drawing Dan was inspired to create for Chapter 6. It highlights how uncertainty means that a diversity of approaches brings resilience.}{trick-doesnt-replace-truth-scribeysense}
+\figure{\includepng{\diagramsDir/atomic-human/Atomic_H_7_Not_Rocket}{60%}}{This is the drawing Dan was inspired to create for Chapter 7. Reflective and reactive approaches are driven by how much time is available for decision making.}{reflective-or-reactive}
 
 \notes{See }\addatomicblog{Racing, Fast and Slow}{/reflections/racing-fast-and-slow/}.
 
