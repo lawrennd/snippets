@@ -10,6 +10,7 @@ In our modern digital landscape, we find ourselves caught between two competing 
 \subsection{The Attention Capture Cycle}
 
 The attention capture cycle is characterized by:
+
 * Algorithmic targeting of our attention
 * Short-term engagement metrics
 * Dopamine-driven feedback loops
@@ -19,6 +20,7 @@ The attention capture cycle is characterized by:
 \subsection{The Attention Reinvestment Cycle}
 
 In contrast, the attention reinvestment cycle involves:
+
 * Conscious direction of attention
 * Development of deep understanding
 * Building of lasting knowledge and skills
@@ -28,6 +30,7 @@ In contrast, the attention reinvestment cycle involves:
 \subsection{Breaking Free}
 
 The challenge of our time is to break free from the capture cycle and cultivate reinvestment. This requires:
+
 * Awareness of how our attention is being targeted
 * Active choices about technology use
 * Development of metacognitive skills
