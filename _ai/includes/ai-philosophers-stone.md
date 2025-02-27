@@ -10,6 +10,7 @@ Just as medieval alchemists sought the philosopher's stone to transmute base met
 \subsection{The Promise of Transformation}
 
 The philosopher's stone of AI promises to:
+
 * Transform human knowledge into automated systems
 * Convert human experience into scalable algorithms
 * Transmute human creativity into reproducible outputs
@@ -18,6 +19,7 @@ The philosopher's stone of AI promises to:
 \subsection{The Hidden Cost}
 
 Like alchemy, this transformation comes with hidden costs:
+
 * Devaluation of human expertise
 * Loss of tacit knowledge
 * Erosion of human agency
@@ -26,6 +28,7 @@ Like alchemy, this transformation comes with hidden costs:
 \subsection{Beyond the Myth}
 
 Understanding AI as the modern philosopher's stone helps us:
+
 * Recognize the limits of technological transformation
 * Value human capabilities that resist automation
 * Maintain healthy skepticism of magical solutions
