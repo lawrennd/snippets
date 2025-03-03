@@ -4,7 +4,7 @@
 \editme
 \subsection{Atrophy and Cognitive Flattening}
 
-\notes{Even if we calibrate these tools correctly so that they do represent the world appropriately we are at risk. The hippocampus is part of our brain's cortex, oOne role of our hippocampus is in navigation, knowing how to move from one place to another. }
+\notes{Even if we calibrate these tools correctly so that they do represent the world appropriately we are at risk. The hippocampus is part of our brain's cortex, one role of our hippocampus is in navigation, knowing how to move from one place to another. }
 
 \include{_anatomy/includes/hippocampus.md}
 
