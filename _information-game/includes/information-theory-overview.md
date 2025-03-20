@@ -49,7 +49,7 @@ where $E_{\rho(Z)}\left[\cdot\]$ is the expectation under the distribution $\rho
   \]
 * Entropy is,
   \[
-  S(Z) =   A(\boldsymbol{\theta}) -  E_\rho\left[\boldsymbol{\theta}^\top T(Z)\right]  + \log h(Z)\right]
+  S(Z) =   A(\boldsymbol{\theta}) -  E_\rho\left[\boldsymbol{\theta}^\top T(Z)  + \log h(Z)\right]
   \]
 * Where
   \[
