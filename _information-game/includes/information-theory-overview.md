@@ -5,7 +5,7 @@
 
 \section{Information Theory and Thermodynamics}
 
-\notes{Information theory, pioneered by Claude Shannon in 1948, provides a mathematical framework for quantifying information. It's no coincidence that information theory's core concepts parallel those found in thermodynamics. Shannon spoke extensively to Norbert Wiener whose own ideas about information were directly inspired by his admiration for Willard Gibbs, one of the pioneers of the mathematical understanding of free energy and entropy. Deep connections between physical systems and information processing have been there from the start.}
+\notes{Information theory provides a mathematical framework for quantifying information. It's no coincidence that information theory's core concepts parallel those found in thermodynamics. Shannon spoke extensively to Norbert Wiener whose own ideas about information were directly inspired by his admiration for Willard Gibbs, one of the pioneers of the mathematical understanding of free energy and entropy. Deep connections between physical systems and information processing have been there from the start.}
 
 \slides{
 * Information theory quantifies uncertainty and information
