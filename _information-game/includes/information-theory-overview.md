@@ -9,8 +9,7 @@
 
 \slides{
 * Information theory quantifies uncertainty and information
-* Developed by Claude Shannon (1948)
-* Core concepts parallel thermodynamics
+* Core concepts inspired by thermodynamic ideas
 * Information entropy $\leftrightarrow$ Thermodynamic entropy
   * Free energy minimization common in both domains
 }
@@ -20,7 +19,9 @@
 \notes{Shannon's entropy measures the uncertainty or unpredictability of information content. This mathematical formulation is inspired by thermodynamic entropy, which describes the dispersal of energy in physical systems. Both concepts quantify the number of possible states and their probabilities.}
 
 \slides{
-* Entropy: $$S(X) = -\sum_i p(x_i) \log p(x_i)$$
+$$
+S(X) = -\sum_X \rho(X) \log p(X)
+$$
 * In thermodynamics preceded by Boltzmann's constant, $k_B$
 }
 \newslide{}
@@ -37,11 +38,11 @@
 \[
   \rho(Z) = h(Z) \exp\left(\boldsymbol{\theta}^\top T(Z) + A(\boldsymbol{\theta})\right)
 \]
-where $h(Z)$ is the base measure, $\boldsymbol{\theta}$ is the natural parameters, $T(Z)$ is the sufficient statistics and $A(\boldsymbol{\theta}) is the log partition function. Its entropy can be computed as
+where $h(Z)$ is the base measure, $\boldsymbol{\theta}$ is the natural parameters, $T(Z)$ is the sufficient statistics and $A(\boldsymbol{\theta})$ is the log partition function. Its entropy can be computed as
 \[
   S(Z) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_{\rho(Z)}\left[\log h(Z)\right],
 \]
-where $E_{\rho(Z)}\left[\cdot\]$ is the expectation under the distribution $\rho(Z)$.
+where $E_{\rho(Z)}[\cdot\]$ is the expectation under the distribution $\rho(Z)$.
 \slides{
 * Exponential family:
   \[
@@ -62,7 +63,7 @@ where $E_{\rho(Z)}\left[\cdot\]$ is the expectation under the distribution $\rho
 
 \slides{
 * $A(\boldsymbol{\theta})$ is Available (Free) Energy
-* $U(\boldsymbol{\theta})) = E_\rho\left[\boldsymbol{\theta}^\top T(Z)\right]  + \log h(Z)\right]\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_\rho\left[\log h(Z)\right]$ is total or internal energy.
+* $U(\boldsymbol{\theta}) = E_\rho\left[\boldsymbol{\theta}^\top T(Z) + \log h(Z)\right] = \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_\rho\left[\log h(Z)\right]$ is total or internal energy.
 * Traditional relationship
   * A = U - TS
 }
