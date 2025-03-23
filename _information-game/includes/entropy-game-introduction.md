@@ -58,33 +58,42 @@
 
 \notes{This speculation allows us to impose the functional form of our proability distribution. As Jaynes has shown [@Jaynes-information57], the stationary points of a free-form optimisation (minimum or maximum) will place the distribution in the, $\rho(Z)$ in the *expoential family*,}
 $$
-\rho(Z) = \exp(\boldsymbol{\theta}^\top T(Z) - A(\boldsymbol{\theta})),
+\rho(Z) = h(Z) \exp(\boldsymbol{\theta}^\top T(Z) - A(\boldsymbol{\theta})),
 $$
-where $T(Z)$ are sufficient statistics, $A(\boldsymbol{\theta})$ is the log-partition function, $\boldsymbol{\theta}$ are the *natural parameters* of the distribution.}
+where $h(Z)$ is the base measure, $T(Z)$ are sufficient statistics, $A(\boldsymbol{\theta})$ is the log-partition function, $\boldsymbol{\theta}$ are the *natural parameters* of the distribution.}
 
 \notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-geometry]. In exponential family distributions, the entropy gradient is given by,
-$$
+\[
 \nabla_{\boldsymbol{\theta}}S(Z)  = \mathbf{g} = 
-$$
+\]
 And the Fisher information matrix, $G(\boldsymbol{\theta})$, is also the *Hessian* of the manifold,
-$$
+\[
 G(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta}) = \text{Cov}[T(Z)].
-$$
+\]
 Traditionally, when optimising on an information geometry we take *natural gradient* steps, equivalen to a Newton minimisation step,
-$$
+\[
 \Delta \boldsymbol{\theta} = - G(\boldsymbol{\theta})^{-1} \mathbf{g},
-$$
+\]
 but this is not the direction that gives the instantaneious maximisation of the entropy production, instead our gradient step is tiven by 
-$$
+\[
 \Delta \boldsymbol{\theta} = \eta \mathbf{g},
-$$
+\]
 where $\eta$ is a 'learning rate'.}
 
 \subsection{Fourier Duality}
 
-\notes{One challenge is how to parameterise our exponential family. We've mentioned that the variables $Z$ are partitioned into observable variables $X$ and memory variables $M$. Given the minimal entropy initial state, the obvious initial choice is that at the origin all variables, $Z$, should be in the information reservoir, $M$. This implies that they are well determined and present a sensible choice for the source of our parameters, we define a mapping,  $\boldsymbol{\theta}(M)$ that maps the information resevoir to natural parameters and we assume that the entropy of these parameters $S(\boldsymbol{\theta})$ is so low as to be neglibible. allowing us to rewrite the distribution in a conditional form.}
+\notes{One challenge is how to parameterise our exponential family. We've mentioned that the variables $Z$ are partitioned into observable variables $X$ and memory variables $M$. Given the minimal entropy initial state, the obvious initial choice is that at the origin all variables, $Z$, should be in the information reservoir, $M$. This implies that they are well determined and present a sensible choice for the source of our parameters.}
 
+\notes{We define a mapping, $\boldsymbol{\theta}(M)$, that maps the information resevoir to a set of values that are equivalent to the *natural parameters*. If the entropy of these parameters is low, and the distribution $\rho(\boldsymbol{\theta})$ is sharply peaked then we can move from treating the memory mapping, $\boldsymbol{\theta}(\cdot)$, as a random processe to an assumption that it is a deterministic function. We can then follow gradients with respect to these $\boldsymbol{\theta}$ values.}
 
+\notes{This allows us to rewrite the distribution over $Z$ in a conditional form,
+$$
+\rho(X|M) = h(X) \exp(\boldsymbol{\theta}(M)^\top T(X) - A(\boldsymbol{\theta}(M))).
+$$
+}
+\notes{A word of warning here, this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and our representation as a compact manifold (bounded below by $0$ and above by $N$) does not admit any singularities. To see the direct challenges this approximation brings we'll now consider a Markovian decomposition of our system.}
+
+then we can expand around the values $\boldsymbol{\theta}$  and we assume that the entropy of these parameters $S(\boldsymbol{\theta})$ is so low as to be neglibible. allowing us to rewrite the distribution in a conditional form.
    - $c(M)$: Maps to high-entropy capacity variables
 
 - *Parameter-Capacity Uncertainty*: $\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k$
