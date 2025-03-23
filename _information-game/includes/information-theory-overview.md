@@ -63,11 +63,34 @@ where $E_{\rho(Z)}[\cdot\]$ is the expectation under the distribution $\rho(Z)$.
 
 \slides{
 * $A(\boldsymbol{\theta})$ is Available (Free) Energy
-* $U(\boldsymbol{\theta}) = E_\rho\left[\boldsymbol{\theta}^\top T(Z) + \log h(Z)\right] = \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_\rho\left[\log h(Z)\right]$ is total or internal energy.
+* $U(\boldsymbol{\theta}) = E_\rho\left[\boldsymbol{\theta}^\top(Z) + \log h(Z)\right] = \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_\rho\left[\log h(Z)\right]$ is total or internal energy.
 * Traditional relationship
   * A = U - TS
 }
 
-\notes{Next we will see how these principles are all connected by Ed Jaynes' maximum entropy approach.}
+\subsection{Work through Measurement}
+
+\notes{In machine learning and Bayesian inference, the Markov blanket is the set of variables that are conditionally independent of the variable of interest given the other variables. To introduce this idea into our information system, we first split the system into two parts, the variables, $X$, and the memory $M$.}
+
+\notes{The variables are the portion of the system that is stochastically evolving over time. The memory is a low entropy partition of the system that will give us knowledge about this evolution.}
+
+\notes{We can now write the joint entropy of the system in terms of the mutual information between the variables and the memory.
+$$
+S(Z) = S(X,M) = S(X|M) + S(M) = S(X) - I(X;M) + S(M).
+$$
+This gives us the first hint at the connection between information and energy.}
+
+\notes{If $M$ is viewed as a measurement then the change in entropy of the system before and after measurement is given by $S(X|M) - S(X)$ wehich is given by $-I(X;M)$. This is implies that measurement increases the amount of available energy we obtain from the system  [@Parrondo-thermodynamics15].}
+
+\notes{The difference in available energy is given by
+$$
+\Delta A = A(X) - A(Z|M) = I(X;M),
+$$
+where we note that the resulting system is no longer in thermodynamic equilibrium due to the low entropy of the memory.}
+
+*note on temperature here?*
+
+\notes{**To here need to add material showing scales at which these thermodynamic principes apply, ATP Synthase and Photosynthesis.**}
+
 
 \endif 
