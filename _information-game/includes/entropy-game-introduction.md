@@ -93,6 +93,13 @@ $$
 }
 \notes{A word of warning here, this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and our representation as a compact manifold (bounded below by $0$ and above by $N$) does not admit any singularities. To see the direct challenges this approximation brings we'll now consider a Markovian decomposition of our system.}
 
+\subsection{Markovian Decomposition}
+
+\notes{Now $X$ is further divided into past/present $X_0$ and future $X_1$. The entropy can be decomposed into a Markovian componen, where $X_0$ and $X_1$ are conditionally independent given $M$ and a non-Markovian component. The conditional mutual information is 
+$$
+I(X_0; X_1 | M) =,
+$$
+}
 then we can expand around the values $\boldsymbol{\theta}$  and we assume that the entropy of these parameters $S(\boldsymbol{\theta})$ is so low as to be neglibible. allowing us to rewrite the distribution in a conditional form.
    - $c(M)$: Maps to high-entropy capacity variables
 
@@ -106,28 +113,33 @@ c(M) = \mathcal{F}[\boldsymbol{\theta}(M)],
 $$
 This duality is particularly important at saddle points where direct gradient ascent stalls.
 
-\subsection{Markovian Decomposition}
-
-\notes{Now $X$ is further divided into past/present $X_0$ and future $X_1$. The entropy can be decomposed into a Markovian componen, where $X_0$ and $X_1$ are conditionally independent given $M$ and a non-Markovian component. The conditional mutual information is 
-$$
-I(X_0; X_1 | M) =,
-$$
 
 \subsection{System Evolution}
 
-\subsection{Start State (origin, turn 0)}
+\notes{We are now in a position to summarise the start state and the end state of our system, as well as to speculate on the nature of the transition between the two states.}
 
+\subsection{Start State}
+
+\notes{The *origin configuration* is a low entropy state, with value near the lower bound of 0. The information is highly structured, by definition we place all variables in $M$, the information resevoir at this time. The uncertainty principle is present to handle the competeing needs of precision in parameters (giving us the near-singular form for $\boldsymbol{\theta}(M)$, and capacity in the information channel that $M$ provides (the capacity $c(\boldsymbol{\theta})$ is upper bounded by $S(M)$.}  
+
+\slides{
 - Low entropy, near lower bound
 - Highly structured information in $M$
 - Strong temporal dependencies (high non-Markovian component)
-- Precise parameters, uncertain capacity (per uncertainty principle)
+- Precise values for $\boldsymbol{\theta}$ uncertainty in other parameter characteristics.
+}
 
 \subsection{End State}
 
+\notes{The *end configuration* is a high entropy state,
+}
+
+\slides{
 - Maximum entropy, approaching upper bound $N$
-- Parameter saturation where $\nabla_{\boldsymbol{\theta}}S \approx 0$
+- Zeno's paradox:  $\nabla_{\boldsymbol{\theta}}S \approx 0$
 - Primarily Markovian dynamics
 - Steady state with no further entropy increase possible
+}
 
 \section{Information Geometry}
 
