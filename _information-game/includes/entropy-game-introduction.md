@@ -54,6 +54,8 @@
 
 \notes{Our system evolves mathematically according to gradient ascent on the entropy, $S(Z)$. This entropy is bounded from above by $N$ and below by 0.}
 
+\notes{This means we're going in the opposite direction to the animal game, where we started with *maximum uncertainty* and asked questions to reduce the entropy at each stage}
+
 \notes{As a thought experiment we can imagine both the start point and end point of the system. The start point should be minimal entropy, and the end point should be maximal entropy. This allows us to conclude that the system must belong to the exponential family. As Jaynes has shown [@Jaynes-information57], the stationary points of a free-form optimisation of the distribution form are given by the *expoential family*.}
 $$
 \rho(Z) = \exp(\boldsymbol{\theta}^\top T(Z) - A(\boldsymbol{\theta})),
