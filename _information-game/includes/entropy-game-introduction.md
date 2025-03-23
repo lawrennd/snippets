@@ -21,9 +21,9 @@
 
 \figure{\includediagram{\diagramsDir/information/binary-search-tree}{70%}}{The optimal strategy in the Entropy Game resembles a binary search, dividing the search space in half with each question.}{binary-search-tree}
 
-\subsection{Entropy Reduction as Intelligence}
+\subsection{Entropy Reduction and Decisions}
 
-\notes{From an information-theoretic perspective, intelligence can be viewed as the capacity to efficiently reduce entropy - the uncertainty about the state of the world. Each observation or action an intelligent agent takes should maximize expected information gain, optimally reducing uncertainty given available resources.}
+\notes{From an information-theoretic perspective, decisions can be taken in a way that efficiently reduces entropy - our the uncertainty about the state of the world. Each observation or action an intelligent agent takes should maximize expected information gain, optimally reducing uncertainty given available resources.}
 
 \slides{
 * Entropy before question: $S(X)$
@@ -31,13 +31,11 @@
 * Information gain: $I(X;M) = S(X) - S(X|M)$
 * Intelligent systems maximize $I(X;M)$ per unit cost
 }
-\notes{The entropy before the question is $S(X)$. The entropy after the question is $S(X|M)$. The information gain is the difference between the two, $I(X;M) = S(X) - S(X|M)$. Intelligent systems maximize this information gain per unit cost.}
-
-\notes{This framework helps explain why both biological and artificial intelligence systems appear to behave as if they're performing active inference - constantly generating predictions and updating models to minimize surprise and uncertainty. The entropy game reveals intelligence as a process of efficiently navigating information landscapes.}
+\notes{The entropy before the question is $S(X)$. The entropy after the question is $S(X|M)$. The information gain is the difference between the two, $I(X;M) = S(X) - S(X|M)$. Optimal decision making systems maximize this information gain per unit cost.}
 
 \subsection{Thermodynamic Parallels}
 
-\notes{The entropy game connects to thermodynamics through the concept of work. In thermodynamics, extracting work from a system requires reducing its entropy. Similarly, meaningful intelligent action requires reducing uncertainty about the environment. Both processes can be understood as converting free energy into useful work - whether physical work or informational value.}
+\notes{The entropy game connects decision making to thermodynamics.}
 
 \slides{
 * Intelligence requires work to reduce uncertainty
@@ -48,27 +46,39 @@
 
 \notes{This perspective suggests a profound connection: intelligence might be understood as a special case of systems that efficiently extract, process, and utilize free energy from their environments, with thermodynamic principles setting fundamental constraints on what's possible.}
 
-\subsection{Jaynes' World: An Entropy Game}
+\subsection{Jaynes' World: A Different Type of Entropy Game}
 
-\notes{Jaynes' World is a zero-player game that implements a version of the entropy game. The dynamical system is defined by a distribution, $\rho(Z)$, over a state space $Z$. The state space is partitioned into observable variables $X$ and memory variables $M$. The memory variables are considered to be in an *information resevoir*, a thermodynamic system that maintains information in an ordered state (see e.g. Barato-stochastic14).}
+\notes{Jaynes' World is a zero-player game that implements a version of the entropy game. The dynamical system is defined by a distribution, $\rho(Z)$, over a state space $Z$. The state space is partitioned into observable variables $X$ and memory variables $M$. The memory variables are considered to be in an *information resevoir*, a thermodynamic system that maintains information in an ordered state (see e.g. Barato-stochastic14). The entropy of the whole system is bounded below by 0 and above by $N$. So the entropy forms a *compact manifold* with respect to its parameters.}
 
-\notes{Our system evolves mathematically according to gradient ascent on the entropy, $S(Z)$. This entropy is bounded from above by $N$ and below by 0.}
+\notes{Unlike the animal game, where decisions are made by reducing entropy at each step, our system evovles mathematically by maximising the instantaneous entropy production. Conceptually we can think of this as *ascending* the gradient of the entropy, $S(Z)$. }
 
-\notes{This means we're going in the opposite direction to the animal game, where we started with *maximum uncertainty* and asked questions to reduce the entropy at each stage}
+\notes{In the animal game the questioner starts with maximum uncertainty and targets minimal uncertainty. Jaynes' world starts with minimal uncertainty and aims for maximum uncertainty.}
 
-\notes{As a thought experiment we can imagine both the start point and end point of the system. The start point should be minimal entropy, and the end point should be maximal entropy. This allows us to conclude that the system must belong to the exponential family. As Jaynes has shown [@Jaynes-information57], the stationary points of a free-form optimisation of the distribution form are given by the *expoential family*.}
+\notes{We can phrase this as a thought experiment. Imagine you are in the game, at a given turn. You want to see where the game came from, so you look back across turns. The direction the game came from is now the direction of steepest descent. Regardless of where the game actually started it looks like it started at a minimal entropy configuration that we call the *origin*. Similarly, wherever the game is actually stopped there will nevertheless appear to be an end point we call *end* that will be a configuration of maximal entropy, $N$.}
+
+\notes{This speculation allows us to impose the functional form of our proability distribution. As Jaynes has shown [@Jaynes-information57], the stationary points of a free-form optimisation (minimum or maximum) will place the distribution in the, $\rho(Z)$ in the *expoential family*,}
 $$
 \rho(Z) = \exp(\boldsymbol{\theta}^\top T(Z) - A(\boldsymbol{\theta})),
 $$
-where $T(Z)$ are sufficient statistics, $A(\boldsymbol{\theta})$ is the log-partition function, $\boldsymbol{\theta}$ are the *natural parameters*.
+where $T(Z)$ are sufficient statistics, $A(\boldsymbol{\theta})$ is the log-partition function, $\boldsymbol{\theta}$ are the *natural parameters* of the distribution.}
 
-In exponential family distributions, the entropy gradient relates directly to Fisher information:
-
-$\nabla_{\boldsymbol{\theta}}S = I(\boldsymbol{\theta})(\boldsymbol{\theta}_0 - \boldsymbol{\theta})$
-
-The Fisher information matrix $I(\boldsymbol{\theta})$ defines the natural geometry of the parameter space:
-
-$I(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta}) = \text{Cov}[T(Z)]$
+\notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-geometry]. In exponential family distributions, the entropy gradient is given by,
+$$
+\nabla_{\boldsymbol{\theta}}S(Z)  = \mathbf{g} = 
+$$
+And the Fisher information matrix, $G(\boldsymbol{\theta})$, is also the *Hessian* of the manifold,
+$$
+G(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta}) = \text{Cov}[T(Z)].
+$$
+Traditionally, when optimising on an information geometry we take *natural gradient* steps, equivalen to a Newton minimisation step,
+$$
+\Delta \boldsymbol{\theta} = - G(\boldsymbol{\theta})^{-1} \mathbf{g},
+$$
+but this is not the direction that gives the instantaneious maximisation of the entropy production, instead our gradient step is tiven by 
+$$
+\Delta \boldsymbol{\theta} = \eta \mathbf{g},
+$$
+where $\eta$ is a 'learning rate'.}
 
 \subsection{Fourier Duality}
 
