@@ -138,6 +138,8 @@ $$
 
 \subsection{Saddle Point Seeking Behaviour}
 
+\notes{The use of the exponential family would allow us to ascend the *natural gradient* instead of the steepest ascent direction.}
+
 \subsection{Conceptual Framework}
 
 \notes{The entropy game illustrates fundamental principles of information dynamics.}
