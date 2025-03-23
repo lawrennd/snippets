@@ -29,13 +29,13 @@
 * Entropy before question: $S(X)$
 * Entropy after answer: $S(X|M)$
 * Information gain: $I(X;M) = S(X) - S(X|M)$
-* Intelligent systems maximize $I(X;M)$ per unit cost
+* Optimal decision maximise $I(X;M)$ per unit cost
 }
 \notes{The entropy before the question is $S(X)$. The entropy after the question is $S(X|M)$. The information gain is the difference between the two, $I(X;M) = S(X) - S(X|M)$. Optimal decision making systems maximize this information gain per unit cost.}
 
 \subsection{Thermodynamic Parallels}
 
-\notes{The entropy game connects decision making to thermodynamics.}
+\notes{The entropy game connects decision-making to thermodynamics.}
 
 \slides{
 * Intelligence requires work to reduce uncertainty
@@ -64,7 +64,7 @@ where $h(Z)$ is the base measure, $T(Z)$ are sufficient statistics, $A(\boldsymb
 
 \notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-geometry]. In exponential family distributions, the entropy gradient is given by,
 \[
-\nabla_{\boldsymbol{\theta}}S(Z)  = \mathbf{g} = 
+\nabla_{\boldsymbol{\theta}}S(Z)  = \mathbf{g} = \nabla^2_\bolsymbol{\theta} A(\boldsymbol{\theta}(M)\boldsymbol{\theta}(M)
 \]
 And the Fisher information matrix, $G(\boldsymbol{\theta})$, is also the *Hessian* of the manifold,
 \[
