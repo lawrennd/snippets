@@ -82,10 +82,10 @@ def entropy(lambdas):
 # Define the gradient of the entropy function
 def entropy_gradient(lambdas):
     denominator = np.sum(lambdas**2)
-    lambda_entropy = -2/(lambdas**2)*np.log2(lambdas)
+    p_times_lambda_entropy = -2*np.log2(np.abs(lambdas))/denominator
     p = lambdas**2/denominator
-    const = (p**2*lambda_entropy).sum()
-    gradient = 2*lambdas*(p*lambda_entropy - const)
+    const = (p*p_times_lambda_entropy).sum()
+    gradient = 2*lambdas*(p_times_lambda_entropy - const)
     return gradient
 
 # Numerical gradient check

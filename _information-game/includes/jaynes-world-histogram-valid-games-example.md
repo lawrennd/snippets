@@ -10,8 +10,8 @@
 
 \setupcode{import numpy as np}
 
-\code{lambdas = np.array([1.0, 0.5, 1.5, 0.4])
-p = lambdas**2/lambdas**2.sum()
+\code{initial_lambdas = np.array([100.0, 50.0, 150.0, 40.0])
+p = initial_lambdas**2/(initial_lambdas**2).sum()
 print(p)}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -63,7 +63,7 @@ mlai.write_figure(filename='jaynes-world-histogram-valid-games-origin.svg',
 lambdas = lambdas_history[-1].copy()
 
 learning_rate = 1
-
+turns = 15000
 for _ in range(turns):
     grad = entropy_gradient(lambdas)
     lambdas += learning_rate * grad # update lambda for steepest ascent
@@ -90,7 +90,7 @@ import mlai.plot as plot}
 \plotcode{# Plot 10 equally spaced histograms from the descent/ascent.
 # Plot them in a 2x5 grid
 fig, ax = plt.subplots(2, 5, figsize=plot.big_wide_figsize)
-for i in range(0, len(lambdas_history), len(lambdas_history)//10):
+for i, turn in enumerate(range(0, len(lambdas_history), len(lambdas_history)//10)):
     plot_histogram(ax[i//5, i%5], lambdas_history[i]**2/(lambdas_history[i]**2).sum())
 mlai.write_figure(filename='jaynes-world-histogram-valid-games-path.svg', 
 				  directory = '\writeDiagramsDir/information-game')
