@@ -35,6 +35,7 @@ however, it is precisely this efficiency that we want our game to avoid, because
 
 \code{# Python code for gradients
 p_values = np.linspace(0.001, 0.999, 1000)
+theta_values = np.log(p_values/(1-p_values))
 entropy = -p_values * np.log(p_values) - (1-p_values) * np.log(1-p_values)
 fisher_info = p_values * (1-p_values)
 gradient = fisher_info * (np.log(1-p_values) - np.log(p_values))
@@ -46,13 +47,13 @@ import mlai}
 
 \plotcode{fig, (ax1, ax2) = plt.subplots(1, 2, figsize=plot.big_wide_figsize)
 
-ax1.plot(p_values, entropy)
-ax1.set_xlabel('p')
+ax1.plot(theta_values, entropy)
+ax1.set_xlabel('$\\theta$')
 ax1.set_ylabel('Entropy S(p)')
 ax1.set_title('Entropy Landscape')
 
-ax2.plot(p_values, gradient)
-ax2.set_xlabel('p')
+ax2.plot(theta_values, gradient)
+ax2.set_xlabel('$\\theta$')
 ax2.set_ylabel('Entropy Gradient')
 ax2.set_title('Entropy Gradient vs. Position')
 
@@ -63,7 +64,7 @@ mlai.write_figure(filename='two-bin-histogram-entropy-gradients.svg',
 
 \figure{\includediagram{\diagramsDir/information-game/two-bin-histogram-entropy-gradients}{95%}}{Entropy gradients of the two bin histogram agains position.}{two-bin-histogram-entropy-gradients}
 
-\notes{This simple example reveals the entropy extrema at $p = 0$, $p = 0.5$, and $p = 1$. At minimal entropy ($p \approx 0$ or $p \approx 1$), the gradient approaches zero, creating natural information reservoirs. The dynamics slow dramatically near these points - these are the areas of critical slowing that create information reseboirs.
+\notes{This simple example reveals the entropy extrema at $p = 0$, $p = 0.5$, and $p = 1$. At minimal entropy ($p \approx 0$ or $p \approx 1$), the gradient approaches zero, creating natural information reservoirs. The dynamics slow dramatically near these points - these are the areas of critical slowing that create information reservoirs.
 } 
 
 \endif
