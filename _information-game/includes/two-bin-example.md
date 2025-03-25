@@ -49,12 +49,12 @@ import mlai}
 
 ax1.plot(theta_values, entropy)
 ax1.set_xlabel('$\\theta$')
-ax1.set_ylabel('Entropy S(p)')
+ax1.set_ylabel('Entropy $S(p)$')
 ax1.set_title('Entropy Landscape')
 
 ax2.plot(theta_values, gradient)
 ax2.set_xlabel('$\\theta$')
-ax2.set_ylabel('Entropy Gradient')
+ax2.set_ylabel('$\\nabla_\\theta S(p)$')
 ax2.set_title('Entropy Gradient vs. Position')
 
 mlai.write_figure(filename='two-bin-histogram-entropy-gradients.svg', 
