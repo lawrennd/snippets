@@ -27,13 +27,9 @@ At these points, the Fisher information matrix $G(\theta)$ eigendecomposition re
 The eigenvectors of $G(\theta)$ at the saddle point determine which parameter combinations form information reservoirs.
 }
 
-\code{
-# Simplified saddle point example
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+\setupcode{import numpy as np}
 
-# Define a function with a saddle point (simplified for visualization)
+\code{# Define a function with a saddle point (simplified for visualization)
 def f(x, y):
     return x**2 - y**2
 
@@ -43,8 +39,23 @@ y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)
 Z = f(X, Y)
 
+# A few gradient vectors
+stride = 20
+u = 2 * X[::stride, ::stride]
+v = -2 * Y[::stride, ::stride]
+}
+
+\setupplotcode{
+# Simplified saddle point example
+import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai
+
+from mpl_toolkits.mplot3d import Axes3D
+}
+
+\plotcode{fig = plt.figure(figsize=(10, 8))
 # Create a 3D plot
-fig = plt.figure(figsize=(10, 8))
 ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
 ax.set_xlabel('θ₁')
@@ -52,13 +63,12 @@ ax.set_ylabel('θ₂')
 ax.set_zlabel('Entropy S(θ)')
 ax.set_title('Saddle Point in Parameter Space')
 
-# Add a few gradient vectors
-stride = 20
-u = 2 * X[::stride, ::stride]
-v = -2 * Y[::stride, ::stride]
 w = np.zeros_like(u)
 ax.quiver(X[::stride, ::stride], Y[::stride, ::stride], Z[::stride, ::stride], 
           u, v, w, color='r', length=0.3, normalize=True)
+
+mlai.write_figure(filename='simplified-saddle-point-example.svg', 
+                  directory = './information-game')
 }
 
 \notes{The animation of system evolution would show:
