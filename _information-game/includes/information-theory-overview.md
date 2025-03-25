@@ -40,9 +40,9 @@ $$
   \rho(Z) = h(Z) \exp\left(\boldsymbol{\theta}^\top T(Z) + A(\boldsymbol{\theta})\right)
 $$
 where $h(Z)$ is the base measure, $\boldsymbol{\theta}$ is the natural parameters, $T(Z)$ is the sufficient statistics and $A(\boldsymbol{\theta})$ is the log partition function. Its entropy can be computed as
-\[
+$$
   S(Z) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_{\rho(Z)}\left[\log h(Z)\right],
-\]
+$$
 where $E_{\rho(Z)}[\cdot\]$ is the expectation under the distribution $\rho(Z)$.}
 
 \slides{
