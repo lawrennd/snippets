@@ -20,21 +20,21 @@ $$
 where $h(Z)$ is the base measure, $T(Z)$ are sufficient statistics, $A(\boldsymbol{\theta})$ is the log-partition function, $\boldsymbol{\theta}$ are the *natural parameters* of the distribution.}
 
 \notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-information16]. In exponential family distributions, the entropy gradient is given by,
-\[
+$$
 \nabla_{\boldsymbol{\theta}}S(Z) = \mathbf{g} = \nabla^2_\boldsymbol{\theta} A(\boldsymbol{\theta}(M))
-\]
+$$
 And the Fisher information matrix, $G(\boldsymbol{\theta})$, is also the *Hessian* of the manifold,
-\[
+$$
 G(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta}) = \text{Cov}[T(Z)].
-\]
+$$
 Traditionally, when optimising on an information geometry we take *natural gradient* steps, equivalen to a Newton minimisation step,
-\[
+$$
 \Delta \boldsymbol{\theta} = - G(\boldsymbol{\theta})^{-1} \mathbf{g},
-\]
+$$
 but this is not the direction that gives the instantaneious maximisation of the entropy production, instead our gradient step is given by 
-\[
+$$
 \Delta \boldsymbol{\theta} = \eta \mathbf{g},
-\]
+$$
 where $\eta$ is a 'learning rate'.}
 
 \subsection{Fourier Duality}
@@ -86,8 +86,5 @@ which measures the remaining dependency between past and future given the memory
 - Primarily Markovian dynamics
 - Steady state with no further entropy increase possible
 }
-
-
-
 
 \endif
