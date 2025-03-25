@@ -11,8 +11,6 @@ S(p) = - \sum_{i=1}^4 p_i \log_2 p_i.
 $$
 }
 
-\include{_software/includes/mlai-software.md}
-\include{_software/includes/notutils-software.md}
 
 \setupcode{import numpy as np}
 
@@ -133,13 +131,14 @@ print("Gradient Difference:", np.linalg.norm(numerical_grad - analytical_grad)) 
 
 \notes{Now we can run the steepest ascent algorithm.}
 
+\define{\gradientAscentTurns}{15000}
 \setupcode{import numpy as np}
 
 \code{# Steepest ascent algorithm
 lambdas = initial_lambdas.copy()
 
 learning_rate = 1
-turns = 15000
+turns = \gradientAscentTurns
 entropy_values = []
 lambdas_history = []
 
@@ -184,7 +183,7 @@ from ipywidgets import IntSlider}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{\width}}{four-bin-histogram}
 \endanimation
 }
-\notes{\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{\width}}{}{four-bin-histogram-turn-04}}
+\notes{\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{70%}}{The final four bin histogram after \gradientAscentTurns iterations of gradient ascent.}{four-bin-histogram-turn-04}}
 
 \notes{And we can also plot the changing entropy as a function of the number of game turns.}
 
@@ -197,7 +196,7 @@ mlai.write_figure(filename='four-bin-histogram-entropy-vs-turns.svg',
 				  directory = '\writeDiagramsDir/information-game')
 }
 
-\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-entropy-vs-turns}{\width}}{Four bin histogram entropy game. The plot shows the increasing entropy against the number of turns.}{four-bin-histogram-entropy-vs-turns}
+\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-entropy-vs-turns}{\width}}{Four bin histogram entropy game. The plot shows the increasing entropy against the number of turns across \gradientAscentTurns iterations of gradient ascent.}{four-bin-histogram-entropy-vs-turns}
 
 \notes{Note that the entropy starts at a saddle point, increaseases rapidly, and the levels off towards the maximum entropy, with the gradient decreasing slowly in the manner of Zeno's paradox.}
 
