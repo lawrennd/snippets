@@ -31,19 +31,25 @@ The eigenvectors of $G(\theta)$ at the saddle point determine which parameter co
 
 \code{# Simplified saddle point example
 # Define a function with a saddle point (simplified for visualization)
-def f(x, y):
-    return x**8 - y**8
+def f(x, y, order=4):
+    return x**order - y**order
+
+def g(x, y, order=4):
+    return order*x**(order-1), -order*y**(order-1)
 
 # Create a grid of points
 x = np.linspace(-2, 2, 100)
 y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)
-Z = f(X, Y)
+
+order = 4
+Z = f(X, Y, order)
+dX, dY = g(X, Y, order)
 
 # A few gradient vectors
 stride = 20
-u = 2 * X[::stride, ::stride]
-v = -2 * Y[::stride, ::stride]}
+u = dX[::stride, ::stride]
+v = dY[::stride, ::stride]}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -51,13 +57,13 @@ import mlai
 
 from mpl_toolkits.mplot3d import Axes3D}
 
-\plotcode{fig = plt.figure(figsize=plot.bib_wide_figsize)
+\plotcode{fig = plt.figure(figsize=plot.big_wide_figsize)
 # Create a 3D plot
 ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
-ax.set_xlabel('θ₁')
-ax.set_ylabel('θ₂')
-ax.set_zlabel('Entropy S(θ)')
+ax.set_xlabel('$\\theta_1$')
+ax.set_ylabel('$\\theta_2$')
+ax.set_zlabel('Entropy $S(\\boldsymbol{\\theta})')
 ax.set_title('Saddle Point in Parameter Space')
 
 w = np.zeros_like(u)
