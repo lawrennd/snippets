@@ -34,7 +34,7 @@ however, it is precisely this efficiency that we want our game to avoid, because
 \setupcode{import numpy as np}
 
 \code{# Python code for gradients
-p_values = np.linspace(0.000001, 0.999999, 1000)
+p_values = np.linspace(0.000001, 0.999999, 10000)
 theta_values = np.log(p_values/(1-p_values))
 entropy = -p_values * np.log(p_values) - (1-p_values) * np.log(1-p_values)
 fisher_info = p_values * (1-p_values)
