@@ -16,15 +16,19 @@
 }
 
 \notes{
-The natural parameter is the log odds, $\theta = \log\frac{p}{1-p}$, and the entropy gradient is
+The natural parameter is the log odds, $\theta = \log\frac{p}{1-p}$, and the update given by the entropy gradient is
 $$
-\frac{\text{d}S}{\text{d}\theta} = p(1-p)(\log(1-p) - \log p).
+\Delta \theta_{\text{steepest}} = \eta \frac{\text{d}S}{\text{d}\theta} = \eta p(1-p)(\log(1-p) - \log p).
 $$
 The Fisher information is
 $$
 G(\theta) = p(1-p)
 $$
-This creates a dynamic where as $p$ approaches either 0 or 1 (minimal entropy states), the Fisher information approaches zero, creating a critical slowing" effect. This critical slowing is what leads to the formation of *information resevoirs*.
+This creates a dynamic where as $p$ approaches either 0 or 1 (minimal entropy states), the Fisher information approaches zero, creating a critical slowing" effect. This critical slowing is what leads to the formation of *information resevoirs*. Note also that in the *natural gradient* the updated is given by multiplying the gradient by the inverse Fisher information, which would lead to a more efficient update of the form, 
+$$
+\Delta \theta_{\text{natural}} =  \log(1-p) - \log p,
+$$
+however, it is precisely this efficiency that we want our game to avoid, because it is the inefficient behaviour in the reagion of saddle points that leads to critical slowing and the emergence of information resevoirs.
 }
 
 \setupcode{import numpy as np}
