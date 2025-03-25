@@ -26,13 +26,12 @@ We can demonstrate how the uncertainty principle manifests in different regimes:
 The visualization shows probability distributions for these three regimes in both parameter space and capacity space.
 }
 
-\code{
-# Visualization of uncertainty ellipses
-import numpy as np
+\setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Ellipse
+import mlai}
 
-# Create figure
+\code{# Visualization of uncertainty ellipses
 fig, ax = plt.subplots(figsize=(8, 8))
 
 # Parameters for uncertainty ellipses
@@ -74,6 +73,7 @@ y = k/x
 ax.plot(x, y, 'k--', alpha=0.5, label='Minimum uncertainty: Δθ·Δc = k')
 
 ax.legend(loc='upper right')
+mlai.write_figure()
 }
 
 \notes{This visualization helps explain why information reservoirs with quantum-like properties naturally emerge at minimal entropy. The uncertainty principle is not imposed but arises naturally from the constraints of Shannon information theory applied to physical systems operating at minimal entropy.} 
