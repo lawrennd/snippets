@@ -25,15 +25,31 @@ where $\gamma$ is a path through parameter space, $G(\boldsymbol{\theta})$ is th
 
 \setupcode{import numpy as np}
 
-
 \helpercode{# Create a potential energy landscape
 def potential(x, y):
-    return np.exp(-(x**2 + y**2)/4) - np.exp(-((x-2)**2 + (y-2)**2)/1)
+    # Base potential with a single maximum
+    base_potential = np.exp(-((x-1)**2 + (y-1)**2)/0.5)
+    
+    # Create flat regions using a plateau function
+    flat_region = -0.1 * np.tanh((x**2 + y**2) - 4)
+    
+    # Combine all components
+    return base_potential + flat_region
 
 # Create gradient vector field
 def gradient(x, y):
-    dx = -x/2 * np.exp(-(x**2 + y**2)/4) + (x-2) * np.exp(-((x-2)**2 + (y-2)**2)/1)
-    dy = -y/2 * np.exp(-(x**2 + y**2)/4) + (y-2) * np.exp(-((x-2)**2 + (y-2)**2)/1)
+    # Gradient of the base potential
+    dx_base = -(2 * (x-1) / 0.5) * np.exp(-((x-1)**2 + (y-1)**2)/0.5)
+    dy_base = -(2 * (y-1) / 0.5) * np.exp(-((x-1)**2 + (y-1)**2)/0.5)
+    
+    # Gradient of the flat region
+    dx_flat = -0.1 * (2 * x) * (1 - np.tanh((x**2 + y**2) - 4)**2)
+    dy_flat = -0.1 * (2 * y) * (1 - np.tanh((x**2 + y**2) - 4)**2)
+    
+    # Combine gradients
+    dx = dx_base + dx_flat
+    dy = dy_base + dy_flat
+    
     return dx, dy
 
 # Simulate and plot a particle path following gradient
@@ -61,7 +77,7 @@ Z = potential(X, Y)
 # Calculate gradient field
 dx, dy = gradient(X, Y)
 magnitude = np.sqrt(dx**2 + dy**2)
-path_x, path_y = simulate_path(-2, -2)}
+path_x, path_y = simulate_path(2, -1)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
