@@ -15,8 +15,7 @@
 * Information reservoirs form in critically slowed directions
 }
 
-\notes{
-Consider a 4-bin system parameterized by natural parameters $\theta_1$, $\theta_2$, and $\theta_3$ (with one constraint). A saddle point occurs where the gradient $\nabla_\theta S = 0$, but the Hessian has mixed eigenvalues - some positive, some negative.}
+\notes{Consider a 4-bin system parameterized by natural parameters $\theta_1$, $\theta_2$, and $\theta_3$ (with one constraint). A saddle point occurs where the gradient $\nabla_\theta S = 0$, but the Hessian has mixed eigenvalues - some positive, some negative.}
 
 \notes{At these points, the Fisher information matrix $G(\theta)$ eigendecomposition reveals.
 
@@ -46,8 +45,11 @@ x = np.linspace(-2, 2, 100)
 y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)
 
-Z = f(X, Y, 2, 8)
-dX, dY = g(X, Y, 2, 8)
+xorder = 2
+yorder = 4
+
+Z = f(X, Y, xorder, yorder)
+dX, dY = g(X, Y, xorder, yorder)
 
 # A few gradient vectors
 stride = 20
@@ -64,6 +66,7 @@ from mpl_toolkits.mplot3d import Axes3D}
 # Create a 3D plot
 ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
+ax.set_zlim([-2.5, 2.5])
 ax.set_xlabel('$\\theta_1$')
 ax.set_ylabel('$\\theta_2$')
 ax.set_zlabel('Entropy $S(\\boldsymbol{\\theta})')
@@ -71,7 +74,7 @@ ax.set_title('Saddle Point in Parameter Space')
 
 w = np.zeros_like(u)
 ax.quiver(X[::stride, ::stride], Y[::stride, ::stride], Z[::stride, ::stride], 
-          u, v, w, color='r', length=0.3, normalize=True)
+          u, v, w, color='r', length=0.5, normalize=True)
 
 mlai.write_figure(filename='simplified-saddle-point-example.svg', 
                   directory = './information-game')
