@@ -26,13 +26,15 @@ We can demonstrate how the uncertainty principle manifests in different regimes:
 The visualization shows probability distributions for these three regimes in both parameter space and capacity space.
 }
 
-\setupplotcode{import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.patches import Ellipse
-import mlai}
+\setupcode{import numpy as np}
 
-\code{# Visualization of uncertainty ellipses
-fig, ax = plt.subplots(figsize=(8, 8))
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai
+from matplotlib.patches import Ellipse}
+
+\plotcode{# Visualization of uncertainty ellipses
+fig, ax = plt.subplots(figsize=plot.big_figsize)
 
 # Parameters for uncertainty ellipses
 k = 1  # Uncertainty constant
@@ -54,13 +56,13 @@ for center, width, height, color, label in zip(centers, widths, heights, colors,
             label, ha='center', color=color)
     
     # Add area label (uncertainty product)
-    area = np.pi * width * height
+    area =  width * height
     ax.text(center[0], center[1] - height/2 - 0.3, 
-            f'Area = {area:.2f}π', ha='center')
+            f'Area = {width:.2f} $\\times$ {height: .2f} $\\pi$', ha='center')
 
 # Set axis labels and limits
-ax.set_xlabel('Parameter θ')
-ax.set_ylabel('Capacity c')
+ax.set_xlabel('Parameter $\\theta$')
+ax.set_ylabel('Capacity $C$')
 ax.set_xlim(-3, 7)
 ax.set_ylim(-3, 7)
 ax.set_aspect('equal')
@@ -70,10 +72,11 @@ ax.set_title('Parameter-Capacity Uncertainty Relation')
 # Add diagonal line representing constant uncertainty product
 x = np.linspace(0.25, 6, 100)
 y = k/x
-ax.plot(x, y, 'k--', alpha=0.5, label='Minimum uncertainty: Δθ·Δc = k')
+ax.plot(x, y, 'k--', alpha=0.5, label='Minimum uncertainty: $\\Delta \\theta \\Delta C = k$')
 
 ax.legend(loc='upper right')
-mlai.write_figure()
+mlai.write_figure(filename='uncertainty-ellipses.svg', 
+                  directory = '\writeDiagramsDir/information-game')
 }
 
 \notes{This visualization helps explain why information reservoirs with quantum-like properties naturally emerge at minimal entropy. The uncertainty principle is not imposed but arises naturally from the constraints of Shannon information theory applied to physical systems operating at minimal entropy.} 
