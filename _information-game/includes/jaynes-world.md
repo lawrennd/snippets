@@ -19,7 +19,7 @@ $$
 $$
 where $h(Z)$ is the base measure, $T(Z)$ are sufficient statistics, $A(\boldsymbol{\theta})$ is the log-partition function, $\boldsymbol{\theta}$ are the *natural parameters* of the distribution.}
 
-\notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-geometry]. In exponential family distributions, the entropy gradient is given by,
+\notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-information16]. In exponential family distributions, the entropy gradient is given by,
 \[
 \nabla_{\boldsymbol{\theta}}S(Z) = \mathbf{g} = \nabla^2_\boldsymbol{\theta} A(\boldsymbol{\theta}(M))
 \]
