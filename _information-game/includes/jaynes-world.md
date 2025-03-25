@@ -64,8 +64,7 @@ which measures the remaining dependency between past and future given the memory
 
 \subsection{End State}
 
-\notes{The *end configuration* is a high entropy state,
-}
+\notes{The *end configuration* is a high entropy state, near the upper bound. Both the minimal entropy and maximal entropy states are revealed by Ed Jaynes' variational minimisation approach and are in the exponential family. In many cases a version of Zeno's paradox will arise where the system asymtotes to the final state, taking smaller steps at each time. At this point the system is at equilibrium.}
 
 \slides{
 - Maximum entropy, approaching upper bound $N$
