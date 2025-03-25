@@ -25,7 +25,10 @@ import mlai.plot as plot}
     heights = p
     if max_height is None:
         max_height = 1.25*heights.max()
-    S = - (p*np.log2(p)).sum()
+    
+    # Safe entropy calculation that handles zeros
+    nonzero_p = p[p > 0]  # Filter out zeros
+    S = - (nonzero_p*np.log2(nonzero_p)).sum()
 
     # Define bin edges
     bins = [1, 2, 3, 4, 5]  # Bin edges
@@ -52,7 +55,10 @@ p[0] = 4/13
 p[1] = 3/13
 p[2] = 3.7/13
 p[3] = 1 - p.sum()
-entropy = - (p*np.log2(p)).sum()
+
+# Safe entropy calculation
+nonzero_p = p[p > 0]  # Filter out zeros
+entropy = - (nonzero_p*np.log2(nonzero_p)).sum()
 print(f"The entropy of the histogram is {entropy:.3f}.")
 }
 
@@ -77,13 +83,23 @@ mlai.write_figure(filename='four-bin-histogram.svg',
 \helpercode{# Define the entropy function 
 def entropy(lambdas):
     p = lambdas**2/(lambdas**2).sum()
-    return np.log2(np.sum(lambdas**2))-np.sum(p * np.log2(lambdas**2))
+    
+    # Safe entropy calculation
+    nonzero_p = p[p > 0]
+    nonzero_lambdas = lambdas[p > 0]
+    return np.log2(np.sum(lambdas**2))-np.sum(nonzero_p * np.log2(nonzero_lambdas**2))
 
 # Define the gradient of the entropy function
 def entropy_gradient(lambdas):
     denominator = np.sum(lambdas**2)
-    p_times_lambda_entropy = -2*np.log2(np.abs(lambdas))/denominator
     p = lambdas**2/denominator
+    
+    # Safe log calculation
+    log_terms = np.zeros_like(lambdas)
+    nonzero_idx = lambdas != 0
+    log_terms[nonzero_idx] = np.log2(np.abs(lambdas[nonzero_idx]))
+    
+    p_times_lambda_entropy = -2*log_terms/denominator
     const = (p*p_times_lambda_entropy).sum()
     gradient = 2*lambdas*(p_times_lambda_entropy - const)
     return gradient

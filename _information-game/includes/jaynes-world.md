@@ -21,7 +21,7 @@ where $h(Z)$ is the base measure, $T(Z)$ are sufficient statistics, $A(\boldsymb
 
 \notes{This constraint to the exponential family is highly convenient as we will rely on it heavily for the dynamics of the game. In particular, by focussing on the *natural parameters* we find that we are optimising within an *information geometry* [@Amari-geometry]. In exponential family distributions, the entropy gradient is given by,
 \[
-\nabla_{\boldsymbol{\theta}}S(Z)  = \mathbf{g} = \nabla^2_\bolsymbol{\theta} A(\boldsymbol{\theta}(M)\boldsymbol{\theta}(M)
+\nabla_{\boldsymbol{\theta}}S(Z) = \mathbf{g} = \nabla^2_\boldsymbol{\theta} A(\boldsymbol{\theta}(M))
 \]
 And the Fisher information matrix, $G(\boldsymbol{\theta})$, is also the *Hessian* of the manifold,
 \[
@@ -31,7 +31,7 @@ Traditionally, when optimising on an information geometry we take *natural gradi
 \[
 \Delta \boldsymbol{\theta} = - G(\boldsymbol{\theta})^{-1} \mathbf{g},
 \]
-but this is not the direction that gives the instantaneious maximisation of the entropy production, instead our gradient step is tiven by 
+but this is not the direction that gives the instantaneious maximisation of the entropy production, instead our gradient step is given by 
 \[
 \Delta \boldsymbol{\theta} = \eta \mathbf{g},
 \]
@@ -52,24 +52,13 @@ $$
 
 \subsection{Markovian Decomposition}
 
-\notes{Now $X$ is further divided into past/present $X_0$ and future $X_1$. The entropy can be decomposed into a Markovian componen, where $X_0$ and $X_1$ are conditionally independent given $M$ and a non-Markovian component. The conditional mutual information is 
+\notes{Now $X$ is further divided into past/present $X_0$ and future $X_1$. The entropy can be decomposed into a Markovian component, where $X_0$ and $X_1$ are conditionally independent given $M$ and a non-Markovian component. The conditional mutual information is 
 $$
-I(X_0; X_1 | M) =,
+I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)},
 $$
-}
-then we can expand around the values $\boldsymbol{\theta}$  and we assume that the entropy of these parameters $S(\boldsymbol{\theta})$ is so low as to be neglibible. allowing us to rewrite the distribution in a conditional form.
-   - $c(M)$: Maps to high-entropy capacity variables
+which measures the remaining dependency between past and future given the memory state. This leads to a key insight about memory capacity: effective information reservoirs must minimize this conditional mutual information while maintaining minimal entropy.}
 
-- *Parameter-Capacity Uncertainty*: $\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k$
-
-
-
-Parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$ form a Fourier-dual pair,
-$$
-c(M) = \mathcal{F}[\boldsymbol{\theta}(M)],
-$$
-This duality is particularly important at saddle points where direct gradient ascent stalls.
-
+\notes{When $I(X_0; X_1 | M) = 0$, the system becomes perfectly Markovian - the memory variables capture all dependencies between past and future. However, achieving this perfect Markovianity while maintaining minimal entropy in $M$ will create a fundamental tension that drives an *uncertainty principle*.}
 
 \subsection{System Evolution}
 
@@ -98,50 +87,7 @@ This duality is particularly important at saddle points where direct gradient as
 - Steady state with no further entropy increase possible
 }
 
-\section{Information Geometry}
-
-\subsection{Fisher Information}
 
 
-
-\subsection{Saddle Point}
-
-\notes{Saddle points represent critical transitions where}
-
-\notes{
-- Gradient $\nabla_{\boldsymbol{\theta}}S \approx 0$
-- The Fisher information matrix $I(\boldsymbol{\theta})$ has eigenvalues with significantly different magnitudes
-- The system must leverage Fourier duality to continue entropy production
-- Phase transitions occur between parameter-dominated and capacity-dominated regimes
-}
-
-
-\subsection{Variable Transitions}
-
-\notes{How do the $z_i$ variables transitoin between $X$ and $M$? We need an approach to identifing when the character of the variables has changed.}
-
-\notes{We introduce the moment generating function (MGF) to help identify transition candidates,}
-$$
-M_Z(t) = E[e^{t \cdot Z}] = \exp(A(\boldsymbol{\theta}+t) - A(\boldsymbol{\theta}))
-$$
-\notes{Variables transition when their contribution to cumulants changes significantly.}
-
-\subsection{Saddle Point Seeking Behaviour}
-
-\notes{The use of the exponential family would allow us to ascend the *natural gradient* instead of the steepest ascent direction.}
-
-\subsection{Conceptual Framework}
-
-\notes{The entropy game illustrates fundamental principles of information dynamics.}
-
-\notes{
-1. *Information Conservation*: Total information remains constant but redistributes between structure and randomness
-
-2. *Uncertainty Principle*: Precision in parameters trades off with entropy capacity
-
-3. *Self-Organization*: The system autonomously navigates toward maximum entropy while maintaining necessary structure
-}
-
-\notes{The zero-player game provides a mathematical model for studying how complex systems evolve when they instantaneously maximize entropy production.}
 
 \endif
