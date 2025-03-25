@@ -5,24 +5,6 @@
 
 \subsection{Uncertainty Principle}
 
-\notes{At minimal entropy states, the information reservoir must simultaneously maintain precision in the parameters $\boldsymbol{\theta}(M)$ (for accurate system representation) but it must also provide sufficient capacity $c(M)$ (for information storage). This creates a trade-off that can be expressed as,
-$$
-\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k,
-$$
-where $k$ is a constant. This trade-off represents a natural *uncertainty principle* that underpins the behaviour of the game. This principle is a necessary consequence of information theory. It follows from the requirement for the parameter-like states, $M$ to have precision and high capacity (in the Shannon sense). The uncertainty principle ensures that when parameters are sharply defined (low $\Delta\boldsymbol{\theta}$), the capacity variables have high uncertainty (high $\Delta c$), allowing information to be encoded in their relationships rather than absolute values.}
-
-\notes{Parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$ form a 
-Fourier-dual pair,
-$$
-c(M) = \mathcal{F}[\boldsymbol{\theta}
-(M)],
-$$
-This duality becomes important at 
-saddle points when direct gradient 
-ascent stalls.}
-
-\subsection{Fourier Duality}
-
 \notes{One challenge is how to parameterise our exponential family. We've mentioned that the variables $Z$ are partitioned into observable variables $X$ and memory variables $M$. Given the minimal entropy initial state, the obvious initial choice is that at the origin all variables, $Z$, should be in the information reservoir, $M$. This implies that they are well determined and present a sensible choice for the source of our parameters.}
 
 \notes{We define a mapping, $\boldsymbol{\theta}(M)$, that maps the information resevoir to a set of values that are equivalent to the *natural parameters*. If the entropy of these parameters is low, and the distribution $\rho(\boldsymbol{\theta})$ is sharply peaked then we can move from treating the memory mapping, $\boldsymbol{\theta}(\cdot)$, as a random processe to an assumption that it is a deterministic function. We can then follow gradients with respect to these $\boldsymbol{\theta}$ values.}
@@ -32,7 +14,26 @@ $$
 \rho(X|M) = h(X) \exp(\boldsymbol{\theta}(M)^\top T(X) - A(\boldsymbol{\theta}(M))).
 $$
 }
-\notes{A word of warning here, this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and our representation as a compact manifold (bounded below by $0$ and above by $N$) does not admit any singularities. To see the direct challenges this approximation brings we'll now consider a Markovian decomposition of our system.}
+\notes{Unfortunately this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and since our representation as a compact manifold (bounded below by $0$ and above by $N$) it does not admit any singularities.}
+
+\subsection{Capacity $\rightarrow$ Precision Paradox}
+
+\notes{This creates an apparent paradox, at minimal entropy states, the information reservoir must simultaneously maintain precision in the parameters $\boldsymbol{\theta}(M)$ (for accurate system representation) but it must also provide sufficient capacity $c(M)$ (for information storage).} 
+
+\notes{The trade-off can be expressed as,
+$$
+\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k,
+$$
+where $k$ is a constant. This relationship can be recognised as a natural *uncertainty principle* that underpins the behaviour of the game. This principle is a necessary consequence of information theory. It follows from the requirement for the parameter-like states, $M$ to have both precision and high capacity (in the Shannon sense). The uncertainty principle ensures that when parameters are sharply defined (low $\Delta\boldsymbol{\theta}$), the capacity variables have high uncertainty (high $\Delta c$), allowing information to be encoded in their relationships rather than absolute values.}
+
+\notes{In practice this means that the parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$ must form a 
+Fourier-dual pair,
+$$
+c(M) = \mathcal{F}[\boldsymbol{\theta}(M)],
+$$
+This duality becomes important at saddle points when direct gradient ascent stalls.}
+
+
 
 \subsection{Quantum vs Classical Information Reservoirs}
 
