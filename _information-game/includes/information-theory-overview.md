@@ -25,6 +25,7 @@ $$
 * In thermodynamics preceded by Boltzmann's constant, $k_B$
 }
 \newslide{}
+
 \figure{\includediagram{\diagramsDir/information/maxwell-demon}{60%}}{Maxwell's demon thought experiment illustrates the relationship between information and thermodynamics.}{maxwell-demon}
 
 
@@ -42,7 +43,8 @@ where $h(Z)$ is the base measure, $\boldsymbol{\theta}$ is the natural parameter
 \[
   S(Z) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_{\rho(Z)}\left[\log h(Z)\right],
 \]
-where $E_{\rho(Z)}[\cdot\]$ is the expectation under the distribution $\rho(Z)$.
+where $E_{\rho(Z)}[\cdot\]$ is the expectation under the distribution $\rho(Z)$.}
+
 \slides{
 * Exponential family:
   \[
