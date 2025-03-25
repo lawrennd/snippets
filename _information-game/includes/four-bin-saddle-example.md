@@ -31,20 +31,23 @@ The eigenvectors of $G(\theta)$ at the saddle point determine which parameter co
 
 \code{# Simplified saddle point example
 # Define a function with a saddle point (simplified for visualization)
-def f(x, y, order=4):
-    return x**order - y**order
+def f(x, y, order=4, yorder=None):
+    if yorder is None:
+         yorder = order
+    return x**order - y**yorder
 
-def g(x, y, order=4):
-    return order*x**(order-1), -order*y**(order-1)
+def g(x, y, order=4, yorder=None):
+    if yorder is None:
+         yorder = order
+    return order*x**(order-1), -yorder*y**(yorder-1)
 
 # Create a grid of points
 x = np.linspace(-2, 2, 100)
 y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)
 
-order = 4
-Z = f(X, Y, order)
-dX, dY = g(X, Y, order)
+Z = f(X, Y, 2, 8)
+dX, dY = g(X, Y, 2, 8)
 
 # A few gradient vectors
 stride = 20
