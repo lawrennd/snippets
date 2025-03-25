@@ -26,6 +26,8 @@ $$
 }
 \newslide{}
 
+\include{_physics/includes/entropy-intro.md}
+
 \figure{\includediagram{\diagramsDir/information/maxwell-demon}{60%}}{Maxwell's demon thought experiment illustrates the relationship between information and thermodynamics.}{maxwell-demon}
 
 
