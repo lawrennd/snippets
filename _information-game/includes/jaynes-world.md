@@ -5,7 +5,7 @@
 
 \subsection{Jaynes' World}
 
-\notes{Jaynes' World is a zero-player game that implements a version of the entropy game. The dynamical system is defined by a distribution, $\rho(Z)$, over a state space $Z$. The state space is partitioned into observable variables $X$ and memory variables $M$. The memory variables are considered to be in an *information resevoir*, a thermodynamic system that maintains information in an ordered state (see e.g. Barato-stochastic14). The entropy of the whole system is bounded below by 0 and above by $N$. So the entropy forms a *compact manifold* with respect to its parameters.}
+\notes{Jaynes' World is a zero-player game that implements a version of the entropy game. The dynamical system is defined by a distribution, $\rho(Z)$, over a state space $Z$. The state space is partitioned into observable variables $X$ and memory variables $M$. The memory variables are considered to be in an *information resevoir*, a thermodynamic system that maintains information in an ordered state (see e.g. @Barato-stochastic14). The entropy of the whole system is bounded below by 0 and above by $N$. So the entropy forms a *compact manifold* with respect to its parameters.}
 
 \notes{Unlike the animal game, where decisions are made by reducing entropy at each step, our system evovles mathematically by maximising the instantaneous entropy production. Conceptually we can think of this as *ascending* the gradient of the entropy, $S(Z)$. }
 
