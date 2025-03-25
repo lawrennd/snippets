@@ -16,26 +16,32 @@
 }
 
 \notes{
-The natural parameter is $\theta = \log\frac{p}{1-p}$, and the entropy gradient is:
-$$\frac{dS}{d\theta} = p(1-p)(\log(1-p) - \log p)$$
-
-The Fisher information is:
-$$G(\theta) = p(1-p)$$
-
-This creates a fascinating dynamic: as $p$ approaches either 0 or 1 (minimal entropy states), the Fisher information approaches zero, creating a "critical slowing" effect exactly where information reservoirs would form.
+The natural parameter is the log odds, $\theta = \log\frac{p}{1-p}$, and the entropy gradient is
+$$
+\frac{\text{d}S}{\text{d}\theta} = p(1-p)(\log(1-p) - \log p).
+$$
+The Fisher information is
+$$
+G(\theta) = p(1-p)
+$$
+This creates a dynamic where as $p$ approaches either 0 or 1 (minimal entropy states), the Fisher information approaches zero, creating a critical slowing" effect. This critical slowing is what leads to the formation of *information resevoirs*.
 }
 
-\code{
-# Python visualization code
-import numpy as np
-import matplotlib.pyplot as plt
+\setupcode{import numpy as np}
 
+\code{# Python code for gradients
 p_values = np.linspace(0.001, 0.999, 1000)
 entropy = -p_values * np.log(p_values) - (1-p_values) * np.log(1-p_values)
 fisher_info = p_values * (1-p_values)
 gradient = fisher_info * (np.log(1-p_values) - np.log(p_values))
+}
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai}
+
+\plotcode{fig, (ax1, ax2) = plt.subplots(1, 2, figsize=plot.big_wide_figsize)
+
 ax1.plot(p_values, entropy)
 ax1.set_xlabel('p')
 ax1.set_ylabel('Entropy S(p)')
@@ -45,12 +51,15 @@ ax2.plot(p_values, gradient)
 ax2.set_xlabel('p')
 ax2.set_ylabel('Entropy Gradient')
 ax2.set_title('Entropy Gradient vs. Position')
-}
 
-\notes{This simple example reveals several key principles:
-1. Entropy extrema occur at $p = 0$, $p = 0.5$, and $p = 1$
-2. At minimal entropy ($p \approx 0$ or $p \approx 1$), the gradient approaches zero, creating natural information reservoirs
-3. The dynamics slow dramatically near these points - critical slowing creates memory
+mlai.write_figure(filename='two-bin-histogram-entropy-gradients.svg', 
+				  directory = '\writeDiagramsDir/information-game')}
+
+\newslide{}
+
+\figure{\includediagram{\diagramsDir/information-game/two-bin-histogram-entropy-gradients}{95%}}{Entropy gradients of the two bin histogram agains position.}{two-bin-histogram-entropy-gradients}
+
+\notes{This simple example reveals the entropy extrema at $p = 0$, $p = 0.5$, and $p = 1$. At minimal entropy ($p \approx 0$ or $p \approx 1$), the gradient approaches zero, creating natural information reservoirs. The dynamics slow dramatically near these points - these are the areas of critical slowing that create information reseboirs.
 } 
 
 \endif
