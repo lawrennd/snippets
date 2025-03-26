@@ -21,7 +21,7 @@ $$
 }
 \notes{Unfortunately this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and since our representation as a compact manifold (bounded below by $0$ and above by $N$) it does not admit any such singularities.}
 
-\subsection{Capacity $\rightarrow$ Precision Paradox}
+\subsection{Capacity $\leftrightarrow$ Precision Paradox}
 
 \slides{
 * Fundamental trade-off emerges:
