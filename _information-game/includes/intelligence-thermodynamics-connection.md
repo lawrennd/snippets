@@ -17,7 +17,7 @@ where $\rho(x,m)$ is the joint probability of the system and measurement (see e.
 $$
 W_\text{ext} \leq  - \Delta\mathcal{F} + k_BTI(X;M),
 $$
-where $W_\text{ext}$ is the extractable work and it is upper bounded by the negative change in free energy, $\Delta\mathcal{F}$, plus the energy gained from measurement, $k_BTI(X;M)$. This is the information-modified second law.}
+\notes{where $W_\text{ext}$ is the extractable work and it is upper bounded by the negative change in free energy, $\Delta \mathcal{F}$, plus the energy gained from measurement, $k_BTI(X;M)$. This is the information-modified second law.}
 
 \notes{The measurements can be seen as a thermodynamic process. In theory measurement, like computation is reversible. But in practice the process of measurement is likely to erode the free energy somewhat, but as long as the energy gained from information, $kTI(X;M)$ is greater than that spent in measurement the pricess can be thermodynamically efficient.}
 
