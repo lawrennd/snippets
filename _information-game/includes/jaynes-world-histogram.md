@@ -195,7 +195,7 @@ ax.set_title("Entropy vs. turns (Steepest Ascent)")
 mlai.write_figure(filename='four-bin-histogram-entropy-vs-turns.svg', 
 				  directory = '\writeDiagramsDir/information-game')
 }
-
+\newslide{Four Bin Histogram Entropy Game}
 \figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-entropy-vs-turns}{70%}}{Four bin histogram entropy game. The plot shows the increasing entropy against the number of turns across \gradientAscentTurns iterations of gradient ascent.}{four-bin-histogram-entropy-vs-turns}
 
 \notes{Note that the entropy starts at a saddle point, increaseases rapidly, and the levels off towards the maximum entropy, with the gradient decreasing slowly in the manner of Zeno's paradox.}

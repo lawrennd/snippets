@@ -7,6 +7,11 @@
 
 \notes{One challenge is how to parameterise our exponential family. We've mentioned that the variables $Z$ are partitioned into observable variables $X$ and memory variables $M$. Given the minimal entropy initial state, the obvious initial choice is that at the origin all variables, $Z$, should be in the information reservoir, $M$. This implies that they are well determined and present a sensible choice for the source of our parameters.}
 
+\slides{
+* Information reservoir variables ($M$) map to natural parameters $\boldsymbol{\theta}(M)$
+* Challenge: Need both precision in parameters and capacity for information
+}
+
 \notes{We define a mapping, $\boldsymbol{\theta}(M)$, that maps the information resevoir to a set of values that are equivalent to the *natural parameters*. If the entropy of these parameters is low, and the distribution $\rho(\boldsymbol{\theta})$ is sharply peaked then we can move from treating the memory mapping, $\boldsymbol{\theta}(\cdot)$, as a random processe to an assumption that it is a deterministic function. We can then follow gradients with respect to these $\boldsymbol{\theta}$ values.}
 
 \notes{This allows us to rewrite the distribution over $Z$ in a conditional form,
@@ -17,6 +22,12 @@ $$
 \notes{Unfortunately this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and since our representation as a compact manifold (bounded below by $0$ and above by $N$) it does not admit any such singularities.}
 
 \subsection{Capacity $\rightarrow$ Precision Paradox}
+
+\slides{
+* Fundamental trade-off emerges:
+* $\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k$
+* Cannot simultaneously have perfect precision and maximum capacity
+}
 
 \notes{This creates an apparent paradox, at minimal entropy states, the information reservoir must simultaneously maintain precision in the parameters $\boldsymbol{\theta}(M)$ (for accurate system representation) but it must also provide sufficient capacity $c(M)$ (for information storage).} 
 
@@ -33,9 +44,16 @@ c(M) = \mathcal{F}[\boldsymbol{\theta}(M)],
 $$
 This duality becomes important at saddle points when direct gradient ascent stalls.}
 
-
-
 \subsection{Quantum vs Classical Information Reservoirs}
+
+\slides{
+* Near origin: "Quantum-like" information processing
+  * Wave-like encoding, non-local correlations
+  * Uncertainty principle nearly saturated
+* Higher entropy: Transition to "classical" behavior
+  * From wave-like to particle-like information storage
+  * Local rather than distributed encoding
+}
 
 \notes{The uncertainty principle means that the game can exhibit quantum-like information processing regimes during evolution. This inspires an  information-theoretic perspective on the quantum-classical transition.}
 

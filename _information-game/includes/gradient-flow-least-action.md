@@ -10,14 +10,26 @@
 \slides{
 * Steepest ascent of entropy ≈ Path of least action
 * System follows geodesics in information geometry
-* Action integral: $\mathcal{A} = \int L(\theta, \dot{\theta})dt$
-* Information-theoretic Lagrangian: $L = \frac{1}{2}\dot{\theta}^TG(\theta)\dot{\theta} - S(\theta)$
+}
+
+\newslide{Information-Theoretic Action}
+
+\slides{
+* Action integral
+  $$
+  \mathcal{A} = \int L(\theta, \dot{\theta}) \text{d}t
+  $$
+* Information-theoretic Lagrangian
+  $$
+  L = \frac{1}{2}\dot{\theta}^\top G(\theta)\dot{\theta} - S(\theta)
+  $$
+* cf @Frieden-physics98.
 }
 
 \notes{
 For our entropy game, we can define an information-theoretic action,
 $$
-\mathcal{A}[\gamma] = \int_0^T \left(\frac{1}{2}\dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} - S(\boldsymbol{\theta})\right) \text{d}t
+\mathcal{A}[\gamma] = \int_0^\top \left(\frac{1}{2}\dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} - S(\boldsymbol{\theta})\right) \text{d}t
 $$
 where $\gamma$ is a path through parameter space, $G(\boldsymbol{\theta})$ is the Fisher information matrix, and $S(\boldsymbol{\theta})$ is the entropy. The least action principle states that the system will follow paths that extremise this action.}
 
@@ -116,6 +128,10 @@ ax.set_aspect('equal')
 mlai.write_figure(filename='gradient-flow-least-action.svg', 
                   directory = './information-game')
 }
+
+\newslide{Gradient Flow and Least Action Path}
+
+\figure{\includediagram{\diagramsDir/information-game/gradient-flow-least-action}{70%}{Visualisation of the gradient flow and least action path.}{gradient-flow-least-action}}
 
 \notes{The visualization shows how a system following the entropy gradient traces a path of least action through the parameter space. This connection between steepest ascent and least action comes because entropy maximization and free energy minimization are dual views of the same underlying principle.}
 

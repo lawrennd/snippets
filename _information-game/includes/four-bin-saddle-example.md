@@ -138,6 +138,11 @@ mlai.write_figure(filename='simplified-saddle-point-example.svg',
                   directory = './information-game')
 }
 
+
+\newslide{Saddle Point Example}
+
+\figure{\includediagram{\diagramsDir/information-game/simplified-saddle-point-example}{70%}{Visualisation of a saddle point projected down to two dimensions.}{simplified-saddle-point-example}}
+
 \notes{The animation of system evolution would show initial rapid movement along high-eigenvalue directions, progressive slowing in directions with low eigenvalues and formation of information reservoirs in the critically slowed directions. Parameter-capacity uncertainty emerges naturally at the saddle point.
 } 
 

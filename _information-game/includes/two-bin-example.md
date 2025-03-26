@@ -10,7 +10,13 @@
 \slides{
 * Simplest example: Two-bin system
 * States represented by probability $p$ (with $1-p$ in second bin)
-* Entropy: $S(p) = -p\log p - (1-p)\log(1-p)$
+}
+\newslide{Entropy}
+\slides{
+* Entropy
+  $$
+  S(p) = -p\log p - (1-p)\log(1-p)
+  $$
 * Maximum entropy at $p = 0.5$
 * Minimal entropy at $p = 0$ or $p = 1$
 }
@@ -49,7 +55,7 @@ $$
 G(\theta) = p(1-p)
 $$
 $$
-\Delta \theta_{\text{natural}} =  \eta(\log(1-p) - \log p),
+\Delta \theta_{\text{natural}} =  \eta(\log(1-p) - \log p)
 $$
 }
 \setupplotcode{import matplotlib.pyplot as plt

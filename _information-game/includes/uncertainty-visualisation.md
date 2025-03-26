@@ -39,7 +39,7 @@ fig, ax = plt.subplots(figsize=plot.big_figsize)
 # Parameters for uncertainty ellipses
 k = 1  # Uncertainty constant
 centers = [(0, 0), (2, 2), (4, 4)]
-widths = [4, 2, 1]
+widths = [0.25, 0.5, 1]
 heights = [k/w for w in widths]
 colors = ['blue', 'green', 'red']
 labels = ['Quantum-like', 'Transitional', 'Classical']
@@ -78,6 +78,9 @@ ax.legend(loc='upper right')
 mlai.write_figure(filename='uncertainty-ellipses.svg', 
                   directory = '\writeDiagramsDir/information-game')
 }
+
+\newslide{Visualisation of the Uncertainty Principle}
+\figure{\includediagram{\diagramsDir/information-game/uncertainty-ellipses}{70%}{Visualisaiton of the uncertainty trade-off between parameter precision and capacity.}{uncertainty-ellipses}}
 
 \notes{This visualization helps explain why information reservoirs with quantum-like properties naturally emerge at minimal entropy. The uncertainty principle is not imposed but arises naturally from the constraints of Shannon information theory applied to physical systems operating at minimal entropy.} 
 
