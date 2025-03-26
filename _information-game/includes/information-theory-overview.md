@@ -66,9 +66,9 @@ where $E_{\rho(Z)}[\cdot]$ is the expectation under the distribution $\rho(Z)$.}
 
 \slides{
 * Where
-  \[
+  $$
   E_\rho\left[T(Z)\right] = \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta})
-  \]
+  $$
   because $A(\boldsymbol{\theta})$ is log partition function.
 
 * operates as a *cummulant generating function* for $\rho(Z)$.
@@ -77,15 +77,23 @@ where $E_{\rho(Z)}[\cdot]$ is the expectation under the distribution $\rho(Z)$.}
 \subsection{Available Energy}
 
 \slides{
-* $A(\boldsymbol{\theta})$ is Available (Free) Energy
-* $U(\boldsymbol{\theta}) = E_\rho\left[\boldsymbol{\theta}^\top(Z) + \log h(Z)\right] = \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_\rho\left[\log h(Z)\right]$ is total or internal energy.
-
+* Available energy:
+  $$
+  A(\boldsymbol{\theta})
+  $$
+* Internal energy:
+  $$
+  U(\boldsymbol{\theta}) = A(\boldsymbol{\theta}) + T S(\boldsymbol{\theta})
+  $$
 }
 
 \newslide{}
 \slides{
 * Traditional relationship
-  * A = U - TS
+  $$
+  A = U - TS
+  $$
+* Legendre transformation of entropy
 }
 
 \subsection{Work through Measurement}
@@ -126,7 +134,7 @@ This gives us the first hint at the connection between information and energy.}
 
 * Difference in available energy:
   $$
-  \Delta A = A(X) - A(Z|M) = I(X;M)
+  \Delta A = A(X) - A(X|M) = I(X;M)
   $$
 
 * Can recover $k_B T \cdot I(X;M)$ in work from the system
