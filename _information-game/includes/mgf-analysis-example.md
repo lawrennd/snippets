@@ -5,7 +5,7 @@
 
 \subsection{Detecting Transitions with Moment Generating Functions}
 
-\notes{The moment generating function (MGF) provides a powerful tool for analyzing variable transitions and detecting quantum-like vs. classical behavior.}
+\notes{How can we detect transitions between quantum-like and classical behaviour? The moment generating function (MGF) of the entropy provides a potential route for analyzing variable transitions and detecting transitions between $X$ and $M$.}
 
 \slides{
 * MGF: $M_Z(t) = \mathbb{E}[e^{tZ}] = \exp(A(\theta+t) - A(\theta))$
@@ -15,14 +15,13 @@
 * MGF reveals channel properties without needing state information
 }
 
-\notes{
-For each variable in our system, we can compute its moment generating function (MGF):
+\notes{For each variable in our system, we can compute its moment generating function (MGF),
+$$
+M_{Z_i}(t) = \mathbb{E}[e^{tZ_i}] = \exp(A(\theta + te_i) - A(\theta))
+$$
+where $e_i$ is the standard basis vector for the $i$-th coordinate.}
 
-$$M_{Z_i}(t) = \mathbb{E}[e^{tZ_i}] = \exp(A(\theta + te_i) - A(\theta))$$
-
-where $e_i$ is the standard basis vector for the $i$-th coordinate.
-
-The behavior of this MGF reveals whether a variable is functioning in a quantum-like or classical regime:
+\notes{The behavior of this MGF reveals what regimes variables are operating in. 
 
 1. **Quantum-like variables** show oscillatory MGF behavior, with complex analytic structure
 2. **Classical variables** show monotonic MGF growth, with simple analytic structure
@@ -31,7 +30,6 @@ This provides a diagnostic tool to identify which variables are functioning as q
 }
 
 \setupcode{import numpy as np}
-
 
 \helpercode{
 # Visualizing MGF differences between quantum-like and classical variables
