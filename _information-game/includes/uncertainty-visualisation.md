@@ -80,7 +80,7 @@ mlai.write_figure(filename='uncertainty-ellipses.svg',
 }
 
 \newslide{Visualisation of the Uncertainty Principle}
-\figure{\includediagram{\diagramsDir/information-game/uncertainty-ellipses}{70%}{Visualisaiton of the uncertainty trade-off between parameter precision and capacity.}{uncertainty-ellipses}}
+\figure{\includediagram{\diagramsDir/information-game/uncertainty-ellipses}{50%}{Visualisaiton of the uncertainty trade-off between parameter precision and capacity.}{uncertainty-ellipses}}
 
 \notes{This visualization helps explain why information reservoirs with quantum-like properties naturally emerge at minimal entropy. The uncertainty principle is not imposed but arises naturally from the constraints of Shannon information theory applied to physical systems operating at minimal entropy.} 
 
