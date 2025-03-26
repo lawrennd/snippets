@@ -43,7 +43,7 @@ where $h(Z)$ is the base measure, $\boldsymbol{\theta}$ is the natural parameter
 $$
   S(Z) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_{\rho(Z)}\left[\log h(Z)\right],
 $$
-where $E_{\rho(Z)}[\cdot\]$ is the expectation under the distribution $\rho(Z)$.}
+where $E_{\rho(Z)}[\cdot]$ is the expectation under the distribution $\rho(Z)$.}
 
 \slides{
 * Exponential family:
