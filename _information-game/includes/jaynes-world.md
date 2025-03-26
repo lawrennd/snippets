@@ -113,7 +113,9 @@ which measures the remaining dependency between past and future given the memory
 \slides{
 - $X$ divided into past/present $X_0$ and future $X_1$
 - Conditional mutual information:
-$$I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)}$$
+  $$
+  I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)}
+  $$
 - Measures dependency between past and future given memory state
 }
 
