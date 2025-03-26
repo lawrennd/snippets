@@ -29,7 +29,7 @@
 \notes{
 For our entropy game, we can define an information-theoretic action,
 $$
-\mathcal{A}[\gamma] = \int_0^\top \left(\frac{1}{2}\dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} - S(\boldsymbol{\theta})\right) \text{d}t
+\mathcal{A}[\gamma] = \int_0^T \left(\frac{1}{2}\dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} - S(\boldsymbol{\theta})\right) \text{d}t
 $$
 where $\gamma$ is a path through parameter space, $G(\boldsymbol{\theta})$ is the Fisher information matrix, and $S(\boldsymbol{\theta})$ is the entropy. The least action principle states that the system will follow paths that extremise this action.}
 
