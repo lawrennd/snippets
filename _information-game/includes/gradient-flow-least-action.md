@@ -131,7 +131,7 @@ mlai.write_figure(filename='gradient-flow-least-action.svg',
 
 \newslide{Gradient Flow and Least Action Path}
 
-\figure{\includediagram{\diagramsDir/information-game/gradient-flow-least-action}{70%}{Visualisation of the gradient flow and least action path.}{gradient-flow-least-action}}
+\figure{\includediagram{\diagramsDir/information-game/gradient-flow-least-action}{70%}}{Visualisation of the gradient flow and least action path.}{gradient-flow-least-action}
 
 \notes{The visualization shows how a system following the entropy gradient traces a path of least action through the parameter space. This connection between steepest ascent and least action comes because entropy maximization and free energy minimization are dual views of the same underlying principle.}
 
