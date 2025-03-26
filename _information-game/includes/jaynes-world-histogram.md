@@ -146,7 +146,7 @@ for _ in range(turns):
     grad = entropy_gradient(lambdas)
     lambdas += learning_rate * grad # update lambda for steepest ascent
     entropy_values.append(entropy(lambdas))
-    lambdas_history.append(lambdas)
+    lambdas_history.append(lambdas.copy())
 }
 
 \notes{We can plot the histogram at a set of chosen turn numbers to see the progress of the algorithm.}
@@ -156,7 +156,7 @@ import mlai.plot as plot
 import mlai}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
-plot_at = [0, 100, 1000, 10000, turns-1]
+plot_at = [0, 100, 1000, 2500, 5000, 7500, 10000, 12500, turns-1]
 for i, iter in enumerate(plot_at):
     plot_histogram(ax, lambdas_history[i]**2/(lambdas_history[i]**2).sum(), 1)
     # write the figure,
@@ -181,6 +181,10 @@ from ipywidgets import IntSlider}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-02}{\width}}{four-bin-histogram}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-03}{\width}}{four-bin-histogram}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{\width}}{four-bin-histogram}
+\newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-05}{\width}}{four-bin-histogram}
+\newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-06}{\width}}{four-bin-histogram}
+\newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-07}{\width}}{four-bin-histogram}
+\newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-08}{\width}}{four-bin-histogram}
 \endanimation
 }
 \notes{\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{70%}}{The final four bin histogram after \gradientAscentTurns iterations of gradient ascent.}{four-bin-histogram-turn-04}}
