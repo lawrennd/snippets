@@ -73,4 +73,7 @@ which measures the remaining dependency between past and future given the memory
 - Steady state with no further entropy increase possible
 }
 
+\newslide{Key Point}
+
+\slides{Both minimal and maximal entropy distribution belong to *exponential family*.}
 \endif
