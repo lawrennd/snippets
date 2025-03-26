@@ -187,7 +187,7 @@ from ipywidgets import IntSlider}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-08}{\width}}{four-bin-histogram}
 \endanimation
 }
-\notes{\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{70%}}{The final four bin histogram after \gradientAscentTurns iterations of gradient ascent.}{four-bin-histogram-turn-04}}
+\notes{\figure{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-04}{70%}}{An intermediate stage of the histogram entropy game.}{four-bin-histogram-turn-04}}
 
 \notes{And we can also plot the changing entropy as a function of the number of game turns.}
 
