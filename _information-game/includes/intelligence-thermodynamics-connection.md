@@ -114,6 +114,6 @@ by the chain rule of information theory. Here we would achieve a Markov separati
 
 \notes{ATP synthase functions as a rotary molecular motor that synthesizes ATP from ADP and inorganic phosphate using a proton gradient. The system uses the proton gradient as both an energy source and an information source about the cell's energetic state and exploits Brownian motion through a ratchet mechanism. It converts information about proton locations into mechanical rotation and ultimately chemical energy with approximately 3-4 protons required per ATP.}
 
-\includeyoutube{800}{600}{kXpzp4RDGJI}
+\includeyoutube{kXpzp4RDGJI}{800}{600}{130}
 
 \endif 
