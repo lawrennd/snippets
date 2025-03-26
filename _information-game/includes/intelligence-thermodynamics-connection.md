@@ -39,7 +39,7 @@ where $\langle W \rangle$ is the average work done across an ensemble of traject
 $$
 \langle \exp\left(-\frac{W}{k_B T}\right) \exp\left(\frac{\Delta\mathcal{F}}{k_BT}\right) \exp\left(-\mathcal{I}(X;M)\right)\rangle = 1,
 $$}
-where $\mathcal{I}(X;M) = \log \frac{\rho(X|M)}{\rho(X)}$ is the information gain from measurement, and the mutual information is recovered $I(X;M) = \langle \mathcal{I}(X;M) \rangle$ as the average information gain.}
+\notes{where $\mathcal{I}(X;M) = \log \frac{\rho(X|M)}{\rho(X)}$ is the information gain from measurement, and the mutual information is recovered $I(X;M) = \langle \mathcal{I}(X;M) \rangle$ as the average information gain.}
 
 \notes{This allows us toe estimate the  efficiency of feedback. Sagawa and Ueda introduce an *efficacy* term that captures the effect of feedback on the system they note in the presence of feedback,
 $$
