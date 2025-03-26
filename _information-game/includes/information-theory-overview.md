@@ -94,11 +94,43 @@ where $E_{\rho(Z)}[\cdot]$ is the expectation under the distribution $\rho(Z)$.}
 
 \notes{The variables are the portion of the system that is stochastically evolving over time. The memory is a low entropy partition of the system that will give us knowledge about this evolution.}
 
+\slides{
+* Split system $Z$ into two parts:
+  * Variables $X$ - stochastically evolving
+  * Memory $M$ - low entropy partition
+}
+
+\newslide{Joint Entropy Decomposition}
+
+\slides{
+* Joint entropy can be decomposed
+  $$
+  S(Z) = S(X,M) = S(X|M) + S(M) = S(X) - I(X;M) + S(M)
+  $$
+
+* Mutual information $I(X;M)$ connects information and energy
+}
+
 \notes{We can now write the joint entropy of the system in terms of the mutual information between the variables and the memory.
 $$
 S(Z) = S(X,M) = S(X|M) + S(M) = S(X) - I(X;M) + S(M).
 $$
 This gives us the first hint at the connection between information and energy.}
+
+\newslide{Measurement and Available Energy}
+
+\slides{
+* Measurement changes system entropy by $-I(X;M)$
+
+* Increases available energy
+
+* Difference in available energy:
+  $$
+  \Delta A = A(X) - A(Z|M) = I(X;M)
+  $$
+
+* Can recover $k_B T \cdot I(X;M)$ in work from the system
+}
 
 \notes{If $M$ is viewed as a measurement then the change in entropy of the system before and after measurement is given by $S(X|M) - S(X)$ wehich is given by $-I(X;M)$. This is implies that measurement increases the amount of available energy we obtain from the system  [@Parrondo-thermodynamics15].}
 
@@ -108,6 +140,14 @@ $$
 $$
 where we note that the resulting system is no longer in thermodynamic equilibrium due to the low entropy of the memory.}
 
+\newslide{Information to Work Conversion}
 
+\slides{
+* Maxwell's demon thought experiment in practice
+* Information gain $I(X;M)$ can be converted to work
+* Maximum extractable work: $W_{max} = k_B T \cdot I(X;M)$
+* Measurement creates a non-equilibrium state
+* Information is a physical resource
+}
 
 \endif 
