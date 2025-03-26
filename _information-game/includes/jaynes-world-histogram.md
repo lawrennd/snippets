@@ -175,7 +175,7 @@ from ipywidgets import IntSlider}
 
 \slides{
 \define{width}{80%}
-\startanimation{four-bin-histogram}{0}{5}
+\startanimation{four-bin-histogram}{0}{9}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-00}{\width}}{four-bin-histogram}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-01}{\width}}{four-bin-histogram}
 \newframe{\includediagram{\diagramsDir/information-game/four-bin-histogram-turn-02}{\width}}{four-bin-histogram}
