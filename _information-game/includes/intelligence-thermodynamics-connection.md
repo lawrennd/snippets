@@ -39,21 +39,21 @@ where $W_\text{ext}$ is the extractable work and it is upper bounded by the nega
 
 \notes{Sagawa and Ueda extended this relationship to provide a *generalised Jarzynski equality* for feedback processes [@Sagawa-generalized10]. The Jarzynski equality is an imporant result from nonequilibrium thermodynamics that relates the average work done across an ensemble to the free energy difference between initial and final states [@Jarzynski-nonequilibrium97],
 $$
-\langle \exp\left(-\frac{W}{k_B T}\right) \rangle = \exp\left(-\frac{\Delta\mathcal{F}}{k_BT}\right),
+\left\langle \exp\left(-\frac{W}{k_B T}\right) \right\rangle = \exp\left(-\frac{\Delta\mathcal{F}}{k_BT}\right),
 $$
 where $\langle W \rangle$ is the average work done across an ensemble of trajectories, $\Delta\mathcal{F}$ is the change in free energy, $k_B$ is Boltzmann's constant, and $\Delta S$ is the change in entropy. Sagawa and Ueda extended this equality to to include information gain from measurement [@Sagawa-generalized10],
 $$
-\langle \exp\left(-\frac{W}{k_B T}\right) \exp\left(\frac{\Delta\mathcal{F}}{k_BT}\right) \exp\left(-\mathcal{I}(X;M)\right)\rangle = 1,
+\left\langle \exp\left(-\frac{W}{k_B T}\right) \exp\left(\frac{\Delta\mathcal{F}}{k_BT}\right) \exp\left(-\mathcal{I}(X;M)\right)\right\rangle = 1,
 $$}
-\notes{where $\mathcal{I}(X;M) = \log \frac{\rho(X|M)}{\rho(X)}$ is the information gain from measurement, and the mutual information is recovered $I(X;M) = \langle \mathcal{I}(X;M) \rangle$ as the average information gain.}
+\notes{where $\mathcal{I}(X;M) = \log \frac{\rho(X|M)}{\rho(X)}$ is the information gain from measurement, and the mutual information is recovered $I(X;M) = \left\langle \mathcal{I}(X;M) \right\rangle$ as the average information gain.}
 
 \notes{This allows us toe estimate the  efficiency of feedback. Sagawa and Ueda introduce an *efficacy* term that captures the effect of feedback on the system they note in the presence of feedback,
 $$
-\langle \exp\left(-\frac{W}{k_B T}\right) \exp\left(\frac{\Delta\mathcal{F}}{k_BT}\right)\rangle = \gamma,
+\left\langle \exp\left(-\frac{W}{k_B T}\right) \exp\left(\frac{\Delta\mathcal{F}}{k_BT}\right)\right\rangle = \gamma,
 $$
 where $\gamma$ is the efficacy. We can also introduce an efficiency,
 $$
-\eta = \frac{\langle \Delta \mathcal{F} - W\rangle}{I(X; M)},
+\eta = \frac{\left\langle \Delta \mathcal{F} - W\right\rangle}{I(X; M)},
 $$
 This allows us to estimate the efficiency of feedback control as
 $$
