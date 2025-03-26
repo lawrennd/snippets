@@ -146,7 +146,7 @@ for _ in range(turns):
     grad = entropy_gradient(lambdas)
     lambdas += learning_rate * grad # update lambda for steepest ascent
     entropy_values.append(entropy(lambdas))
-    lambdas_history.append(lambdas)
+    lambdas_history.append(lambdas.copy())
 }
 
 \notes{We can plot the histogram at a set of chosen turn numbers to see the progress of the algorithm.}
