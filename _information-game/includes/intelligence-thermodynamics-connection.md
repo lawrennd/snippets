@@ -5,27 +5,33 @@
 
 \section{Information Engines: Intelligence as an Energy-Efficiency}
 
+\slides{
+* Information can be converted to available energy
+* Simple systems that exploit this are "information engines"
+* This provides our first model of intelligence
+}
+
 \notes{The entropy game shows some parallels between thermodynamics and measurement. This allows us to imagine *information engines*, simple systems that convert information to energy. This is our first simple model of intelligence.}
 
 \subsection{Measurement as a Thermodynamic Process: Information-Modified Second Law}
+
+\slides{
+* Measurement is a thermodynamic process
+* Maximum extractable work: $W_\text{ext} \leq -\Delta\mathcal{F} + k_BTI(X;M)$
+* Information acquisition creates work potential
+}
 
 \notes{The second law of thermodynamics was generalised to include the effect of measurement by Sagawa and Ueda [@Sagawa-second08]. They showed that the maximum extractable work from a system can be increased by $k_BTI(X;M)$ where $k_B$ is Boltzmann's constant, $T$ is temperature and $I(X;M)$ is the information gained by making a measurement, $M$,}
 $$
 I(X;M) = \sum_{x,m} \rho(x,m) \log \frac{\rho(x,m)}{\rho(x)\rho(m)},
 $$
-where $\rho(x,m)$ is the joint probability of the system and measurement (see e.g. eq 14 in @Sagawa-second08). This can be written as
+\notes{where $\rho(x,m)$ is the joint probability of the system and measurement (see e.g. eq 14 in @Sagawa-second08). This can be written as
 $$
 W_\text{ext} \leq  - \Delta\mathcal{F} + k_BTI(X;M),
 $$
-\notes{where $W_\text{ext}$ is the extractable work and it is upper bounded by the negative change in free energy, $\Delta \mathcal{F}$, plus the energy gained from measurement, $k_BTI(X;M)$. This is the information-modified second law.}
+where $W_\text{ext}$ is the extractable work and it is upper bounded by the negative change in free energy, $\Delta \mathcal{F}$, plus the energy gained from measurement, $k_BTI(X;M)$. This is the information-modified second law.}
 
 \notes{The measurements can be seen as a thermodynamic process. In theory measurement, like computation is reversible. But in practice the process of measurement is likely to erode the free energy somewhat, but as long as the energy gained from information, $kTI(X;M)$ is greater than that spent in measurement the pricess can be thermodynamically efficient.}
-
-\slides{
-* Measurement is a thermodynamic process.
-* The engine can return $k_BTI(X;M)$ Joules of energy.
-* If this is greater than available energy used in measurement, the process has a thermodynamic return.
-}
 
 \notes{The modified second law shows that the maximum additional extractable work is proportional to the information gained. So information acquisition creates extractable work potential. Thermodynamic consistency is maintained by properly accounting for information-entropy relationships.}
 
@@ -57,6 +63,12 @@ $$
 
 \subsection{Channel Coding Perspective on Memory}
 
+\slides{
+* Memory acts as an information channel
+* Channel capacity limited by memory size: $C \leq n$ bits
+* Relates to Ashby's Law of Requisite Variety and the information bottleneck
+}
+
 \notes{When viewing $M$ as an information channel between past and future states, Shannon's channel coding theorems apply. The channel capacity $C$ represents the maximum rate of reliable information transmission
 \[
 C = \max_{\rho(M)} I(X_1;M)
@@ -75,28 +87,32 @@ as the mutual information is upper bounded by the entropy of $\rho(M)$ which is 
 
 \subsection{Model Approximations and Thermodynamic Efficiency}
 
-\notes{Intelligent systems must balance measurement against energy efficiency and time requirements. A perfect model of the world would require infinite computational resources and speed, so  approximations are necessary. This leads to uncertainties. Thermodynamics might be thought of as the physics of uncertainty: at equilibrium thermodynamic systems find thermodynamic states that minimize free energy, equivalent to maximising entropy.}
-
 \slides{
 * Perfect models require infinite resources
-* Approximations minimize free energy
-* Bounded rationality as a response to thermodynamic constraints
-* Intelligence has context
+* Intelligence balances measurement against energy efficiency
+* Bounded rationality as thermodynamic necessity
 }
+
+\notes{Intelligent systems must balance measurement against energy efficiency and time requirements. A perfect model of the world would require infinite computational resources and speed, so  approximations are necessary. This leads to uncertainties. Thermodynamics might be thought of as the physics of uncertainty: at equilibrium thermodynamic systems find thermodynamic states that minimize free energy, equivalent to maximising entropy.}
 
 \subsection{Markov Blanket}
 
+\slides{
+* Split system into past/present ($X_0$) and future ($X_1$)
+* Memory $M$ creates Markov separation when $I(X_0;X_1|M) = 0$
+* Efficient memory minimizes information loss
+}
+
 \notes{To introduce some structure to the model assumption. We split $X$ into $X_0$ and $X_1$. $X_0$ is past and present of the system, $X_1$ is future The conditional mutual information $I(X_0;X_1|M)$ which is zero if $X_1$ and $X_0$ are independent conditioned on $M$.}
 
-\notes{First note that by definition of the mutual information we have
-\[
-I(X_0, X_1; M) = I(X_0; X_1) + I(M; X_1|X_0)
-\]
-by the chain rule of information theory. Here we would achieve a Markov separation between $X_0$ and $X_1$ if $I(X_0;X_1|M) = 0$.}
 
-
-<!--Start Include here -->
 \subsection{At What Scales Does this Apply?}
+
+\slides{
+* Equipartition theorem: $kT/2$ energy per degree of freedom
+* Information storage is a small perturbation in large systems
+* Most relevant at microscopic scales
+}
 
 \notes{The equipartition theorem tells us that at equilibrium the average energy is $kT/2$ per degree of freedom. This means that for most practical systems the amount of energy available is many orders of magnitude larger than the amount of information we can store in memory.}
 
@@ -104,13 +120,25 @@ by the chain rule of information theory. Here we would achieve a Markov separati
 
 \subsection{Small-Scale Biochemical Systems and Information Processing}
 
+\slides{
+* Microscopic biological systems operate where information matters
+* Molecular machines exploit thermal fluctuations
+* Information processing enables work extraction
+}
+
 \notes{While macroscopic systems operate in regimes where traditional thermodynamics dominates, microscopic biological systems operate at scales where information and thermal fluctuations become critically important. Here we examine how the framework applies to molecular machines and processes that have evolved to operate efficiently at these scales.}
 
-\subsection{Molecular Machines as Information Engines}
+\newslide{Molecular Machines as Information Engines}
+
+\slides{
+* ATP synthase, kinesin, photosynthetic apparatus
+* Convert environmental information to useful work
+* Example: ATP synthase uses ~3-4 protons per ATP
+}
 
 \notes{Molecular machines like ATP synthase, kinesin motors, and the photosynthetic apparatus can be viewed as sophisticated information engines that convert energy while processing information about their environment. These systems have evolved to exploit thermal fluctuations rather than fight against them, using information processing to extract useful work.}
 
-\notes{ATP Synthase: Nature's Rotary Engine}
+\subsection{ATP Synthase: Nature's Rotary Engine}
 
 \notes{ATP synthase functions as a rotary molecular motor that synthesizes ATP from ADP and inorganic phosphate using a proton gradient. The system uses the proton gradient as both an energy source and an information source about the cell's energetic state and exploits Brownian motion through a ratchet mechanism. It converts information about proton locations into mechanical rotation and ultimately chemical energy with approximately 3-4 protons required per ATP.}
 
