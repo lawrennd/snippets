@@ -25,35 +25,40 @@ where $\gamma$ is a path through parameter space, $G(\boldsymbol{\theta})$ is th
 
 \setupcode{import numpy as np}
 
-\helpercode{# Create a potential energy landscape
+\helpercode{# Create a potential energy landscape based on bivariate Gaussian entropy
 def potential(x, y):
-    # Base potential with a single maximum
-    base_potential = np.exp(-((x-1)**2 + (y-1)**2)/0.5)
+    # Interpret x as sqrt-precision parameter and y as correlation parameter
+    # Constrain y to be between -1 and 1 (valid correlation)
+    y_corr = np.tanh(y)
     
-    # Create flat regions using a plateau function
-    flat_region = -0.1 * np.tanh((x**2 + y**2) - 4)
+    # Construct precision and covariance matrices
+    precision = x**2  # x is sqrt-precision
+    variance = 1/precision
+    covariance = y_corr * variance
     
-    # Combine all components
-    return base_potential + flat_region
+    # Covariance matrix
+    Sigma = np.array([[variance, covariance], 
+                      [covariance, variance]])
+    
+    # Entropy of bivariate Gaussian
+    det_Sigma = variance**2 * (1 - y_corr**2)
+    entropy = 0.5 * np.log((2 * np.pi * np.e)**2 * det_Sigma)
+    
+    return entropy
 
-# Create gradient vector field
+# Create gradient vector field for the Gaussian entropy
 def gradient(x, y):
-    # Gradient of the base potential
-    dx_base = -(2 * (x-1) / 0.5) * np.exp(-((x-1)**2 + (y-1)**2)/0.5)
-    dy_base = -(2 * (y-1) / 0.5) * np.exp(-((x-1)**2 + (y-1)**2)/0.5)
+    # Small delta for numerical gradient
+    delta = 1e-6
     
-    # Gradient of the flat region
-    dx_flat = -0.1 * (2 * x) * (1 - np.tanh((x**2 + y**2) - 4)**2)
-    dy_flat = -0.1 * (2 * y) * (1 - np.tanh((x**2 + y**2) - 4)**2)
-    
-    # Combine gradients
-    dx = dx_base + dx_flat
-    dy = dy_base + dy_flat
+    # Compute numerical gradient
+    dx = (potential(x + delta, y) - potential(x - delta, y)) / (2 * delta)
+    dy = (potential(x, y + delta) - potential(x, y - delta)) / (2 * delta)
     
     return dx, dy
 
 # Simulate and plot a particle path following gradient
-def simulate_path(start_x, start_y, steps=100, dt=0.1):
+def simulate_path(start_x, start_y, steps=100000, dt=0.00001):
     path_x, path_y = [start_x], [start_y]
     x, y = start_x, start_y
     for _ in range(steps):
@@ -63,7 +68,6 @@ def simulate_path(start_x, start_y, steps=100, dt=0.1):
         path_x.append(x)
         path_y.append(y)
     return path_x, path_y
-
 }
 
 \code{# Visualizing gradient flow and least action path
@@ -77,7 +81,7 @@ Z = potential(X, Y)
 # Calculate gradient field
 dx, dy = gradient(X, Y)
 magnitude = np.sqrt(dx**2 + dy**2)
-path_x, path_y = simulate_path(2, -1)}
+path_x, path_y = simulate_path(2, 3)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -88,18 +92,17 @@ from matplotlib.colors import LogNorm}
 # Create the figure
 fig, ax = plt.subplots(figsize=(10, 8))
 
-# Plot potential as contour
-contour = ax.contourf(X, Y, Z, levels=50, cmap='viridis', alpha=0.7)
-cbar = plt.colorbar(contour, ax=ax)
-cbar.set_label('Entropy S(θ)')
+# Plot potential as contour lines only (not filled)
+contour = ax.contour(X, Y, Z, levels=15, colors='black', alpha=0.7, linewidths=0.8)
+ax.clabel(contour, inline=True, fontsize=8)  # Add labels to contour lines
 
 # Plot gradient field
 stride = 5
 ax.quiver(X[::stride, ::stride], Y[::stride, ::stride], 
-          dx[::stride, ::stride], dy[::stride, ::stride],
+          dx[::stride, ::stride]/magnitude[::stride, ::stride], 
+          dy[::stride, ::stride]/magnitude[::stride, ::stride],
           magnitude[::stride, ::stride],
-          cmap='autumn', scale=50, width=0.002)
-
+          cmap='autumn', scale=25, width=0.002)
 
 # Plot path
 ax.plot(path_x, path_y, 'r-', linewidth=2, label='Least action path')
@@ -114,8 +117,7 @@ mlai.write_figure(filename='gradient-flow-least-action.svg',
                   directory = './information-game')
 }
 
-\notes{
-The visualization shows how a system following the entropy gradient naturally traces a path of least action through the parameter space. This connection between steepest ascent and least action is profound comes because entropy maximization and free energy minimization are dual aspects of the same underlying principle.}
+\notes{The visualization shows how a system following the entropy gradient traces a path of least action through the parameter space. This connection between steepest ascent and least action comes because entropy maximization and free energy minimization are dual views of the same underlying principle.}
 
 \notes{At points where the gradient becomes small (near critical points), the system exhibits critical slowing, and information reservoirs naturally form. These are the regions where variables, $X$, become information reservoirs and effective parameters, $M$, that control system behaviour.} 
 

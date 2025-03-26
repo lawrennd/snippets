@@ -5,7 +5,7 @@
 
 \section{Information Theory and Thermodynamics}
 
-\notes{Information theory provides a mathematical framework for quantifying information. It's no coincidence that information theory's core concepts parallel those found in thermodynamics. The theory was developed by Claude Shannon who spoke extensively to MIT's Norbert Wiener at while it was in development [@Conway-dark05]. Wiener's own ideas about information were inspired by Willard Gibbs, one of the pioneers of the mathematical understanding of free energy and entropy. Deep connections between physical systems and information processing have connected information and energy from the start.}
+\notes{Information theory provides a mathematical framework for quantifying information. Many of information theory's core concepts parallel those found in thermodynamics. The theory was developed by Claude Shannon who spoke extensively to MIT's Norbert Wiener at while it was in development [@Conway-dark05]. Wiener's own ideas about information were inspired by Willard Gibbs, one of the pioneers of the mathematical understanding of free energy and entropy. Deep connections between physical systems and information processing have connected information and energy from the start.}
 
 \slides{
 * Information theory quantifies uncertainty and information
@@ -25,8 +25,6 @@ $$
 * In thermodynamics preceded by Boltzmann's constant, $k_B$
 }
 \newslide{}
-
-\include{_physics/includes/entropy-intro.md}
 
 \figure{\includediagram{\diagramsDir/information/maxwell-demon}{60%}}{Maxwell's demon thought experiment illustrates the relationship between information and thermodynamics.}{maxwell-demon}
 
@@ -92,9 +90,6 @@ $$
 $$
 where we note that the resulting system is no longer in thermodynamic equilibrium due to the low entropy of the memory.}
 
-*note on temperature here?*
-
-\notes{**To here need to add material showing scales at which these thermodynamic principes apply, ATP Synthase and Photosynthesis.**}
 
 
 \endif 

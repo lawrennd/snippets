@@ -28,53 +28,111 @@ The eigenvectors of $G(\theta)$ at the saddle point determine which parameter co
 
 \setupcode{import numpy as np}
 
-\code{# Simplified saddle point example
-# Define a function with a saddle point (simplified for visualization)
-def f(x, y, order=4, yorder=None):
-    if yorder is None:
-         yorder = order
-    return x**order - y**yorder
+\code{# Exponential family entropy with saddle point
+def exponential_family_entropy(theta1, theta2, theta3=None):
+    """
+    Compute entropy of a 4-bin exponential family distribution
+    parameterized by natural parameters theta1, theta2, theta3
+    (with the constraint that probabilities sum to 1)
+    """
+    # If theta3 is not provided, we'll use a function of theta1 and theta2
+    if theta3 is None:
+        theta3 = -0.5 * (theta1 + theta2)
+    
+    # Compute the log-partition function (normalization constant)
+    theta4 = -(theta1 + theta2 + theta3)  # Constraint
+    log_Z = np.log(np.exp(theta1) + np.exp(theta2) + np.exp(theta3) + np.exp(theta4))
+    
+    # Compute probabilities
+    p1 = np.exp(theta1 - log_Z)
+    p2 = np.exp(theta2 - log_Z)
+    p3 = np.exp(theta3 - log_Z)
+    p4 = np.exp(theta4 - log_Z)
+    
+    # Compute entropy: -sum(p_i * log(p_i))
+    entropy = -np.sum(
+        np.array([p1, p2, p3, p4]) * 
+        np.log(np.array([p1, p2, p3, p4])), 
+        axis=0, where=np.array([p1, p2, p3, p4])>0
+    )
+    
+    return entropy
 
-def g(x, y, order=4, yorder=None):
-    if yorder is None:
-         yorder = order
-    return order*x**(order-1), -yorder*y**(yorder-1)
+def entropy_gradient(theta1, theta2, theta3=None):
+    """
+    Compute the gradient of the entropy with respect to theta1 and theta2
+    """
+    # If theta3 is not provided, we'll use a function of theta1 and theta2
+    if theta3 is None:
+        theta3 = -0.5 * (theta1 + theta2)
+    
+    # Compute the log-partition function
+    theta4 = -(theta1 + theta2 + theta3)  # Constraint
+    log_Z = np.log(np.exp(theta1) + np.exp(theta2) + np.exp(theta3) + np.exp(theta4))
+    
+    # Compute probabilities
+    p1 = np.exp(theta1 - log_Z)
+    p2 = np.exp(theta2 - log_Z)
+    p3 = np.exp(theta3 - log_Z)
+    p4 = np.exp(theta4 - log_Z)
+    
+    # For the gradient, we need to account for the constraint on theta3
+    # When theta3 = -0.5(theta1 + theta2), we have:
+    # theta4 = -(theta1 + theta2 + theta3) = -(theta1 + theta2 - 0.5(theta1 + theta2)) = -0.5(theta1 + theta2)
+    
+    # Gradient components with chain rule applied
+    # For theta1: ∂S/∂theta1 + ∂S/∂theta3 * ∂theta3/∂theta1 + ∂S/∂theta4 * ∂theta4/∂theta1
+    grad_theta1 = (p1 * (np.log(p1) + 1)) - 0.5 * (p3 * (np.log(p3) + 1)) - 0.5 * (p4 * (np.log(p4) + 1))
+    
+    # For theta2: ∂S/∂theta2 + ∂S/∂theta3 * ∂theta3/∂theta2 + ∂S/∂theta4 * ∂theta4/∂theta2
+    grad_theta2 = (p2 * (np.log(p2) + 1)) - 0.5 * (p3 * (np.log(p3) + 1)) - 0.5 * (p4 * (np.log(p4) + 1))
+    
+    return grad_theta1, grad_theta2
 
 # Create a grid of points
 x = np.linspace(-2, 2, 100)
 y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)
 
-xorder = 2
-yorder = 4
+# Compute entropy and its gradient at each point
+Z = exponential_family_entropy(X, Y)
+dX, dY = entropy_gradient(X, Y)
 
-Z = f(X, Y, xorder, yorder)
-dX, dY = g(X, Y, xorder, yorder)
+# Normalize gradient vectors for better visualization
+norm = np.sqrt(dX**2 + dY**2)
+# Avoid division by zero
+norm = np.where(norm < 1e-10, 1e-10, norm)
+dX_norm = dX / norm
+dY_norm = dY / norm
 
-# A few gradient vectors
-stride = 20
-u = dX[::stride, ::stride]
-v = dY[::stride, ::stride]}
+# A few gradient vectors for visualization
+stride = 10}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
-import mlai
-
-from mpl_toolkits.mplot3d import Axes3D}
+import mlai}
 
 \plotcode{fig = plt.figure(figsize=plot.big_wide_figsize)
-# Create a 3D plot
-ax = fig.add_subplot(111, projection='3d')
-ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
-ax.set_zlim([-2.5, 2.5])
-ax.set_xlabel('$\\theta_1$')
-ax.set_ylabel('$\\theta_2$')
-ax.set_zlabel('Entropy $S(\\boldsymbol{\\theta})')
-ax.set_title('Saddle Point in Parameter Space')
 
-w = np.zeros_like(u)
-ax.quiver(X[::stride, ::stride], Y[::stride, ::stride], Z[::stride, ::stride], 
-          u, v, w, color='r', length=0.5, normalize=True)
+# Create contour lines only (no filled contours)
+contours = plt.contour(X, Y, Z, levels=15, colors='black', linewidths=0.8)
+plt.clabel(contours, inline=True, fontsize=8, fmt='%.2f')
+
+# Add gradient vectors (normalized for direction, but scaled by magnitude for visibility)
+# Note: We're using the negative of the gradient to point in direction of increasing entropy
+plt.quiver(X[::stride, ::stride], Y[::stride, ::stride], 
+           -dX_norm[::stride, ::stride], -dY_norm[::stride, ::stride], 
+           color='r', scale=30, width=0.003, scale_units='width')
+
+# Add labels and title
+plt.xlabel('$\\theta_1$')
+plt.ylabel('$\\theta_2$')
+plt.title('Entropy Contours with Gradient Field')
+
+# Mark the saddle point (approximately at origin for this system)
+plt.scatter([0], [0], color='yellow', s=100, marker='*', 
+            edgecolor='black', zorder=10, label='Saddle Point')
+plt.legend()
 
 mlai.write_figure(filename='simplified-saddle-point-example.svg', 
                   directory = './information-game')

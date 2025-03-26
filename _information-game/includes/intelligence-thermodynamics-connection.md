@@ -1,5 +1,5 @@
-\ifndef{informationEngines}
-\define{informationEngines}
+\ifndef{intelligenceThermodynamicsConnection}
+\define{intelligenceThermodynamicsConnection}
 
 \editme
 
