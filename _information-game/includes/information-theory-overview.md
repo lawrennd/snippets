@@ -19,9 +19,11 @@
 \notes{Shannon's entropy measures the uncertainty or unpredictability of information content. This mathematical formulation is inspired by thermodynamic entropy, which describes the dispersal of energy in physical systems. Both concepts quantify the number of possible states and their probabilities.}
 
 \slides{
+* Entropy
 $$
 S(X) = -\sum_X \rho(X) \log p(X)
 $$
+
 * In thermodynamics preceded by Boltzmann's constant, $k_B$
 }
 \newslide{}
@@ -47,18 +49,29 @@ where $E_{\rho(Z)}[\cdot]$ is the expectation under the distribution $\rho(Z)$.}
 
 \slides{
 * Exponential family:
-  \[
+  $$
   \rho(Z) = h(Z) \exp\left(\boldsymbol{\theta}^\top T(Z) + A(\boldsymbol{\theta})\right)
-  \]
+  $$
+}
+\newslide{}
+
+\slides{
 * Entropy is,
-  \[
+  $$
   S(Z) =   A(\boldsymbol{\theta}) -  E_\rho\left[\boldsymbol{\theta}^\top T(Z)  + \log h(Z)\right]
-  \]
+  $$
+}
+
+\newslide{}
+
+\slides{
 * Where
   \[
   E_\rho\left[T(Z)\right] = \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta})
   \]
-  because $A(\boldsymbol{\theta})$ operates as a *cummulant generating function* for $\rho(Z)$.
+  because $A(\boldsymbol{\theta})$ is log partition function.
+
+* operates as a *cummulant generating function* for $\rho(Z)$.
 }
 
 \subsection{Available Energy}
@@ -66,6 +79,11 @@ where $E_{\rho(Z)}[\cdot]$ is the expectation under the distribution $\rho(Z)$.}
 \slides{
 * $A(\boldsymbol{\theta})$ is Available (Free) Energy
 * $U(\boldsymbol{\theta}) = E_\rho\left[\boldsymbol{\theta}^\top(Z) + \log h(Z)\right] = \boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta}A(\boldsymbol{\theta}) - E_\rho\left[\log h(Z)\right]$ is total or internal energy.
+
+}
+
+\newslide{}
+\slides{
 * Traditional relationship
   * A = U - TS
 }
