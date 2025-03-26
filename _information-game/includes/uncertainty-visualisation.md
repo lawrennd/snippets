@@ -39,8 +39,9 @@ fig, ax = plt.subplots(figsize=plot.big_figsize)
 # Parameters for uncertainty ellipses
 k = 1  # Uncertainty constant
 centers = [(0, 0), (2, 2), (4, 4)]
-widths = [0.25, 0.5, 1]
-heights = [k/w for w in widths]
+widths = [0.25, 0.5, 2]
+heights = [4, 2.5, 2]
+#heights = [k/w for w in widths]
 colors = ['blue', 'green', 'red']
 labels = ['Quantum-like', 'Transitional', 'Classical']
 
