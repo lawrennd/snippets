@@ -108,7 +108,7 @@ as the mutual information is upper bounded by the entropy of $\rho(M)$ which is 
 
 \notes{The equipartition theorem tells us that at equilibrium the average energy is $kT/2$ per degree of freedom. This means that for systems that operate at "human scale" the energy involved is many orders of magnitude larger than the amount of information we can store in memory. For a car engine producing 70 kW of power at 370 Kelvin, this implies 
 $$
-\frac{2 \times 70,000}{370 \times k_B} = \frac{2 \times 70,000}{370\times 1.380649×10−23} = 2.74 × 10^{25} 
+\frac{2 \times 70,000}{370 \times k_B} = \frac{2 \times 70,000}{370\times 1.380649×10^{−23}} = 2.74 × 10^{25} 
 $$
 degrees of freedom per second. If we make a conservative assumption of one bit per degree of freedom, then the mutual information we would require in one second for comparative energy production would be around 3400 zettabytes, implying a memory bandwidth of around 3,400 zettabytes per second. In 2025 the estimate of all the data in the world stands at 149 zettabytes.}
 
