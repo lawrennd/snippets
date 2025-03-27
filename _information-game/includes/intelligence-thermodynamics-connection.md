@@ -138,6 +138,6 @@ degrees of freedom per second. If we make a conservative assumption of one bit p
 
 \includeyoutube{kXpzp4RDGJI}{800}{600}{130}
 
-\notes{Estimates suggest that one synapse firing may require $10^4$ ATP molecules, so around $4 \times 10^4$ protons. The human brain contains around 10^14 synapses, each firing about once every five seconds, meaning we require approximately 10^18 protons per second to power the synapses in our brain. With each proton having six degrees of freedom, it seems that the memory capacity distributed across the ATP Synthase in our brain must be of order $6 \times 10^18$ bits per second or 750 petabytes of information per second. Of course this memory capacity woudl be devolved across the trillions of neurons within mitochondria that contain thousands of ATP synthase molecules.}
+\notes{Estimates suggest that one synapse firing may require $10^4$ ATP molecules, so around $4 \times 10^4$ protons. The human brain contains around $10^14$ neurons, each firing about once every five seconds, meaning we require approximately 10^18 protons per second to power the synapses in our brain. With each proton having six degrees of freedom, it seems that the memory capacity distributed across the ATP Synthase in our brain must be of order $6 \times 10^18$ bits per second or 750 petabytes of information per second. Of course this memory capacity woudl be devolved across the trillions of neurons within mitochondria that contain thousands of ATP synthase molecules.}
 
 \endif 
