@@ -140,6 +140,6 @@ degrees of freedom per second. If we make a conservative assumption of one bit p
 
 \notes{Estimates suggest that one synapse firing may require $10^4$ ATP molecules, so around $4 \times 10^4$ protons. If we take the human brain as containing around $10^{14}$ synapses, and if we suggest each synapse only fires about once every five seconds, we would require approximately $10^{18}$ protons per second to power the synapses in our brain. With each proton having six degrees of freedom. Under these rough calculations the memory capacity distributed across the ATP Synthase in our brain must be of order $6 \times 10^{18}$ bits per second or 750 petabytes of information per second. Of course this memory capacity would be devolved across the billions of neurons within hundreds or thousands of mitochondria that each can contain thousands of ATP synthase molecules. By composition of extremely small systems we can see it's possible to improve efficiencies in ways that seem very impractical for a car engine.}
 
-\notes{Quick note to clarify, here we're talking about the information requirements to make our brain more energy efficient in its information processing rather than the information processing capabilities of the neurons themselves!}
+\notes{Quick note to clarify, here we're referring to the information requirements to make our brain more energy efficient in its information processing rather than the information processing capabilities of the neurons themselves!}
 
 \endif 
