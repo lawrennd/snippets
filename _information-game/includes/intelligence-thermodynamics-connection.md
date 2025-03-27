@@ -35,7 +35,7 @@ where $W_\text{ext}$ is the extractable work and it is upper bounded by the nega
 
 \notes{The modified second law shows that the maximum additional extractable work is proportional to the information gained. So information acquisition creates extractable work potential. Thermodynamic consistency is maintained by properly accounting for information-entropy relationships.}
 
-\subsection{Efficacy and Efficiency of Feedback Control}
+\subsection{Efficacy of Feedback Control}
 
 \notes{Sagawa and Ueda extended this relationship to provide a *generalised Jarzynski equality* for feedback processes [@Sagawa-generalized10]. The Jarzynski equality is an imporant result from nonequilibrium thermodynamics that relates the average work done across an ensemble to the free energy difference between initial and final states [@Jarzynski-nonequilibrium97],
 $$
@@ -47,19 +47,11 @@ $$
 $$}
 \notes{where $\mathcal{I}(X;M) = \log \frac{\rho(X|M)}{\rho(X)}$ is the information gain from measurement, and the mutual information is recovered $I(X;M) = \left\langle \mathcal{I}(X;M) \right\rangle$ as the average information gain.}
 
-\notes{This allows us toe estimate the  efficiency of feedback. Sagawa and Ueda introduce an *efficacy* term that captures the effect of feedback on the system they note in the presence of feedback,
+\notes{Sagawa and Ueda introduce an *efficacy* term that captures the effect of feedback on the system they note in the presence of feedback,
 $$
 \left\langle \exp\left(-\frac{W}{k_B T}\right) \exp\left(\frac{\Delta\mathcal{F}}{k_BT}\right)\right\rangle = \gamma,
 $$
-where $\gamma$ is the efficacy. We can also introduce an efficiency,
-$$
-\eta = \frac{\left\langle \Delta \mathcal{F} - W\right\rangle}{I(X; M)},
-$$
-This allows us to estimate the efficiency of feedback control as
-$$
-\frac{W}{k_BT} = \frac{\Delta\mathcal{F}}{k_BT} - \mathcal{I}(X;M) + \ln \gamma.
-$$
-}
+where $\gamma$ is the efficacy.}
 
 \subsection{Channel Coding Perspective on Memory}
 
@@ -69,7 +61,7 @@ $$
 * Relates to Ashby's Law of Requisite Variety and the information bottleneck
 }
 
-\notes{When viewing $M$ as an information channel between past and future states, Shannon's channel coding theorems apply. The channel capacity $C$ represents the maximum rate of reliable information transmission
+\notes{When viewing $M$ as an information channel between past and future states, Shannon's channel coding theorems apply [@Shannon-info48]. The channel capacity $C$ represents the maximum rate of reliable information transmission
 \[
 C = \max_{\rho(M)} I(X_1;M)
 \]
@@ -79,7 +71,7 @@ C \leq n,
 \]
 as the mutual information is upper bounded by the entropy of $\rho(M)$ which is at most $n$ bits.}
 
-\notes{This relationship closely aligns with Ashby's Law of Requisite Variety (pg 229 @Ashby-design52), which states that a control system must have at least as much 'variety' as the system it aims to control. In the context of memory systems, this means that to maintain temporal correlations effectively, the memory's state space must be at least as large as the information content it needs to preserve. This provides a lower bound on the necessary memory capacity that complements the bound we get from Shannon for channel capacity.}
+\notes{This relationship seems to align with Ashby's Law of Requisite Variety (pg 229 @Ashby-design52), which states that a control system must have at least as much 'variety' as the system it aims to control. In the context of memory systems, this means that to maintain temporal correlations effectively, the memory's state space must be at least as large as the information content it needs to preserve. This provides a lower bound on the necessary memory capacity that complements the bound we get from Shannon for channel capacity.}
 
 \notes{This helps determine the required memory size for maintaining temporal correlations, optimal coding strategies, and fundamental limits on temporal correlation preservation.}
 
