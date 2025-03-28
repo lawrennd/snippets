@@ -19,7 +19,7 @@ C = \log_2\left(1 + \frac{S}{N}\right),
 $$ 
 might be different views of the same limit.}
 
-\notes{Landauer's limit states that erasing one bit of information requires a minimum energy of $E_{\text{min}} = k_BT$. For a communication channel operating over time $1/B$, the signal power $S = EB$ and noise power $N = kTB$. This gives us:
+\notes{Landauer's limit states that erasing one bit of information requires a minimum energy of $E_{\text{min}} = k_BT$. For a communication channel operating over time $1/B$, the signal power $S = EB$ and noise power $N = k_BTB$. This gives us:
 $$
 C = \frac{1}{2}\log_2\left(1 + \frac{S}{N}\right) = \frac{1}{2}\log_2\left(1 + \frac{E}{k_BT}\right)
 $$
