@@ -17,23 +17,24 @@
 \slides{
 * Action integral
   $$
-  \mathcal{A} = \int L(\theta, \dot{\theta}) \text{d}t
+  \mathcal{A}[\gamma] = \int_0^T \left(\dot{\boldsymbol{\theta}} \cdot \nabla_{\boldsymbol{\theta}} S - \frac{1}{2}\|\dot{\boldsymbol{\theta}}\|^2\right) \text{d}t
   $$
-* Information-theoretic Lagrangian
-  $$
-  L = \frac{1}{2}\dot{\theta}^\top G(\theta)\dot{\theta} - S(\theta)
-  $$
-* cf @Frieden-physics98.
+* First term represents entropy production rate along path
+* Second term constrains speed of parameter changes
 }
 
 \notes{
 For our entropy game, we can define an information-theoretic action,
 $$
-\mathcal{A}[\gamma] = \int_0^T \left(\frac{1}{2}\dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} - S(\boldsymbol{\theta})\right) \text{d}t
+\mathcal{A}[\gamma] = \int_0^T \left(\dot{\boldsymbol{\theta}} \cdot \nabla_{\boldsymbol{\theta}} S - \frac{1}{2}\|\dot{\boldsymbol{\theta}}\|^2\right) \text{d}t
 $$
-where $\gamma$ is a path through parameter space, $G(\boldsymbol{\theta})$ is the Fisher information matrix, and $S(\boldsymbol{\theta})$ is the entropy. The least action principle states that the system will follow paths that extremise this action.}
+where $\gamma$ is a path through parameter space. The first term represents the rate of entropy production along the path ($\frac{\text{d}S}{\text{d}\theta} \cdot \frac{\text{d}\theta}{\text{d}t}$), while the second term constrains how quickly parameters can change. Maximizing this action leads naturally to gradient flow dynamics, where changes in parameters follow the entropy gradient:
+$$
+\dot{\boldsymbol{\theta}} = \nabla_{\boldsymbol{\theta}} S
+$$
+}
 
-\notes{This is also what our steepest ascent dynamics produce: the system follows geodesics in the information geometry while maximizing entropy production. As the system evolves, it naturally creates information reservoirs in directions where the gradient is small but non-zero.}
+\notes{This is exactly what our steepest ascent dynamics implement: the system follows the entropy gradient, with the learning rate controlling the size of parameter updates. As the system evolves, it naturally creates information reservoirs in directions where the gradient is small but non-zero.}
 
 \setupcode{import numpy as np}
 
