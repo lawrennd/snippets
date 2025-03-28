@@ -9,7 +9,7 @@
 
 \slides{
 * Minimal entropy quantum states belong to exponential families
-* Classical: $f(x; \theta) = h(x) \cdot \exp[\eta(\theta)^T \cdot T(x) - A(\theta)]$
+* Classical: $f(x; \theta) = h(x) \cdot \exp[\eta(\theta)^\top \cdot T(x) - A(\theta)]$
 * Density matrix: $\rho = \exp(-\mathbf{R}^T \cdot \mathbf{G} \cdot \mathbf{R} - Z)$
 }
 \notes{The minimal entropy density matrix belongs to an exponential family, just like many classical distributions,
@@ -17,7 +17,7 @@
 \subsubsection{Classical Exponential Family}
 
 $$
-f(x; \theta) = h(x) \cdot \exp[\eta(\theta)^T \cdot T(x) - A(\theta)]
+f(x; \theta) = h(x) \cdot \exp[\eta(\theta)^\top \cdot T(x) - A(\theta)]
 $$
 
 \subsubsection{Quantum Minimal Entropy State}
