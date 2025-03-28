@@ -19,7 +19,7 @@
 
 \notes{When we store a bit in memory, we maintain a signal that can be reliably distinguished from thermal noise, just as in a communication channel. This suggests that Landauer's limit for erasure of one bit of information, $E_{min} = k_BT$, and Shannon's Gaussian channel capacity,
 $$
-C = \log_2\left(1 + \frac{S}{N}\right),
+C = \frac{1}{2}\log_2\left(1 + \frac{S}{N}\right),
 $$ 
 might be different views of the same limit.}
 
@@ -62,6 +62,6 @@ $$}
 }
 \notes{This perspective suggests that both memory operations (erasure) and communication operations (transmission) are limited by the same physical principles. The temperature $T$ emerges as a fundamental parameter that sets the scale for both energy requirements and information capacity.}
 
-\notes{The connection between Landauer's limit and Shannon's channel capacity is intriguing but still remains speculative. For Landauer's original work see @Landauer-irreversibility61, Bennett's review and developments see @Bennett-thermodynamics82, and for a more recent overview and connection to developments in non-equilibrium thermodynamics @Parrondo-thermodynamics15.}
+\notes{The connection between Landauer's limit and Shannon's channel capacity is intriguing but still remains speculative. For Landauer's original work see @Landauer-irreversibility61, Bennett's review and developments see @Bennet-thermodynamics82, and for a more recent overview and connection to developments in non-equilibrium thermodynamics @Parrondo-thermodynamics15.}
 
 \endif 
