@@ -5,7 +5,7 @@
 
 \subsection{Gradient Ascent on Entropy with Uncertainty Constraints}
 
-\notes{We now explore how systems evolve from minimal entropy states toward maximum entropy while respecting uncertainty constraints. This process reveals the natural emergence of both quantum-like and classical-like behavior from purely information-theoretic principles.}
+\notes{As an example we perform gradient ascent starting with a minimal entropy state. This allows us to explore the saddle-point seeking behaviour of steepest ascent empirically.}
 
 \slides{
 * Entropy increases while respecting uncertainty constraints
@@ -15,16 +15,8 @@
 
 \notes{The minimal entropy states represent the origin point. By implementing gradient ascent on the entropy function while respecting the uncertainty constraints, we can observe how the entropy game evolves.}
 
-\setupcode{import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.patches import Ellipse
-from scipy.linalg import eigh}
 
-\code{# Constants
-hbar = 1.0  # Normalized Planck's constant
-min_uncertainty_product = hbar/2
-
-# Compute entropy of a Gaussian with precision matrix G
+\helpercode{# Compute entropy of a Gaussian with precision matrix G
 def compute_entropy(G):
     """
     Compute entropy of a Gaussian with precision matrix G.
@@ -382,15 +374,15 @@ def plot_multidimensional_uncertainty(G_history, step_indices, pairs_to_plot=Non
     plt.tight_layout()
     return fig}
 
-\notes{As the system evolves through gradient ascent, we observe several key transitions:
+\notes{As the system evolves through gradient ascent, we observe transitions.
 
-1. **Uncertainty desaturation**: The system begins with a minimal entropy state that exactly saturates the uncertainty bound ($\Delta x \cdot \Delta p = \hbar/2$). As entropy increases, this bound becomes less tightly saturated.
+1. *Uncertainty desaturation*: The system begins with a minimal entropy state that exactly saturates the uncertainty bound ($\Delta x \cdot \Delta p = \hbar/2$). As entropy increases, this bound becomes less tightly saturated.
 
-2. **Shape transformation**: The initial highly squeezed uncertainty ellipse (with small position uncertainty and large momentum uncertainty) gradually becomes more circular, representing a more balanced distribution of uncertainty.
+2. *Shape transformation*: The initial highly squeezed uncertainty ellipse (with small position uncertainty and large momentum uncertainty) gradually becomes more circular, representing a more balanced distribution of uncertainty.
 
-3. **Quantum-to-classical transition**: The system transitions from a quantum-like regime (where uncertainty is at the minimum allowed by quantum mechanics) to a more classical-like regime (where statistical uncertainty dominates over quantum uncertainty).
+3. *Quantum-to-classical transition*: The system transitions from a quantum-like regime (where uncertainty is at the minimum allowed by quantum mechanics) to a more classical-like regime (where statistical uncertainty dominates over quantum uncertainty).}
 
-This evolution reveals how information naturally flows from highly ordered configurations toward maximum entropy states, while still respecting the fundamental constraints imposed by the uncertainty principle.}
+\notes{This evolution reveals how information naturally flows from highly ordered configurations toward maximum entropy states, while still respecting the fundamental constraints imposed by the uncertainty principle.}
 
 \newslide{Multivariate Systems and Saddle Points}
 
@@ -400,17 +392,18 @@ This evolution reveals how information naturally flows from highly ordered confi
 * Some variables remain quantum-like while others become classical-like
 }
 
-\notes{In systems with multiple position-momentum pairs, the gradient ascent process encounters saddle points with fascinating properties:
+\notes{In systems with multiple position-momentum pairs, the gradient ascent process encounters saddle points which trigger a natural slowdown. The system naturally slows down near saddle points, with some eigenvalue pairs evolving quickly while others hardly change. These saddle points represent partially equilibrated states where some degrees of freedom have reached maximum entropy while others remain ordered. At these critical points, some variables maintain quantum-like characteristics (uncertainty saturation) while others exhibit classical-like behavior (excess uncertainty).}
 
-1. **Natural slowdown**: The system naturally slows down near saddle points, with some eigenvalue pairs evolving quickly while others hardly change.
+\notes{This natural separation creates a hybrid system where quantum-like memory interfaces with classical-like processing - emerging naturally from the geometry of the entropy landscape under uncertainty constraints.}
 
-2. **Partial equilibration**: These saddle points represent partially equilibrated states where some degrees of freedom have reached maximum entropy while others remain ordered.
+\setupcode{import numpy as np
+from scipy.linalg import eigh}
 
-3. **Hybrid behavior**: At these critical points, some variables maintain quantum-like characteristics (uncertainty saturation) while others exhibit classical-like behavior (excess uncertainty).
+\code{# Constants
+hbar = 1.0  # Normalized Planck's constant
+min_uncertainty_product = hbar/2
 
-This natural separation creates a hybrid computational architecture where quantum-like memory interfaces with classical-like processing - emerging naturally from the geometry of the entropy landscape under uncertainty constraints.}
-
-\code{# Example usage for multidimensional system
+# Example usage for multidimensional system
 # Initialize a system with 3 position-momentum pairs
 n_pairs = 3
 G_init = initialize_multidimensional_state(n_pairs, squeeze_factors=[0.1, 0.2, 0.3])
@@ -422,9 +415,14 @@ G_history, entropy_history = gradient_ascent(G_init, steps=100, learning_rate=0.
 metrics = track_uncertainty_metrics(G_history)
 
 # Detect saddle points
-saddle_metrics = detect_saddle_points(G_history)
+saddle_metrics = detect_saddle_points(G_history)}
 
-# Plot uncertainty ellipses at different steps
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai
+from matplotlib.patches import Ellipse}
+
+\plotcode{# Plot uncertainty ellipses at different steps
 plot_multidimensional_uncertainty(G_history, step_indices=[0, 25, 50, 99], pairs_to_plot=[0, 1, 2])
 
 # Plot entropy evolution
@@ -446,10 +444,10 @@ plt.title('Evolution of Uncertainty Products')
 plt.legend()
 plt.grid(True)}
 
-\notes{The gradient ascent approach provides a powerful framework for understanding how systems naturally evolve from minimal entropy states toward maximum entropy while respecting fundamental constraints. This perspective unifies quantum uncertainty with classical information theory through the common language of information geometry.
+\notes{The gradient ascent approach provides a powerful framework for understanding how systems naturally evolve from minimal entropy states toward maximum entropy while respecting fundamental constraints. This perspective unifies quantum uncertainty with classical information theory through the common language of information geometry.}
 
-In multidimensional systems, we observe the emergence of natural hierarchies and timescales. Some degrees of freedom quickly reach equilibrium (maximum entropy configurations) while others remain ordered for much longer periods. This separation of timescales creates a rich landscape of partially equilibrated states that may play important roles in information processing systems.
+\notes{In multidimensional systems, we observe the emergence of natural hierarchies and timescales. Some degrees of freedom quickly reach equilibrium (maximum entropy configurations) while others remain ordered for much longer periods. This separation of timescales creates a rich landscape of partially equilibrated states that may play important roles in information processing systems.}
 
-The saddle points in this landscape are particularly interesting, as they represent configurations where the system naturally pauses during its evolution. These quasi-stable states exhibit hybrid behavior, with some variables maintaining quantum-like characteristics while others behave more classically. This suggests a natural mechanism for the emergence of hybrid computational architectures from purely information-theoretic principles.}
+\notes{The saddle points in this landscape represent configurations where the system naturally pauses during its evolution. These quasi-stable states exhibit hybrid behavior, with some variables maintaining quantum-like characteristics while others behave more classically.}
 
 \endif 
