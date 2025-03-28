@@ -7,7 +7,7 @@
 
 \notes{Digital memory can be viewed as a communication channel through time - storing a bit is equivalent to transmitting information to a future moment. This perspective immediately suggests that we look for a connection between Landauer's erasure principle and Shannon's channel capacity. The connection might arise because both these systems are about maintaining reliable information against thermal noise.}
 
-\notes{The Landauer limit [Landauer-irreversibility61] is the minimum amount of heat energy that is dissapated when a bit of information is erased. Conceptually it's the potential energy associated with holding a bit to an identifiable single value that is differentiable from the background thermal noise (representated by temperature).}
+\notes{The Landauer limit [@Landauer-irreversibility61] is the minimum amount of heat energy that is dissapated when a bit of information is erased. Conceptually it's the potential energy associated with holding a bit to an identifiable single value that is differentiable from the background thermal noise (representated by temperature).}
 
 \notes{The Gaussian channel capacity [@Shannon-info48] represents how identifiable a signal $S$, is relative to the background noise, $N$. Here we trigger a small exploration of potential relationship between these two values.}
 
