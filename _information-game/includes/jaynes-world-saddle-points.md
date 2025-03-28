@@ -19,7 +19,15 @@ c(M) = \mathcal{F}[\boldsymbol{\theta}(M)]
 $$
 allows the game to progress by temporarily increasing uncertainty in capacity space, which creates gradients in previously flat directions of parameter space.
 
-These saddle points often coincide with phase transitions between parameter-dominated and capacity-dominated regimes, where the game's fundamental character changes in terms of information processing capabilities.}
+These saddle points often coincide with phase transitions between parameter-dominated and capacity-dominated regimes, where the game's fundamental character changes in terms of information processing capabilities.
+
+At saddle points, we see the first manifestation of the uncertainty principle that will be explored in more detail. The relationship between parameters and capacity variables becomes important as the game navigates these critical regions. The Fourier duality relationship
+$$
+c(M) = \mathcal{F}[\boldsymbol{\theta}(M)]
+$$
+is not just a mathematical convenience but represents a constraint on information processing that parallels emerges from uncertainty principles. The duality is essential for understanding how the game maintains both precision in parameters and sufficient capacity for information storage.
+
+The emergence of critically slowed directions at saddle points directly leads to the formation of information reservoirs that we'll explore in depth. These reservoirs form when certain parameter combinations become effectively "frozen" due to near-zero eigenvalues in the Fisher information matrix. This natural separation of timescales creates a hierarchical memory structure that resembles biological information processing systems, where different variables operate at different temporal scales. The game's deliberate use of steepest ascent rather than natural gradient ensures these reservoirs form organically as the system evolves.}
 
 \subsection{Saddle Point Seeking Behaviour}
 
@@ -59,5 +67,7 @@ The use of steepest ascent rather than natural gradient is deliberate in our gam
 4. This creates the hierarchical timescale separation that forms the basis of our memory structure}
 
 \notes{This behavior creates a computational architecture where different variables naturally assume different functional roles based on their update dynamics, without requiring explicit design. The information geometry of the parameter space, combined with steepest ascent dynamics, self-organizes the game into memory and processing components.}
+
+\notes{The saddle point dynamics in Jaynes' World provide a  mathematical framework for understanding how the game navigates the information landscapes. The balance between fast-evolving "processing" variables and slow-evolving "memory" variables offers insights into how complexity might emerge in environments that instantaneously maximise entropy.}
 
 \endif
