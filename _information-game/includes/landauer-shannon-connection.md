@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Landauer's Limit and Shannon's Channel}
+\subsection{Is Landauer's Limit Related to Shannon's Gaussian Channel Capacity?}
 
 \notes{Digital memory can be viewed as a communication channel through time - storing a bit is equivalent to transmitting information to a future moment. This perspective immediately suggests that we look for a connection between Landauer's erasure principle and Shannon's channel capacity. The connection might arise because both these systems are about maintaining reliable information against thermal noise.}
 
