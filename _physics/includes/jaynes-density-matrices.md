@@ -3,9 +3,9 @@
 
 \editme
 
-\subsection{Jaynes on Density Matrices}
+\subsection{Maximum Entropy and Density Matrices}
 
-\notes{In his 1957 papers and later works, Jaynes acknowledged that his maximum entropy formalism could be extended to quantum systems using density matrices.}
+\notes{In @Jaynes-information57 Jaynes showed how the maximum entropy formalism is applied, in later papers such as @Jaynes-information63 he showed how his maximum entropy formalism could be applied to von Neumann entropy of a density matrix.}
 
 \slides{
 * Jaynes recognized density matrices as quantum extension

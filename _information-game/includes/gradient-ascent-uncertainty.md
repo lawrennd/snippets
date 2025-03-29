@@ -16,14 +16,14 @@
 \notes{The minimal entropy states represent the origin point. By implementing gradient ascent on the entropy function while respecting the uncertainty constraints, we can observe how the entropy game evolves.}
 
 
-\helpercode{# Compute entropy of a Gaussian with precision matrix G
-def compute_entropy(G):
+\helpercode{# Compute entropy of a Gaussian with precision matrix Lambda
+def compute_entropy(Lambda):
     """
-    Compute entropy of a Gaussian with precision matrix G.
+    Compute entropy of a Gaussian with precision matrix Lambda.
     
     Parameters:
     -----------
-    G: array
+    Lambda: array
         Precision matrix (inverse covariance)
     
     Returns:
@@ -31,8 +31,8 @@ def compute_entropy(G):
     entropy: float
         Differential entropy value
     """
-    n = G.shape[0]  # Dimensionality
-    covariance = np.linalg.inv(G)
+    n = Lambda.shape[0]  # Dimensionality
+    covariance = np.linalg.inv(Lambda)
     return 0.5 * (n * (1 + np.log(2*np.pi)) + np.log(np.linalg.det(covariance)))
 
 # Compute gradient of entropy with respect to eigenvalues
@@ -43,7 +43,7 @@ def entropy_gradient(eigenvalues):
     Parameters:
     -----------
     eigenvalues: array
-        Eigenvalues of precision matrix G
+        Eigenvalues of precision matrix Lambda
     
     Returns:
     --------
@@ -109,7 +109,7 @@ def initialize_multidimensional_state(n_pairs, squeeze_factors=None):
         
     Returns:
     --------
-    G: 2n×2n array
+    Lambda: 2n×2n array
         Initial precision matrix
     """
     if squeeze_factors is None:
@@ -118,28 +118,28 @@ def initialize_multidimensional_state(n_pairs, squeeze_factors=None):
     
     # Initialize precision matrix
     dim = 2 * n_pairs
-    G = np.zeros((dim, dim))
+    Lambda = np.zeros((dim, dim))
     
     # For each position-momentum pair
     for i in range(n_pairs):
         idx1, idx2 = 2*i, 2*i+1
         
         # Set precision for position (high precision = low uncertainty)
-        G[idx1, idx1] = 1.0 / (squeeze_factors[i] * min_uncertainty_product)
+        Lambda[idx1, idx1] = 1.0 / (squeeze_factors[i] * min_uncertainty_product)
         
         # Set precision for momentum (low precision = high uncertainty)
-        G[idx2, idx2] = 1.0 / (min_uncertainty_product / squeeze_factors[i])
+        Lambda[idx2, idx2] = 1.0 / (min_uncertainty_product / squeeze_factors[i])
     
-    return G
+    return Lambda
 
 # Perform gradient ascent on entropy
-def gradient_ascent(G_init, steps=100, learning_rate=0.01):
+def gradient_ascent(Lambda_init, steps=100, learning_rate=0.01):
     """
     Perform gradient ascent on entropy while respecting uncertainty constraints.
     
     Parameters:
     -----------
-    G_init: array
+    Lambda_init: array
         Initial precision matrix
     steps: int
         Number of gradient steps to take
@@ -148,18 +148,18 @@ def gradient_ascent(G_init, steps=100, learning_rate=0.01):
     
     Returns:
     --------
-    G_history: list
+    Lambda_history: list
         History of precision matrices
     entropy_history: list
         History of entropy values
     """
-    G = G_init.copy()
-    G_history = [G.copy()]
-    entropy_history = [compute_entropy(G)]
+    Lambda = Lambda_init.copy()
+    Lambda_history = [Lambda.copy()]
+    entropy_history = [compute_entropy(Lambda)]
     
     for _ in range(steps):
-        # Eigendecomposition of G
-        eigenvalues, eigenvectors = eigh(G)
+        # Eigendecomposition of Lambda
+        eigenvalues, eigenvectors = eigh(Lambda)
         
         # Compute gradient with respect to eigenvalues
         grad = entropy_gradient(eigenvalues)
@@ -173,23 +173,23 @@ def gradient_ascent(G_init, steps=100, learning_rate=0.01):
         # Ensure eigenvalues remain positive
         eigenvalues = np.maximum(eigenvalues, 1e-10)
         
-        # Reconstruct G from updated eigenvalues
-        G = eigenvectors @ np.diag(eigenvalues) @ eigenvectors.T
+        # Reconstruct Lambda from updated eigenvalues
+        Lambda = eigenvectors @ np.diag(eigenvalues) @ eigenvectors.T
         
         # Store history
-        G_history.append(G.copy())
-        entropy_history.append(compute_entropy(G))
+        Lambda_history.append(Lambda.copy())
+        entropy_history.append(compute_entropy(Lambda))
     
-    return G_history, entropy_history
+    return Lambda_history, entropy_history
 
 # Track uncertainty products and regime classification
-def track_uncertainty_metrics(G_history):
+def track_uncertainty_metrics(Lambda_history):
     """
     Track uncertainty products and classify regimes for each conjugate pair.
     
     Parameters:
     -----------
-    G_history: list
+    Lambda_history: list
         History of precision matrices
     
     Returns:
@@ -197,16 +197,19 @@ def track_uncertainty_metrics(G_history):
     metrics: dict
         Dictionary containing uncertainty metrics over time
     """
-    n_steps = len(G_history)
-    n_pairs = G_history[0].shape[0] // 2
+    n_steps = len(Lambda_history)
+    n_pairs = Lambda_history[0].shape[0] // 2
     
     # Initialize tracking arrays
     uncertainty_products = np.zeros((n_steps, n_pairs))
     regimes = np.zeros((n_steps, n_pairs), dtype=object)
     
-    for step, G in enumerate(G_history):
+    for step, Lambda in enumerate(Lambda_history):
         # Get covariance matrix
-        V = np.linalg.inv(G)
+        V = np.linalg.inv(Lambda)
+        
+        # Calculate Fisher information matrix
+        G = Lambda / 2
         
         # For each conjugate pair
         for i in range(n_pairs):
@@ -230,13 +233,13 @@ def track_uncertainty_metrics(G_history):
     }
 
 # Detect saddle points in the gradient flow
-def detect_saddle_points(G_history):
+def detect_saddle_points(Lambda_history):
     """
     Detect saddle-like behavior in the gradient flow.
     
     Parameters:
     -----------
-    G_history: list
+    Lambda_history: list
         History of precision matrices
     
     Returns:
@@ -244,16 +247,16 @@ def detect_saddle_points(G_history):
     saddle_metrics: dict
         Metrics related to saddle point behavior
     """
-    n_steps = len(G_history)
-    n_pairs = G_history[0].shape[0] // 2
+    n_steps = len(Lambda_history)
+    n_pairs = Lambda_history[0].shape[0] // 2
     
     # Track eigenvalues and their gradients
     eigenvalues_history = np.zeros((n_steps, 2*n_pairs))
     gradient_ratios = np.zeros((n_steps, n_pairs))
     
-    for step, G in enumerate(G_history):
+    for step, Lambda in enumerate(Lambda_history):
         # Get eigenvalues
-        eigenvalues, _ = eigh(G)
+        eigenvalues, _ = eigh(Lambda)
         eigenvalues_history[step] = eigenvalues
         
         # For each pair, compute ratio of gradients
@@ -283,20 +286,20 @@ def detect_saddle_points(G_history):
     }
 
 # Visualize uncertainty ellipses for multiple pairs
-def plot_multidimensional_uncertainty(G_history, step_indices, pairs_to_plot=None):
+def plot_multidimensional_uncertainty(Lambda_history, step_indices, pairs_to_plot=None):
     """
     Plot the evolution of uncertainty ellipses for multiple position-momentum pairs.
     
     Parameters:
     -----------
-    G_history: list
+    Lambda_history: list
         History of precision matrices
     step_indices: list
         Indices of steps to visualize
     pairs_to_plot: list, optional
         Indices of position-momentum pairs to plot
     """
-    n_pairs = G_history[0].shape[0] // 2
+    n_pairs = Lambda_history[0].shape[0] // 2
     
     if pairs_to_plot is None:
         pairs_to_plot = range(min(3, n_pairs))  # Plot up to 3 pairs by default
@@ -313,8 +316,8 @@ def plot_multidimensional_uncertainty(G_history, step_indices, pairs_to_plot=Non
     for row, pair_idx in enumerate(pairs_to_plot):
         for col, step in enumerate(step_indices):
             ax = axes[row, col]
-            G = G_history[step]
-            covariance = np.linalg.inv(G)
+            Lambda = Lambda_history[step]
+            covariance = np.linalg.inv(Lambda)
             
             # Extract 2x2 submatrix for this pair
             idx1, idx2 = 2*pair_idx, 2*pair_idx+1
@@ -406,16 +409,16 @@ min_uncertainty_product = hbar/2
 # Example usage for multidimensional system
 # Initialize a system with 3 position-momentum pairs
 n_pairs = 3
-G_init = initialize_multidimensional_state(n_pairs, squeeze_factors=[0.1, 0.2, 0.3])
+Lambda_init = initialize_multidimensional_state(n_pairs, squeeze_factors=[0.1, 0.2, 0.3])
 
 # Perform gradient ascent
-G_history, entropy_history = gradient_ascent(G_init, steps=100, learning_rate=0.01)
+Lambda_history, entropy_history = gradient_ascent(Lambda_init, steps=100, learning_rate=0.01)
 
 # Track uncertainty metrics
-metrics = track_uncertainty_metrics(G_history)
+metrics = track_uncertainty_metrics(Lambda_history)
 
 # Detect saddle points
-saddle_metrics = detect_saddle_points(G_history)}
+saddle_metrics = detect_saddle_points(Lambda_history)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -423,7 +426,7 @@ import mlai
 from matplotlib.patches import Ellipse}
 
 \plotcode{# Plot uncertainty ellipses at different steps
-plot_multidimensional_uncertainty(G_history, step_indices=[0, 25, 50, 99], pairs_to_plot=[0, 1, 2])
+plot_multidimensional_uncertainty(Lambda_history, step_indices=[0, 25, 50, 99], pairs_to_plot=[0, 1, 2])
 
 # Plot entropy evolution
 plt.figure(figsize=plot.big_wide_figsize)

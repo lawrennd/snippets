@@ -23,29 +23,30 @@
   * Pure Gaussian form in parameter space
   * Exactly saturate uncertainty bound
   * Belong to exponential family
+* Total entropy bounded: $S(Z) = 0$ for minimal states, with $0 \leq S(Z) \leq N$ overall
 }
 
-\notes{The minimal entropy configuration under the uncertainty constraint takes a specific mathematical form. It is a pure state (in the sense of having minimal possible entropy) that exactly saturates the uncertainty bound. For a system with multiple degrees of freedom, the distribution takes a Gaussian form,
+\notes{The minimal entropy configuration under the uncertainty constraint takes a specific mathematical form. It is a pure state (in the sense of having minimal possible entropy, $S(Z) = 0$) that exactly saturates the uncertainty bound. For a system with multiple degrees of freedom, the distribution takes a Gaussian form,
 $$
-\rho(Z) = \frac{1}{Z}\exp(-\mathbf{R}^T \cdot \mathbf{G} \cdot \mathbf{R}),
+\rho(Z) = \frac{1}{\mathcal{Z}}\exp(-\mathbf{R}^T \cdot \boldsymbol{\Lambda} \cdot \mathbf{R}),
 $$
-where $\mathbf{R}$ represents the vector of all variables, $\mathbf{G}$ is a positive definite matrix constrained by the uncertainty principle, and $Z$ is the normalization constant (partition function).
+where $\mathbf{R}$ represents the vector of all variables, $\boldsymbol{\Lambda}$ is the precision matrix (inverse covariance) constrained by the uncertainty principle, and $\mathcal{Z}$ is the partition function (normalization constant).
 }
 
-\notes{This form is an exponential family distribution, in line with Jaynes' principle that entropy-optimized distributions belong to the exponential family. The matrix $\mathbf{G}$ determines how uncertainty is distributed among different variables and their correlations.}
+\notes{This form is an exponential family distribution, in line with Jaynes' principle that entropy-optimized distributions belong to the exponential family. The precision matrix $\boldsymbol{\Lambda}$ determines how uncertainty is distributed among different variables and their correlations. Importantly, while minimal entropy states have $S(Z) = 0$, the total entropy of the system is constrained to be between 0 and $N$ as it evolves, forming a compact manifold with respect to its parameters. This upper bound $N$ ensures that as the system evolves from minimal to maximal entropy, it remains within a well-defined entropy space.}
 
 \subsection{Fisher Information and Minimal Uncertainty}
 
 \slides{
-* Matrix $\mathbf{G}$ directly related to Fisher information
-* $\mathbf{G} \approx \text{QFIM}/4$ (where QFIM is quantum Fisher information)
-* Creates fundamental relationship:
-  * $\mathbf{V} \cdot \text{QFIM} \geq k^2$
+* Precision matrix $\boldsymbol{\Lambda}$ directly related to Fisher information
+* $\mathbf{G} = \boldsymbol{\Lambda}/2$ (Fisher information matrix)
+* Creates relationship:
+  * $\mathbf{V} \cdot \mathbf{G} \geq k^2$
 }
 
-\notes{A profound connection exists between the structure matrix $\mathbf{G}$ and the Fisher information matrix. In fact, $\mathbf{G}$ is proportional to the Fisher information matrix, which quantifies how sensitively the state responds to parameter changes. This creates the relationship,
+\notes{There's a connection between the precision matrix $\boldsymbol{\Lambda}$ and the Fisher information matrix $\mathbf{G}$. For a multivariate Gaussian distribution, the Fisher information matrix is proportional to the precision matrix: $\mathbf{G} = \boldsymbol{\Lambda}/2$. This creates the relationship,
 $$
-\mathbf{V} \cdot \text{QFIM} \geq k^2
+\mathbf{V} \cdot \mathbf{G} \geq k^2
 $$
 where $\mathbf{V}$ is the covariance matrix containing all uncertainties and correlations. This inequality connects the covariance (uncertainties) to the Fisher information (precision in parameter estimation).
 }
@@ -168,5 +169,34 @@ where $V$ is the covariance matrix containing all the uncertainties and correlat
 \notes{This constraint creates an irreducible minimum to the uncertainty possible in a quantum system, fundamentally different from classical constraints. It establishes the minimum "information state" of the system.}
 
 \notes{The parallel between our general minimal entropy states and quantum minimal entropy states highlights how the mathematical structure of information creates similar constraints across different domains. The quantum case provides a physical realization of the abstract principles we've been discussing in Jaynes' World.}
+
+\subsection{Quantum States and Exponential Families}
+
+\notes{The minimal entropy quantum states provides a connection between density matrices and exponential family distributions. This connection enables us to use many of the classical techniques from information geometry and apply them to the game in the case where the uncertainty principle is present.}
+
+\slides{
+* Minimal entropy quantum states belong to exponential families
+* Classical: $f(x; \theta) = h(x) \cdot \exp[\eta(\theta)^\top \cdot T(x) - A(\theta)]$
+* Density matrix: $\rho = \exp(-\mathbf{R}^T \cdot \mathbf{G} \cdot \mathbf{R} - Z)$
+}
+
+\notes{The minimal entropy density matrix belongs to an exponential family, just like many classical distributions,
+
+\subsubsection{Classical Exponential Family}
+
+$$
+f(x; \theta) = h(x) \cdot \exp[\eta(\theta)^\top \cdot T(x) - A(\theta)]
+$$
+
+\subsubsection{Quantum Minimal Entropy State}
+
+$$
+\rho = \exp(-\mathbf{R}^\top \cdot \mathbf{G} \cdot \mathbf{R} - Z)
+$$
+
+- Both have an exponential form
+- Both involve sufficient statistics (in the quantum case, these are quadratic forms of operators)
+- Both have natural parameters ($G$ in the quantum case)
+- Both include a normalization term}
 
 \endif 
