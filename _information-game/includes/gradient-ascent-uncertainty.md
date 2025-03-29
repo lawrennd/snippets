@@ -426,15 +426,17 @@ from matplotlib.patches import Ellipse}
 plot_multidimensional_uncertainty(G_history, step_indices=[0, 25, 50, 99], pairs_to_plot=[0, 1, 2])
 
 # Plot entropy evolution
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=plot.big_wide_figsize)
 plt.plot(entropy_history)
 plt.xlabel('Gradient Ascent Step')
 plt.ylabel('Entropy')
 plt.title('Entropy Evolution During Gradient Ascent')
 plt.grid(True)
+mlai.write_figure(filename='entropy-evolution-during-gradient-ascent.svg', 
+                  directory='./information-game')}
 
 # Plot uncertainty products evolution
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=plot.big_wide_figsize)
 for i in range(n_pairs):
     plt.plot(metrics['uncertainty_products'][:, i], label=f'Pair {i+1}')
 plt.axhline(y=min_uncertainty_product, color='k', linestyle='--', label='Minimum uncertainty')
@@ -442,7 +444,18 @@ plt.xlabel('Gradient Ascent Step')
 plt.ylabel('Uncertainty Product (ΔxΔp)')
 plt.title('Evolution of Uncertainty Products')
 plt.legend()
-plt.grid(True)}
+plt.grid(True)
+
+mlai.write_figure(filename='uncertainty-products-evolution.svg', 
+                  directory='./information-game')}
+
+\newslide{Entropy Evolution During Gradient Ascent}
+
+\figure{\includediagram{\diagramsDir/information-game/entropy-evolution-during-gradient-ascent}{70%}}{.}{entropy-evolution-during-gradient-ascent}
+
+\newslide{Evolution of Uncertainty Products}
+
+\figure{\includediagram{\diagramsDir/information-game/uncertainty-products-evolution}{70%}}{.}{uncertainty-products-evolution}
 
 \notes{The gradient ascent approach provides a powerful framework for understanding how systems naturally evolve from minimal entropy states toward maximum entropy while respecting fundamental constraints. This perspective unifies quantum uncertainty with classical information theory through the common language of information geometry.}
 
