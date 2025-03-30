@@ -259,7 +259,7 @@ def visualize_large_system(sampled_states, entropy_history, uncertainty_metrics,
     
     plt.axhline(y=min_uncertainty_product, color='k', linestyle=':', label='Quantum limit')
     plt.xlabel('Gradient Ascent Step')
-    plt.ylabel('Uncertainty Product (ΔxΔp)')
+    plt.ylabel('Uncertainty Product ($\Delta x \Delta p$)')
     plt.title('Representative Uncertainty Trajectories from Each Cluster')
     plt.legend()
     plt.grid(True)
