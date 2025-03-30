@@ -436,7 +436,7 @@ plt.ylabel('Entropy')
 plt.title('Entropy Evolution During Gradient Ascent')
 plt.grid(True)
 mlai.write_figure(filename='entropy-evolution-during-gradient-ascent.svg', 
-                  directory='./information-game')}
+                  directory='./information-game')
 
 # Plot uncertainty products evolution
 plt.figure(figsize=plot.big_wide_figsize)
@@ -450,11 +450,32 @@ plt.legend()
 plt.grid(True)
 
 mlai.write_figure(filename='uncertainty-products-evolution.svg', 
+                  directory='./information-game')
+
+# Add visualization of eigenvalue spectrum to show concentration
+plt.figure(figsize=plot.big_wide_figsize)
+for i in range(2*n_pairs):
+    plt.plot(saddle_metrics['eigenvalues_history'][:, i], label=f'Eigenvalue {i+1}')
+plt.xlabel('Gradient Ascent Step')
+plt.ylabel('Eigenvalue Magnitude')
+plt.title('Evolution of Precision Matrix Eigenvalues')
+plt.legend()
+plt.grid(True)
+plt.yscale('log')  # Log scale helps visualize concentration
+mlai.write_figure(filename='eigenvalue-evolution.svg', 
                   directory='./information-game')}
+
+\newslide{Eigenvalue Evolution}
+
+\figure{\includediagram{\diagramsDir/information-game/eigenvalue-evolution}{70%}}{Eigenvalue evolution during gradient ascent.}{eigenvalue-evolution}
+
+\newslide{Uncertainty Products Evolution}
+
+\figure{\includediagram{\diagramsDir/information-game/uncertainty-products-evolution}{70%}}{Uncertainty products evolution during gradient ascent.}{uncertainty-products-evolution}
 
 \newslide{Entropy Evolution During Gradient Ascent}
 
-\figure{\includediagram{\diagramsDir/information-game/entropy-evolution-during-gradient-ascent}{70%}}{.}{entropy-evolution-during-gradient-ascent}
+\figure{\includediagram{\diagramsDir/information-game/entropy-evolution-during-gradient-ascent}{70%}}{Entropy evolution during gradient ascent.}{entropy-evolution-during-gradient-ascent}
 
 \newslide{Evolution of Uncertainty Products}
 
