@@ -34,7 +34,7 @@ This creates a dynamic where as $p$ approaches either 0 or 1 (minimal entropy st
 $$
 \Delta \theta_{\text{natural}} =  \eta(\log(1-p) - \log p),
 $$
-however, it is precisely this efficiency that we want our game to avoid, because it is the inefficient behaviour in the reagion of saddle points that leads to critical slowing and the emergence of information resevoirs.
+however, it is this efficiency that we want our game to avoid, because it is the inefficient behaviour in the reagion of saddle points that leads to critical slowing and the emergence of information resevoirs.
 }
 
 \setupcode{import numpy as np}
@@ -81,7 +81,7 @@ mlai.write_figure(filename='two-bin-histogram-entropy-gradients.svg',
 
 \figure{\includediagram{\diagramsDir/information-game/two-bin-histogram-entropy-gradients}{95%}}{Entropy gradients of the two bin histogram agains position.}{two-bin-histogram-entropy-gradients}
 
-\notes{This simple example reveals the entropy extrema at $p = 0$, $p = 0.5$, and $p = 1$. At minimal entropy ($p \approx 0$ or $p \approx 1$), the gradient approaches zero, creating natural information reservoirs. The dynamics slow dramatically near these points - these are the areas of critical slowing that create information reservoirs.
+\notes{This example reveals the entropy extrema at $p = 0$, $p = 0.5$, and $p = 1$. At minimal entropy ($p \approx 0$ or $p \approx 1$), the gradient approaches zero, creating natural information reservoirs. The dynamics slow dramatically near these points - these are the areas of critical slowing that create information reservoirs.
 } 
 
 \endif
