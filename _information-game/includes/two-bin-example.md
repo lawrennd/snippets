@@ -162,7 +162,7 @@ for step in range(num_steps):
     theta_history.append(theta_current)
     p_history.append(theta_to_p(theta_current))
     entropy_history.append(entropy(theta_current))
-    
+    if step % 100 == 0:
     print(f"Step {step+1}: θ = {theta_current:.4f}, p = {p_history[-1]:.4f}, Entropy = {entropy_history[-1]:.4f}")
 }
 
