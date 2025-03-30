@@ -84,37 +84,45 @@ path_history, entropy_production = simulate_action_path(G_init)
 
 \plotcode{
 # Create figure with two subplots
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 
 # Plot 1: Path through eigenvalue space
-ax1.plot(path_history[:, 0], path_history[:, 1], 'r-', label='Pair 1')
-ax1.plot(path_history[:, 2], path_history[:, 3], 'b-', label='Pair 2')
-ax1.set_xlabel('Position eigenvalue')
-ax1.set_ylabel('Momentum eigenvalue')
-ax1.set_title('Path Through Parameter Space')
-ax1.legend()
+ax.plot(path_history[:, 0], path_history[:, 1], 'r-', label='Pair 1')
+ax.plot(path_history[:, 2], path_history[:, 3], 'b-', label='Pair 2')
+ax.set_xlabel('Position eigenvalue')
+ax.set_ylabel('Momentum eigenvalue')
+ax.set_title('Path Through Parameter Space')
+ax.legend()
 
 # Add minimum uncertainty hyperbolas
 x = np.linspace(0.1, 5, 100)
-ax1.plot(x, min_uncertainty_product/x, 'k--', alpha=0.5, label='Min uncertainty')
-ax1.set_xscale('log')
-ax1.set_yscale('log')
-ax1.grid(True)
-
-# Plot 2: Uncertainty ellipses at selected points
-steps_to_show = [0, 25, 50, -1]
-plot_multidimensional_uncertainty(Lambda_history, step_indices=steps_to_show, pairs_to_plot=[0, 1], ax=ax2)
-ax2.set_title('Evolution of Uncertainty Ellipses')
-
-plt.tight_layout()
+ax.plot(x, min_uncertainty_product/x, 'k--', alpha=0.5, label='Min uncertainty')
+ax.set_xscale('log')
+ax.set_yscale('log')
+ax.grid(True)
 
 mlai.write_figure(filename='gradient-flow-least-action.svg', 
                   directory='./information-game')
 }
 
+\plotcode{# Plot 2: Uncertainty ellipses at selected points
+steps_to_show = [0, 25, 50, -1]
+plot_multidimensional_uncertainty(Lambda_history, step_indices=steps_to_show, pairs_to_plot=[0, 1])
+ax2.set_title('Evolution of Uncertainty Ellipses')
+
+plt.tight_layout()
+
+mlai.write_figure(filename='gradient-flow-least-action-uncertainty-ellipses.svg', 
+                  directory='./information-game')
+}
+
 \newslide{Gradient Flow and Least Action Path}
 
-\figure{\includediagram{\diagramsDir/information-game/gradient-flow-least-action}{80%}}{Visualization of the gradient flow through parameter space (left) and the corresponding evolution of uncertainty ellipses (right). The dashed lines show minimum uncertainty bounds.}{gradient-flow-least-action}
+\figure{\includediagram{\diagramsDir/information-game/gradient-flow-least-action}{80%}}{Visualization of the gradient flow through parameter space.}{gradient-flow-least-action}
+
+\newslide{Gradient Flow and Least Action Path}
+
+\figure{\includediagram{\diagramsDir/information-game/gradient-flow-least-action-uncertainty-ellipses}{80%}}{Visualization of the corresponding evolution of uncertainty ellipses (right). The dashed lines show minimum uncertainty bounds.}{gradient-flow-least-action-uncertainty-ellipses}
 
 \notes{
 The action integral governing this evolution can be written:
