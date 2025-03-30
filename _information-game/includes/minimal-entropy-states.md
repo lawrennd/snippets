@@ -28,7 +28,7 @@
 
 \notes{The minimal entropy configuration under the uncertainty constraint takes a specific mathematical form. It is a pure state (in the sense of having minimal possible entropy, $S(Z) = 0$) that exactly saturates the uncertainty bound. For a system with multiple degrees of freedom, the distribution takes a Gaussian form,
 $$
-\rho(Z) = \frac{1}{\mathcal{Z}}\exp(-\mathbf{R}^T \cdot \boldsymbol{\Lambda} \cdot \mathbf{R}),
+\rho(Z) = \frac{1}{\mathcal{Z}}\exp(-\mathbf{R}^\top \cdot \boldsymbol{\Lambda} \cdot \mathbf{R}),
 $$
 where $\mathbf{R}$ represents the vector of all variables, $\boldsymbol{\Lambda}$ is the precision matrix (inverse covariance) constrained by the uncertainty principle, and $\mathcal{Z}$ is the partition function (normalization constant).
 }

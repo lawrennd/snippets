@@ -28,75 +28,110 @@ The eigenvectors of $G(\theta)$ at the saddle point determine which parameter co
 
 \setupcode{import numpy as np}
 
-\code{# Exponential family entropy with saddle point
-def exponential_family_entropy(theta1, theta2, theta3=None):
+\code{# Exponential family entropy functions for 4-bin system
+def exponential_family_entropy(theta):
     """
     Compute entropy of a 4-bin exponential family distribution
-    parameterized by natural parameters theta1, theta2, theta3
-    (with the constraint that probabilities sum to 1)
+    parameterized by natural parameters theta
     """
-    # If theta3 is not provided, we'll use a function of theta1 and theta2
-    if theta3 is None:
-        theta3 = -0.5 * (theta1 + theta2)
-    
     # Compute the log-partition function (normalization constant)
-    theta4 = -(theta1 + theta2 + theta3)  # Constraint
-    log_Z = np.log(np.exp(theta1) + np.exp(theta2) + np.exp(theta3) + np.exp(theta4))
+    log_Z = np.log(np.sum(np.exp(theta)))
     
     # Compute probabilities
-    p1 = np.exp(theta1 - log_Z)
-    p2 = np.exp(theta2 - log_Z)
-    p3 = np.exp(theta3 - log_Z)
-    p4 = np.exp(theta4 - log_Z)
+    p = np.exp(theta - log_Z)
     
     # Compute entropy: -sum(p_i * log(p_i))
-    entropy = -np.sum(
-        np.array([p1, p2, p3, p4]) * 
-        np.log(np.array([p1, p2, p3, p4])), 
-        axis=0, where=np.array([p1, p2, p3, p4])>0
-    )
+    entropy = -np.sum(p * np.log(p), where=p>0)
     
     return entropy
 
-def entropy_gradient(theta1, theta2, theta3=None):
+def entropy_gradient(theta):
     """
-    Compute the gradient of the entropy with respect to theta1 and theta2
+    Compute the gradient of the entropy with respect to theta
     """
-    # If theta3 is not provided, we'll use a function of theta1 and theta2
-    if theta3 is None:
-        theta3 = -0.5 * (theta1 + theta2)
-    
     # Compute the log-partition function
-    theta4 = -(theta1 + theta2 + theta3)  # Constraint
-    log_Z = np.log(np.exp(theta1) + np.exp(theta2) + np.exp(theta3) + np.exp(theta4))
+    log_Z = np.log(np.sum(np.exp(theta)))
     
     # Compute probabilities
-    p1 = np.exp(theta1 - log_Z)
-    p2 = np.exp(theta2 - log_Z)
-    p3 = np.exp(theta3 - log_Z)
-    p4 = np.exp(theta4 - log_Z)
+    p = np.exp(theta - log_Z)
     
-    # For the gradient, we need to account for the constraint on theta3
-    # When theta3 = -0.5(theta1 + theta2), we have:
-    # theta4 = -(theta1 + theta2 + theta3) = -(theta1 + theta2 - 0.5(theta1 + theta2)) = -0.5(theta1 + theta2)
+    # Gradient components
+    grad = p * (np.log(p) + 1)
     
-    # Gradient components with chain rule applied
-    # For theta1: ∂S/∂theta1 + ∂S/∂theta3 * ∂theta3/∂theta1 + ∂S/∂theta4 * ∂theta4/∂theta1
-    grad_theta1 = (p1 * (np.log(p1) + 1)) - 0.5 * (p3 * (np.log(p3) + 1)) - 0.5 * (p4 * (np.log(p4) + 1))
-    
-    # For theta2: ∂S/∂theta2 + ∂S/∂theta3 * ∂theta3/∂theta2 + ∂S/∂theta4 * ∂theta4/∂theta2
-    grad_theta2 = (p2 * (np.log(p2) + 1)) - 0.5 * (p3 * (np.log(p3) + 1)) - 0.5 * (p4 * (np.log(p4) + 1))
-    
-    return grad_theta1, grad_theta2
+    return grad
 
-# Create a grid of points
+# Project gradient to respect constraints (sum of theta is constant)
+def project_gradient(theta, grad):
+    """
+    Project gradient to ensure sum constraint is respected
+    """
+    # Project to space where sum of components is zero
+    return grad - np.mean(grad)
+
+# Perform gradient ascent on entropy
+def gradient_ascent_four_bin(theta_init, steps=100, learning_rate=0.01):
+    """
+    Perform gradient ascent on entropy for 4-bin system
+    """
+    theta = theta_init.copy()
+    theta_history = [theta.copy()]
+    entropy_history = [exponential_family_entropy(theta)]
+    
+    for _ in range(steps):
+        # Compute gradient
+        grad = entropy_gradient(theta)
+        proj_grad = project_gradient(theta, grad)
+        
+        # Update parameters
+        theta += learning_rate * proj_grad
+        
+        # Store history
+        theta_history.append(theta.copy())
+        entropy_history.append(exponential_family_entropy(theta))
+    
+    return np.array(theta_history), np.array(entropy_history)
+
+# Initialize with asymmetric distribution (away from saddle point)
+theta_init = np.array([1.0, -0.5, -0.2, -0.3])
+theta_init = theta_init - np.mean(theta_init)  # Ensure constraint is satisfied
+
+# Run gradient ascent
+theta_history, entropy_history = gradient_ascent_four_bin(theta_init, steps=50, learning_rate=0.1)
+
+# Create a grid for visualization
 x = np.linspace(-2, 2, 100)
 y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)
 
-# Compute entropy and its gradient at each point
-Z = exponential_family_entropy(X, Y)
-dX, dY = entropy_gradient(X, Y)
+# Compute entropy at each grid point (with constraint on theta3 and theta4)
+Z = np.zeros_like(X)
+for i in range(X.shape[0]):
+    for j in range(X.shape[1]):
+        # Create full theta vector with constraint that sum is zero
+        theta1, theta2 = X[i,j], Y[i,j]
+        theta3 = -0.5 * (theta1 + theta2)
+        theta4 = -0.5 * (theta1 + theta2)
+        theta = np.array([theta1, theta2, theta3, theta4])
+        Z[i,j] = exponential_family_entropy(theta)
+
+# Compute gradient field
+dX = np.zeros_like(X)
+dY = np.zeros_like(Y)
+for i in range(X.shape[0]):
+    for j in range(X.shape[1]):
+        # Create full theta vector with constraint
+        theta1, theta2 = X[i,j], Y[i,j]
+        theta3 = -0.5 * (theta1 + theta2)
+        theta4 = -0.5 * (theta1 + theta2)
+        theta = np.array([theta1, theta2, theta3, theta4])
+        
+        # Get full gradient and project
+        grad = entropy_gradient(theta)
+        proj_grad = project_gradient(theta, grad)
+        
+        # Store first two components
+        dX[i,j] = proj_grad[0]
+        dY[i,j] = proj_grad[1]
 
 # Normalize gradient vectors for better visualization
 norm = np.sqrt(dX**2 + dY**2)
@@ -119,10 +154,17 @@ contours = plt.contour(X, Y, Z, levels=15, colors='black', linewidths=0.8)
 plt.clabel(contours, inline=True, fontsize=8, fmt='%.2f')
 
 # Add gradient vectors (normalized for direction, but scaled by magnitude for visibility)
-# Note: We're using the negative of the gradient to point in direction of increasing entropy
 plt.quiver(X[::stride, ::stride], Y[::stride, ::stride], 
-           -dX_norm[::stride, ::stride], -dY_norm[::stride, ::stride], 
+           dX_norm[::stride, ::stride], dY_norm[::stride, ::stride], 
            color='r', scale=30, width=0.003, scale_units='width')
+
+# Plot the gradient ascent trajectory
+plt.plot(theta_history[:, 0], theta_history[:, 1], 'b-', linewidth=2, 
+         label='Gradient Ascent Path')
+plt.scatter(theta_history[0, 0], theta_history[0, 1], color='green', s=100, 
+           marker='o', label='Start')
+plt.scatter(theta_history[-1, 0], theta_history[-1, 1], color='purple', s=100, 
+           marker='*', label='End')
 
 # Add labels and title
 plt.xlabel('$\\theta_1$')
@@ -136,12 +178,24 @@ plt.legend()
 
 mlai.write_figure(filename='simplified-saddle-point-example.svg', 
                   directory = './information-game')
-}
 
+# Plot entropy evolution during gradient ascent
+plt.figure(figsize=plot.big_figsize)
+plt.plot(entropy_history)
+plt.xlabel('Gradient Ascent Step')
+plt.ylabel('Entropy')
+plt.title('Entropy Evolution During Gradient Ascent')
+plt.grid(True)
+mlai.write_figure(filename='four-bin-entropy-evolution.svg', 
+                  directory = './information-game')}
 
 \newslide{Saddle Point Example}
 
 \figure{\includediagram{\diagramsDir/information-game/simplified-saddle-point-example}{70%}}{Visualisation of a saddle point projected down to two dimensions.}{simplified-saddle-point-example}
+
+\newslide{Entropy Evolution}
+
+\figure{\includediagram{\diagramsDir/information-game/four-bin-entropy-evolution}{70%}}{Entropy evolution during gradient ascent on the four-bin system.}{four-bin-entropy-evolution}
 
 \notes{The animation of system evolution would show initial rapid movement along high-eigenvalue directions, progressive slowing in directions with low eigenvalues and formation of information reservoirs in the critically slowed directions. Parameter-capacity uncertainty emerges naturally at the saddle point.
 } 
