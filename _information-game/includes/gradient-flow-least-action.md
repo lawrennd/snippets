@@ -103,7 +103,7 @@ ax1.grid(True)
 
 # Plot 2: Uncertainty ellipses at selected points
 steps_to_show = [0, 25, 50, -1]
-plot_multidimensional_uncertainty(G_history, step_indices=steps_to_show, pairs_to_plot=[0, 1], ax=ax2)
+plot_multidimensional_uncertainty(Lambda_history, step_indices=steps_to_show, pairs_to_plot=[0, 1], ax=ax2)
 ax2.set_title('Evolution of Uncertainty Ellipses')
 
 plt.tight_layout()
