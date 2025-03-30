@@ -126,6 +126,86 @@ def large_scale_gradient_ascent(n_pairs, steps=30, learning_rate=0.01, sample_in
     
     return sampled_states, entropy_history, uncertainty_metrics
 
+# Add gradient check function for large systems
+def check_large_system_gradient(n_pairs=10, epsilon=1e-6):
+    """
+    Check the analytical gradient against numerical gradient for a large system.
+    
+    Parameters:
+    -----------
+    n_pairs: int
+        Number of position-momentum pairs to test
+    epsilon: float
+        Small perturbation for numerical gradient
+    
+    Returns:
+    --------
+    max_diff: float
+        Maximum difference between analytical and numerical gradients
+    """
+    # Initialize a small test system
+    dim = 2 * n_pairs
+    eigenvalues = np.zeros(dim)
+    
+    # Initialize with minimal entropy state
+    for i in range(n_pairs):
+        squeeze = 0.1 * (1 + (i % 10))
+        eigenvalues[2*i] = 1.0 / (squeeze * min_uncertainty_product)
+        eigenvalues[2*i+1] = 1.0 / (min_uncertainty_product / squeeze)
+    
+    # Compute analytical gradient
+    analytical_grad = -1.0 / (2.0 * eigenvalues)
+    
+    # Compute numerical gradient
+    numerical_grad = np.zeros_like(eigenvalues)
+    
+    # Function to compute entropy from eigenvalues
+    def compute_entropy_from_eigenvalues(evals):
+        return 0.5 * (dim * (1 + np.log(2*np.pi)) - np.sum(np.log(evals)))
+    
+    # Initial entropy
+    base_entropy = compute_entropy_from_eigenvalues(eigenvalues)
+    
+    # Compute numerical gradient
+    for i in range(dim):
+        # Perturb eigenvalue up
+        eigenvalues_plus = eigenvalues.copy()
+        eigenvalues_plus[i] += epsilon
+        entropy_plus = compute_entropy_from_eigenvalues(eigenvalues_plus)
+        
+        # Perturb eigenvalue down
+        eigenvalues_minus = eigenvalues.copy()
+        eigenvalues_minus[i] -= epsilon
+        entropy_minus = compute_entropy_from_eigenvalues(eigenvalues_minus)
+        
+        # Compute numerical gradient
+        numerical_grad[i] = (entropy_plus - entropy_minus) / (2 * epsilon)
+    
+    # Compare
+    diff = np.abs(analytical_grad - numerical_grad)
+    max_diff = np.max(diff)
+    avg_diff = np.mean(diff)
+    
+    print(f"Gradient check for {n_pairs} position-momentum pairs:")
+    print(f"Maximum difference: {max_diff:.8f}")
+    print(f"Average difference: {avg_diff:.8f}")
+    
+    # Verify gradient ascent direction
+    step_size = 0.01
+    eigenvalues_after = eigenvalues + step_size * analytical_grad
+    entropy_after = compute_entropy_from_eigenvalues(eigenvalues_after)
+    
+    print(f"Entropy before step: {base_entropy:.6f}")
+    print(f"Entropy after step: {entropy_after:.6f}")
+    print(f"Change in entropy: {entropy_after - base_entropy:.6f}")
+    
+    if entropy_after > base_entropy:
+        print("✓ Gradient ascent confirmed: entropy increases")
+    else:
+        print("✗ Error: entropy decreases with gradient step")
+    
+    return max_diff
+
 # Analyze statistical properties of large-scale system
 def analyze_large_system(uncertainty_metrics, n_pairs, steps):
     """
@@ -376,6 +456,11 @@ from sklearn.cluster import KMeans}
 \code{# Constants
 hbar = 1.0  # Normalized Planck's constant
 min_uncertainty_product = hbar/2
+
+# Perform gradient check on a smaller test system
+print("Performing gradient check for large system implementation:")
+gradient_error = check_large_system_gradient(n_pairs=10)
+print(f"Gradient check completed with maximum error: {gradient_error:.8f}")
 
 # Run large-scale simulation
 n_pairs = 1000  # 1000 position-momentum pairs (2000×2000 matrix)
