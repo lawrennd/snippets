@@ -28,7 +28,7 @@ The eigenvectors of $G(\theta)$ at the saddle point determine which parameter co
 
 \setupcode{import numpy as np}
 
-\code{# Exponential family entropy functions for 4-bin system
+\helpercode{# Exponential family entropy functions for 4-bin system
 def exponential_family_entropy(theta):
     """
     Compute entropy of a 4-bin exponential family distribution
@@ -90,8 +90,9 @@ def gradient_ascent_four_bin(theta_init, steps=100, learning_rate=0.01):
         entropy_history.append(exponential_family_entropy(theta))
     
     return np.array(theta_history), np.array(entropy_history)
+}
 
-# Initialize with asymmetric distribution (away from saddle point)
+\code{# Initialize with asymmetric distribution (away from saddle point)
 theta_init = np.array([1.0, -0.5, -0.2, -0.3])
 theta_init = theta_init - np.mean(theta_init)  # Ensure constraint is satisfied
 
