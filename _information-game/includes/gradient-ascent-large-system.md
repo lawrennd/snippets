@@ -17,7 +17,7 @@
 \notes{Large-scale systems reveal how microscopic uncertainty constraints lead to macroscopic statistical patterns. By analyzing thousands of position-momentum pairs simultaneously, we can identify emergent behaviors and natural clustering of dynamical patterns.}
 
 \helpercode{# Optimized implementation for very large systems
-def large_scale_gradient_ascent(n_pairs, steps=30, learning_rate=0.01, sample_interval=5):
+def large_scale_gradient_ascent(n_pairs, steps=100, learning_rate=1, sample_interval=5):
     """
     Memory-efficient implementation of gradient ascent for very large systems.
     
@@ -378,8 +378,8 @@ hbar = 1.0  # Normalized Planck's constant
 min_uncertainty_product = hbar/2
 
 # Run large-scale simulation
-n_pairs = 1000  # 1000 position-momentum pairs (2000×2000 matrix)
-steps = 30      # Fewer steps for large system
+n_pairs = 5000  # 5000 position-momentum pairs (10,000×10,000 matrix)
+steps = 100      # Fewer steps for large system
 
 # Run the optimized implementation
 sampled_states, entropy_history, uncertainty_metrics = large_scale_gradient_ascent(
