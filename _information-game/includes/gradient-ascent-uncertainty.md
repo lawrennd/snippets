@@ -35,7 +35,8 @@ def compute_entropy(Lambda):
     covariance = np.linalg.inv(Lambda)
     return 0.5 * (n * (1 + np.log(2*np.pi)) + np.log(np.linalg.det(covariance)))
 
-# Compute gradient of entropy with respect to eigenvalues
+
+# Compute entropy gradient with respect to eigenvalues
 def entropy_gradient(eigenvalues):
     """
     Compute gradient of entropy with respect to eigenvalues of precision matrix.
@@ -131,6 +132,56 @@ def initialize_multidimensional_state(n_pairs, squeeze_factors=None):
         Lambda[idx2, idx2] = 1.0 / (min_uncertainty_product / squeeze_factors[i])
     
     return Lambda
+
+# Add gradient check function
+def check_entropy_gradient(Lambda, epsilon=1e-6):
+    """
+    Check the analytical gradient of entropy against numerical gradient.
+    
+    Parameters:
+    -----------
+    Lambda: array
+        Precision matrix
+    epsilon: float
+        Small perturbation for numerical gradient
+    
+    Returns:
+    --------
+    analytical_grad: array
+        Analytical gradient with respect to eigenvalues
+    numerical_grad: array
+        Numerical gradient with respect to eigenvalues
+    """
+    # Get eigendecomposition
+    eigenvalues, eigenvectors = eigh(Lambda)
+    
+    # Compute analytical gradient
+    analytical_grad = entropy_gradient(eigenvalues)
+    
+    # Compute numerical gradient
+    numerical_grad = np.zeros_like(eigenvalues)
+    for i in range(len(eigenvalues)):
+        # Perturb eigenvalue up
+        eigenvalues_plus = eigenvalues.copy()
+        eigenvalues_plus[i] += epsilon
+        Lambda_plus = eigenvectors @ np.diag(eigenvalues_plus) @ eigenvectors.T
+        entropy_plus = compute_entropy(Lambda_plus)
+        
+        # Perturb eigenvalue down
+        eigenvalues_minus = eigenvalues.copy()
+        eigenvalues_minus[i] -= epsilon
+        Lambda_minus = eigenvectors @ np.diag(eigenvalues_minus) @ eigenvectors.T
+        entropy_minus = compute_entropy(Lambda_minus)
+        
+        # Compute numerical gradient
+        numerical_grad[i] = (entropy_plus - entropy_minus) / (2 * epsilon)
+    
+    # Compare
+    print("Analytical gradient:", analytical_grad)
+    print("Numerical gradient:", numerical_grad)
+    print("Difference:", np.abs(analytical_grad - numerical_grad))
+    
+    return analytical_grad, numerical_grad
 
 # Perform gradient ascent on entropy
 def gradient_ascent(Lambda_init, steps=100, learning_rate=0.01):
@@ -405,6 +456,27 @@ from scipy.linalg import eigh}
 \code{# Constants
 hbar = 1.0  # Normalized Planck's constant
 min_uncertainty_product = hbar/2
+
+# Verify gradient calculation
+print("Testing gradient calculation:")
+test_Lambda = np.array([[2.0, 0.5], [0.5, 1.0]])  # Example precision matrix
+analytical_grad, numerical_grad = check_entropy_gradient(test_Lambda)
+
+# Verify if we're ascending or descending
+entropy_before = compute_entropy(test_Lambda)
+eigenvalues, eigenvectors = eigh(test_Lambda)
+step_size = 0.01
+eigenvalues_after = eigenvalues + step_size * analytical_grad
+test_Lambda_after = eigenvectors @ np.diag(eigenvalues_after) @ eigenvectors.T
+entropy_after = compute_entropy(test_Lambda_after)
+
+print(f"Entropy before step: {entropy_before}")
+print(f"Entropy after step: {entropy_after}")
+print(f"Change in entropy: {entropy_after - entropy_before}")
+if entropy_after > entropy_before:
+    print("We are ascending the entropy gradient")
+else:
+    print("We are descending the entropy gradient")
 
 # Example usage for multidimensional system
 # Initialize a system with 3 position-momentum pairs

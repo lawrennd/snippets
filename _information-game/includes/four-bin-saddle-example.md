@@ -49,16 +49,42 @@ def entropy_gradient(theta):
     """
     Compute the gradient of the entropy with respect to theta
     """
-    # Compute the log-partition function
+    # Compute the log-partition function (normalization constant)
     log_Z = np.log(np.sum(np.exp(theta)))
     
     # Compute probabilities
     p = np.exp(theta - log_Z)
     
-    # Gradient components
-    grad = p * (np.log(p) + 1)
+    # Gradient is theta times the second derivative of log partition function
+    return -p*theta + p*(np.dot(p, theta))
+
+# Add a gradient check function
+def check_gradient(theta, epsilon=1e-6):
+    """
+    Check the analytical gradient against numerical gradient
+    """
+    # Compute analytical gradient
+    analytical_grad = entropy_gradient(theta)
     
-    return grad
+    # Compute numerical gradient
+    numerical_grad = np.zeros_like(theta)
+    for i in range(len(theta)):
+        theta_plus = theta.copy()
+        theta_plus[i] += epsilon
+        entropy_plus = exponential_family_entropy(theta_plus)
+        
+        theta_minus = theta.copy()
+        theta_minus[i] -= epsilon
+        entropy_minus = exponential_family_entropy(theta_minus)
+        
+        numerical_grad[i] = (entropy_plus - entropy_minus) / (2 * epsilon)
+    
+    # Compare
+    print("Analytical gradient:", analytical_grad)
+    print("Numerical gradient:", numerical_grad)
+    print("Difference:", np.abs(analytical_grad - numerical_grad))
+    
+    return analytical_grad, numerical_grad
 
 # Project gradient to respect constraints (sum of theta is constant)
 def project_gradient(theta, grad):
@@ -91,6 +117,25 @@ def gradient_ascent_four_bin(theta_init, steps=100, learning_rate=0.01):
     
     return np.array(theta_history), np.array(entropy_history)
 }
+
+\code{# Test the gradient calculation
+test_theta = np.array([0.5, -0.3, 0.1, -0.3])
+test_theta = test_theta - np.mean(test_theta)  # Ensure constraint is satisfied
+print("Testing gradient calculation:")
+analytical_grad, numerical_grad = check_gradient(test_theta)
+
+# Verify if we're ascending or descending
+entropy_before = exponential_family_entropy(test_theta)
+step_size = 0.01
+test_theta_after = test_theta + step_size * analytical_grad
+entropy_after = exponential_family_entropy(test_theta_after)
+print(f"Entropy before step: {entropy_before}")
+print(f"Entropy after step: {entropy_after}")
+print(f"Change in entropy: {entropy_after - entropy_before}")
+if entropy_after > entropy_before:
+    print("We are ascending the entropy gradient")
+else:
+    print("We are descending the entropy gradient")}
 
 \code{# Initialize with asymmetric distribution (away from saddle point)
 theta_init = np.array([1.0, -0.5, -0.2, -0.3])
@@ -200,5 +245,7 @@ mlai.write_figure(filename='four-bin-entropy-evolution.svg',
 
 \notes{The animation of system evolution would show initial rapid movement along high-eigenvalue directions, progressive slowing in directions with low eigenvalues and formation of information reservoirs in the critically slowed directions. Parameter-capacity uncertainty emerges naturally at the saddle point.
 } 
+
+
 
 \endif
