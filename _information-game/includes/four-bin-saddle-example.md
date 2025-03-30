@@ -69,7 +69,7 @@ def project_gradient(theta, grad):
     return grad - np.mean(grad)
 
 # Perform gradient ascent on entropy
-def gradient_ascent_four_bin(theta_init, steps=100, learning_rate=0.01):
+def gradient_ascent_four_bin(theta_init, steps=100, learning_rate=1):
     """
     Perform gradient ascent on entropy for 4-bin system
     """
@@ -97,7 +97,7 @@ theta_init = np.array([1.0, -0.5, -0.2, -0.3])
 theta_init = theta_init - np.mean(theta_init)  # Ensure constraint is satisfied
 
 # Run gradient ascent
-theta_history, entropy_history = gradient_ascent_four_bin(theta_init, steps=50, learning_rate=0.1)
+theta_history, entropy_history = gradient_ascent_four_bin(theta_init, steps=100, learning_rate=1.0)
 
 # Create a grid for visualization
 x = np.linspace(-2, 2, 100)
