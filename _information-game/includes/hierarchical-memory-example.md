@@ -5,32 +5,32 @@
 
 \subsection{Hierarchical Memory Organization Example}
 
-\notes{As our system evolves from quantum-like to classical regimes, a hierarchical memory structure emerges. We can illustrate this with a simple dynamical system example.}
+\notes{As the game evolves to classical regimes, a hierarchical memory structure can emerge. We illustrate the idea with a simple dynamical system example.}
 
 \slides{
 * Classical information reservoirs organize hierarchically
 * Variables separate into distinct timescale bands
 * Fast variables: rapidly changing, high processing capacity
 * Slow variables: gradually changing, high memory capacity
-* Connections across scales create efficient information processing
+* Connect across scales for efficient information processing
 }
 
-\notes{
-Consider a system with 8 variables that undergo steepest ascent entropy maximization. As the system evolves, the eigenvalue spectrum of the Fisher information matrix reveals a natural separation into timescales:
+\notes{Consider a system with 8 variables that undergo steepest ascent entropy maximization. As the system evolves, assume the eigenvalue spectrum of the Fisher information matrix has a separation into timescales as follows.
 
-1. **Very slow variables** (eigenvalues ≈ 0.01) - Deep memory, context variables
-2. **Slow variables** (eigenvalues ≈ 0.1) - Long-term memory
-3. **Medium variables** (eigenvalues ≈ 1.0) - Intermediate processing/memory
-4. **Fast variables** (eigenvalues ≈ 10.0) - Rapid processing, minimal memory
+1. *Very slow variables* (eigenvalues ≈ 0.01) - Deep memory, context variables
+2. *Slow variables* (eigenvalues ≈ 0.1) - Long-term memory
+3. *Medium variables* (eigenvalues ≈ 1.0) - Intermediate processing/memory
+4. *Fast variables* (eigenvalues ≈ 10.0) - Rapid processing, minimal memory
 
-This creates a natural hierarchy where slow variables provide context for faster variables, and faster variables provide detailed implementation of processes guided by slower variables.
-}
+This implies a natural hierarchy where slow variables can provide context for faster variables, and faster variables can be guidedl  guided by slower variables.}
 
-\code{
-# Visualizing hierarchical memory structure
-import numpy as np
+\setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
-import networkx as nx
+import mlai.plot as plot
+import mlai
+import networkx as nx}
+
+\plotcode{# Visualizing hierarchical memory structure
 
 # Create a hierarchical structure
 G = nx.DiGraph()
@@ -56,7 +56,7 @@ G.add_edge('long-term', 'processing')
 G.add_edge('intermediate', 'processing')
 
 # Create figure
-fig, ax = plt.subplots(figsize=(10, 8))
+fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 
 # Get node attributes
 node_colors = [G.nodes[n]['color'] for n in G.nodes]
@@ -80,7 +80,7 @@ nx.draw_networkx(G, pos, with_labels=True, node_color=node_colors,
 for node, position in pos.items():
     eigenvalue = G.nodes[node]['eigenvalue']
     ax.text(position[0] + 0.2, position[1], 
-            f'λ = {eigenvalue}', 
+            f'$\\lambda = {eigenvalue}$', 
             fontsize=12)
 
 ax.set_title('Hierarchical Memory Organization')
@@ -100,12 +100,15 @@ ax2.set_ylabel('Parameter value')
 ax2.set_title('Update Dynamics at Different Timescales')
 ax2.legend()
 ax2.grid(True, linestyle='--', alpha=0.7)
+
+mlai.write_figure(filename='hierarchical-memory-organisation-example.svg', 
+                  directory = '\writeDiagramDir/information-game')
 }
 
-\notes{
-This hierarchical structure emerges naturally during entropy maximization, without requiring explicit design. The timescale separation creates a computational architecture where information flows between levels, with each level operating at its characteristic timescale.
+\figure{\includeDiagram{\diagramsDir/information-game/hierarchical-memory-organisation-example}{80%}}{}{hierarchical-memory-organisation-example}
 
-This example illustrates how classical hierarchical information reservoirs can achieve high capacity without requiring quantum-like interference effects. Different variables specialize in different aspects of information processing based purely on their eigenvalue in the Fisher information matrix.
-} 
+\notes{A hierarchical memory structure emerges naturally during entropy maximization. The timescale separation creates a computational architecture where different levels operate at different characteristic timescales.}
+
+\notes{The hierarchy is important in understanding how it is possible for information information reservoirs to achieve high capacity (entropy) without underlying quantum-like interference effects. Different variables are characterised based on their eigenvalue in the Fisher information matrix.} 
 
 \endif
