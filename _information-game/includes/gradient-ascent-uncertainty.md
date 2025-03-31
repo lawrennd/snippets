@@ -3,136 +3,181 @@
 
 \editme
 
-\subsection{Gradient Ascent on Entropy with Uncertainty Constraints}
+\subsection{Gradient Ascent and Uncertainty Principles}
 
-\notes{As an example we perform gradient ascent starting with a minimal entropy state. This allows us to explore the saddle-point seeking behaviour of steepest ascent empirically.}
+\notes{In our exploration of information dynamics, we now turn to the relationship between gradient ascent on entropy and uncertainty principles. This section demonstrates how systems naturally evolve from quantum-like states (with minimal uncertainty) toward classical-like states (with excess uncertainty) through entropy maximization.}
 
 \slides{
-* Entropy increases while respecting uncertainty constraints
-* Reveals transition from quantum-like to classical-like behavior
-* Implemented through gradient ascent on covariance eigenvalues
+* Gradient ascent on entropy naturally respects uncertainty principles
+* Systems evolve from quantum-like to classical-like regimes
+* Uncertainty ellipses visualize this transition
 }
 
-\notes{The minimal entropy states represent the origin point. By implementing gradient ascent on the entropy function while respecting the uncertainty constraints, we can observe how the entropy game evolves.}
+\newslide{Gaussian Systems and Uncertainty}
+
+\notes{
+For simplicity, we'll focus on multivariate Gaussian distributions, where the uncertainty relationships are particularly elegant. In this setting, the precision matrix $\Lambda$ (inverse of the covariance matrix) fully characterizes the distribution. The entropy of a multivariate Gaussian is directly related to the determinant of the covariance matrix,
+$$
+S = \frac{1}{2}\log\det(V) + \text{constant},
+$$
+where $V = \Lambda^{-1}$ is the covariance matrix.
+
+For conjugate variables like position and momentum, the Heisenberg uncertainty principle imposes constraints on the minimum product of their uncertainties. In our information-theoretic framework, this appears as a constraint on the determinant of certain submatrices of the covariance matrix.
+}
+
+\slides{
+* Multivariate Gaussian: $\rho(z) \propto \exp\left(-\frac{1}{2}z^T \Lambda z\right)$
+* Precision matrix $\Lambda$ determines uncertainty structure
+* Entropy: $S = \frac{1}{2}\log\det(V) + \text{constant}$
+* Uncertainty principle: $\Delta x \cdot \Delta p \geq \frac{\hbar}{2}$
+}
+
+\setupcode{import numpy as np
+from scipy.linalg import eigh
+import matplotlib.pyplot as plt
+from matplotlib.patches import Ellipse}
+
+\notes{
+The code below implements gradient ascent on the entropy of a multivariate Gaussian system while respecting uncertainty constraints. We'll track how the system evolves from minimal uncertainty states (quantum-like) to states with excess uncertainty (classical-like).
+
+First, we define key functions for computing entropy and its gradient.
+}
+
+\code{
+# Constants
+hbar = 1.0  # Normalized Planck's constant
+min_uncertainty_product = hbar/2}
 
 
-\helpercode{# Compute entropy of a Gaussian with precision matrix Lambda
+\helpercode{# Compute entropy of a multivariate Gaussian with precision matrix Lambda
 def compute_entropy(Lambda):
     """
-    Compute entropy of a Gaussian with precision matrix Lambda.
+    Compute entropy of multivariate Gaussian with precision matrix Lambda.
     
     Parameters:
     -----------
     Lambda: array
-        Precision matrix (inverse covariance)
+        Precision matrix
     
     Returns:
     --------
     entropy: float
-        Differential entropy value
+        Entropy value
     """
-    n = Lambda.shape[0]  # Dimensionality
-    covariance = np.linalg.inv(Lambda)
-    return 0.5 * (n * (1 + np.log(2*np.pi)) + np.log(np.linalg.det(covariance)))
+    # Covariance matrix is inverse of precision matrix
+    V = np.linalg.inv(Lambda)
+    
+    # Entropy formula for multivariate Gaussian
+    n = Lambda.shape[0]
+    entropy = 0.5 * np.log(np.linalg.det(V)) + 0.5 * n * (1 + np.log(2*np.pi))
+    
+    return entropy
 
-
-# Compute entropy gradient with respect to eigenvalues
-def entropy_gradient(eigenvalues):
+# Compute gradient of entropy with respect to precision matrix
+def compute_entropy_gradient(Lambda):
     """
-    Compute gradient of entropy with respect to eigenvalues of precision matrix.
+    Compute gradient of entropy with respect to precision matrix.
     
     Parameters:
     -----------
-    eigenvalues: array
-        Eigenvalues of precision matrix Lambda
+    Lambda: array
+        Precision matrix
     
     Returns:
     --------
     gradient: array
-        Gradient of entropy with respect to each eigenvalue
+        Gradient of entropy
     """
-    # For a Gaussian, gradient of entropy with respect to precision eigenvalue is -1/(2*eigenvalue)
-    return -1.0 / (2.0 * eigenvalues)
+    # Gradient is -0.5 * inverse of Lambda
+    V = np.linalg.inv(Lambda)
+    gradient = -0.5 * V
+    
+    return gradient
+}
 
+\notes{
+The `compute_entropy` function calculates the entropy of a multivariate Gaussian distribution from its precision matrix. The `compute_entropy_gradient` function computes the gradient of entropy with respect to the precision matrix, which is essential for our gradient ascent procedure.
+
+Next, we implement functions to handle the constraints imposed by the uncertainty principle:
+}
+
+\code{
 # Project gradient to respect uncertainty constraints
 def project_gradient(eigenvalues, gradient):
     """
-    Project gradient to ensure uncertainty constraints are respected.
+    Project gradient to respect minimum uncertainty constraints.
     
     Parameters:
     -----------
     eigenvalues: array
-        Current eigenvalues of precision matrix
+        Eigenvalues of precision matrix
     gradient: array
-        Raw gradient of entropy with respect to eigenvalues
+        Gradient vector
     
     Returns:
     --------
     projected_gradient: array
         Gradient projected to respect constraints
     """
-    n = len(eigenvalues) // 2
+    n_pairs = len(eigenvalues) // 2
     projected_gradient = gradient.copy()
     
-    # For each conjugate pair of variables
-    for i in range(n):
+    # For each position-momentum pair
+    for i in range(n_pairs):
         idx1, idx2 = 2*i, 2*i+1
         
-        # Current uncertainty product (in eigenvalue space, this is inverse)
-        current_product = eigenvalues[idx1] * eigenvalues[idx2]
+        # Check if we're at the uncertainty boundary
+        product = 1.0 / (eigenvalues[idx1] * eigenvalues[idx2])
         
-        # If we're already at minimum uncertainty, project gradient to maintain this
-        if abs(current_product - 1/min_uncertainty_product**2) < 1e-6:
-            # Tangent direction preserves the product
-            tangent = np.array([-eigenvalues[idx2], -eigenvalues[idx1]])
-            tangent = tangent / np.linalg.norm(tangent)
-            
-            # Project the gradient onto this tangent
-            pair_gradient = np.array([gradient[idx1], gradient[idx2]])
-            projection = np.dot(pair_gradient, tangent) * tangent
-            
-            projected_gradient[idx1] = projection[0]
-            projected_gradient[idx2] = projection[1]
+        if product <= min_uncertainty_product * 1.01:
+            # We're at or near the boundary
+            # Project gradient to maintain the product
+            avg_grad = 0.5 * (gradient[idx1]/eigenvalues[idx1] + gradient[idx2]/eigenvalues[idx2])
+            projected_gradient[idx1] = avg_grad * eigenvalues[idx1]
+            projected_gradient[idx2] = avg_grad * eigenvalues[idx2]
     
     return projected_gradient
 
-# Initialize a multidimensional minimal entropy state
+# Initialize a multidimensional state with position-momentum pairs
 def initialize_multidimensional_state(n_pairs, squeeze_factors=None):
     """
-    Create a minimal entropy state for multiple position-momentum pairs.
+    Initialize a precision matrix for multiple position-momentum pairs.
     
     Parameters:
     -----------
     n_pairs: int
         Number of position-momentum pairs
     squeeze_factors: list, optional
-        Squeeze factors for each pair (how asymmetric the uncertainty is)
-        
+        Factors to squeeze initial uncertainty ellipses
+    
     Returns:
     --------
-    Lambda: 2n×2n array
+    Lambda: array
         Initial precision matrix
     """
     if squeeze_factors is None:
-        # Default: different squeeze factors for each pair
-        squeeze_factors = [0.1 * (i+1) for i in range(n_pairs)]
+        squeeze_factors = [0.1] * n_pairs
     
-    # Initialize precision matrix
-    dim = 2 * n_pairs
-    Lambda = np.zeros((dim, dim))
+    # Create block diagonal precision matrix
+    Lambda = np.zeros((2*n_pairs, 2*n_pairs))
     
-    # For each position-momentum pair
     for i in range(n_pairs):
+        # Position-momentum pair with minimum uncertainty
+        lambda_x = 1.0 / (squeeze_factors[i] * np.sqrt(min_uncertainty_product))
+        lambda_p = 1.0 / (np.sqrt(min_uncertainty_product) / squeeze_factors[i])
+        
+        # Place on diagonal
         idx1, idx2 = 2*i, 2*i+1
-        
-        # Set precision for position (high precision = low uncertainty)
-        Lambda[idx1, idx1] = 1.0 / (squeeze_factors[i] * min_uncertainty_product)
-        
-        # Set precision for momentum (low precision = high uncertainty)
-        Lambda[idx2, idx2] = 1.0 / (min_uncertainty_product / squeeze_factors[i])
+        Lambda[idx1, idx1] = lambda_x
+        Lambda[idx2, idx2] = lambda_p
     
     return Lambda
+}
 
+\notes{
+The `project_gradient` function ensures that our gradient ascent respects the uncertainty principle by projecting the gradient to maintain minimum uncertainty products when necessary. The `initialize_multidimensional_state` function creates a starting state with multiple position-momentum pairs, each initialized to the minimum uncertainty allowed by the uncertainty principle, but with different "squeeze factors" that determine the shape of the uncertainty ellipse.}
+
+\helpercode{
 # Add gradient check function
 def check_entropy_gradient(Lambda, epsilon=1e-6):
     """
@@ -181,10 +226,14 @@ def check_entropy_gradient(Lambda, epsilon=1e-6):
     print("Numerical gradient:", numerical_grad)
     print("Difference:", np.abs(analytical_grad - numerical_grad))
     
-    return analytical_grad, numerical_grad
+    return analytical_grad, numerical_grad}
+
+\notes{Now we implement the main gradient ascent procedure.}
+
+\code{
 
 # Perform gradient ascent on entropy
-def gradient_ascent(Lambda_init, steps=100, learning_rate=0.01):
+def gradient_ascent_entropy(Lambda_init, n_steps=100, learning_rate=0.01):
     """
     Perform gradient ascent on entropy while respecting uncertainty constraints.
     
@@ -192,10 +241,10 @@ def gradient_ascent(Lambda_init, steps=100, learning_rate=0.01):
     -----------
     Lambda_init: array
         Initial precision matrix
-    steps: int
-        Number of gradient steps to take
+    n_steps: int
+        Number of gradient steps
     learning_rate: float
-        Step size for gradient ascent
+        Learning rate for gradient ascent
     
     Returns:
     --------
@@ -208,12 +257,15 @@ def gradient_ascent(Lambda_init, steps=100, learning_rate=0.01):
     Lambda_history = [Lambda.copy()]
     entropy_history = [compute_entropy(Lambda)]
     
-    for _ in range(steps):
-        # Eigendecomposition of Lambda
+    for step in range(n_steps):
+        # Compute gradient of entropy
+        grad_matrix = compute_entropy_gradient(Lambda)
+        
+        # Diagonalize Lambda to work with eigenvalues
         eigenvalues, eigenvectors = eigh(Lambda)
         
-        # Compute gradient with respect to eigenvalues
-        grad = entropy_gradient(eigenvalues)
+        # Transform gradient to eigenvalue space
+        grad = np.diag(eigenvectors.T @ grad_matrix @ eigenvectors)
         
         # Project gradient to respect constraints
         proj_grad = project_gradient(eigenvalues, grad)
@@ -232,7 +284,15 @@ def gradient_ascent(Lambda_init, steps=100, learning_rate=0.01):
         entropy_history.append(compute_entropy(Lambda))
     
     return Lambda_history, entropy_history
+}
 
+\notes{
+The `gradient_ascent_entropy` function implements the core optimization procedure. It performs gradient ascent on the entropy while respecting the uncertainty constraints. The algorithm works in the eigenvalue space of the precision matrix, which makes it easier to enforce constraints and ensure the matrix remains positive definite.
+
+To analyze the results, we implement functions to track uncertainty metrics and detect interesting dynamics:
+}
+
+\code{
 # Track uncertainty products and regime classification
 def track_uncertainty_metrics(Lambda_history):
     """
@@ -282,7 +342,15 @@ def track_uncertainty_metrics(Lambda_history):
         'uncertainty_products': uncertainty_products,
         'regimes': regimes
     }
+}
 
+\notes{
+The `track_uncertainty_metrics` function analyzes the evolution of uncertainty products for each position-momentum pair and classifies them as either "quantum-like" (near minimum uncertainty) or "classical-like" (with excess uncertainty). This classification helps us understand how the system transitions between these regimes during entropy maximization.
+
+We also implement a function to detect saddle points in the gradient flow, which are critical for understanding the system's dynamics:
+}
+
+\code{
 # Detect saddle points in the gradient flow
 def detect_saddle_points(Lambda_history):
     """
@@ -335,7 +403,15 @@ def detect_saddle_points(Lambda_history):
         'gradient_ratios': gradient_ratios,
         'saddle_candidates': saddle_candidates
     }
+}
 
+\notes{
+The `detect_saddle_points` function identifies points in the gradient flow where some eigenvalues change much faster than others, indicating saddle-like behavior. These saddle points are important because they represent critical transitions in the system's evolution.
+
+Finally, we implement visualization functions to help us understand the system's behavior:
+}
+
+\code{
 # Visualize uncertainty ellipses for multiple pairs
 def plot_multidimensional_uncertainty(Lambda_history, step_indices, pairs_to_plot=None):
     """
@@ -426,7 +502,14 @@ def plot_multidimensional_uncertainty(Lambda_history, step_indices, pairs_to_plo
             ax.set_ylabel("Momentum")
     
     plt.tight_layout()
-    return fig}
+    return fig
+}
+
+\notes{
+The `plot_multidimensional_uncertainty` function visualizes the uncertainty ellipses for multiple position-momentum pairs at different steps of the gradient ascent process. These visualizations help us understand how the system transitions from quantum-like to classical-like regimes.
+
+This implementation builds on the `InformationReservoir` class we saw earlier, but generalizes to multiple position-momentum pairs and focuses specifically on the uncertainty relationships. The key connection is that both implementations track how systems naturally evolve from minimal entropy states (with quantum-like uncertainty relations) toward maximum entropy states (with classical-like uncertainty relations).
+}
 
 \notes{As the system evolves through gradient ascent, we observe transitions.
 
@@ -478,28 +561,29 @@ if entropy_after > entropy_before:
 else:
     print("We are descending the entropy gradient")
 
-# Example usage for multidimensional system
-# Initialize a system with 3 position-momentum pairs
-n_pairs = 3
-Lambda_init = initialize_multidimensional_state(n_pairs, squeeze_factors=[0.1, 0.2, 0.3])
+test_grad = compute_entropy_gradient(test_Lambda)
+print(f"Precision matrix:\n{test_Lambda}")
+print(f"Entropy gradient:\n{test_grad}")
+print(f"Entropy: {compute_entropy(test_Lambda):.4f}")
+# Initialize system with 2 position-momentum pairs
+n_pairs = 2
+Lambda_init = initialize_multidimensional_state(n_pairs, squeeze_factors=[0.1, 0.5])
+# Run gradient ascent
+n_steps = 100
+Lambda_history, entropy_history = gradient_ascent_entropy(Lambda_init, n_steps, learning_rate=0.01)
 
-# Perform gradient ascent
-Lambda_history, entropy_history = gradient_ascent(Lambda_init, steps=100, learning_rate=0.01)
+# Track metrics
+uncertainty_metrics = track_uncertainty_metrics(Lambda_history)
+saddle_metrics = detect_saddle_points(Lambda_history)
 
-# Track uncertainty metrics
-metrics = track_uncertainty_metrics(Lambda_history)
+# Print results
+print("\nFinal entropy:", entropy_history[-1])
+print("Initial uncertainty products:", uncertainty_metrics['uncertainty_products'][0])
+print("Final uncertainty products:", uncertainty_metrics['uncertainty_products'][-1])
+print("Saddle point candidates at steps:", saddle_metrics['saddle_candidates'])
+}
 
-# Detect saddle points
-saddle_metrics = detect_saddle_points(Lambda_history)}
-
-\setupplotcode{import matplotlib.pyplot as plt
-import mlai.plot as plot
-import mlai
-from matplotlib.patches import Ellipse}
-
-\plotcode{# Plot uncertainty ellipses at different steps
-plot_multidimensional_uncertainty(Lambda_history, step_indices=[0, 25, 50, 99], pairs_to_plot=[0, 1, 2])
-
+\plotcode{
 # Plot entropy evolution
 plt.figure(figsize=plot.big_wide_figsize)
 plt.plot(entropy_history)
@@ -513,8 +597,10 @@ mlai.write_figure(filename='entropy-evolution-during-gradient-ascent.svg',
 # Plot uncertainty products evolution
 plt.figure(figsize=plot.big_wide_figsize)
 for i in range(n_pairs):
-    plt.plot(metrics['uncertainty_products'][:, i], label=f'Pair {i+1}')
-plt.axhline(y=min_uncertainty_product, color='k', linestyle='--', label='Minimum uncertainty')
+    plt.plot(uncertainty_metrics['uncertainty_products'][:, i], 
+             label=f'Pair {i+1}')
+plt.axhline(y=min_uncertainty_product, color='k', linestyle='--', 
+           label='Minimum uncertainty')
 plt.xlabel('Gradient Ascent Step')
 plt.ylabel('Uncertainty Product (ΔxΔp)')
 plt.title('Evolution of Uncertainty Products')
@@ -524,16 +610,23 @@ plt.grid(True)
 mlai.write_figure(filename='uncertainty-products-evolution.svg', 
                   directory='./information-game')
 
-# Add visualization of eigenvalue spectrum to show concentration
-plt.figure(figsize=plot.big_wide_figsize)
+
+
+# Plot uncertainty ellipses at key steps
+step_indices = [0, 20, 50, 99]  # Initial, early, middle, final
+plot_multidimensional_uncertainty(Lambda_history, step_indices)
+
+# Plot eigenvalues evolution
+plt.subplots(figsize=plot.big_wide_figsize)
 for i in range(2*n_pairs):
-    plt.plot(saddle_metrics['eigenvalues_history'][:, i], label=f'Eigenvalue {i+1}')
+    plt.semilogy(saddle_metrics['eigenvalues_history'][:, i], 
+                label=f'$\\lambda_{i+1}$')
 plt.xlabel('Gradient Ascent Step')
-plt.ylabel('Eigenvalue Magnitude')
+plt.ylabel('Eigenvalue (log scale)')
 plt.title('Evolution of Precision Matrix Eigenvalues')
 plt.legend()
 plt.grid(True)
-plt.yscale('log')  # Log scale helps visualize concentration
+plt.tight_layout()
 mlai.write_figure(filename='eigenvalue-evolution.svg', 
                   directory='./information-game')}
 
@@ -553,10 +646,6 @@ mlai.write_figure(filename='eigenvalue-evolution.svg',
 
 \figure{\includediagram{\diagramsDir/information-game/uncertainty-products-evolution}{70%}}{.}{uncertainty-products-evolution}
 
-\notes{The gradient ascent approach provides a powerful framework for understanding how systems naturally evolve from minimal entropy states toward maximum entropy while respecting fundamental constraints. This perspective unifies quantum uncertainty with classical information theory through the common language of information geometry.}
 
-\notes{In multidimensional systems, we observe the emergence of natural hierarchies and timescales. Some degrees of freedom quickly reach equilibrium (maximum entropy configurations) while others remain ordered for much longer periods. This separation of timescales creates a rich landscape of partially equilibrated states that may play important roles in information processing systems.}
-
-\notes{The saddle points in this landscape represent configurations where the system naturally pauses during its evolution. These quasi-stable states exhibit hybrid behavior, with some variables maintaining quantum-like characteristics while others behave more classically.}
 
 \endif 

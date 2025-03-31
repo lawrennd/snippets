@@ -19,35 +19,35 @@
 \slides{
 * Exponential family: $\rho(z;\boldsymbol{\theta}) = h(z)\exp\left(\boldsymbol{\theta}^\top T(z) - A(\boldsymbol{\theta})\right)$
 * Fisher information matrix: $G(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta})$
-* Entropy gradient: $\nabla_{\boldsymbol{\theta}}S(Z) = \mathbf{g} = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta})$
-* Gradient ascent: $\Delta \boldsymbol{\theta} = \eta \mathbf{g}$
+* Entropy gradient: $\nabla_{\boldsymbol{\theta}}S(Z) = \mathbb{E}[T(Z)] - \nabla_{\boldsymbol{\theta}}A(\boldsymbol{\theta})$
+* Gradient ascent: $\Delta \boldsymbol{\theta} = \eta \nabla_{\boldsymbol{\theta}}S(Z)$
 }
 
 \notes{
-In our entropy game, we've been maximizing entropy through gradient ascent on the natural parameters $\boldsymbol{\theta}$. For exponential family distributions, the entropy gradient is directly related to the Fisher information matrix:
-
-$$\nabla_{\boldsymbol{\theta}}S(Z) = \mathbf{g} = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta})$$
-
-where $A(\boldsymbol{\theta})$ is the log-partition function. The Fisher information matrix is precisely the Hessian of this function:
-
-$$G(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta})$$
-
+In our entropy game, we've been maximizing entropy through gradient ascent on the natural parameters $\boldsymbol{\theta}$. For exponential family distributions, the entropy gradient has a particularly elegant form
+$$
+\nabla_{\boldsymbol{\theta}}S(Z) = \mathbb{E}[T(Z)] - \nabla_{\boldsymbol{\theta}}A(\boldsymbol{\theta}),
+$$
+where $T(Z)$ are the sufficient statistics and $A(\boldsymbol{\theta})$ is the log-partition function. The Fisher information matrix is precisely the Hessian of this log-partition function,
+$$
+G(\boldsymbol{\theta}) = \nabla^2_{\boldsymbol{\theta}} A(\boldsymbol{\theta}).
+$$
 This establishes a direct connection between entropy maximization and the geometry of the parameter space as measured by Fisher information.
 }
 
 \newslide{Frieden's EPI Principle}
 
 \notes{
-Roy Frieden's Extreme Physical Information (EPI) principle proposes that physical laws arise from the optimization of an information-theoretic functional. The EPI functional is defined as:
-
-$$\Delta = I(X|\boldsymbol{\theta}) - J(M|\boldsymbol{\theta})$$
-
+Roy Frieden's Extreme Physical Information (EPI) principle proposes that physical laws arise from the optimization of an information-theoretic functional. The EPI functional is defined as,
+$$
+\Delta = I(X|\boldsymbol{\theta}) - J(M|\boldsymbol{\theta}),
+$$
 where $I(X|\boldsymbol{\theta})$ is the Fisher information associated with observable variables $X$, and $J(M|\boldsymbol{\theta})$ is the "bound information" associated with memory variables $M$. The principle states that physical systems evolve to minimize this difference.
 
-For exponential families, the Fisher information can be expressed in terms of the Fisher information matrix:
-
-$$I(X|\boldsymbol{\theta}) = \text{Tr}[G_X(\boldsymbol{\theta})]$$
-
+For exponential families, the Fisher information can be expressed in terms of the Fisher information matrix
+$$
+I(X|\boldsymbol{\theta}) = \text{Tr}[G_X(\boldsymbol{\theta})]
+$$
 where $G_X(\boldsymbol{\theta})$ is the Fisher information matrix for the observable variables.
 }
 
@@ -61,17 +61,35 @@ where $G_X(\boldsymbol{\theta})$ is the Fisher information matrix for the observ
 \newslide{Formal Equivalence}
 
 \notes{
-The formal equivalence between entropy maximization and EPI optimization can be established by examining their equilibrium conditions. For entropy maximization, equilibrium occurs when:
+The formal equivalence between entropy maximization and EPI optimization can be established by examining their equilibrium conditions. For entropy maximization, equilibrium occurs when
+$$
+\nabla_{\boldsymbol{\theta}}S(Z) = \mathbb{E}[T(Z)] - \nabla_{\boldsymbol{\theta}}A(\boldsymbol{\theta}) = 0.
+$$
+This implies $\mathbb{E}[T(Z)] = \nabla_{\boldsymbol{\theta}}A(\boldsymbol{\theta})$, which is the moment-matching condition for exponential families.
 
-$$\nabla_{\boldsymbol{\theta}}S(Z) = 0$$
+For EPI optimization, equilibrium occurs when
+$$
+\frac{\delta \Delta}{\delta \rho} = \text{constant}.
+$$
+For exponential families with a partitioned system $Z = (X,M)$, this condition becomes:
+$$
+\frac{\delta}{\delta \rho}\left(\text{Tr}[G_X(\boldsymbol{\theta})] - \text{Tr}[G_M(\boldsymbol{\theta})]\right) = \text{constant}.
+$$
 
-For EPI optimization, equilibrium occurs when:
+When we express this in terms of natural parameters and apply the calculus of variations, we arrive at the same moment-matching condition
+$$
+\mathbb{E}[T(Z)] = \nabla_{\boldsymbol{\theta}}A(\boldsymbol{\theta}).
+$$
 
-$$\frac{\delta \Delta}{\delta \rho} = \text{constant}$$
+This equivalence holds specifically when the system respects certain Markov properties, namely when $X$ and $X'$ are conditionally independent given $M$. Under these conditions, both approaches lead to the same equilibrium distribution.
 
-For exponential families with a partitioned system $Z = (X,M)$, these conditions become equivalent when the system respects certain Markov properties. Specifically, when $X$ and $X'$ are conditionally independent given $M$, both approaches lead to the same equilibrium distribution.
+This equivalence can also be understood through the lens of information geometry. The Fisher information matrix $G(\boldsymbol{\theta})$ defines a Riemannian metric on the manifold of probability distributions. 
 
-This equivalence provides a profound connection between our entropy game dynamics and fundamental principles in physics. It suggests that the paths of steepest entropy increase that we've been studying are not just mathematical constructs but may reflect deeper physical principles about how information flows in natural systems.
+The entropy gradient flow follows geodesics in the dual geometry (mixture geometry), while the EPI optimization follows geodesics in the primal geometry (exponential family geometry). At equilibrium, these paths converge to the same point on the manifold - the maximum entropy distribution subject to the given constraints.
+}
+
+\notes{
+To demonstrate this equivalence computationally, we'll implement both optimization processes and compare their trajectories through parameter space. The following code simulates a system with observable variables and memory variables, tracking how they evolve under both entropy maximization and EPI optimization.
 }
 
 \setupcode{import numpy as np
@@ -109,7 +127,13 @@ def compute_epi_functional(G, partition_indices):
     J_mem = np.trace(G_mem)
     
     return I_obs - J_mem
+}
 
+\notes{
+The `compute_epi_functional` function calculates Frieden's EPI functional (Δ = I - J) by extracting the Fisher information submatrices for observable and memory variables, computing their traces, and returning the difference. This implements the mathematical definition of the EPI functional for our computational experiment.
+}
+
+\helpercode{
 def epi_gradient(G, partition_indices):
     """
     Compute gradient of EPI functional with respect to parameters.
@@ -137,7 +161,13 @@ def epi_gradient(G, partition_indices):
     gradient[mem_indices] = 1.0   # Maximize Fisher information for memory
     
     return gradient
+}
 
+\notes{
+The `epi_gradient` function computes the direction for minimizing the EPI functional. For observable variables, we want to minimize Fisher information (reducing uncertainty), while for memory variables, we want to maximize it (increasing capacity). This gradient guides the system toward the equilibrium where observable and memory variables reach an optimal information balance.
+}
+
+\helpercode{
 def compare_entropy_and_epi_paths(G_init, partition_indices, steps=100, learning_rate=0.01):
     """
     Compare paths of entropy maximization and EPI optimization.
@@ -186,6 +216,12 @@ def compare_entropy_and_epi_paths(G_init, partition_indices, steps=100, learning
         epi_path.append(eigenvalues_epi.copy())
     
     return np.array(entropy_path), np.array(epi_path)
+}
+
+\notes{
+The `compare_entropy_and_epi_paths` function is our main simulation function. It runs both optimization processes in parallel, tracking the eigenvalues of the Fisher information matrix at each step. This allows us to compare how the two approaches navigate through parameter space. While they may take different paths, our theoretical analysis suggests they should reach similar equilibrium states.
+
+This implementation builds on the `InformationReservoir` class from previous examples, but generalizes to higher dimensions with multiple position-momentum pairs. It extends the concept of uncertainty relations to track how these uncertainties evolve under both entropy maximization and EPI optimization.
 }
 
 \code{
@@ -239,9 +275,9 @@ mlai.write_figure(filename='epi-entropy-comparison.svg',
 \notes{
 The figure above compares the paths taken through parameter space under entropy maximization versus EPI optimization. For observable variables (left), both approaches lead to similar equilibrium states but may follow different trajectories. For memory variables (right), the paths can diverge more significantly depending on the specific constraints and initial conditions.
 
-Despite these potential differences in trajectories, both approaches ultimately identify information-theoretic optima that balance uncertainty between different parts of the system. This suggests a deep connection between the principle of maximum entropy and Frieden's EPI principle, at least for systems described by exponential family distributions.
+Despite these potential differences in trajectories, both approaches ultimately identify information-theoretic optima that balance uncertainty between different parts of the system. This computational demonstration supports the theoretical equivalence we established in the mathematical derivation.
 
-The equivalence between these approaches provides a unifying perspective on information dynamics in physical systems. It suggests that the paths of steepest entropy increase that we've been studying in our entropy game may have fundamental physical significance beyond their mathematical elegance.
+This visualization shows that while the paths taken by entropy maximization (red solid line) and EPI optimization (blue dashed line) may differ, they ultimately reach similar equilibrium states. This provides concrete evidence for the abstract mathematical equivalence discussed in the theoretical section.
 }
 
 \notes{
