@@ -5,11 +5,14 @@
 
 \subsection{Spontaneous Organization Through Entropy Maximization}
 
-\notes{A remarkable property of our entropy-maximizing system is that it naturally generates organized information structures despite following a path of increasing entropy. This apparent paradox can be formally analyzed by examining how mutual information evolves under our dynamics.}
+\notes{A remarkable property of our entropy-maximizing system is that it naturally generates organized information structures despite following a path of increasing entropy. This apparent paradox can be formally analyzed by examining how mutual information evolves under our dynamics.
+
+The key insight is that we're maximizing entropy in the natural parameter space $\boldsymbol{\theta}$, not directly in probability space. This distinction is crucial - while maximizing entropy in probability space would lead to independence between variables, maximizing entropy in natural parameter space can simultaneously increase both joint entropy and mutual information.}
 
 \slides{
 * Entropy maximization naturally leads to information organization
 * Mutual information increases despite overall entropy growth
+* Maximizing entropy in natural parameter space, not probability space
 * Provides theoretical foundation for emergence of structure
 }
 
@@ -54,7 +57,7 @@ $$
 \frac{dS(X)}{dt} + \frac{dS(M)}{dt} > \frac{dS}{dt}
 $$
 
-This condition is satisfied when $X$ and $M$ become more correlated over time. Since $S(X) + S(M) \geq S(X,M)$ (with equality only when $X$ and $M$ are independent), the system naturally tends to increase mutual information between $X$ and $M$ as it evolves.
+This condition is satisfied when the marginal entropies increase faster than the joint entropy. This may seem counterintuitive - if we were directly maximizing entropy in probability space, the variables would become independent. However, when maximizing entropy in natural parameter space, the dynamics allow the marginal entropies to grow faster than the joint entropy, resulting in increased mutual information.
 
 This can be connected to our earlier fluctuation theorem, which can be rewritten to highlight this organizational principle:
 
@@ -72,13 +75,13 @@ This demonstrates that our entropy-maximizing dynamics in natural parameter spac
 
 The formation of information reservoirs and hierarchical memory structures can thus be understood as a natural consequence of this tendency toward increased mutual information within an overall entropy-maximizing framework.
 
-This resolves the apparent paradox of how complex organization can emerge from entropy-maximizing dynamics. While the total entropy increases (in accordance with the second law of thermodynamics), the mutual information between system components also increases, creating structured relationships and patterns.
+This resolves the apparent paradox of how complex organization can emerge from entropy-maximizing dynamics. While the total entropy increases (in accordance with the second law of thermodynamics), the mutual information between system components also increases, creating structured relationships and patterns. The distinction between maximizing entropy in natural parameter space versus probability space is what enables this simultaneous increase in both entropy and organization.
 }
 
 \slides{
 * Entropy-maximizing dynamics naturally create organization
 * Pathways with higher information organization are exponentially favored
-* Explains emergence of structure in information reservoirs
+* Natural parameter space dynamics enable simultaneous entropy and organization growth
 * Resolves paradox: organization emerges from entropy maximization
 }
 
