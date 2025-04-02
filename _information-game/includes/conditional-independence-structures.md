@@ -48,22 +48,63 @@ p(X^1, X^2, ..., X^K|M) \approx \prod_{k=1}^K p(X^k|M).
 $$
 This factorization gives us our notion of locality - each subsystem $X^k$ can be understood in terms of its relationship to the global slow modes $M$, with minimal direct influence from other subsystems.}
 
-**This needs formalising**
+\notes{For multivariate Gaussian systems, we can formalize this connection precisely. If we consider the precision matrix (inverse covariance) of the joint distribution $\Lambda$ and partition it according to slow modes $M$ and fast variables $X$,
+$$
+\Lambda = \begin{bmatrix} \Lambda_{MM} & \Lambda_{MX} \\ \Lambda_{XM} & \Lambda_{XX} \end{bmatrix}.
+$$
+The conditional precision matrix of $X$ given $M$ is simply $\Lambda_{X|M} = \Lambda_{XX}$. When $X$ is further partitioned into subsets $\{X^1, X^2, ..., X^K\}$, conditional independence between these subsets given $M$ requires $\Lambda_{X|M}$ to have a block-diagonal structure, 
+$$
+\Lambda_{X|M} = \Lambda_{XX} = \begin{bmatrix} 
+\Lambda_{X^1 X^1} & 0 & \cdots & 0 \\
+0 & \Lambda_{X^2 X^2} & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \Lambda_{X^K X^K}
+\end{bmatrix}
+$$
+The eigenvalue spectrum of the Fisher information matrix determines how effectively this block structure can be achieved. When there's a clear separation between a few very small eigenvalues (corresponding to $M$) and the rest (corresponding to $X$), the slow modes can optimally capture the global dependencies, leaving minimal residual dependencies between different regions of $X$.}
 
-\notes{The degree to which this factorization holds depends on the eigenvalue spectrum of the Fisher information matrix. When there's a clear separation between a few very small eigenvalues (corresponding to $M$) and the rest (corresponding to $X$), the factorization becomes more accurate.}
+\notes{The degree to which this factorization holds can be quantified by the off-diagonal blocks in $\Lambda_{X|M}$. The magnitude of these elements directly determines the conditional mutual information terms $I(X^k; X^j|M)$. The eigenvalue gap between slow and fast modes determines how effectively the slow modes can absorb the dependencies, leading to smaller off-diagonal elements and thus conditional independence.}
+
+\notes{Importantly, this same principle applies to systems represented by density matrices with quadratic Hamiltonians. For a system with density matrix $\rho$, we can decompose it as
+$$
+\rho = \exp(-\mathcal{H})/Z
+$$
+where $\mathcal{H}$ is a quadratic Hamiltonian of the form
+$$
+\mathcal{H} = \frac{1}{2}z^T J z
+$$
+with $z$ being the state vector and $J$ the coupling matrix. The Hamiltonian $\mathcal{H}$ must be Hermitian (self-adjoint) to ensure the density matrix is physically valid, and the structure of $J$ directly determines the correlation structure in the system.
+
+The eigendecomposition of $J$ identifies the normal modes of the system:
+$$
+J = U \Sigma U^T
+$$
+where $\Sigma$ is a diagonal matrix of eigenvalues. The smallest eigenvalues correspond to the slow modes, and their associated eigenvectors in $U$ define how these modes couple to the original variables.
+
+For conditional independence in density matrix formalism, when we partition the system into subsystems and condition on the slow modes, the residual couplings between subsystems are determined by the block structure of $J$ after "integrating out" the slow modes. This produces an effective $J'$ for the subsystems given the slow modes, and the off-diagonal blocks of this effective $J'$ determine the conditional mutual information between subsystems.
+
+The eigenvalue gap again plays the crucial role: a larger separation between slow and fast eigenvalues allows the slow modes to more effectively absorb the cross-system couplings, leading to an effective $J'$ that is more block-diagonal and thus creating stronger conditional independence.
+
+For readers interested in the quantum Fisher information perspective, note that for systems with quadratic Hamiltonians, the quantum Fisher information matrix is directly related to the coupling matrix $J$. Specifically, for a Gaussian quantum state with density matrix $\rho = \exp(-\mathcal{H})/Z$, the quantum Fisher information matrix $F_Q$ can be expressed in terms of the second derivatives of the Hamiltonian,
+$$
+[F_Q]_{ij} \propto \frac{\partial^2 \mathcal{H}}{\partial \theta_i \partial \theta_j},
+$$
+where $\theta_i$ are parameters of the system. For quadratic Hamiltonians, these derivatives yield elements of the coupling matrix $J$. The eigenvalue structure of $F_Q$ then determines the information geometry of the system, including which parameters correspond to slow modes (small eigenvalues) versus fast modes (large eigenvalues).
+
+The non-commutative nature of quantum operators is embedded in the structure of $J$ and consequently in $F_Q$, which affects how information is distributed and how conditional independence structures form in quantum systems compared to classical ones. The symmetry properties of $F_Q$ reflect the uncertainty relations inherent in quantum mechanics, providing additional constraints on how effectively slow modes can induce conditional independence.}
 
 \slides{
-* When $I(X^k; X^j|M) \approx 0$, we get conditional independence
-* $p(X^1, X^2, ..., X^K|M) \approx \prod_{k=1}^K p(X^k|M)$
-* Fast variables in different "regions" interact only through slow modes
-* Creates effective locality without explicit spatial embedding
+* For Gaussian systems, conditional independence requires block-diagonal precision matrix $\Lambda_{X|M}$
+* Off-diagonal blocks → conditional mutual information $I(X^k; X^j|M)$
+* Eigenvalue separation determines how effectively slow modes absorb dependencies
+* Larger gaps → better factorization → stronger locality
 }
 
 \newslide{Connection to Eigenvalue Structure}
 
 \notes{The connection to the eigenvalue spectrum provides a formal link between the abstract mathematics of the game and intuitive notions of spatial organization.}
 
-\notes{When the Fisher information matrix has a few eigenvalues that are much smaller than the rest (large separation of timescales), the corresponding eigenvectors define the slow modes $M$. These slow modes act as sufficient statistics for the interactions between different regions of the system.}
+\notes{When the Fisher information matrix has a few eigenvalues that are much smaller than the rest (large separation in the timescales over which the system evolves), the corresponding eigenvectors define the slow modes $M$. These slow modes act as sufficient statistics for the interactions between different regions of the system.}
 
 \notes{The conditional independence structure induced by these slow modes creates a graph structure of dependencies. Variables that remain conditionally dependent given $M$ are "closer" to each other than those that become conditionally independent.}
 
@@ -484,38 +525,130 @@ where $\epsilon$ is a small constant to avoid division by zero. Variables with h
 }
 
 \helpercode{class InformationTopographyDemo:
-    def __init__(self, conditional_mi_matrix, n_clusters, n_vars_per_cluster):
+    def __init__(self, n_clusters=4, n_vars_per_cluster=5, n_slow_modes=2):
         """
-        Visualize the information topography based on conditional mutual information.
+        Visualize the information topography based on minimal entropy gradient framework.
         
         Parameters:
         -----------
-        conditional_mi_matrix: numpy array
-            Matrix of conditional mutual information values
         n_clusters: int
             Number of variable clusters
         n_vars_per_cluster: int
             Number of variables per cluster
+        n_slow_modes: int
+            Number of slow modes that induce conditional independence
         """
-        self.cmi = conditional_mi_matrix
         self.n_clusters = n_clusters
         self.n_vars_per_cluster = n_vars_per_cluster
-        self.n_vars = conditional_mi_matrix.shape[0]
+        self.n_vars = n_clusters * n_vars_per_cluster
+        self.n_slow_modes = n_slow_modes
+        self.hbar = 1.0
+        self.min_uncertainty_product = self.hbar / 2
         
-    def compute_information_distance(self, epsilon=1e-6):
+        # Initialize system with position-momentum pairs
+        # Instead of working with CMI directly, we'll build from precision matrix
+        self.dim = 2 * self.n_vars
+        self.initialize_precision_matrix()
+        
+    def initialize_precision_matrix(self):
+        """Initialize precision matrix with eigenvalue structure that creates clusters."""
+        # Create a precision matrix that has a clear eigenvalue structure
+        # with a few small eigenvalues (slow modes) and many large eigenvalues (fast modes)
+        
+        # Start with identity matrix
+        Lambda = np.eye(self.dim)
+        
+        # Generate random eigenvectors
+        Q, _ = np.linalg.qr(np.random.randn(self.dim, self.dim))
+        
+        # Set eigenvalues: a few small ones (slow modes) and many large ones (fast modes)
+        eigenvalues = np.ones(self.dim)
+        
+        # Slow modes - small eigenvalues
+        eigenvalues[:self.n_slow_modes] = 0.1 + 0.1 * np.random.rand(self.n_slow_modes)
+        
+        # Fast modes - larger eigenvalues organized in clusters
+        for i in range(self.n_clusters):
+            cluster_start = self.n_slow_modes + i * self.n_vars_per_cluster
+            cluster_end = cluster_start + self.n_vars_per_cluster
+            
+            # Each cluster has similar eigenvalues
+            base_value = 1.0 + i * 0.5
+            eigenvalues[cluster_start:cluster_end] = base_value + 0.2 * np.random.rand(self.n_vars_per_cluster)
+        
+        # Construct precision matrix with this eigenstructure
+        self.Lambda = Q @ np.diag(eigenvalues) @ Q.T
+        
+        # Get inverse (covariance matrix)
+        self.covariance = np.linalg.inv(self.Lambda)
+        
+        # Store eigendecomposition
+        self.eigenvalues, self.eigenvectors = np.linalg.eigh(self.Lambda)
+        self.slow_mode_vectors = self.eigenvectors[:, :self.n_slow_modes]
+        
+    def compute_conditional_mutual_information(self):
+        """Compute conditional mutual information matrix given slow modes."""
+        # Compute full mutual information from covariance
+        mi_full = np.zeros((self.n_vars, self.n_vars))
+        
+        # Compute conditional mutual information given slow modes
+        mi_conditional = np.zeros((self.n_vars, self.n_vars))
+        
+        # For each pair of variables (considering position only for simplicity)
+        for i in range(self.n_vars):
+            for j in range(i+1, self.n_vars):
+                # Extract positions from covariance matrix
+                pos_i, pos_j = i*2, j*2
+                cov_ij = self.covariance[np.ix_([pos_i, pos_j], [pos_i, pos_j])]
+                
+                # Compute unconditional mutual information
+                var_i = self.covariance[pos_i, pos_i]
+                var_j = self.covariance[pos_j, pos_j]
+                mi = 0.5 * np.log(var_i * var_j / np.linalg.det(cov_ij))
+                mi_full[i, j] = mi
+                mi_full[j, i] = mi
+                
+                # Compute residual covariance after conditioning on slow modes
+                cov_i_slow = self.covariance[pos_i, :self.n_slow_modes]
+                cov_j_slow = self.covariance[pos_j, :self.n_slow_modes]
+                cov_slow = self.covariance[:self.n_slow_modes, :self.n_slow_modes]
+                
+                # Schur complement formula for conditional covariance
+                cov_ij_given_slow = cov_ij - np.array([
+                    [cov_i_slow @ np.linalg.solve(cov_slow, cov_i_slow), 
+                     cov_i_slow @ np.linalg.solve(cov_slow, cov_j_slow)],
+                    [cov_j_slow @ np.linalg.solve(cov_slow, cov_i_slow),
+                     cov_j_slow @ np.linalg.solve(cov_slow, cov_j_slow)]
+                ])
+                
+                # Compute conditional mutual information
+                var_i_given_slow = cov_ij_given_slow[0, 0]
+                var_j_given_slow = cov_ij_given_slow[1, 1]
+                if np.linalg.det(cov_ij_given_slow) > 0:  # Numerical stability check
+                    cmi = 0.5 * np.log(var_i_given_slow * var_j_given_slow / np.linalg.det(cov_ij_given_slow))
+                    mi_conditional[i, j] = cmi
+                    mi_conditional[j, i] = cmi
+        
+        return mi_full, mi_conditional
+    
+    def compute_information_distance(self, conditional_mi, epsilon=1e-6):
         """Convert conditional mutual information to a distance metric."""
         # Higher CMI = closer in information space
         # Lower CMI = further apart (conditional independence)
-        distance = 1.0 / (self.cmi + epsilon)
+        distance = 1.0 / (conditional_mi + epsilon)
+        np.fill_diagonal(distance, 0)  # No self-distance
         return distance
     
     def visualize_information_landscape(self):
         """Visualize the information topography as a landscape."""
-        # Use multidimensional scaling to project the distance matrix to 2D
-        from sklearn.manifold import MDS
+        # Compute conditional mutual information
+        mi_full, mi_conditional = self.compute_conditional_mutual_information()
         
         # Compute information distance matrix
-        distance = self.compute_information_distance()
+        distance = self.compute_information_distance(mi_conditional)
+        
+        # Use multidimensional scaling to project the distance matrix to 2D
+        from sklearn.manifold import MDS
         
         # Apply MDS to embed in 2D space
         mds = MDS(n_components=2, dissimilarity='precomputed', random_state=42)
@@ -538,15 +671,45 @@ where $\epsilon$ is a small constant to avoid division by zero. Variables with h
         
         # Add connections based on conditional mutual information
         # Stronger connections = higher CMI = lower distance
-        threshold = np.percentile(self.cmi[self.cmi > 0], 70)  # Only show top 30% strongest connections
+        threshold = np.percentile(mi_conditional[mi_conditional > 0], 70)  # Only show top 30% strongest connections
         
         for i in range(self.n_vars):
             for j in range(i+1, self.n_vars):
-                if self.cmi[i, j] > threshold:
+                if mi_conditional[i, j] > threshold:
                     # Line width proportional to mutual information
-                    width = self.cmi[i, j] * 5
+                    width = mi_conditional[i, j] * 5
                     ax.plot([pos[i, 0], pos[j, 0]], [pos[i, 1], pos[j, 1]], 
                            'k-', alpha=0.5, linewidth=width)
+        
+        # Add slow mode projections as gradient in background
+        # This shows how the slow modes influence the information landscape
+        grid_resolution = 100
+        x_min, x_max = pos[:, 0].min() - 0.5, pos[:, 0].max() + 0.5
+        y_min, y_max = pos[:, 1].min() - 0.5, pos[:, 1].max() + 0.5
+        xx, yy = np.meshgrid(np.linspace(x_min, x_max, grid_resolution),
+                             np.linspace(y_min, y_max, grid_resolution))
+        
+        # Interpolate slow mode projection values to the grid
+        from scipy.interpolate import Rbf
+        
+        # Use just the first slow mode for visualization
+        slow_mode_projection = self.slow_mode_vectors[:, 0]
+        
+        # Extract position variables (even indices)
+        pos_indices = np.arange(0, self.dim, 2)
+        pos_slow_projection = slow_mode_projection[pos_indices]
+        
+        # Normalize for visualization
+        pos_slow_projection = (pos_slow_projection - pos_slow_projection.min()) / (pos_slow_projection.max() - pos_slow_projection.min())
+        
+        # Create RBF interpolation
+        rbf = Rbf(pos[:, 0], pos[:, 1], pos_slow_projection, function='multiquadric')
+        slow_mode_grid = rbf(xx, yy)
+        
+        # Plot slow mode influence as background gradient
+        im = ax.imshow(slow_mode_grid, extent=[x_min, x_max, y_min, y_max], 
+                      origin='lower', cmap='viridis', alpha=0.3)
+        plt.colorbar(im, ax=ax, label='Slow Mode Influence')
         
         # Remove duplicate legend entries
         handles, labels = ax.get_legend_handles_labels()
@@ -562,12 +725,15 @@ where $\epsilon$ is a small constant to avoid division by zero. Variables with h
     
     def visualize_information_landscape_3d(self):
         """Visualize the information topography as a 3D landscape."""
+        # Compute conditional mutual information
+        mi_full, mi_conditional = self.compute_conditional_mutual_information()
+        
+        # Compute information distance matrix
+        distance = self.compute_information_distance(mi_conditional)
+        
         # Use multidimensional scaling to project the distance matrix to 2D
         from sklearn.manifold import MDS
         from scipy.interpolate import griddata
-        
-        # Compute information distance matrix
-        distance = self.compute_information_distance()
         
         # Apply MDS to embed in 2D space
         mds = MDS(n_components=2, dissimilarity='precomputed', random_state=42)
@@ -580,12 +746,19 @@ where $\epsilon$ is a small constant to avoid division by zero. Variables with h
         # Assign colors by cluster
         colors = plt.cm.tab10(np.linspace(0, 1, self.n_clusters))
         
-        # Calculate "elevation" based on average distance to other points
-        # Higher elevation = more isolated information-wise
-        elevation = np.mean(distance, axis=1)
+        # Calculate "elevation" based on connection to slow modes
+        # Higher elevation = more strongly coupled to slow modes (more global influence)
         
+        # First, compute coupling strength to slow modes
+        slow_mode_coupling = np.zeros(self.n_vars)
+        for i in range(self.n_vars):
+            pos_i = i*2
+            # Project onto slow modes
+            coupling = np.sum(np.abs(self.eigenvectors[pos_i, :self.n_slow_modes]))
+            slow_mode_coupling[i] = coupling
+            
         # Normalize to [0,1] range
-        elevation = (elevation - elevation.min()) / (elevation.max() - elevation.min())
+        elevation = (slow_mode_coupling - slow_mode_coupling.min()) / (slow_mode_coupling.max() - slow_mode_coupling.min())
         
         # Plot the points in 3D
         for i in range(self.n_vars):
@@ -607,15 +780,51 @@ where $\epsilon$ is a small constant to avoid division by zero. Variables with h
         # Plot the surface
         surf = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.6, linewidth=0)
         
+        # Add connections based on conditional mutual information
+        threshold = np.percentile(mi_conditional[mi_conditional > 0], 80)
+        for i in range(self.n_vars):
+            for j in range(i+1, self.n_vars):
+                if mi_conditional[i, j] > threshold:
+                    ax.plot([pos[i, 0], pos[j, 0]], 
+                           [pos[i, 1], pos[j, 1]],
+                           [elevation[i], elevation[j]],
+                           'k-', alpha=0.5, linewidth=mi_conditional[i, j]*3)
+        
         # Remove duplicate legend entries
         handles, labels = ax.get_legend_handles_labels()
         by_label = dict(zip(labels, handles))
         ax.legend(by_label.values(), by_label.keys(), loc='best')
         
-        ax.set_title('3D Information Topography: Elevation = Information Isolation')
+        ax.set_title('3D Information Topography: Elevation = Slow Mode Coupling')
         ax.set_xlabel('Dimension 1')
         ax.set_ylabel('Dimension 2')
-        ax.set_zlabel('Information Isolation')
+        ax.set_zlabel('Slow Mode Coupling')
+        
+        return fig
+        
+    def visualize_eigenvalue_spectrum(self):
+        """Visualize the eigenvalue spectrum showing slow vs. fast modes."""
+        fig = plt.figure(figsize=plot.big_wide_figsize)
+        ax = fig.add_subplot(111)
+        
+        # Plot eigenvalues
+        eigenvalues = np.sort(self.eigenvalues)
+        ax.semilogy(range(1, len(eigenvalues)+1), eigenvalues, 'o-')
+        
+        # Highlight slow modes
+        ax.semilogy(range(1, self.n_slow_modes+1), eigenvalues[:self.n_slow_modes], 'ro', ms=10, label='Slow Modes')
+        
+        # Add vertical line separating slow from fast modes
+        ax.axvline(x=self.n_slow_modes + 0.5, color='k', linestyle='--')
+        ax.text(self.n_slow_modes + 1, eigenvalues[self.n_slow_modes-1], 'Slow Modes', 
+               ha='left', va='center', fontsize=12)
+        ax.text(self.n_slow_modes, eigenvalues[self.n_slow_modes], 'Fast Modes', 
+               ha='right', va='center', fontsize=12)
+        
+        ax.set_xlabel('Index')
+        ax.set_ylabel('Eigenvalue (log scale)')
+        ax.set_title('Eigenvalue Spectrum Showing Slow and Fast Modes')
+        ax.grid(True)
         
         return fig
 }
@@ -624,13 +833,15 @@ where $\epsilon$ is a small constant to avoid division by zero. Variables with h
 
 \code{
 # Create the information topography visualization
-topo_demo = InformationTopographyDemo(
-    demo.compute_mutual_information_matrix(conditional_on_slow=True),
-    demo.n_clusters, 
-    demo.n_vars_per_cluster
-)}
+topo_demo = InformationTopographyDemo(n_clusters=4, n_vars_per_cluster=5, n_slow_modes=2)}
 
-\plotcode{fig3 = topo_demo.visualize_information_landscape()
+\plotcode{# Visualize eigenvalue spectrum
+fig0 = topo_demo.visualize_eigenvalue_spectrum()
+
+mlai.write_figure(filename='information-topography-eigenspectrum.svg', 
+                 directory='\writeDiagramsDir/information-game')
+
+fig3 = topo_demo.visualize_information_landscape()
 
 mlai.write_figure(filename='information-topography-2d.svg', 
                   directory='\writeDiagramsDir/information-game')
@@ -640,16 +851,21 @@ fig4 = topo_demo.visualize_information_landscape_3d()
 mlai.write_figure(filename='information-topography-3d.svg', 
                   directory='\writeDiagramsDir/information-game')}
 
+\newslide{Information Topography Eigenspectrum}
+
+\figure{\includediagram{\diagramsDir/information-game/information-topography-eigenspectrum}{70%}}{Eigenvalue spectrum showing separation between slow and fast modes that shapes the information topography.}{information-topography-eigenspectrum}
 
 \figure{\includediagram{\diagramsDir/information-game/information-topography-2d}{70%}}{Information topography visualized as a 2D landscape with points positioned according to information distance.}{information-topography-2d}
 
 \newslide{3D Information Landscape}
 
-\figure{\includediagram{\diagramsDir/information-game/information-topography-3d}{70%}}{3D visualization of the information landscape where elevation represents information isolation.}{information-topography-3d}
+\figure{\includediagram{\diagramsDir/information-game/information-topography-3d}{70%}}{3D visualization of the information landscape where elevation represents coupling to slow modes.}{information-topography-3d}
 
-\notes{The visualizations show how the information topography naturally clusters variables that retain high conditional mutual information, creating "basins" of related variables separated by "ridges" of conditional independence. This emergentstructure is determined by the pattern of information flow in the system, particularly the slow modes.}
+\notes{The information topography visualizations now directly connect to the minimal entropy gradient framework. The eigenvalue spectrum shows the clear separation between slow and fast modes that shapes the entire information landscape. Variables that are strongly coupled to the same slow modes remain conditionally dependent even after accounting for slow modes, forming natural clusters in the topography.}
 
-\notes{This topographical view offers a framework for understanding how complex systems naturally organize into modular structures, even in the absence of explicit design or spatial constraints. The information landscape reveals the natural "fault lines" along which a system can be decomposed and understood.}
+\notes{The 2D landscape reveals how variables cluster based on their conditional information distances, with the background gradient showing the influence of the primary slow mode. The 3D visualization adds another dimension where elevation represents coupling strength to slow modes - variables with higher elevation have more global influence across the system.}
+
+\notes{This approach demonstrates how the conditional independence structure emerges naturally from the eigenvalue spectrum of the Fisher information matrix. The slow modes act as common causes that induce dependencies between otherwise independent variables, creating a rich information topography with valleys (strong dependencies) and ridges (conditional independence).}
 
 \subsection{Temporal Markovian Decomposition}
 
