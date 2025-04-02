@@ -155,7 +155,7 @@ The gradient of joint entropy can be decomposed into components along these eige
 1. The gradient flow predominantly occurs along fast directions, with slow directions acting as constraints
 2. The system explores configurations that maximize entropy subject to these constraints
 
-Under these conditions, the dot product $\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)$ can become positive when the entropy gradient aligns with directions that increase mutual information. This alignment is not guaranteed but becomes increasingly probable as the system explores the entropy landscape near saddle points.
+Under these conditions, the dot product $\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)$ can become positive when the entropy gradient aligns with directions that increase mutual information. This alignment is not random but emerges deterministically in specific regions of the parameter space, particularly near saddle points where the eigenvalue spectrum of the Fisher information matrix exhibits a clear separation between fast and slow modes. As the system evolves toward these saddle points, it naturally enters configurations where the alignment condition is satisfied due to the geometric properties of the entropy landscape.
 
 This  analysis  identifies the conditions under which spontaneous organisation becomes possible within the framework of entropy maximization in natural parameter space. The key insight is that the geometry of the Fisher information near saddle points creates regions where entropy maximization and mutual information may occur simultaneously.
 }
