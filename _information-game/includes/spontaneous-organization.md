@@ -5,14 +5,22 @@
 
 \subsection{Spontaneous Organization Through Entropy Maximization}
 
-\notes{For the system to 'spontaneously organise' we need to understand how  how mutual information evolves under our dynamics.
+\notes{For the system to 'spontaneously organise' we need to understand how mutual information evolves under our dynamics.
 
-We're maximizing entropy in the natural parameter space $\boldsymbol{\theta}$, not directly in probability space. This distinction is crucial - while maximizing entropy in probability space would lead to independence between variables, maximizing entropy in natural parameter space can simultaneously increase both joint entropy and mutual information.}
+We're maximizing entropy in the natural parameter space $\boldsymbol{\theta}$, not directly in probability space. This distinction is crucial - while maximizing entropy in probability space would lead to independence between variables, maximizing entropy in natural parameter space can simultaneously increase both joint entropy and mutual information.
+
+To make this notion of "organization" more concrete, we should consider:
+
+1. Spatial or network topology - how variables are connected in some underlying structure
+2. Locality of interactions - how information flows between neighboring components
+3. Emergence of recognizable patterns or structures at different scales
+}
 
 \slides{
 * Can entropy maximization lead to information organization
 * Requires: mutual information increases despite overall entropy growth
 * Would provides theoretical foundation for emergence of structure
+* Needs notion of locality or topology to be fully meaningful
 }
 
 \newslide{Formal Analysis of Spontaneous Organization}
