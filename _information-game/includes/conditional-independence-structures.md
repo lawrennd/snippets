@@ -408,7 +408,6 @@ from matplotlib.colors import LinearSegmentedColormap
 # Run the demonstration
 np.random.seed(42)  # For reproducibility
 demo = ConditionalIndependenceDemo(n_clusters=4, n_vars_per_cluster=5, n_slow_modes=2)
-fig1 = demo.visualize_conditional_independence()
 }
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -416,12 +415,14 @@ import mlai.plot as plot
 import mlai
 }
 
-\plotcode{mlai.write_figure(filename='conditional-independence-matrices.svg', 
-                  directory='\writeDiagramsDir/information-game')}
+\plotcode{fig1 = demo.visualize_conditional_independence()
 
-\code{fig2 = demo.visualize_dependency_graphs(threshold=0.1)}
+mlai.write_figure(filename='conditional-independence-matrices.svg', 
+                  directory='\writeDiagramsDir/information-game')
 
-\plotcode{mlai.write_figure(filename='conditional-independence-graphs.svg', 
+fig2 = demo.visualize_dependency_graphs(threshold=0.1)
+
+mlai.write_figure(filename='conditional-independence-graphs.svg', 
                   directory='\writeDiagramsDir/information-game')}
 
 \newslide{Conditional Independence Visualization}
@@ -646,8 +647,56 @@ mlai.write_figure(filename='information-topography-3d.svg',
 
 \figure{\includediagram{\diagramsDir/information-game/information-topography-3d}{70%}}{3D visualization of the information landscape where elevation represents information isolation.}{information-topography-3d}
 
-\notes{The visualizations show how the information topography naturally clusters variables that retain high conditional mutual information, creating "basins" of related variables separated by "ridges" of conditional independence. This emergent structure is entirely determined by the pattern of information flow in the system, particularly through the slow modes.}
+\notes{The visualizations show how the information topography naturally clusters variables that retain high conditional mutual information, creating "basins" of related variables separated by "ridges" of conditional independence. This emergentstructure is determined by the pattern of information flow in the system, particularly the slow modes.}
 
 \notes{This topographical view offers a framework for understanding how complex systems naturally organize into modular structures, even in the absence of explicit design or spatial constraints. The information landscape reveals the natural "fault lines" along which a system can be decomposed and understood.}
+
+\subsection{Temporal Markovian Decomposition}
+
+\notes{The conditional independence framework we've developed for spatial or structural organization can be extended naturally to the temporal domain. Just as slow modes induce conditional independence between different regions in space, they also mediate dependencies between different points in time.}
+
+\notes{If we divide $X$ into past/present $X_0$ and future $X_1$, we can analyze how information flows across time through the slow modes $M$. The entropy can be decomposed into a Markovian component, where $X_0$ and $X_1$ are conditionally independent given $M$, and a non-Markovian component. The conditional mutual information is 
+$$
+I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)},
+$$
+which measures the remaining dependency between past and future after accounting for the information stored in the slow modes. This provides a quantitative measure of how effectively $M$ serves as a memory that captures temporal dependencies.}
+
+\slides{
+- $X$ divided into past/present $X_0$ and future $X_1$
+- Same slow modes that induce spatial modularity also mediate temporal dependencies
+- Conditional mutual information:
+  $$
+  I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)}
+  $$
+- Measures dependency between past and future given memory state
+}
+
+\notes{When $I(X_0; X_1 | M) = 0$, the system becomes perfectly Markovian - the slow modes capture all dependencies between past and future. This is analogous to how these same slow modes create conditional independence between spatial regions. The eigenvalue structure of the Fisher information matrix that gives rise to spatial modularity also determines the temporal memory capacity of the system.}
+
+\notes{Just as there is an information topography in space, we can define a temporal information landscape where "distance" corresponds to conditional mutual information between variables at different time points given $M$. Temporal watersheds emerge where the slow modes fail to bridge temporal dependencies, creating effective boundaries in the system's dynamics.}
+
+\slides{
+- Perfect Markovianity: $I(X_0; X_1 | M) = 0$
+- Slow modes serve dual purpose:
+  1. Creating spatial modularity through conditional independence
+  2. Providing temporal memory that bridges past and future
+- Eigenvalue spectrum determines both spatial and temporal structure
+}
+
+\notes{This framework highlights the tension in information processing systems. The slow modes must simultaneously:
+1. Maintain minimal entropy (for efficiency)
+2. Induce conditional independence between spatial regions (for modularity)
+3. Capture temporal dependencies between past and future (for memory)
+
+These competing objectives create an uncertainty principle: systems cannot simultaneously optimize for all three without trade-offs. Systems with strong spatial modularity may sacrifice temporal memory, while systems with excellent memory may require more complex slow mode structure.}
+
+\slides{
+- Fundamental tension between:
+  - Minimal entropy in slow modes (efficiency)
+  - Spatial conditional independence (modularity)
+  - Temporal conditional independence (memory)
+- Creates uncertainty principle with necessary trade-offs
+}
+
 
 \endif 
