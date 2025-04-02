@@ -102,30 +102,6 @@ where $\eta$ is a 'learning rate'.}
   $$
 }
 
-\subsection{Markovian Decomposition}
-
-\notes{Now $X$ is further divided into past/present $X_0$ and future $X_1$. The entropy can be decomposed into a Markovian component, where $X_0$ and $X_1$ are conditionally independent given $M$ and a non-Markovian component. The conditional mutual information is 
-$$
-I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)},
-$$
-which measures the remaining dependency between past and future given the memory state. This leads to a key insight about memory capacity: effective information reservoirs must minimize this conditional mutual information while maintaining minimal entropy.}
-
-\slides{
-- $X$ divided into past/present $X_0$ and future $X_1$
-- Conditional mutual information:
-  $$
-  I(X_0; X_1 | M) = \sum_{x_0,x_1,m} p(x_0,x_1,m) \log \frac{p(x_0,x_1|m)}{p(x_0|m)p(x_1|m)}
-  $$
-- Measures dependency between past and future given memory state
-}
-
-\notes{When $I(X_0; X_1 | M) = 0$, the system becomes perfectly Markovian - the memory variables capture all dependencies between past and future. However, achieving this perfect Markovianity while maintaining minimal entropy in $M$ will create a fundamental tension that drives an *uncertainty principle*.}
-
-\slides{
-- Perfect Markovianity: $I(X_0; X_1 | M) = 0$
-- Memory variables capture all dependencies between past and future
-- Tension between Markovianity and minimal entropy creates *uncertainty principle*
-}
 
 \subsection{System Evolution}
 
