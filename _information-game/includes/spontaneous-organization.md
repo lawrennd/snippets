@@ -131,28 +131,34 @@ $$
 \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
 $$}
 
-\notes{This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$. More precisely, we can expand this condition using the relationship between these gradients:
-
-Since $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$, we can write:
+\notes{We can expand this condition using the relationship between these gradients. Since $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$, we can write
 $$
-\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 = \|\nabla_{\boldsymbol{\theta}_X}S + \nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2
+\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 = \|\nabla_{\boldsymbol{\theta}_X}S + \nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2.
 $$
 
-Expanding this squared norm:
+Expanding this squared norm we have
 $$
-\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 = \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \|\nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2 + 2\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)
+\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 = \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \|\nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2 + 2\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M).
 $$
 
-For our condition $\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2$ to be satisfied, we need:
+For our condition $\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2$ to be satisfied, we need
 $$
 \|\nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2 + 2\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M) > 0
 $$
 
-This is satisfied when either:
-1. The mutual information gradient is sufficiently large, or
-2. The dot product $\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)$ is positive and large enough
+To analyze when this condition holds, we must examine the Fisher information geometry near saddle points. At a saddle point of the entropy landscape, the Hessian matrix of the entropy has both positive and negative eigenvalues. The Fisher information matrix $G(\boldsymbol{\theta})$ provides the natural metric on this statistical manifold.
 
-Simply having the gradients point in different directions is not sufficient - the relationship between these gradients must satisfy this specific inequality.}
+Near a saddle point, the Fisher information matrix exhibits a characteristic eigenvalue spectrum with a separation between large and small eigenvalues. The eigenvectors corresponding to small eigenvalues define the slow manifold (associated with memory variables $M$), while those with large eigenvalues correspond to fast-evolving directions (associated with observable variables $X$).
+
+The gradient of joint entropy can be decomposed into components along these eigendirections. Due to the timescale separation, the gradient components along fast directions quickly equilibrate, while components along slow directions persist. This creates a scenario where:
+
+1. The gradient flow predominantly occurs along fast directions, with slow directions acting as constraints
+2. The system explores configurations that maximize entropy subject to these constraints
+
+Under these conditions, the dot product $\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)$ can become positive when the entropy gradient aligns with directions that increase mutual information. This alignment is not guaranteed but becomes increasingly probable as the system explores the entropy landscape near saddle points.
+
+This  analysis  identifies the conditions under which spontaneous organisation becomes possible within the framework of entropy maximization in natural parameter space. The key insight is that the geometry of the Fisher information near saddle points creates regions where entropy maximization and mutual information may occur simultaneously.
+}
 
 \slides{
 * Mutual information gradient: $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$
