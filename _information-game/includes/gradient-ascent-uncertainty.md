@@ -592,7 +592,7 @@ plt.ylabel('Entropy')
 plt.title('Entropy Evolution During Gradient Ascent')
 plt.grid(True)
 mlai.write_figure(filename='entropy-evolution-during-gradient-ascent.svg', 
-                  directory='./information-game')
+                  directory='\writeDiagramsDir/information-game')
 
 # Plot uncertainty products evolution
 plt.figure(figsize=plot.big_wide_figsize)
@@ -608,7 +608,7 @@ plt.legend()
 plt.grid(True)
 
 mlai.write_figure(filename='uncertainty-products-evolution.svg', 
-                  directory='./information-game')
+                  directory='\writeDiagramsDir/information-game')
 
 
 
@@ -628,7 +628,7 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 mlai.write_figure(filename='eigenvalue-evolution.svg', 
-                  directory='./information-game')}
+                  directory='\writeDiagramsDir/information-game')}
 
 \newslide{Eigenvalue Evolution}
 

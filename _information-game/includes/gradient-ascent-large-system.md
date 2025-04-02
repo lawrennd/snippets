@@ -497,7 +497,14 @@ plt.ylabel('Percentage of System (%)')
 plt.title('Quantum-Classical Phase Transition')
 plt.legend(loc='center right')
 plt.ylim(0, 100)
-plt.grid(True)}
+plt.grid(True)
+
+mlai.write_figure(filename='large-scale-gradient-ascent-quantum-classical-phase-transition.svg', 
+                  directory='\writeDiagramsDir/information-game')}
+
+\newslide{Large-Scale Gradient Ascent}
+
+\figure{\includediagram{\diagramsDir/information-game/large-scale-gradient-ascent-quantum-classical-phase-transition}{80%}}{Large-scale gradient ascent reveals a quantum-classical phase transition.}{large-scale-gradient-ascent-quantum-classical-phase-transition}
 
 \notes{The large-scale simulation reveals how microscopic uncertainty constraints lead to macroscopic statistical patterns. The system naturally organizes into regions of quantum-like and classical-like behavior, with a dynamic boundary that evolves over time.}
 

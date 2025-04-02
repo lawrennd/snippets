@@ -5,249 +5,448 @@
 
 \subsection{Spontaneous Organization Through Entropy Maximization}
 
-\notes{A remarkable property of our entropy-maximizing system is that it naturally generates organized information structures despite following a path of increasing entropy. This apparent paradox can be formally analyzed by examining how mutual information evolves under our dynamics.
+\notes{For the system to 'spontaneously organise' we need to understand how  how mutual information evolves under our dynamics.
 
-The key insight is that we're maximizing entropy in the natural parameter space $\boldsymbol{\theta}$, not directly in probability space. This distinction is crucial - while maximizing entropy in probability space would lead to independence between variables, maximizing entropy in natural parameter space can simultaneously increase both joint entropy and mutual information.}
+We're maximizing entropy in the natural parameter space $\boldsymbol{\theta}$, not directly in probability space. This distinction is crucial - while maximizing entropy in probability space would lead to independence between variables, maximizing entropy in natural parameter space can simultaneously increase both joint entropy and mutual information.}
 
 \slides{
-* Entropy maximization naturally leads to information organization
-* Mutual information increases despite overall entropy growth
-* Maximizing entropy in natural parameter space, not probability space
-* Provides theoretical foundation for emergence of structure
+* Can entropy maximization lead to information organization
+* Requires: mutual information increases despite overall entropy growth
+* Would provides theoretical foundation for emergence of structure
 }
 
 \newslide{Formal Analysis of Spontaneous Organization}
 
 \notes{
-Let's start with our joint distribution over variables $Z = (X, M)$, where $M$ represents memory variables in an information reservoir and $X$ represents observable variables. The system evolves by maximizing entropy $S$ in the natural parameter space $\boldsymbol{\theta}$:
-
+Joint distribution over variables $Z = (X, M)$, where $M$ represents memory variables in an information reservoir (at a saddle point in the dynamics) and $X$ represents observable variables. The system evolves by maximizing entropy $S$ in the natural parameter space $\boldsymbol{\theta}$,
 $$
-\frac{d\boldsymbol{\theta}}{dt} = \eta \nabla_{\boldsymbol{\theta}}S[p(z,t)]
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = \eta \nabla_{\boldsymbol{\theta}}S[p(z,t)].
 $$
-
-To understand spontaneous organization, we need to examine how mutual information $I(X;M)$ evolves under these dynamics. We can decompose the joint entropy:
-
+To understand spontaneous organization, we need to examine how mutual information $I(X;M)$ evolves under these dynamics. We can decompose the joint entropy,
 $$
-S[p(z,t)] = S(X) + S(M) - I(X;M)
+S[p(z,t)] = S(X) + S(M) - I(X;M).
 $$
-
-Taking the time derivative:
-
+Taking the derivative across turns,
 $$
-\frac{dS}{dt} = \frac{dS(X)}{dt} + \frac{dS(M)}{dt} - \frac{dI(X;M)}{dt}
+\frac{\text{d}S}{\text{d}t} = \frac{\text{d}S(X)}{\text{d}t} + \frac{\text{d}S(M)}{\text{d}t} - \frac{\text{d}I(X;M)}{\text{d}t}.
 $$
 }
 
 \slides{
 * Joint entropy decomposition: $S[p(z,t)] = S(X) + S(M) - I(X;M)$
-* Time derivative: $\frac{dS}{dt} = \frac{dS(X)}{dt} + \frac{dS(M)}{dt} - \frac{dI(X;M)}{dt}$
-* Spontaneous organization when: $\frac{dI(X;M)}{dt} > 0$
+* Turns derivative: $\frac{\text{d}S}{\text{d}t} = \frac{\text{d}S(X)}{\text{d}t} + \frac{\text{d}S(M)}{\text{d}t} - \frac{\text{d}I(X;M)}{\text{d}t}$
+* Spontaneous organization when: $\frac{\text{d}I(X;M)}{\text{d}t} > 0$
 }
 
 \notes{
-Since we know $\frac{dS}{dt} > 0$ (entropy is being maximized), we can rearrange to find:
-
+We know $\frac{\text{d}S}{\text{d}t} > 0$ (entropy is being maximized), and because $M$ are at saddle points we know that $\frac{\text{d}S(M)}{\text{d}t} \approx 0$. Therefore we can rearrange to find,
 $$
-\frac{dI(X;M)}{dt} = \frac{dS(X)}{dt} + \frac{dS(M)}{dt} - \frac{dS}{dt}
+\frac{\text{d}I(X;M)}{\text{d}t} \approx \frac{\text{d}S(X)}{\text{d}t}  - \frac{\text{d}S}{\text{d}t}.
 $$
-
-Spontaneous organization emerges when $\frac{dI(X;M)}{dt} > 0$, which occurs when:
-
+Spontaneous organization emerges when $\frac{\text{d}I(X;M)}{\text{d}t} > 0$, which occurs when
 $$
-\frac{dS(X)}{dt} + \frac{dS(M)}{dt} > \frac{dS}{dt}
+\frac{\text{d}S(X)}{\text{d}t} > \frac{\text{d}S}{\text{d}t}.
 $$
-
-This condition is satisfied when the marginal entropies increase faster than the joint entropy. This may seem counterintuitive - if we were directly maximizing entropy in probability space, the variables would become independent. However, when maximizing entropy in natural parameter space, the dynamics allow the marginal entropies to grow faster than the joint entropy, resulting in increased mutual information.
-
-This can be connected to our earlier fluctuation theorem, which can be rewritten to highlight this organizational principle:
-
-$$
-\langle e^{-\Delta S_{tot} + \Delta I(X;M)} \rangle = 1
-$$
-
-The positive sign before $\Delta I(X;M)$ indicates that pathways with higher information organization are exponentially more likely than those with lower organization, counterbalancing the entropy production term.
 }
 
-\newslide{Implications for Information Engines}
+\subsection{Fisher Information and Multiple Timescales in Spontaneous Organization}
 
 \notes{
-This demonstrates that our entropy-maximizing dynamics in natural parameter space naturally drives the system toward states of higher information organization, despite the overall increase in entropy. This is a profound example of spontaneous organization emerging from simple dynamical principles.
+We introduce the Fisher information and the effect of multiple timescales to analyze when the gradient condition $\frac{\text{d}S(X)}{\text{d}t} > \frac{\text{d}S}{\text{d}t}$ holds.
 
-The formation of information reservoirs and hierarchical memory structures can thus be understood as a natural consequence of this tendency toward increased mutual information within an overall entropy-maximizing framework.
+The Fisher information matrix $G(\boldsymbol{\theta})$ provides a natural metric on the statistical manifold of probability distributions. For our joint distribution $p(z|\boldsymbol{\theta})$, the Fisher information is defined as
+$$
+G_{ij}(\boldsymbol{\theta}) = \mathbb{E}\left[\frac{\partial \log p(z|\boldsymbol{\theta})}{\partial \theta_i}\frac{\partial \log p(z|\boldsymbol{\theta})}{\partial \theta_j}\right].
+$$
 
-This resolves the apparent paradox of how complex organization can emerge from entropy-maximizing dynamics. While the total entropy increases (in accordance with the second law of thermodynamics), the mutual information between system components also increases, creating structured relationships and patterns. The distinction between maximizing entropy in natural parameter space versus probability space is what enables this simultaneous increase in both entropy and organization.
+When we partition our variables into fast variables $X$ and slow variables $M$ (representing the information reservoir), we introduce a timescale separation in the natural parameter dynamics,
+$$
+\frac{\text{d}\boldsymbol{\theta}_X}{\text{d}t} = \eta_X \nabla_{\boldsymbol{\theta}_X}S[p(z,t)],
+$$
+$$
+\frac{\text{d}\boldsymbol{\theta}_M}{\text{d}t} = \eta_M \nabla_{\boldsymbol{\theta}_M}S[p(z,t)],
+$$
+where $\eta_X \gg \eta_M$ indicates that $X$ evolves much faster than $M$.
+}
+
+\newslide{Multiple Timescales and Mutual Information Growth}
+
+\notes{
+This timescale separation creates a crucial asymmetry that enables spontaneous organization. The entropy dynamics can be expressed in terms of the Fisher information matrix and the natural parameter velocities,
+$$
+\frac{\text{d}S}{\text{d}t} = \nabla_{\boldsymbol{\theta}}S \cdot \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
+$$
+
+Similarly, the marginal entropy of $X$ evolves according to,
+$$
+\frac{\text{d}S(X)}{\text{d}t} = \nabla_{\boldsymbol{\theta}_X}S(X) \cdot \frac{\text{d}\boldsymbol{\theta}_X}{\text{d}t} = \eta_X \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2.
+$$
+
+The gradient condition for spontaneous organization, $\frac{\text{d}S(X)}{\text{d}t} > \frac{\text{d}S}{\text{d}t}$, can now be expressed as
+$$
+\eta_X \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
+$$
+
+Given that $\eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2 > 0$ (except exactly at saddle points), this inequality requires
+$$
+\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
+$$
 }
 
 \slides{
-* Entropy-maximizing dynamics naturally create organization
-* Pathways with higher information organization are exponentially favored
-* Natural parameter space dynamics enable simultaneous entropy and organization growth
-* Resolves paradox: organization emerges from entropy maximization
+* Fisher information: $G_{ij}(\boldsymbol{\theta}) = \mathbb{E}\left[\frac{\partial \log p(z|\boldsymbol{\theta})}{\partial \theta_i}\frac{\partial \log p(z|\boldsymbol{\theta})}{\partial \theta_j}\right]$
+* Multiple timescales: $\eta_X \gg \eta_M$
+* Spontaneous organization requires: $\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2$
 }
 
-\setupcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import multivariate_normal}
+\newslide{Condition for Information Structure Emergence}
 
-\code{
-class SpontaneousOrganizationDemo:
-    def __init__(self, n_steps=100):
+\notes{
+This inequality reveals a profound insight: spontaneous organization occurs when the gradient of marginal entropy $S(X)$ with respect to $\boldsymbol{\theta}_X$ has a larger magnitude than the gradient of joint entropy $S$ with respect to the same parameters.
+
+This condition can be satisfied when $X$ variables are strongly coupled to $M$ variables in a specific way. Let us express the mutual information gradient
+$$
+\nabla_{\boldsymbol{\theta}_X}I(X;M) = \nabla_{\boldsymbol{\theta}_X}S(X) + \nabla_{\boldsymbol{\theta}_X}S(M) - \nabla_{\boldsymbol{\theta}_X}S.
+$$
+
+Since $M$ evolves slowly, we can approximate $\nabla_{\boldsymbol{\theta}_X}S(M) \approx 0$, yielding
+$$
+\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S.
+$$
+
+Our condition for spontaneous organization can be rewritten as
+$$
+\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
+$$
+
+This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs precisely when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$.
+}
+
+\slides{
+* Mutual information gradient: $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$
+* Organization emerges when entropy gradients diverge in direction
+* Fast variables $X$ explore state space while slow variables $M$ capture persistent patterns
+}
+
+\newslide{Adiabatic Elimination and Effective Dynamics}
+
+\notes{
+This timescale separation enables an adiabatic elimination process where fast variables $X$ reach a quasi-equilibrium for each slow configuration of $M$. This creates effective dynamics where $M$ adapts to encode statistical regularities in the behavior of $X$.
+
+Mathematically, we can express this using the Hessian matrices,
+$$
+\mathbf{H}_X = \frac{\partial^2 S}{\partial \boldsymbol{\theta}_X \partial \boldsymbol{\theta}_X},
+$$
+$$
+\mathbf{H}_{XM} = \frac{\partial^2 S}{\partial \boldsymbol{\theta}_X \partial \boldsymbol{\theta}_M}.
+$$
+
+The condition for spontaneous organization becomes
+$$
+\frac{\text{d}I(X;M)}{\text{d}t} \approx \eta_X \text{tr}(\mathbf{H}_X) - \eta_X \text{tr}(\mathbf{H}_X) - \eta_M \text{tr}(\mathbf{H}_{XM}) = -\eta_M \text{tr}(\mathbf{H}_{XM}).
+$$
+
+Thus, mutual information increases when $\text{tr}(\mathbf{H}_{XM}) < 0$, which occurs when the cross-correlation Hessian between $X$ and $M$ has predominantly negative eigenvalues. This represents configurations where joint entropy increases more efficiently by strengthening correlations rather than breaking them.
+
+This provides a precise mathematical characterization of when spontaneous organization emerges from entropy maximization in natural parameter space under multiple timescales.
+}
+
+\slides{
+* Adiabatic elimination: fast variables reach quasi-equilibrium for each slow configuration
+* Condition: $\frac{\text{d}I(X;M)}{\text{d}t} \approx -\eta_M \text{tr}(\mathbf{H}_{XM})$
+* Organization occurs when $\text{tr}(\mathbf{H}_{XM}) < 0$
+* System develops correlations that maximize entropy efficiently
+}
+
+
+\setupcode{import numpy as np
+from scipy.stats import multivariate_normal
+import matplotlib.pyplot as plt
+import mlai.plot as plot
+import matplotlib.gridspec as gridspec}
+
+\helpercode{class SpontaneousOrganizationDemo:
+    def __init__(self, learning_rate=0.1):
         """
-        Demonstrate spontaneous organization through entropy maximization
+        Initialize a system with fast (X) and slow (M) variables to demonstrate
+        spontaneous organization through entropy maximization.
         
         Parameters:
         -----------
-        n_steps: int
-            Number of simulation steps
+        learning_rate: float
+            Base learning rate for gradient ascent
         """
-        self.n_steps = n_steps
+        # Define timescale separation (η_X >> η_M)
+        self.eta_X = learning_rate
+        self.eta_M = learning_rate * 0.01  # M evolves 100x slower than X
         
-        # Initialize system with low mutual information
-        self.cov_matrix = np.array([[1.0, 0.1], [0.1, 1.0]])  # Initial covariance with low correlation
-        self.mean = np.array([0.0, 0.0])
+        # Initialize natural parameters for joint distribution
+        # θ_X controls X variables, θ_M controls M variables
+        self.theta_X = np.array([-2.0, 0.5])  # Initial parameters for X
+        self.theta_M = np.array([1.0, -1.0])  # Initial parameters for M
         
-        # Track metrics over time
-        self.entropy_history = []
-        self.entropy_x_history = []
-        self.entropy_m_history = []
-        self.mutual_info_history = []
-        self.cov_history = []
+        # Coupling parameter between X and M
+        self.theta_XM = np.array([0.3, 0.3])  # Initial coupling
         
-        # Calculate initial metrics
-        self._calculate_metrics()
+        # Grid for visualization
+        self.x_grid = np.linspace(-3, 3, 50)
+        self.m_grid = np.linspace(-3, 3, 50)
+        self.X, self.M = np.meshgrid(self.x_grid, self.m_grid)
+        
+        # History tracking
+        self.history = {
+            'joint_entropy': [],
+            'marginal_entropy_X': [],
+            'marginal_entropy_M': [],
+            'mutual_information': [],
+            'theta_X': [],
+            'theta_M': [],
+            'theta_XM': []
+        }
+        
+        # Store initial state
+        self._update_history()
     
-    def _calculate_metrics(self):
-        """Calculate entropy and mutual information metrics"""
-        # Joint entropy
-        joint_entropy = 0.5 * np.log(np.linalg.det(2*np.pi*np.e*self.cov_matrix))
+    def joint_distribution(self):
+        """Compute the joint distribution p(X,M)"""
+        # Create a grid of points
+        pos = np.dstack((self.X, self.M))
         
-        # Marginal entropies
-        entropy_x = 0.5 * np.log(self.cov_matrix[0,0]) + 0.5 + 0.5*np.log(2*np.pi)
-        entropy_m = 0.5 * np.log(self.cov_matrix[1,1]) + 0.5 + 0.5*np.log(2*np.pi)
+        # Construct precision matrix from natural parameters
+        precision = np.array([
+            [self.theta_X[1], self.theta_XM[0]],
+            [self.theta_XM[1], self.theta_M[1]]
+        ])
+        
+        # Ensure precision matrix is positive definite
+        min_eig = np.min(np.linalg.eigvals(precision))
+        if min_eig <= 0:
+            # Add small positive value to diagonal if not positive definite
+            precision += np.eye(2) * (abs(min_eig) + 0.01)
+        
+        # Mean vector
+        mean = np.linalg.solve(precision, np.array([self.theta_X[0], self.theta_M[0]]))
+        
+        # Compute covariance matrix
+        cov = np.linalg.inv(precision)
+        
+        # Compute joint distribution
+        p_joint = multivariate_normal.pdf(pos, mean=mean, cov=cov)
+        
+        # Normalize (for numerical stability)
+        p_joint /= np.sum(p_joint)
+        
+        return p_joint, mean, cov
+    
+    def marginal_distributions(self, p_joint):
+        """Compute marginal distributions p(X) and p(M)"""
+        p_X = np.sum(p_joint, axis=0)
+        p_X /= np.sum(p_X)
+        
+        p_M = np.sum(p_joint, axis=1)
+        p_M /= np.sum(p_M)
+        
+        return p_X, p_M
+    
+    def compute_entropies(self, p_joint):
+        """Compute joint entropy, marginal entropies, and mutual information"""
+        # Get marginals
+        p_X, p_M = self.marginal_distributions(p_joint)
+        
+        # Compute entropies (avoiding log(0))
+        eps = 1e-10
+        S_joint = -np.sum(p_joint * np.log(p_joint + eps))
+        S_X = -np.sum(p_X * np.log(p_X + eps))
+        S_M = -np.sum(p_M * np.log(p_M + eps))
         
         # Mutual information
-        mutual_info = entropy_x + entropy_m - joint_entropy
+        I_XM = S_X + S_M - S_joint
         
-        # Store metrics
-        self.entropy_history.append(joint_entropy)
-        self.entropy_x_history.append(entropy_x)
-        self.entropy_m_history.append(entropy_m)
-        self.mutual_info_history.append(mutual_info)
-        self.cov_history.append(self.cov_matrix.copy())
+        return S_joint, S_X, S_M, I_XM
     
-    def simulate(self):
-        """Run the simulation of entropy maximization"""
-        for step in range(self.n_steps):
-            # Compute gradient of entropy with respect to precision matrix
-            precision = np.linalg.inv(self.cov_matrix)
-            gradient = 0.5 * self.cov_matrix  # Gradient of entropy w.r.t. precision
+    def entropy_gradients(self):
+        """Compute gradients of entropy with respect to natural parameters"""
+        # Get current joint distribution
+        p_joint, mean, cov = self.joint_distribution()
+        
+        # Small perturbation for numerical gradient
+        epsilon = 1e-5
+        
+        # Compute base entropy
+        S_joint, S_X, S_M, I_XM = self.compute_entropies(p_joint)
+        
+        # Gradient for theta_X
+        grad_theta_X = np.zeros_like(self.theta_X)
+        for i in range(len(self.theta_X)):
+            # Perturb parameter
+            self.theta_X[i] += epsilon
+            p_perturbed, _, _ = self.joint_distribution()
+            S_perturbed, _, _, _ = self.compute_entropies(p_perturbed)
+            self.theta_X[i] -= epsilon  # Restore
             
-            # Update precision matrix (gradient ascent on entropy)
-            learning_rate = 0.01
-            precision += learning_rate * gradient
+            # Compute gradient
+            grad_theta_X[i] = (S_perturbed - S_joint) / epsilon
+        
+        # Gradient for theta_M
+        grad_theta_M = np.zeros_like(self.theta_M)
+        for i in range(len(self.theta_M)):
+            # Perturb parameter
+            self.theta_M[i] += epsilon
+            p_perturbed, _, _ = self.joint_distribution()
+            S_perturbed, _, _, _ = self.compute_entropies(p_perturbed)
+            self.theta_M[i] -= epsilon  # Restore
             
-            # Convert back to covariance matrix
-            self.cov_matrix = np.linalg.inv(precision)
+            # Compute gradient
+            grad_theta_M[i] = (S_perturbed - S_joint) / epsilon
+        
+        # Gradient for theta_XM
+        grad_theta_XM = np.zeros_like(self.theta_XM)
+        for i in range(len(self.theta_XM)):
+            # Perturb parameter
+            self.theta_XM[i] += epsilon
+            p_perturbed, _, _ = self.joint_distribution()
+            S_perturbed, _, _, _ = self.compute_entropies(p_perturbed)
+            self.theta_XM[i] -= epsilon  # Restore
             
-            # Calculate metrics for this step
-            self._calculate_metrics()
+            # Compute gradient
+            grad_theta_XM[i] = (S_perturbed - S_joint) / epsilon
+        
+        return grad_theta_X, grad_theta_M, grad_theta_XM
     
-    def plot_results(self):
-        """Plot the evolution of entropy and mutual information"""
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    def gradient_ascent_step(self):
+        """Perform one step of gradient ascent with different timescales"""
+        # Compute gradients
+        grad_theta_X, grad_theta_M, grad_theta_XM = self.entropy_gradients()
+        
+        # Update parameters with different learning rates
+        self.theta_X += self.eta_X * grad_theta_X
+        self.theta_M += self.eta_M * grad_theta_M  # Slow variables
+        
+        # Coupling parameters evolve at an intermediate rate
+        eta_XM = np.sqrt(self.eta_X * self.eta_M)
+        self.theta_XM += eta_XM * grad_theta_XM
+        
+        # Update history
+        self._update_history()
+        
+        # Return current entropies and mutual information
+        p_joint, _, _ = self.joint_distribution()
+        return self.compute_entropies(p_joint)
+    
+    def _update_history(self):
+        """Update history of parameters and information measures"""
+        p_joint, _, _ = self.joint_distribution()
+        S_joint, S_X, S_M, I_XM = self.compute_entropies(p_joint)
+        
+        self.history['joint_entropy'].append(S_joint)
+        self.history['marginal_entropy_X'].append(S_X)
+        self.history['marginal_entropy_M'].append(S_M)
+        self.history['mutual_information'].append(I_XM)
+        self.history['theta_X'].append(self.theta_X.copy())
+        self.history['theta_M'].append(self.theta_M.copy())
+        self.history['theta_XM'].append(self.theta_XM.copy())
+    
+    def run_simulation(self, steps=100):
+        """Run gradient ascent for specified number of steps"""
+        results = []
+        for i in range(steps):
+            S_joint, S_X, S_M, I_XM = self.gradient_ascent_step()
+            results.append((S_joint, S_X, S_M, I_XM))
+            
+            if i % 10 == 0:
+                print(f"Step {i}: Joint Entropy = {S_joint:.4f}, MI = {I_XM:.4f}")
+        
+        return results
+    
+    def visualize_results(self):
+        """Visualize the evolution of entropy and mutual information"""
+        steps = range(len(self.history['joint_entropy']))
+        
+        # Create figure with subplots
+        fig = plt.figure(figsize=plot.big_wide_figsize)
+        gs = gridspec.GridSpec(2, 2, height_ratios=[1, 1])
         
         # Plot entropies
-        ax1.plot(self.entropy_history, label='Joint Entropy S(X,M)')
-        ax1.plot(self.entropy_x_history, label='Marginal Entropy S(X)')
-        ax1.plot(self.entropy_m_history, label='Marginal Entropy S(M)')
-        ax1.set_xlabel('Step')
+        ax1 = plt.subplot(gs[0, 0])
+        ax1.plot(steps, self.history['joint_entropy'], 'b-', label='Joint Entropy S(X,M)')
+        ax1.plot(steps, self.history['marginal_entropy_X'], 'g--', label='Marginal Entropy S(X)')
+        ax1.plot(steps, self.history['marginal_entropy_M'], 'r--', label='Marginal Entropy S(M)')
+        ax1.set_xlabel('Gradient Ascent Step')
         ax1.set_ylabel('Entropy')
-        ax1.set_title('Evolution of Entropy Components')
+        ax1.set_title('Evolution of Entropy')
         ax1.legend()
         ax1.grid(True)
         
         # Plot mutual information
-        ax2.plot(self.mutual_info_history, color='red')
-        ax2.set_xlabel('Step')
+        ax2 = plt.subplot(gs[0, 1])
+        ax2.plot(steps, self.history['mutual_information'], 'k-', linewidth=2)
+        ax2.set_xlabel('Gradient Ascent Step')
         ax2.set_ylabel('Mutual Information I(X;M)')
         ax2.set_title('Evolution of Mutual Information')
         ax2.grid(True)
         
-        plt.tight_layout()
-        return fig
-    
-    def plot_distributions(self):
-        """Plot the joint distribution at different time steps"""
-        # Select a few time points to visualize
-        steps_to_plot = [0, self.n_steps//4, self.n_steps//2, self.n_steps-1]
+        # Plot joint distribution at the beginning and end
+        p_initial, mean_initial, cov_initial = self.joint_distribution()
         
-        fig, axes = plt.subplots(2, 2, figsize=(10, 8))
-        axes = axes.flatten()
+        # Restore parameters to initial state for visualization
+        self.theta_X = self.history['theta_X'][0].copy()
+        self.theta_M = self.history['theta_M'][0].copy()
+        self.theta_XM = self.history['theta_XM'][0].copy()
+        p_initial, mean_initial, cov_initial = self.joint_distribution()
         
-        # Create grid for contour plots
-        x = np.linspace(-3, 3, 100)
-        y = np.linspace(-3, 3, 100)
-        X, Y = np.meshgrid(x, y)
-        pos = np.dstack((X, Y))
+        # Restore parameters to final state
+        self.theta_X = self.history['theta_X'][-1].copy()
+        self.theta_M = self.history['theta_M'][-1].copy()
+        self.theta_XM = self.history['theta_XM'][-1].copy()
+        p_final, mean_final, cov_final = self.joint_distribution()
         
-        for i, step in enumerate(steps_to_plot):
-            ax = axes[i]
-            cov = self.cov_history[step]
-            
-            # Create multivariate normal distribution
-            rv = multivariate_normal(self.mean, cov)
-            
-            # Plot contours
-            Z = rv.pdf(pos)
-            contour = ax.contourf(X, Y, Z, cmap='viridis', levels=20)
-            
-            # Add correlation coefficient to title
-            corr = cov[0,1] / np.sqrt(cov[0,0] * cov[1,1])
-            ax.set_title(f'Step {step}: Correlation = {corr:.2f}')
-            ax.set_xlabel('X')
-            ax.set_ylabel('M')
-            
-            # Calculate and display mutual information
-            det_cov = np.linalg.det(cov)
-            det_cov_x = cov[0,0]
-            det_cov_m = cov[1,1]
-            mi = 0.5 * np.log(det_cov_x * det_cov_m / det_cov)
-            ax.text(0.05, 0.95, f'I(X;M)={mi:.2f}', transform=ax.transAxes, 
-                    verticalalignment='top', bbox=dict(boxstyle='round', facecolor='white', alpha=0.7))
+        # Plot initial distribution
+        ax3 = plt.subplot(gs[1, 0])
+        c3 = ax3.contourf(self.X, self.M, p_initial, cmap='viridis')
+        ax3.set_xlabel('X (Fast Variable)')
+        ax3.set_ylabel('M (Slow Variable)')
+        ax3.set_title('Initial Joint Distribution p(X,M)')
+        plt.colorbar(c3, ax=ax3)
+        
+        # Plot final distribution
+        ax4 = plt.subplot(gs[1, 1])
+        c4 = ax4.contourf(self.X, self.M, p_final, cmap='viridis')
+        ax4.set_xlabel('X (Fast Variable)')
+        ax4.set_ylabel('M (Slow Variable)')
+        ax4.set_title('Final Joint Distribution p(X,M)')
+        plt.colorbar(c4, ax=ax4)
         
         plt.tight_layout()
         return fig
 }
 
-\code{
+\code{}
 # Run the demonstration
-demo = SpontaneousOrganizationDemo(n_steps=100)
-demo.simulate()
-fig1 = demo.plot_results()
-fig2 = demo.plot_distributions()
+np.random.seed(42)  # For reproducibility
+demo = SpontaneousOrganizationDemo(learning_rate=0.05)
+results = demo.run_simulation(steps=150)
 }
 
-\setupplotcode{import mlai.plot as plot
-import mlai}
-
-\plotcode{
-# Save the figures
-mlai.write_figure(filename='spontaneous-organization-metrics.svg',
-directory='./information-game')
-mlai.write_figure(filename='spontaneous-organization-distributions.svg',
-directory='./information-game')
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai
+import matplotlib.gridspec as gridspec
 }
+\plotcode{fig = demo.visualize_results()
 
-\newslide{Evolution of Entropy and Mutual Information}
+# Add a text box explaining the key findings
+plt.figtext(0.5, 0.01, 
+            "Spontaneous Organisation: Despite maximizing joint entropy, mutual information I(X;M) increases.\n"
+            "This occurs because the fast variables X evolve quickly while slow variables M act as an information reservoir.\n"
+            "The timescale separation (η_X >> η_M) creates conditions where correlations strengthen during entropy maximization.",
+            ha="center", fontsize=12, bbox={"facecolor":"lightgray", "alpha":0.5, "pad":5})
 
-\figure{\includediagram{\diagramsDir/information-game/spontaneous-organization-metrics}{70%}}{Evolution of entropy components and mutual information during entropy maximization.}{spontaneous-organization-metrics}
 
-\newslide{Evolution of Joint Distribution}
+mlai.write_figure(filename='spontaneous-organisation.svg', 
+                  directory='\writeDiagramsDir/information-game')}
 
-\figure{\includediagram{\diagramsDir/information-game/spontaneous-organization-distributions}{70%}}{Evolution of the joint distribution showing increasing correlation between X and M.}{spontaneous-organization-distributions}
+\newslide{Spontaneous Organisation}
 
-\notes{The simulation demonstrates how mutual information naturally increases during entropy maximization. As the system evolves, the joint distribution develops stronger correlations between variables X and M, representing the spontaneous organization of information.
-
-This provides a concrete example of how structure emerges naturally from entropy-maximizing dynamics, without requiring any external design or intervention. The system self-organizes into states with higher mutual information, creating structured relationships between variables.}
+\figure{\includediagram{\diagramsDir/information-game/spontaneous-organisation}{70%}}{Spontaneous organisation.}{spontaneous-organisation}
 
 \endif
