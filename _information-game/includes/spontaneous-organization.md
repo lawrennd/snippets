@@ -420,7 +420,7 @@ import matplotlib.gridspec as gridspec}
         return fig
 }
 
-\code{}
+\code{
 # Run the demonstration
 np.random.seed(42)  # For reproducibility
 demo = SpontaneousOrganizationDemo(learning_rate=0.05)

@@ -102,10 +102,10 @@ ax2.legend()
 ax2.grid(True, linestyle='--', alpha=0.7)
 
 mlai.write_figure(filename='hierarchical-memory-organisation-example.svg', 
-                  directory = '\writeDiagramDir/information-game')
+                  directory = '\writeDiagramsDir/information-game')
 }
 
-\figure{\includeDiagram{\diagramsDir/information-game/hierarchical-memory-organisation-example}{80%}}{}{hierarchical-memory-organisation-example}
+\figure{\includediagram{\diagramsDir/information-game/hierarchical-memory-organisation-example}{80%}}{}{hierarchical-memory-organisation-example}
 
 \notes{A hierarchical memory structure emerges naturally during entropy maximization. The timescale separation creates a computational architecture where different levels operate at different characteristic timescales.}
 
