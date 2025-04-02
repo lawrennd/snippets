@@ -89,7 +89,11 @@ $$
 
 Note that this is not generally equal to $\eta_X \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2$ unless $\nabla_{\boldsymbol{\theta}_X}S = \nabla_{\boldsymbol{\theta}_X}S(X)$, which is not typically the case when variables are correlated.
 
-The gradient condition for spontaneous organization, $\frac{\text{d}I(X;M)}{\text{d}t} > 0$, can be rewritten using our earlier relation $\frac{\text{d}I(X;M)}{\text{d}t} \approx \frac{\text{d}S(X)}{\text{d}t} - \frac{\text{d}S}{\text{d}t}$, giving:
+The gradient condition for spontaneous organization, $\frac{\text{d}I(X;M)}{\text{d}t} > 0$, can be rewritten using our earlier relation 
+$$
+\frac{\text{d}I(X;M)}{\text{d}t} \approx \frac{\text{d}S(X)}{\text{d}t} - \frac{\text{d}S}{\text{d}t},
+$$ 
+giving
 $$
 \eta_X \nabla_{\boldsymbol{\theta}_X}S(X) \cdot \nabla_{\boldsymbol{\theta}_X}S > \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
 $$
@@ -127,7 +131,28 @@ $$
 \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
 $$}
 
-\notes{This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$.}
+\notes{This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$. More precisely, we can expand this condition using the relationship between these gradients:
+
+Since $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$, we can write:
+$$
+\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 = \|\nabla_{\boldsymbol{\theta}_X}S + \nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2
+$$
+
+Expanding this squared norm:
+$$
+\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 = \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \|\nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2 + 2\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)
+$$
+
+For our condition $\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2$ to be satisfied, we need:
+$$
+\|\nabla_{\boldsymbol{\theta}_X}I(X;M)\|^2 + 2\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M) > 0
+$$
+
+This is satisfied when either:
+1. The mutual information gradient is sufficiently large, or
+2. The dot product $\nabla_{\boldsymbol{\theta}_X}S \cdot \nabla_{\boldsymbol{\theta}_X}I(X;M)$ is positive and large enough
+
+Simply having the gradients point in different directions is not sufficient - the relationship between these gradients must satisfy this specific inequality.}
 
 \slides{
 * Mutual information gradient: $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$
