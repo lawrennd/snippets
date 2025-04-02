@@ -101,26 +101,24 @@ $$
 
 \newslide{Condition for Information Structure Emergence}
 
-\notes{
-This inequality reveals a profound insight: spontaneous organization occurs when the gradient of marginal entropy $S(X)$ with respect to $\boldsymbol{\theta}_X$ has a larger magnitude than the gradient of joint entropy $S$ with respect to the same parameters.
+\notes{This inequality reveals a profound insight: spontaneous organization occurs when the gradient of marginal entropy $S(X)$ with respect to $\boldsymbol{\theta}_X$ has a larger magnitude than the gradient of joint entropy $S$ with respect to the same parameters.}
 
-This condition can be satisfied when $X$ variables are strongly coupled to $M$ variables in a specific way. Let us express the mutual information gradient
+\notes{This condition can be satisfied when $X$ variables are strongly coupled to $M$ variables in a specific way. Let us express the mutual information gradient
 $$
 \nabla_{\boldsymbol{\theta}_X}I(X;M) = \nabla_{\boldsymbol{\theta}_X}S(X) + \nabla_{\boldsymbol{\theta}_X}S(M) - \nabla_{\boldsymbol{\theta}_X}S.
-$$
+$$}
 
-Since $M$ evolves slowly, we can approximate $\nabla_{\boldsymbol{\theta}_X}S(M) \approx 0$, yielding
+\notes{Since $M$ evolves slowly, we can approximate $\nabla_{\boldsymbol{\theta}_X}S(M) \approx 0$, yielding
 $$
 \nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S.
-$$
+$$}
 
-Our condition for spontaneous organization can be rewritten as
+\notes{Our condition for spontaneous organization can be rewritten as
 $$
 \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
-$$
+$$}
 
-This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs precisely when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$.
-}
+\notes{This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs precisely when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$.}
 
 \slides{
 * Mutual information gradient: $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$
