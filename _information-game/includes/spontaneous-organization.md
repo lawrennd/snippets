@@ -89,7 +89,7 @@ This resolves the apparent paradox of how complex organization can emerge from e
 import matplotlib.pyplot as plt
 from scipy.stats import multivariate_normal}
 
-\code{
+\helpercode{
 class SpontaneousOrganizationDemo:
     def __init__(self, n_steps=100):
         """
