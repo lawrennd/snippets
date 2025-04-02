@@ -219,13 +219,11 @@ class SpontaneousOrganizationDemo:
         return fig
 }
 
-\code{
-# Run the demonstration
+\code{# Run the demonstration
 demo = SpontaneousOrganizationDemo(n_steps=100)
 demo.simulate()
 fig1 = demo.plot_results()
-fig2 = demo.plot_distributions()
-}
+fig2 = demo.plot_distributions()}
 
 \setupplotcode{import mlai.plot as plot
 import mlai}
