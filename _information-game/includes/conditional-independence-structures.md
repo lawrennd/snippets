@@ -5,9 +5,11 @@
 
 \subsection{Locality Through Conditional Independence}
 
-\notes{One way to formalize the notion of locality in our information-theoretic framework is through conditional independence structures. When we have a small number of slow modes (M) that act as information reservoirs, they can induce conditional independence between subsets of fast variables (X), naturally creating a form of locality.
+\notes{One way to formalize the notion of locality in our information-theoretic framework is through conditional independence structures.}
 
-This approach connects our abstract information-theoretic framework to more intuitive notions of spatial organization and modularity without requiring an explicit spatial embedding.}
+\notes{When we have a small number of slow modes (M) that act as information reservoirs, they can induce conditional independence between subsets of fast variables (X), creating a form of locality.}
+
+\notes{This approach connects our abstract information-theoretic framework to more intuitive notions of spatial organization and modularity without requiring an explicit spatial embedding.}
 
 \slides{
 * Few slow modes can induce conditional independence
@@ -17,16 +19,15 @@ This approach connects our abstract information-theoretic framework to more intu
 
 \newslide{Entropy Decomposition with Conditional Mutual Information}
 
-\notes{To formalize this, we partition our fast variables X into subsets $X = \{X^1, X^2, ..., X^K\}$, where each $X^k$ might represent variables that are "close" to each other in some abstract sense.
+\notes{We partition our fast variables X into subsets $X = \{X^1, X^2, ..., X^K\}$, where each $X^k$ might represent variables that are "close" to each other in some abstract sense.}
 
-The joint entropy of the entire system can be decomposed as:
+\notes{The joint entropy of the entire system can be decomposed as
 $$
 \begin{align}
 S(X, M) &= S(M) + S(X|M)\\
-&= S(M) + \sum_{k=1}^K S(X^k|M) - \sum_{k=1}^K \sum_{j<k} I(X^k; X^j|M)
+&= S(M) + \sum_{k=1}^K S(X^k|M) - \sum_{k=1}^K \sum_{j<k} I(X^k; X^j|M).
 \end{align}
 $$
-
 Here, $I(X^k; X^j|M)$ is the conditional mutual information between subsets $X^k$ and $X^j$ given M. This term quantifies how much dependence remains between these subsets after accounting for the information in the slow modes M.}
 
 \slides{
@@ -37,19 +38,19 @@ Here, $I(X^k; X^j|M)$ is the conditional mutual information between subsets $X^k
 
 \newslide{Conditional Independence and Locality}
 
-\notes{The key insight is that when the slow modes M effectively capture the global structure of the system, the conditional mutual information terms become very small:
+\notes{When the slow modes $M$  capture the global structure of the system, the conditional mutual information terms become very small,
 $$
-I(X^k; X^j|M) \approx 0 \quad \text{for } j \neq k
+I(X^k; X^j|M) \approx 0 \quad \text{for } j \neq k.
 $$
+This means that different regions of the system become conditionally independent given the state of the slow modes,
+$$
+p(X^1, X^2, ..., X^K|M) \approx \prod_{k=1}^K p(X^k|M).
+$$
+This factorization gives us our notion of locality - each subsystem $X^k$ can be understood in terms of its relationship to the global slow modes $M$, with minimal direct influence from other subsystems.}
 
-This means that different regions of the system become conditionally independent given the state of the slow modes:
-$$
-p(X^1, X^2, ..., X^K|M) \approx \prod_{k=1}^K p(X^k|M)
-$$
+**This needs formalising**
 
-This factorization is precisely what we mean by locality - each subsystem $X^k$ can be understood in terms of its relationship to the global slow modes M, with minimal direct influence from other subsystems.
-
-The degree to which this factorization holds depends on the eigenvalue spectrum of the Fisher information matrix. When there's a clear separation between a few very small eigenvalues (corresponding to M) and the rest (corresponding to X), the factorization becomes more accurate.}
+\notes{The degree to which this factorization holds depends on the eigenvalue spectrum of the Fisher information matrix. When there's a clear separation between a few very small eigenvalues (corresponding to $M$) and the rest (corresponding to $X$), the factorization becomes more accurate.}
 
 \slides{
 * When $I(X^k; X^j|M) \approx 0$, we get conditional independence
@@ -60,13 +61,13 @@ The degree to which this factorization holds depends on the eigenvalue spectrum 
 
 \newslide{Connection to Eigenvalue Structure}
 
-\notes{This connection to the eigenvalue spectrum provides a formal link between the abstract mathematics of our framework and intuitive notions of spatial organization.
+\notes{The connection to the eigenvalue spectrum provides a formal link between the abstract mathematics of the game and intuitive notions of spatial organization.}
 
-When the Fisher information matrix has a few eigenvalues that are much smaller than the rest (large separation of timescales), the corresponding eigenvectors define the slow modes M. These slow modes effectively act as sufficient statistics for the interactions between different regions of the system.
+\notes{When the Fisher information matrix has a few eigenvalues that are much smaller than the rest (large separation of timescales), the corresponding eigenvectors define the slow modes $M$. These slow modes act as sufficient statistics for the interactions between different regions of the system.}
 
-The conditional independence structure induced by these slow modes creates an effective graph structure of dependencies. Variables that remain conditionally dependent given M are "closer" to each other than those that become conditionally independent.
+\notes{The conditional independence structure induced by these slow modes creates a graph structure of dependencies. Variables that remain conditionally dependent given $M$ are "closer" to each other than those that become conditionally independent.}
 
-This is analogous to how in physics, systems with long-range interactions often have a small number of conserved quantities or order parameters (slow modes) that govern the large-scale behavior, while local fluctuations (fast modes) can be treated as approximately independent when conditioned on these global variables.}
+\notes{This is analogous to how in physics, systems with long-range interactions often have a small number of conserved quantities or order parameters (slow modes) that govern the large-scale behavior, while local fluctuations (fast modes) can be treated as approximately independent when conditioned on these global variables.}
 
 \slides{
 * Few small eigenvalues → strong conditional independence
@@ -431,12 +432,222 @@ import mlai
 
 \figure{\includediagram{\diagramsDir/information-game/conditional-independence-graphs}{70%}}{Dependency graphs before and after conditioning on slow modes, showing the emergence of modularity.}{conditional-independence-graphs}
 
-\notes{The visualization demonstrates how conditioning on slow modes drastically reduces the mutual information between variables in different clusters, while preserving dependencies within clusters. This effectively creates a modular structure where each cluster becomes nearly independent given the state of the slow modes.
+\notes{The visualisation demonstrates how conditioning on slow modes drastically reduces the mutual information between variables in different clusters, while preserving dependencies within clusters. This creates a modular structure where each cluster becomes nearly independent given the state of the slow modes.}
 
-This modular organization emerges naturally from the eigenvalue structure of the Fisher information matrix, without requiring any explicit spatial embedding or pre-defined notion of locality. The slow modes act as a information bottleneck that encodes the necessary global information while allowing local regions to operate semi-independently.
+\notes{This modular organization emerges from the eigenvalue structure of the Fisher information matrix, without requiring any explicit spatial embedding or pre-defined notion of locality. The slow modes act as a information bottleneck that encodes the necessary global information while allowing local regions to operate semi-independently.}
 
-In physical systems, this would manifest as the emergence of spatial patterns or functional modules that interact primarily through a small number of global variables. In neural networks, this corresponds to the formation of specialized modules that handle different aspects of processing while communicating through a compressed global representation.
+\notes{In a physical system, structures like this manifest as the emergence of spatial patterns or functional modules that interact primarily through a small number of global variables. In a neural network, such structures correspond to the formation of specialized modules that handle different aspects of processing while communicating through a compressed global representation.}
 
-The essence of locality in our framework is therefore not about physical distance, but about the conditional independence structure induced by the slow modes of the system. This provides a powerful, abstract notion of locality that can be applied to any system where information flows are important.}
+\notes{The notions of locality in our framework are not about physical distance, but about the conditional independence structure induced by the slow modes of the system. This abstract notion of locality that can be applied to any system where information flows are important.}
+
+
+\subsection{Information Topography}
+
+\notes{Building on the conditional independence structure, we can define an "information topography" - a conceptual landscape that characterizes how information flows through the system.}
+
+\notes{This topography emerges from the pattern of mutual information between variables and their dependency on the slow modes. We can visualize this as a landscape where.
+
+1. The "elevation" corresponds to the conditional entropy of variables given the slow modes
+2. The "valleys" or "channels" represent strong information pathways between variables
+3. The "watersheds" or "ridges" separate regions that are conditionally independent given M}
+
+\notes{Mathematically, we can define a distance metric between variables based on their conditional mutual information,
+$$
+d_I(X^i, X^j) = \frac{1}{I(X^i; X^j|M) + \epsilon}
+$$
+where $\epsilon$ is a small constant to avoid division by zero. Variables with higher conditional mutual information are "closer" in this information metric.}
+
+\slides{
+* Information topography: landscape of information flow
+* "Distance" between variables: $d_I(X^i, X^j) = \frac{1}{I(X^i; X^j|M) + \epsilon}$
+* Creates intuitive notions of "information watersheds" and "channels"
+}
+
+\subsection{Properties of Information Topography}
+
+\notes{The information topography has several important properties.
+
+1. It is non-Euclidean - the triangle inequality may not hold
+2. It is dynamic - changes in the slow modes reshape the entire landscape
+3. It is hierarchical - we can define different topographies at different scales by considering different subsets of the slow modes}
+
+\notes{The eigenvalue spectrum of the Fisher information matrix directly shapes this topography. The larger the separation between the few smallest eigenvalues and the rest, the more pronounced the "ridges" in the topography, leading to stronger locality and modularity.}
+
+\notes{This perspective allows us to quantify notions like "information distance" and "information barriers" without requiring an explicit spatial embedding, providing a framework for understanding modularity across different types of complex systems.}
+
+\slides{
+* Non-Euclidean, dynamic, and hierarchical
+* Shaped by eigenvalue spectrum separation
+* Quantifies "information distance" and "barriers"
+* Provides unified view of modularity across systems
+}
+
+\helpercode{class InformationTopographyDemo:
+    def __init__(self, conditional_mi_matrix, n_clusters, n_vars_per_cluster):
+        """
+        Visualize the information topography based on conditional mutual information.
+        
+        Parameters:
+        -----------
+        conditional_mi_matrix: numpy array
+            Matrix of conditional mutual information values
+        n_clusters: int
+            Number of variable clusters
+        n_vars_per_cluster: int
+            Number of variables per cluster
+        """
+        self.cmi = conditional_mi_matrix
+        self.n_clusters = n_clusters
+        self.n_vars_per_cluster = n_vars_per_cluster
+        self.n_vars = conditional_mi_matrix.shape[0]
+        
+    def compute_information_distance(self, epsilon=1e-6):
+        """Convert conditional mutual information to a distance metric."""
+        # Higher CMI = closer in information space
+        # Lower CMI = further apart (conditional independence)
+        distance = 1.0 / (self.cmi + epsilon)
+        return distance
+    
+    def visualize_information_landscape(self):
+        """Visualize the information topography as a landscape."""
+        # Use multidimensional scaling to project the distance matrix to 2D
+        from sklearn.manifold import MDS
+        
+        # Compute information distance matrix
+        distance = self.compute_information_distance()
+        
+        # Apply MDS to embed in 2D space
+        mds = MDS(n_components=2, dissimilarity='precomputed', random_state=42)
+        pos = mds.fit_transform(distance)
+        
+        # Create a visualization
+        fig = plt.figure(figsize=plot.big_wide_figsize)
+        
+        # Plot the embedded points with cluster colors
+        ax = fig.add_subplot(111)
+        
+        # Assign colors by cluster
+        colors = plt.cm.tab10(np.linspace(0, 1, self.n_clusters))
+        
+        for i in range(self.n_vars):
+            cluster_id = i // self.n_vars_per_cluster
+            ax.scatter(pos[i, 0], pos[i, 1], c=[colors[cluster_id]], 
+                      s=100, label=f"Cluster {cluster_id}" if i % self.n_vars_per_cluster == 0 else "")
+            ax.text(pos[i, 0] + 0.02, pos[i, 1] + 0.02, str(i), fontsize=9)
+        
+        # Add connections based on conditional mutual information
+        # Stronger connections = higher CMI = lower distance
+        threshold = np.percentile(self.cmi[self.cmi > 0], 70)  # Only show top 30% strongest connections
+        
+        for i in range(self.n_vars):
+            for j in range(i+1, self.n_vars):
+                if self.cmi[i, j] > threshold:
+                    # Line width proportional to mutual information
+                    width = self.cmi[i, j] * 5
+                    ax.plot([pos[i, 0], pos[j, 0]], [pos[i, 1], pos[j, 1]], 
+                           'k-', alpha=0.5, linewidth=width)
+        
+        # Remove duplicate legend entries
+        handles, labels = ax.get_legend_handles_labels()
+        by_label = dict(zip(labels, handles))
+        ax.legend(by_label.values(), by_label.keys(), loc='best')
+        
+        ax.set_title('Information Topography: Variables Positioned by Information Distance')
+        ax.set_xlabel('Dimension 1')
+        ax.set_ylabel('Dimension 2')
+        ax.grid(True, alpha=0.3)
+        
+        return fig
+    
+    def visualize_information_landscape_3d(self):
+        """Visualize the information topography as a 3D landscape."""
+        # Use multidimensional scaling to project the distance matrix to 2D
+        from sklearn.manifold import MDS
+        from scipy.interpolate import griddata
+        
+        # Compute information distance matrix
+        distance = self.compute_information_distance()
+        
+        # Apply MDS to embed in 2D space
+        mds = MDS(n_components=2, dissimilarity='precomputed', random_state=42)
+        pos = mds.fit_transform(distance)
+        
+        # Create a visualization
+        fig = plt.figure(figsize=plot.big_wide_figsize)
+        ax = fig.add_subplot(111, projection='3d')
+        
+        # Assign colors by cluster
+        colors = plt.cm.tab10(np.linspace(0, 1, self.n_clusters))
+        
+        # Calculate "elevation" based on average distance to other points
+        # Higher elevation = more isolated information-wise
+        elevation = np.mean(distance, axis=1)
+        
+        # Normalize to [0,1] range
+        elevation = (elevation - elevation.min()) / (elevation.max() - elevation.min())
+        
+        # Plot the points in 3D
+        for i in range(self.n_vars):
+            cluster_id = i // self.n_vars_per_cluster
+            ax.scatter(pos[i, 0], pos[i, 1], elevation[i], 
+                      c=[colors[cluster_id]], s=100, 
+                      label=f"Cluster {cluster_id}" if i % self.n_vars_per_cluster == 0 else "")
+            ax.text(pos[i, 0], pos[i, 1], elevation[i] + 0.05, str(i), fontsize=9)
+        
+        # Create a surface representing the information landscape
+        # Grid the data
+        xi = np.linspace(pos[:, 0].min(), pos[:, 0].max(), 100)
+        yi = np.linspace(pos[:, 1].min(), pos[:, 1].max(), 100)
+        X, Y = np.meshgrid(xi, yi)
+        
+        # Interpolate elevation for the grid
+        Z = griddata((pos[:, 0], pos[:, 1]), elevation, (X, Y), method='cubic')
+        
+        # Plot the surface
+        surf = ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.6, linewidth=0)
+        
+        # Remove duplicate legend entries
+        handles, labels = ax.get_legend_handles_labels()
+        by_label = dict(zip(labels, handles))
+        ax.legend(by_label.values(), by_label.keys(), loc='best')
+        
+        ax.set_title('3D Information Topography: Elevation = Information Isolation')
+        ax.set_xlabel('Dimension 1')
+        ax.set_ylabel('Dimension 2')
+        ax.set_zlabel('Information Isolation')
+        
+        return fig
+}
+
+\subsection{Information Topography Visualization}
+
+\code{
+# Create the information topography visualization
+topo_demo = InformationTopographyDemo(
+    demo.compute_mutual_information_matrix(conditional_on_slow=True),
+    demo.n_clusters, 
+    demo.n_vars_per_cluster
+)}
+
+\plotcode{fig3 = topo_demo.visualize_information_landscape()
+
+mlai.write_figure(filename='information-topography-2d.svg', 
+                  directory='\writeDiagramsDir/information-game')
+
+fig4 = topo_demo.visualize_information_landscape_3d()
+
+mlai.write_figure(filename='information-topography-3d.svg', 
+                  directory='\writeDiagramsDir/information-game')}
+
+
+\figure{\includediagram{\diagramsDir/information-game/information-topography-2d}{70%}}{Information topography visualized as a 2D landscape with points positioned according to information distance.}{information-topography-2d}
+
+\newslide{3D Information Landscape}
+
+\figure{\includediagram{\diagramsDir/information-game/information-topography-3d}{70%}}{3D visualization of the information landscape where elevation represents information isolation.}{information-topography-3d}
+
+\notes{The visualizations show how the information topography naturally clusters variables that retain high conditional mutual information, creating "basins" of related variables separated by "ridges" of conditional independence. This emergent structure is entirely determined by the pattern of information flow in the system, particularly through the slow modes.}
+
+\notes{This topographical view offers a framework for understanding how complex systems naturally organize into modular structures, even in the absence of explicit design or spatial constraints. The information landscape reveals the natural "fault lines" along which a system can be decomposed and understood.}
 
 \endif 
