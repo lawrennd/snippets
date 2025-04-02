@@ -52,45 +52,54 @@ $$
 \subsection{Fisher Information and Multiple Timescales in Spontaneous Organization}
 
 \notes{
-We introduce the Fisher information and the effect of multiple timescales to analyze when the gradient condition $\frac{\text{d}S(X)}{\text{d}t} > \frac{\text{d}S}{\text{d}t}$ holds.
+We introduce the Fisher information and the effect of multiple timescales to analyze when the gradient condition $\frac{\text{d}S(X)}{\text{d}t} > \frac{\text{d}S}{\text{d}t}$ holds.}
 
-The Fisher information matrix $G(\boldsymbol{\theta})$ provides a natural metric on the statistical manifold of probability distributions. For our joint distribution $p(z|\boldsymbol{\theta})$, the Fisher information is defined as
+\notes{The Fisher information matrix $G(\boldsymbol{\theta})$ provides a natural metric on the statistical manifold of probability distributions. For our joint distribution $p(z|\boldsymbol{\theta})$, the Fisher information is defined as
 $$
 G_{ij}(\boldsymbol{\theta}) = \mathbb{E}\left[\frac{\partial \log p(z|\boldsymbol{\theta})}{\partial \theta_i}\frac{\partial \log p(z|\boldsymbol{\theta})}{\partial \theta_j}\right].
-$$
+$$}
 
-When we partition our variables into fast variables $X$ and slow variables $M$ (representing the information reservoir), we introduce a timescale separation in the natural parameter dynamics,
+\notes{ When we partition our variables into fast variables $X$ and slow variables $M$ (representing the information reservoir), we are suggesting a a timescale separation in the natural parameter dynamics,
 $$
 \frac{\text{d}\boldsymbol{\theta}_X}{\text{d}t} = \eta_X \nabla_{\boldsymbol{\theta}_X}S[p(z,t)],
 $$
 $$
-\frac{\text{d}\boldsymbol{\theta}_M}{\text{d}t} = \eta_M \nabla_{\boldsymbol{\theta}_M}S[p(z,t)],
+\frac{\text{d}\boldsymbol{\theta}_M}{\text{d}t} =  \eta_M \nabla_{\boldsymbol{\theta}_M}S[p(z,t)],
 $$
-where $\eta_X \gg \eta_M$ indicates that $X$ evolves much faster than $M$.
+where $\left|\nabla_{\boldsymbol{\theta}_X}S[p(z,t)]\right| \gg \left|\nabla_{\boldsymbol{\theta}_M}S[p(z,t)]\right|$ indicates that $X$ evolves much faster than $M$.
 }
 
 \newslide{Multiple Timescales and Mutual Information Growth}
 
 \notes{
-This timescale separation creates a crucial asymmetry that enables spontaneous organization. The entropy dynamics can be expressed in terms of the Fisher information matrix and the natural parameter velocities,
+This timescale separation reflects an asymmetry that would drive spontaneous organization. The entropy dynamics can be expressed in terms of the Fisher information matrix and the natural parameter velocities,
 $$
-\frac{\text{d}S}{\text{d}t} = \nabla_{\boldsymbol{\theta}}S \cdot \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
+\frac{\text{d}S}{\text{d}t} = \nabla_{\boldsymbol{\theta}}S \cdot \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = \nabla_{\boldsymbol{\theta}_X}S \cdot \frac{\text{d}\boldsymbol{\theta}_X}{\text{d}t} + \nabla_{\boldsymbol{\theta}_M}S \cdot \frac{\text{d}\boldsymbol{\theta}_M}{\text{d}t}.
+$$
+
+Substituting our gradient ascent dynamics with different learning rates:
+$$
+\frac{\text{d}S}{\text{d}t} = \nabla_{\boldsymbol{\theta}_X}S \cdot (\eta_X \nabla_{\boldsymbol{\theta}_X}S) + \nabla_{\boldsymbol{\theta}_M}S \cdot (\eta_M \nabla_{\boldsymbol{\theta}_M}S) = \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
 $$
 
 Similarly, the marginal entropy of $X$ evolves according to,
 $$
-\frac{\text{d}S(X)}{\text{d}t} = \nabla_{\boldsymbol{\theta}_X}S(X) \cdot \frac{\text{d}\boldsymbol{\theta}_X}{\text{d}t} = \eta_X \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2.
+\frac{\text{d}S(X)}{\text{d}t} = \nabla_{\boldsymbol{\theta}_X}S(X) \cdot \frac{\text{d}\boldsymbol{\theta}_X}{\text{d}t} = \nabla_{\boldsymbol{\theta}_X}S(X) \cdot (\eta_X \nabla_{\boldsymbol{\theta}_X}S) = \eta_X \nabla_{\boldsymbol{\theta}_X}S(X) \cdot \nabla_{\boldsymbol{\theta}_X}S.
 $$
 
-The gradient condition for spontaneous organization, $\frac{\text{d}S(X)}{\text{d}t} > \frac{\text{d}S}{\text{d}t}$, can now be expressed as
+Note that this is not generally equal to $\eta_X \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2$ unless $\nabla_{\boldsymbol{\theta}_X}S = \nabla_{\boldsymbol{\theta}_X}S(X)$, which is not typically the case when variables are correlated.
+
+The gradient condition for spontaneous organization, $\frac{\text{d}I(X;M)}{\text{d}t} > 0$, can be rewritten using our earlier relation $\frac{\text{d}I(X;M)}{\text{d}t} \approx \frac{\text{d}S(X)}{\text{d}t} - \frac{\text{d}S}{\text{d}t}$, giving:
 $$
-\eta_X \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
+\eta_X \nabla_{\boldsymbol{\theta}_X}S(X) \cdot \nabla_{\boldsymbol{\theta}_X}S > \eta_X \|\nabla_{\boldsymbol{\theta}_X}S\|^2 + \eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2.
 $$
 
-Given that $\eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2 > 0$ (except exactly at saddle points), this inequality requires
+Since $\eta_M \|\nabla_{\boldsymbol{\theta}_M}S\|^2 > 0$ (except exactly at saddle points), this inequality requires:
 $$
-\|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
+\nabla_{\boldsymbol{\theta}_X}S(X) \cdot \nabla_{\boldsymbol{\theta}_X}S > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
 $$
+
+This is a stronger condition than simply requiring the gradients to be aligned. By the Cauchy-Schwarz inequality, we know that $\nabla_{\boldsymbol{\theta}_X}S(X) \cdot \nabla_{\boldsymbol{\theta}_X}S \leq \|\nabla_{\boldsymbol{\theta}_X}S(X)\| \cdot \|\nabla_{\boldsymbol{\theta}_X}S\|$. Therefore, the condition can only be satisfied when $\|\nabla_{\boldsymbol{\theta}_X}S(X)\| > \|\nabla_{\boldsymbol{\theta}_X}S\|$ and the gradients are sufficiently aligned.
 }
 
 \slides{
@@ -101,9 +110,9 @@ $$
 
 \newslide{Condition for Information Structure Emergence}
 
-\notes{This inequality reveals a profound insight: spontaneous organization occurs when the gradient of marginal entropy $S(X)$ with respect to $\boldsymbol{\theta}_X$ has a larger magnitude than the gradient of joint entropy $S$ with respect to the same parameters.}
+\notes{This inequality suggests that spontaneous organization occurs when the gradient of marginal entropy $S(X)$ with respect to $\boldsymbol{\theta}_X$ has a larger magnitude than the gradient of joint entropy $S$ with respect to the same parameters.}
 
-\notes{This condition can be satisfied when $X$ variables are strongly coupled to $M$ variables in a specific way. Let us express the mutual information gradient
+\notes{This condition can be satisfied when $X$ variables are strongly coupled to $M$ variables in a specific way. We express the mutual information gradient
 $$
 \nabla_{\boldsymbol{\theta}_X}I(X;M) = \nabla_{\boldsymbol{\theta}_X}S(X) + \nabla_{\boldsymbol{\theta}_X}S(M) - \nabla_{\boldsymbol{\theta}_X}S.
 $$}
@@ -118,7 +127,7 @@ $$
 \|\nabla_{\boldsymbol{\theta}_X}S(X)\|^2 > \|\nabla_{\boldsymbol{\theta}_X}S\|^2.
 $$}
 
-\notes{This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs precisely when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$.}
+\notes{This is satisfied when $\nabla_{\boldsymbol{\theta}_X}S(X)$ and $\nabla_{\boldsymbol{\theta}_X}S$ point in different directions, which occurs when $\nabla_{\boldsymbol{\theta}_X}I(X;M) \neq 0$.}
 
 \slides{
 * Mutual information gradient: $\nabla_{\boldsymbol{\theta}_X}I(X;M) \approx \nabla_{\boldsymbol{\theta}_X}S(X) - \nabla_{\boldsymbol{\theta}_X}S$
@@ -141,8 +150,10 @@ $$
 
 The condition for spontaneous organization becomes
 $$
-\frac{\text{d}I(X;M)}{\text{d}t} \approx \eta_X \text{tr}(\mathbf{H}_X) - \eta_X \text{tr}(\mathbf{H}_X) - \eta_M \text{tr}(\mathbf{H}_{XM}) = -\eta_M \text{tr}(\mathbf{H}_{XM}).
+\frac{\text{d}I(X;M)}{\text{d}t} \approx \eta_X \text{tr}(\mathbf{H}_{S(X)}) - \eta_X \text{tr}(\mathbf{H}_S) - \eta_M \text{tr}(\mathbf{H}_{XM}) = -\eta_M \text{tr}(\mathbf{H}_{XM}).
 $$
+
+This approximation is valid when the system has reached a quasi-equilibrium state for the fast variables $X$, where $\nabla_{\boldsymbol{\theta}_X}S \approx \nabla_{\boldsymbol{\theta}_X}S(X)$. In this regime, the first two terms approximately cancel out, leaving the cross-correlation term dominant. Here, $\mathbf{H}_{S(X)}$ is the Hessian of the marginal entropy $S(X)$ with respect to $\boldsymbol{\theta}_X$, $\mathbf{H}_S$ is the Hessian of the joint entropy, and $\mathbf{H}_{XM}$ is the cross-correlation Hessian measuring how changes in $\boldsymbol{\theta}_X$ affect gradients with respect to $\boldsymbol{\theta}_M$.
 
 Thus, mutual information increases when $\text{tr}(\mathbf{H}_{XM}) < 0$, which occurs when the cross-correlation Hessian between $X$ and $M$ has predominantly negative eigenvalues. This represents configurations where joint entropy increases more efficiently by strengthening correlations rather than breaking them.
 
