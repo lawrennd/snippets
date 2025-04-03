@@ -101,7 +101,7 @@ The `compute_entropy` function calculates the entropy of a multivariate Gaussian
 Next, we implement functions to handle the constraints imposed by the uncertainty principle:
 }
 
-\code{
+\helpercode{
 # Project gradient to respect uncertainty constraints
 def project_gradient(eigenvalues, gradient):
     """
@@ -139,7 +139,7 @@ def project_gradient(eigenvalues, gradient):
     return projected_gradient
 
 # Initialize a multidimensional state with position-momentum pairs
-def initialize_multidimensional_state(n_pairs, squeeze_factors=None):
+def initialize_multidimensional_state(n_pairs, squeeze_factors=None, with_cross_connections=False):
     """
     Initialize a precision matrix for multiple position-momentum pairs.
     
@@ -147,29 +147,48 @@ def initialize_multidimensional_state(n_pairs, squeeze_factors=None):
     -----------
     n_pairs: int
         Number of position-momentum pairs
-    squeeze_factors: list, optional
-        Factors to squeeze initial uncertainty ellipses
+    squeeze_factors: list or None
+        Factors determining the position-momentum squeezing
+    with_cross_connections: bool
+        Whether to initialize with cross-connections between pairs
     
     Returns:
     --------
     Lambda: array
-        Initial precision matrix
+        Precision matrix
     """
     if squeeze_factors is None:
-        squeeze_factors = [0.1] * n_pairs
+        squeeze_factors = [0.1 + 0.05*i for i in range(n_pairs)]
     
-    # Create block diagonal precision matrix
-    Lambda = np.zeros((2*n_pairs, 2*n_pairs))
+    # Total dimension (position + momentum)
+    dim = 2 * n_pairs
     
+    # Initialize with diagonal precision matrix
+    eigenvalues = np.zeros(dim)
+    
+    # Set eigenvalues based on squeeze factors
     for i in range(n_pairs):
-        # Position-momentum pair with minimum uncertainty
-        lambda_x = 1.0 / (squeeze_factors[i] * np.sqrt(min_uncertainty_product))
-        lambda_p = 1.0 / (np.sqrt(min_uncertainty_product) / squeeze_factors[i])
+        squeeze = squeeze_factors[i]
+        eigenvalues[2*i] = 1.0 / (squeeze * min_uncertainty_product)
+        eigenvalues[2*i+1] = 1.0 / (min_uncertainty_product / squeeze)
+    
+    # Initialize with identity eigenvectors
+    eigenvectors = np.eye(dim)
+    
+    # If requested, add cross-connections by mixing eigenvectors
+    if with_cross_connections:
+        # Create a random orthogonal matrix for mixing
+        Q, _ = np.linalg.qr(np.random.randn(dim, dim))
         
-        # Place on diagonal
-        idx1, idx2 = 2*i, 2*i+1
-        Lambda[idx1, idx1] = lambda_x
-        Lambda[idx2, idx2] = lambda_p
+        # Apply moderate mixing - not fully random to preserve some structure
+        mixing_strength = 0.3
+        eigenvectors = (1 - mixing_strength) * eigenvectors + mixing_strength * Q
+        
+        # Re-orthogonalize
+        eigenvectors, _ = np.linalg.qr(eigenvectors)
+    
+    # Construct precision matrix from eigendecomposition
+    Lambda = eigenvectors @ np.diag(eigenvalues) @ eigenvectors.T
     
     return Lambda
 }

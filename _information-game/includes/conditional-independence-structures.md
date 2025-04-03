@@ -936,12 +936,12 @@ total_dims = 2 * n_pairs + n_slow_modes    # Total system dimensionality
 steps = 100
 
 # Initialize with minimal entropy state but with cross-cluster connections
-eigenvalues, eigenvectors = initialize_multidimensional_state(n_pairs, 
-                                                             squeeze_factors=[0.1 + 0.1*i for i in range(n_pairs)],
-                                                             with_cross_connections=True)
+Lambda_init = initialize_multidimensional_state(n_pairs, 
+                                                squeeze_factors=[0.1 + 0.1*i for i in range(n_pairs)],
+                                                with_cross_connections=True)
 
 # Run gradient ascent
-eigenvalues_history, entropy_history = gradient_ascent_entropy(eigenvalues, steps, learning_rate=0.01)
+eigenvalues_history, entropy_history = gradient_ascent_entropy(Lambda_init, steps, learning_rate=0.01)
 
 # At different stages of gradient ascent, compute conditional independence metrics
 stage_indices = [0, steps//4, steps//2, steps-1]  # Initial, early, middle, final stages
@@ -978,13 +978,13 @@ gs = gridspec.GridSpec(2, 2, height_ratios=[1, 1])
 ax1 = plt.subplot(gs[0, 0])
 for i in range(len(eigenvalues_history[0])):
     if i >= 2*n_pairs:  # Slow modes
-        ax1.semilogy(eigenvalues_history[:, i], 'r-', alpha=0.7)
+        ax1.semilogy(eigenvalues_history[0][:, i], 'r-', alpha=0.7)
     else:  # Fast variables
-        ax1.semilogy(eigenvalues_history[:, i], 'b-', alpha=0.4)
+        ax1.semilogy(eigenvalues_history[0][:, i], 'b-', alpha=0.4)
 
 # Highlight representative eigenvalues
-ax1.semilogy(eigenvalues_history[:, 0], 'b-', linewidth=2, label='Fast variable')
-ax1.semilogy(eigenvalues_history[:, -1], 'r-', linewidth=2, label='Slow mode')
+ax1.semilogy(eigenvalues_history[0][:, 0], 'b-', linewidth=2, label='Fast variable')
+ax1.semilogy(eigenvalues_history[0][:, -1], 'r-', linewidth=2, label='Slow mode')
 
 ax1.set_xlabel('Gradient Ascent Step')
 ax1.set_ylabel('Eigenvalue (log scale)')
@@ -1037,9 +1037,9 @@ mlai.write_figure(filename='emergent-conditional-independence.svg',
 
 \newslide{Emergent Conditional Independence}
 
-\figure{\includediagram{\diagramsDir/information-game/emergent-conditional-independence}{80%}}{Through gradient ascent on entropy, we observe the natural emergence of eigenvalue structures that lead to conditional independence patterns. The top row shows eigenvalue and entropy evolution during gradient ascent. The bottom row shows the unconditional mutual information (left) and conditional mutual information given slow modes (right) at the final stage.}{emergent-conditional-independence}
+\figure{\includediagram{\diagramsDir/information-game/emergent-conditional-independence}{80%}}{Through gradient ascent on entropy, we observe the emergence of eigenvalue structures that lead to conditional independence patterns. The top row shows eigenvalue and entropy evolution during gradient ascent. The bottom row shows the unconditional mutual information (left) and conditional mutual information given slow modes (right) at the final stage.}{emergent-conditional-independence}
 
-\notes{The experiment results reveal several key insights:
+\notes{The experiment results reveal:
 
 1. *Natural eigenvalue separation*: As the system evolves toward maximum entropy, we observe a natural separation of eigenvalues into "slow" and "fast" modes. The slow modes (those with small eigenvalues and thus large variances) tend to develop connections across different regions of the system.
 
@@ -1057,5 +1057,92 @@ mlai.write_figure(filename='emergent-conditional-independence.svg',
 * Block structure emerges in conditional mutual information matrix
 * Locality through conditional independence arises naturally
 }
+
+\subsection{Fundamental Tradeoffs in Information Processing Systems}
+
+\notes{The game exhibits three properties that emerge from the characteristic structure of the Fisher information matrix: information capacity, modularity, and memory. 
+
+1. **Information Capacity**: Mathematically expressed through the variances of the slow modes, where $\sigma_i^2 \propto \frac{1}{\lambda_i}$. Smaller eigenvalues permit higher variance in corresponding directions, allowing more information to be carried. This capacity arises directly from entropy maximization under uncertainty constraints.
+
+2. **Modularity**: Formalized through conditional independence relations $I(X^i; X^j | M) \approx 0$ between variables in different modules given the slow modes. When this conditional mutual information approaches zero, the precision matrix develops block structures that mathematically define spatial or functional modules.
+
+3. **Memory**: Characterized by the temporal Markov property, where $I(X_0; X_1 | M) = 0$ indicates that slow modes completely mediate dependencies between past and future states. This mathematical condition defines the system's capacity to preserve relevant information across time.}
+
+\slides{
+* Three fundamental properties with mathematical formulations:
+  - Information Capacity: Variances of slow modes $\sigma_i^2 \propto \frac{1}{\lambda_i}$
+  - Modularity: Conditional independence $I(X^i; X^j | M) \approx 0$ between modules
+  - Memory: Markovian dynamics $I(X_0; X_1 | M) = 0$ for temporal information
+}
+
+\notes{The interrelationship between these properties can be understood by examining their mathematical definitions. All three depend on the same underlying eigenstructure of the Fisher information matrix, creating inherent constraints. This leads to a mathematical uncertainty relation:
+\begin{align}
+\mathcal{C}(M) \cdot \mathcal{S}(X|M) \cdot \mathcal{T}(X_0, X_1|M) \geq k
+\end{align}
+where:
+\begin{align}
+\mathcal{C}(M) &= \sum_{i=1}^{d_M} \frac{1}{\lambda_i} = \sum_{i=1}^{d_M} \sigma_i^2 \quad \text{(Information capacity of slow modes)}\\
+\mathcal{S}(X|M) &= \sum_{i \neq j} I(X^i; X^j | M) \quad \text{(Modularity - total residual dependencies)}\\
+\mathcal{T}(X_0, X_1|M) &= I(X_0; X_1 | M) \quad \text{(Memory - residual temporal dependency)}
+\end{align}
+and $k$ is a system-dependent constant.}
+
+\notes{Here, $\mathcal{C}(M)$ is defined as the sum of the variances $\sigma_i^2$ of the slow modes, which is equivalently the sum of reciprocals of the eigenvalues $\lambda_i$ of the Fisher information matrix corresponding to these modes. This quantity mathematically represents the total information capacity of the slow modes - how much information they can effectively store or transmit. Higher capacity allows the slow modes to capture more complex dependencies across the system, but may require more physical resources to maintain.}
+
+\slides{
+* Mathematical uncertainty relation: $\mathcal{C}(M) \cdot \mathcal{S}(X|M) \cdot \mathcal{T}(X_0, X_1|M) \geq k$
+* Rigorous mathematical definitions:
+  - $\mathcal{C}(M) = \sum_{i=1}^{d_M} \frac{1}{\lambda_i} = \sum_{i=1}^{d_M} \sigma_i^2$ (Information capacity)
+  - $\mathcal{S}(X|M) = \sum_{i \neq j} I(X^i; X^j | M)$ (Modularity)
+  - $\mathcal{T}(X_0, X_1|M) = I(X_0; X_1 | M)$ (Memory)
+* Imposes fundamental limits on simultaneous optimization
+}
+
+\notes{This uncertainty relation emerges from the shared dependence on the eigenstructure. When a system increases the information capacity of slow modes to improve memory, these modes necessarily couple more variables across space, reducing modularity. Conversely, strong modularity requires specific eigenvalue patterns that may constrain the slow modes' ability to capture temporal dependencies.}
+
+\notes{When examining the Markov property specifically, we observe that it emerges naturally when the eigenstructure allocates sufficient information capacity to slow modes to mediate temporal dependencies. The emergence or failure of Markovianity can be precisely quantified through $I(X_0; X_1 | M)$, where non-zero values indicate direct information pathways between past and future that bypass the slow mode bottleneck.}
+
+\notes{This mathematical framework reveals why no system can simultaneously maximize information capacity, modularity, and memory - the constraints are not design limitations but fundamental properties of information geometry. The eigenstructure must balance these properties based on the underlying physics of information propagation through the system.}
+
+\slides{
+* Markov property emerges when slow modes capture all temporal dependencies
+* Mathematical tradeoffs between properties:
+  - Enhanced memory requires higher capacity slow modes ($\uparrow \mathcal{C}(M)$)
+  - Stronger modularity constrains information flow paths ($\downarrow \mathcal{S}(X|M)$)
+  - Higher information capacity may require more physical resources
+}
+
+\subsection{The Duality Between Modularity and Memory}
+
+\notes{Modularity and memory represent a duality in information processing systems. While they appear distinct - modularity concerns spatial/functional organization while memory concerns temporal dependencies - they are two manifestations of the same underlying mathematical structure.
+
+Both properties emerge from conditional independence relationships mediated by the slow modes:
+- Modularity: $I(X^i; X^j | M) \approx 0$ for variables in different spatial/functional modules
+- Memory: $I(X_0; X_1 | M) \approx 0$ for variables at different time points
+
+This reveals a  symmetry: modularity can be viewed as "spatial memory" where the slow modes maintain information about the relationships between different parts of the system. Conversely, memory can be viewed as "temporal modularity" where the slow modes create effective independence between past and future states, mediated by the present state of the slow modes.}
+
+\notes{The mathematical structures that support this duality are apparent when we examine dynamical systems over time. The same slow modes that create effective boundaries between spatial modules create bridges across time. 
+
+The eigenvalue structure of the Fisher information matrix determines both:
+1. How effectively the system partitions into modules (spatial organization)
+2. How effectively the system retains relevant information over time (temporal organization)
+}
+
+\slides{
+* Modularity and memory as dual aspects of the same phenomena:
+  - Modularity = "Spatial memory" (independence across space given M)
+  - Memory = "Temporal modularity" (independence across time given M)
+* Both rely on conditional independence mediated by slow modes
+* Same eigenvalue structure determines both properties
+* Explains why highly modular systems often have sophisticated memory
+}
+
+\notes{In hierarchical systems the slow modes at each level of the hierarchy simultaneously.
+
+1. Define the boundaries between modules at that level (modularity)
+2. Determine what information persists from past to future at that timescale (memory)
+
+This perspective provides a unified framework for understanding how information is organized across both space and time in complex systems.}
 
 \endif 
