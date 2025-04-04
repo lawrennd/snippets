@@ -15,7 +15,7 @@
 \slides{* Machines rely on measurable outputs
   * Quantified aspects of humans *easier to automate*
   * Essential aspects of humanity are the *hardest to measure*
-* Implies: atomic human is difficult to quantify}
+* Implies: atomic human is *difficult to quantify*}
 
 \notes{Unfortunately, when we seek it out, we are faced with a form of uncertainty principle. Machines rely on measurable outputs, meaning any aspect of human ability that can be quantified is at risk of automation. But the most essential aspects of humanity are the hardest to measure.}
 

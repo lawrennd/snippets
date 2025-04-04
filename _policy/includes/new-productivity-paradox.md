@@ -5,7 +5,8 @@
 
 \subsection{New Productivity Paradox}
 
-\slides{* Current productivity flywheel relies on measurement}
+\slides{* Current productivity flywheel relies on measurement to translate innovation into productivity.
+* Without measurement how does the wheel spin?}
 
 \notes{Thus we face a new productivity paradox. The classical tools of economic intervention cannot map hard-to-measure supply and demand of quality human attention. So how do we build a new economy that utilises our lead in human capital and delivers the digital future we aspire to?}
 

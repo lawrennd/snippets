@@ -17,8 +17,12 @@
 \newslide{Supply Chain of Ideas}
 
 \slides{* Current imbalance between supply and demand sides
-* Current focus on creating new technologies/companies
-* Under-focus on real-world needs}
+  * Mismatch between macroeconomic interventions and microeconomic need
+* Over-Focus on solutionism
+  * technologies/companies
+* Under-focus on real-world needs
+  ... disconnect between *government* and *citizens*
+  ... disconnect between *companies* and *customers*}
 
 \notes{Imagining the supply chain rather than just the notion of the Innovation Economy allows the conceptualisation of the gaps between macro and micro economic issues, enabling a different way of thinking about process innovation.}
 
@@ -33,10 +37,12 @@
 
 \newslide{Supply Chain of Ideas}
 
-\slides{* Need to map idea demand to supply
-* Focus on understanding current "stock" of ideas
-* Active management of idea resources
-* Shaping supply to meet demand}
+\slides{* Need to map idea problems demand to idea supply
+* Need to understand
+  ... problems (demand)
+  ... current "stock" of solutions (supply)
+* Requires *active management* of idea resources
+* Shape supply to meet demand}
 
 \notes{The objective is to create a system that can generate, evaluate, and deploy ideas efficiently and effectively, while ensuring that people's needs and preferences are met. The customer here depends on the context - it could be the public, it could be a business, it could be a government department but very often it's individual citizens. The loss of their voice in the innovation economy is a trigger for the gap between the innovation supply (at a macro level) and the innovation demand (at a micro level).}
 
