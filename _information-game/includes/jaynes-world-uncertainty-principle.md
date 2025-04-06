@@ -35,27 +35,30 @@ $$
 $$
 \Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k,
 $$
-where $k$ is a constant. This relationship can be recognised as a natural *uncertainty principle* that underpins the behaviour of the game. This principle is a necessary consequence of information theory. It follows from the requirement for the parameter-like states, $M$ to have both precision and high capacity (in the Shannon sense). The uncertainty principle ensures that when parameters are sharply defined (low $\Delta\boldsymbol{\theta}$), the capacity variables have high uncertainty (high $\Delta c$), allowing information to be encoded in their relationships rather than absolute values.}
+where $k$ is a constant. This relationship can be recognised as a natural *uncertainty principle* that underpins the behaviour of the game. This principle is a necessary consequence of information theory. It follows from the requirement for the parameter-like states, $M$ to have both precision and high capacity (in the Shannon sense \cite{shannon1948mathematical}). The uncertainty principle ensures that when parameters are sharply defined (low $\Delta\boldsymbol{\theta}$), the capacity variables have high uncertainty (high $\Delta c$), allowing information to be encoded in their relationships rather than absolute values.}
 
-\notes{In practice this means that the parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$ must form a 
-Fourier-dual pair,
+\notes{This trade-off between precision and capacity directly parallels Shannon's insights about information transmission [@Shannon-info48], where he demonstrated that increasing the precision of a signal requires increasing bandwidth or reducing noise immunity—creating an inherent trade-off in any communication system. Our formulation extends this principle to the information reservoir's parameter space.}
+
+\notes{In practice this means that the parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$ must form a Fourier-dual pair,
 $$
 c(M) = \mathcal{F}[\boldsymbol{\theta}(M)],
 $$
 This duality becomes important at saddle points when direct gradient ascent stalls.}
 
+\notes{The mathematical formulation of the uncertainty principle comes from @Hirschman-entropy57 and later refined by @Beckner-fourier75 and @Bialynicki-uncertainty75. These works demonstrated that Shannon's information-theoretic entropy provides a natural framework for expressing quantum uncertainty, establishing a direct bridge between quantum mechanics and information theory. Our capacity-precision trade-off follows this tradition, expressing the fundamental limits of information processing in our system.}
+
 \subsection{Quantum vs Classical Information Reservoirs}
 
 \slides{
-* Near origin: "Quantum-like" information processing
-  * Wave-like encoding, non-local correlations
-  * Uncertainty principle nearly saturated
+* Near origin: 
+  * Wave encoding of capacity, non-local correlations
+  * Uncertainty principle saturated
 * Higher entropy: Transition to "classical" behavior
   * From wave-like to particle-like information storage
   * Local rather than distributed encoding
 }
 
-\notes{The uncertainty principle means that the game can exhibit quantum-like information processing regimes during evolution. This inspires an  information-theoretic perspective on the quantum-classical transition.}
+\notes{The uncertainty principle means that the game can exhibit quantum-like information processing regimes during evolution. This inspires an information-theoretic perspective on the quantum-classical transition.}
 
 \notes{At minimal entropy states near the origin, the information reservoir has characteristics reminiscent of quantum systems.}
 
@@ -67,7 +70,7 @@ This duality becomes important at saddle points when direct gradient ascent stal
 }
 
 \notes{
-3. *Uncertainty-saturated regime*: The uncertainty relationship $\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k$ is nearly saturated (approaches equality), similar to Heisenberg's uncertainty principle in quantum systems.}
+3. *Uncertainty-saturated regime*: The uncertainty relationship $\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k$ is nearly saturated (approaches equality), similar to Heisenberg's uncertainty principle in quantum systems and the entropic uncertainty relations established by @Bialynicki-uncertainty75.}
 
 \notes{As the system evolves towards higher entropy states, a transition occurs where some variables exhibit classical behavior.}
 
@@ -94,5 +97,8 @@ This duality becomes important at saddle points when direct gradient ascent stal
 \notes{The quantum-classical transition can be quantified using the moment generating function $M_Z(t)$. In quantum-like regimes, the MGF exhibits oscillatory behavior with complex analytic structure, whereas in classical regimes, it grows monotonically with simple analytic structure. The transition between these behaviors identifies variables moving between quantum-like and classical information processing modes.}
 
 \notes{This perspective suggests that what we recognize as "quantum" versus "classical" behavior may fundamentally reflect different regimes of information processing - one optimized for coherent information storage (quantum-like) and the other for flexible information manipulation (classical-like). The emergence of both regimes from our entropy-maximizing model indicates that nature may exploit this computational architecture to optimize information processing across multiple scales.}
+
+\notes{This formulation of the uncertainty principle in terms of information capacity and parameter precision follows the tradition established by @Shannon-info48 and expanded upon by @Hirschman-entropy57 and others who connected information entropy uncertainty to Heisenberg's uncertainty.}
+
 
 \endif
