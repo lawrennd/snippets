@@ -45,12 +45,12 @@ c(M) = \mathcal{F}[\boldsymbol{\theta}(M)],
 $$
 This duality becomes important at saddle points when direct gradient ascent stalls.}
 
-\notes{The mathematical formulation of the uncertainty principle comes from @Hirschman-entropy57 and later refined by @Beckner-fourier75 and @Bialynicki-uncertainty75. These works demonstrated that Shannon's information-theoretic entropy provides a natural framework for expressing quantum uncertainty, establishing a direct bridge between quantum mechanics and information theory. Our capacity-precision trade-off follows this tradition, expressing the fundamental limits of information processing in our system.}
+\notes{The mathematical formulation of the uncertainty principle comes from @Hirschman-entropy57 and later refined by @Beckner-fourier75 and @Bialynicki-uncertainty75. These works demonstrated that Shannon's information-theoretic entropy provides a natural framework for expressing the uncertainty principle, establishing a direct bridge between the mathematical formalism of quantum mechanics and information theory. Our capacity-precision trade-off follows this tradition, expressing the fundamental limits of information processing in our system.}
 
 \subsection{Quantum vs Classical Information Reservoirs}
 
 \slides{
-* Near origin: 
+* Near origin: quantum-like
   * Wave encoding of capacity, non-local correlations
   * Uncertainty principle saturated
 * Higher entropy: Transition to "classical" behavior
