@@ -5,7 +5,7 @@
 
 \subsection{Purpose}
 
-This model explores how structure, time, causality, and locality can emerge within a system governed solely by internal information-theoretic constraints. It serves as
+This game explores how structure, time, causality, and locality can emerge within a system governed solely by internal information-theoretic constraints. It serves as
 
 - A *research framework* for observer-free dynamics and entropy-based emergence,
 - A *conceptual tool* for introducing deep ideas in physics in an accessible, internally consistent setting.
@@ -84,7 +84,7 @@ $$|\dot{\theta}_{0i}| < \varepsilon$$
 
 This state minimizes entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon \sim 1/2^N$. Its structure can be derived via a *minimum-entropy analogue of Jaynes' formalism*, using the same density matrix geometry but inverted optimization.
 
-\subsubsection{Lemma 1: Symmetry Breaking}
+\subsubsection{Lemma 2: Symmetry Breaking}
 
 If $\theta_k \in M(t)$ and $|\dot{\theta}_k| \geq \varepsilon$, then
 $$\theta_k \in X(t + \delta)$$
@@ -93,7 +93,7 @@ $$\theta_k \in X(t + \delta)$$
 
 $$\tau(t) := S_{X(t)}(t)$$
 
-\subsubsection{Lemma 2: Monotonicity of Entropy-Time}
+\subsubsection{Lemma 3: Monotonicity of Entropy-Time}
 
 $$\tau(t_2) \geq \tau(t_1) \quad \text{for all } t_2 > t_1$$
 
@@ -105,7 +105,7 @@ $\tau(t)$ increases monotonically, preventing time-reversal globally.
 
 $$\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, d\tau = 0$$
 
-\subsection{Lemma 3: Frieden-Analogous Extremal Flow
+\subsection{Lemma 4: Frieden-Analogous Extremal Flow}
 
 At points where the latent-to-active flow functional $\Psi(t)$ is locally extremal (i.e., $\frac{d\Psi}{dt} = 0 $), the system may exhibit:
 
@@ -127,7 +127,7 @@ These transitions play a role analogous to *extremizing an internal information 
 
 \subsubsection{1. Apparent Zero-Entropy Start}
 
-The model behaves as if it originates at low entropy, but this is a consequence of the entropy ascent, not an assumption.
+The game behaves as if it originates at low entropy, but this is a consequence of the entropy ascent, not an assumption.
 
 \subsubsection{2. Discretisation from Entropy Capacity}
 
@@ -160,14 +160,14 @@ Only valid within fixed symmetry classes. It offers insight but is not required 
 
 \subsection{Connection to Frieden’s EPI: A Conceptual Analogue}
 
-This model is not built to explain or reproduce any specific physical theory, but it reveals structural patterns that *resemble variational information principles*, such as those used in Frieden’s Extreme Physical Information (EPI) framework.
+This game is not built to explain or reproduce any specific physical theory, but it reveals structural patterns that *resemble variational information principles*, such as those used in Frieden’s Extreme Physical Information (EPI) framework.
 
 Frieden’s principle proposes that physical systems arise by extremizing a quantity $I - J$, where:
 
 - $J$ is source (intrinsic) information,
 - $I$ is Fisher information extracted by an observer.
 
-In this model:
+In this game:
 
 - No observer is present,
 - But we still have a structure ($G(\boldsymbol{\theta})$) that defines *latent curvature* (reservoir $M$),
