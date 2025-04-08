@@ -323,23 +323,39 @@ J_M = \int \frac{1}{p(m)} \left( \frac{d p(m)}{d m} \right)^2 \text{d}m,
 $$
 and seek a variational principle that determines $p(m)$ under the constraint of finite resolution. Specifically, we assume
 
-* Normalisation: $\int p(m) , \text{d}m = 1$
-* Variance constraint: $\int m^2 p(m) , \text{d}m \geq \varepsilon^2$
+- Normalisation: $\int p(m) \, \text{d}m = 1$
+- Variance constraint: $\int m^2 p(m) \, \text{d}m \geq \varepsilon^2$
 
-Minimising $J_M$ under these constraints yields a second-order differential equation for $p(m)$ (or equivalently for its square root $\psi(m) := \sqrt{p(m)}$), of the form:
+Minimising $J_M$ under these constraints yields a second-order differential equation for $p(m)$ (or equivalently for its square root $\psi(m) := \sqrt{p(m)}$), of the form,
 $$
-\frac{d^2 \psi}{d m^2} + \lambda m^2 \psi = \mu \psi
+- \frac{d^2 \psi}{d m^2} + \lambda m^2 \psi = \mu \psi
 $$
 which resembles a time-independent Schrödinger-type equation for a harmonic well. Here, the appearance of a potential-like term arises from the resolution constraint on the variance.
 
 Importantly, this wave-like equation is not imposed but emerges from the system’s requirement to minimise curvature (i.e. Fisher information) in the absence of directional flow. The system seeks the flattest possible entropy configuration under bounded resolution — and the ground state of this condition is formally equivalent to a Gaussian, satisfying a local second-order differential equation.
 
+The minimisation procedure determines the ground-state configuration of the system under resolution constraints, and the resulting differential equation governs the form of the square-root amplitude $\psi(m)$.
 This provides the first appearance of wave-like structure in the unfolding framework. The minimal-entropy density in $M$-space obeys a local equation with the form of a stationary wavefunction — not because of external physics, but as a geometric consequence of information constraints.
 
 We interpret this as a latent wave equation: a structure that governs the configuration of an unresolved variable prior to activation. It encodes the intrinsic geometry of the latent domain $\mathcal{D}_0$, and serves as the foundational solution from which dynamics later emerge.
 
 In subsequent sections we will generalise this to activated variables — and explore how similar wave-like equations arise along directions where curvature becomes locally dominant, driven by internal entropy flow.
 
+We emphasise that this structure arises entirely from internal constraints — not as an imposed physical law — though its form resonates with equations derived in physical contexts, such as those examined in Frieden’s information-theoretic treatment of wave equations [@Frieden-physics98].
+
+\subsection{Why a Wave Equation?}
+
+Before continuing, it’s worth pausing to reflect on what has just emerged. At the system’s origin, we derived a local second-order differential equation for the square root of the probability density $\psi(m) := \sqrt{p(m)}$ — an equation whose structure mirrors that of a time-independent wavefunction.
+
+But where did this wave equation come from?
+
+It was not assumed. No physical Hamiltonian was postulated, no operator formalism invoked. Instead, the equation arose as the minimal-curvature configuration consistent with internal resolution constraints: a balance between flatness (low Fisher information) and bounded spread (finite variance). This tradeoff — between smoothness and uncertainty — is a familiar principle in statistical inference, where regularisation penalises sharp transitions and rewards structure that remains distinguishable but minimal.
+
+The resulting equation defines a stationary information geometry: a configuration where no direction dominates, and yet the system is not trivial. The emergence of wave-like behaviour here reflects a deeper principle: that curvature minimisation under information-theoretic constraints naturally yields differential structure. The equation is not about particles or fields — it is about the shape of uncertainty in a system that is otherwise silent.
+
+This perspective helps prepare us for what follows. As the system leaves the latent region and variables activate, similar constraints will apply — but now in directions where entropy gradients break symmetry. In these regions, the same tension between resolution and smoothness applies, but is now directed: geometry flows, and the wave equations will reflect that internal evolution.
+
+We now turn to those emergent directions.
 
 
 
