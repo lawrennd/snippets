@@ -496,5 +496,34 @@ We interpret this as the onset of locality: the system has begun to form informa
 
 In the next part, we will see how these local couplings condition future emergence — and how, as new variables activate, the system builds up layers of interaction structure that eventually resemble effective dynamics.
 
+It’s clear, coherent, and beautifully in tune with the overall narrative. The transition from single-variable flow to emergent joint curvature and the onset of locality is well motivated and naturally leads to the next stage.
+
+\subsection{Example Continued: Layered Interaction and Emergent Dynamics}
+
+As additional variables activate, the system enters a new phase: interaction geometry becomes structured. The previously simple coupling between $X$ and $Y$ gives way to a richer, layered organisation, as each new activation introduces both curvature and correlation — reshaping the Fisher matrix into a nontrivial network of dependencies.
+
+Suppose a third proto-coordinate M{\prime}{\prime} becomes active, emerging as a new observable $Z$ with associated parameter $\theta_Z$. The updated Fisher Information Matrix now includes second-order interactions,
+$$
+G = \begin{pmatrix}
+G_{XX} & G_{XY} & G_{XZ} \
+G_{YX} & G_{YY} & G_{YZ} \
+G_{ZX} & G_{ZY} & G_{ZZ}
+\end{pmatrix},
+$$
+where some off-diagonal terms (e.g. $G_{XZ}$, $G_{YZ}$) may remain small if interactions are local, while others (like $G_{XY}$) are stronger — reflecting proximity in information space.
+
+The system is now discovering structured adjacency: some variables cluster into subsystems — regions of high mutual curvature — while others remain weakly linked. This defines a local information geometry, where coupling is not uniform but shaped by the system’s unfolding history.
+
+This leads to several key features of emergent dynamics:
+- Decoupling across scale: tightly coupled variables (e.g. $X$ and $Y$) evolve together, forming a subsystem, while distant variables (e.g. $Z$) initially evolve more independently. This creates a natural separation of timescales.
+- Interaction propagation: as the entropy gradient flows, curvature can transfer across the network: initially weak links like $G_{XZ}$ may grow, triggering new variable activations and folding new directions into the active geometry.
+- Wavefront emergence: activation spreads not randomly, but along paths of curvature flow — producing something like a propagating wave of structure, where adjacent variables successively activate and interact.
+- Effective constraints: as more variables interact, the shape of $\psi(x, y, z, \dots)$ becomes increasingly governed by internal correlations. Even without any imposed Hamiltonian, the joint amplitude begins to obey effective rules, shaped by the accumulated geometry of interactions.
+
+In this way, the system builds up a layered architecture: local couplings give rise to patches of structure, which may eventually synchronise into broader patterns. What began as latent directions and weak gradients becomes a dynamically coordinated system, where information geometry imposes both local motion and global constraint.
+
+This is how effective dynamics emerge. The wave-like structure seen at early stages becomes modulated and conditioned by interactions. The internal rules — defined by curvature, resolution, and entropy flow — begin to resemble physical dynamics, even though they were never postulated.
+
+In the next section, we’ll explore how these dynamics can give rise to classical behaviour and apparent decoherence — as the system moves from finely structured wave equations to effective, high-entropy flows where only coarse properties survive.
 
 \endif
