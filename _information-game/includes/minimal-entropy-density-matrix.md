@@ -34,11 +34,14 @@ We apply a variational principle where we minimise
 $$
 S[\rho] = -\mathrm{tr}(\rho \log \rho)
 $$
-subject to normalization, $\mathrm{Tr}(\rho) = 1$, a resolution constraint, $\mathrm{Tr}(\rho \hat{X}^2) \geq \epsilon^2$ and/or $\mathrm{Tr}(\rho \hat{P}^2) \geq \delta^2$, and other optional moment or dual-space constraints
+subject to normalization, $\mathrm{tr}(\rho) = 1$, a resolution constraint, $\mathrm{tr}(\rho \hat{X}^2) \geq \epsilon^2$ and/or $\mathrm{tr}(\rho \hat{P}^2) \geq \delta^2$, and other optional moment or dual-space constraints
 
 We introduce Lagrange multipliers $\lambda_0$, $\lambda_x$, $\lambda_p$ for these constraints and define the Lagrangian
 $$
-\mathcal{L}[\rho] = -\mathrm{tr}(\rho \log \rho) + \lambda_0(\mathrm{tr}(\rho) - 1) + \lambda_x (\epsilon^2 - \mathrm{tr}(\rho \hat{X}^2)) + \lambda_p (\delta^2 - \mathrm{tr}(\rho \hat{P}^2)).
+\mathcal{L}[\rho] = -\mathrm{tr}(\rho \log \rho)
++ \lambda_0 (\mathrm{tr}(\rho) - 1)
+- \lambda_x (\mathrm{tr}(\rho \hat{X}^2) - \epsilon^2)
+- \lambda_p (\mathrm{tr}(\rho \hat{P}^2) - \delta^2).
 $$
 
 To find the extremum, we take the functional derivative and set it to zero,
@@ -47,7 +50,7 @@ $$
 $$
 and solving for $\rho$ gives
 $$
-\rho = \frac{1}{Z} \exp\left(-\lambda_x \hat{X}^2 - \lambda_p \hat{P}^2 \right)
+\rho = \frac{1}{Z} \exp\left(-\lambda_x \hat{X}^2 - \lambda_p \hat{P}^2\right)
 $$
 where the partition function (which ensures normalisation) is
 $$
@@ -55,7 +58,7 @@ Z = \mathrm{tr}\left[\exp\left(-\lambda_x \hat{X}^2 - \lambda_p \hat{P}^2\right)
 $$
 This is the quantum analogue of a *Gaussian distribution*, which is consistent with the minimum entropy distribution under uncertainty constraints.
 
-The interpretation is that the Lagrange multipliers $\lambda_x$, $\lambda_p$ correspond to the *natural parameters* $\boldsymbol{\theta}$ and the form of $\rho$ is a density matrix as expected. The curvature (second derivative) of $\log Z$ gives the Fisher Information matrix $G$. Steepest ascent trajectories in $\boldsymbol{\theta}$ space will trace the system's entropy dynamics.
+The Lagrange multipliers $\lambda_x, \lambda_p$ enforce lower bounds on variance. These define the natural parameters as $\theta_x = -\lambda_x$ and $\theta_p = -\lambda_p$ in the exponential family form $\rho(\boldsymbol{\theta}) \propto \exp(\boldsymbol{\theta} \cdot \mathbf{H})$. The form of $\rho$ is a density matrix. The curvature (second derivative) of $\log Z$ gives the Fisher Information matrix $G$. Steepest ascent trajectories in $\boldsymbol{\theta}$ space will trace the system's entropy dynamics.
 
 For next steps we need to compute $G$ from $\log Z$ to explore the information geometry. From this we should verify that the following conditions hold,
 $$
