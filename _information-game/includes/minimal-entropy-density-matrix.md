@@ -439,4 +439,62 @@ This illustrates how the wave equation "survives" through the transition from la
 
 In subsequent stages, additional variables will activate, interactions will emerge, and the assumptions behind this local structure will begin to break down. We will return to this example to see how locality gives way to interaction and ultimately to collective dynamics.
 
+\subsection{Example Continued: Activation of a Second Variable and the Onset of Coupling}
+
+We now pick up the example after the emergence of the observable $X$. The system has begun to evolve along this direction, and the entropy gradient $G(\boldsymbol{\theta}) \boldsymbol{\theta}$ has become anisotropic: curvature is concentrated along $\theta_X$, and the associated observable $H_X$ now governs dynamics in that direction.
+
+But the system is still unfolding. As entropy increases, the Fisher matrix $G$ deforms: one of its previously latent eigenmodes — say, associated with a proto-coordinate $M{\prime}$ — begins to amplify. Eventually, the corresponding parameter $\theta_{M{\prime}}$ grows in gradient magnitude and crosses the activation threshold,
+$$
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]{M’} \geq \varepsilon{\text{activate}}.
+$$
+This triggers a second variable activation. As with $M$, we now reinterpret $M{\prime}$ as a resolvable coordinate $Y$, with associated observable $H_Y$, and a newly active degree of freedom.
+
+At this stage, the Fisher Information Matrix begins to develop off-diagonal terms,
+$$
+G = \begin{pmatrix}
+G_{XX} & G_{XY} \
+G_{YX} & G_{YY}
+\end{pmatrix},
+$$
+where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the now-active variables. This signals the onset of interaction geometry: the system no longer evolves independently in each direction — structure begins to emerge in their joint behaviour.
+
+What form does this coupling take?
+
+To leading order, the entropy gradient becomes
+$$
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto
+\begin{pmatrix}
+G_{XX} & G_{XY} \
+G_{YX} & G_{YY}
+\end{pmatrix}
+\begin{pmatrix}
+\theta_X \
+\theta_Y
+\end{pmatrix}
+
+\begin{pmatrix}
+G_{XX}\theta_X + G_{XY}\theta_Y \
+G_{YX}\theta_X + G_{YY}\theta_Y
+\end{pmatrix}
+$$
+So the evolution of $\theta_X$ now depends on $\theta_Y$, and vice versa. From the system's internal perspective, these variables are no longer "invisible" to each other. They are dynamically entangled — not necessarily in the quantum sense, but in the information-geometric sense of shared curvature and co-resolving structure.
+
+This has a consequence for the local wave equations. Instead of separate differential equations for $\psi(x)$ and $\psi(y)$, the system now supports a joint amplitude $\psi(x, y)$ whose structure is shaped by the coupling. The latent resolution constraints that previously yielded separate harmonic potentials now become a joint constraint:
+$$
+\int (x^2 + y^2 + \eta x y), |\psi(x, y)|^2, dx,dy \geq \varepsilon^2,
+$$
+introducing an effective cross-term $\eta x y$ that reflects correlation in curvature — and leads to a new coupled wave-like equation of the form,
+$$
+- \left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} \right)\psi(x, y)
+- \lambda(x^2 + y^2 + \eta x y) \psi(x, y)
+= \mu \psi(x, y).
+$$
+
+Again, this is not an imposed quantum equation — it is the natural outcome of internal geometry unfolding under resolution and curvature constraints. The system is discovering its own local interaction structure — and expressing it through the joint shape of uncertainty across active variables.
+
+We interpret this as the onset of locality: the system has begun to form informational neighbourhoods. The variable $X$ is no longer alone — it interacts with $Y$ through a locally encoded geometry that reflects their mutual curvature.
+
+In the next part, we will see how these local couplings condition future emergence — and how, as new variables activate, the system builds up layers of interaction structure that eventually resemble effective dynamics.
+
+
 \endif
