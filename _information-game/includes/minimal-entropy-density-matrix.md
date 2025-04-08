@@ -17,7 +17,7 @@ where $Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left( \sum_i \theta_i H_i 
 
 \subsection{Jaynesian Derivation of Minimal Entropy Configuration}
 
-Jaynes proposed that statistical mechanics problems should be treated as problems of inference. One assigns a probability distribution (or density matrix in the quantum case) that is maximally noncommittal with respect to missing information, subject to known constraints.
+Jaynes proposed that statistical mechanics problems should be treated as problems of inference. One assigns a probability distribution (or density matrix) that is maximally noncommittal with respect to missing information, subject to known constraints.
 
 While Jaynes applied this idea to derive the *maximum entropy* configuration given constraints, here we adapt it to derive the *minimum entropy* configuration, under an assumption of zero initial entropy bounded by a maximum entropy of $N$ bits.
 
@@ -56,7 +56,7 @@ where the partition function (which ensures normalisation) is
 $$
 Z = \mathrm{tr}\left[\exp\left(-\lambda_x \hat{X}^2 - \lambda_p \hat{P}^2\right)\right]
 $$
-This is the quantum analogue of a *Gaussian distribution*, which is consistent with the minimum entropy distribution under uncertainty constraints.
+This is formally analogous to a Gaussian state for a density matrix, which is consistent with the minimum entropy distribution under uncertainty constraints.
 
 The Lagrange multipliers $\lambda_x, \lambda_p$ enforce lower bounds on variance. These define the natural parameters as $\theta_x = -\lambda_x$ and $\theta_p = -\lambda_p$ in the exponential family form $\rho(\boldsymbol{\theta}) \propto \exp(\boldsymbol{\theta} \cdot \mathbf{H})$. The form of $\rho$ is a density matrix. The curvature (second derivative) of $\log Z$ gives the Fisher Information matrix $G$. Steepest ascent trajectories in $\boldsymbol{\theta}$ space will trace the system's entropy dynamics.
 
@@ -199,7 +199,8 @@ $$
 \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto \nabla S[\rho] = G(\boldsymbol{\theta}) \boldsymbol{\theta}.
 $$
 
-This defines a deterministic flow field over parameter space. In regions of uniform curvature, the system evolves slowly and symmetrically. But when one direction becomes locally dominant (i.e. the eigenvalues of $G(\boldsymbol{\theta})$ become asymmetric), the flow breaks symmetry and accelerates along that axis. A variable emerges.
+
+This defines a deterministic flow field over parameter space. In regions of uniform curvature, the system evolves slowly and symmetrically. The system's ability to resolve a specific direction corresponds to a rise in distinguishability, reflected in the local curvature profile. When one direction becomes locally dominant (i.e. the eigenvalues of $G(\boldsymbol{\theta})$ become asymmetric), the flow breaks symmetry and accelerates along that axis (i.e. a specific direction in $\boldsymbol{\theta}$-space becomes energetically or informationally preferred). A variable emerges.
 
 This process — emergence through spontaneous asymmetry in the curvature — does not require an external observer or measurement collapse. Instead, it is an internal dynamical effect of the geometry itself. A direction in $\boldsymbol{\theta}$-space becomes statistically distinguishable from the others: it carries more information and thus breaks the latent symmetry.
 
