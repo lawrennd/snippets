@@ -159,7 +159,7 @@ At the system’s origin, all degrees of freedom are latent — no variable has 
 $$
 \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i.
 $$
-This ensures ensures that the entropy gradient, proportional to $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, remains too shallow to trigger emergence in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.
+This ensures that the entropy gradient, proportional to $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, remains too shallow to trigger emergence in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.
 This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must lie near a saddle point or a flat region of the entropy landscape. The curvature is non-zero and globally bounded (from the uncertainty constraint), but its projection is uniformly suppressed across all directions.
 
 \subsection{Initial Constraints and the Permissible Unfolding Domain}
@@ -180,7 +180,7 @@ We impose two key global conditions:
    $$
    This enforces the condition that no direction in parameter space dominates initially, preserving symmetry and avoiding premature emergence.
 
-These two constraints together define a *feasible region* in parameter space: a domain $\mathcal{D}_0 \subset \mathbb{R}^d$ in which the entropy is subextensive and the entropy gradient is directionally suppressed.
+These two constraints together define a *feasible region* in parameter space: a domain $\mathcal{D}_0 \subset \mathbb{R}^d$ where entropy remains low and gradients are uniformly shallow. In thermodynamics the entropy would be referred to as subextensive, i.e. it remains below capacity and does not yet scale with effective dimensionality.
 
 We interpret this region as a *latent pregeometry*: a structure defined not by explicit variables, but by information-theoretic curvature and bounded resolution. Emergence proceeds only when a trajectory moves outside this domain, at which point curvature accumulates along a dominant direction and a variable 'activates'.
 
