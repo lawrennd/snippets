@@ -230,4 +230,24 @@ This leads to a piecewise unfolding of structure. Within each phase, a subset of
 
 Over time, this defines a staged emergence process, in which new variables appear sequentially as the system climbs through successive regions of increasing entropy and asymmetry. The basis $\{H_i\}$ is thus not globally fixed, but emerges dynamically as a function of the internal information landscape.
 
+\subsection{Phase Transitions and Piecewise Geometric Flow}
+
+As each variable activates, the system enters a new phase — a locally adapted region of parameter space where the information geometry is governed by an updated basis of observables. These phases are separated by *activation thresholds*, and each new phase introduces a change in the effective dimensionality of the system.
+
+We describe the system’s evolution as a *piecewise geodesic flow*: within each phase, the system follows a smooth trajectory along the entropy gradient,
+$$
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto G(\boldsymbol{\theta}) \boldsymbol{\theta},
+$$
+where the geometry is defined by the active subset of the Fisher Information Matrix. When a new variable activates, this geometry shifts, and the trajectory continues in a new locally adapted space.
+
+Each activated variable contributes additional curvature to the system: the effective Fisher matrix $G$ becomes larger and more structured, and the entropy gradient sharpens. In this way, the unfolding process is cumulative — earlier activations condition the geometry for future ones.
+
+The transition between phases is *not singular*. Because the entropy and curvature remain finite, transitions are continuous but directionally abrupt: a sharp increase in curvature along a particular axis marks a change in the dominant flow direction. These are analogous to *critical points* in phase transitions, where the system reorganizes around a new informational axis.
+
+Thus, the system explores parameter space via a sequence of transitions, first *Latent phase* in $\mathcal{D}_0$, where all variables are suppressed,second *activation threshold*, where one direction becomes resolvable, third *emergence phase**, where the active geometry reorients and extends, and finally *new latent subspace**, until the next threshold is reached.
+
+This process generates a *history-dependent trajectory*: the current configuration of active variables shapes the available paths forward. Each phase embeds memory of past activations in the form of accumulated curvature and entropy.
+
+The result is a path-dependent unfolding of structure — the system builds its geometry piece by piece, guided by internal information gradients, without requiring pre-defined coordinates or external intervention.
+
 \endif
