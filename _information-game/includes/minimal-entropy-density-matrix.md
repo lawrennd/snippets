@@ -204,9 +204,9 @@ This defines a deterministic flow field over parameter space. In regions of unif
 
 This process — emergence through spontaneous asymmetry in the curvature — does not require an external observer or measurement collapse. Instead, it is an internal dynamical effect of the geometry itself. A direction in $\boldsymbol{\theta}$-space becomes statistically distinguishable from the others: it carries more information and thus breaks the latent symmetry.
 
-To characterise this transition more precisely, we track the growth of the entropy gradient component-wise:
+To characterise this transition more precisely, we track the growth of the entropy gradient component-wise
 $$
-\left[G(\boldsymbol{\theta}) \boldsymbol{\theta} \right]_i \to \mathcal{O}(1),
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon_{\text{activate}}.
 $$
 at which point the $i$-th degree of freedom becomes resolvable. This threshold crossing defines a *variable activation event*.
 
@@ -222,12 +222,12 @@ $$
 $$
 Here $\varepsilon_{\text{activate}}$ defines a threshold above which the system can resolve variation in the $i$-th direction with sufficient information gain. This marks a transition from latent to emergent status.
 
-When this happens the corresponding parameter $\theta_i$ becomes an active degree of freedom, the associated observable $H_i$ becomes measurable (internally resolvable), the system’s effective basis ${H_i}$ is extended or rotated to reflect the new structure.
+When this happens, the corresponding parameter $\theta_i$ becomes an active degree of freedom, and the associated observable $H_i$ becomes internally resolvable. The system’s effective observable basis $\{H_i\}$ is updated — either by extension or rotation — to reflect the newly emergent structure.
 
 This update is not arbitrary. The new basis must remain consistent with the information geometry — that is, the Fisher matrix $G(\boldsymbol{\theta})$ must remain positive definite and aligned with the updated entropy gradients. One may think of this as a local frame adaptation: the system reorganizes its observables to align with the current information flow.
 
 This leads to a piecewise unfolding of structure. Within each phase, a subset of variables is active and governs dynamics, when a new variable activates, the dimensionality of the effective system increases, each activation increases entropy, reorganizes curvature, and shifts the system’s trajectory.
 
-Over time, this defines a staged emergence process, in which new variables appear sequentially as the system climbs through successive regions of increasing entropy and asymmetry. The basis ${H_i}$ is thus not globally fixed, but emerges dynamically as a function of the internal information landscape.
+Over time, this defines a staged emergence process, in which new variables appear sequentially as the system climbs through successive regions of increasing entropy and asymmetry. The basis $\{H_i\}$ is thus not globally fixed, but emerges dynamically as a function of the internal information landscape.
 
 \endif
