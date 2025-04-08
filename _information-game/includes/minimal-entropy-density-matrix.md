@@ -186,4 +186,29 @@ We interpret this region as a *latent pregeometry*: a structure defined not by e
 
 The game therefore begins in $\mathcal{D}_0$, where entropy gradients are present but too shallow to drive evolution. The unfolding process is triggered by internal perturbations or transitions that move the system into a steeper region of the entropy landscape — breaking the initial symmetry and initiating variable formation.
 
+\subsection{Gradient Ascent and the Initiation of Emergence}
+
+Once the system leaves the latent domain \(\mathcal{D}_0\), it enters a region where curvature gradients become directionally amplified. In this region, the entropy gradient,
+$$
+\nabla S[\rho(\boldsymbol{\theta})] = G(\boldsymbol{\theta}) \boldsymbol{\theta},
+$$
+becomes sufficiently steep in one or more directions to drive dynamical activation. This transition marks the onset of emergence.
+
+The dynamics can be understood as entropic gradient ascent in the space of natural parameters $\boldsymbol{\theta}$, where the flow is governed by the information geometry encoded in the Fisher Information Matrix. At each point, the steepest ascent direction is given by
+$$
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto \nabla S[\rho] = G(\boldsymbol{\theta}) \boldsymbol{\theta}.
+$$
+
+This defines a deterministic flow field over parameter space. In regions of uniform curvature, the system evolves slowly and symmetrically. But when one direction becomes locally dominant (i.e. the eigenvalues of $G(\boldsymbol{\theta})$ become asymmetric), the flow breaks symmetry and accelerates along that axis. A variable emerges.
+
+This process — emergence through spontaneous asymmetry in the curvature — does not require an external observer or measurement collapse. Instead, it is an internal dynamical effect of the geometry itself. A direction in $\boldsymbol{\theta}$-space becomes statistically distinguishable from the others: it carries more information and thus breaks the latent symmetry.
+
+To characterise this transition more precisely, we track the growth of the entropy gradient component-wise:
+$$
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta} \right]_i \to \mathcal{O}(1),
+$$
+at which point the $i$-th degree of freedom becomes resolvable. This threshold crossing defines a *variable activation event*.
+
+We can now begin to think of the system as flowing through a dynamically unfolding geometry: curvature concentrates, variables activate, and a new basis of observables $\{H_i'\}$ emerges adaptively. These are not fixed beforehand, but arise from the internal information dynamics.
+
 \endif
