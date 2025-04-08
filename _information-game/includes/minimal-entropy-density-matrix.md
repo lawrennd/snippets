@@ -289,5 +289,24 @@ becomes the new observable aligned with the emergent direction.
 
 This process continues recursively: each new activation adds a direction, and the system’s observable basis expands in a dynamically adapted manner, always aligned with internal information gradients and always orthogonal under the current state.
 
+\subsection{Emergence of Local Structure and Interaction Geometry}
+
+Once a sufficient number of variables have activated and the system’s internal basis $\{H_i\}$ has expanded, the geometry begins to exhibit structure beyond simple independence. Whereas early phases are marked by orthogonal, uncorrelated observables, later phases reveal the onset of interaction geometry: a pattern of coupling among active directions that defines how variables relate and co-vary.
+
+This is reflected in the off-diagonal structure of the Fisher Information Matrix:
+$$
+G_{ij} = \mathrm{Cov}(H_i, H_j).
+$$
+In early phases, $G$ is approximately diagonal — observables are nearly uncorrelated and dynamics proceed independently in each direction. But as curvature accumulates, the system discovers statistically significant correlations between observables: the covariance matrix acquires off-diagonal components, and $H_i$ and $H_j$ become information-bearing not just individually, but in combination.
+
+This marks the emergence of interaction structure: some observables modulate or constrain others. These interactions are not imposed externally but arise internally from the unfolding of the geometry.
+
+We interpret this as the emergence of locality: the system partitions itself into subsystems that interact through structured, limited coupling. The strength and pattern of off-diagonal elements defines the information-theoretic adjacency between variables — a kind of proto-metric on the space of observables.
+
+In this sense, the system generates its own notion of local neighborhoods in information space. Two variables are local to each other if they are strongly coupled (large $|G_{ij}|$), and distant if nearly independent (small $|G_{ij}|$). The Fisher matrix thus encodes not only curvature, but also a dynamical topology: the geometry of interactions.
+
+This transition from globally latent, then individually active, to locally interacting structure constitutes a critical shift. The system is no longer just activating variables — it is discovering constraints, relations, and ultimately the seeds of effective dynamics.
+
+As the process continues, we expect the geometry to develop hierarchical structure: clusters of tightly coupled variables (local patches), loosely coupled across broader scales. These layered interactions provide the substrate for emergent effective laws, which govern the system’s dynamics from within.
 
 \endif
