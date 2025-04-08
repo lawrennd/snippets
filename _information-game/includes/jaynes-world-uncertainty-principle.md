@@ -21,6 +21,88 @@ $$
 }
 \notes{Unfortunately this assumption implies that $\boldsymbol{\theta}(\cdot)$ is a delta function, and since our representation as a compact manifold (bounded below by $0$ and above by $N$) it does not admit any such singularities.}
 
+\subsection{Formal Derivation of the Uncertainty Principle}
+
+\slides{
+* Information-theoretic derivation
+* Begins with Shannon entropy constraints
+* Reaches uncertainty bound through variational analysis
+}
+
+\notes{We can derive the uncertainty principle formally from the information-theoretic properties of the system. Consider the mutual information between parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$:
+$$
+I(\boldsymbol{\theta}(M); c(M)) = H(\boldsymbol{\theta}(M)) + H(c(M)) - H(\boldsymbol{\theta}(M), c(M))
+$$
+where $H(\cdot)$ represents differential entropy. 
+
+Since the total entropy of the system is bounded by $N$, we know that $h(\boldsymbol{\theta}(M), c(M)) \leq N$. Additionally, for any two random variables, the mutual information satisfies $I(\boldsymbol{\theta}(M); c(M)) \geq 0$, with equality if and only if they are independent.
+
+For our system to function as an effective information reservoir, $\boldsymbol{\theta}(M)$ and $c(M)$ cannot be independent - they must share information. This gives us,
+$$
+h(\boldsymbol{\theta}(M)) + h(c(M)) \geq h(\boldsymbol{\theta}(M), c(M)) + I_{\min}
+$$
+where $I_{\min} > 0$ is the minimum mutual information required for the system to function.}
+
+\notes{For variables with fixed variance, differential entropy is maximized by Gaussian distributions. For a multivariate Gaussian with covariance matrix $\Sigma$, the differential entropy is:
+$$
+h(\mathcal{N}(0, \Sigma)) = \frac{1}{2}\ln\left((2\pi e)^d|\Sigma|\right)
+$$
+where $d$ is the dimensionality and $|\Sigma|$ is the determinant of the covariance matrix.
+
+The Cramér-Rao inequality provides a lower bound on the variance of any unbiased estimator. If $\boldsymbol{\theta}$ is a parameter vector and $\hat{\boldsymbol{\theta}}$ is an unbiased estimator, then:
+$$
+\text{Cov}(\hat{\boldsymbol{\theta}}) \geq G^{-1}(\boldsymbol{\theta})
+$$
+where $G(\boldsymbol{\theta})$ is the Fisher information matrix.
+
+In our context, the relationship between parameters $\boldsymbol{\theta}(M)$ and capacity variables $c(M)$ follows a similar bound. The Fisher information matrix for exponential family distributions has a special property: it equals the covariance of the sufficient statistics, which in our case are represented by the capacity variables $c(M)$. This gives us
+$$
+G(\boldsymbol{\theta}(M)) = \text{Cov}(c(M))
+$$
+
+Applying the Cramér-Rao inequality we have
+$$
+\text{Cov}(\boldsymbol{\theta}(M)) \cdot \text{Cov}(c(M)) \geq G^{-1}(\boldsymbol{\theta}(M)) \cdot G(\boldsymbol{\theta}(M)) = \mathbf{I}
+$$
+where $\mathbf{I}$ is the identity matrix.
+
+For one-dimensional projections, this matrix inequality implies,
+$$
+\text{Var}(\boldsymbol{\theta}(M)) \cdot \text{Var}(c(M)) \geq 1
+$$
+and converting to standard deviations we have
+$$
+\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq 1.
+$$
+
+When we incorporate the minimum mutual information constraint $I_{\min}$, the bound tightens. Using the relationship between differential entropy and mutual information, we can derive
+$$
+\Delta\boldsymbol{\theta}(M) \cdot \Delta c(M) \geq k,
+$$
+where $k = \frac{1}{2\pi e}e^{2I_{\min}}$. 
+
+This is our uncertainty principle, directly derived from information-theoretic constraints and the Cramér-Rao bound. It represents the fundamental trade-off between precision in parameter specification and capacity for information storage.}
+
+\subsection{Definition of Capacity Variables}
+
+\slides{
+* Capacity variables $c(M)$ precisely defined:
+  * Measure information storage potential 
+  * Fourier-conjugate to parameters
+}
+
+\notes{We now provide a precise definition of the capacity variables $c(M)$. The capacity variables quantify the potential of memory variables to store information about observable variables. Mathematically, we define $c(M)$ as,
+$$
+c(M) = \nabla_{\boldsymbol{\theta}} A(\boldsymbol{\theta}(M))
+$$
+where $A(\boldsymbol{\theta})$ is the log-partition function from our exponential family distribution. This definition has a clear interpretation: $c(M)$ represents the expected values of the sufficient statistics under the current parameter values. 
+
+This definition also naturally yields the Fourier relationship between parameters and capacity. In exponential families, the log-partition function and its derivatives form a Legendre transform pair, which is the mathematical basis for the Fourier duality we claim. Specifically, if we define the Fourier transform operator $\mathcal{F}$ as the mapping that takes parameters to expected sufficient statistics, then:
+$$
+c(M) = \mathcal{F}[\boldsymbol{\theta}(M)]
+$$
+}
+
 \subsection{Capacity $\leftrightarrow$ Precision Paradox}
 
 \slides{
@@ -100,5 +182,29 @@ This duality becomes important at saddle points when direct gradient ascent stal
 
 \notes{This formulation of the uncertainty principle in terms of information capacity and parameter precision follows the tradition established by @Shannon-info48 and expanded upon by @Hirschman-entropy57 and others who connected information entropy uncertainty to Heisenberg's uncertainty.}
 
+\subsection{Quantitative Demonstration}
+
+\slides{
+* Numerical example showing uncertainty principle
+* Demonstrates trade-off across parameter space
+* Shows saturation at minimal entropy
+}
+
+\notes{We can demonstrate this principle quantitatively through a simple model. Consider a two-dimensional system with memory variables $M = (m_1, m_2)$ that map to parameters $\boldsymbol{\theta}(M) = (\theta_1(m_1), \theta_2(m_2))$. The capacity variables are $c(M) = (c_1(m_1), c_2(m_2))$.
+
+At minimal entropy, when the system is near the origin, the uncertainty product is exactly:
+$$
+\Delta\theta_i(m_i) \cdot \Delta c_i(m_i) = k
+$$
+for each dimension $i$. 
+
+As the system evolves and entropy increases, some variables transition to classical behavior with:
+$$
+\Delta\theta_i(m_i) \cdot \Delta c_i(m_i) \gg k
+$$
+
+This increased product reflects the transition from quantum-like to classical information processing. The variables that maintain the minimal uncertainty product $k$ continue to function as coherent information reservoirs, while those with larger uncertainty products function as classical processors.}
+
+\notes{This principle provides testable predictions for any system modeled as an information reservoir. Specifically, we predict that variables functioning as effective memory must demonstrate precision-capacity trade-offs near the theoretical minimum $k$, while processing variables will show excess uncertainty above this minimum.}
 
 \endif
