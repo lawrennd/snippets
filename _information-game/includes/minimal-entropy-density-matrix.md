@@ -85,4 +85,31 @@ This constrained minimization problem yields the *structure of the initial densi
 
 This serves as the foundational configuration from which entropy ascent and symmetry-breaking transitions emerge.
 
+\subsection{Fisher Information Matrix}
+
+We’ll now derive the form of the Fisher Information Matrix $G(\boldsymbol{\theta})$ from the partition function:
+$$
+Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left(\sum_i \theta_i H_i \right)\right]
+$$
+We'll proceed by differentiating with respect to $\theta_i$ for the expectation values, then compute the second derivative to get the Fisher Information Matrix, 
+$$
+G_{ij} = \partial^2 \log Z / \partial \theta_i \partial \theta_j.
+$$
+which we'll then link to the  curvature.
+
+First we differentiate $\log Z(\boldsymbol{\theta})$ with respect to $\theta_i$,
+$$
+Z(\boldsymbol{\theta}) = \mathrm{tr}\left[ e^{\sum_j \theta_j H_j} \right]
+$$
+Taking the derivative of $\log Z$ with respect to $\theta_i$, we apply the chain rule,
+$$
+\frac{\partial \log Z}{\partial \theta_i} = \frac{1}{Z} \frac{\partial Z}{\partial \theta_i}
+= \frac{1}{Z} \mathrm{tr}\left[ H_i \, e^{\sum_j \theta_j H_j} \right]
+$$
+So we have
+$$
+\frac{\partial \log Z}{\partial \theta_i} = \mathrm{tr}(\rho H_i) = \langle H_i \rangle
+$$
+This is the expected value of $H_i$ under the current distribution $\rho(\boldsymbol{\theta})$.
+
 \endif
