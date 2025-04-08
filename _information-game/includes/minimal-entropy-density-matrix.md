@@ -406,7 +406,37 @@ This initial activation provides the seed from which all further structure emerg
 
 In the following sections, we will examine how dynamics proceed within this activated subspace, and how subsequent wave-like structures arise along newly emergent directions.
 
+\subsection{Example: From Latent Wave Equation to Emergent Position Variable}
 
+To illustrate how local wave equations emerge and then transition as variables become active, we follow a concrete example through the early stages of the system's unfolding.
 
+Suppose that at the system's origin, a proto-coordinate M represents a latent "location-like" variable. This coordinate is not yet resolved — it carries no bias, no structure, and cannot yet be used to distinguish outcomes. Its natural parameter $\theta_M$ is similarly latent: the system resides at a saddle point in parameter space where the curvature is non-zero, but the projected gradient $G \boldsymbol{\theta}$ remains uniformly suppressed.
+
+In this regime, the configuration of the system in M-space is governed by resolution bounds. As shown earlier, minimising the Fisher information of p(m) under a variance constraint yields a Gaussian ground state,
+$$
+p(m) = \frac{1}{Z} \exp(-\alpha m^2),
+$$
+with square-root amplitude $\psi(m) := \sqrt{p(m)}$ satisfying the stationary wave equation,
+$$
+-	\frac{d^2 \psi}{d m^2} + \lambda m^2 \psi = \mu \psi.
+$$
+
+This wave-like structure is not an imposed physical law but an internal solution: it balances uncertainty (through variance) with minimal curvature (through Fisher information), and thus defines the flattest distinguishable state available under the system’s constraints.
+
+Now suppose the entropy begins to increase. The natural parameter \theta_M moves away from the flat region and begins to trace a gradient,
+$$
+\frac{d\theta_M}{dt} \propto \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]M.
+$$
+As this component surpasses the activation threshold $\varepsilon{\text{activate}}$, the system transitions from latent to emergent behaviour in the direction of $M$. We then reinterpret the coordinate as a resolvable observable $X$: the system has gained enough internal structure to "see" in the direction of position.
+
+In this emergent regime, the previously passive distribution $p(m)$ becomes an active wavefunction $\psi(x)$, now governing a local degree of freedom. Because the system is still in a single-variable regime — no interactions or couplings have yet emerged — the same differential structure continues to apply. The latent wave equation becomes a local wave equation over the now-resolved observable $X$,
+$$
+-	\frac{d^2 \psi}{dx^2} + V(x) \psi = E \psi,
+$$
+with the potential term $V(x) = \lambda x^2$ inherited from the original resolution constraint in $M$-space. At this stage, the system’s dynamics are still informationally local: only curvature along the $X$-direction governs the flow.
+
+This illustrates how the wave equation "survives" through the transition from latent M-space to active X-space — not as a relic of physics, but as a structure imposed by the information geometry of emergence. The wave-like behaviour is a property of the system's attempt to resolve a variable smoothly, under bounded entropy and curvature.
+
+In subsequent stages, additional variables will activate, interactions will emerge, and the assumptions behind this local structure will begin to break down. We will return to this example to see how locality gives way to interaction and ultimately to collective dynamics.
 
 \endif
