@@ -212,4 +212,22 @@ at which point the $i$-th degree of freedom becomes resolvable. This threshold c
 
 We can now begin to think of the system as flowing through a dynamically unfolding geometry: curvature concentrates, variables activate, and a new basis of observables $\{H_i'\}$ emerges adaptively. These are not fixed beforehand, but arise from the internal information dynamics.
 
+\subsection{Variable Activation and Basis Update}
+
+As the system ascends the entropy landscape, the curvature becomes increasingly asymmetric. When the entropy gradient along a particular direction surpasses a threshold, that direction becomes dynamically resolvable — a variable activates.
+
+We define a variable activation event as the point where the $i$-th component of the entropy gradient reaches order unity,
+$$
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]i \geq \varepsilon{\text{activate}}.
+$$
+Here $\varepsilon_{\text{activate}}$ defines a threshold above which the system can resolve variation in the $i$-th direction with sufficient information gain. This marks a transition from latent to emergent status.
+
+When this happens the corresponding parameter $\theta_i$ becomes an active degree of freedom, the associated observable $H_i$ becomes measurable (internally resolvable), the system’s effective basis ${H_i}$ is extended or rotated to reflect the new structure.
+
+This update is not arbitrary. The new basis must remain consistent with the information geometry — that is, the Fisher matrix $G(\boldsymbol{\theta})$ must remain positive definite and aligned with the updated entropy gradients. One may think of this as a local frame adaptation: the system reorganizes its observables to align with the current information flow.
+
+This leads to a piecewise unfolding of structure. Within each phase, a subset of variables is active and governs dynamics, when a new variable activates, the dimensionality of the effective system increases, each activation increases entropy, reorganizes curvature, and shifts the system’s trajectory.
+
+Over time, this defines a staged emergence process, in which new variables appear sequentially as the system climbs through successive regions of increasing entropy and asymmetry. The basis ${H_i}$ is thus not globally fixed, but emerges dynamically as a function of the internal information landscape.
+
 \endif
