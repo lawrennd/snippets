@@ -147,4 +147,9 @@ or in other words the Fisher Information Matrix is the covariance matrix,
 $$
 G_{ij} = \mathrm{Cov}(H_i, H_j).
 $$
+
+This reflects a structural property of the model: the log-partition function $\log Z(\boldsymbol{\theta})$ acts as a cumulant generating function for the observables $H_i$. Its second derivatives yield the covariance matrix,
+$G_{ij} = \frac{\partial^2 \log Z}{\partial \theta_i \partial \theta_j} = \mathrm{Cov}(H_i, H_j)$
+This provides a natural Riemannian geometry on the parameter space, where the Fisher Information Matrix $G(\boldsymbol{\theta})$ encodes local curvature and sensitivity to variations in the natural parameters $\boldsymbol{\theta}$.
+
 \endif
