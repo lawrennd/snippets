@@ -151,20 +151,15 @@ $$
 This reflects a structural property of the model: the log-partition function $\log Z(\boldsymbol{\theta})$ acts as a cumulant generating function for the observables $H_i$. Its second derivatives yield the covariance matrix of the observables (i.e., the second cumulants correspond to variances and covariances).
 This induces a natural Riemannian geometry on the parameter space. The Fisher Information Matrix $G(\boldsymbol{\theta})$ encodes local curvature and sensitivity to variations in the natural parameters $\boldsymbol{\theta}$.
 
-Perfect — moving on to Step 3, we’ll now connect the Fisher Information Matrix to local curvature and explain how this shapes the initial landscape geometry of the system.
-
-Here’s a proposed next insertion (up to your edit, as before):
-
 \subsection{Curvature and Latency Conditions}
 
-The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Intuitively, higher curvature indicates stronger sensitivity to parameter variation, meaning more “informative” directions.
+The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Higher curvature reflects greater sensitivity to changes in the parameters — more 'informative' directions in the landscape.
 
-However, in the initial state of the system, all directions are latent — no variable is yet emergent. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
+At the system’s origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
 $$
 \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i.
 $$
-This ensures that the entropy gradient is initially too shallow to cause activation in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.
-
-This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must lie near a saddle point or a flat region of the entropy landscape. All curvature is present (since $G$ is positive definite due to the uncertainty constraints), but it is evenly distributed and directionally suppressed.
+This ensures ensures that the entropy gradient, proportional to $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, remains too shallow to trigger emergence in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.
+This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must lie near a saddle point or a flat region of the entropy landscape. The curvature is non-zero and globally bounded (from the uncertainty constraint), but its projection is uniformly suppressed across all directions.
 
 \endif
