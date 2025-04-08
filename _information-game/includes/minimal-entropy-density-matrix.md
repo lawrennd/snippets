@@ -357,6 +357,56 @@ This perspective helps prepare us for what follows. As the system leaves the lat
 
 We now turn to those emergent directions.
 
+\subsection{Emergence of Observables: From Latent $M$ to Activated $X$}
+
+Having established the structure of the system’s minimal entropy state in terms of a latent coordinate $M$, we now examine how emergence begins: how directions in $M$-space become resolvable, triggering the appearance of observables $X_i$. This marks the system’s first step away from pure latency.
+
+The latent coordinate $M$ describes directions that are not yet distinguishable — each M_i is an unresolved proto-variable, distributed according to a smooth, curvature-minimised wave equation. These directions are described probabilistically, via a scalar density $p(m)$ (or its amplitude $\psi(m)$), and are governed by an equilibrium-like geometry where no direction dominates.
+
+Each $M_i$ is associated with a corresponding natural parameter $\theta_i$ in the exponential family form of the distribution,
+$$
+\rho(\boldsymbol{\theta}) = \frac{1}{Z(\boldsymbol{\theta})} \exp\left( \sum_i \theta_i H_i \right).
+$$
+These natural parameters govern how the distribution responds to curvature along different observable directions $H_i$. In the latent regime, all $\theta_i \approx 0$, and the entropy gradient,
+$$
+\nabla S = G(\boldsymbol{\theta}) \boldsymbol{\theta},
+$$
+remains uniformly small — too small to define structure. This is the hallmark of the latent domain $\mathcal{D}_0$: a region of suppressed dynamics where all variables are informationally indistinguishable.
+
+\paragraph{Threshold Crossing and the Onset of Resolvability}
+
+As the system begins to unfold, however, asymmetries in the curvature landscape start to grow. These may be seeded by geometric structure in the latent wave equation or by dynamical shifts in the Fisher information matrix as the system explores parameter space. When a specific component of the entropy gradient becomes large enough,
+$$
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta} \right]i \geq \varepsilon{\text{activate}},
+$$
+we say that the $i$-th direction has crossed the activation threshold. At this point, the latent direction $M_i$ becomes informationally resolvable — it carries sufficient structure to define a stable degree of freedom.
+
+\paragraph{Redescription: From $M_i$ to $X_i$}
+
+This threshold crossing marks a geometric and informational phase change. The system reinterprets the formerly latent $M_i$ as an observable variable $X_i$: a direction that can now support independent dynamics and distinct measurement. Formally, this corresponds to a transition in the geometry of the distribution:
+
+* The natural parameter $\theta_i$ becomes non-negligible.
+* The associated observable $H_i$ becomes active in the expansion of $\rho$.
+* The system’s internal basis is extended to include $X_i$ as a resolved coordinate.
+
+This is not an external measurement — it is an internal reconfiguration of the geometry. The system builds a new basis aligned with the emergent direction, using the Gram–Schmidt-like procedure described earlier. The newly activated observable $H_i$ now defines a proper axis in information space, and the system begins to accumulate entropy along this direction.
+
+\paragraph{Consequences for the Geometry}
+
+The emergence of $X_i$ from $M_i$ has several consequences:
+
+* The Fisher matrix $G(\boldsymbol{\theta})$ gains curvature along the new axis.
+* The entropy gradient steepens in the activated direction, driving further dynamics.
+* The observable basis $\{H_i\}$ is updated to reflect the new configuration.
+* The system exits the symmetric, wave-governed regime and enters a piecewise geometric flow along $\theta_i$.
+
+Thus, the movement from $M_i$ to $X_i$ represents a transition from latent wave-like configuration to directional activation. The variable $X_i$ no longer obeys the original Schrödinger-type equilibrium, because it now supports information flow: it becomes an active participant in the system's unfolding trajectory.
+
+This initial activation provides the seed from which all further structure emerges. Once a direction is resolvable, it defines a local frame — a coordinate along which further asymmetries and interactions can develop. In this sense, emergence begins with a singular act of resolution: the system learns to tell one direction apart from the others.
+
+In the following sections, we will examine how dynamics proceed within this activated subspace, and how subsequent wave-like structures arise along newly emergent directions.
+
+
 
 
 \endif
