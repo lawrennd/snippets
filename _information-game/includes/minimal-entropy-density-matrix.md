@@ -250,4 +250,44 @@ This process generates a *history-dependent trajectory*: the current configurati
 
 The result is a path-dependent unfolding of structure — the system builds its geometry piece by piece, guided by internal information gradients, without requiring pre-defined coordinates or external intervention.
 
+\subsection{Constructing the Updated Basis: Emergent Observables}
+
+When a new variable activates, the system must update its internal basis $\{H_i\}$ to reflect the newly emergent structure. This is not merely a labelling change — it reflects a geometric transformation in the space of information-bearing observables.
+
+We now formalise the process of basis update. Given an existing set of active observables $\{H_1, \dots, H_k\}$ and a newly activated direction $\theta_{k+1}$, we seek a corresponding observable $H_{k+1}$ such that it aligns with the updated gradient,
+$$
+\left.\nabla_{\boldsymbol{\theta}} S[\rho]\right|{\theta{k+1}} = G(\boldsymbol{\theta}) \boldsymbol{\theta} \propto H_{k+1},
+$$
+it preserves orthogonality (uncorrelatedness) under the current state,
+$$
+\mathrm{Cov}(H_{k+1}, H_j) = 0 \quad \text{for all } j \leq k,
+$$
+it is consistent with the curvature structure,
+$$
+H_{k+1} \in \operatorname{span}\left{ \frac{\partial \rho}{\partial \theta_i} \right} \quad \text{evaluated near } \boldsymbol{\theta}_0.
+$$
+This yields a natural Gram–Schmidt-like procedure within the information geometry: new directions are orthogonalised with respect to the current active basis, and constrained to lie in the space spanned by gradient responses.
+
+We can make this more explicit by defining an update rule. Let
+$$
+\widetilde{H}{k+1} := \sum{i} c_i H_i + R,
+$$
+where $R$ is the residual direction from the entropy gradient,
+$$
+R := G(\boldsymbol{\theta}) \boldsymbol{\theta} - \sum_{i} c_i H_i,
+$$
+and the coefficients $c_i$ are chosen to minimise the norm of $R$ under the inner product
+$$
+\langle A, B \rangle := \mathrm{tr}(\rho A B).
+$$
+
+The normalised observable
+$$
+H_{k+1} := \frac{R}{|R|_\rho}
+$$
+becomes the new observable aligned with the emergent direction.
+
+This process continues recursively: each new activation adds a direction, and the system’s observable basis expands in a dynamically adapted manner, always aligned with internal information gradients and always orthogonal under the current state.
+
+
 \endif
