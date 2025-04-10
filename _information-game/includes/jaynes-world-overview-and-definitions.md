@@ -71,7 +71,6 @@ This functional captures the curvature-mediated coupling between the current act
 
 
 \subsubsection{Variable Partition}
-
 $$
 X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \varepsilon \right\}, \quad M(t) = Z \setminus X(t)
 $$
