@@ -8,7 +8,7 @@
 This game explores how structure, time, causality, and locality can emerge within a system governed solely by internal information-theoretic constraints. It serves as
 
 - A *research framework* for observer-free dynamics and entropy-based emergence,
-- A *conceptual tool* for introducing deep ideas in physics in an accessible, internally consistent setting.
+- A *conceptual tool* for introducing ideas widely used in physics in an accessible, internally consistent setting making them more accessible in the computational and statistical sciences.
 
 \subsection{Definitions and Global Constraints}
 
