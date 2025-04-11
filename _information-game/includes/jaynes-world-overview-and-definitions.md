@@ -8,7 +8,7 @@
 This game explores how structure, time, causality, and locality can emerge within a system governed solely by internal information-theoretic constraints. It serves as
 
 - A *research framework* for observer-free dynamics and entropy-based emergence,
-- A *conceptual tool* for introducing deep ideas in physics in an accessible, internally consistent setting.
+- A *conceptual tool* for introducing ideas widely used in physics in an accessible, internally consistent setting making them more accessible in the computational and statistical sciences.
 
 \subsection{Definitions and Global Constraints}
 
@@ -71,18 +71,22 @@ This functional captures the curvature-mediated coupling between the current act
 
 
 \subsubsection{Variable Partition}
-
-$$X(t) = \left\{ i \mid \left| \frac{d\theta_i}{dt} \right| \geq \varepsilon \right\}, \quad M(t) = Z \setminus X(t)$$
+$$
+X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \varepsilon \right\}, \quad M(t) = Z \setminus X(t)
+$$
 
 \subsection{Lemma 1: Form of the Minimal Entropy Configuration}
 
 The minimal-entropy state compatible with the system’s resolution constraint and regularity condition is represented by a density matrix of the exponential form:
-$$\rho(\boldsymbol{\theta}_0) = \frac{1}{Z(\boldsymbol{\theta}_0)} \exp\left( \sum_i \theta_{0i} H_i \right)$$
-
+$$
+\rho(\boldsymbol{\theta}_0) = \frac{1}{Z(\boldsymbol{\theta}_0)} \exp\left( \sum_i \theta_{0i} H_i \right),
+$$
 where $\boldsymbol{\theta}_0 \approx \boldsymbol{0}$, and all components $\theta_{0i}$ are sub-threshold:
-$$|\dot{\theta}_{0i}| < \varepsilon$$
+$$
+|\dot{\theta}_{0i}| < \varepsilon
+$$
 
-This state minimizes entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon \sim 1/2^N$. Its structure can be derived via a *minimum-entropy analogue of Jaynes' formalism*, using the same density matrix geometry but inverted optimization.
+This state minimizes entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon \sim \frac{1}{2^N}$. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' formalism, using the same density matrix geometry but inverted optimization.
 
 \subsubsection{Lemma 2: Symmetry Breaking}
 
@@ -91,11 +95,15 @@ $$\theta_k \in X(t + \delta)$$
 
 \subsubsection{Entropy-Time}
 
-$$\tau(t) := S_{X(t)}(t)$$
+$$
+\tau(t) := S_{X(t)}(t)
+$$
 
 \subsubsection{Lemma 3: Monotonicity of Entropy-Time}
 
-$$\tau(t_2) \geq \tau(t_1) \quad \text{for all } t_2 > t_1$$
+$$
+\tau(t_2) \geq \tau(t_1) \quad \text{for all } t_2 > t_1
+$$
 
 \subsubsection{Corollary: Irreversibility}
 
@@ -103,11 +111,13 @@ $\tau(t)$ increases monotonically, preventing time-reversal globally.
 
 \subsubsection{Variational Principle Within a Symmetry Class}
 
-$$\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, d\tau = 0$$
+$$
+\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}\tau = 0
+$$
 
 \subsection{Lemma 4: Frieden-Analogous Extremal Flow}
 
-At points where the latent-to-active flow functional $\Psi(t)$ is locally extremal (i.e., $\frac{d\Psi}{dt} = 0 $), the system may exhibit:
+At points where the latent-to-active flow functional $\Psi(t)$ is locally extremal (i.e., $\frac{d\Psi}{dt} = 0 $), the system may exhibit
 
 - Temporary stability or critical slowing,
 - Transitions between symmetry classes (e.g., emergence of a new active variable),
@@ -171,17 +181,16 @@ True singularities (e.g. delta functions) are excluded; minimal-entropy states a
 
 Only valid within fixed symmetry classes. It offers insight but is not required by the system’s evolution.
 
-
 \subsection{Connection to Frieden’s EPI: A Conceptual Analogue}
 
 This game is not built to explain or reproduce any specific physical theory, but it reveals structural patterns that *resemble variational information principles*, such as those used in Frieden’s Extreme Physical Information (EPI) framework.
 
-Frieden’s principle proposes that physical systems arise by extremizing a quantity $I - J$, where:
+Frieden’s principle proposes that physical systems arise by extremizing a quantity $I - J$, where
 
 - $J$ is source (intrinsic) information,
 - $I$ is Fisher information extracted by an observer.
 
-In this game:
+In this game
 
 - No observer is present,
 - But we still have a structure ($G(\boldsymbol{\theta})$) that defines *latent curvature* (reservoir $M$),
