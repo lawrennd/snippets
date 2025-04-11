@@ -1,3 +1,4 @@
+\ifndef{informationInertiaComponent}
 \define{informationInertiaComponent}
 
 \editme
@@ -190,52 +191,49 @@ $$
 
 \notes{This integral form captures the accumulated history of the system's past states, weighted by their information-geometric coupling. When $G_{X_1M}$ has specific symmetry properties (particularly translation invariance), this term becomes precisely equivalent to momentum in classical mechanics. The persistence of motion emerges because the latent parameters $\boldsymbol{\theta}_M$ encode the time-integrated information flow from past states, effectively serving as a statistical momentum that resists change.}
 
-\subsection{Conservation Laws from Information Structure}
+\subsection{Conservation Laws from Critical Slowing of Latent Variables}
 
 \slides{
-* Conservation laws emerge from symmetries in Fisher geometry
-* Information-theoretic invariants under system transformation
+* Conservation emerges from invariance of conditional mutual information
+* Critical slowing of latent variables creates information invariants 
 * Noether-like correspondence between symmetry and conservation
 }
 
-\notes{The framework provides a formal basis for conservation laws through symmetries in the Fisher information geometry. When the system exhibits specific invariances in its information structure, conserved quantities emerge as mathematical necessities rather than physical postulates.}
+\notes{We can understand the conservation law from the critical slowing of latent variables $M$. When these variables evolve much more slowly than the active variables $X$ (i.e., when $|[G(\boldsymbol{\theta})\boldsymbol{\theta}]_M| < \varepsilon_{\text{slow}} \ll 1$), we assume that the conditional mutual information $I(X_1;M|X_0)$ becomes approximately invariant over time,}
+$$
+\frac{\text{d}}{\text{d}t}I(X_1;M|X_0) \approx 0.
+$$
+\notes{This invariance is the information-theoretic foundation of the system's conservation laws. The critically slowed latent variables act as an information reservoir that constrains future states in a consistent way across time, creating effective constants of motion.}
 
-\notes{Let $G(\boldsymbol{\theta})$ be the Fisher Information Matrix and consider a continuous transformation $\boldsymbol{\theta} \mapsto \boldsymbol{\theta} + \epsilon \boldsymbol{\delta}$ that leaves the entropy dynamics invariant. Then there exists a corresponding conserved quantity $Q$ such that $\frac{dQ}{dt} = 0$ along entropic gradient flows.}
+\notes{Let $G(\boldsymbol{\theta})$ be the Fisher Information Matrix and consider a continuous transformation $\boldsymbol{\theta} \mapsto \boldsymbol{\theta} + \epsilon \boldsymbol{\delta}$ that leaves the entropy dynamics invariant. Then there exists a corresponding conserved quantity $Q$ such that $\frac{\text{d}Q}{\text{d}t} = 0$ along entropic gradient flows.}
 
 \notes{Specifically:}
 
-\notes{1. **Linear Momentum Conservation**: When the Fisher geometry is invariant under spatial translations ($\boldsymbol{\theta}_X \mapsto \boldsymbol{\theta}_X + \boldsymbol{a}$), the corresponding conserved quantity is:}
+\notes{1. *Linear Momentum Conservation*: When the Fisher geometry is invariant under spatial translations ($\boldsymbol{\theta}_X \mapsto \boldsymbol{\theta}_X + \boldsymbol{a}$), the corresponding conserved quantity is,}
 $$
 \boldsymbol{p} = G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M
 $$
 
 \notes{Where this quantity satisfies $\frac{d\boldsymbol{p}}{dt} = 0$ in the absence of external information gradients.}
 
-\notes{2. **Angular Momentum Conservation**: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form:}
+\notes{2. *Angular Momentum Conservation*: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form:}
 $$
 \boldsymbol{L} = \boldsymbol{\theta}_X \times (G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M)
 $$
 
-\notes{3. **Energy Conservation**: When the system's dynamics are time-translation invariant, the conserved quantity is:}
+\notes{3. *Energy Conservation*: When the system's dynamics are time-translation invariant, the conserved quantity is:}
 $$
-E = \frac{1}{2}\boldsymbol{\theta}_M^T G_{MM} \boldsymbol{\theta}_M + V(\boldsymbol{\theta}_X)
+E = \frac{1}{2}\boldsymbol{\theta}_M^\top G_{MM} \boldsymbol{\theta}_M + V(\boldsymbol{\theta}_X)
 $$
 
 \notes{Where $V(\boldsymbol{\theta}_X)$ represents the potential information defined by the curvature of the entropy landscape.}
 
 \notes{These conservation laws can be derived from the conditional mutual information through the relationship:}
 $$
-\frac{d}{dt}I(X_1;M|X_0) = 0
-$$
-
-\notes{When this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics, but derived entirely from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law.}​​​​​​​​​​​​​​​​
-
-\notes{These conservation laws can be derived from the conditional mutual information through the relationship}
-$$
 \frac{\text{d}}{\text{d}t}I(X_1;M|X_0) = 0
 $$
 
-\notes{When this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics, but derived from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law.}
+\notes{When this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics, but derived from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law.}​​​​​​​​​​​​​​​​
 
 \subsection{Connecting to Fisher Information Geometry}
 
@@ -243,16 +241,16 @@ $$
 * Fisher Information Matrix encodes the inertial tensor
 * Off-diagonal terms create coupling across time
 * Effective Lagrangian emerges from information flow
-
 }
-\notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where:}
+
+\notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where}
 $$
 \mathcal{L}_{\text{eff}} \sim \boldsymbol{\theta}_X^\top G_{XX} \boldsymbol{\theta}_X - V(\boldsymbol{\theta})
 $$
 
-\notes{The variational principle identified in Jaynes' World:}
+\notes{The variational principle identified in Jaynes' world}
 $$
-\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^T G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}\tau = 0
+\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}\tau = 0
 $$
 
 \notes{Takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
@@ -269,12 +267,12 @@ $$
 
 \notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where:}
 $$
-\mathcal{L}_{\text{eff}} \sim \boldsymbol{\theta}_X^T G_{XX} \boldsymbol{\theta}_X - V(\boldsymbol{\theta})
+\mathcal{L}_{\text{eff}} \sim \boldsymbol{\theta}_X^\top G_{XX} \boldsymbol{\theta}_X - V(\boldsymbol{\theta})
 $$
 
-\notes{The variational principle identified in Jaynes' World:}
+\notes{The variational principle identified in Jaynes' World,}
 $$
-\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^T G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, d\tau = 0
+\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}\tau = 0
 $$
 
 \notes{Takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
