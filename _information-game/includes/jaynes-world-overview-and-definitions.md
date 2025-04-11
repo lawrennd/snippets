@@ -123,6 +123,20 @@ These transitions play a role analogous to *extremizing an internal information 
 - *Conditional Independence*: emergent locality via block structure in $G$
 - *Domain Transitions*: new behaviour as variables emerge or stall
 
+\subsection{Connections to Information-Theoretic Literature}
+
+\notes{The entropic dynamics and uncertainty principles in this framework connect directly to results from information theory and mathematical physics. 
+
+@Hirschman-entropy57 first proposed using information entropy to express uncertainty relations, conjecturing that entropy-based formulations might be more fundamental than standard deviation approaches. His insight that information entropy constrains resolution across conjugate domains aligns with our system's precision-capacity trade-offs.
+
+@Beckner-fourier75 provided proof of Hirschman's conjecture through Fourier analysis inequalities, establishing the sharp constants for entropy uncertainty relations. His work demonstrates mathematically why Gaussian states emerge as minimal-uncertainty configurations as we observe in our derivation of the minimal entropy density matrix.
+
+@Bialynicki-uncertainty75 extended these principles to quantum mechanics, proving that entropy-based uncertainty relations imply the traditional Heisenberg principle rather than vice versa. Their demonstration that wave equations arise naturally from information-theoretic constraints motivates why Schrödinger-like equations emerge in our framework without imposed physical assumptions.
+
+These papers establish that the wave-like behavior, uncertainty principles, and resolution constraints can emerge as information-theoretic necessities. 
+
+Where our approach extends beyond these foundations is by placing them in a dynamic framework to allow the dynamics to unfold.}
+
 \subsection{Interpretation and Nuance}
 
 \subsubsection{1. Apparent Zero-Entropy Start}
@@ -135,7 +149,7 @@ Finite entropy bounds imply resolution constraints, producing discrete transitio
 
 \subsubsection{3. Dual Role of Parameters and Variables}
 
-“$\theta_i \in X(t)$” means the observable governed by $H_i$ is actively evolving. Variables, parameters, and observables are dual facets of the representation.
+"$\theta_i \in X(t)$" means the observable governed by $H_i$ is actively evolving. Variables, parameters, and observables are dual facets of the representation.
 
 \subsubsection{4. Irreversibility vs Local Reversibility}
 
