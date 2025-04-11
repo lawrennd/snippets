@@ -6,10 +6,11 @@
 \include{_information-game/includes/minimal-entropy-density-matrix-intro.md}
 \include{_information-game/includes/jaynesian-derivation-minimal-entropy.md}
 \include{_information-game/includes/fisher-information-matrix.md}
+\include{_information-game/includes/trace-fisher-information-constraint.md}
 
 \subsection{Curvature and Latency Conditions}
 
-The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Higher curvature reflects greater sensitivity to changes in the parameters — more 'informative' directions in the landscape.
+\notes{The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Higher curvature reflects greater sensitivity to changes in the parameters — more 'informative' directions in the landscape.}
 
 At the system's origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
 $$
