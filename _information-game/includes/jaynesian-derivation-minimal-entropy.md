@@ -31,7 +31,7 @@ $$
 - \lambda_p (\mathrm{tr}(\rho \hat{P}^2) - \delta^2).
 $$}
 
-To find the extremum, we take the functional derivative and set it to zero,
+\notes{To find the extremum, we take the functional derivative and set it to zero,
 $$
 \frac{\delta \mathcal{L}}{\delta \rho} = -\log \rho - 1 - \lambda_x \hat{X}^2 - \lambda_p \hat{P}^2 + \lambda_0 = 0
 $$
@@ -43,17 +43,17 @@ where the partition function (which ensures normalisation) is
 $$
 Z = \mathrm{tr}\left[\exp\left(-\lambda_x \hat{X}^2 - \lambda_p \hat{P}^2\right)\right]
 $$
-This is a Gaussian state for a density matrix, which is consistent with the minimum entropy distribution under uncertainty constraints.
+This is a Gaussian state for a density matrix, which is consistent with the minimum entropy distribution under uncertainty constraints.}
 
-The Lagrange multipliers $\lambda_x, \lambda_p$ enforce lower bounds on variance. These define the natural parameters as $\theta_x = -\lambda_x$ and $\theta_p = -\lambda_p$ in the exponential family form $\rho(\boldsymbol{\theta}) \propto \exp(\boldsymbol{\theta} \cdot \mathbf{H})$. The form of $\rho$ is a density matrix. The curvature (second derivative) of $\log Z$ gives the Fisher Information matrix $G$. Steepest ascent trajectories in $\boldsymbol{\theta}$ space will trace the system's entropy dynamics.
+\notes{The Lagrange multipliers $\lambda_x, \lambda_p$ enforce lower bounds on variance. These define the natural parameters as $\theta_x = -\lambda_x$ and $\theta_p = -\lambda_p$ in the exponential family form $\rho(\boldsymbol{\theta}) \propto \exp(\boldsymbol{\theta} \cdot \mathbf{H})$. The form of $\rho$ is a density matrix. The curvature (second derivative) of $\log Z$ gives the Fisher Information matrix $G$. Steepest ascent trajectories in $\boldsymbol{\theta}$ space will trace the system's entropy dynamics.}
 
-Next we compute $G$ from $\log Z$ to explore the information geometry. From this we should verify that the following conditions hold,
+\notes{Next we compute $G$ from $\log Z$ to explore the information geometry. From this we should verify that the following conditions hold,
 $$
 \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i
 $$
-which implies that all variables remain latent at initialization.
+which implies that all variables remain latent at initialization.}
 
-The Hermitians have a *non-commuting observable pair* constraint,
+\notes{The Hermitians have a *non-commuting observable pair* constraint,
 $$
   [H_i, H_j] \neq 0,
 $$
@@ -64,12 +64,12 @@ $$
 and ensures that we have *bounded curvature*
 $$
 \mathrm{tr}(G(\boldsymbol{\theta})) \geq \gamma > 0.
-$$
+$$}
 
-We can then use $\varepsilon$ and $N$ to define initial thresholds and maximum resolution and examine how variables decouple and how saddle-like regions emerge as the landscape unfolds through gradient ascent.
+\notes{We can then use $\varepsilon$ and $N$ to define initial thresholds and maximum resolution and examine how variables decouple and how saddle-like regions emerge as the landscape unfolds through gradient ascent.}
 
-This constrained minimization problem yields the *structure of the initial density matrix* $\rho(\boldsymbol{\theta}_0)$ and the *permissible curvature geometry* $G(\boldsymbol{\theta}_0)$ and a constraint-consistent basis of observables $\{H_i\}$ that have a quadratic form. This ensures the system begins in a *regular, latent, low-entropy state*.
+\notes{This constrained minimization problem yields the *structure of the initial density matrix* $\rho(\boldsymbol{\theta}_0)$ and the *permissible curvature geometry* $G(\boldsymbol{\theta}_0)$ and a constraint-consistent basis of observables $\{H_i\}$ that have a quadratic form. This ensures the system begins in a *regular, latent, low-entropy state*.
 
-This serves as the foundational configuration from which entropy ascent and symmetry-breaking transitions emerge.
+\notes{This is the configuration from which entropy ascent and symmetry-breaking transitions emerge.}
 
 \endif 
