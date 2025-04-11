@@ -5,15 +5,35 @@
 
 \subsection{Variational Derivation of the Initial Curvature Structure}
 
-\notes{We will determine constraints on the Fisher Information Matrix $G(\boldsymbol{\theta})$ that are consistent with the system’s unfolding rules and internal information geometry. We follow Jaynes [@Jaynes-] in solving a variational problem that captures the allowed structure of the system’s origin (minimal entropy) state.}
+\notes{We will determine constraints on the Fisher Information Matrix $G(\boldsymbol{\theta})$ that are consistent with the system's unfolding rules and internal information geometry. We follow Jaynes [@Jaynes-information57] in solving a variational problem that captures the allowed structure of the system's origin (minimal entropy) state.}
 
-\notes{This section walks through the derivation of the minimal entropy configuration using Jaynes's free-form variational principle. We aim to derive the form of the density matrix or distribution directly from information-theoretic constraints. The goal is also to make the process accessible to those unfamiliar with Jaynes’s original maximum entropy formalism.}
+\notes{This section walks through the derivation of the minimal entropy configuration using Jaynes's free-form variational principle [@Jaynes-information63]. We aim to derive the form of the density matrix or distribution directly from information-theoretic constraints. The goal is also to make the process accessible to those unfamiliar with Jaynes's original maximum entropy formalism.}
 
 \notes{A density matrix has the form
 $$
 \rho(\boldsymbol{\theta}) = \frac{1}{Z(\boldsymbol{\theta})} \exp\left( \sum_i \theta_i H_i \right)
 $$
 where $Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left( \sum_i \theta_i H_i \right)\right]$ and $\boldsymbol{\theta} \in \mathbb{R}^d$, $H_i$ are Hermitian observables. }
+
+\subsection{Historical Context: Entropy and Uncertainty Relations}
+
+\notes{Our approach to minimal entropy configurations builds on several foundational results in information theory and quantum mechanics. These connections help situate our work within the broader context of entropy and uncertainty relations.}
+
+\notes{In 1957, Hirschman [@Hirschman-entropy57] established a fundamental connection between entropy and the Fourier transform, showing that the entropy of a function and its Fourier transform cannot both be arbitrarily small. This result, known as the Hirschman uncertainty principle, was later strengthened by Beckner [@Beckner-fourier75] who derived the optimal constant in the inequality.}
+
+\notes{In 1975, Białynicki-Birula and Mycielski [@Bialynicki-uncertainty75] extended these ideas to quantum mechanics, deriving uncertainty relations for information entropy in wave mechanics. Their work showed that the sum of the entropies of position and momentum distributions is bounded from below, providing an information-theoretic formulation of the Heisenberg uncertainty principle.}
+
+\notes{These results establish that there are fundamental limits to how precisely we can localize a system in both position and momentum space simultaneously, expressed in terms of entropy rather than variance. Our minimal entropy approach can be viewed as an extension of these ideas to more general observables and to the structure of the information geometry itself.}
+
+\notes{The non-commuting observable pair constraint in our framework,
+$$
+[H_i, H_j] \neq 0,
+$$
+which leads to the uncertainty relation
+$$
+\mathrm{Var}(H_i) \cdot \mathrm{Var}(H_j) \geq C > 0,
+$$
+is conceptually similar to the position-momentum uncertainty relations of Białynicki-Birula and Mycielski, but generalized to arbitrary Hermitian observables. This constraint ensures bounded curvature in our information geometry, which is essential for the emergence of structure from minimal entropy states.}
 
 \subsection{Jaynesian Derivation of Minimal Entropy Configuration}
 
@@ -55,11 +75,11 @@ where the partition function (which ensures normalisation) is
 $$
 Z = \mathrm{tr}\left[\exp\left(-\lambda_x \hat{X}^2 - \lambda_p \hat{P}^2\right)\right]
 $$
-This is formally analogous to a Gaussian state for a density matrix, which is consistent with the minimum entropy distribution under uncertainty constraints.
+This is a Gaussian state for a density matrix, which is consistent with the minimum entropy distribution under uncertainty constraints.
 
 The Lagrange multipliers $\lambda_x, \lambda_p$ enforce lower bounds on variance. These define the natural parameters as $\theta_x = -\lambda_x$ and $\theta_p = -\lambda_p$ in the exponential family form $\rho(\boldsymbol{\theta}) \propto \exp(\boldsymbol{\theta} \cdot \mathbf{H})$. The form of $\rho$ is a density matrix. The curvature (second derivative) of $\log Z$ gives the Fisher Information matrix $G$. Steepest ascent trajectories in $\boldsymbol{\theta}$ space will trace the system's entropy dynamics.
 
-For next steps we need to compute $G$ from $\log Z$ to explore the information geometry. From this we should verify that the following conditions hold,
+Next we compute $G$ from $\log Z$ to explore the information geometry. From this we should verify that the following conditions hold,
 $$
 \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i
 $$
@@ -86,7 +106,7 @@ This serves as the foundational configuration from which entropy ascent and symm
 
 \subsection{Fisher Information Matrix}
 
-We’ll now derive the form of the Fisher Information Matrix $G(\boldsymbol{\theta})$ from the partition function:
+We'll now derive the form of the Fisher Information Matrix $G(\boldsymbol{\theta})$ from the partition function:
 $$
 Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left(\sum_i \theta_i H_i \right)\right]
 $$
@@ -154,7 +174,7 @@ This induces a natural Riemannian geometry on the parameter space. The Fisher In
 
 The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Higher curvature reflects greater sensitivity to changes in the parameters — more 'informative' directions in the landscape.
 
-At the system’s origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
+At the system's origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
 $$
 \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i.
 $$
@@ -221,11 +241,11 @@ $$
 $$
 Here $\varepsilon_{\text{activate}}$ defines a threshold above which the system can resolve variation in the $i$-th direction with sufficient information gain. This marks a transition from latent to emergent status.
 
-When this happens, the corresponding parameter $\theta_i$ becomes an active degree of freedom, and the associated observable $H_i$ becomes internally resolvable. The system’s effective observable basis $\{H_i\}$ is updated — either by extension or rotation — to reflect the newly emergent structure.
+When this happens, the corresponding parameter $\theta_i$ becomes an active degree of freedom, and the associated observable $H_i$ becomes internally resolvable. The system's effective observable basis $\{H_i\}$ is updated — either by extension or rotation — to reflect the newly emergent structure.
 
 This update is not arbitrary. The new basis must remain consistent with the information geometry — that is, the Fisher matrix $G(\boldsymbol{\theta})$ must remain positive definite and aligned with the updated entropy gradients. One may think of this as a local frame adaptation: the system reorganizes its observables to align with the current information flow.
 
-This leads to a piecewise unfolding of structure. Within each phase, a subset of variables is active and governs dynamics, when a new variable activates, the dimensionality of the effective system increases, each activation increases entropy, reorganizes curvature, and shifts the system’s trajectory.
+This leads to a piecewise unfolding of structure. Within each phase, a subset of variables is active and governs dynamics, when a new variable activates, the dimensionality of the effective system increases, each activation increases entropy, reorganizes curvature, and shifts the system's trajectory.
 
 Over time, this defines a staged emergence process, in which new variables appear sequentially as the system climbs through successive regions of increasing entropy and asymmetry. The basis $\{H_i\}$ is thus not globally fixed, but emerges dynamically as a function of the internal information landscape.
 
@@ -233,7 +253,7 @@ Over time, this defines a staged emergence process, in which new variables appea
 
 As each variable activates, the system enters a new phase — a locally adapted region of parameter space where the information geometry is governed by an updated basis of observables. These phases are separated by *activation thresholds*, and each new phase introduces a change in the effective dimensionality of the system.
 
-We describe the system’s evolution as a *piecewise geodesic flow*: within each phase, the system follows a smooth trajectory along the entropy gradient,
+We describe the system's evolution as a *piecewise geodesic flow*: within each phase, the system follows a smooth trajectory along the entropy gradient,
 $$
 \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto G(\boldsymbol{\theta}) \boldsymbol{\theta},
 $$
@@ -286,11 +306,11 @@ H_{k+1} := \frac{R}{|R|_\rho}
 $$
 becomes the new observable aligned with the emergent direction.
 
-This process continues recursively: each new activation adds a direction, and the system’s observable basis expands in a dynamically adapted manner, always aligned with internal information gradients and always orthogonal under the current state.
+This process continues recursively: each new activation adds a direction, and the system's observable basis expands in a dynamically adapted manner, always aligned with internal information gradients and always orthogonal under the current state.
 
 \subsection{Emergence of Local Structure and Interaction Geometry}
 
-Once a sufficient number of variables have activated and the system’s internal basis $\{H_i\}$ has expanded, the geometry begins to exhibit structure beyond simple independence. Whereas early phases are marked by orthogonal, uncorrelated observables, later phases reveal the onset of interaction geometry: a pattern of coupling among active directions that defines how variables relate and co-vary.
+Once a sufficient number of variables have activated and the system's internal basis $\{H_i\}$ has expanded, the geometry begins to exhibit structure beyond simple independence. Whereas early phases are marked by orthogonal, uncorrelated observables, later phases reveal the onset of interaction geometry: a pattern of coupling among active directions that defines how variables relate and co-vary.
 
 This is reflected in the off-diagonal structure of the Fisher Information Matrix:
 $$
@@ -306,7 +326,7 @@ In this sense, the system generates its own notion of local neighborhoods in inf
 
 This transition from globally latent, then individually active, to locally interacting structure constitutes a critical shift. The system is no longer just activating variables — it is discovering constraints, relations, and ultimately the seeds of effective dynamics.
 
-As the process continues, we expect the geometry to develop hierarchical structure: clusters of tightly coupled variables (local patches), loosely coupled across broader scales. These layered interactions provide the substrate for emergent effective laws, which govern the system’s dynamics from within.
+As the process continues, we expect the geometry to develop hierarchical structure: clusters of tightly coupled variables (local patches), loosely coupled across broader scales. These layered interactions provide the substrate for emergent effective laws, which govern the system's dynamics from within.
 
 \subsection{Local Wave Equations in $M$-Space from Information Geometry}
 
@@ -316,7 +336,7 @@ In this phase, the system is critically slowed: the entropy gradient $G(\boldsym
 
 This enables a direct variational analysis over the information geometry of $M$, without invoking any external physical interpretation. We treat $M$ as an emergent coordinate associated with an underlying resolution constraint, and derive a local equation for its distribution.
 
-Let $p(m)$ denote the distribution over $M$ at the system’s origin. We define the Fisher information with respect to $m$ as
+Let $p(m)$ denote the distribution over $M$ at the system's origin. We define the Fisher information with respect to $m$ as
 $$
 J_M = \int \frac{1}{p(m)} \left( \frac{d p(m)}{d m} \right)^2 \text{d}m,
 $$
@@ -331,7 +351,7 @@ $$
 $$
 which resembles a time-independent Schrödinger-type equation for a harmonic well. Here, the appearance of a potential-like term arises from the resolution constraint on the variance.
 
-Importantly, this wave-like equation is not imposed but emerges from the system’s requirement to minimise curvature (i.e. Fisher information) in the absence of directional flow. The system seeks the flattest possible entropy configuration under bounded resolution — and the ground state of this condition is formally equivalent to a Gaussian, satisfying a local second-order differential equation.
+Importantly, this wave-like equation is not imposed but emerges from the system's requirement to minimise curvature (i.e. Fisher information) in the absence of directional flow. The system seeks the flattest possible entropy configuration under bounded resolution — and the ground state of this condition is formally equivalent to a Gaussian, satisfying a local second-order differential equation.
 
 The minimisation procedure determines the ground-state configuration of the system under resolution constraints, and the resulting differential equation governs the form of the square-root amplitude $\psi(m)$.
 This provides the first appearance of wave-like structure in the unfolding framework. The minimal-entropy density in $M$-space obeys a local equation with the form of a stationary wavefunction — not because of external physics, but as a geometric consequence of information constraints.
@@ -340,11 +360,11 @@ We interpret this as a latent wave equation: a structure that governs the config
 
 In subsequent sections we will generalise this to activated variables — and explore how similar wave-like equations arise along directions where curvature becomes locally dominant, driven by internal entropy flow.
 
-We emphasise that this structure arises entirely from internal constraints — not as an imposed physical law — though its form resonates with equations derived in physical contexts, such as those examined in Frieden’s information-theoretic treatment of wave equations [@Frieden-physics98].
+We emphasise that this structure arises entirely from internal constraints — not as an imposed physical law — though its form resonates with equations derived in physical contexts, such as those examined in Frieden's information-theoretic treatment of wave equations [@Frieden-physics98].
 
 \subsection{Why a Wave Equation?}
 
-Before continuing, it’s worth pausing to reflect on what has just emerged. At the system’s origin, we derived a local second-order differential equation for the square root of the probability density $\psi(m) := \sqrt{p(m)}$ — an equation whose structure mirrors that of a time-independent wavefunction.
+Before continuing, it's worth pausing to reflect on what has just emerged. At the system's origin, we derived a local second-order differential equation for the square root of the probability density $\psi(m) := \sqrt{p(m)}$ — an equation whose structure mirrors that of a time-independent wavefunction.
 
 But where did this wave equation come from?
 
@@ -358,7 +378,7 @@ We now turn to those emergent directions.
 
 \subsection{Emergence of Observables: From Latent $M$ to Activated $X$}
 
-Having established the structure of the system’s minimal entropy state in terms of a latent coordinate $M$, we now examine how emergence begins: how directions in $M$-space become resolvable, triggering the appearance of observables $X_i$. This marks the system’s first step away from pure latency.
+Having established the structure of the system's minimal entropy state in terms of a latent coordinate $M$, we now examine how emergence begins: how directions in $M$-space become resolvable, triggering the appearance of observables $X_i$. This marks the system's first step away from pure latency.
 
 The latent coordinate $M$ describes directions that are not yet distinguishable — each M_i is an unresolved proto-variable, distributed according to a smooth, curvature-minimised wave equation. These directions are described probabilistically, via a scalar density $p(m)$ (or its amplitude $\psi(m)$), and are governed by an equilibrium-like geometry where no direction dominates.
 
@@ -386,7 +406,7 @@ This threshold crossing marks a geometric and informational phase change. The sy
 
 * The natural parameter $\theta_i$ becomes non-negligible.
 * The associated observable $H_i$ becomes active in the expansion of $\rho$.
-* The system’s internal basis is extended to include $X_i$ as a resolved coordinate.
+* The system's internal basis is extended to include $X_i$ as a resolved coordinate.
 
 This is not an external measurement — it is an internal reconfiguration of the geometry. The system builds a new basis aligned with the emergent direction, using the Gram–Schmidt-like procedure described earlier. The newly activated observable $H_i$ now defines a proper axis in information space, and the system begins to accumulate entropy along this direction.
 
@@ -420,7 +440,7 @@ $$
 -	\frac{d^2 \psi}{d m^2} + \lambda m^2 \psi = \mu \psi.
 $$
 
-This wave-like structure is not an imposed physical law but an internal solution: it balances uncertainty (through variance) with minimal curvature (through Fisher information), and thus defines the flattest distinguishable state available under the system’s constraints.
+This wave-like structure is not an imposed physical law but an internal solution: it balances uncertainty (through variance) with minimal curvature (through Fisher information), and thus defines the flattest distinguishable state available under the system's constraints.
 
 Now suppose the entropy begins to increase. The natural parameter \theta_M moves away from the flat region and begins to trace a gradient,
 $$
@@ -432,7 +452,7 @@ In this emergent regime, the previously passive distribution $p(m)$ becomes an a
 $$
 -	\frac{d^2 \psi}{dx^2} + V(x) \psi = E \psi,
 $$
-with the potential term $V(x) = \lambda x^2$ inherited from the original resolution constraint in $M$-space. At this stage, the system’s dynamics are still informationally local: only curvature along the $X$-direction governs the flow.
+with the potential term $V(x) = \lambda x^2$ inherited from the original resolution constraint in $M$-space. At this stage, the system's dynamics are still informationally local: only curvature along the $X$-direction governs the flow.
 
 This illustrates how the wave equation "survives" through the transition from latent M-space to active X-space — not as a relic of physics, but as a structure imposed by the information geometry of emergence. The wave-like behaviour is a property of the system's attempt to resolve a variable smoothly, under bounded entropy and curvature.
 
@@ -444,7 +464,7 @@ We now pick up the example after the emergence of the observable $X$. The system
 
 But the system is still unfolding. As entropy increases, the Fisher matrix $G$ deforms: one of its previously latent eigenmodes — say, associated with a proto-coordinate $M{\prime}$ — begins to amplify. Eventually, the corresponding parameter $\theta_{M{\prime}}$ grows in gradient magnitude and crosses the activation threshold,
 $$
-\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]{M’} \geq \varepsilon{\text{activate}}.
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]{M'} \geq \varepsilon{\text{activate}}.
 $$
 This triggers a second variable activation. As with $M$, we now reinterpret $M{\prime}$ as a resolvable coordinate $Y$, with associated observable $H_Y$, and a newly active degree of freedom.
 
@@ -495,7 +515,7 @@ We interpret this as the onset of locality: the system has begun to form informa
 
 In the next part, we will see how these local couplings condition future emergence — and how, as new variables activate, the system builds up layers of interaction structure that eventually resemble effective dynamics.
 
-It’s clear, coherent, and beautifully in tune with the overall narrative. The transition from single-variable flow to emergent joint curvature and the onset of locality is well motivated and naturally leads to the next stage.
+
 
 \subsection{Example Continued: Layered Interaction and Emergent Dynamics}
 
@@ -511,7 +531,7 @@ G_{ZX} & G_{ZY} & G_{ZZ}
 $$
 where some off-diagonal terms (e.g. $G_{XZ}$, $G_{YZ}$) may remain small if interactions are local, while others (like $G_{XY}$) are stronger — reflecting proximity in information space.
 
-The system is now discovering structured adjacency: some variables cluster into subsystems — regions of high mutual curvature — while others remain weakly linked. This defines a local information geometry, where coupling is not uniform but shaped by the system’s unfolding history.
+The system is now discovering structured adjacency: some variables cluster into subsystems — regions of high mutual curvature — while others remain weakly linked. This defines a local information geometry, where coupling is not uniform but shaped by the system's unfolding history.
 
 This leads to several key features of emergent dynamics:
 - Decoupling across scale: tightly coupled variables (e.g. $X$ and $Y$) evolve together, forming a subsystem, while distant variables (e.g. $Z$) initially evolve more independently. This creates a natural separation of timescales.
@@ -523,7 +543,7 @@ In this way, the system builds up a layered architecture: local couplings give r
 
 This is how effective dynamics emerge. The wave-like structure seen at early stages becomes modulated and conditioned by interactions. The internal rules — defined by curvature, resolution, and entropy flow — begin to resemble physical dynamics, even though they were never postulated.
 
-In the next section, we’ll explore how these dynamics can give rise to classical behaviour and apparent decoherence — as the system moves from finely structured wave equations to effective, high-entropy flows where only coarse properties survive.
+In the next section, we'll explore how these dynamics can give rise to classical behaviour and apparent decoherence — as the system moves from finely structured wave equations to effective, high-entropy flows where only coarse properties survive.
 
 \subsection{Example Continued: Transition to Classical Regimes and the Emergence of Coarse Dynamics}
 
@@ -550,11 +570,11 @@ In practice:
 
 -	Fine-grained amplitudes become inaccessible — suppressed by the entropy gradient and drowned in the higher-order coupling structure.
 - Observable behaviour is governed by coarse statistical properties: marginals, means, variances, and correlations.
--	The system effectively transitions from wave-dominated evolution to a dynamics of coarse constraints and informational inertia.
+-	The system transitions from wave-dominated evolution to a dynamics of coarse constraints and informational inertia.
 
 \paragraph{Apparent Laws and Classical Motion}
 
-From the inside, this transition gives rise to what appear as effective dynamical laws. These are not externally imposed equations of motion, but patterns in how information geometry evolves once the system becomes too high-dimensional to track in full.
+From the inside, this transition gives rise to what appear as dynamical laws. These are not externally imposed equations of motion, but patterns in how information geometry evolves once the system becomes too high-dimensional to track in full.
 
 For example:
 - Activated clusters follow approximately deterministic trajectories — peaks in marginal distributions shift smoothly, like classical particles.
@@ -597,7 +617,7 @@ Each of these transitions is governed not by external forces or postulated laws,
 - Gradients activate variables.
 - Activation reshapes the geometry.
 
-The system’s dynamics are emergent in the strict sense: each new layer of behaviour is conditioned by — but not reducible to — the previous one. The Fisher Information Matrix $G$ acts as both memory and mediator, encoding the system’s informational shape at every stage.
+The system's dynamics are emergent in the strict sense: each new layer of behaviour is conditioned by — but not reducible to — the previous one. The Fisher Information Matrix $G$ acts as both memory and mediator, encoding the system's informational shape at every stage.
 
 \paragraph{The Role of the Example in the Larger Framework}
 
