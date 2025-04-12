@@ -17,12 +17,12 @@ which we'll then link to the  curvature.
 
 First we differentiate $\log Z(\boldsymbol{\theta})$ with respect to $\theta_i$,
 $$
-Z(\boldsymbol{\theta}) = \mathrm{tr}\left[ e^{\sum_j \theta_j H_j} \right]
+Z(\boldsymbol{\theta}) = \mathrm{tr}\left[ \exp\left(\sum_j \theta_j H_j\right) \right]
 $$
 Taking the derivative of $\log Z$ with respect to $\theta_i$, we apply the chain rule to the definition of $\log Z$,
 $$
 \frac{\partial \log Z}{\partial \theta_i} = \frac{1}{Z} \frac{\partial Z}{\partial \theta_i}
-= \frac{1}{Z} \mathrm{tr}\left[ H_i \, e^{\sum_j \theta_j H_j} \right]
+= \frac{1}{Z} \mathrm{tr}\left[ H_i \, \exp\left(\sum_j \theta_j H_j\right) \right]
 $$
 So we have
 $$
