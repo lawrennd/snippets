@@ -42,13 +42,13 @@ These two constraints together define a *feasible region* in parameter space: a 
 
 \notes{Once the system leaves the latent domain \(\mathcal{D}_o\), it enters a region where curvature gradients become directionally amplified. In this region, the entropy gradient,
 $$
-\nabla S[\rho(\boldsymbol{\theta})] = G(\boldsymbol{\theta}) \boldsymbol{\theta},
+\nabla S[\rho(\boldsymbol{\theta})] = - \boldsymbol{\theta}^\top G(\boldsymbol{\theta}),
 $$
 becomes sufficiently steep in one or more directions to drive dynamical activation. This transition marks the onset of emergence.}
 
 \notes{The dynamics can be understood as entropic gradient ascent in the space of natural parameters $\boldsymbol{\theta}$, where the flow is governed by the information geometry encoded in the Fisher Information Matrix. At each point, the steepest ascent direction is given by
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto \nabla S[\rho] = G(\boldsymbol{\theta}) \boldsymbol{\theta}.
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto \nabla S[\rho]^\top = - G(\boldsymbol{\theta}) \boldsymbol{\theta}.
 $$}
 
 \notes{This defines a deterministic flow field over parameter space. In regions of uniform curvature, the system evolves slowly and symmetrically. The system's ability to resolve a specific direction corresponds to a rise in distinguishability, reflected in the local curvature profile. When one direction becomes locally dominant (i.e. the eigenvalues of $G(\boldsymbol{\theta})$ become asymmetric), the flow breaks symmetry and accelerates along that axis (i.e. a specific direction in $\boldsymbol{\theta}$-space becomes energetically or informationally preferred). A variable emerges.}
