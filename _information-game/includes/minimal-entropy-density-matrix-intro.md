@@ -19,7 +19,7 @@ where $Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left( \sum_i \theta_i H_i 
 
 \notes{The von Neumman entropy is given by
 $$
-S[\rho] = -\text{tr} \rho \ln \rho
+S[\rho] = -\text{tr} (\rho \log \rho)
 $$
 }
 \notes{We now derive the minimal entropy configuration inspired by Jaynes's *free-form* variational approach. This enables us to derive the form of the *density matrix* directly from information-theoretic constraints [@Jaynes-information63].}
