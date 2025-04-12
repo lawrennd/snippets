@@ -3,12 +3,12 @@
 
 \editme
 
-\subsection{Purpose}
+\subsection{Jaynes' World}
 
-This game explores how structure, time, causality, and locality can emerge within a system governed solely by internal information-theoretic constraints. It serves as
+\notes{his game explores how structure, time, causality, and locality can emerge within a system governed solely by internal information-theoretic constraints. It serves as
 
 - A *research framework* for observer-free dynamics and entropy-based emergence,
-- A *conceptual tool* for introducing ideas widely used in physics in an accessible, internally consistent setting making them more accessible in the computational and statistical sciences.
+- A *conceptual tool* for introducing ideas widely used in physics in an accessible, internally consistent setting making them more accessible in the computational and statistical sciences.}
 
 \subsection{Definitions and Global Constraints}
 
@@ -125,83 +125,5 @@ At points where the latent-to-active flow functional $\Psi(t)$ is locally extrem
 
 These transitions play a role analogous to *extremizing an internal information exchange*, similar in spirit to Frieden’s $\delta(I - J) = 0$ condition, but realized without requiring an observer or measurement.
 
-\subsection{Speculative Implications and Hypotheses}
-
-- *Local Reversibility* within fixed symmetry classes
-- *Latent Memory*: influence of inactive variables through curvature
-- *Pseudo-Saddles*: slow evolution from flat entropy curvature
-- *Conditional Independence*: emergent locality via block structure in $G$
-- *Domain Transitions*: new behaviour as variables emerge or stall
-
-\subsection{Connections to Information-Theoretic Literature}
-
-\notes{The entropic dynamics and uncertainty principles in this framework connect directly to results from information theory and mathematical physics. 
-
-@Hirschman-entropy57 first proposed using information entropy to express uncertainty relations, conjecturing that entropy-based formulations might be more fundamental than standard deviation approaches. His insight that information entropy constrains resolution across conjugate domains aligns with our system's precision-capacity trade-offs.
-
-@Beckner-fourier75 provided proof of Hirschman's conjecture through Fourier analysis inequalities, establishing the sharp constants for entropy uncertainty relations. His work demonstrates mathematically why Gaussian states emerge as minimal-uncertainty configurations as we observe in our derivation of the minimal entropy density matrix.
-
-@Bialynicki-uncertainty75 extended these principles to quantum mechanics, proving that entropy-based uncertainty relations imply the traditional Heisenberg principle rather than vice versa. Their demonstration that wave equations arise naturally from information-theoretic constraints motivates why Schrödinger-like equations emerge in our framework without imposed physical assumptions.
-
-These papers establish that the wave-like behavior, uncertainty principles, and resolution constraints can emerge as information-theoretic necessities. 
-
-Where our approach extends beyond these foundations is by placing them in a dynamic framework to allow the dynamics to unfold.}
-
-\subsection{Interpretation and Nuance}
-
-\subsubsection{1. Apparent Zero-Entropy Start}
-
-The game behaves as if it originates at low entropy, but this is a consequence of the entropy ascent, not an assumption.
-
-\subsubsection{2. Discretisation from Entropy Capacity}
-
-Finite entropy bounds imply resolution constraints, producing discrete transitions without discretizing the space.
-
-\subsubsection{3. Dual Role of Parameters and Variables}
-
-"$\theta_i \in X(t)$" means the observable governed by $H_i$ is actively evolving. Variables, parameters, and observables are dual facets of the representation.
-
-\subsubsection{4. Irreversibility vs Local Reversibility}
-
-Monotonic entropy-time induces global irreversibility, but local symmetry classes may evolve reversibly.
-
-\subsubsection{5. Fisher Information is an Analytic Tool}
-
-$G(\boldsymbol{\theta})$ helps us understand evolution—it is not known or used by the system itself.
-
-\subsubsection{6. No Observer or Collapse Needed}
-
-Structure emerges from the system’s internal curvature and resolution constraint, without measurement postulates.
-
-\subsubsection{7. Singularity Avoidance}
-
-True singularities (e.g. delta functions) are excluded; minimal-entropy states are regularized via density matrices.
-
-\subsubsection{8. Variational Principle is Optional}
-
-Only valid within fixed symmetry classes. It offers insight but is not required by the system’s evolution.
-
-\subsection{Connection to Frieden’s EPI: A Conceptual Analogue}
-
-This game is not built to explain or reproduce any specific physical theory, but it reveals structural patterns that *resemble variational information principles*, such as those used in Frieden’s Extreme Physical Information (EPI) framework.
-
-Frieden’s principle proposes that physical systems arise by extremizing a quantity $I - J$, where
-
-- $J$ is source (intrinsic) information,
-- $I$ is Fisher information extracted by an observer.
-
-In this game
-
-- No observer is present,
-- But we still have a structure ($G(\boldsymbol{\theta})$) that defines *latent curvature* (reservoir $M$),
-- And *detectable entropy flow* (active $X$).
-
-The *information flow functional*:
-$$
-\Psi(t) = \boldsymbol{\theta}_X^\top G_{XM} \boldsymbol{\theta}_M
-$$
-serves as a natural analogue to *internal information exchange*, without reference to measurement.
-
-When $\Psi(t)$ is extremal, the system may undergo a qualitative shift in its active structure—suggesting an internal, geometry-driven analogue to EPI, but interpreted entirely within the unfolding of the system itself.
 
 \endif
