@@ -1,3 +1,4 @@
+\ifndef{informationInertiaComponent}
 \define{informationInertiaComponent}
 
 \editme
