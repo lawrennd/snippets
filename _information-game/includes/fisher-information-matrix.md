@@ -50,7 +50,7 @@ we can use the product rule
 $$
 \frac{\partial \rho}{\partial \theta_j}
 = \frac{\partial}{\partial \theta_j} \left( \frac{1}{Z(\boldsymbol{\theta})} \exp\left(\sum_k \theta_k H_k\right) \right)
-= -\frac{1}{Z(\boldsymbol{\theta})^2} \frac{\partial Z(\boldsymbol{\theta})}{\partial \theta_j} \left(\sum_k \theta_k H_k\right) \cdot \frac{1}{Z(\boldsymbol{\theta})} \frac{\partial}{\partial \theta_j} \left( \left(\sum_k \theta_k H_k\right) \right)
+= -\frac{1}{Z(\boldsymbol{\theta})^2} \frac{\partial Z(\boldsymbol{\theta})}{\partial \theta_j} \left(\sum_k \theta_k H_k\right) + \frac{1}{Z(\boldsymbol{\theta})} \frac{\partial}{\partial \theta_j} \left( \left(\sum_k \theta_k H_k\right) \right)
 $$
 For the second term we use the operator identity for the exponential derivative,
 $$
