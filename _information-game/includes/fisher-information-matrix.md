@@ -5,7 +5,7 @@
 
 \subsection{Fisher Information Matrix}
 
-We'll now derive the form of the Fisher Information Matrix $G(\boldsymbol{\theta})$ from the partition function:
+\notes{We'll now derive the form of the Fisher Information Matrix $G(\boldsymbol{\theta})$ from the partition function:
 $$
 Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left(\sum_i \theta_i H_i \right)\right]
 $$
@@ -13,9 +13,9 @@ We'll proceed by differentiating with respect to $\theta_i$ for the expectation 
 $$
 G_{ij} = \frac{\partial^2 \log Z(\boldsymbol{\theta})}{ \partial \theta_i \partial \theta_j}.
 $$
-which we'll then link to the  curvature.
+which we'll then link to the  curvature.}
 
-First we differentiate $\log Z(\boldsymbol{\theta})$ with respect to $\theta_i$,
+\notes{First we differentiate $\log Z(\boldsymbol{\theta})$ with respect to $\theta_i$,
 $$
 Z(\boldsymbol{\theta}) = \mathrm{tr}\left[ \exp\left(\sum_j \theta_j H_j\right) \right]
 $$
@@ -28,9 +28,9 @@ So we have
 $$
 \frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_i} = \mathrm{tr}(\rho H_i) = \langle H_i \rangle
 $$
-This is the expected value of $H_i$ under the current distribution $\rho(\boldsymbol{\theta})$. 
+This is the expected value of $H_i$ under the current distribution $\rho(\boldsymbol{\theta})$.}
 
-We now compute the second derivative of $\log Z(\boldsymbol{\theta})$ to obtain the Fisher Information Matrix elements $G_{ij}$, using the definition
+\notes{We now compute the second derivative of $\log Z(\boldsymbol{\theta})$ to obtain the Fisher Information Matrix elements $G_{ij}$, using the definition
 $$
 G_{ij} = \frac{\partial^2 \log Z(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
 $$
@@ -64,9 +64,9 @@ $$
 so the Fisher Information Matrix is the covariance matrix,
 $$
 G_{ij} = \mathrm{Cov}(H_i, H_j).
-$$
+$$}
 
-This reflects a structural property of the model: the log-partition function $\log Z(\boldsymbol{\theta})$ acts as a cumulant generating function for the observables $H_i$. Its second derivatives yield the covariance matrix of the observables (i.e., the second cumulants correspond to variances and covariances).
-This induces a natural Riemannian geometry on the parameter space. The Fisher Information Matrix $G(\boldsymbol{\theta})$ encodes local curvature and sensitivity to variations in the natural parameters $\boldsymbol{\theta}$.
+\notes{The log-partition function $\log Z(\boldsymbol{\theta})$ acts as a cumulant generating function for the observables $H_i$. Its second derivatives yield the covariance matrix of the observables (i.e., the second cumulants correspond to variances and covariances).
+This induces a natural Riemannian geometry on the parameter space. The Fisher Information Matrix $G(\boldsymbol{\theta})$ encodes local curvature and sensitivity to variations in the natural parameters $\boldsymbol{\theta}$.}
 
 \endif 
