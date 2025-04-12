@@ -11,7 +11,7 @@ Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left(\sum_i \theta_i H_i \right)\
 $$
 We'll proceed by differentiating with respect to $\theta_i$ for the expectation values, then compute the second derivative to get the Fisher Information Matrix, 
 $$
-G_{ij} = \partial^2 \log Z / \partial \theta_i \partial \theta_j.
+G_{ij} = \frac{\partial^2 \log Z(\boldsymbol{\theta})}{ \partial \theta_i \partial \theta_j}.
 $$
 which we'll then link to the  curvature.
 
