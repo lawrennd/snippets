@@ -78,7 +78,7 @@ $$}
 
 \notes{We can then use $\varepsilon$ and $N$ to define initial thresholds and maximum resolution and examine how variables decouple and how saddle-like regions emerge as the landscape unfolds through gradient ascent.}
 
-\notes{This constrained minimization problem yields the *structure of the initial density matrix* $\rho(\boldsymbol{\theta}_o)$ and the *permissible curvature geometry* $G(\boldsymbol{\theta}_o)$ and a constraint-consistent basis of observables $\{H_i\}$ that have a quadratic form. This ensures the system begins in a *regular, latent, low-entropy state*.
+\notes{This constrained minimization problem yields the *structure of the initial density matrix* $\rho(\boldsymbol{\theta}_o)$ and the *permissible curvature geometry* $G(\boldsymbol{\theta}_o)$ and a constraint-consistent basis of observables $\{H_i\}$ that have a quadratic form. This ensures the system begins in a *regular, latent, low-entropy state*.}
 
 \notes{This is the configuration from which entropy ascent and symmetry-breaking transitions emerge.}
 
