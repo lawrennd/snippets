@@ -169,7 +169,7 @@ This state minimizes entropy under the constraint that it remains regular, conti
 
 \notes{If $\theta_k \in M(t)$ and $|\dot{\theta}_k| \geq \varepsilon$, then
 $$
-\theta_k \in X(t + \delta.
+\theta_k \in X(t + \delta t).
 $$}
 
 
