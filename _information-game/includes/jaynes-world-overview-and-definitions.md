@@ -36,6 +36,7 @@ Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game 
 \slides{
 - System state: $\rho(\boldsymbol{\theta}) = \frac{1}{Z(\boldsymbol{\theta})} \exp\left( \sum_i \theta_i H_i \right)$
 - Entropy: $S(\boldsymbol{\theta}) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla A(\boldsymbol{\theta})$
+- where $A(\boldsymbol{\theta}) = \log Z(\boldsymbol{\theta})$
 - Fisher Information: $G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A}{\partial \theta_i \partial \theta_j}$
 }
 
