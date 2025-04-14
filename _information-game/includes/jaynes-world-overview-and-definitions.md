@@ -131,10 +131,10 @@ $$
 \notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(t)$ and latent information reservoir $M(t)$:
 $$
 G(\boldsymbol{\theta}) = 
-\begin{pmatrix}
+\begin{bmatrix}
 G_{XX} & G_{XM} \\
 G_{MX} & G_{MM}
-\end{pmatrix}
+\end{bmatrix}
 $$
 where $G_{XX}$ represents the information geometry within active variables, $G_{MM}$ within the latent reservoir, and $G_{XM} = G_{MX}^\top$ captures the cross-coupling between active and latent components. This partitioning reveals how information flows between observable dynamics and the latent structure.}
 
@@ -142,21 +142,21 @@ where $G_{XX}$ represents the information geometry within active variables, $G_{
 \subsection{Lemma 1: Form of the Minimal Entropy Configuration}
 
 \slides{
-- Minimal entropy state: $\rho(\boldsymbol{\theta}_0) = \frac{1}{Z(\boldsymbol{\theta}_0)} \exp\left( \sum_i \theta_{0i} H_i \right)$
-- All parameters sub-threshold: $|\dot{\theta}_{0i}| < \varepsilon$
+- Minimal entropy state: $\rho(\boldsymbol{\theta}_o) = \frac{1}{Z(\boldsymbol{\theta}_o)} \exp\left( \sum_i \theta_{oi} H_i \right)$
+- All parameters sub-threshold: $|\dot{\theta}_{oi}| < \varepsilon$
 - Regular, continuous, and detectable above resolution scale
 }
 
-\notes{The minimal-entropy state compatible with the system's resolution constraint and regularity condition is represented by a density matrix of the exponential form:
+\notes{The minimal-entropy state compatible with the system's resolution constraint and regularity condition is represented by a density matrix of the exponential form,
 $$
-\rho(\boldsymbol{\theta}_0) = \frac{1}{Z(\boldsymbol{\theta}_0)} \exp\left( \sum_i \theta_{0i} H_i \right),
+\rho(\boldsymbol{\theta}_o) = \frac{1}{Z(\boldsymbol{\theta}_o)} \exp\left( \sum_i \theta_{oi} H_i \right),
 $$
-where $\boldsymbol{\theta}_0 \approx \boldsymbol{0}$, and all components $\theta_{0i}$ are sub-threshold:
+where all components $\theta_{oi}$ are sub-threshold:
 $$
-|\dot{\theta}_{0i}| < \varepsilon
+|\dot{\theta}_{oi}| < \varepsilon
 $$
 
-This state minimizes entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon \sim \frac{1}{2^N}$. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' formalism, using the same density matrix geometry but inverted optimization.}
+This state minimizes entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon $. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' formalism, using the same density matrix geometry but inverted optimization.}
 
 
 \subsubsection{Lemma 2: Symmetry Breaking}
