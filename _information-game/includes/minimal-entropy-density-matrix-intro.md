@@ -14,7 +14,7 @@
 - Capture structure of system's minimal entropy state
 }
 
-\notes{@Hirschman-entropy57 established a connection between entropy and the Fourier transform, showing that the entropy of a function and its Fourier transform cannot both be arbitrarily small. This result, known as the Hirschman uncertainty principle, was later strengthened by Beckner [@Beckner-fourier75] who derived the optimal constant in the inequality. @Bialynicki-uncertainty75 extended these ideas to derive uncertainty relations for information entropy in wave mechanics
+\notes{@Hirschman-entropy57 established a connection between entropy and the Fourier transform, showing that the entropy of a function and its Fourier transform cannot both be arbitrarily small. This result, known as the Hirschman uncertainty principle, was later strengthened by Beckner [@Beckner-fourier75] who derived the optimal constant in the inequality. @Bialynicki-uncertainty75 extended these ideas to derive uncertainty relations for information entropy in wave mechanics.}
 
 \notes{From these results we know that there are fundamental limits to how we express the entropy of position and its conjugate space simultaneously. These limits inspire us to focus on the *von Neumann entropy* so that our system respects the Hirschman uncertainty principle.}
 
