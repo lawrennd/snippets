@@ -28,7 +28,7 @@
 }
 
 \notes{
-Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $t$, define a partition where $X(t) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(t) = Z \setminus X(t)$: latent or frozen variables that are stored in the form of an *information reservoir* (Barato-stochastic14,@Parrondo-thermodynamics15).}
+Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $t$, define a partition where $X(t) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(t) = Z \setminus X(t)$: latent or frozen variables that are stored in the form of an *information reservoir* (@Barato-stochastic14,@Parrondo-thermodynamics15).}
 
 
 \subsubsection{Representation via Density Matrix}
