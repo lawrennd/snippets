@@ -218,7 +218,7 @@ $$}
 }
 
 \notes{
-1. $\tau(t)$ increases monotonically, preventing time-reversal globally.}
+1. $t(\tau)$ increases monotonically, preventing time-reversal globally.}
 
 2. In regions where parameters are weakly coupled to entropy change (low $\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]$), perceived time flows slowly.
 
