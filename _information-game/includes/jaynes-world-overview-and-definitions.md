@@ -218,13 +218,7 @@ $\tau(t)$ increases monotonically, preventing time-reversal globally.}
 
 \subsection{Conjecture: Frieden-Analogous Extremal Flow}
 
-\slides{
-- When latent-to-active flow is extremal, system exhibits critical slowing
-- System entropy separates into active variables $I = S[\rho_X]$ and "intrinsic information" $J = S[\rho_{X|M}]$
-- Analogous to @Frieden-physics98 extreme physical information principle $\delta(I - J) = 0$ 
-}
-
-\notes{At points where the latent-to-active flow functional is locally extremal (e.g., $\frac{d \boldsymbol{\theta}_M}{dt} \approx 0 $), the system may exhibit critical slowing where information resevoir variables are slow relative to active variables. It may be possible to separate the system entropy into active variables and, $I = S[\rho_X]$ and "intrinsic information" $J= S[\rho_{X|M}]$ allowing us to create an information analogous to  B. Roy Frieden's extreme physical information (@Frieden-physics98) which allows derivation of locally valid differential equations that depend on the *information topography*.}
+\notes{At points where the latent-to-active flow functional is locally extremal (e.g., $\frac{\text{d} \boldsymbol{\theta}_M}{\text{d}t} \approx 0 $), the system may exhibit critical slowing where information resevoir variables are slow relative to active variables. It may be possible to separate the system entropy into active variables and, $I = S[\rho_X]$ and "intrinsic information" $J= S[\rho_{X|M}]$ allowing us to create an information action principle analogous to  B. Roy Frieden's extreme physical information (@Frieden-physics98) which allows derivation of locally valid differential equations that depend on the *information topography*.}
 
 
 \endif
