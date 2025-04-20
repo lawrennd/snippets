@@ -85,7 +85,7 @@ Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constan
 - Active parameters evolve with $|\dot{\theta}_i| \geq \varepsilon$
 }
 
-\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(t)$, we mean that the component of the system associated with $H_i$ is active at time $t$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality  *variables*, *observables*, and *natural parameters* that we find in exponential family representations and we also see in a density matrix representation.}
+\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(\tau)$, we mean that the component of the system associated with $H_i$ is active at time $\tau$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality  *variables*, *observables*, and *natural parameters* that we find in exponential family representations and we also see in a density matrix representation.}
 
 
 \subsection{Core Axiom: Entropic Dynamics}
@@ -93,7 +93,7 @@ Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constan
 \slides{
 - System evolves by steepest ascent in entropy
   $$
-  \frac{d\boldsymbol{\theta}}{dt} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+  \frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
   $$
 - Follows the gradient of entropy in parameter space
 }
@@ -104,7 +104,7 @@ $$
 $$
 and so we set
 $$
-\frac{d\boldsymbol{\theta}}{dt} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+\frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
 $$}
 
 \include{_information-game/includes/two-bin-example.md}
@@ -118,8 +118,8 @@ X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \va
 $$
 
 \slides{
-- Active variables: $X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \varepsilon \right\}$
-- Latent variables: $M(t) = Z \setminus X(t)$
+- Active variables: $X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
+- Latent variables: $M(\tau) = Z \setminus X(\tau)$
 - Partition changes as system evolves
 }
 
@@ -132,7 +132,7 @@ $$
 - $G_{XM}$: Cross-coupling between domains
 }
 
-\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(t)$ and latent information reservoir $M(t)$:
+\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and latent information reservoir $M(\tau):
 $$
 G(\boldsymbol{\theta}) = 
 \begin{bmatrix}
@@ -165,14 +165,14 @@ This state minimizes entropy under the constraint that it remains regular, conti
 \subsubsection{Lemma 2: Symmetry Breaking}
 
 \slides{
-- If $\theta_k \in M(t)$ and $|\dot{\theta}_k| \geq \varepsilon$, then $\theta_k \in X(t + \delta)$
+- If $\theta_k \in M(\tau)$ and $|\dot{\theta}_k| \geq \varepsilon$, then $\theta_k \in X(\tau + \delta)$
 - Latent variables can become active when their rate of change exceeds threshold
 - Mechanism for emergence of new active variables
 }
 
-\notes{If $\theta_k \in M(t)$ and $|\dot{\theta}_k| \geq \varepsilon$, then
+\notes{If $\theta_k \in M(\tau)$ and $|\dot{\theta}_k| \geq \varepsilon$, then
 $$
-\theta_k \in X(t + \delta t).
+\theta_k \in X(\tau + \delta \tau).
 $$}
 
 \include{_information-game/includes/four-bin-saddle-example.md}
