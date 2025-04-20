@@ -1,6 +1,8 @@
 \ifndef{waveEquationEmergence}
 \define{waveEquationEmergence}
 
+\editme
+
 \subsection{Local Wave Equations in $M$-Space from Information Geometry}
 
 \notes{We now examine the special case of the system's origin — the latent region $\mathcal{D}_0$ — where no variables have yet activated, and the geometry is defined purely in terms of the latent information structure over a proto-coordinate $M$.}
