@@ -22,13 +22,13 @@
 
 \slides{
 - Full set of variables: $Z = \{Z_1, Z_2, \dots, Z_n\}$
-- Partition at time $t$:
-  - Active variables $X(t)$: contributing to entropy
-  - Latent variables $M(t)$: information reservoir
+- Partition at time $\tau$:
+  - Active variables $X(\tau)$: contributing to entropy
+  - Latent variables $M(\tau)$: information reservoir
 }
 
 \notes{
-Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $t$, define a partition where $X(t) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(t) = Z \setminus X(t)$: latent or frozen variables that are stored in the form of an *information reservoir* (@Barato-stochastic14,@Parrondo-thermodynamics15).}
+Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $\tau$, define a partition where $X(\tau) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(t) = Z \setminus X(\tau)$: latent or frozen variables that are stored in the form of an *information reservoir* (@Barato-stochastic14,@Parrondo-thermodynamics15).}
 
 
 \subsubsection{Representation via Density Matrix}
@@ -118,7 +118,7 @@ X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \va
 $$
 
 \slides{
-- Active variables: $X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
+- Active variables: $X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
 - Latent variables: $M(\tau) = Z \setminus X(\tau)$
 - Partition changes as system evolves
 }
@@ -177,28 +177,28 @@ $$}
 
 \include{_information-game/includes/four-bin-saddle-example.md}
 
-\subsubsection{Entropy-Time}
+\subsubsection{Perceived Time}
 
 \slides{
-- Entropy-time: $\tau(t) := S_{X(t)}(t)$
+- Entropy-time: $t(\tau) := S_{X(\tau)}(\tau)$
 - Measures accumulated entropy of active variables
 }
 
 \notes{
 $$
-\tau(t) := S_{X(t)}(t)
+t(\tau) := S_{X(\tau)}(\tau)
 $$
 }
 
 \notes{\subsubsection{Lemma 3: Monotonicity of Entropy-Time}
 
 $$
-\tau(t_2) \geq \tau(t_1) \quad \text{for all } t_2 > t_1
+t(\tau_2) \geq t(\tau_1) \quad \text{for all } \tau_2 > \tau_1
 $$}
 
 \newslide{Monotonicity of Entropy-Time}
 \slides{
-- $\tau(t_2) \geq \tau(t_1)$ for all $t_2 > t_1$
+- $t(\tau_2) \geq t(\tau_1)$ for all $\tau_2 > \tau_1$
 - Entropy-time always increases
 - Implies irreversibility of the system
 }
@@ -206,19 +206,18 @@ $$}
 \subsubsection{Corollary: Irreversibility}
 \newslide{Irreversibility}
 \slides{
-- $\tau(t)$ increases monotonically
+- $t(\tau)$ increases monotonically
 - Prevents time-reversal globally
 - Provides an arrow of time for the system
 }
 
 \notes{
-$\tau(t)$ increases monotonically, preventing time-reversal globally.}
+$t(\tau)$ increases monotonically, preventing time-reversal globally.}
 
 
 
 \subsection{Conjecture: Frieden-Analogous Extremal Flow}
 
-\notes{At points where the latent-to-active flow functional is locally extremal (e.g., $\frac{\text{d} \boldsymbol{\theta}_M}{\text{d}t} \approx 0 $), the system may exhibit critical slowing where information resevoir variables are slow relative to active variables. It may be possible to separate the system entropy into active variables and, $I = S[\rho_X]$ and "intrinsic information" $J= S[\rho_{X|M}]$ allowing us to create an information action principle analogous to  B. Roy Frieden's extreme physical information (@Frieden-physics98) which allows derivation of locally valid differential equations that depend on the *information topography*.}
-
+\notes{At points where the latent-to-active flow functional is locally extremal (e.g., $\frac{\text{d} \boldsymbol{\theta}_M}{\text{d}\tau} \approx 0 $), the system may exhibit critical slowing where information resevoir variables are slow relative to active variables. It may be possible to separate the system entropy into active variables and, $I = S[\rho_X]$ and "intrinsic information" $J= S[\rho_{X|M}]$ allowing us to create an information action principle analogous to  B. Roy Frieden's extreme physical information (@Frieden-physics98) which allows derivation of locally valid differential equations that depend on the *information topography*. We expect these equations to evolve according to perceived time, $t$.}
 
 \endif
