@@ -152,7 +152,7 @@ where all components $\theta_{oi}$ are sub-threshold
 $$
 |\dot{\theta}_{oi}| < \varepsilon.
 $$
-This state minimises entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon $. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' maximum entropy formalism [@Jaynes-entropy63], using the same density matrix geometry but inverted optimization.}
+This state minimises entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon $. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' maximum entropy formalism [@Jaynes-information63], using the same density matrix geometry but inverted optimization.}
 
 
 \subsubsection{Lemma 2: Symmetry Breaking}
