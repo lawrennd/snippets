@@ -22,13 +22,13 @@
 
 \slides{
 - Full set of variables: $Z = \{Z_1, Z_2, \dots, Z_n\}$
-- Partition at time $t$:
-  - Active variables $X(t)$: contributing to entropy
-  - Latent variables $M(t)$: information reservoir
+- Partition at system time $\tau$:
+  - Active variables $X(\tau)$: contributing to entropy
+  - Latent variables $M(\tau)$: information reservoir
 }
 
 \notes{
-Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $t$, define a partition where $X(t) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(t) = Z \setminus X(t)$: latent or frozen variables that are stored in the form of an *information reservoir* (@Barato-stochastic14,@Parrondo-thermodynamics15).}
+Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $\tau$, define a partition where $X(\tau) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(\tau) = Z \setminus X(\tau)$: latent or frozen variables that are stored in the form of an *information reservoir* (@Barato-stochastic14,@Parrondo-thermodynamics15).}
 
 
 \subsubsection{Representation via Density Matrix}
@@ -85,7 +85,7 @@ Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constan
 - Active parameters evolve with $|\dot{\theta}_i| \geq \varepsilon$
 }
 
-\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(t)$, we mean that the component of the system associated with $H_i$ is active at time $t$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality  *variables*, *observables*, and *natural parameters* that we find in exponential family representations and we also see in a density matrix representation.}
+\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(\tau)$, we mean that the component of the system associated with $H_i$ is active at time $\tau$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality  *variables*, *observables*, and *natural parameters* that we find in exponential family representations and we also see in a density matrix representation.}
 
 
 \subsection{Core Axiom: Entropic Dynamics}
@@ -93,7 +93,7 @@ Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constan
 \slides{
 - System evolves by steepest ascent in entropy
   $$
-  \frac{d\boldsymbol{\theta}}{dt} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+  \frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
   $$
 - Follows the gradient of entropy in parameter space
 }
@@ -104,7 +104,7 @@ $$
 $$
 and so we set
 $$
-\frac{d\boldsymbol{\theta}}{dt} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+\frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
 $$}
 
 \include{_information-game/includes/two-bin-example.md}
@@ -114,12 +114,12 @@ $$}
 
 \subsubsection{Variable Partition}
 $$
-X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \varepsilon \right\}, \quad M(t) = Z \setminus X(t)
+X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}, \quad M(\tau) = Z \setminus X(\tau)
 $$
 
 \slides{
-- Active variables: $X(t) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}t} \right| \geq \varepsilon \right\}$
-- Latent variables: $M(t) = Z \setminus X(t)$
+- Active variables: $X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
+- Latent variables: $M(\tau) = Z \setminus X(\tau)$
 - Partition changes as system evolves
 }
 
@@ -132,7 +132,7 @@ $$
 - $G_{XM}$: Cross-coupling between domains
 }
 
-\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(t)$ and latent information reservoir $M(t)$:
+\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and latent information reservoir $M(\tau)$:
 $$
 G(\boldsymbol{\theta}) = 
 \begin{bmatrix}
@@ -165,48 +165,64 @@ This state minimizes entropy under the constraint that it remains regular, conti
 \subsubsection{Lemma 2: Symmetry Breaking}
 
 \slides{
-- If $\theta_k \in M(t)$ and $|\dot{\theta}_k| \geq \varepsilon$, then $\theta_k \in X(t + \delta)$
+- If $\theta_k \in M(\tau)$ and $|\dot{\theta}_k| \geq \varepsilon$, then $\theta_k \in X(\tau + \delta)$
 - Latent variables can become active when their rate of change exceeds threshold
 - Mechanism for emergence of new active variables
 }
 
-\notes{If $\theta_k \in M(t)$ and $|\dot{\theta}_k| \geq \varepsilon$, then
+\notes{If $\theta_k \in M(\tau)$ and $|\dot{\theta}_k| \geq \varepsilon$, then
 $$
-\theta_k \in X(t + \delta t).
+\theta_k \in X(\tau + \delta \tau).
 $$}
 
 \include{_information-game/includes/four-bin-saddle-example.md}
 
-\subsubsection{Entropy-Time}
+\subsubsection{System Time and Perceived Time}
 
 \slides{
-- Entropy-time: $\tau(t) := S_{X(t)}(t)$
-- Measures accumulated entropy of active variables
+- System time $\tau$: external time parameter
+- Perceived time $t$: internal time, monotonic function of $\tau$
+- Relationship: $\frac{\text{d}t}{\text{d}\tau} = \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}$
 }
 
 \notes{
+The system evolves in two time scales:
+
+1. *System time* $\tau$: the external time parameter in which the system evolves according to
 $$
-\tau(t) := S_{X(t)}(t)
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
 $$
+
+2. *Perceived time* $t$: the internal time that measures the accumulated entropy of active variables, defined as
+$$
+t(\tau) := S_{X(\tau)}(\tau)
+$$
+
+The relationship between these time scales is given by
+$$
+\frac{\text{d}t}{\text{d}\tau} = \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta} = -\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]
+$$
+
+This reveals that perceived time flows at different rates depending on the information content of the system. In regions where parameters are strongly aligned with entropy change, perceived time flows rapidly relative to system time. In regions where parameters are weakly coupled to entropy change, perceived time flows slowly.
 }
 
-\notes{\subsubsection{Lemma 3: Monotonicity of Entropy-Time}
+\notes{\subsubsection{Lemma 3: Monotonicity of Perceived Time}
 
 $$
-\tau(t_2) \geq \tau(t_1) \quad \text{for all } t_2 > t_1
+t(\tau_2) \geq t(\tau_1) \quad \text{for all } \tau_2 > \tau_1
 $$}
 
-\newslide{Monotonicity of Entropy-Time}
+\newslide{Monotonicity of Perceived Time}
 \slides{
-- $\tau(t_2) \geq \tau(t_1)$ for all $t_2 > t_1$
-- Entropy-time always increases
+- $t(\tau_2) \geq t(\tau_1)$ for all $\tau_2 > \tau_1$
+- Perceived time always increases
 - Implies irreversibility of the system
 }
 
 \subsubsection{Corollary: Irreversibility}
 \newslide{Irreversibility}
 \slides{
-- $\tau(t)$ increases monotonically
+- $t(\tau)$ increases monotonically
 - Prevents time-reversal globally
 - Provides an arrow of time for the system
 }
@@ -214,7 +230,10 @@ $$}
 \notes{
 $\tau(t)$ increases monotonically, preventing time-reversal globally.}
 
+2. In regions where parameters are weakly coupled to entropy change (low $\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]$), perceived time flows slowly.
 
+3. At critical points where parameters become orthogonal to the entropy gradient ($\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}] \approx 0$), the time parameterization approaches singularity indicating phase transitions in the system's information structure.
+}
 
 \subsection{Conjecture: Frieden-Analogous Extremal Flow}
 
@@ -224,7 +243,7 @@ $\tau(t)$ increases monotonically, preventing time-reversal globally.}
 - Analogous to @Frieden-physics98 extreme physical information principle $\delta(I - J) = 0$ 
 }
 
-\notes{At points where the latent-to-active flow functional is locally extremal (e.g., $\frac{d \boldsymbol{\theta}_M}{dt} \approx 0 $), the system may exhibit critical slowing where information resevoir variables are slow relative to active variables. It may be possible to separate the system entropy into active variables and, $I = S[\rho_X]$ and "intrinsic information" $J= S[\rho_{X|M}]$ allowing us to create an information analogous to  B. Roy Frieden's extreme physical information (@Frieden-physics98) which allows derivation of locally valid differential equations that depend on the *information topography*.}
+\notes{At points where the latent-to-active flow functional is locally extremal (e.g., $\frac{d \boldsymbol{\theta}_M}{d\tau} \approx 0 $), the system may exhibit critical slowing where information resevoir variables are slow relative to active variables. It may be possible to separate the system entropy into active variables and, $I = S[\rho_X]$ and "intrinsic information" $J= S[\rho_{X|M}]$ allowing us to create an information analogous to  B. Roy Frieden's extreme physical information (@Frieden-physics98) which allows derivation of locally valid differential equations that depend on the *information topography*.}
 
 
 \endif
