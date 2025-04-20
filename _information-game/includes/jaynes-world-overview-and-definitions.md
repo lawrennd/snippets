@@ -40,7 +40,7 @@ Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game 
 - Fisher Information: $G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A}{\partial \theta_i \partial \theta_j}$
 }
 
-\notes{We'll argue that the configuration space must be represented by a  density matrix,
+\notes{We'll argue that the configuration space must be represented by a density matrix,
 $$
 \rho(\boldsymbol{\theta}) = \frac{1}{Z(\boldsymbol{\theta})} \exp\left( \sum_i \theta_i H_i \right),
 $$
@@ -68,13 +68,7 @@ $$}
 - System dynamics show discrete, detectable transitions
 }
 
-\notes{We define our system to have a *maximum entropy* of $N$ bits. If the dimension $d$ of the parameter space is fixed, this implies a *minimum detectable resolution* in natural parameter space,
-$$
-\varepsilon \sim \frac{1}{2^N},
-$$
-where changes in natural parameters smaller than $\varepsilon$ are treated as *invisible* by the system. As a result, system dynamics exhibit *discrete, detectable transitions* between distinguishable states.
-
-Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constant $\alpha$), then the resolution constraint becomes more complex. In this case, the volume of distinguishable states $(\varepsilon)^d$ must equal $2^N$, which leads to $\varepsilon = 2^{1/\alpha}$, a constant independent of $N$. This suggests that as the system's entropy capacity grows, it maintains a constant resolution while exponentially increasing the number of distinguishable states.}
+\notes{We define our system to have a *maximum entropy* of $N$ bits. This implies a *minimum detectable resolution* in natural parameter space which we denote by $\varepsilon$. Changes in natural parameters smaller than $\varepsilon$ are treated as *invisible* bin the system. As a result, system dynamics exhibit *discrete, detectable transitions* between distinguishable states.}
 
 \subsection{Dual Role of Parameters and Variables}
 
@@ -82,10 +76,12 @@ Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constan
 - Each variable $Z_i$ has:
   - Generator $H_i$
   - Natural parameter $\theta_i$
-- Active parameters evolve with $|\dot{\theta}_i| \geq \varepsilon$
+- Active parameters evolve if $|\dot{\theta}_i| \geq \varepsilon$
 }
 
-\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(\tau)$, we mean that the component of the system associated with $H_i$ is active at time $\tau$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality  *variables*, *observables*, and *natural parameters* that we find in exponential family representations and we also see in a density matrix representation.}
+\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(\tau)$, we mean that the component of the system associated with $H_i$ is active at time $\tau$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality between *variables* and *natural parameters* that we find in density matrix representations.[^exponential]
+
+[^exponential]: We also see this duality in *exponential family* distributions.}
 
 
 \subsection{Core Axiom: Entropic Dynamics}
@@ -98,7 +94,7 @@ Note if the dimension $d$ scales with $N$ (e.g., $d = \alpha N$ for some constan
 - Follows the gradient of entropy in parameter space
 }
 
-\notes{Our core axiom is that the system evolves by steepest ascent in entropy. The gradient of the density matrix with respect to the natural parameters is given by
+\notes{The game evolves by steepest ascent in entropy. The gradient of the density matrix with respect to the natural parameters is given by
 $$
 \nabla S[\rho] = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
 $$
@@ -106,9 +102,6 @@ and so we set
 $$
 \frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
 $$}
-
-\include{_information-game/includes/two-bin-example.md}
-\include{_information-game/includes/four-bin-example.md}
 
 \subsection{Constructed Quantities and Lemmas}
 
@@ -120,7 +113,11 @@ $$
 \slides{
 - Active variables: $X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
 - Latent variables: $M(\tau) = Z \setminus X(\tau)$
+<<<<<<< HEAD
 - Partition changes as system evolves
+=======
+- Partition can change as system evolves
+>>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 }
 
 \subsubsection{Fisher Information Matrix Partitioning}
@@ -132,7 +129,11 @@ $$
 - $G_{XM}$: Cross-coupling between domains
 }
 
+<<<<<<< HEAD
 \notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and latent information reservoir $M(\tau)$:
+=======
+\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and (latent) information reservoir $M(\tau)$:
+>>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 $$
 G(\boldsymbol{\theta}) = 
 \begin{bmatrix}
@@ -140,7 +141,7 @@ G_{XX} & G_{XM} \\
 G_{MX} & G_{MM}
 \end{bmatrix}
 $$
-where $G_{XX}$ represents the information geometry within active variables, $G_{MM}$ within the latent reservoir, and $G_{XM} = G_{MX}^\top$ captures the cross-coupling between active and latent components. This partitioning reveals how information flows between observable dynamics and the latent structure.}
+where $G_{XX}$ represents the information geometry within active variables, $G_{MM}$ within the latent reservoir, and $G_{XM} = G_{MX}^\top$ captures the cross-coupling between active and latent components. This partitioning governs how information flows between observed dynamics and the latent structure.}
 
 
 \subsection{Lemma 1: Form of the Minimal Entropy Configuration}
@@ -151,7 +152,7 @@ where $G_{XX}$ represents the information geometry within active variables, $G_{
 - Regular, continuous, and detectable above resolution scale
 }
 
-\notes{The minimal-entropy state compatible with the system's resolution constraint and regularity condition is represented by a density matrix of the exponential form,
+\notes{The minimal-entropy state that is compatible with the system's resolution constraint and regularity condition is represented by a density matrix of the exponential form,
 $$
 \rho(\boldsymbol{\theta}_o) = \frac{1}{Z(\boldsymbol{\theta}_o)} \exp\left( \sum_i \theta_{oi} H_i \right),
 $$
@@ -159,7 +160,7 @@ where all components $\theta_{oi}$ are sub-threshold
 $$
 |\dot{\theta}_{oi}| < \varepsilon.
 $$
-This state minimizes entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon $. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' formalism, using the same density matrix geometry but inverted optimization.}
+This state minimises entropy under the constraint that it remains regular, continuous, and detectable only above a resolution scale $\varepsilon $. Its structure can be derived via a *minimum-entropy* analogue of Jaynes' maximum entropy formalism [@Jaynes-information63], using the same density matrix geometry but inverted optimization.}
 
 
 \subsubsection{Lemma 2: Symmetry Breaking}
@@ -175,6 +176,7 @@ $$
 \theta_k \in X(\tau + \delta \tau).
 $$}
 
+<<<<<<< HEAD
 \include{_information-game/includes/four-bin-saddle-example.md}
 
 \subsubsection{System Time and Perceived Time}
@@ -183,6 +185,13 @@ $$}
 - System time $\tau$: external time parameter
 - Perceived time $t$: internal time, monotonic function of $\tau$
 - Relationship: $\frac{\text{d}t}{\text{d}\tau} = \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}$
+=======
+\subsubsection{Perceived Time}
+
+\slides{
+- Entropy-time: $t(\tau) := S_{X(\tau)}(\tau)$
+- Measures accumulated entropy of active variables
+>>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 }
 
 \notes{
@@ -190,7 +199,11 @@ The system evolves in two time scales:
 
 1. *System time* $\tau$: the external time parameter in which the system evolves according to
 $$
+<<<<<<< HEAD
 \frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+=======
+t(\tau) := S_{X(\tau)}(\tau)
+>>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 $$
 
 2. *Perceived time* $t$: the internal time that measures the accumulated entropy of active variables, defined as
