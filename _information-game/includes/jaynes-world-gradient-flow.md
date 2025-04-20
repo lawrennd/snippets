@@ -9,9 +9,9 @@
 $$
 \dot{\boldsymbol{\theta}} = -G(\boldsymbol{\theta})\boldsymbol{\theta},
 $$
-where $\theta \in \mathbb{R}^n$ represents the natural parameters of an exponential family distribution $\rho_\theta$, and $G(\theta)$ is the Fisher information matrix with elements:
+where $\boldsymbol{\theta} \in \mathbb{R}^n$ represents the natural parameters of an exponential family distribution $\rho_\theta$, and $G(\boldsymbol{\theta})$ is the Fisher information matrix with elements:
 $$
-G_{ij}(\theta) = \mathbb{E}_{\rho_\theta}\left[\frac{\partial \log \rho_\theta}{\partial \theta_i}\frac{\partial \log \rho_\theta}{\partial \theta_j}\right]
+G_{ij}(\boldsymbol{\theta}) = \mathbb{E}_{\rho_\theta}\left[\frac{\partial \log \rho_\theta}{\partial \theta_i}\frac{\partial \log \rho_\theta}{\partial \theta_j}\right]
 $$
 This system describes the steepest ascent in the entropy of the distribution $\rho_\theta$, constrained to the manifold of exponential family distributions. Unlike natural gradient descent, which optimizes a cost function, this system maximizes the entropy of the underlying configuration governed by the exponential family distribution or density matrix.}
 
@@ -25,7 +25,7 @@ where $S[\rho_\theta] = -\mathbb{E}_{\rho_\theta}[\log \rho_\theta]$ is the entr
 
 \subsection{Resolution Constraints}
 
-\notes{The system exhibits a minimum resolution constraint, formulated as an uncertainty relation between parameters $\theta$ and their conjugate variables (the gradients)
+\notes{The system exhibits a minimum resolution constraint, formulated as an uncertainty relation between parameters $\boldsymbol{\theta}$ and their conjugate variables (the gradients)
 $$
 \Delta\theta_i \cdot \Delta(\nabla_{\theta_i}) \geq \frac{c}{2},
 $$
@@ -78,7 +78,7 @@ where $\gamma(t)$ represents a path through parameter space.}
 
 \notes{For the path that minimizes this action, the first variation must vanish,
 $$
-\left. \frac{d}{d\epsilon} A[\gamma + \epsilon \eta] \right|_{\epsilon=0} = 0,
+\left. \frac{\text{d}}{\text{d}\epsilon} A[\gamma + \epsilon \eta] \right|_{\epsilon=0} = 0,
 $$
 where $\eta(t)$ is an arbitrary function with $\eta(0) = \eta(1) = 0$.}
 
@@ -94,24 +94,24 @@ $$
 \frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}
 $$}
 
-\notes{Under this parameterization, the Euler-Lagrange equation simplifies to our original dynamics. To prove this, we start with the parameterized path $\gamma(t) = \theta(\tau(t))$, which gives
+\notes{Under this parameterization, the Euler-Lagrange equation simplifies to our original dynamics. To prove this, we start with the parameterized path $\gamma(t) = \boldsymbol{\theta}(\tau(t))$, which gives
 $$
-\dot{\gamma} = \frac{\text{d}\theta}{\text{d}\tau} \frac{\text{d}\tau}{\text{d}t}.
+\dot{\gamma} = \frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} \frac{\text{d}\tau}{\text{d}t}.
 $$
 Substituting this into the Euler-Lagrange equation and applying our specific parameterization,
 $$
-\frac{\text{d}}{\text{d}t}(G(\gamma)\dot{\gamma}) = \frac{\text{d}}{\text{d}t}\left(G(\boldsymbol{\theta})\frac{\text{d}\theta}{\text{d}\tau}\frac{\text{d}\tau}{\text{d}t}\right) = \frac{1}{2} \dot{\gamma}^\top \frac{\partial G}{\partial \gamma} \dot{\gamma}
+\frac{\text{d}}{\text{d}t}(G(\gamma)\dot{\gamma}) = \frac{\text{d}}{\text{d}t}\left(G(\boldsymbol{\theta})\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau}\frac{\text{d}\tau}{\text{d}t}\right) = \frac{1}{2} \dot{\gamma}^\top \frac{\partial G}{\partial \gamma} \dot{\gamma}
 $$}
 
 \notes{With our choice of $\frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}$ and after algebraic manipulation, this reduces to
 $$
-\frac{\text{d}\theta}{\text{d}\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}
 $$
 and so our original dynamical equation when expressed in terms of the *system time* $\tau$ confirming that our action functional correctly generates the original dynamics.}
 
 \subsection{Information-Geometric Interpretation of Time Parameterization}
 
-\notes{The time parameterization can be rewritten by recognizing that $G(\theta)\theta = -\nabla_\theta S[\rho_\theta]$, the negative gradient of entropy with respect to the parameters
+\notes{The time parameterization can be rewritten by recognizing that $G(\boldsymbol{\theta})\boldsymbol{\theta} = -\nabla_\boldsymbol{\theta} S[\rho_\theta]$, the negative gradient of entropy with respect to the parameters
 $$
 \frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}} = \frac{1}{-\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]}.
 $$
