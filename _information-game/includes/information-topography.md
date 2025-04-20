@@ -13,10 +13,10 @@ We now focus on a specific regime of the unfolding system: the quasi-static late
 Suppose the full Fisher Information Matrix $G$ is defined over natural parameters $\boldsymbol{\theta} = (\boldsymbol{\theta}_X, \boldsymbol{\theta}_M)$, corresponding to active and latent variables respectively. Then we write
 $$
 G =
-\begin{pmatrix}
+\begin{bmatrix}
 G_{XX} & G_{XM} \\
 G_{MX} & G_{MM}
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 Now assume the entropy gradient $G \boldsymbol{\theta}$ satisfies
