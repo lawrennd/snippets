@@ -67,7 +67,7 @@ $$
 \subsection{Entropy Gradient Dynamics with Memory}
 
 \slides{
-* System evolves via: $\frac{d\boldsymbol{\theta}}{dt} = G(\boldsymbol{\theta})\boldsymbol{\theta}$
+* System evolves via: $\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}$
 * Inertial term: $G_{X_1M}\boldsymbol{\theta}_M$ couples future to latent reservoir
 * Creates persistent trajectories resembling Newton's laws
 }
@@ -78,7 +78,7 @@ $$
 $$
 the dynamics of future variables are governed by
 $$
-\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}t} = G_{X_1X_0}\boldsymbol{\theta}_{X_0} + G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
+\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}\tau} = G_{X_1X_0}\boldsymbol{\theta}_{X_0} + G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
 $$
 from which we can identify three distinct contributions,
 $$
@@ -92,12 +92,12 @@ $$
 
 \notes{In the classical limit of the maximum entropy game, the entropic gradient dynamics formalise into precise analogues of Newton's equations. Specifically, when we decompose the dynamics of future variables:}
 $$
-\frac{d\boldsymbol{\theta}_{X_1}}{dt} = G_{X_1X_0}\boldsymbol{\theta}_{X_0} + G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
+\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}\tau} = G_{X_1X_0}\boldsymbol{\theta}_{X_0} + G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
 $$
 
 \notes{The term $G_{X_1M}\boldsymbol{\theta}_{M}$ acts functionally as an inertial term because:}
 $$
-\boldsymbol{\theta}_{M} \approx \int_{t_0}^{t} G_{MX_0}(\tau)\boldsymbol{\theta}_{X_0}(\tau) d\tau
+\boldsymbol{\theta}_{M} \approx \int_{\tau_0}^{\tau} G_{MX_0}(t)\boldsymbol{\theta}_{X_0}(t) \text{d}t
 $$
 
 \notes{This integral form captures the accumulated history of the system's past states, weighted by their information-geometric coupling. When $G_{X_1M}$ has specific symmetry properties (particularly translation invariance), this term becomes precisely equivalent to momentum in classical mechanics. The persistence of motion emerges because the latent parameters $\boldsymbol{\theta}_M$ encode the time-integrated information flow from past states, effectively serving as a statistical momentum that resists change.}
@@ -125,7 +125,7 @@ $$
 \boldsymbol{p} = G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M
 $$
 
-\notes{Where this quantity satisfies $\frac{d\boldsymbol{p}}{dt} = 0$ in the absence of external information gradients.}
+\notes{Where this quantity satisfies $\frac{\text{d}\boldsymbol{p}}{\text{d}\tau} = 0$ in the absence of external information gradients.}
 
 \notes{2. *Angular Momentum Conservation*: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form:}
 $$
@@ -141,7 +141,7 @@ $$
 
 \notes{These conservation laws can be derived from the conditional mutual information through the relationship:}
 $$
-\frac{\text{d}}{\text{d}t}I(X_1;M|X_0) = 0
+\frac{\text{d}}{\text{d}\tau}I(X_1;M|X_0) = 0
 $$
 
 \notes{When this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics, but derived from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law.}​​​​​​​​​​​​​​​​
@@ -161,7 +161,7 @@ $$
 
 \notes{The variational principle identified in Jaynes' world}
 $$
-\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}\tau = 0
+\delta \int_{t_i}^{t_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}t = 0
 $$
 
 \notes{Takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
@@ -183,7 +183,7 @@ $$
 
 \notes{The variational principle identified in Jaynes' World,}
 $$
-\delta \int_{\tau_i}^{\tau_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}\tau = 0
+\delta \int_{t_i}^{t_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}t = 0
 $$
 
 \notes{Takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
