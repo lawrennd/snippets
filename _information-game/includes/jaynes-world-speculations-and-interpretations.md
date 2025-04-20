@@ -70,8 +70,5 @@ Structure emerges from the system’s internal curvature and resolution constrai
 True singularities (e.g. delta functions) are excluded; minimal-entropy states are regularized via density matrices.
 }
 
-\subsubsection{8. Variational Principle is Optional}
-\notes{
-Only valid within fixed symmetry classes. It offers insight but is not required by the system’s evolution.
-}
+
 \endif
