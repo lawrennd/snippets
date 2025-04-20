@@ -107,6 +107,9 @@ $$
 \frac{d\boldsymbol{\theta}}{dt} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
 $$}
 
+\include{_information-game/includes/two-bin-example.md}
+\include{_information-game/includes/four-bin-example.md}
+
 \subsection{Constructed Quantities and Lemmas}
 
 \subsubsection{Variable Partition}
@@ -172,6 +175,7 @@ $$
 \theta_k \in X(t + \delta t).
 $$}
 
+\include{_information-game/includes/four-bin-saddle-example.md}
 
 \subsubsection{Entropy-Time}
 
