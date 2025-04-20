@@ -113,11 +113,7 @@ $$
 \slides{
 - Active variables: $X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
 - Latent variables: $M(\tau) = Z \setminus X(\tau)$
-<<<<<<< HEAD
-- Partition changes as system evolves
-=======
 - Partition can change as system evolves
->>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 }
 
 \subsubsection{Fisher Information Matrix Partitioning}
@@ -129,11 +125,7 @@ $$
 - $G_{XM}$: Cross-coupling between domains
 }
 
-<<<<<<< HEAD
-\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and latent information reservoir $M(\tau)$:
-=======
-\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and (latent) information reservoir $M(\tau)$:
->>>>>>> 0fd6207c99484912d87cda04713664bc77393764
+\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and (latent) information reservoir $M(\tau)$
 $$
 G(\boldsymbol{\theta}) = 
 \begin{bmatrix}
@@ -176,22 +168,11 @@ $$
 \theta_k \in X(\tau + \delta \tau).
 $$}
 
-<<<<<<< HEAD
-\include{_information-game/includes/four-bin-saddle-example.md}
-
-\subsubsection{System Time and Perceived Time}
-
-\slides{
-- System time $\tau$: external time parameter
-- Perceived time $t$: internal time, monotonic function of $\tau$
-- Relationship: $\frac{\text{d}t}{\text{d}\tau} = \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}$
-=======
 \subsubsection{Perceived Time}
 
 \slides{
 - Entropy-time: $t(\tau) := S_{X(\tau)}(\tau)$
 - Measures accumulated entropy of active variables
->>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 }
 
 \notes{
@@ -199,11 +180,7 @@ The system evolves in two time scales:
 
 1. *System time* $\tau$: the external time parameter in which the system evolves according to
 $$
-<<<<<<< HEAD
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
-=======
 t(\tau) := S_{X(\tau)}(\tau)
->>>>>>> 0fd6207c99484912d87cda04713664bc77393764
 $$
 
 2. *Perceived time* $t$: the internal time that measures the accumulated entropy of active variables, defined as
@@ -233,7 +210,7 @@ $$}
 }
 
 \subsubsection{Corollary: Irreversibility}
-\newslide{Irreversibility}
+
 \slides{
 - $t(\tau)$ increases monotonically
 - Prevents time-reversal globally
@@ -241,7 +218,7 @@ $$}
 }
 
 \notes{
-$\tau(t)$ increases monotonically, preventing time-reversal globally.}
+1. $\tau(t)$ increases monotonically, preventing time-reversal globally.}
 
 2. In regions where parameters are weakly coupled to entropy change (low $\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]$), perceived time flows slowly.
 
