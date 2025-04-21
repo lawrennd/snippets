@@ -41,9 +41,9 @@ where $c$ is a constant representing the minimum resolution of the system. This 
 
 \notes{The resolution threshold $\varepsilon$ and the entropy bound $N$ are connected through the information capacity of the system. As shown in the resolution-constrained entropy formulation, there's a relationship,
 $$
-\varepsilon(N) \geq \frac{L}{e^{N/d}},
+\varepsilon(N) \geq \frac{\ell}{e^{N/d}},
 $$
-where $L$ is a characteristic length scale of the system and $d$ is the dimensionality of the parameter space.}
+where $\ell$ is a characteristic length scale of the system and $d$ is the dimensionality of the parameter space.}
 
 \notes{This relationship suggests a trade-off: as the entropy bound $N$ increases, the system can distinguish between more states, even though the resolution threshold $\varepsilon$ itself remains constant. A higher entropy bound allows the system to encode more information, which can be used to resolve finer details in the parameter space.}
 
@@ -105,12 +105,12 @@ $$}
 
 \notes{To recover the original dynamical equation, we introduce the time parameterization,
 $$
-\frac{d\tau}{dt} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}
+\frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}
 $$}
 
-\notes{Under this parameterization, the Euler-Lagrange equation simplifies to our original dynamics:
+\notes{Under this parameterization, the Euler-Lagrange equation simplifies to our original dynamics
 $$
-\frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}.
 $$}
 
 \notes{This establishes the connection between the action functional and the original dynamics within a region where the set of active parameters remains constant.}
