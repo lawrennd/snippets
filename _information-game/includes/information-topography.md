@@ -52,7 +52,7 @@ This defines the *conditional minimum Fisher curvature state* of $X$, given $M$ 
 \notes{
 * $G_{XX}(\theta_M)$ is the *local metric*.
 * $G_{XM}(\theta_M) \theta_M$ is an *effective force field* induced by the latent structure.
-* The flow $\frac{d\theta_X}{dt}$ is a *geodesic-like ascent* on this $M$-shaped terrain.
+* The flow $\frac{\text{d}\theta_X}{\text{d}t}$ is a *geodesic-like ascent* on this $M$-shaped terrain.
 }
 
 \notes{EPI emerges as a *conditionally local principle*, with $M$ shaping the conditions of variation but not varying itself.}
