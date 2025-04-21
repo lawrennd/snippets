@@ -495,11 +495,11 @@ where some off-diagonal terms (e.g. $G_{XZ}$, $G_{YZ}$) may remain small if inte
 
 \notes{We have traced a full arc:
 
-	1.	Latent regime: a symmetric, curvature-minimised wave equation governs the silent geometry of $M$-space.
-	2.	Variable activation: entropy gradient breaks symmetry; a direction becomes resolvable, and a wave equation reappears — now active.
-	3.	Interaction onset: new directions activate; wavefunctions couple; the Fisher matrix acquires off-diagonal structure; locality and joint dynamics emerge.
-	4.	Layered interaction: subsystems form, interactions propagate, and a network of informational flow develops.
-	5.	Classical regime: entropy dominates; interference fades; wave structure gives way to ensemble dynamics governed by effective constraints.}
+1. Latent regime: a symmetric, curvature-minimised wave equation governs the silent geometry of $M$-space.
+2. Variable activation: entropy gradient breaks symmetry; a direction becomes resolvable, and a wave equation reappears — now active.
+3. Interaction onset: new directions activate; wavefunctions couple; the Fisher matrix acquires off-diagonal structure; locality and joint dynamics emerge.
+4. Layered interaction: subsystems form, interactions propagate, and a network of informational flow develops.
+5. Classical regime: entropy dominates; interference fades; wave structure gives way to ensemble dynamics governed by effective constraints.}
 
 \notes{This progression from latent to classical represents a natural pathway for the emergence of complexity. Each stage builds on the previous one, with new properties emerging that weren't present in earlier stages.}
 
