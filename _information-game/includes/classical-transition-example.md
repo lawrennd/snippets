@@ -221,6 +221,7 @@ def plot_classical_trajectory(ax, m1_history, m2_history, title=None):
     
     if title:
         ax.set_title(title)
+}
 
 \notes{Now let's run a simulation to demonstrate the transition from wave-like to classical behavior. We'll start with a system where the coordinates are governed by a wave-like equation and show how they transition to classical-like behavior as more variables activate and interact.}
 
