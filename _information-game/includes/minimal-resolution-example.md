@@ -169,7 +169,7 @@ for i in range(steps):
     
     ax.set_xlabel('$M_1$ (Latent Coordinate)')
     ax.set_ylabel('$M_2$ (Latent Coordinate)')
-    ax.set_title(f'Latent Space (σ = {sigma:.2f})')
+    ax.set_title(f'Latent Space ($\sigma$ = {sigma:.2f})')
     ax.grid(True)
     ax.legend()
 }
