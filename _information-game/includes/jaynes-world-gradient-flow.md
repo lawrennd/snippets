@@ -35,21 +35,21 @@ $$
 $$
 where $c$ is a constant representing the minimum resolution of the system. This constraint imposes limits on the precision with which parameters can be simultaneously specified with their conjugate variables.}
 
-\notes{The resolution threshold $\varepsilon$ is directly related to this uncertainty principle, determining when a gradient component becomes dynamically resolvable. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating effective discontinuities in the otherwise smooth geometry of the system. This quantization of the dynamics is a fundamental feature of the resolution-constrained entropy formulation.}
+\notes{The resolution threshold $\varepsilon$ is related to this uncertainty principle, determining when a gradient component becomes dynamically resolvable. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating effective discontinuities in the otherwise smooth geometry of the system. This quantization of the dynamics is a fundamental feature of the resolution-constrained entropy formulation.}
 
 \subsection{Relationship Between Resolution Threshold and Entropy Bound}
 
-\notes{The resolution threshold $\varepsilon$ and the entropy bound $N$ are fundamentally connected through the information capacity of the system. As shown in the resolution-constrained entropy formulation, there exists a relationship:
+\notes{The resolution threshold $\varepsilon$ and the entropy bound $N$ are connected through the information capacity of the system. As shown in the resolution-constrained entropy formulation, there's a relationship,
 $$
 \varepsilon(N) \geq \frac{L}{e^{N/d}},
 $$
 where $L$ is a characteristic length scale of the system and $d$ is the dimensionality of the parameter space.}
 
-\notes{This relationship reveals a fundamental trade-off: as the entropy bound $N$ increases, the resolution threshold $\varepsilon$ decreases, allowing the system to resolve finer details. Conversely, a lower entropy bound results in a higher resolution threshold, forcing the system to operate at a coarser scale.}
+\notes{This relationship suggests a trade-off: as the entropy bound $N$ increases, the system can distinguish between more states, even though the resolution threshold $\varepsilon$ itself remains constant. A higher entropy bound allows the system to encode more information, which can be used to resolve finer details in the parameter space.}
 
-\notes{This trade-off has important implications for the system's dynamics. A system with a high entropy bound can evolve more continuously, with smaller incremental changes. A system with a low entropy bound, however, must evolve in larger, discrete steps, as it can only respond to gradients that exceed the higher resolution threshold.}
+\notes{The trade-off has important implications for system dynamics. A system with a high entropy bound evolves more continuously, with smaller incremental changes. A system with a low entropy bound, however, must evolve in larger, discrete steps: it can only respond to gradients that exceed the resolution threshold.}
 
-\notes{This connection between entropy and resolution provides a natural explanation for the emergence of discrete structure from continuous underlying dynamics. As the system's entropy increases, its ability to resolve fine details improves, leading to the gradual emergence of more complex structure.}
+\notes{The connection between entropy and resolution provides an explanation for the emergence of discrete structure from continuous underlying dynamics. The resolution threshold acts as a natural coarse-graining scale, determining the minimum size of changes that the system can respond to.}
 
 \section{Multi-Scale Dynamics and Parameter Separation}
 
@@ -64,7 +64,7 @@ where $L$ is a characteristic length scale of the system and $d$ is the dimensio
 $$
 G(\boldsymbol{\theta}) = \begin{bmatrix} G_{XX} & G_{XM} \\ G_{MX} & G_{MM} \end{bmatrix}
 $$
-where elements falling below $\varepsilon^2$ are effectively treated as zero in the dynamics, reflecting the resolution constraint on the system's ability to resolve fine-grained structure.}
+where elements falling below $\varepsilon^2$ are treated as zero in the dynamics, reflecting the resolution constraint on the system's ability to resolve fine-grained structure.}
 
 \subsection{Schur Complement Analysis}
 
@@ -85,62 +85,80 @@ The Schur complement provides a framework for analyzing how resolution constrain
 
 As the system evolves to maximize entropy, it should move toward states where parameters become more statistically independent, as minimising mutual information between variables reduces the joint entropy. Any tendency toward independence during entropy maximization would cause the Fisher information matrix $G(\boldsymbol{\theta})$ to trend toward a more diagonal structure over time, as off-diagonal elements represent statistical correlations between parameters.}
 
-\section{Action Functional Representation}
+\subsection{Action Functional Representation}
 
-\subsection{Action Definition}
-
-\notes{The dynamics of the system can be derived from an action functional
+\notes{The resolution-constrained dynamics can be formulated in terms of an action functional. Within a region where the set of active parameters remains constant (no activations or deactivations), we can use the standard action functional for gradient flow:
 $$
-A[\gamma] = \int_0^1 \dot{\gamma}(t)^T G(\gamma(t)) \dot{\gamma}(t) \, \text{d}t,
-$$
-where $\gamma(t)$ represents a path through parameter space.}
-
-\subsection{Variational Analysis}
+\mathcal{A}[\boldsymbol{\theta}(t)] = \int_{t_0}^{t_1} \text{d}t \, \left( \frac{1}{2} \dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} + \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta} \right).
+$$}
 
 \notes{For the path that minimizes this action, the first variation must vanish,
 $$
-\left. \frac{\text{d}}{\text{d}\epsilon} A[\gamma + \epsilon \eta] \right|_{\epsilon=0} = 0,
+\left. \frac{d}{d\epsilon} \mathcal{A}[\boldsymbol{\theta} + \epsilon \eta] \right|_{\epsilon=0} = 0,
 $$
-where $\eta(t)$ is an arbitrary function with $\eta(0) = \eta(1) = 0$.}
+where $\eta(t)$ is an arbitrary function with $\eta(t_0) = \eta(t_1) = 0$.}
 
 \notes{Through variational calculus we recover the Euler-Lagrange equation,
 $$
-\frac{\text{d}}{\text{d}t}(G(\gamma)\dot{\gamma}) = \frac{1}{2} \dot{\gamma}^T \frac{\partial G}{\partial \gamma} \dot{\gamma}
+\frac{d}{dt}(G(\boldsymbol{\theta})\dot{\boldsymbol{\theta}}) = \frac{1}{2} \dot{\boldsymbol{\theta}}^\top \frac{\partial G}{\partial \boldsymbol{\theta}} \dot{\boldsymbol{\theta}}
 $$}
-
-\subsection{Time Parameterization}
 
 \notes{To recover the original dynamical equation, we introduce the time parameterization,
 $$
-\frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}
+\frac{d\tau}{dt} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}
 $$}
 
-\notes{Under this parameterization, the Euler-Lagrange equation simplifies to our original dynamics. To prove this, we start with the parameterized path $\gamma(t) = \boldsymbol{\theta}(\tau(t))$, which gives
+\notes{Under this parameterization, the Euler-Lagrange equation simplifies to our original dynamics:
 $$
-\dot{\gamma} = \frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} \frac{\text{d}\tau}{\text{d}t}.
-$$
-Substituting this into the Euler-Lagrange equation and applying our specific parameterization,
-$$
-\frac{\text{d}}{\text{d}t}(G(\gamma)\dot{\gamma}) = \frac{\text{d}}{\text{d}t}\left(G(\boldsymbol{\theta})\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau}\frac{\text{d}\tau}{\text{d}t}\right) = \frac{1}{2} \dot{\gamma}^\top \frac{\partial G}{\partial \gamma} \dot{\gamma}
+\frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}
 $$}
 
-\notes{With our choice of $\frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}}$ and after algebraic manipulation, this reduces to
-$$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}
-$$
-and so our original dynamical equation when expressed in terms of the *system time* $\tau$ confirming that our action functional correctly generates the original dynamics.}
+\notes{This establishes the connection between the action functional and the original dynamics within a region where the set of active parameters remains constant.}
 
-\subsection{Information-Geometric Interpretation of Time Parameterization}
+\notes{To incorporate the resolution constraint across the entire parameter space, we can modify the action functional to include a penalty term that enforces the threshold condition,
+$$
+\mathcal{A}_\varepsilon[\boldsymbol{\theta}(t)] = \int_{t_0}^{t_1} \text{d}t \, \left( \frac{1}{2} \dot{\boldsymbol{\theta}}^\top G(\boldsymbol{\theta}) \dot{\boldsymbol{\theta}} + \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta} + \sum_i \lambda_i(t) \left( |[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i| - \varepsilon \right) \Theta\left( \varepsilon - |[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i| \right) \right),
+$$
+where $\lambda_i(t)$ are Lagrange multipliers and $\Theta(x)$ is the Heaviside step function.}
 
-\notes{The time parameterization can be rewritten by recognizing that $G(\boldsymbol{\theta})\boldsymbol{\theta} = -\nabla_\boldsymbol{\theta} S[\rho_\theta]$, the negative gradient of entropy with respect to the parameters
+\notes{This modified action functional introduces a non-smooth term that creates discontinuities in the dynamics. The Lagrange multipliers $\lambda_i(t)$ enforce the constraint that parameters with gradient magnitudes below $\varepsilon$ remain fixed, while the Heaviside function $\Theta(x)$ ensures that the penalty only applies when the constraint is violated.}
+
+\notes{The resulting Euler-Lagrange equations yield the resolution-constrained gradient flow,
 $$
-\frac{\text{d}\tau}{\text{d}t} = \frac{1}{\boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta}} = \frac{1}{-\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]}.
-$$
-The inverse relation is
-$$
-\frac{\text{d}t}{\text{d}\tau} = \boldsymbol{\theta}^\top G(\boldsymbol{\theta}) \boldsymbol{\theta} = -\boldsymbol{\theta}^\top \nabla_\boldsymbol{\theta} S[\rho_\boldsymbol{\theta}]
-$$
-which expresses the rate at which parameterized time flows relative to system time as the directional derivative of entropy along the parameter vector. It measures the entropy production rate of the system in the direction of the current parameter vector.}
+\dot{\boldsymbol{\theta}}_i = 
+\begin{cases}
+-[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i & \text{if } |[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i| \geq \varepsilon \\
+0 & \text{otherwise}.
+\end{cases}
+$$}
+
+\notes{This formulation reveals that the resolution constraint alters the nature of the system's evolution. Rather than following a continuous path of steepest ascent, the system follows a piecewise trajectory, with discrete jumps occurring when parameters cross the resolution threshold.}
+
+\subsection{Computational Implications}
+
+\notes{The resolution-constrained dynamics have important implications for the computational aspects of the system. The discrete, quantized nature of the evolution suggests that the system can be efficiently simulated using event-driven algorithms, where updates occur only when parameters cross the resolution threshold.}
+
+\notes{This approach is well-suited for systems with a large number of parameters, as it allows for selective updating of only the active parameters, reducing computational complexity. The resolution threshold acts as a natural sparsification mechanism, focusing computational resources on the most significant aspects of the system dynamics.}
+
+\subsection{Emergence of Time}
+
+\notes{The discrete, quantized nature of the resolution-constrained dynamics suggests a novel perspective on the emergence of time. In this framework, time is not a continuous parameter but emerges from the sequence of discrete events where parameters cross the resolution threshold.}
+
+\notes{Each activation event, where a parameter becomes dynamically active, represents a discrete "tick" of the system's internal clock. The flow of time is thus quantized, with the system evolving in discrete steps rather than continuously. This quantization of time is a direct consequence of the resolution constraint, which prevents the system from responding to infinitesimally small changes.}
+
+\subsection{Information Geometry and Resolution Constraints}
+
+\notes{The resolution constraint alters the geometry of the parameter space, creating effective discontinuities in the otherwise smooth Riemannian geometry defined by the Fisher Information Matrix.}
+
+\notes{In standard information geometry, the parameter space is a smooth Riemannian manifold, with the Fisher Information Matrix $G(\boldsymbol{\theta})$ defining the metric tensor. The geodesics of this manifold represent the paths of steepest ascent in the entropy landscape.}
+
+\notes{However, the resolution constraint introduces a "quantized" geometry, where the parameter space is effectively divided into regions based on whether parameters are above or below the resolution threshold. The boundaries between these regions represent the activation thresholds, where parameters become dynamically active.}
+
+\notes{This quantized geometry has important implications for the system's evolution. Rather than following smooth geodesics, the system follows piecewise trajectories, with discrete jumps occurring at the activation thresholds. These jumps represent the emergence of new structure, as parameters become dynamically active and the system's dimensionality increases.}
+
+\notes{The relationship between the entropy bound $N$ and the resolution threshold $\varepsilon$ affects the geometry of the parameter space. As the entropy bound increases, the resolution threshold decreases, leading to a finer-grained quantization of the geometry. This suggests that systems with higher entropy bounds might exhibit more complex geometric structure, with more activation thresholds and thus more opportunities for the emergence of new structure.}
+
+\notes{Understanding this quantized geometry is crucial for predicting the system's evolution and identifying the most likely paths of emergence. It also provides insights into the relationship between information geometry and physical dynamics, suggesting that the resolution constraint might be a fundamental feature of information-based physical systems.}
 
 \section{Information-Theoretic Interpretation}
 
