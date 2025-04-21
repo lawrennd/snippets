@@ -7,12 +7,6 @@
 
 \notes{Building on the previous examples, we'll now explore how the system transitions from wave-like behavior to classical-like behavior as it becomes more complex. This example demonstrates the emergence of apparent decoherence and classical dynamics without external measurement.}
 
-\setupcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-import mlai.plot as plot
-import mlai}
-
 \notes{In this example, we'll simulate a system with multiple latent coordinates that become resolvable as observables. We'll show how the system transitions from wave-like behavior to classical-like behavior as more variables activate and interact.}
 
 \helpercode{def compute_wavefunction(x, m, sigma):
@@ -108,72 +102,68 @@ def compute_classical_trajectory(m1_initial, m2_initial, sigma, coupling, steps=
         m2_history[i] = m2
     
     return m1_history, m2_history
+}
 
-def simulate_classical_transition(m1_initial, m2_initial, sigma_initial, sigma_final, 
-                               coupling_initial, coupling_final, steps=50):
-    """
-    Simulate the transition from wave-like to classical behavior.
-    
-    Parameters:
-    -----------
-    m1_initial, m2_initial : float
-        Initial mean values
-    sigma_initial, sigma_final : float
-        Initial and final standard deviation values
-    coupling_initial, coupling_final : float
-        Initial and final coupling strengths
-    steps : int
-        Number of simulation steps
-        
-    Returns:
-    --------
-    m1_history, m2_history : ndarray
-        History of mean values
-    sigma_history : ndarray
-        History of standard deviation values
-    coupling_history : ndarray
-        History of coupling strengths
-    classical_m1_history, classical_m2_history : ndarray
-        History of classical trajectory
-    """
-    m1 = m1_initial
-    m2 = m2_initial
-    sigma = sigma_initial
-    coupling = coupling_initial
-    
-    m1_history = np.zeros(steps)
-    m2_history = np.zeros(steps)
-    sigma_history = np.zeros(steps)
-    coupling_history = np.zeros(steps)
-    
-    # Compute classical trajectory
-    classical_m1_history, classical_m2_history = compute_classical_trajectory(
-        m1_initial, m2_initial, sigma_final, coupling_final)
-    
-    for i in range(steps):
-        # Update sigma and coupling
-        t = i / (steps - 1)
-        sigma = sigma_initial + (sigma_final - sigma_initial) * t
-        coupling = coupling_initial + (coupling_final - coupling_initial) * t
-        
-        # Update coordinates based on classical trajectory
-        if i < len(classical_m1_history):
-            m1 = classical_m1_history[i]
-            m2 = classical_m2_history[i]
-        else:
-            # If we run out of classical trajectory, just use the last value
-            m1 = classical_m1_history[-1]
-            m2 = classical_m2_history[-1]
-        
-        # Store history
-        m1_history[i] = m1
-        m2_history[i] = m2
-        sigma_history[i] = sigma
-        coupling_history[i] = coupling
-    
-    return m1_history, m2_history, sigma_history, coupling_history, classical_m1_history, classical_m2_history
+\notes{Now let's run a simulation to demonstrate the transition from wave-like to classical behavior. We'll start with a system where the coordinates are governed by a wave-like equation and show how they transition to classical-like behavior as more variables activate and interact.}
 
-def plot_wavefunction(ax, x, y, psi, title=None):
+
+\setupcode{import numpy as np
+from scipy.optimize import minimize}
+
+\code{# Create position grids
+x = np.linspace(-5, 5, 100)
+y = np.linspace(-5, 5, 100)
+X, Y = np.meshgrid(x, y)
+
+# Initial parameters
+m1_initial = 0.0
+m2_initial = 0.0
+sigma_initial = 2.0  # Low resolution (high sigma)
+sigma_final = 0.5   # High resolution (low sigma)
+coupling_initial = 0.0  # No coupling initially
+coupling_final = 0.7   # Strong coupling at the end
+
+steps = 50
+
+# Run simulation
+m1 = m1_initial
+m2 = m2_initial
+sigma = sigma_initial
+coupling = coupling_initial
+
+m1_history = np.zeros(steps)
+m2_history = np.zeros(steps)
+sigma_history = np.zeros(steps)
+coupling_history = np.zeros(steps)
+
+# Compute classical trajectory
+classical_m1_history, classical_m2_history = compute_classical_trajectory(
+    m1_initial, m2_initial, sigma_final, coupling_final)
+
+for i in range(steps):
+    # Update sigma and coupling
+    t = i / (steps - 1)
+    sigma = sigma_initial + (sigma_final - sigma_initial) * t
+    coupling = coupling_initial + (coupling_final - coupling_initial) * t
+    
+    # Update coordinates based on classical trajectory
+    if i < len(classical_m1_history):
+        m1 = classical_m1_history[i]
+        m2 = classical_m2_history[i]
+    else:
+        # If we run out of classical trajectory, just use the last value
+        m1 = classical_m1_history[-1]
+        m2 = classical_m2_history[-1]
+    
+    # Store history
+    m1_history[i] = m1
+    m2_history[i] = m2
+    sigma_history[i] = sigma
+    coupling_history[i] = coupling
+}
+
+
+\helpercode{def plot_wavefunction(ax, x, y, psi, title=None):
     """
     Plot the wavefunction as a 2D heatmap.
     
@@ -223,26 +213,11 @@ def plot_classical_trajectory(ax, m1_history, m2_history, title=None):
         ax.set_title(title)
 }
 
-\notes{Now let's run a simulation to demonstrate the transition from wave-like to classical behavior. We'll start with a system where the coordinates are governed by a wave-like equation and show how they transition to classical-like behavior as more variables activate and interact.}
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai}
 
-\code{# Create position grids
-x = np.linspace(-5, 5, 100)
-y = np.linspace(-5, 5, 100)
-X, Y = np.meshgrid(x, y)
-
-# Initial parameters
-m1_initial = 0.0
-m2_initial = 0.0
-sigma_initial = 2.0  # Low resolution (high sigma)
-sigma_final = 0.5   # High resolution (low sigma)
-coupling_initial = 0.0  # No coupling initially
-coupling_final = 0.7   # Strong coupling at the end
-
-# Run simulation
-m1_history, m2_history, sigma_history, coupling_history, classical_m1, classical_m2 = simulate_classical_transition(
-    m1_initial, m2_initial, sigma_initial, sigma_final, 
-    coupling_initial, coupling_final, steps=50)
-
+\plotcode{
 # Plot the results
 fig, axes = plt.subplots(2, 2, figsize=(15, 12))
 fig.suptitle('Transition from Wave-Like to Classical Behavior', fontsize=16)
@@ -273,14 +248,14 @@ mlai.write_figure(filename='classical-transition-example-1.svg',
 
 \notes{Let's also plot the evolution of the system over time to see how it transitions from wave-like to classical behavior.}
 
-\code{# Plot the evolution of the system
+\plotcode{# Plot the evolution of the system
 fig, axes = plt.subplots(2, 2, figsize=(15, 12))
 fig.suptitle('Evolution of System Behavior', fontsize=16)
 
 # Plot 1: Evolution of sigma (resolution)
 axes[0, 0].plot(range(len(sigma_history)), sigma_history, 'b-', label='σ')
 axes[0, 0].set_xlabel('Time Step')
-axes[0, 0].set_ylabel('Standard Deviation (σ)')
+axes[0, 0].set_ylabel('Standard Deviation ($\sigma$)')
 axes[0, 0].set_title('Evolution of Resolution')
 axes[0, 0].grid(True)
 axes[0, 0].legend()
@@ -294,20 +269,20 @@ axes[0, 1].grid(True)
 axes[0, 1].legend()
 
 # Plot 3: Evolution of m1
-axes[1, 0].plot(range(len(m1_history)), m1_history, 'g-', label='m₁')
-axes[1, 0].plot(range(len(classical_m1)), classical_m1, 'k--', label='Classical m₁')
+axes[1, 0].plot(range(len(m1_history)), m1_history, 'g-', label='$m_1$')
+axes[1, 0].plot(range(len(classical_m1)), classical_m1, 'k--', label='Classical $m_1$')
 axes[1, 0].set_xlabel('Time Step')
-axes[1, 0].set_ylabel('m₁')
-axes[1, 0].set_title('Evolution of m₁')
+axes[1, 0].set_ylabel('$m_1$')
+axes[1, 0].set_title('Evolution of $m_1$')
 axes[1, 0].grid(True)
 axes[1, 0].legend()
 
 # Plot 4: Evolution of m2
-axes[1, 1].plot(range(len(m2_history)), m2_history, 'g-', label='m₂')
-axes[1, 1].plot(range(len(classical_m2)), classical_m2, 'k--', label='Classical m₂')
+axes[1, 1].plot(range(len(m2_history)), m2_history, 'g-', label='$m_2$')
+axes[1, 1].plot(range(len(classical_m2)), classical_m2, 'k--', label='Classical $m_2$')
 axes[1, 1].set_xlabel('Time Step')
-axes[1, 1].set_ylabel('m₂')
-axes[1, 1].set_title('Evolution of m₂')
+axes[1, 1].set_ylabel('$m_2$')
+axes[1, 1].set_title('Evolution of $m_2$')
 axes[1, 1].grid(True)
 axes[1, 1].legend()
 
