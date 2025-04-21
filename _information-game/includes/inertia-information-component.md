@@ -116,6 +116,8 @@ $$
 $$
 \notes{This invariance is the information-theoretic foundation of the system's conservation laws. The critically slowed latent variables act as an information reservoir that constrains future states in a consistent way across time, creating effective constants of motion.}
 
+\notes{This approach mirrors Emmy Noether's insight that conservation laws emerge from continuous symmetries in physical systems [@Noether-invariante18]. Noether proved that every differentiable symmetry of a physical system's action corresponds to a conserved quantity. }
+
 \notes{Let $G(\boldsymbol{\theta})$ be the Fisher Information Matrix and consider a continuous transformation $\boldsymbol{\theta} \mapsto \boldsymbol{\theta} + \epsilon \boldsymbol{\delta}$ that leaves the entropy dynamics invariant. Then there exists a corresponding conserved quantity $Q$ such that $\frac{\text{d}Q}{\text{d}t} = 0$ along entropic gradient flows.}
 
 \notes{Specifically:}
@@ -139,12 +141,11 @@ $$
 
 \notes{Where $V(\boldsymbol{\theta}_X)$ represents the potential information defined by the curvature of the entropy landscape.}
 
-\notes{These conservation laws can be derived from the conditional mutual information through the relationship:}
+\notes{These conservation laws can be derived from the conditional mutual information through the relationship}
 $$
 \frac{\text{d}}{\text{d}\tau}I(X_1;M|X_0) = 0
 $$
-
-\notes{When this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics, but derived from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law.}​​​​​​​​​​​​​​​​
+\notes{when this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics [@Noether-invariante18], but derived from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law. The key insight, following Noether's approach, is that the symmetries of the information geometry that determine the conserved quantities of the system.}
 
 \subsection{Connecting to Fisher Information Geometry}
 

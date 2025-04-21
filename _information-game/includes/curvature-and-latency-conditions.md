@@ -41,7 +41,7 @@ These two constraints together define a *feasible region* in parameter space: a 
 
 \subsection{Gradient Ascent and the Initiation of Emergence}
 
-\notes{Once the system leaves the latent domain \(\mathcal{D}_o\), it enters a region where curvature gradients become directionally amplified. In this region, the entropy gradient,
+\notes{Once the system leaves the latent domain $\mathcal{D}_o$, it enters a region where curvature gradients become directionally amplified. In this region, the entropy gradient,
 $$
 \nabla S[\rho(\boldsymbol{\theta})] = - \boldsymbol{\theta}^\top G(\boldsymbol{\theta}),
 $$
@@ -55,13 +55,13 @@ $$
 0 & \text{otherwise}
 \end{cases}
 $$
-This formulation explicitly shows that emergence is fundamentally tied to crossing the resolution threshold $\varepsilon$, not just to the absolute steepness of gradients. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating a discrete, quantized evolution process.}
+This shows that emergence is tied to crossing the resolution threshold $\varepsilon$, not just to the absolute steepness of gradients. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating a discrete, quantized evolution process.}
 
 \notes{This process — emergence through spontaneous asymmetry in the curvature — does not require an external observer or measurement collapse. Instead, it is an internal dynamical effect of the geometry itself. A direction in $\boldsymbol{\theta}$-space becomes statistically distinguishable from the others: it carries more information and thus breaks the latent symmetry.}
 
 \notes{To characterise this transition more precisely, we track the growth of the entropy gradient component-wise
 $$
-\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon_{\text{activate}}.
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon.
 $$
 at which point the $i$-th degree of freedom becomes resolvable. This threshold crossing defines a *variable activation event*.}
 
