@@ -78,7 +78,7 @@ $$
 $$
 the dynamics of future variables are governed by
 $$
-\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}\tau} = G_{X_1X_0}\boldsymbol{\theta}_{X_0} + G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
+\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}\tau} = -G_{X_1X_0}\boldsymbol{\theta}_{X_0} - G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
 $$
 from which we can identify three distinct contributions,
 $$
@@ -186,9 +186,8 @@ $$
 $$
 \delta \int_{t_i}^{t_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}t = 0
 $$
+\notes{takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
 
-\notes{Takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
-
-\notes{This demonstration shows how inertia—one of the most fundamental properties of physical systems—can be understood purely in terms of information flow and entropy dynamics, without requiring additional physical postulates. The resistance to change that characterizes inertial systems is ultimately an expression of how information persists and propagates through the Fisher geometry of maximum entropy systems.}
+\notes{The resistance to change that characterizes inertial systems is ultimately an expression of how information persists and propagates through the Fisher geometry of maximum entropy systems.}
 
 \endif
