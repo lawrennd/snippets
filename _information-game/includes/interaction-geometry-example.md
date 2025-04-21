@@ -7,11 +7,6 @@
 
 \notes{Building on the minimal resolution example, we'll now explore how observables interact with each other once they become resolvable. This example demonstrates the emergence of interaction geometry, where observables become information-bearing not just individually, but in combination.}
 
-\setupcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-import mlai.plot as plot
-import mlai}
 
 \notes{In this example, we'll simulate a system with three latent coordinates that become resolvable as observables. We'll show how these observables interact with each other, leading to the emergence of a network of dependencies.}
 
@@ -109,80 +104,68 @@ def is_resolvable(m1, m2, m3, sigma, threshold=0.1):
     """
     gradient = compute_entropy_gradient(m1, m2, m3, sigma)
     return np.abs(gradient) > threshold
+}
 
-def simulate_interaction(m1_initial, m2_initial, m3_initial, sigma_initial, sigma_final, 
-                        coupling_initial, coupling_final, steps=50):
-    """
-    Simulate the emergence of interaction geometry between observables.
-    
-    Parameters:
-    -----------
-    m1_initial, m2_initial, m3_initial : float
-        Initial mean values
-    sigma_initial, sigma_final : float
-        Initial and final standard deviation values
-    coupling_initial, coupling_final : float
-        Initial and final coupling strengths
-    steps : int
-        Number of simulation steps
-        
-    Returns:
-    --------
-    m1_history, m2_history, m3_history : ndarray
-        History of mean values
-    sigma_history : ndarray
-        History of standard deviation values
-    coupling_history : ndarray
-        History of coupling strengths
-    resolvable_history : ndarray
-        History of resolvability
-    fisher_history : ndarray
-        History of Fisher information matrices
-    """
-    m1 = m1_initial
-    m2 = m2_initial
-    m3 = m3_initial
-    sigma = sigma_initial
-    coupling = coupling_initial
-    
-    m1_history = np.zeros(steps)
-    m2_history = np.zeros(steps)
-    m3_history = np.zeros(steps)
-    sigma_history = np.zeros(steps)
-    coupling_history = np.zeros(steps)
-    resolvable_history = np.zeros((steps, 3), dtype=bool)
-    fisher_history = np.zeros((steps, 3, 3))
-    
-    for i in range(steps):
-        # Update sigma and coupling
-        t = i / (steps - 1)
-        sigma = sigma_initial + (sigma_final - sigma_initial) * t
-        coupling = coupling_initial + (coupling_final - coupling_initial) * t
-        
-        # Check resolvability
-        resolvable = is_resolvable(m1, m2, m3, sigma)
-        
-        # Update coordinates based on entropy gradient
-        gradient = compute_entropy_gradient(m1, m2, m3, sigma, coupling)
-        m1 += 0.1 * gradient[0]
-        m2 += 0.1 * gradient[1]
-        m3 += 0.1 * gradient[2]
-        
-        # Compute Fisher information matrix
-        fisher = compute_fisher_information(m1, m2, m3, sigma, coupling)
-        
-        # Store history
-        m1_history[i] = m1
-        m2_history[i] = m2
-        m3_history[i] = m3
-        sigma_history[i] = sigma
-        coupling_history[i] = coupling
-        resolvable_history[i] = resolvable
-        fisher_history[i] = fisher
-    
-    return m1_history, m2_history, m3_history, sigma_history, coupling_history, resolvable_history, fisher_history
 
-def plot_fisher_matrix(ax, fisher, title=None):
+\notes{Now let's run a simulation to demonstrate how observables interact with each other once they become resolvable. We'll start with a system where all coordinates are unresolved and show how they become resolvable and interact with each other.}
+\setupcode{import numpy as np
+from scipy.optimize import minimize}
+
+\code{# Initial parameters
+m1_initial = 0.0
+m2_initial = 0.0
+m3_initial = 0.0
+sigma_initial = 2.0  # Low resolution (high sigma)
+sigma_final = 0.1   # High resolution (low sigma)
+coupling_initial = 0.0  # No coupling initially
+coupling_final = 0.5   # Strong coupling at the end
+
+steps = 50
+
+# Run simulation
+m1 = m1_initial
+m2 = m2_initial
+m3 = m3_initial
+sigma = sigma_initial
+coupling = coupling_initial
+
+m1_history = np.zeros(steps)
+m2_history = np.zeros(steps)
+m3_history = np.zeros(steps)
+sigma_history = np.zeros(steps)
+coupling_history = np.zeros(steps)
+resolvable_history = np.zeros((steps, 3), dtype=bool)
+fisher_history = np.zeros((steps, 3, 3))
+
+for i in range(steps):
+    # Update sigma and coupling
+    t = i / (steps - 1)
+    sigma = sigma_initial + (sigma_final - sigma_initial) * t
+    coupling = coupling_initial + (coupling_final - coupling_initial) * t
+    
+    # Check resolvability
+    resolvable = is_resolvable(m1, m2, m3, sigma)
+    
+    # Update coordinates based on entropy gradient
+    gradient = compute_entropy_gradient(m1, m2, m3, sigma, coupling)
+    m1 += 0.1 * gradient[0]
+    m2 += 0.1 * gradient[1]
+    m3 += 0.1 * gradient[2]
+    
+    # Compute Fisher information matrix
+    fisher = compute_fisher_information(m1, m2, m3, sigma, coupling)
+    
+    # Store history
+    m1_history[i] = m1
+    m2_history[i] = m2
+    m3_history[i] = m3
+    sigma_history[i] = sigma
+    coupling_history[i] = coupling
+    resolvable_history[i] = resolvable
+    fisher_history[i] = fisher
+}
+
+\helpercode{def plot_fisher_matrix(ax, fisher, title=None):
     """
     Plot the Fisher information matrix as a heatmap.
     
@@ -198,8 +181,8 @@ def plot_fisher_matrix(ax, fisher, title=None):
     im = ax.imshow(fisher, cmap='viridis')
     ax.set_xticks(np.arange(3))
     ax.set_yticks(np.arange(3))
-    ax.set_xticklabels(['M₁', 'M₂', 'M₃'])
-    ax.set_yticklabels(['M₁', 'M₂', 'M₃'])
+    ax.set_xticklabels(['$M_1$', '$M_2$', '$M_3$'])
+    ax.set_yticklabels(['$M_1$', '$M_2$', '$M_3$'])
     
     # Add text annotations
     for i in range(3):
@@ -228,7 +211,7 @@ def plot_interaction_network(ax, fisher, resolvable, title=None):
         Plot title
     """
     # Create a graph with nodes for each observable
-    nodes = ['M₁', 'M₂', 'M₃']
+    nodes = ['$M_1$', '$M_2$', '$M_3$']
     pos = {0: (0, 0), 1: (1, 0), 2: (0.5, 1)}  # Triangle layout
     
     # Draw nodes
@@ -260,23 +243,11 @@ def plot_interaction_network(ax, fisher, resolvable, title=None):
         ax.set_title(title)
 }
 
-\notes{Now let's run a simulation to demonstrate how observables interact with each other once they become resolvable. We'll start with a system where all coordinates are unresolved and show how they become resolvable and interact with each other.}
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai}
 
-\code{# Initial parameters
-m1_initial = 0.0
-m2_initial = 0.0
-m3_initial = 0.0
-sigma_initial = 2.0  # Low resolution (high sigma)
-sigma_final = 0.1   # High resolution (low sigma)
-coupling_initial = 0.0  # No coupling initially
-coupling_final = 0.5   # Strong coupling at the end
-
-# Run simulation
-m1_history, m2_history, m3_history, sigma_history, coupling_history, resolvable_history, fisher_history = simulate_interaction(
-    m1_initial, m2_initial, m3_initial, sigma_initial, sigma_final, 
-    coupling_initial, coupling_final, steps=50)
-
-# Plot the results
+\plotcode{# Plot the results
 fig, axes = plt.subplots(2, 2, figsize=(15, 12))
 fig.suptitle('Emergence of Interaction Geometry', fontsize=16)
 
@@ -286,7 +257,7 @@ plot_interaction_network(axes[0, 1], fisher_history[0], resolvable_history[0], '
 
 # Plot 2: Mid state (medium resolution, some coupling)
 mid_step = 25
-plot_fisher_matrix(axes[1, 0], fisher_history[mid_step], f'Mid Fisher Matrix (σ = {sigma_history[mid_step]:.2f})')
+plot_fisher_matrix(axes[1, 0], fisher_history[mid_step], f'Mid Fisher Matrix ($\sigma = {sigma_history[mid_step]:.2f}$)')
 plot_interaction_network(axes[1, 1], fisher_history[mid_step], resolvable_history[mid_step], 'Mid Interaction Network')
 
 plt.tight_layout()
@@ -297,7 +268,7 @@ mlai.write_figure(filename='interaction-geometry-example-1.svg',
 
 \notes{Let's also plot the final state to see how the interaction geometry has evolved.}
 
-\code{# Plot the final state
+\plotcode{# Plot the final state
 fig, axes = plt.subplots(2, 2, figsize=(15, 12))
 fig.suptitle('Final Interaction Geometry', fontsize=16)
 
@@ -307,16 +278,16 @@ plot_interaction_network(axes[0, 1], fisher_history[-1], resolvable_history[-1],
 
 # Plot 2: Evolution of coupling and resolvability
 axes[1, 0].plot(sigma_history, coupling_history, 'b-', label='Coupling Strength')
-axes[1, 0].set_xlabel('Standard Deviation (σ)')
+axes[1, 0].set_xlabel('Standard Deviation ($\sigma$)')
 axes[1, 0].set_ylabel('Coupling Strength')
 axes[1, 0].set_title('Evolution of Coupling')
 axes[1, 0].grid(True)
 axes[1, 0].legend()
 
 # Plot resolvability history
-axes[1, 1].plot(sigma_history, resolvable_history[:, 0], 'r-', label='M₁ Resolvable')
-axes[1, 1].plot(sigma_history, resolvable_history[:, 1], 'g-', label='M₂ Resolvable')
-axes[1, 1].plot(sigma_history, resolvable_history[:, 2], 'b-', label='M₃ Resolvable')
+axes[1, 1].plot(sigma_history, resolvable_history[:, 0], 'r-', label='$M_1$ Resolvable')
+axes[1, 1].plot(sigma_history, resolvable_history[:, 1], 'g-', label='$M_2$ Resolvable')
+axes[1, 1].plot(sigma_history, resolvable_history[:, 2], 'b-', label='$M_3$ Resolvable')
 axes[1, 1].set_xlabel('Standard Deviation (σ)')
 axes[1, 1].set_ylabel('Resolvable')
 axes[1, 1].set_title('Activation History')
