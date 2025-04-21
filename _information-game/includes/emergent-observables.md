@@ -151,7 +151,7 @@ $$
 $$
 These natural parameters $\theta_i$ are the Lagrange multipliers that emerge from the maximum entropy principle. They have a special role in the exponential family - they are the parameters that make the form of the distribution most mathematically convenient. Each $\theta_i$ governs how the distribution responds to curvature along its corresponding observable direction $H_i$. In the latent regime, all $\theta_i \approx 0$, and the entropy gradient,
 $$
-\nabla S = G(\boldsymbol{\theta}) \boldsymbol{\theta},
+\nabla S = -G(\boldsymbol{\theta}) \boldsymbol{\theta},
 $$
 remains uniformly small — too small to define structure. This is the hallmark of the latent domain $\mathcal{D}_0$: a region of suppressed dynamics where all variables are informationally indistinguishable.}
 
@@ -289,7 +289,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
 \slides{
 - Entropy gradient becomes:
   $$
-  \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto
+  \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto -
   \begin{bmatrix}
   G_{XX} & G_{XY} \\
   G_{YX} & G_{YY}
@@ -298,7 +298,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
   \theta_X \\
   \theta_Y
   \end{bmatrix}
-  =
+  = -
   \begin{bmatrix}
   G_{XX}\theta_X + G_{XY}\theta_Y \\
   G_{YX}\theta_X + G_{YY}\theta_Y
@@ -310,7 +310,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
 
 \notes{To leading order, the entropy gradient becomes
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto -
 \begin{bmatrix}
 G_{XX} & G_{XY} \\
 G_{YX} & G_{YY}
@@ -319,7 +319,7 @@ G_{YX} & G_{YY}
 \theta_X \\
 \theta_Y
 \end{bmatrix}
-=
+= -
 \begin{bmatrix}
 G_{XX}\theta_X + G_{XY}\theta_Y \\
 G_{YX}\theta_X + G_{YY}\theta_Y
