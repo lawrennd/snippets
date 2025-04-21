@@ -32,11 +32,11 @@ where $\boldsymbol{\eta} = \nabla_{\boldsymbol{\theta}} \log Z$. This view is cr
 
 \subsection{Legendre Transform View}
 
-\notes{The Legendre transform view treats $\boldsymbol{\eta}$ as an independent variable, even though it's actually a function of $\boldsymbol{\theta}$. This leads to,
+\notes{The Legendre transform view treats $\boldsymbol{\eta}$ as an independent variable, even though it's a function of $\boldsymbol{\theta}$. This leads to,
 $$
 S(\boldsymbol{\theta}, \boldsymbol{\eta}) = \log Z(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \boldsymbol{\eta},
 $$
-This perspective is particularly useful for information geometry and convex analysis.}
+This perspective is used in information geometry and convex analysis.}
 
 \slides{
 * Legendre view:
