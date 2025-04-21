@@ -238,7 +238,7 @@ psi_final = compute_joint_wavefunction(X, Y, m1_history[-1], m2_history[-1],
 plot_wavefunction(axes[1, 0], x, y, psi_final, 'Final Wavefunction')
 
 # Plot 4: Classical trajectory
-plot_classical_trajectory(axes[1, 1], classical_m1, classical_m2, 'Classical Trajectory')
+plot_classical_trajectory(axes[1, 1], classical_m1_history, classical_m2_history, 'Classical Trajectory')
 
 plt.tight_layout()
 mlai.write_figure(filename='classical-transition-example-1.svg', 
@@ -270,7 +270,7 @@ axes[0, 1].legend()
 
 # Plot 3: Evolution of m1
 axes[1, 0].plot(range(len(m1_history)), m1_history, 'g-', label='$m_1$')
-axes[1, 0].plot(range(len(classical_m1)), classical_m1, 'k--', label='Classical $m_1$')
+axes[1, 0].plot(range(len(classical_m1_history)), classical_m1_history, 'k--', label='Classical $m_1$')
 axes[1, 0].set_xlabel('Time Step')
 axes[1, 0].set_ylabel('$m_1$')
 axes[1, 0].set_title('Evolution of $m_1$')
@@ -279,7 +279,7 @@ axes[1, 0].legend()
 
 # Plot 4: Evolution of m2
 axes[1, 1].plot(range(len(m2_history)), m2_history, 'g-', label='$m_2$')
-axes[1, 1].plot(range(len(classical_m2)), classical_m2, 'k--', label='Classical $m_2$')
+axes[1, 1].plot(range(len(classical_m2_history)), classical_m2_history, 'k--', label='Classical $m_2$')
 axes[1, 1].set_xlabel('Time Step')
 axes[1, 1].set_ylabel('$m_2$')
 axes[1, 1].set_title('Evolution of $m_2$')
