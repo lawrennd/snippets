@@ -122,24 +122,25 @@ $$
 
 \notes{Specifically:}
 
-\notes{1. *Linear Momentum Conservation*: When the Fisher geometry is invariant under spatial translations ($\boldsymbol{\theta}_X \mapsto \boldsymbol{\theta}_X + \boldsymbol{a}$), the corresponding conserved quantity is,}
+\notes{1. *Linear Momentum Conservation*: When the Fisher geometry is invariant under spatial translations,
 $$
-\boldsymbol{p} = G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M
+\boldsymbol{\theta}_X \mapsto \boldsymbol{\theta}_X + \boldsymbol{a},$$
+the corresponding conserved quantity is,
+$$
+\boldsymbol{p} = G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M,
+$$
+\notes{where this quantity satisfies $\frac{\text{d}\boldsymbol{p}}{\text{d}\tau} = 0$ in the absence of external information gradients.}
+
+\notes{2. *Angular Momentum Conservation*: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form
+$$
+\boldsymbol{L} = \boldsymbol{\theta}_X \times (G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M).
 $$
 
-\notes{Where this quantity satisfies $\frac{\text{d}\boldsymbol{p}}{\text{d}\tau} = 0$ in the absence of external information gradients.}
-
-\notes{2. *Angular Momentum Conservation*: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form:}
+\notes{3. *Energy Conservation*: When the system's dynamics are time-translation invariant, the conserved quantity is}
 $$
-\boldsymbol{L} = \boldsymbol{\theta}_X \times (G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M)
+E = \frac{1}{2}\boldsymbol{\theta}_M^\top G_{MM} \boldsymbol{\theta}_M + V(\boldsymbol{\theta}_X),
 $$
-
-\notes{3. *Energy Conservation*: When the system's dynamics are time-translation invariant, the conserved quantity is:}
-$$
-E = \frac{1}{2}\boldsymbol{\theta}_M^\top G_{MM} \boldsymbol{\theta}_M + V(\boldsymbol{\theta}_X)
-$$
-
-\notes{Where $V(\boldsymbol{\theta}_X)$ represents the potential information defined by the curvature of the entropy landscape.}
+\notes{where $V(\boldsymbol{\theta}_X)$ represents the potential information defined by the curvature of the entropy landscape.}
 
 \notes{These conservation laws can be derived from the conditional mutual information through the relationship}
 $$
