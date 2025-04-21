@@ -258,6 +258,7 @@ def plot_interaction_network(ax, fisher, resolvable, title=None):
     
     if title:
         ax.set_title(title)
+}
 
 \notes{Now let's run a simulation to demonstrate how observables interact with each other once they become resolvable. We'll start with a system where all coordinates are unresolved and show how they become resolvable and interact with each other.}
 
