@@ -237,6 +237,4 @@ mlai.write_figure(filename='minimal-resolution-example.svg',
 
 \notes{The activation history shows when each coordinate becomes resolvable, which occurs when the entropy gradient exceeds the activation threshold. This is a key insight from the information game: observables emerge naturally from latent coordinates when resolution constraints are applied.}
 
-\notes{In the next example, we'll explore how these resolvable coordinates interact with each other, leading to the emergence of more complex dynamics.}
-
 \endif 
