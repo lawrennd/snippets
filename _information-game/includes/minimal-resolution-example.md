@@ -167,8 +167,8 @@ for i in range(steps):
         ax.scatter(m1_values[resolvable_points], m2_values[resolvable_points], 
                   color='red', s=50, label='Resolvable')
     
-    ax.set_xlabel('M₁ (Latent Coordinate)')
-    ax.set_ylabel('M₂ (Latent Coordinate)')
+    ax.set_xlabel('$M_1$ (Latent Coordinate)')
+    ax.set_ylabel('$M_2$ (Latent Coordinate)')
     ax.set_title(f'Latent Space (σ = {sigma:.2f})')
     ax.grid(True)
     ax.legend()
