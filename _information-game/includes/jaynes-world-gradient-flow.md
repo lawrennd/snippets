@@ -7,13 +7,17 @@
 
 \notes{Consider a dynamical system governed by the equation,
 $$
-\dot{\boldsymbol{\theta}} = -G(\boldsymbol{\theta})\boldsymbol{\theta},
+\dot{\boldsymbol{\theta}}_i = 
+\begin{cases}
+-[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i & \text{if } |[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i| \geq \varepsilon \\
+0 & \text{otherwise}
+\end{cases}
 $$
-where $\boldsymbol{\theta} \in \mathbb{R}^n$ represents the natural parameters of an exponential family distribution $\rho_\theta$, and $G(\boldsymbol{\theta})$ is the Fisher information matrix with elements:
+where $\boldsymbol{\theta} \in \mathbb{R}^n$ represents the natural parameters of an exponential family distribution $\rho_\theta$, $G(\boldsymbol{\theta})$ is the Fisher information matrix with elements
 $$
 G_{ij}(\boldsymbol{\theta}) = \mathbb{E}_{\rho_\theta}\left[\frac{\partial \log \rho_\theta}{\partial \theta_i}\frac{\partial \log \rho_\theta}{\partial \theta_j}\right]
 $$
-This system describes the steepest ascent in the entropy of the distribution $\rho_\theta$, constrained to the manifold of exponential family distributions. Unlike natural gradient descent, which optimizes a cost function, this system maximizes the entropy of the underlying configuration governed by the exponential family distribution or density matrix.}
+and $\varepsilon$ is the resolution threshold that determines when a parameter component becomes dynamically active. This system describes the steepest ascent in the entropy of the distribution $\rho_\theta$, constrained to the manifold of exponential family distributions and subject to the resolution constraint. Unlike natural gradient descent, which optimizes a cost function, this system maximizes the entropy of the underlying configuration governed by the exponential family distribution or density matrix, but only for components that exceed the resolution threshold.}
 
 \subsection{Entropy Bounds and Compactness}
 
@@ -31,6 +35,22 @@ $$
 $$
 where $c$ is a constant representing the minimum resolution of the system. This constraint imposes limits on the precision with which parameters can be simultaneously specified with their conjugate variables.}
 
+\notes{The resolution threshold $\varepsilon$ is directly related to this uncertainty principle, determining when a gradient component becomes dynamically resolvable. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating effective discontinuities in the otherwise smooth geometry of the system. This quantization of the dynamics is a fundamental feature of the resolution-constrained entropy formulation.}
+
+\subsection{Relationship Between Resolution Threshold and Entropy Bound}
+
+\notes{The resolution threshold $\varepsilon$ and the entropy bound $N$ are fundamentally connected through the information capacity of the system. As shown in the resolution-constrained entropy formulation, there exists a relationship:
+$$
+\varepsilon(N) \geq \frac{L}{e^{N/d}},
+$$
+where $L$ is a characteristic length scale of the system and $d$ is the dimensionality of the parameter space.}
+
+\notes{This relationship reveals a fundamental trade-off: as the entropy bound $N$ increases, the resolution threshold $\varepsilon$ decreases, allowing the system to resolve finer details. Conversely, a lower entropy bound results in a higher resolution threshold, forcing the system to operate at a coarser scale.}
+
+\notes{This trade-off has important implications for the system's dynamics. A system with a high entropy bound can evolve more continuously, with smaller incremental changes. A system with a low entropy bound, however, must evolve in larger, discrete steps, as it can only respond to gradients that exceed the higher resolution threshold.}
+
+\notes{This connection between entropy and resolution provides a natural explanation for the emergence of discrete structure from continuous underlying dynamics. As the system's entropy increases, its ability to resolve fine details improves, leading to the gradual emergence of more complex structure.}
+
 \section{Multi-Scale Dynamics and Parameter Separation}
 
 \subsection{Parameter Partitioning}
@@ -43,7 +63,8 @@ where $c$ is a constant representing the minimum resolution of the system. This 
 \notes{The Fisher information matrix can also be partitioned
 $$
 G(\boldsymbol{\theta}) = \begin{bmatrix} G_{XX} & G_{XM} \\ G_{MX} & G_{MM} \end{bmatrix}
-$$}
+$$
+where elements falling below $\varepsilon^2$ are effectively treated as zero in the dynamics, reflecting the resolution constraint on the system's ability to resolve fine-grained structure.}
 
 \subsection{Schur Complement Analysis}
 

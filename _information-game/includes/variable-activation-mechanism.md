@@ -5,15 +5,15 @@
 
 \subsection{Variable Activation and Basis Update}
 
-\notes{As the system ascends the entropy landscape, the curvature becomes increasingly asymmetric. When the entropy gradient along a particular direction surpasses a threshold, that direction becomes dynamically resolvable — a variable activates.}
+\notes{As the system ascends the entropy landscape, the curvature becomes increasingly asymmetric. When the entropy gradient along a particular direction surpasses the resolution threshold $\varepsilon$, that direction becomes dynamically resolvable — a variable activates.}
 
 \subsubsection{Threshold Crossing and Activation}
 
-\notes{We define a variable activation event as the point where the $i$-th component of the entropy gradient reaches order unity,
+\notes{We define a variable activation event as the point where the $i$-th component of the entropy gradient reaches the resolution threshold,
 $$
-\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon_{\text{activate}}.
+\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon.
 $$
-Here $\varepsilon_{\text{activate}}$ defines a threshold above which the system can resolve variation in the $i$-th direction with sufficient information gain. This marks a transition from latent to emergent status.}
+Here $\varepsilon$ defines the threshold above which the system can resolve variation in the $i$-th direction with sufficient information gain. This marks a transition from latent to emergent status and is directly derived from the resolution-constrained entropy formulation.}
 
 \notes{When this happens, the corresponding parameter $\theta_i$ becomes an active degree of freedom, and the associated observable $H_i$ becomes internally resolvable. The system's effective observable basis $\{H_i\}$ is updated — either by extension or rotation — to reflect the newly emergent structure.}
 
@@ -46,7 +46,9 @@ $$}
 
 \subsection{Phase Transitions and Piecewise Geometric Flow}
 
-\notes{As each variable activates, the system enters a new phase — a locally adapted region of parameter space where the information geometry is governed by an updated basis of observables. These phases are separated by *activation thresholds*, and each new phase introduces a change in the effective dimensionality of the system.}
+\notes{As each variable activates, the system enters a new phase — a locally adapted region of parameter space where the information geometry is governed by an updated basis of observables. These phases are separated by *activation thresholds* at the resolution scale $\varepsilon$, and each new phase introduces a change in the effective dimensionality of the system.}
+
+\notes{The entropy maximization process is inherently "quantized" by the resolution constraint, proceeding in discrete steps rather than continuous flow. Each activation represents a discrete jump in the system's information capacity, as new variables become resolvable at the threshold $\varepsilon$. This quantization is a feature of the resolution-constrained entropy formulation, reflecting the fact that derivatives approaching the resolution scale cannot drive dynamics until they exceed that threshold.}
 
 \notes{We describe the system's evolution as a *piecewise geodesic flow*: within each phase, the system follows a smooth trajectory along the entropy gradient,
 $$

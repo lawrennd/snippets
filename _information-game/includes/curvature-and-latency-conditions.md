@@ -7,12 +7,13 @@
 
 \notes{The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Higher curvature reflects greater sensitivity to changes in the parameters — more 'informative' directions in the landscape.}
 
-At the system's origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
+\notes{At the system's origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
 $$
 \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i.
 $$
-This ensures that the entropy gradient, proportional to $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, remains too shallow to trigger emergence in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.
-This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must lie near a saddle point or a flat region of the entropy landscape. The curvature is non-zero and globally bounded (from the uncertainty constraint), but its projection is uniformly suppressed across all directions.
+This condition is derived from the resolution-constrained entropy formulation, where $\varepsilon$ is the resolution threshold that determines when a parameter component becomes dynamically active. It ensures that the entropy gradient, proportional to $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, remains too shallow to trigger emergence in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.}
+
+\notes{This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must lie near a saddle point or a flat region of the entropy landscape. The curvature is non-zero and globally bounded (from the uncertainty constraint), but its projection is uniformly suppressed across all directions.}
 
 \subsection{Initial Constraints and the Permissible Unfolding Domain}
 
@@ -30,7 +31,7 @@ This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must
    $$
    \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta} \right]_i \right| < \varepsilon \quad \text{for all } i.
    $$
-   This enforces the condition that no direction in parameter space dominates initially, preserving symmetry and avoiding premature emergence.
+   This enforces the condition that no direction in parameter space dominates initially, preserving symmetry and avoiding premature emergence. This constraint is a consequence of the resolution-constrained entropy formulation, where $\varepsilon$ represents the minimum resolvable gradient magnitude.
 
 These two constraints together define a *feasible region* in parameter space: a domain $\mathcal{D}_o \subset \mathbb{R}^d$ where entropy remains low and gradients are uniformly shallow. In thermodynamics the entropy would be referred to as subextensive, i.e. it remains below capacity and does not yet scale with effective dimensionality.}
 
@@ -48,10 +49,13 @@ becomes sufficiently steep in one or more directions to drive dynamical activati
 
 \notes{The dynamics can be understood as entropic gradient ascent in the space of natural parameters $\boldsymbol{\theta}$, where the flow is governed by the information geometry encoded in the Fisher Information Matrix. At each point, the steepest ascent direction is given by
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} \propto \nabla S[\rho]^\top = - G(\boldsymbol{\theta}) \boldsymbol{\theta}.
-$$}
-
-\notes{This defines a deterministic flow field over parameter space. In regions of uniform curvature, the system evolves slowly and symmetrically. The system's ability to resolve a specific direction corresponds to a rise in distinguishability, reflected in the local curvature profile. When one direction becomes locally dominant (i.e. the eigenvalues of $G(\boldsymbol{\theta})$ become asymmetric), the flow breaks symmetry and accelerates along that axis (i.e. a specific direction in $\boldsymbol{\theta}$-space becomes energetically or informationally preferred). A variable emerges.}
+\dot{\boldsymbol{\theta}}_i = 
+\begin{cases}
+-[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i & \text{if } |[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i| \geq \varepsilon \\
+0 & \text{otherwise}
+\end{cases}
+$$
+This formulation explicitly shows that emergence is fundamentally tied to crossing the resolution threshold $\varepsilon$, not just to the absolute steepness of gradients. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating a discrete, quantized evolution process.}
 
 \notes{This process — emergence through spontaneous asymmetry in the curvature — does not require an external observer or measurement collapse. Instead, it is an internal dynamical effect of the geometry itself. A direction in $\boldsymbol{\theta}$-space becomes statistically distinguishable from the others: it carries more information and thus breaks the latent symmetry.}
 
