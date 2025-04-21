@@ -114,13 +114,9 @@ In early phases, $G$ is approximately diagonal — observables are nearly uncorr
 
 \notes{The emergence of off-diagonal terms in the Fisher matrix represents a fundamental shift in the system's structure. What began as a collection of independent observables becomes a network of interacting elements, where the behavior of one variable influences and is influenced by others.}
 
-\notes{This marks the emergence of interaction structure: some observables modulate or constrain others. These interactions are not imposed externally but arise internally from the unfolding of the geometry.}
+\notes{This marks the emergence of interaction structure: some observables modulate or constrain others. These interactions are not imposed externally but arise internally from the unfolding of the geometry. We interpret this as the emergence of locality: the system partitions itself into subsystems that interact through structured, limited coupling. The strength and pattern of off-diagonal elements defines the information-theoretic adjacency between variables — a kind of proto-metric on the space of observables.}
 
-\notes{This is a key insight: the system's structure is not predetermined but emerges dynamically from the information geometry. The patterns of interaction are discovered by the system itself as it evolves, rather than being imposed from outside.}
-
-\notes{We interpret this as the emergence of locality: the system partitions itself into subsystems that interact through structured, limited coupling. The strength and pattern of off-diagonal elements defines the information-theoretic adjacency between variables — a kind of proto-metric on the space of observables.}
-
-\notes{The concept of locality here is information-theoretic rather than spatial. Two variables are considered "local" to each other if they are strongly coupled in the Fisher matrix, meaning they carry significant mutual information. This creates a natural notion of distance in the space of observables, where "close" variables are those with strong statistical dependencies.}
+\notes{This concept of locality is information-theoretic rather than spatial. Two variables are considered "local" to each other if they are strongly coupled in the Fisher matrix, meaning they carry significant mutual information. This creates a natural notion of distance in the space of observables, where "close" variables are those with strong statistical dependencies.}
 
 \notes{In this sense, the system generates its own notion of local neighborhoods in information space. Two variables are local to each other if they are strongly coupled (large $|G_{ij}|$), and distant if nearly independent (small $|G_{ij}|$). The Fisher matrix thus encodes not only curvature, but also a dynamical topology: the geometry of interactions.}
 
