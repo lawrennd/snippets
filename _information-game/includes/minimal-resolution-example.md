@@ -212,16 +212,16 @@ axes[0, 0].set_title('Initial State (Low Resolution)')
 # Plot 2: Mid state (medium resolution)
 mid_step = 25
 plot_latent_space(axes[0, 1], m1_values, m2_values, sigma_history[mid_step])
-axes[0, 1].set_title(f'Mid State (σ = {sigma_history[mid_step]:.2f})')
+axes[0, 1].set_title(f'Mid State ($\\sigma = {sigma_history[mid_step]:.2f}$)')
 
 # Plot 3: Final state (high resolution)
 plot_latent_space(axes[1, 0], m1_values, m2_values, sigma_final)
 axes[1, 0].set_title('Final State (High Resolution)')
 
 # Plot 4: Activation history
-axes[1, 1].plot(sigma_history, resolvable_history[:, 0], 'r-', label='M₁ Resolvable')
-axes[1, 1].plot(sigma_history, resolvable_history[:, 1], 'b-', label='M₂ Resolvable')
-axes[1, 1].set_xlabel('Standard Deviation (σ)')
+axes[1, 1].plot(sigma_history, resolvable_history[:, 0], 'r-', label='$M_1$ Resolvable')
+axes[1, 1].plot(sigma_history, resolvable_history[:, 1], 'b-', label='$M_2$ Resolvable')
+axes[1, 1].set_xlabel('Standard Deviation ($\\sigma$)')
 axes[1, 1].set_ylabel('Resolvable')
 axes[1, 1].set_title('Activation History')
 axes[1, 1].grid(True)
