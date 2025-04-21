@@ -180,8 +180,8 @@ for i in range(steps):
     """
     im = ax.imshow(psi, extent=[x.min(), x.max(), y.min(), y.max()], 
                   origin='lower', cmap='viridis')
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
+    ax.set_xlabel('$X$')
+    ax.set_ylabel('$Y$')
     
     if title:
         ax.set_title(title)
@@ -204,8 +204,8 @@ def plot_classical_trajectory(ax, m1_history, m2_history, title=None):
     ax.plot(m1_history, m2_history, 'r-', linewidth=2)
     ax.scatter(m1_history[0], m2_history[0], color='green', s=100, label='Start')
     ax.scatter(m1_history[-1], m2_history[-1], color='red', s=100, label='End')
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
+    ax.set_xlabel('$X$')
+    ax.set_ylabel('$Y$')
     ax.grid(True)
     ax.legend()
     
@@ -230,7 +230,7 @@ plot_wavefunction(axes[0, 0], x, y, psi_initial, 'Initial Wavefunction')
 mid_step = 25
 psi_mid = compute_joint_wavefunction(X, Y, m1_history[mid_step], m2_history[mid_step], 
                                     sigma_history[mid_step], coupling_history[mid_step])
-plot_wavefunction(axes[0, 1], x, y, psi_mid, f'Mid Wavefunction (σ = {sigma_history[mid_step]:.2f})')
+plot_wavefunction(axes[0, 1], x, y, psi_mid, f'Mid Wavefunction ($\sigma = {sigma_history[mid_step]:.2f}$)')
 
 # Plot 3: Final wavefunction (high resolution, strong coupling)
 psi_final = compute_joint_wavefunction(X, Y, m1_history[-1], m2_history[-1], 
