@@ -7,12 +7,6 @@
 
 \notes{To illustrate the concept of minimal resolution and emergent observables, we'll create a simple example using a 2D latent space. This example will demonstrate how observables emerge when resolution constraints are applied to a system with latent coordinates.}
 
-\setupcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-import mlai.plot as plot
-import mlai}
-
 \notes{First, let's define a simple 2D latent space with coordinates $M_1$ and $M_2$. These coordinates are initially unresolved and governed by a wave-like equation. We'll implement a numerical simulation to show how these coordinates become resolvable as observables when resolution constraints are applied.}
 
 \helpercode{def compute_fisher_information(m1, m2, sigma=1.0):
@@ -95,8 +89,55 @@ def is_resolvable(m1, m2, sigma, threshold=0.1):
     """
     gradient = compute_entropy_gradient(m1, m2, sigma)
     return np.linalg.norm(gradient) > threshold
+}
 
-def plot_latent_space(ax, m1_values, m2_values, sigma, resolvable=None):
+\notes{Now let's run a simulation to demonstrate how latent coordinates become resolvable as resolution increases. We'll start with a system where both coordinates are unresolved and show how they become resolvable one by one.}
+
+\setupcode{import numpy as np
+from scipy.optimize import minimize}
+
+\code{# Create a grid of M1 and M2 values
+m1_range = np.linspace(-2, 2, 100)
+m2_range = np.linspace(-2, 2, 100)
+m1_values, m2_values = np.meshgrid(m1_range, m2_range)
+
+# Initial parameters
+m1_initial = 0.0 
+m2_initial = 0.0
+sigma_initial = 2.0  # Low resolution (high sigma)
+sigma_final = 0.1   # High resolution (low sigma)
+
+steps = 50
+# Run simulation
+m1 = m1_initial
+m2 = m2_initial
+sigma = sigma_initial
+
+m1_history = np.zeros(steps)
+m2_history = np.zeros(steps)
+sigma_history = np.zeros(steps)
+resolvable_history = np.zeros((steps, 2), dtype=bool)
+
+for i in range(steps):
+    # Update sigma (decreasing resolution)
+    sigma = sigma_initial + (sigma_final - sigma_initial) * i / (steps - 1)
+    
+    # Check resolvability
+    resolvable1 = is_resolvable(m1, 0, sigma)
+    resolvable2 = is_resolvable(0, m2, sigma)
+    
+    # Update coordinates based on entropy gradient
+    gradient = compute_entropy_gradient(m1, m2, sigma)
+    m1 += 0.1 * gradient[0]
+    m2 += 0.1 * gradient[1]
+    
+    # Store history
+    m1_history[i] = m1
+    m2_history[i] = m2
+    sigma_history[i] = sigma
+    resolvable_history[i] = [resolvable1, resolvable2]
+
+\helpercode{def plot_latent_space(ax, m1_values, m2_values, sigma, resolvable=None):
     """
     Plot the latent space with resolution constraints.
     
@@ -131,76 +172,13 @@ def plot_latent_space(ax, m1_values, m2_values, sigma, resolvable=None):
     ax.set_title(f'Latent Space (σ = {sigma:.2f})')
     ax.grid(True)
     ax.legend()
+}
 
-def simulate_activation(m1_initial, m2_initial, sigma_initial, sigma_final, steps=50):
-    """
-    Simulate the activation of latent coordinates as resolution increases.
-    
-    Parameters:
-    -----------
-    m1_initial, m2_initial : float
-        Initial mean values
-    sigma_initial, sigma_final : float
-        Initial and final standard deviation values
-    steps : int
-        Number of simulation steps
-        
-    Returns:
-    --------
-    m1_history, m2_history : ndarray
-        History of mean values
-    sigma_history : ndarray
-        History of standard deviation values
-    resolvable_history : ndarray
-        History of resolvability
-    """
-    m1 = m1_initial
-    m2 = m2_initial
-    sigma = sigma_initial
-    
-    m1_history = np.zeros(steps)
-    m2_history = np.zeros(steps)
-    sigma_history = np.zeros(steps)
-    resolvable_history = np.zeros((steps, 2), dtype=bool)
-    
-    for i in range(steps):
-        # Update sigma (decreasing resolution)
-        sigma = sigma_initial + (sigma_final - sigma_initial) * i / (steps - 1)
-        
-        # Check resolvability
-        resolvable1 = is_resolvable(m1, 0, sigma)
-        resolvable2 = is_resolvable(0, m2, sigma)
-        
-        # Update coordinates based on entropy gradient
-        gradient = compute_entropy_gradient(m1, m2, sigma)
-        m1 += 0.1 * gradient[0]
-        m2 += 0.1 * gradient[1]
-        
-        # Store history
-        m1_history[i] = m1
-        m2_history[i] = m2
-        sigma_history[i] = sigma
-        resolvable_history[i] = [resolvable1, resolvable2]
-    
-    return m1_history, m2_history, sigma_history, resolvable_history}
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai.plot as plot
+import mlai}
 
-\notes{Now let's run a simulation to demonstrate how latent coordinates become resolvable as resolution increases. We'll start with a system where both coordinates are unresolved and show how they become resolvable one by one.}
-
-\code{# Create a grid of M1 and M2 values
-m1_range = np.linspace(-2, 2, 100)
-m2_range = np.linspace(-2, 2, 100)
-m1_values, m2_values = np.meshgrid(m1_range, m2_range)
-
-# Initial parameters
-m1_initial = 0.0
-m2_initial = 0.0
-sigma_initial = 2.0  # Low resolution (high sigma)
-sigma_final = 0.1   # High resolution (low sigma)
-
-# Run simulation
-m1_history, m2_history, sigma_history, resolvable_history = simulate_activation(
-    m1_initial, m2_initial, sigma_initial, sigma_final, steps=50)
-
+\plotcode{    
 # Plot the results
 fig, axes = plt.subplots(2, 2, figsize=(15, 12))
 fig.suptitle('Emergence of Observables from Latent Coordinates', fontsize=16)
