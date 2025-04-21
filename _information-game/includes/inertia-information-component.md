@@ -48,11 +48,11 @@ where $I(X_1; M | X_0)$ is the conditional mutual information between future sta
 
 \notes{In the density matrix formulation with Fisher Information Matrix $G(\boldsymbol{\theta})$, the inertial properties are expressed by  in the coupling blocks between temporal partitions,}
 $$
-G = \begin{pmatrix}
+G = \begin{bmatrix}
 G_{X_0X_0} & G_{X_0M} & G_{X_0X_1} \\
 G_{MX_0} & G_{MM} & G_{MX_1} \\
 G_{X_1X_0} & G_{X_1M} & G_{X_1X_1}
-\end{pmatrix}
+\end{bmatrix}
 $$
 
 \newslide{Conditional Mutual Information}
@@ -74,7 +74,7 @@ $$
 
 \notes{For a system evolving via entropy gradient ascent according to
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = G(\boldsymbol{\theta})\boldsymbol{\theta}
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta})\boldsymbol{\theta}
 $$
 the dynamics of future variables are governed by
 $$
