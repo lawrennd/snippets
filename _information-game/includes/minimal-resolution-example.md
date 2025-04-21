@@ -136,7 +136,7 @@ for i in range(steps):
     m2_history[i] = m2
     sigma_history[i] = sigma
     resolvable_history[i] = [resolvable1, resolvable2]
-
+}
 \helpercode{def plot_latent_space(ax, m1_values, m2_values, sigma, resolvable=None):
     """
     Plot the latent space with resolution constraints.
