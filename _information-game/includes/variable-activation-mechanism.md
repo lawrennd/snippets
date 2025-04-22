@@ -52,7 +52,7 @@ $$}
 
 \notes{We describe the system's evolution as a *piecewise geodesic flow*: within each phase, the system follows a smooth trajectory along the entropy gradient,
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} \propto G(\boldsymbol{\theta}) \boldsymbol{\theta},
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = - G(\boldsymbol{\theta}) \boldsymbol{\theta},
 $$
 where the geometry is defined by the active subset of the Fisher Information Matrix. When a new variable activates, this geometry shifts, and the trajectory continues in a new locally adapted space.}
 
