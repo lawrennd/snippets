@@ -48,7 +48,7 @@ $$}
 
 \notes{For quadratic observables in a Gaussian state (as derived in the Jaynesian formulation), these properties coincide. This is because the expectation values $\mathrm{tr}(\rho H_i)$ and $\mathrm{tr}(\rho H_j)$ are zero for centered quadratic observables in a symmetric Gaussian state.}
 
-\notes{The system maintains both properties to ensure a consistent internal representation. ¿This is crucial for the emergence of a well-defined information geometry.?}
+\notes{The system maintains both properties to ensure a consistent internal representation. The preservation of both orthogonality and uncorrelatedness is essential for the emergence of a well-defined information geometry because it ensures that the system's internal representation remains stable and unambiguous as new observables emerge.}
 
 This yields a Gram–Schmidt-like procedure within the information geometry: new directions are orthogonalised with respect to the current active basis, and constrained to lie in the space spanned by gradient responses.
 
@@ -73,7 +73,7 @@ $$
 \langle A, B \rangle := \mathrm{tr}(\rho A B).
 $$}
 
-\notes{This is analogous to the Gram-Schmidt procedure in linear algebra, but adapted to the information geometry of the system. The inner product is defined by the ¿current state? $\rho$, ensuring that the new observable is orthogonal to the existing ones in the information-theoretic sense.}
+\notes{This is analogous to the Gram-Schmidt procedure in linear algebra, but adapted to the information geometry of the system. The inner product is defined by the instantaneous state $\rho$ at each point in the system's evolution, ensuring that the new observable is orthogonal to the existing ones in the information-theoretic sense. This state-dependent inner product allows the system to adapt its geometry to changing conditions while maintaining consistency.}
 
 \notes{The normalised observable
 $$
@@ -83,7 +83,7 @@ becomes the new observable aligned with the emergent direction.}
 
 \notes{This process continues recursively: each new activation adds a direction, and the system's observable basis expands in a dynamically adapted manner, always aligned with internal information gradients and always orthogonal under the current state.}
 
-\notes{The procedure is not a computational algorithm but a mathematical description of how the system naturally organizes its observables. ¿It ensures that the system maintains a consistent internal representation as it evolves, preserving the information-theoretic structure while accommodating new degrees of freedom.?}
+\notes{The procedure is not a computational algorithm but a mathematical description of how the system naturally organizes its observables. This description captures how the system maintains a consistent internal representation throughout its evolution by ensuring that each new observable is properly integrated into the existing information-theoretic structure, while allowing for the emergence of new degrees of freedom that respect the underlying geometry.}
 
 \subsection{Emergence of Local Structure and Interaction Geometry}
 

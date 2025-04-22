@@ -95,8 +95,8 @@ def is_2d_resolvable(m1, m2, sigma, threshold=0.1):
         
     Returns:
     --------
-    resolvable : bool
-        True if the coordinate is resolvable
+    resolvable : ndarray
+        Boolean array indicating which coordinates are resolvable
     """
     # Use the foundational function with a 2D array
     m = np.array([m1, m2])
@@ -135,6 +135,7 @@ sigma = sigma_initial
 m1_history = np.zeros(steps)
 m2_history = np.zeros(steps)
 sigma_history = np.zeros(steps)
+# Initialize resolvable_history as a 2D array with shape (steps, 2)
 resolvable_history = np.zeros((steps, 2), dtype=bool)
 
 for i in range(steps):
@@ -142,8 +143,7 @@ for i in range(steps):
     sigma = sigma_initial + (sigma_final - sigma_initial) * i / (steps - 1)
     
     # Check resolvability
-    resolvable1 = is_2d_resolvable(m1, 0, sigma)
-    resolvable2 = is_2d_resolvable(0, m2, sigma)
+    resolvable = is_2d_resolvable(m1, m2, sigma)
     
     # Update coordinates based on entropy gradient
     gradient = compute_2d_entropy_gradient(m1, m2, sigma)
@@ -154,7 +154,7 @@ for i in range(steps):
     m1_history[i] = m1
     m2_history[i] = m2
     sigma_history[i] = sigma
-    resolvable_history[i] = [resolvable1, resolvable2]
+    resolvable_history[i] = resolvable
 }
 \helpercode{def plot_latent_space(ax, m1_values, m2_values, sigma, resolvable=None):
     """
