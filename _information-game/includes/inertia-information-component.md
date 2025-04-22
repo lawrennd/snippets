@@ -78,7 +78,7 @@ $$
 $$
 the dynamics of future variables are governed by
 $$
-\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}\tau} = -G_{X_1X_0}\boldsymbol{\theta}_{X_0} - G_{X_1M}\boldsymbol{\theta}_{M} + G_{X_1X_1}\boldsymbol{\theta}_{X_1}
+\frac{\text{d}\boldsymbol{\theta}_{X_1}}{\text{d}\tau} = -G_{X_1X_0}\boldsymbol{\theta}_{X_0} - G_{X_1M}\boldsymbol{\theta}_{M} - G_{X_1X_1}\boldsymbol{\theta}_{X_1}
 $$
 from which we can identify three distinct contributions,
 $$
