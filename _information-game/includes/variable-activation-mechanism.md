@@ -23,7 +23,7 @@ Here $\varepsilon$ defines the threshold above which the system can resolve vari
 
 \notes{Given an existing set of active observables $\{H_1, \dots, H_k\}$ and a newly activated direction $\theta_{k+1}$, we seek a corresponding observable $H_{k+1}$ such that it aligns with the updated gradient,
 $$
-\left.\nabla_{\boldsymbol{\theta}} S[\rho]\right|_{\theta_{k+1}} = G(\boldsymbol{\theta}) \boldsymbol{\theta} \propto H_{k+1},
+\left.\nabla_{\boldsymbol{\theta}} S[\rho]\right|_{\theta_{k+1}} = - G(\boldsymbol{\theta}) \boldsymbol{\theta} \propto H_{k+1},
 $$
 it preserves orthogonality (uncorrelatedness) under the current state,
 $$
