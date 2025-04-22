@@ -525,7 +525,7 @@ Let's now step back and situate this narrative within the broader framework.
 | Stage | Structure | Governing Principle |
 |-------|-----------|---------------------|
 | Latent $M$-space | Minimal wave-like density | Fisher curvature minimisation under resolution constraint |
-| Variable activation ($M \rightarrow X$) | Threshold-triggered flow | Entropic gradient ascent via $G(\boldsymbol{\theta}) \boldsymbol{\theta}$ |
+| Variable activation ($M \rightarrow X$) | Threshold-triggered flow | Entropic gradient ascent via $-G(\boldsymbol{\theta}) \boldsymbol{\theta}$ |
 | Coupling ($X \leftrightarrow Y$) | Off-diagonal curvature | Emergence of locality through statistical interaction |
 | Network growth ($X,Y,Z,\dots$) | Layered curvature structure | Directed flow across the unfolding Fisher topology |
 | Classical transition | Loss of coherence, coarse structure | Effective dynamics via ensemble geometry |
