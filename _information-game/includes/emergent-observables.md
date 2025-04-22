@@ -289,7 +289,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
 \slides{
 - Entropy gradient becomes:
   $$
-  \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = -
+  \frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -
   \begin{bmatrix}
   G_{XX} & G_{XY} \\
   G_{YX} & G_{YY}
@@ -310,7 +310,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
 
 \notes{To leading order, the entropy gradient becomes
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = -
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -
 \begin{bmatrix}
 G_{XX} & G_{XY} \\
 G_{YX} & G_{YY}
