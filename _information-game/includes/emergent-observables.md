@@ -233,7 +233,7 @@ $$}
 
 \notes{Now suppose the entropy begins to increase. The natural parameter $\theta_M$ moves away from the flat region and begins to trace a gradient,
 $$
-\frac{\text{d}\theta_M}{\text{d}t} = -\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_M.
+\frac{\text{d}\theta_M}{\text{d}\tau} = -\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_M.
 $$
 As this component surpasses the activation threshold $\varepsilon$, the system transitions from latent to emergent behaviour in the direction of $M$. We then reinterpret the coordinate as a resolvable observable $X$: the system has gained enough internal structure to "see" in the direction of position.}
 
