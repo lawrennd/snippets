@@ -134,18 +134,18 @@ $$}
 \notes{2. *Angular Momentum Conservation*: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form
 $$
 \boldsymbol{L} = \boldsymbol{\theta}_X \times (G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M).
-$$
+$$}
 
 \notes{3. *Energy Conservation*: When the system's dynamics are time-translation invariant, the conserved quantity is}
 $$
 E = \frac{1}{2}\boldsymbol{\theta}_M^\top G_{MM} \boldsymbol{\theta}_M + V(\boldsymbol{\theta}_X),
-$$
+$$}
 \notes{where $V(\boldsymbol{\theta}_X)$ represents the potential information defined by the curvature of the entropy landscape.}
 
-\notes{These conservation laws can be derived from the conditional mutual information through the relationship}
+\notes{These conservation laws can be derived from the conditional mutual information through the relationship
 $$
 \frac{\text{d}}{\text{d}\tau}I(X_1;M|X_0) = 0
-$$
+$$}
 \notes{when this condition holds under specific symmetry transformations. This is analogous to Noether's theorem in physics [@Noether-invariante18], but derived from information-theoretic principles where conservation emerges from the structure of the Fisher geometry rather than being imposed as physical law. The key insight, following Noether's approach, is that the symmetries of the information geometry that determine the conserved quantities of the system.}
 
 \subsection{Connecting to Fisher Information Geometry}
@@ -156,15 +156,15 @@ $$
 * Effective Lagrangian emerges from information flow
 }
 
-\notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where}
+\notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where
 $$
-\mathcal{L}_{\text{eff}} \sim \boldsymbol{\theta}_X^\top G_{XX} \boldsymbol{\theta}_X - V(\boldsymbol{\theta})
-$$
+\mathcal{L}_{\text{eff}} \sim \boldsymbol{\theta}_X^\top G_{XX} \boldsymbol{\theta}_X - V(\boldsymbol{\theta}).
+$$}
 
-\notes{The variational principle identified in Jaynes' world}
+\notes{The variational principle identified in Jaynes' world
 $$
 \delta \int_{t_i}^{t_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}t = 0
-$$
+$$}
 
 \notes{Takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
 
@@ -178,16 +178,16 @@ $$
 * Effective Lagrangian emerges from information flow
 }
 
-\notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where:}
+\notes{The connection to the Fisher Information Matrix reveals how inertia emerges geometrically. As the system unfolds, the Fisher matrix $G(\boldsymbol{\theta})$ acquires structure in its off-diagonal components, particularly between different temporal scales. This creates an effective Lagrangian-like structure where
 $$
 \mathcal{L}_{\text{eff}} \sim \boldsymbol{\theta}_X^\top G_{XX} \boldsymbol{\theta}_X - V(\boldsymbol{\theta})
-$$
+$$}
 
-\notes{The variational principle identified in Jaynes' World,}
+\notes{The variational principle identified in Jaynes' World,
 $$
 \delta \int_{t_i}^{t_{i+1}} \boldsymbol{\theta}_{X_i}^\top G_{X_i X_i} \boldsymbol{\theta}_{X_i} \, \text{d}t = 0
 $$
-\notes{takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
+takes the form of a principle of least action when interpreted through the temporal partitioning, giving rise to effective equations of motion that preserve information across time. The inertial properties emerge as statistical patterns in how information geometry evolves, stabilizing into recognizable macroscopic laws of motion.}
 
 \notes{The resistance to change that characterizes inertial systems is ultimately an expression of how information persists and propagates through the Fisher geometry of maximum entropy systems.}
 
