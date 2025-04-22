@@ -7,9 +7,20 @@
 
 \notes{To illustrate the concept of minimal resolution and emergent observables, we'll create a simple example using a 2D latent space. This example will demonstrate how observables emerge when resolution constraints are applied to a system with latent coordinates.}
 
-\notes{First, let's define a simple 2D latent space with coordinates $M_1$ and $M_2$. These coordinates are initially unresolved and governed by a wave-like equation. We'll implement a numerical simulation to show how these coordinates become resolvable as observables when resolution constraints are applied.}
+\include{_information-game/includes/information-game-foundations.md}
 
-\helpercode{def compute_fisher_information(m1, m2, sigma=1.0):
+\notes{In this example, we'll explore a 2D latent space with coordinates $M_1$ and $M_2$. These coordinates are initially unresolved and governed by a wave-like equation. We'll implement a numerical simulation to show how these coordinates become resolvable as observables when resolution constraints are applied.}
+
+\notes{The key insight of this example is that observables emerge naturally from latent coordinates when resolution constraints are applied. As resolution increases (sigma decreases), the coordinates become resolvable one by one, transitioning from latent $M$-space to active $X$-space.}
+
+\slides{
+- Latent coordinates exist in $M$-space
+- Resolution constraints determine when coordinates become resolvable
+- As resolution increases, coordinates transition to $X$-space
+- The entropy gradient drives this transition
+}
+
+\helpercode{def compute_2d_fisher_information(m1, m2, sigma=1.0):
     """
     Compute the Fisher information matrix for a 2D Gaussian distribution.
     
@@ -25,10 +36,11 @@
     G : ndarray
         2x2 Fisher information matrix
     """
-    # For a Gaussian distribution, the Fisher information matrix is 1/sigma^2 * I
-    return np.array([[1/sigma**2, 0], [0, 1/sigma**2]])
+    # Use the foundational function with a 2D array
+    m = np.array([m1, m2])
+    return compute_fisher_information(m, sigma)
 
-def compute_entropy_gradient(m1, m2, sigma=1.0):
+def compute_2d_entropy_gradient(m1, m2, sigma=1.0):
     """
     Compute the entropy gradient for a 2D Gaussian distribution.
     
@@ -44,13 +56,11 @@ def compute_entropy_gradient(m1, m2, sigma=1.0):
     gradient : ndarray
         2D gradient vector [dS/dm1, dS/dm2]
     """
-    # For a Gaussian distribution, the entropy gradient is proportional to the mean
-    # This is a simplified model - in reality, the gradient depends on the Fisher matrix
-    G = compute_fisher_information(m1, m2, sigma)
-    theta = np.array([m1, m2])  # Natural parameters
-    return G @ theta
+    # Use the foundational function with a 2D array
+    m = np.array([m1, m2])
+    return compute_entropy_gradient(m, sigma)
 
-def compute_entropy(m1, m2, sigma=1.0):
+def compute_2d_entropy(m1, m2, sigma=1.0):
     """
     Compute the entropy of a 2D Gaussian distribution.
     
@@ -66,10 +76,11 @@ def compute_entropy(m1, m2, sigma=1.0):
     entropy : float
         Entropy value
     """
-    # For a 2D Gaussian, S = log(2πeσ²)
-    return np.log(2 * np.pi * np.e * sigma**2)
+    # Use the foundational function with a 2D array
+    m = np.array([m1, m2])
+    return compute_entropy(m, sigma)
 
-def is_resolvable(m1, m2, sigma, threshold=0.1):
+def is_2d_resolvable(m1, m2, sigma, threshold=0.1):
     """
     Determine if a coordinate is resolvable based on the entropy gradient.
     
@@ -87,9 +98,17 @@ def is_resolvable(m1, m2, sigma, threshold=0.1):
     resolvable : bool
         True if the coordinate is resolvable
     """
-    gradient = compute_entropy_gradient(m1, m2, sigma)
-    return np.linalg.norm(gradient) > threshold
+    # Use the foundational function with a 2D array
+    m = np.array([m1, m2])
+    return is_resolvable(m, sigma, threshold)
 }
+
+\setupcode{import numpy as np}
+
+\code{# Perform gradient check before running the simulation
+m = np.array([1.0, 2.0])
+gradient_check_passed = check_gradient_implementation(m)
+print(f"Gradient check passed: {gradient_check_passed}")}
 
 \notes{Now let's run a simulation to demonstrate how latent coordinates become resolvable as resolution increases. We'll start with a system where both coordinates are unresolved and show how they become resolvable one by one.}
 
@@ -123,11 +142,11 @@ for i in range(steps):
     sigma = sigma_initial + (sigma_final - sigma_initial) * i / (steps - 1)
     
     # Check resolvability
-    resolvable1 = is_resolvable(m1, 0, sigma)
-    resolvable2 = is_resolvable(0, m2, sigma)
+    resolvable1 = is_2d_resolvable(m1, 0, sigma)
+    resolvable2 = is_2d_resolvable(0, m2, sigma)
     
     # Update coordinates based on entropy gradient
-    gradient = compute_entropy_gradient(m1, m2, sigma)
+    gradient = compute_2d_entropy_gradient(m1, m2, sigma)
     m1 += 0.1 * gradient[0]
     m2 += 0.1 * gradient[1]
     
@@ -156,7 +175,7 @@ for i in range(steps):
     entropy_values = np.zeros_like(m1_values)
     for i in range(m1_values.shape[0]):
         for j in range(m1_values.shape[1]):
-            entropy_values[i, j] = compute_entropy(m1_values[i, j], m2_values[i, j], sigma)
+            entropy_values[i, j] = compute_2d_entropy(m1_values[i, j], m2_values[i, j], sigma)
     
     contour = ax.contourf(m1_values, m2_values, entropy_values, levels=20, cmap='viridis')
     plt.colorbar(contour, ax=ax, label='Entropy')
@@ -214,5 +233,9 @@ mlai.write_figure(filename='minimal-resolution-example.svg',
 \notes{This example demonstrates how latent coordinates become resolvable as resolution increases. In the initial state (low resolution), both coordinates are unresolved and the system exists in a state of symmetric uncertainty. As resolution increases (sigma decreases), the coordinates become resolvable one by one, transitioning from latent $M$-space to active $X$-space.}
 
 \notes{The activation history shows when each coordinate becomes resolvable, which occurs when the entropy gradient exceeds the activation threshold. This is a key insight from the information game: observables emerge naturally from latent coordinates when resolution constraints are applied.}
+
+\notes{The entropy landscape in the latent space visualization shows how the system's uncertainty changes as resolution increases. In the initial state, the entropy is high and uniform, reflecting the system's symmetric uncertainty. As resolution increases, the entropy landscape becomes more structured, with distinct regions of high and low entropy. This reflects the emergence of observables and the system's transition from a state of symmetric uncertainty to one with distinct informational structure.}
+
+\notes{This example provides a foundation for understanding how observables emerge from latent coordinates. In the next example, we'll explore how these observables interact with each other once they become resolvable, leading to the emergence of interaction geometry.}
 
 \endif 

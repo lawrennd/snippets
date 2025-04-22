@@ -87,28 +87,119 @@ def compute_classical_trajectory(m1_initial, m2_initial, sigma, coupling, steps=
     m2_history = np.zeros(steps)
     
     # Simple harmonic motion with coupling
-    omega1 = 0.1
-    omega2 = 0.15
-    coupling_strength = 0.05 * coupling
+    # Reduced frequencies and coupling strength to ensure bounded motion
+    omega1 = 0.05
+    omega2 = 0.07
+    coupling_strength = 0.02 * coupling
+    
+    # Amplitude of oscillation (reduced to ensure bounded motion)
+    A1 = 2.0
+    A2 = 2.0
     
     for i in range(steps):
         t = i * 0.1
         
         # Update positions based on coupled harmonic motion
-        m1 += omega1 * np.sin(omega1 * t) + coupling_strength * np.sin(omega2 * t)
-        m2 += omega2 * np.sin(omega2 * t) + coupling_strength * np.sin(omega1 * t)
+        # Using sine function with amplitude control
+        m1 = A1 * np.sin(omega1 * t) + coupling_strength * A2 * np.sin(omega2 * t)
+        m2 = A2 * np.sin(omega2 * t) + coupling_strength * A1 * np.sin(omega1 * t)
         
         m1_history[i] = m1
         m2_history[i] = m2
     
     return m1_history, m2_history
 }
+\helpercode{def check_wavefunction_normalization():
+    """
+    Check if the wavefunction is properly normalized.
+    
+    Returns:
+    --------
+    is_normalized : bool
+        True if the wavefunction is normalized
+    """
+    # Test points
+    m1, m2 = 0.0, 0.0
+    sigma = 1.0
+    coupling = 0.5
+    
+    # Create position grid
+    x = np.linspace(-5, 5, 1000)
+    y = np.linspace(-5, 5, 1000)
+    X, Y = np.meshgrid(x, y)
+    
+    # Compute wavefunction
+    psi = compute_joint_wavefunction(X, Y, m1, m2, sigma, coupling)
+    
+    # Compute probability density
+    prob_density = np.abs(psi)**2
+    
+    # Compute integral (approximate)
+    dx = x[1] - x[0]
+    dy = y[1] - y[0]
+    integral = np.sum(prob_density) * dx * dy
+    
+    print(f"Wavefunction normalization check: integral = {integral:.6f}")
+    
+    # Check if integral is close to 1
+    return np.abs(integral - 1.0) < 1e-3
+
+def check_classical_trajectory():
+    """
+    Check if the classical trajectory is reasonable.
+    
+    Returns:
+    --------
+    is_reasonable : bool
+        True if the classical trajectory is reasonable
+    """
+    # Test parameters
+    m1_initial, m2_initial = 0.0, 0.0
+    sigma = 1.0
+    coupling = 0.5
+    steps = 100
+    
+    # Compute classical trajectory
+    m1_history, m2_history = compute_classical_trajectory(m1_initial, m2_initial, sigma, coupling, steps)
+    
+    # Check if trajectory is bounded
+    max_m1 = np.max(np.abs(m1_history))
+    max_m2 = np.max(np.abs(m2_history))
+    print(f"Classical trajectory bounds: max |m1| = {max_m1:.2f}, max |m2| = {max_m2:.2f}")
+    
+    # Check if trajectory is periodic
+    # For harmonic motion, we expect the trajectory to be periodic
+    # We can check if the values repeat within a certain tolerance
+    period_found = False
+    for period in range(1, steps//2):
+        if (np.allclose(m1_history[period:], m1_history[:-period], atol=0.1) and 
+            np.allclose(m2_history[period:], m2_history[:-period], atol=0.1)):
+            period_found = True
+            print(f"Classical trajectory is periodic with period approximately {period}")
+            break
+    
+    if not period_found:
+        print("Classical trajectory does not appear to be periodic within the simulation time")
+    
+    # Check if trajectory is within reasonable bounds (less than 5.0)
+    return max_m1 < 5.0 and max_m2 < 5.0
+}
+
+\setupcode{import numpy as np}
+
+\code{# Perform sanity checks before running the simulation
+wavefunction_check_passed = check_wavefunction_normalization()
+print(f"Wavefunction normalization check passed: {wavefunction_check_passed}")
+
+classical_check_passed = check_classical_trajectory()
+print(f"Classical trajectory check passed: {classical_check_passed}")}
+
 
 \notes{Now let's run a simulation to demonstrate the transition from wave-like to classical behavior. We'll start with a system where the coordinates are governed by a wave-like equation and show how they transition to classical-like behavior as more variables activate and interact.}
 
-
 \setupcode{import numpy as np
 from scipy.optimize import minimize}
+
 
 \code{# Create position grids
 x = np.linspace(-5, 5, 100)

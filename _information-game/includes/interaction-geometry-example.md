@@ -7,10 +7,20 @@
 
 \notes{Building on the minimal resolution example, we'll now explore how observables interact with each other once they become resolvable. This example demonstrates the emergence of interaction geometry, where observables become information-bearing not just individually, but in combination.}
 
+\include{_information-game/includes/information-game-foundations.md}
 
 \notes{In this example, we'll simulate a system with three latent coordinates that become resolvable as observables. We'll show how these observables interact with each other, leading to the emergence of a network of dependencies.}
 
-\helpercode{def compute_fisher_information(m1, m2, m3, sigma=1.0, coupling=0.0):
+\notes{The key insight of this example is that as observables emerge, they don't just exist in isolation. Instead, they form a network of interactions, where the state of one observable affects the others. This network structure is encoded in the Fisher information matrix, which evolves from a diagonal matrix (no coupling) to a matrix with significant off-diagonal terms (strong coupling).}
+
+\slides{
+- Observables interact once they become resolvable
+- The Fisher information matrix encodes these interactions
+- Coupling between observables creates a network structure
+- This network structure leads to emergent dynamics
+}
+
+\helpercode{def compute_3d_fisher_information(m1, m2, m3, sigma=1.0, coupling=0.0):
     """
     Compute the Fisher information matrix for a 3D Gaussian distribution with coupling.
     
@@ -28,18 +38,11 @@
     G : ndarray
         3x3 Fisher information matrix
     """
-    # Base Fisher information matrix (diagonal)
-    G = np.eye(3) / sigma**2
-    
-    # Add off-diagonal terms for coupling
-    if coupling > 0:
-        G[0, 1] = G[1, 0] = coupling / sigma**2
-        G[0, 2] = G[2, 0] = coupling / sigma**2
-        G[1, 2] = G[2, 1] = coupling / sigma**2
-    
-    return G
+    # Use the foundational function with a 3D array
+    m = np.array([m1, m2, m3])
+    return compute_fisher_information(m, sigma, coupling)
 
-def compute_entropy_gradient(m1, m2, m3, sigma=1.0, coupling=0.0):
+def compute_3d_entropy_gradient(m1, m2, m3, sigma=1.0, coupling=0.0):
     """
     Compute the entropy gradient for a 3D Gaussian distribution with coupling.
     
@@ -57,11 +60,11 @@ def compute_entropy_gradient(m1, m2, m3, sigma=1.0, coupling=0.0):
     gradient : ndarray
         3D gradient vector [dS/dm1, dS/dm2, dS/dm3]
     """
-    G = compute_fisher_information(m1, m2, m3, sigma, coupling)
-    theta = np.array([m1, m2, m3])  # Natural parameters
-    return G @ theta
+    # Use the foundational function with a 3D array
+    m = np.array([m1, m2, m3])
+    return compute_entropy_gradient(m, sigma, coupling)
 
-def compute_entropy(m1, m2, m3, sigma=1.0, coupling=0.0):
+def compute_3d_entropy(m1, m2, m3, sigma=1.0, coupling=0.0):
     """
     Compute the entropy of a 3D Gaussian distribution with coupling.
     
@@ -79,12 +82,11 @@ def compute_entropy(m1, m2, m3, sigma=1.0, coupling=0.0):
     entropy : float
         Entropy value
     """
-    # For a 3D Gaussian with coupling, the entropy depends on the determinant of the covariance matrix
-    # This is a simplified model
-    det = (1 - coupling**2)**3 * sigma**6
-    return 0.5 * np.log((2 * np.pi * np.e)**3 * det)
+    # Use the foundational function with a 3D array
+    m = np.array([m1, m2, m3])
+    return compute_entropy(m, sigma, coupling)
 
-def is_resolvable(m1, m2, m3, sigma, threshold=0.1):
+def is_3d_resolvable(m1, m2, m3, sigma, threshold=0.1):
     """
     Determine if coordinates are resolvable based on the entropy gradient.
     
@@ -102,12 +104,25 @@ def is_resolvable(m1, m2, m3, sigma, threshold=0.1):
     resolvable : ndarray
         Boolean array indicating which coordinates are resolvable
     """
-    gradient = compute_entropy_gradient(m1, m2, m3, sigma)
-    return np.abs(gradient) > threshold
+    # Use the foundational function with a 3D array
+    m = np.array([m1, m2, m3])
+    return is_resolvable(m, sigma, threshold)
 }
 
+\notes{Now let's run a simulation to demonstrate how observables interact with each other once they become resolvable. We'll start with a system where all coordinates are unresolved and show how they become resolvable and interact with each other.}
+
+\setupcode{import numpy as np}
+
+\code{# Perform sanity checks before running the simulation
+m = np.array([1.0, 2.0, 3.0])
+fisher_check_passed = check_fisher_information(m, coupling=0.5)
+print(f"Fisher information check passed: {fisher_check_passed}")
+
+gradient_check_passed = check_gradient_implementation(m, coupling=0.5)
+print(f"Entropy gradient check passed: {gradient_check_passed}")}
 
 \notes{Now let's run a simulation to demonstrate how observables interact with each other once they become resolvable. We'll start with a system where all coordinates are unresolved and show how they become resolvable and interact with each other.}
+
 \setupcode{import numpy as np
 from scipy.optimize import minimize}
 
@@ -144,16 +159,16 @@ for i in range(steps):
     coupling = coupling_initial + (coupling_final - coupling_initial) * t
     
     # Check resolvability
-    resolvable = is_resolvable(m1, m2, m3, sigma)
+    resolvable = is_3d_resolvable(m1, m2, m3, sigma)
     
     # Update coordinates based on entropy gradient
-    gradient = compute_entropy_gradient(m1, m2, m3, sigma, coupling)
+    gradient = compute_3d_entropy_gradient(m1, m2, m3, sigma, coupling)
     m1 += 0.1 * gradient[0]
     m2 += 0.1 * gradient[1]
     m3 += 0.1 * gradient[2]
     
     # Compute Fisher information matrix
-    fisher = compute_fisher_information(m1, m2, m3, sigma, coupling)
+    fisher = compute_3d_fisher_information(m1, m2, m3, sigma, coupling)
     
     # Store history
     m1_history[i] = m1
@@ -305,6 +320,8 @@ mlai.write_figure(filename='interaction-geometry-example-2.svg',
 \notes{The Fisher information matrix evolves from a diagonal matrix (no coupling) to a matrix with significant off-diagonal terms (strong coupling). This represents the emergence of interaction geometry, where observables become information-bearing not just individually, but in combination.}
 
 \notes{The interaction network visualization shows how the observables are connected to each other, with the thickness of the connections representing the strength of the coupling. As the system evolves, the network becomes more connected, reflecting the emergence of a rich interaction structure.}
+
+\notes{The evolution plots show how coupling and resolvability change over time. As resolution increases, more coordinates become resolvable, and coupling between them emerges. This creates a network of dependencies, where the state of one observable affects the others.}
 
 \notes{This is a key insight from the information game: as more variables activate, the system develops a network of dependencies between observables, leading to the emergence of more complex dynamics. The Fisher information matrix acts as both memory and mediator, encoding the system's informational shape at every stage.}
 
