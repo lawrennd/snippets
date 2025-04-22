@@ -5,87 +5,45 @@
 
 \subsection{Fisher Information Matrix}
 
-\notes{We'll now derive the form of the Fisher Information Matrix $G(\boldsymbol{\theta})$ from the partition function:
+\notes{The Fisher Information Matrix (FIM) is a fundamental object in information geometry that characterizes the local curvature of the statistical manifold. For an exponential family distribution $\rho_\theta$ with natural parameters $\boldsymbol{\theta}$, the FIM is defined as
 $$
-Z(\boldsymbol{\theta}) = \mathrm{tr}\left[\exp\left(\sum_i \theta_i H_i \right)\right]
+G_{ij}(\boldsymbol{\theta}) = \mathbb{E}_{\rho_\theta}\left[\frac{\partial \log \rho_\theta}{\partial \theta_i}\frac{\partial \log \rho_\theta}{\partial \theta_j}\right]
 $$
-We'll proceed by differentiating with respect to $\theta_i$ for the expectation values, then compute the second derivative to get the Fisher Information Matrix, 
-$$
-G_{ij} = \frac{\partial^2 \log Z(\boldsymbol{\theta})}{ \partial \theta_i \partial \theta_j}.
-$$
-which we'll then link to the  curvature.}
+This matrix encodes the sensitivity of the distribution to changes in the parameters and provides a natural metric on the parameter space.}
 
-\notes{First we differentiate $\log Z(\boldsymbol{\theta})$ with respect to $\theta_i$,
+\notes{The FIM can be expressed in terms of the cumulant generating function $\psi(\boldsymbol{\theta}) = \log Z(\boldsymbol{\theta})$:
 $$
-Z(\boldsymbol{\theta}) = \mathrm{tr}\left[ \exp\left(\sum_j \theta_j H_j\right) \right]
+G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
 $$
-Taking the derivative of $\log Z(\boldsymbol{\theta})$ with respect to $\theta_i$, we apply the chain rule to the definition of $\log Z$,
-$$
-\frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_i} = \frac{1}{Z(\boldsymbol{\theta})} \frac{\partial Z(\boldsymbol{\theta})}{\partial \theta_i}
-= \frac{1}{Z(\boldsymbol{\theta})} \mathrm{tr}\left[ H_i \, \exp\left(\sum_j \theta_j H_j\right) \right]
-$$
-So we have
-$$
-\frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_i} = \mathrm{tr}(\rho H_i) = \langle H_i \rangle
-$$
-This is the expected value of $H_i$ under the current distribution $\rho(\boldsymbol{\theta})$.}
+This formulation highlights the connection between the FIM and the curvature of the entropy landscape.}
 
-\notes{We now compute the second derivative of $\log Z(\boldsymbol{\theta})$ to obtain the Fisher Information Matrix elements $G_{ij}$, using the definition
+\notes{The resolution-constrained Fisher Information Matrix (rcFIM) extends the standard FIM by incorporating resolution thresholds for observables. The rcFIM is defined as
 $$
-G_{ij} = \frac{\partial^2 \log Z(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
+G_{ij}^\varepsilon(\boldsymbol{\theta}) = \begin{cases}
+G_{ij}(\boldsymbol{\theta}) & \text{if } |\langle H_i \rangle - \langle H_i \rangle_0| \geq \varepsilon_1 \text{ or } \mathrm{var}(H_i) \geq \varepsilon_2 \\
+0 & \text{otherwise}
+\end{cases}
 $$
-by differentiating the  expression
-$$
-\frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_i} = \mathrm{tr}(\rho H_i),
-$$
-through another application of the product and chain rules. The second derivative then is
-$$
-\frac{\partial^2 \log Z(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
-= \frac{\partial}{\partial \theta_j} \mathrm{tr}(\rho H_i)
-= \mathrm{tr}\left( \frac{\partial \rho}{\partial \theta_j} H_i \right)
-$$
-We can compute $\frac{\partial \rho}{\partial \theta_j}$ since
-$\rho = \frac{1}{Z(\boldsymbol{\theta})} \exp\left(\sum_k \theta_k H_k\right)$,
-we can use the product rule
-$$
-\frac{\partial \rho}{\partial \theta_j} = \frac{\partial}{\partial \theta_j} \left( \frac{1}{Z(\boldsymbol{\theta})} \exp\left(\sum_k \theta_k H_k\right) \right)
-= -\frac{1}{Z(\boldsymbol{\theta})^2} \frac{\partial Z(\boldsymbol{\theta})}{\partial \theta_j} \exp\left(\sum_k \theta_k H_k\right) + \frac{1}{Z(\boldsymbol{\theta})} H_j \exp\left(\sum_k \theta_k H_k\right)
-$$
-which simplifies to
-$$
-\frac{\partial \rho}{\partial \theta_j} = -\rho \frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_j} + \rho H_j
-$$
-Substituting this back into our expression for the second derivative, we get
-$$
-\frac{\partial^2 \log Z(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
-= \mathrm{tr}\left( \left( -\rho \frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_j} + \rho H_j \right) H_i \right)
-$$
-which simplifies to
-$$
-\frac{\partial^2 \log Z(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
-= -\frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_j} \mathrm{tr}(\rho H_i) + \mathrm{tr}(\rho H_i H_j)
-$$
-or
-$$
-\frac{\partial^2 \log Z(\boldsymbol{\theta})}{\partial \theta_i \partial \theta_j}
-= -\langle H_i \rangle \langle H_j \rangle + \langle H_i H_j \rangle
-$$
-which is the covariance of $H_i$ and $H_j$:
-$$
-G_{ij} = \mathrm{Cov}(H_i, H_j) = \langle H_i H_j \rangle - \langle H_i \rangle \langle H_j \rangle
-$$}
+where $\varepsilon_1$ and $\varepsilon_2$ are resolution thresholds for the expectation and variance of observables, respectively.}
 
-\notes{The log-partition function $\log Z(\boldsymbol{\theta})$ acts as a cumulant generating function for the observables $H_i$. Its second derivatives yield the covariance matrix of the observables (i.e., the second cumulants correspond to variances and covariances).
-This induces a natural Riemannian geometry on the parameter space. The Fisher Information Matrix $G(\boldsymbol{\theta})$ encodes local curvature and sensitivity to variations in the natural parameters $\boldsymbol{\theta}$.}
+\notes{The rcFIM partitions the parameter space into active and latent subspaces based on the resolution thresholds. Parameters associated with active observables contribute to the rcFIM, while parameters associated with latent observables do not. This partitioning reflects the discrete nature of observable activation and provides a mechanism for managing the system's complexity.}
 
-\subsection{Resolution-Constrained Fisher Information}
+\notes{The Schur complement of the rcFIM with respect to the latent parameters provides an effective information geometry for the active observables,
+$$
+G_X^\varepsilon(\boldsymbol{\theta}) = G_{XX}^\varepsilon(\boldsymbol{\theta}) - G_{XM}^\varepsilon(\boldsymbol{\theta})(G_{MM}^\varepsilon(\boldsymbol{\theta}))^{-1}G_{MX}^\varepsilon(\boldsymbol{\theta}),
+$$
+where $G_{XX}^\varepsilon$, $G_{MM}^\varepsilon$, $G_{XM}^\varepsilon$, and $G_{MX}^\varepsilon$ are the blocks of the rcFIM corresponding to active and latent parameters.}
 
-\notes{The Fisher Information Matrix $G(\boldsymbol{\theta})$ plays a crucial role in the resolution-constrained entropy formulation. It not only describes the local curvature of the entropy landscape but also determines which parameter components become dynamically active.}
+\notes{The rcFIM determines the resolution-constrained gradient flow. The evolution of the system is governed by
+$$
+\dot{\boldsymbol{\theta}} = -G^\varepsilon(\boldsymbol{\theta})\boldsymbol{\theta}
+$$
+This equation ensures that only active observables contribute to the system's dynamics, while latent observables remain fixed.}
 
-\notes{In the context of the resolution threshold $\varepsilon$, the Fisher Information Matrix can be partitioned into components that are above and below the resolution threshold. Elements of the matrix that fall below $\varepsilon^2$ are effectively treated as zero in the dynamics, reflecting the system's inability to resolve fine-grained structure at scales smaller than the resolution threshold.}
+\notes{The eigenvalues of the rcFIM provide insights into the system's information geometry. Large eigenvalues correspond to directions in parameter space where the system is highly sensitive to changes, while small eigenvalues correspond to directions where the system is relatively insensitive. The resolution threshold $\varepsilon$ determines which eigenvalues are considered significant, effectively defining the dimensionality of the active subspace.}
 
-\notes{This partitioning is directly tied to the resolution constraint on derivatives of the relative entropy. When a component of the gradient $[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i$ exceeds the resolution threshold $\varepsilon$, the corresponding parameter $\theta_i$ becomes dynamically active. This creates a natural separation between active and latent parameters.}
+\notes{The rcFIM also has important implications for the system's computational complexity. By focusing on active observables and treating latent observables as fixed, the system can evolve in a reduced parameter space. This sparsification of the dynamics is a natural consequence of the resolution constraint and provides a mechanism for managing computational complexity in large-scale systems.}
 
-\notes{The resolution-constrained Fisher Information Matrix provides a mathematical framework for understanding how the system's ability to resolve information determines its dynamical behavior. It shows that the emergence of structure is tied to the resolution threshold, with new variables becoming active only when their associated gradients exceed this threshold.}
+\notes{Understanding the rcFIM allows us to predict the system's evolution and identify the most likely paths of emergence. It also provides insights into the relationship between information geometry and physical dynamics, suggesting that the resolution constraint might be a fundamental feature of information-based physical systems.}
 
 \endif 

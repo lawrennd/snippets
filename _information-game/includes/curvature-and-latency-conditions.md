@@ -5,66 +5,50 @@
 
 \subsection{Curvature and Latency Conditions}
 
-\notes{The Fisher Information Matrix $G(\boldsymbol{\theta})$ describes the local curvature of the log-partition function $\log Z(\boldsymbol{\theta})$ and thus characterises how sharply peaked the distribution $\rho(\boldsymbol{\theta})$ is in different directions. Higher curvature reflects greater sensitivity to changes in the parameters — more 'informative' directions in the landscape.}
-
-\notes{At the system's origin, all degrees of freedom are latent — no variable has yet emerged. This means that the projection of curvature along the direction of each parameter must be small. We express this as a constraint on the vector $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, requiring
+\notes{The Fisher Information Matrix (FIM) plays a crucial role in characterizing the curvature of the entropy landscape and determining the conditions under which observables become latent or active. The FIM is defined as
 $$
-\left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \right| < \varepsilon \quad \text{for all } i.
+G_{ij}(\boldsymbol{\theta}) = \mathbb{E}_{\rho_\theta}\left[\frac{\partial \log \rho_\theta}{\partial \theta_i}\frac{\partial \log \rho_\theta}{\partial \theta_j}\right]
 $$
-This condition is derived from the resolution-constrained entropy formulation, where $\varepsilon$ is the resolution threshold that determines when a parameter component becomes dynamically active. It ensures that the entropy gradient, proportional to $G(\boldsymbol{\theta}) \boldsymbol{\theta}$, remains too shallow to trigger emergence in any direction — preserving the latent symmetry of the system at $\boldsymbol{\theta}_0$.}
+where $\rho_\theta$ is the exponential family distribution with natural parameters $\boldsymbol{\theta}$.}
 
-\notes{This condition also has a geometric interpretation, $\boldsymbol{\theta}_0$ must lie near a saddle point or a flat region of the entropy landscape. The curvature is non-zero and globally bounded (from the uncertainty constraint), but its projection is uniformly suppressed across all directions.}
-
-\subsection{Initial Constraints and the Permissible Unfolding Domain}
-
-\notes{We now summarise the constraints that define the initial domain from which the system unfolds. These constraints ensure the system begins in a regular, latent, low-entropy state, while preserving the potential for future variable emergence.}
-
-\notes{We imposed a constraint on the maximum entropy and now we also consider the directional latency.
-
-1. *Entropy bound*:
-   $$
-   S[\rho(\boldsymbol{\theta})] \leq N,
-   $$
-   where $N$ specifies the total informational capacity of the system. At the origin $\boldsymbol{\theta}_o$, the entropy is minimal — but the system must remain within this global entropy budget throughout its evolution.
-
-2. *Directional latency*:
-   $$
-   \left| \left[G(\boldsymbol{\theta}) \boldsymbol{\theta} \right]_i \right| < \varepsilon \quad \text{for all } i.
-   $$
-   This enforces the condition that no direction in parameter space dominates initially, preserving symmetry and avoiding premature emergence. This constraint is a consequence of the resolution-constrained entropy formulation, where $\varepsilon$ represents the minimum resolvable gradient magnitude.
-
-These two constraints together define a *feasible region* in parameter space: a domain $\mathcal{D}_o \subset \mathbb{R}^d$ where entropy remains low and gradients are uniformly shallow. In thermodynamics the entropy would be referred to as subextensive, i.e. it remains below capacity and does not yet scale with effective dimensionality.}
-
-\notes{We interpret this region as a *latent pregeometry*: a structure defined not by explicit variables, but by information-theoretic curvature and bounded resolution. Emergence proceeds only when a trajectory moves outside this domain, at which point curvature accumulates along a dominant direction and a variable 'activates'.}
-
-\notes{The game therefore begins in $\mathcal{D}_o$, where entropy gradients are present but too shallow to drive evolution. The unfolding process is triggered by internal perturbations or transitions that move the system into a steeper region of the entropy landscape — breaking the initial symmetry and initiating variable formation.}
-
-\subsection{Gradient Ascent and the Initiation of Emergence}
-
-\notes{Once the system leaves the latent domain $\mathcal{D}_o$, it enters a region where curvature gradients become directionally amplified. In this region, the entropy gradient,
+\notes{The resolution threshold $\varepsilon$ determines when an observable becomes dynamically resolvable. An observable $H_i$ is considered "active" or "detectable" when its expected value or variance crosses a threshold,
 $$
-\nabla S[\rho(\boldsymbol{\theta})] = - \boldsymbol{\theta}^\top G(\boldsymbol{\theta}),
+|\langle H_i \rangle - \langle H_i \rangle_0| \geq \varepsilon_1 \text{ or } \mathrm{var}(H_i) \geq \varepsilon_2
 $$
-becomes sufficiently steep in one or more directions to drive dynamical activation. This transition marks the onset of emergence.}
+where $\varepsilon_1$ and $\varepsilon_2$ are resolution thresholds in observation space.}
 
-\notes{The dynamics can be understood as entropic gradient ascent in the space of natural parameters $\boldsymbol{\theta}$, where the flow is governed by the information geometry encoded in the Fisher Information Matrix. At each point, the steepest ascent direction is given by
+\notes{The FIM can be partitioned based on the active observables:
 $$
-\dot{\boldsymbol{\theta}}_i = 
-\begin{cases}
--[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i & \text{if } |[G(\boldsymbol{\theta})\boldsymbol{\theta}]_i| \geq \varepsilon \\
-0 & \text{otherwise}
-\end{cases}
+G(\boldsymbol{\theta}) = \begin{bmatrix} G_{XX} & G_{XM} \\ G_{MX} & G_{MM} \end{bmatrix}
 $$
-This shows that emergence is tied to crossing the resolution threshold $\varepsilon$, not just to the absolute steepness of gradients. Components with gradient magnitudes below $\varepsilon$ remain fixed, creating a discrete, quantized evolution process.}
+where $G_{XX}$ corresponds to active observables, $G_{MM}$ to latent observables, and $G_{XM}$ and $G_{MX}$ represent the coupling between active and latent observables.}
 
-\notes{This process — emergence through spontaneous asymmetry in the curvature — does not require an external observer or measurement collapse. Instead, it is an internal dynamical effect of the geometry itself. A direction in $\boldsymbol{\theta}$-space becomes statistically distinguishable from the others: it carries more information and thus breaks the latent symmetry.}
-
-\notes{To characterise this transition more precisely, we track the growth of the entropy gradient component-wise
+\notes{The Schur complement of $G_{MM}$ in $G(\boldsymbol{\theta})$ is defined as
 $$
-\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon.
+G^\prime_X = G_{XX} - G_{XM}G_{MM}^{-1}G_{MX}
 $$
-at which point the $i$-th degree of freedom becomes resolvable. This threshold crossing defines a *variable activation event*.}
+This matrix $G^\prime_X$ represents the effective information geometry for the active observables after accounting for their coupling to the latent observables.}
 
-\notes{We can now begin to think of the system as flowing through a dynamically unfolding geometry: curvature concentrates, variables activate, and a new basis of observables $\{H_i'\}$ emerges adaptively. These are not fixed beforehand, but arise from the internal information dynamics.}
+\notes{The curvature conditions for latency can be expressed in terms of the eigenvalues of the FIM. A parameter $\theta_i$ is considered latent if the corresponding eigenvalue $\lambda_i$ of $G(\boldsymbol{\theta})$ satisfies
+$$
+\lambda_i < \varepsilon^2
+$$
+This condition indicates that the parameter's contribution to the system's information geometry is below the resolution threshold.}
+
+\notes{The latency condition can also be expressed in terms of the observable expectations. An observable $H_i$ is latent if its expectation and variance are both below the resolution thresholds,
+$$
+|\langle H_i \rangle - \langle H_i \rangle_0| < \varepsilon_1 \text{ and } \mathrm{var}(H_i) < \varepsilon_2,
+$$
+This formulation emphasizes that latency is a property of the observable space rather than the parameter space.}
+
+\notes{The relationship between the entropy bound $N$ and the resolution threshold $\varepsilon$ affects the conditions for latency. As the entropy bound increases, the resolution threshold decreases, allowing for the detection of more subtle features in the system. This suggests that systems with higher entropy bounds can maintain more active observables, leading to more complex and nuanced behavior.}
+
+\notes{The curvature and latency conditions have important implications for the system's evolution. Parameters associated with latent observables evolve more slowly, as their contributions to the gradient flow are below the resolution threshold. This creates a natural separation of time scales in the system's dynamics, with active observables evolving quickly and latent observables evolving slowly or remaining fixed.}
+
+\notes{This separation of time scales is reflected in the structure of the FIM. The block $G_{XX}$ corresponds to the fast dynamics of active observables, while $G_{MM}$ corresponds to the slow dynamics of latent observables. The off-diagonal blocks $G_{XM}$ and $G_{MX}$ represent the coupling between these different time scales.}
+
+\notes{¿The curvature and latency conditions also have implications for the system's computational complexity.? By focusing on active observables and treating latent observables as fixed, the system can efficiently evolve in a reduced parameter space. This sparsification of the dynamics is a natural consequence of the resolution constraint and provides a mechanism for managing computational complexity in large-scale systems.}
+
+\notes{Understanding the curvature and latency conditions is crucial for predicting the system's evolution and identifying the most likely paths of emergence. It also provides insights into the relationship between information geometry and physical dynamics, suggesting that the resolution constraint might be a feature of information-based physical systems.}
 
 \endif
