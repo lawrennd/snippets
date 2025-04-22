@@ -233,7 +233,7 @@ $$}
 
 \notes{Now suppose the entropy begins to increase. The natural parameter $\theta_M$ moves away from the flat region and begins to trace a gradient,
 $$
-\frac{\text{d}\theta_M}{\text{d}t} \propto \left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_M.
+\frac{\text{d}\theta_M}{\text{d}t} = -\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_M.
 $$
 As this component surpasses the activation threshold $\varepsilon$, the system transitions from latent to emergent behaviour in the direction of $M$. We then reinterpret the coordinate as a resolvable observable $X$: the system has gained enough internal structure to "see" in the direction of position.}
 
@@ -289,7 +289,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
 \slides{
 - Entropy gradient becomes:
   $$
-  \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto -
+  \frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = -
   \begin{bmatrix}
   G_{XX} & G_{XY} \\
   G_{YX} & G_{YY}
@@ -310,7 +310,7 @@ where $G_{XY} = \mathrm{Cov}(H_X, H_Y)$ encodes statistical coupling between the
 
 \notes{To leading order, the entropy gradient becomes
 $$
-\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} \propto -
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}t} = -
 \begin{bmatrix}
 G_{XX} & G_{XY} \\
 G_{YX} & G_{YY}
