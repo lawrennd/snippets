@@ -112,7 +112,7 @@ $$
 
 \notes{We can understand the conservation law from the critical slowing of latent variables $M$. When these variables evolve much more slowly than the active variables $X$ (i.e., when $|[G(\boldsymbol{\theta})\boldsymbol{\theta}]_M| < \varepsilon_{\text{slow}} \ll 1$), we assume that the conditional mutual information $I(X_1;M|X_0)$ becomes approximately invariant over time,}
 $$
-\frac{\text{d}}{\text{d}t}I(X_1;M|X_0) \approx 0.
+\frac{\text{d}}{\text{d}\tau}I(X_1;M|X_0) \approx 0.
 $$
 \notes{This invariance is the information-theoretic foundation of the system's conservation laws. The critically slowed latent variables act as an information reservoir that constrains future states in a consistent way across time, creating effective constants of motion.}
 
