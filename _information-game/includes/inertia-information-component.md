@@ -136,7 +136,7 @@ $$
 \boldsymbol{L} = \boldsymbol{\theta}_X \times (G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M).
 $$}
 
-\notes{3. *Energy Conservation*: When the system's dynamics are time-translation invariant, the conserved quantity is}
+\notes{3. *Energy Conservation*: When the system's dynamics are time-translation invariant, the conserved quantity is
 $$
 E = \frac{1}{2}\boldsymbol{\theta}_M^\top G_{MM} \boldsymbol{\theta}_M + V(\boldsymbol{\theta}_X),
 $$}
