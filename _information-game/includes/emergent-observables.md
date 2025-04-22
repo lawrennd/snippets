@@ -534,6 +534,7 @@ Let's now step back and situate this narrative within the broader framework.
 \notes{This table summarizes the key stages of the system's evolution, showing how each stage builds on the previous one and introduces new structure and dynamics.}
 
 \notes{Each of these transitions is governed not by external forces or postulated laws, but by internal geometric conditions:
+
 - Variance constraints impose curvature.
 - Curvature shapes entropy gradients.
 - Gradients activate variables.
