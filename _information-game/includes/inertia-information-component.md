@@ -128,7 +128,7 @@ $$
 the corresponding conserved quantity is,
 $$
 \boldsymbol{p} = G_{MX}\boldsymbol{\theta}_X + G_{MM}\boldsymbol{\theta}_M,
-$$
+$$}
 \notes{where this quantity satisfies $\frac{\text{d}\boldsymbol{p}}{\text{d}\tau} = 0$ in the absence of external information gradients.}
 
 \notes{2. *Angular Momentum Conservation*: When the Fisher geometry is invariant under rotations ($\boldsymbol{\theta} \mapsto R\boldsymbol{\theta}$ where $R$ is a rotation operator), the conserved quantity takes the form
