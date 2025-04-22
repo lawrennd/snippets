@@ -9,19 +9,25 @@
 
 \subsubsection{Threshold Crossing and Activation}
 
-\notes{We define a variable activation event as the point where the $i$-th component of the entropy gradient reaches the resolution threshold,
+\notes{We define a variable activation event as the point where the expected value or variance of an observable $H_i$ reaches a resolution threshold,
 $$
-\left[G(\boldsymbol{\theta}) \boldsymbol{\theta}\right]_i \geq \varepsilon.
+|\langle H_i \rangle - \langle H_i \rangle_0| \geq \varepsilon_1 \text{ or } \mathrm{var}(H_i) \geq \varepsilon_2.
 $$
-Here $\varepsilon$ defines the threshold above which the system can resolve variation in the $i$-th direction with sufficient information gain. This marks a transition from latent to emergent status and is directly derived from the resolution-constrained entropy formulation.}
+Here $\varepsilon_1$ and $\varepsilon_2$ define thresholds above which the system can resolve variation in the $i$-th observable with sufficient information gain. This marks a transition from latent to emergent status and is directly derived from the resolution-constrained entropy formulation.}
 
-\notes{When this happens, the corresponding parameter $\theta_i$ becomes an active degree of freedom, and the associated observable $H_i$ becomes internally resolvable. The system's effective observable basis $\{H_i\}$ is updated — either by extension or rotation — to reflect the newly emergent structure.}
+\notes{The observable expectations are directly related to the gradient of the log partition function with respect to parameters:
+$$
+\langle H_i \rangle = \frac{\partial \log Z(\boldsymbol{\theta})}{\partial \theta_i}
+$$
+This establishes a connection between the parameter space and the space of observable outcomes.}
+
+\notes{When this happens, the corresponding observable $H_i$ becomes internally resolvable, and the system's effective observable basis $\{H_i\}$ is updated — either by extension or rotation — to reflect the newly emergent structure. The parameters themselves continue to evolve continuously according to the gradient flow.}
 
 \subsubsection{Basis Update Mechanism}
 
 \notes{This update is not arbitrary. The new basis must remain consistent with the information geometry — that is, the Fisher matrix $G(\boldsymbol{\theta})$ must remain positive definite and aligned with the updated entropy gradients. One may think of this as a local frame adaptation: the system reorganizes its observables to align with the current information flow.}
 
-\notes{Given an existing set of active observables $\{H_1, \dots, H_k\}$ and a newly activated direction $\theta_{k+1}$, we seek a corresponding observable $H_{k+1}$ such that it aligns with the updated gradient,
+\notes{Given an existing set of active observables $\{H_1, \dots, H_k\}$ and a newly activated observable $H_{k+1}$, we seek to ensure it aligns with the updated gradient,
 $$
 \left.\nabla_{\boldsymbol{\theta}} S[\rho]\right|_{\theta_{k+1}} = - G(\boldsymbol{\theta}) \boldsymbol{\theta} \propto H_{k+1},
 $$
@@ -48,7 +54,7 @@ $$}
 
 \notes{As each variable activates, the system enters a new phase — a locally adapted region of parameter space where the information geometry is governed by an updated basis of observables. These phases are separated by *activation thresholds* at the resolution scale $\varepsilon$, and each new phase introduces a change in the effective dimensionality of the system.}
 
-\notes{The entropy maximization process is inherently "quantized" by the resolution constraint, proceeding in discrete steps rather than continuous flow. Each activation represents a discrete jump in the system's information capacity, as new variables become resolvable at the threshold $\varepsilon$. This quantization is a feature of the resolution-constrained entropy formulation, reflecting the fact that derivatives approaching the resolution scale cannot drive dynamics until they exceed that threshold.}
+\notes{The entropy maximization process is inherently "quantized" by the resolution constraint, proceeding in discrete steps rather than continuous flow. Each activation represents a discrete jump in the system's information capacity, as new variables become resolvable at the threshold $\varepsilon$. This quantization is a feature of the resolution-constrained entropy formulation, reflecting the fact that observable expectations approaching the resolution scale cannot be detected until they exceed that threshold.}
 
 \notes{We describe the system's evolution as a *piecewise geodesic flow*: within each phase, the system follows a smooth trajectory along the entropy gradient,
 $$
@@ -60,7 +66,7 @@ where the geometry is defined by the active subset of the Fisher Information Mat
 
 \notes{The transition between phases is *not singular*. Because the entropy and curvature remain finite, transitions are continuous but directionally abrupt: a sharp increase in curvature along a particular axis marks a change in the dominant flow direction. These are analogous to *critical points* in phase transitions, where the system reorganizes around a new informational axis.}
 
-\notes{Thus, the system explores parameter space via a sequence of transitions, first *Latent phase* in $\mathcal{D}_0$, where all variables are suppressed,second *activation threshold*, where one direction becomes resolvable, third *emergence phase**, where the active geometry reorients and extends, and finally *new latent subspace**, until the next threshold is reached.}
+\notes{Thus, the system explores parameter space via a sequence of transitions, first *latent phase* in $\mathcal{D}_0$, where all variables are suppressed, second *activation threshold*, where one direction becomes resolvable, third *emergence phase*, where the active geometry reorients and extends, and finally *new latent subspace*, until the next threshold is reached.}
 
 \notes{This process generates a *history-dependent trajectory*: the current configuration of active variables shapes the available paths forward. Each phase embeds memory of past activations in the form of accumulated curvature and entropy.}
 
