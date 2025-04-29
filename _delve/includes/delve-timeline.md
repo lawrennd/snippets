@@ -5,7 +5,7 @@
 
 \subsection{Delve Timeline}
 
-* First contact *3rd April*
+* First contact *3rd April 2020*
 * First meeting *7th April*
 * First working group *16th April*
 
