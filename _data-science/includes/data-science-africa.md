@@ -21,7 +21,7 @@ As of May 2023 there have been eleven  workshops and schools, located in seven d
 
 The main notion is *end-to-end* data science. For example, going from data collection in the farmer's field to decision making in the Ministry of Agriculture. Or going from malaria disease counts in health centers to medicine distribution.}
 
-\notes{The philosophy is laid out in [@Lawrence:dsa15]. The key idea is that the modern *information infrastructure* presents new solutions to old problems. Modes of development change because less capital investment is required to take advantage of this infrastructure. The philosophy is that local capacity building is the right way to leverage these challenges in addressing data science problems in the African context.}
+\notes{The philosophy is laid out in [@Lawrence-dsa15]. The key idea is that the modern *information infrastructure* presents new solutions to old problems. Modes of development change because less capital investment is required to take advantage of this infrastructure. The philosophy is that local capacity building is the right way to leverage these challenges in addressing data science problems in the African context.}
 
 \notes{Data Science Africa is now a non-govermental organization registered in Kenya. The organising board of the meeting is entirely made up of scientists and academics based on the African continent.}
 
