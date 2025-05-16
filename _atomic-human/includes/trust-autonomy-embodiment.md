@@ -5,7 +5,7 @@
 
 \newslide
 
-\include{_policy/includes/trust-autonomy-embodiment-diagram.md}
+\include{_atomic-human/includes/trust-autonomy-embodiment-diagram.md}
 
 \endif
 
