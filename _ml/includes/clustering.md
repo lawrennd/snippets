@@ -235,20 +235,12 @@ $$
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_011}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_012}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_014}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_015}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_016}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_017}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_018}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_019}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_020}{\width}}{\animationName}
-\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_021}{\width}}{\animationName}
 \endanimation
 
 *Clustering with the $k$-means clustering algorithm.*
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_020}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-020}}
+\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-013}}
 
 \newslide{$k$-Means Clustering}
 
