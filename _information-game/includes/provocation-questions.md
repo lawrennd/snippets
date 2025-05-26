@@ -62,6 +62,12 @@ This implies that wherever we are in the game, if we look back across turns even
 
 (v) Explain how any invariances in this function will lead to further symmetries in the resulting effective physics and what Noether's theorem tells us about how these invariances would manifest in the game's physics.}
 
+\subsection{Exercise 5: Distinguishability}
+
+\notes{For a variable to transit it needs to become distinguishable. 
+
+*Task*: Show that this notion of distuniguishability naturally leads to a concept of distance between variables and that this distance has rotational and translational invariances that dictate the nature of space and its relationship with time in the game.}
+
 \subsection{Exercise 6: Action Principles and Information Dynamics}
 
 \notes{Action principles allow us to derive dynamical equations. In the context of our Information Game, recall from Exercise 2 that the evolution across turns, indexed by $\tau$, is driven by the system adjusting the partition to maximise instantaneous entropy production. The integration path for any proposed action $\mathcal{S} = \int L \text{d}\tau$ will give us this trajectory of maximal entropy production.
