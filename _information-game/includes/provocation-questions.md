@@ -64,9 +64,9 @@ This implies that wherever we are in the game, if we look back across turns even
 
 \subsection{Exercise 6: Action Principles and Information Dynamics}
 
-\notes{Action principles allow us to derive dynamical equations through Lagrangian's formed from kinetic and potential energies under the assumption that the sum of the two are conserved. By viewing the multi-information, $I(X, M_d| \theta(M_p))$ as analogous to potential energy and the entropy, $S(X, M_d|\theta(M_p))$.
+\notes{Action principles allow us to derive dynamical equations. In the context of our Information Game, recall from Exercise 2 that the evolution across turns, indexed by $\tau$, is driven by the system adjusting the partition to maximise instantaneous entropy production. The integration path for any proposed action $\mathcal{S} = \int L \text{d}\tau$ will give us this trajectory of maximal entropy production.
 
-An information action principle that is consistent with our game,
+The Lagrangian is typically formed from kinetic and potential energies under the assumption that the sum of the two are conserved. By viewing the multi-information, $I(X, M_d| \theta(M_p))$ as analogous to potential energy and the entropy, $S(X, M_d|\theta(M_p))$ and by recalling that their sum is conserved we can formulate an information action principle that is consistent with our game,
 $$
 \mathcal{S} = \int\left[S(X, M_d|\theta(M_p)) - I(X, M_d|\theta(M_p))\right]\text{d} \tau
 $$
