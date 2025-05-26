@@ -66,7 +66,9 @@ This implies that wherever we are in the game, if we look back across turns even
 
 \notes{For a variable to transit it needs to become distinguishable. 
 
-*Task*: Show that this notion of distuniguishability naturally leads to a concept of distance between variables and that this distance has rotational and translational invariances that dictate the nature of space and its relationship with time in the game.}
+*Task*: (i) Show that this notion of distuniguishability naturally leads to a concept of distance between variables and that this distance has rotational and translational invariances that dictate the nature of space and its relationship with time in the game.}
+
+(ii) Distinguishability requires finite resolution measurements, and $\theta(M_p)$ is derived from the finite-dimensional density matrix of $M$, so the parameter space itself must be  discrete, even though the Fisher metric makes it appear continuous. What does this imply for gauge symmetries in this game?}
 
 \subsection{Exercise 7: Action Principles and Information Dynamics}
 
