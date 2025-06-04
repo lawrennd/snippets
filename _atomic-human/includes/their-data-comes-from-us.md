@@ -5,7 +5,7 @@
 
 \newslide
 
-\include{_policy/includes/information-flows-diagram.md}
+\include{_atomic-human/includes/information-flows-diagram.md}
 
 \notes{The stochastic parrots paper [@Bender-parrots21] was the moment that the research community, through a group of brave researchers, some of whom paid with their jobs, raised the first warnings about these technologies. Despite their bravery, at least in the UK, their voices and those of many other female researchers were erased from the public debate around AI.}
 
