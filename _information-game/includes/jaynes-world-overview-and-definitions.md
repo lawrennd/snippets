@@ -5,136 +5,153 @@
 
 \subsection{Jaynes' World}
 \slides{
-- System governed by probability and entropy
+- Configuration is primary; parameters emerge from monitoring choices
+- Distribution captures uncertainty about possible configurations
 - Framework for observer-free dynamics and entropy-based emergence
-- Aim: better understanding of the notion of an "information topography"
 }
 
-\notes{This game explores how structure, time, causality, and locality might emerge within a system governed solely by internal information-theoretic constraints. The hope is that it can serve as
+\notes{This framework explores how structure, time, causality, and locality might emerge from representation through a  *configuration* and our *uncertainty about configuration*. The configuration—how variables actually relate to each other—is ontologically primary. All mathematical structures (parameters, distributions, entropy measures) emerge as consequences of tracking our uncertainty about which configuration is actual.
 
-- A *research framework* for observer-free dynamics and entropy-based emergence,
-- A *conceptual tool* for exploring the notion of an information topography: A landscape in which information flows under constraints.}
+The system serves as:
+- A *research framework* for observer-free dynamics and entropy-based emergence
+- A *conceptual tool* for exploring information topography: landscapes where uncertainty about configuration evolves under constraints}
 
+\subsection{Fundamental Structure: Configuration and Uncertainty}
 
-\subsection{Definitions and Global Constraints}
-
-\subsubsection{System Structure}
+\subsubsection{Configuration as Primary Reality}
 
 \slides{
-- Full set of variables: $Z = \{Z_1, Z_2, \dots, Z_n\}$
-- Partition at system time $\tau$:
-  - Active variables $X(\tau)$: contributing to entropy
-  - Latent variables $M(\tau)$: information reservoir
+- Configuration: actual structural relationships between variables
+- Primary ontological reality, independent of observation
+- Parameters and mathematics are epistemic tools for tracking configuration
 }
 
-\notes{
-Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be the full set of system variables. At game turn $\tau$, define a partition where $X(\tau) \subseteq Z$: are active variables (currently contributing to entropy) and  $M(\tau) = Z \setminus X(\tau)$: latent or frozen variables that are stored in the form of an *information reservoir* (@Barato-stochastic14,@Parrondo-thermodynamics15).}
+\notes{The *configuration* represents the state of structural relationships between system components. This is the reality that exists independently of our methods for observing or describing it. The mathematical representations--parameters, operators, entropy measures--are epistemic tools that emerge from our attempts to track configuration changes.}
 
-
-\subsubsection{Representation via Density Matrix}
+\subsubsection{Uncertainty Distribution Over Configurations}
 
 \slides{
-- System state: $\rho(\boldsymbol{\theta}) = \frac{1}{Z(\boldsymbol{\theta})} \exp\left( \sum_i \theta_i H_i \right)$
-- Entropy: $S(\boldsymbol{\theta}) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla A(\boldsymbol{\theta})$
-- where $A(\boldsymbol{\theta}) = \log Z(\boldsymbol{\theta})$
-- Fisher Information: $G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A}{\partial \theta_i \partial \theta_j}$
+- Density matrix $\rho$: uncertainty about which configuration is actual
+- Not the configuration itself, but probability over possible configurations
+- Von Neumann entropy: amount of uncertainty/disorder in our knowledge
 }
 
-\notes{We'll argue that the configuration space must be represented by a density matrix,
+\notes{A density matrix $\rho$ represents our *uncertainty about which configuration is actual*. The density matrix is defined over the space of possible configurations, it not a description of any particular configuration. The von Neumann entropy $S[\rho] = -\mathrm{tr}(\rho \log \rho)$ measures the amount of uncertainty in our knowledge—--equivalently, the amount of disorder in the space of possible configurations.}
+
+\subsection{Emergence of Mathematical Structure}
+
+\subsubsection{Exponential Family as Inevitable Consequence}
+
+\slides{
+- Exponential family form emerges automatically
+- Result of minimizing uncertainty subject to resolution constraints
+- Natural parameters $\theta_i$ are Lagrange multipliers from optimization
+}
+
+\notes{The exponential family-style representation for the density matrix is not a choice but a consequence of seeking the minimum uncertainty about configuration subject to resolution constraints. Minimising this uncertainty (maximising entropy) while preserving certain constraint information, the method of Lagrange multipliers automatically produces the form,
 $$
 \rho(\boldsymbol{\theta}) = \frac{1}{Z(\boldsymbol{\theta})} \exp\left( \sum_i \theta_i H_i \right),
 $$
-where $\boldsymbol{\theta} \in \mathbb{R}^d$ are the natural parameters, each $H_i$ is a Hermitian operator associated with the observables and the partition function is given by $Z(\boldsymbol{\theta}) = \mathrm{Tr}[\exp(\sum_i \theta_i H_i)]$.
+the *natural parameters* $\boldsymbol{\theta}$ emerge as the Lagrange multipliers needed to enforce our constraints on uncertainty.}
 
-From this we can see that the *log-partition function*, which has an interpretation as the cummulant generating function, is
+\subsubsection{System Structure Through Uncertainty Dynamics}
+
+\slides{
+- Full set of variables: $Z = \{Z_1, Z_2, \dots, Z_n\}$
+- Partition emerges from uncertainty resolution:
+  - Active variables $X(\tau)$: resolvable above threshold $\varepsilon$
+  - Latent variables $M(\tau)$: uncertainty reservoir below threshold
+}
+
+\notes{Let $Z = \{Z_1, Z_2, \dots, Z_n\}$ be variables describing possible configurations. At any point in the system's evolution, our ability to resolve uncertainty partitions these into $X(\tau) \subseteq Z$ that are active variables where uncertainty gradients exceed resolution threshold $\varepsilon$ and $M(\tau) = Z \setminus X(\tau)$, latent variables forming an *information reservoir* where uncertainty changes remain below threshold (@Barato-stochastic14,@Parrondo-thermodynamics15)}.
+
+\subsubsection{Derived Mathematical Objects}
+
+\slides{
+- Log-partition function: $A(\boldsymbol{\theta}) = \log Z(\boldsymbol{\theta})$
+- Von Neumann entropy: $S(\boldsymbol{\theta}) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla A(\boldsymbol{\theta})$
+- Fisher Information: $G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A}{\partial \theta_i \partial \theta_j}$
+- All emerge from uncertainty minimization, not imposed assumptions
+}
+
+\notes{The mathematical structures follow from the uncertainty framework, the *log-partition function* (which is a cumulant generating function) has the form,
 $$
 A(\boldsymbol{\theta}) = \log Z(\boldsymbol{\theta})
 $$
-and the von Neumann *entropy* is
+and the *von Neumann entropy* measures uncertainty about the configuration:,
 $$
-S(\boldsymbol{\theta}) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla A(\boldsymbol{\theta}).
+S(\boldsymbol{\theta}) = A(\boldsymbol{\theta}) - \boldsymbol{\theta}^\top \nabla A(\boldsymbol{\theta})
 $$
-We can show that the *Fisher Information Matrix* is
+with the *Fisher Information Matrix* capturing the uncertainty geometry,
 $$
-G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A}{\partial \theta_i \partial \theta_j}.
-$$}
+G_{ij}(\boldsymbol{\theta}) = \frac{\partial^2 A}{\partial \theta_i \partial \theta_j}
+$$
+These choices arise from our uncertainty measures about configuration possibilities.}
 
-
-\subsubsection{Entropy Capacity and Resolution}
+\subsubsection{Resolution Constraints and Discrete Structure}
 
 \slides{
-- Maximum entropy: $N$ bits
-- Minimum detectable resolution: $\varepsilon$
-- System dynamics show discrete, detectable transitions
+- Maximum uncertainty capacity: $N$ bits
+- Minimum detectable resolution: $\varepsilon$  
+- Discrete transitions emerge from continuous underlying uncertainty
 }
 
-\notes{We define our system to have a *maximum entropy* of $N$ bits. This implies a *minimum detectable resolution* in natural parameter space which we denote by $\varepsilon$. Changes in natural parameters smaller than $\varepsilon$ are treated as *invisible* bin the system. As a result, system dynamics exhibit *discrete, detectable transitions* between distinguishable states.}
+\notes{We limit the total number of configurations by bounding the system capacity ($N$ bits maximum). This in turn implies a minimum detectable resolution $\varepsilon$ in the uncertainty space.}
 
-\subsection{Dual Role of Parameters and Variables}
+<!-- how does this disrete nature "leak" into the parameters ... the variables are discrete .. the parameters are emerging from tracking configurations. Are they also discrete or are they continuous? If they were discrete then changes in uncertainty gradients smaller than $\varepsilon$ would drive configuration changes. This would create detectable transitions in an otherwise continuous uncertainty landscape—explaining how discrete structure emerges from continuous foundations. -->
 
-\slides{
-- Each variable $Z_i$ has:
-  - Generator $H_i$
-  - Natural parameter $\theta_i$
-- Active parameters evolve if $|\dot{\theta}_i| \geq \varepsilon$
-}
+\subsection{Uncertainty-Driven Dynamics}
 
-\notes{Each variable $Z_i$ is associated with a generator $H_i$, and a natural parameter $\theta_i$. When we say a parameter $\theta_i \in X(\tau)$, we mean that the component of the system associated with $H_i$ is active at time $\tau$ and its parameter is evolving with $|\dot{\theta}_i| \geq \varepsilon$. This comes from the duality between *variables* and *natural parameters* that we find in density matrix representations.[^exponential]
-
-[^exponential]: We also see this duality in *exponential family* distributions.}
-
-
-\subsection{Core Axiom: Entropic Dynamics}
+\subsubsection{Core Principle: Uncertainty Resolution}
 
 \slides{
-- System evolves by steepest ascent in entropy
+- System evolves to resolve uncertainty about configuration
+- Steepest ascent in entropy = fastest uncertainty resolution
   $$
-  \frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+  \frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
   $$
-- Follows the gradient of entropy in parameter space
+- Parameters track this uncertainty resolution process
 }
 
-\notes{The game evolves by steepest ascent in entropy. The gradient of the density matrix with respect to the natural parameters is given by
-$$
-\nabla S[\rho] = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
-$$
-and so we set
-$$
-\frac{d\boldsymbol{\theta}}{d\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
-$$}
 
-\subsection{Constructed Quantities and Lemmas}
+<!-- can we justify the instantaneous maximum entropy better. Previoyusly this was the udnrlying rule. But in the new view of configurations can we suggest why the instantaneous maximum entorpy gradient is fundamental?? that would imply that the system evolves to maximize entropy—equivalently, to most efficiently resolve uncertainty about configuration. The gradient flow,
+$$
+\frac{\text{d}\boldsymbol{\theta}}{\text{d}\tau} = -G(\boldsymbol{\theta}) \boldsymbol{\theta}
+$$
+would represent steepest ascent in the entropy landscape. Regall that the parameters $\boldsymbol{\theta}$ are not fundamental quantities but tracking variables that monitor this uncertainty resolution process.-->
 
-\subsubsection{Variable Partition}
-$$
-X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}, \quad M(\tau) = Z \setminus X(\tau)
-$$
+\subsubsection{Variable Activation Through Uncertainty Thresholds}
 
 \slides{
 - Active variables: $X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}$
-- Latent variables: $M(\tau) = Z \setminus X(\tau)$
-- Partition can change as system evolves
+- Activation occurs when uncertainty gradients exceed resolution threshold
+- Configuration changes manifest as parameter threshold crossings
 }
 
-\subsubsection{Fisher Information Matrix Partitioning}
+\notes{Variables become active when uncertainty gradients about their associated configuration aspects exceed the resolution threshold,
+$$
+X(\tau) = \left\{ i \mid \left| \frac{\text{d}\theta_i}{\text{d}\tau} \right| \geq \varepsilon \right\}, \quad M(\tau) = Z \setminus X(\tau).
+$$
+This activation represents the point where uncertainty about particular configuration aspects becomes resolvable and can drive further uncertainty resolution.}
+
+\subsubsection{Information Geometry of Uncertainty Evolution}
 
 \slides{
-- Partition $G(\boldsymbol{\theta})$ into active/latent blocks
-- $G_{XX}$: Information geometry of active variables
-- $G_{MM}$: Structure of latent reservoir
-- $G_{XM}$: Cross-coupling between domains
+- Fisher matrix partitioning reflects uncertainty structure
+- $G_{XX}$: resolvable uncertainty geometry  
+- $G_{MM}$: latent uncertainty reservoir
+- $G_{XM}$: coupling between resolved and unresolved uncertainty
 }
 
-\notes{We partition the Fisher Information Matrix $G(\boldsymbol{\theta})$ according to the active variables $X(\tau)$ and (latent) information reservoir $M(\tau)$
+\notes{The Fisher Information Matrix partitions according to uncertainty resolvability,
 $$
 G(\boldsymbol{\theta}) = 
-\begin{bmatrix}
-G_{XX} & G_{XM} \\
-G_{MX} & G_{MM}
-\end{bmatrix}
+\begin{bmatrix} 
+G_{XX} & G_{XM} \\ 
+G_{MX} & G_{MM} 
+\end{bmatrix},
 $$
-where $G_{XX}$ represents the information geometry within active variables, $G_{MM}$ within the latent reservoir, and $G_{XM} = G_{MX}^\top$ captures the cross-coupling between active and latent components. This partitioning governs how information flows between observed dynamics and the latent structure.}
-
+where $G_{XX}$ describes the geometry of resolvable uncertainty, $G_{MM}$ the structure of the latent uncertainty reservoir, and $G_{XM}$ the coupling between resolved and unresolved aspects. This partitioning governs how uncertainty resolution propagates through the configuration space.}
 
 \subsection{Lemma 1: Form of the Minimal Entropy Configuration}
 
