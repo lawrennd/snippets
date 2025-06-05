@@ -3,6 +3,11 @@
 
 \include{_business/includes/five-ps-framework.md}
 
+\newslide{}
+
+\figure{\includepng{\diagramsDir/dsa/dagstuhl-seminar}{60%}}{In 2011 I caught up with John Quinn and met Ernest at a Dagstuhl seminar.}{dagstuhl-seminar}
+
+\includ
 \subsection{DSA: The 5 Ps Model in Action}
 
 \slides{
@@ -10,6 +15,10 @@
 * Projects emerged: crop surveillance, malaria prediction
 * Purpose crystallized: African-led data science capacity
 }
+
+\include{_data-science/includes/dsa-origin-story.md}
+
+\include{_data-science/includes/data-science-africa.md}
 
 \notes{Data Science Africa demonstrates the 5 Ps framework working in practice. It began with people - John Quinn and Ernest Mwebaze connecting through academic networks, not through formal organizational structures. 
 
@@ -21,13 +30,13 @@ Purpose crystallized through this work rather than being imposed from outside. T
 
 \slides{
 * "Fundamentals that work" over theoretical ideals
-* Local context and cultural alignment
+* Prioritise commitment over hierarchy.
 * Avoiding harmful international interventions
 }
 
 \notes{DSA's principles developed from experience. The focus on "fundamentals that work" - understanding deployment challenges in people and social environments rather than just mathematics and compute. Emphasis on building with local strengths rather than importing foreign models.
 
-This approach aligns naturally with African cultural practices: Ubuntu philosophy supports the people-first approach, community-based decision making embodies the organic development of purpose and principles, and traditional governance systems often prioritize wisdom over bureaucracy.}
+A governance system that prioritises wisdom over hierarchy and bureaucracy.}
 
 \newslide{Propagating the Model}
 
