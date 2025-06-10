@@ -22,6 +22,8 @@
 * Creates value through improved human services
 }
 
+\newslide{}
+
 \figure{\includediagram{\diagramsDir/economics/productivity-flywheel}{80%}}{The attention reinvestment cycle represents a new approach to deploying innovation where the value created is measured in freed human attention rather than purely financial returns.}{attention-reinvestment-cycle}
 
 \notes{In the attention reinvestment cycle, technology deployments that free up human attention in critical domains like healthcare, education, and social services create value by allowing professionals to focus on the human aspects of their work that cannot be automated. The freed attention is reinvested through networks that share knowledge and best practices, creating a virtuous cycle that builds capacity throughout the system.}

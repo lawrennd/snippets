@@ -14,6 +14,8 @@
 * Surplus reinvested in further R&D
 }
 
+\newslide{}
+
 \figure{\includediagram{\diagramsDir/economics/productivity-flywheel}{80%}}{The innovation flywheel illustrates how investment in R&D leads to innovations that produce economic returns, which can then be reinvested to continue the cycle.}{innovation-flywheel}
 
 \notes{This cyclical process begins with investment in research and development, which produces technical innovations that can be deployed as productivity improvements or new products. These innovations generate economic surplus through increased efficiency or new revenue streams, which can then be reinvested to fund further R&D efforts @Hounshell-science89.}
