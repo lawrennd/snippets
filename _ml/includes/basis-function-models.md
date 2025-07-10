@@ -164,7 +164,7 @@ $$
   $$
 \slides{* The equation for $\left.\dataStd^2\right.^{*}$ may also be found}
   $$
-  \left.\dataStd^2\right.^{{*}}=\frac{\sum_{i=1}^{\numData}\left(\dataScalar_i-\left.\mappingVector^{*}\right.^{\top}\basisVector_i\right)^{2}}{\numData}.
+  \left.\dataStd^2\right.^{*}=\frac{\sum_{i=1}^{\numData}\left(\dataScalar_i-\left.\mappingVector^{*}\right.^{\top}\basisVector_i\right)^{2}}{\numData}.
   $$
 
 \newslide{Avoid Direct Inverse}
