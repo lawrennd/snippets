@@ -5,7 +5,7 @@
 \subsection{Bias Variance Decomposition}
 
 \notes{One of Breiman's ideas for improving predictive performance is known
-as bagging [@Breiman:bagging96]. The idea is to train a number of
+as bagging [@Breiman-bagging96]. The idea is to train a number of
 models on the data such that they overfit (high variance). Then
 average the predictions of these models. The models are trained on
 different bootstrap samples [@Efron:bootstrap79] and their predictions
@@ -25,12 +25,12 @@ right finds themselves.}
 
 \notes{The Daddy bear is typically positioned at the point where the
 model can exactly interpolate the data. For a generalized
-linear model [@McCullagh:gen_linear89], this is the point at which the
+linear model [@McCullagh-gen_linear89], this is the point at which the
 number of parameters is equal to the number of data[^assuming].
 
 [^assuming]: Assuming we are ignoring parameters in the link function and the distribution function.}
 
-\notes{The bias-variance decomposition [@Geman:biasvariance92] considers the expected test error for different variations of the *training data* sampled from, $\mathbb{P}(\inputVector, \dataScalar)$}\slides{Generalisation error}
+\notes{The bias-variance decomposition [@Geman-biasvariance92] considers the expected test error for different variations of the *training data* sampled from, $\mathbb{P}(\inputVector, \dataScalar)$}\slides{Generalisation error}
 $$\begin{align*}
 R(\mappingVector) = & \int \left(\dataScalar - \mappingFunction^*(\inputVector)\right)^2 \mathbb{P}(\dataScalar, \inputVector) \text{d}\dataScalar \text{d}\inputVector \\
 & \triangleq \mathbb{E}\left[ \left(\dataScalar - \mappingFunction^*(\inputVector)\right)^2 \right].

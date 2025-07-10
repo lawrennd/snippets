@@ -5,9 +5,9 @@
 
 \subsection{Sum of Squares and Probability}
 
-\notes{In the overdetermined system we introduced a new set of slack variables, $\{\noiseScalar_i\}_{i=1}^\numData$, on top of our parameters $m$ and $c$. We dealt with the variables by placing a probability distribution over them. This gives rise to the likelihood and for the case of Gaussian distributed variables, it gives rise to the sum of squares error. It was Gauss who first made this connection in his volume on *Theoria Motus Corprum Coelestium* [@Gauss:theoria09] (written in Latin)}
+\notes{In the overdetermined system we introduced a new set of slack variables, $\{\noiseScalar_i\}_{i=1}^\numData$, on top of our parameters $m$ and $c$. We dealt with the variables by placing a probability distribution over them. This gives rise to the likelihood and for the case of Gaussian distributed variables, it gives rise to the sum of squares error. It was Gauss who first made this connection in his volume on *Theoria Motus Corprum Coelestium* [@Gauss-theoria09] (written in Latin)}
 
-\figure{\includegooglebook{ORUOAAAAQAAJ}{PA213}}{Gauss's book *Theoria Motus Corprum Coelestium* [@Gauss:theoria09] motivates the use of least squares through a probabilistic forumation.}{gauss-theoria-ls}
+\figure{\includegooglebook{ORUOAAAAQAAJ}{PA213}}{Gauss's book *Theoria Motus Corprum Coelestium* [@Gauss-theoria09] motivates the use of least squares through a probabilistic forumation.}{gauss-theoria-ls}
 
 \notes{The relevant section roughly translates as}
 

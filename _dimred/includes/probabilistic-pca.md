@@ -62,9 +62,9 @@ pgm.render().figure.savefig(filename, transparent=True)}
 
 \notes{In 1997
 [Tipping and Bishop](http://research.microsoft.com/pubs/67218/bishop-ppca-jrss.pdf)
-[@Tipping:pca97] and
+[@Tipping-pca97] and
 [Roweis](https://www.cs.nyu.edu/~roweis/papers/empca.pdf)
-[@Roweis:SPCA97] independently revisited Hotelling's model and
+[@Roweis-SPCA97] independently revisited Hotelling's model and
 considered the case where the noise variance was finite, but *shared*
 across all output dimensons. Their model can be thought of as a factor
 analysis where}

@@ -9,7 +9,7 @@
 
 **Probabilistic PCA**
   
-* We have seen that PCA has a probabilistic interpretation [@Tipping:probpca99].
+* We have seen that PCA has a probabilistic interpretation [@Tipping-probpca99].
 * It is difficult to `non-linearise' directly.
 * GTM and Density Networks are an attempt to do so.
 

@@ -36,7 +36,7 @@ mlai.write_figure('ceres-data.svg', directory='\writeDiagramsDir/datasets')}
 
 \subsection{Gauss's Prediction}
 
-\notes{And you can now attempt to make a prediction, as Gauss did, of the orbital position of the dwarf planet in late 1801 [@Gauss:monatliche1801].}
+\notes{And you can now attempt to make a prediction, as Gauss did, of the orbital position of the dwarf planet in late 1801 [@Gauss-monatliche1801].}
 
 \includegooglebook{JBw4AAAAMAAJ}{GBS.PA647}
 
