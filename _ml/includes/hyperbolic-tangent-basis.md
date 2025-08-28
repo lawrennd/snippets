@@ -25,11 +25,11 @@ loc =[[0, 1.4,],
       [-0.33, 0],
       [0.33, -0.7],
       [1, 0]]
-text =['$\phi(x) = 1$',
-       '$\phi(x) = \\tanh(x+1.0)$',
-       '$\phi(x) = \\tanh(x+0.33)$',
-       '$\phi(x) = \\tanh(x-0.33)$',
-       '$\phi(x) = \\tanh(x-1.0)$']
+text =[r'$\phi(x) = 1$',
+       r'$\phi(x) = \\tanh(x+1.0)$',
+       r'$\phi(x) = \\tanh(x+0.33)$',
+       r'$\phi(x) = \\tanh(x-0.33)$',
+       r'$\phi(x) = \\tanh(x-1.0)$']
 plot.basis(mlai.hyperbolic_tangent, x_min=-2.0, x_max=2.0,
            fig=f, ax=ax, loc=loc, text=text,
            diagrams='\writeDiagramsDir/ml',
