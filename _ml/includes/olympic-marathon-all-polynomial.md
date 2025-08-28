@@ -35,7 +35,7 @@ import mlai}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('olympic_LM_polynomial_number{num_basis:0>3}.svg',
                             directory='\writeDiagramsDir/ml', 
-                            num_basis=IntSlider(1,1,27,1))}
+                            num_basis=IntSlider(1,1,26,1))}
 
 
 \setupcode{import mlai}
