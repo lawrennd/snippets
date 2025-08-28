@@ -24,11 +24,11 @@ loc =[[0, 1.4,],
       [0.75, -0.2],
      [-0.75, -0.2],
      [-0.75, 2]]
-text =['$\phi(x) = 1$',
-       '$\phi(x) = x$',
-       '$\phi(x) = x^2$',
-       '$\phi(x) = x^3$',
-       '$\phi(x) = x^4$']
+text =[r'$\phi(x) = 1$',
+       r'$\phi(x) = x$',
+       r'$\phi(x) = x^2$',
+       r'$\phi(x) = x^3$',
+       r'$\phi(x) = x^4$']
 
 plot.basis(mlai.polynomial, x_min=-1.3, x_max=1.3, 
            fig=f, ax=ax, loc=loc, text=text, num_basis=5,
