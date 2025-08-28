@@ -25,11 +25,11 @@ loc =[[0., 0.4,],
       [1, -0.4],
       [1.25, 0.4],
       [1.5, -0.4]]
-text =['$\phi(x) = 1$',
-       '$\phi(x) = \sin(x)$',
-       '$\phi(x) = \cos(x)$',
-       '$\phi(x) = \sin(2x)$',
-       '$\phi(x) = \cos(2x)$']
+text =[r'$\phi(x) = 1$',
+       r'$\phi(x) = \sin(x)$',
+       r'$\phi(x) = \cos(x)$',
+       r'$\phi(x) = \sin(2x)$',
+       r'$\phi(x) = \cos(2x)$']
 plot.basis(mlai.fourier, x_min=0, x_max=2, 
            fig=f, ax=ax, loc=loc, text=text,
            diagrams='\writeDiagramsDir/ml',
