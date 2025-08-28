@@ -38,9 +38,9 @@ $$
 \notes{This can be more particularly seen when we begin to work with *basis functions* in the next session. Some systems that can be resolved with the QR decomposition cannot be resolved by using solve directly.}
 
 \setupcode{import scipy as sp}
-\code{Q, R = np.linalg.qr(\designVariable)
+\code{Q, R = np.linalg.qr(Phi)
 w = sp.linalg.solve_triangular(R, Q.T@y) 
-w = pd.DataFrame(w, index=\designVariable.columns)
+w = pd.DataFrame(w, index=Phi.columns)
 w}
 
 \endif
