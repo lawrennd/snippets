@@ -26,9 +26,9 @@ import mlai.plot as plot}
 loc =[[0, 1.4,],
       [0, -0.7],
       [0.75, -0.2]]
-text =['$\phi(x) = 1$',
-       '$\phi(x) = x$',
-       '$\phi(x) = x^2$']
+text =[r'$\phi(x) = 1$',
+       r'$\phi(x) = x$',
+       r'$\phi(x) = x^2$']
 
 plot.basis(quadratic, x_min=-1.3, x_max=1.3, 
            fig=f, ax=ax, loc=loc, text=text,
