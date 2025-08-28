@@ -68,9 +68,9 @@ Phi = quadratic(x)
 
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 ax.set_ylim([-1.2, 1.2]) # set y limits to ensure basis functions show.
-ax.plot(x[:,0], Phi[:, 0], 'r-', label = '$\phi=1$', linewidth=3)
-ax.plot(x[:,0], Phi[:, 1], 'g-', label = '$\phi=x$', linewidth=3)
-ax.plot(x[:,0], Phi[:, 2], 'b-', label = '$\phi=x^2$', linewidth=3)
+ax.plot(x[:,0], Phi[:, 0], 'r-', label = r'$\phi=1$', linewidth=3)
+ax.plot(x[:,0], Phi[:, 1], 'g-', label = r'$\phi=x$', linewidth=3)
+ax.plot(x[:,0], Phi[:, 2], 'b-', label = r'$\phi=x^2$', linewidth=3)
 ax.legend(loc='lower right')
 _ = ax.set_title('Quadratic Basis Functions')}
 
