@@ -24,9 +24,9 @@ import mlai}
 loc = [[-1.25, -0.4],
        [0., 1.25],
        [1.25, -0.4]]
-text = ['$\phi_1(x) = e^{-(x + 1)^2}$',
-        '$\phi_2(x) = e^{-2x^2}$', 
-        '$\phi_3(x) = e^{-2(x-1)^2}$']
+text = [r'$\phi_1(x) = e^{-(x + 1)^2}$',
+        r'$\phi_2(x) = e^{-2x^2}$', 
+        r'$\phi_3(x) = e^{-2(x-1)^2}$']
 plot.basis(mlai.radial, x_min=-2, x_max=2, 
            fig=f, ax=ax, loc=loc, text=text,
            diagrams='\writeDiagramsDir/ml')}
