@@ -10,7 +10,7 @@ $$
 \designMatrix^\top \designMatrix \boldsymbol{\beta} =
 \designMatrix^\top \dataVector
 $$
-\notes{and we }substitute $\designMatrix = \mathbf{Q}{\mathbf{R}$ \notes{so we have}
+\notes{and we }substitute $\designMatrix = \mathbf{Q}\mathbf{R}$ \notes{so we have}
 $$
 (\mathbf{Q}\mathbf{R})^\top
 (\mathbf{Q}\mathbf{R})\boldsymbol{\beta} = (\mathbf{Q}\mathbf{R})^\top
