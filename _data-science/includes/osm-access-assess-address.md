@@ -25,8 +25,13 @@ Demonstrate this by importing your repository below and calling a couple example
 
 Using the lessons from the article, have a look at the functionality you created, and identify generalisable Access, Assess and Address functionality that could come in useful in the future.}
 
-**Access functionality** we've created:
+**Access functionality** 
+
+What we've created:
 - Connection to OpenStreetMap API via OSMnx
+
+What we might need to have done:
+- Legal, ethical considerations.
 
 **Assess functionality** 
 
@@ -36,13 +41,18 @@ What we've created:
 - Visualization of geographic data to understand structure
 - Feature counting and summarization
 - Dimensionality reduction for pattern visualization
+
 What we could create
 - Data quality checks (handling missing data, failed queries)
 
-**Address functionality** we've created:
+**Address functionality** 
+
+What we've created:
 - Machine learning pipeline for location classification
 - Evaluation on test sets
 - Analysis of model performance and potential biases}
+
+## Library
 
 Consider creating a reusable library structure:
 
