@@ -147,3 +147,5 @@ else:
 The challenge lies in balancing detail with computational complexity, and in handling the inherent uncertainty in automated image analysis.}
 
 \endif
+
+

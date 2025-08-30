@@ -39,3 +39,5 @@ plt.show()}
 \notes{This geographic visualization immediately reveals the spatial distribution of the monitoring network and can help us understand the ecological context of our observations. The clustering or spread of cameras can influence the patterns we observe in the data.}
 
 \endif
+
+

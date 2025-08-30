@@ -39,3 +39,5 @@ porini_df.head()}
 \notes{This dataset represents a typical real-world scenario where we have rich, messy data that requires careful preprocessing. The camera trap setup provides both temporal and spatial dimensions that we can exploit for analysis.}
 
 \endif
+
+

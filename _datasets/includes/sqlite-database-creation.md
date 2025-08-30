@@ -146,3 +146,5 @@ if 'conn' in locals():
 \notes{SQL databases provide powerful tools for data analysis, especially when dealing with large datasets that don't fit in memory. The indexing system allows for fast queries even on millions of records, and the relational structure helps maintain data integrity and enables complex joins between different data sources.}
 
 \endif
+
+

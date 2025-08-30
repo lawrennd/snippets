@@ -86,3 +86,5 @@ if len(binary_sightings.columns) > 0:
 \notes{This analysis reveals important ecological patterns - which species are more commonly observed, seasonal trends, and site-specific preferences. Understanding these patterns is crucial for building accurate predictive models.}
 
 \endif
+
+

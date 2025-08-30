@@ -81,3 +81,5 @@ if len(binary_sightings.columns) > 0:
 \notes{This simple model provides a baseline for prediction. The naive Bayes assumption of independence is often violated in ecological data (e.g., some species move together), but it provides a interpretable starting point that can be improved with more sophisticated techniques.}
 
 \endif
+
+

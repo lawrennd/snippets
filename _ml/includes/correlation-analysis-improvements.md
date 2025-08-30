@@ -157,3 +157,5 @@ if len(binary_sightings.columns) > 0:
 \notes{The improved model incorporates temporal patterns and spatial context, which often provide significant predictive power in ecological systems. Real-world improvements would also consider weather data, moon phases, seasonal migration patterns, and other environmental factors.}
 
 \endif
+
+

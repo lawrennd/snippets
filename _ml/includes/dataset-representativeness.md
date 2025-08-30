@@ -50,3 +50,5 @@ features_new = [] # Better feature selection
 \notes{A representative dataset requires careful consideration of sampling strategy, ensuring that we capture the true diversity within each class while controlling for confounding variables that might lead to spurious correlations.}
 
 \endif
+
+
