@@ -9,6 +9,7 @@
 \slides{* Access
 * Assess
 * Address}
+
 \notes{Here we present a new framework for thinking about data science. The Fynesse framework splits the activities of the data scientist into three aspects, each aspect is represented by a one of three words that highlight different activities that occur within a data science project: we call them access, assess and address.}
 
 \notes{Before going deeper into the framework, we will contextualize by looking at some other formalizations of the data analysis pipeline.}
