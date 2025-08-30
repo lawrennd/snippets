@@ -1,5 +1,5 @@
-\ifndef{geospatialDataIntro}
-\define{geospatialDataIntro}
+\ifndef{osmCitiesDataIntro}
+\define{osmCitiesDataIntro}
 
 \editme
 

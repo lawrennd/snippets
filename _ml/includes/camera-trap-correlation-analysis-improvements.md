@@ -1,5 +1,5 @@
-\ifndef{correlationAnalysisImprovements}
-\define{correlationAnalysisImprovements}
+\ifndef{cameraTrapCorrelationAnalysisImprovements}
+\define{cameraTrapCorrelationAnalysisImprovements}
 
 \editme
 

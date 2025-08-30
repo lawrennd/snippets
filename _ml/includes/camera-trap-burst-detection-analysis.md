@@ -1,5 +1,5 @@
-\ifndef{burstDetectionAnalysis}
-\define{burstDetectionAnalysis}
+\ifndef{cameraTrapBurstDetectionAnalysis}
+\define{cameraTrapBurstDetectionAnalysis}
 
 \editme
 

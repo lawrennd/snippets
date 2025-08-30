@@ -23,7 +23,7 @@ Use git to fork this repository: https://github.com/lawrennd/fynesse_template an
 
 Demonstrate this by importing your repository below and calling a couple example functions.
 
-Using the lessons from the article, have a look at the functionality you created, and identify generalisable Access, Assess and Address functionality that could come in useful in the future.}
+Using the lessons from the article, have a look at the functionality you created, and identify generalisable Access, Assess and Address functionality that could come in useful in the future.
 
 **Access functionality** we've created:
 - Connection to OpenStreetMap API via OSMnx
@@ -74,7 +74,7 @@ def train_location_classifier(X_train, y_train, model_type='logistic'):
 def evaluate_classifier(model, X_test, y_test):
     # Address evaluation of performance
     pass
-}
+```
 
 This modular approach makes code reusable across different projects and enables systematic data science workflows. Each module has a clear responsibility within the overall pipeline.}{!git clone https://github.com/YOURGITHUBNAME/fynesse_mlfc.git}{30}
 
