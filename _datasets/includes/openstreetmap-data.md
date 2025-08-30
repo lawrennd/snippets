@@ -24,4 +24,10 @@ bbox = (west, south, east, north)}
 
 \notes{This bounding box defines the geographic area we want to analyze. The choice of size is important - too small and we miss important context, too large and we may include irrelevant features or face performance issues.}
 
+\subsection{Downloading and Visualizing Geospatial Data}
+
+\include{_datasets/includes/poi-extraction-osm.md}
+
+\include{_datasets/includes/city-map-visualization.md}
+
 \endif

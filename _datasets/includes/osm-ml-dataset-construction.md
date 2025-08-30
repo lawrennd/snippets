@@ -3,9 +3,7 @@
 
 \editme
 
-\subsection{Feature Extraction Function}
-
-\notes{Use the code above to write a function, that given a set of coordinates, outputs a feature vector.}
+\write{Use the code above to write a function, that given a set of coordinates, outputs a feature vector.}{15}
 
 \code{features = [
     ("building", None),
@@ -35,59 +33,29 @@
         Latitude of the center point.
     longitude : float
         Longitude of the center point.
-    box_size_km : float
+    box_size : float
         Size of the bounding box in kilometers
     features : list of tuples
-        List of (key, value) pairs to count.
+        List of (key, value) pairs to count. Example:
+        [
+            ("amenity", None),
+            ("amenity", "school"),
+            ("shop", None),
+            ("tourism", "hotel"),
+        ]
 
     Returns
     -------
     feature_vector : dict
         Dictionary of feature counts, keyed by (key, value).
     """
-    
-    # Convert km to degrees (approximate)
-    box_size_deg = box_size_km / 111.0
-    
-    # Construct bbox from lat/lon and box_size
-    north = latitude + box_size_deg/2
-    south = latitude - box_size_deg/2
-    west = longitude - box_size_deg/2
-    east = longitude + box_size_deg/2
-    bbox = (west, south, east, north)
-    
-    # Query OSMnx for features
-    all_tags = {}
-    for key, value in features:
-        if key not in all_tags:
-            all_tags[key] = True
-    
-    try:
-        pois = ox.features_from_bbox(bbox, all_tags)
-        pois_df = pd.DataFrame(pois)
-        
-        # Count features matching each (key, value) in features
-        feature_counts = {}
-        for key, value in features:
-            if key in pois_df.columns:
-                if value:  # count only that value
-                    feature_counts[f"{key}:{value}"] = (pois_df[key] == value).sum()
-                else:  # count any non-null entry
-                    feature_counts[key] = pois_df[key].notnull().sum()
-            else:
-                feature_counts[f"{key}:{value}" if value else key] = 0
-        
-        return feature_counts
-    
-    except Exception as e:
-        print(f"Error extracting features for {latitude}, {longitude}: {e}")
-        # Return zero counts if extraction fails
-        feature_counts = {}
-        for key, value in features:
-            feature_counts[f"{key}:{value}" if value else key] = 0
-        return feature_counts}
 
-\subsection{Building a Dataset}
+    # Construct bbox from lat/lon and box_size
+    # Query OSMnx for features
+    # Count features matching each (key, value) in poi_types
+    # Return dictionary of counts
+
+    raise NotImplementedError("Feature extraction not implemented yet.")}
 
 \notes{You will want it to query the area around the following cities.}
 
@@ -105,7 +73,7 @@ cities_england = {
     "Oxford, England": {"latitude": 51.7520, "longitude": -1.2577},
 }}
 
-\notes{Here we will collect the feature vectors for all cities into one dataset. If you wrote the above code well, the following should just run - but do take a minute to understand what's happening.}
+\writeassignment{Here we will collect the feature vectors for all cities into one dataset. If you wrote the above code well, the following should just run - but do take a minute to understand what's happening.}
 
 \setupcode{pd.set_option('future.no_silent_downcasting', True)}
 
@@ -123,11 +91,10 @@ cities_england = {
             results[city] = vec
     return pd.DataFrame(results).T
 
-df = build_feature_dataframe(city_dicts=[("Kenya", cities_kenya), ("England", cities_england)], features=features, box_size_km=1)
+df = build_feature_dataframe(city_dicts=[("Kenya", cities_kenya), ("England", cities_england)], features=features,box_size_km=1)
 
 X = df.drop(columns="country").fillna(0)
 y = df["country"]}
 
-\notes{This systematic approach to feature extraction allows us to compare places quantitatively, turning qualitative geographic information into data that machine learning algorithms can process.}
 
 \endif

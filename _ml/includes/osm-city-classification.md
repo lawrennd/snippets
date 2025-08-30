@@ -1,5 +1,5 @@
-\ifndef{cityClassification}
-\define{cityClassification}
+\ifndef{osmCityClassification}
+\define{osmCityClassification}
 
 \editme
 
@@ -9,7 +9,7 @@
 
 \setupcode{from sklearn.decomposition import PCA}
 
-\plotcode{pca = PCA(n_components=2)
+\code{pca = PCA(n_components=2)
 X_proj = pca.fit_transform(X)
 plt.figure(figsize=(8,6))
 for country, color in [("Kenya", "green"), ("England", "blue")]:
@@ -25,11 +25,10 @@ plt.title("2D projection of feature vectors")
 plt.legend()
 plt.show()}
 
-\subsection{Machine Learning Classification}
-
 \notes{The visual separation between Kenyan and English cities makes it clear that a machine learning approach should be successful in classifying areas as either Kenya or England based on features in the area.
 
 Try a simple classification method of your choosing (eg. linear model) below, and report the results on the test set below:}
+
 
 \setupcode{from sklearn.linear_model import LogisticRegression}
 
@@ -56,10 +55,10 @@ df_test = build_feature_dataframe(city_dicts=[("Kenya", cities_kenya_2), ("Engla
 X_test = df_test.drop(columns="country").fillna(0)
 y_test = df_test["country"]}
 
-\code{# Classify your test set and report results
+\code{# TODO: Classify your test set and report results
 y_pred = clf.predict(X_test)
 pd.Series(y_pred, index=X_test.index)}
 
-\notes{That probably worked! The features we extracted from OpenStreetMap data appear to be effective at distinguishing between Kenyan and English cities. This demonstrates the power of geographic data for machine learning applications.}
+\notes{That probably worked!}
 
 \endif
