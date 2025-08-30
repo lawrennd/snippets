@@ -5,7 +5,7 @@
 
 \subsection{OSMnx Setup}
 
-\notes{As always, we should start by installing some Python packages. We'll use OSMnx, a Python package that makes it easy to download, model, analyze, and visualize street networks and other spatial data from OpenStreetMap.}
+\notes{We start by installing some Python packages. We'll use OSMnx, a Python package that makes it easy to download, model, analyze, and visualize street networks and other spatial data from OpenStreetMap.}
 
 \setupcode{%%capture
 %pip install osmnx}
