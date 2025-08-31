@@ -7,7 +7,7 @@
 
 \setupplotcode{import mlai.plot as plot}
 
-\plotcode{plot.logistic('\writeDiagramsDir/ml/logistic.svg')}
+\plotcode{plot.logistic('\writeDiagramsDir/ml')}
 
 \figure{\includediagram{\diagramsDir/ml/logistic}{80%}}{The logistic function.}{the-logistic-function}
 
