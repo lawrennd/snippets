@@ -86,9 +86,10 @@ def evaluate_classifier(model, X_test, y_test):
     pass
 ```
 
-This modular approach makes code reusable across different projects and enables systematic data science workflows. Each module has a clear responsibility within the overall pipeline.}{!git clone https://github.com/YOURGITHUBNAME/fynesse_mlfc.git}{30}
+This modular approach makes code reusable across different projects and enables systematic data science workflows. Each module has a clear responsibility within the overall pipeline.
 
-\setupcode{import sys
+\setupcode{!git clone https://github.com/YOURGITHUBNAME/fynesse_mlfc.git #Replace YOURGITHUBNAME
+import sys
 sys.path.append("/content/fynesse_mlfc")}
 
 \notes{Once you have implemented your functions you should be able to call them to plot the city map.}
