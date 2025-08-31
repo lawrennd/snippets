@@ -5,9 +5,6 @@
 
 \subsection{Access, Assess, Address Framework}
 
-\notes{Over the course of this module we will end up reusing a lot of the code we create. This is on purpose, and a very important aspect of creating data science pipelines. The goal of this section is to put this idea in practice.
-
-Have a *skim* through Neil Lawrence's article on the Access Assess Address data science framework [here](https://inverseprobability.com/talks/notes/access-assess-address-a-pipeline-for-automated-data-science.html).}
 
 \notes{The Access-Assess-Address framework provides a systematic approach to data science projects:
 
@@ -16,12 +13,6 @@ Have a *skim* through Neil Lawrence's article on the Access Assess Address data 
 - **Address**: How do we answer the specific question or solve the problem at hand?}
 
 \subsection{Applying the Framework}
-
-\codeassignment{Using the lessons from the article, have a look at the functionality you created, and identify generalisable Access, Assess and Address functionality that could come in useful in the future.
-
-Use git to fork this repository: https://github.com/lawrennd/fynesse_template and include your code in the `access.py`, `assess.py`, and `address.py` files.
-
-Demonstrate this by importing your repository below and calling a couple example functions.
 
 Using the lessons from the article, have a look at the functionality you created, and identify generalisable Access, Assess and Address functionality that could come in useful in the future.
 
@@ -52,9 +43,10 @@ What we've created:
 - Evaluation on test sets
 - Analysis of model performance and potential biases}
 
-## Library
+\subsection{Library}
 
-Consider creating a reusable library structure:
+
+\notes{Consider for example, this reusable library structure:}
 
 ```python
 # access.py
@@ -86,11 +78,19 @@ def evaluate_classifier(model, X_test, y_test):
     pass
 ```
 
-This modular approach makes code reusable across different projects and enables systematic data science workflows. Each module has a clear responsibility within the overall pipeline.
+\codeassignment{Over the course of this module we will end up reusing a lot of the code we create. This is on purpose, and a very important aspect of creating data science pipelines. The goal of this section is to put this idea in practice.
 
-\setupcode{!git clone https://github.com/YOURGITHUBNAME/fynesse_mlfc.git #Replace YOURGITHUBNAME
+Have a *skim* through Neil Lawrence's article on the Access Assess Address data science framework [here](https://inverseprobability.com/talks/notes/access-assess-address-a-pipeline-for-automated-data-science.html).
+
+Using the lessons from the article, have a look at the functionality you created, and identify generalisable Access, Assess and Address functionality that could come in useful in the future.
+
+Use git to fork this repository: https://github.com/lawrennd/fynesse_template and include your code in the `access.py`, `assess.py`, and `address.py` files.
+
+Demonstrate this by importing your repository below and calling a couple example functions.
+
+This modular approach makes code reusable across different projects and enables systematic data science workflows. Each module has a clear responsibility within the overall pipeline.}{!git clone https://github.com/YOURGITHUBNAME/fynesse_mlfc.git #Replace YOURGITHUBNAME
 import sys
-sys.path.append("/content/fynesse_mlfc")}
+sys.path.append("/content/fynesse_mlfc")}{15}
 
 \notes{Once you have implemented your functions you should be able to call them to plot the city map.}
 

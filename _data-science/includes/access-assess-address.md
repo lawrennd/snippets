@@ -49,8 +49,6 @@
 
 \figure{\includeyoutube{-QjJLgRni-M}{600}{450}}{Data science processes do not always accommodate the real-time and evolving nature of data science advice as required, for example, for policy advice as described in this presentation.}{policy-science-convening-power-of-data}
 
-\include{_data-science/includes/ride-sharing-soa-doa.md}
-
 \newslide{Inspiration}
 
 \slides{* Operational data science with:
