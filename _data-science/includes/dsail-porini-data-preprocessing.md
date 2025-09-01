@@ -14,6 +14,7 @@ Reminder about Neil's article on the framework [here](https://inverseprobability
 \subsubsection{Access}
 
 Access is already done, partly years ago by the DSAIL team, and two cells above by us. Example tasks within access would be:
+
 - Setting up the cameras in the woods (done)
 - Collecting the pictures (done)
 - Labeling the dataset (done)
