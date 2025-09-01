@@ -71,6 +71,8 @@ cities_england = {
     "Oxford, England": {"latitude": 51.7520, "longitude": -1.2577},
 }}
 
+\code{# TODO Write your function here}
+
 \writeassignment{Here we will collect the feature vectors for all cities into one dataset. If you wrote the above code well, the following should just run - but do take a minute to understand what's happening.}
 
 \setupcode{pd.set_option('future.no_silent_downcasting', True)}
