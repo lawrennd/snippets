@@ -55,9 +55,7 @@ df_test = build_feature_dataframe(city_dicts=[("Kenya", cities_kenya_2), ("Engla
 X_test = df_test.drop(columns="country").fillna(0)
 y_test = df_test["country"]}
 
-\code{# TODO: Classify your test set and report results
-y_pred = clf.predict(X_test)
-pd.Series(y_pred, index=X_test.index)}
+\code{# TODO: Classify your test set and report results}
 
 \notes{That probably worked!}
 
