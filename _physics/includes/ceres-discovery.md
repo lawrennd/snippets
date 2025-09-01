@@ -137,7 +137,7 @@ mlai.write_figure('ceres-data.svg', directory='\writeDiagramsDir/ceres')}
 }
 
 
-\figure{\includediagram{\diagramsDir/ceres/ceres-data}{60%}}{Plot of the declination and right ascension that Piazzi recorded as Ceres passed through the sky in 1800. Gaps are evenings where Piazzi was unable to make an observation.}{ceres-data}
+\figure{\includediagramclass{\diagramsDir/ceres/ceres-data}{60%}}{Plot of the declination and right ascension that Piazzi recorded as Ceres passed through the sky in 1800. Gaps are evenings where Piazzi was unable to make an observation.}{ceres-data}
 
 \newslide{}
 

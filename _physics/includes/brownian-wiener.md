@@ -11,7 +11,7 @@
 \notes{In 1905 Albert Einstein produced the first mathematical explanation of the phenomenon. This can be seen as our first model of a ‘curve of a simple molecule of air’. To model the phenomenon Einstein introduced stochasticity to a differential equation. The particles were being peppered with high-speed water molecules, that was triggering the motion. Einstein modelled this as a stochastic process.}
 
 
-\figure{\includejpg{\diagramsDir/physics/Albert_Einstein_photo_1921}{40%}}{Albert Einstein’s 1905 paper on Brownian motion introduced stochastic differential equations which can be used to model the ‘curve of a simple molecule of air’.}{albert-einstein-photo}
+\figure{\includejpg{\diagramsDir/physics/Albert_Einstein_photo_1921}{40%}}{Albert Einstein’s 1905 paper on Brownian motion introduced stochastic differential equations which can be used to model the 'curve of a simple molecule of air'.}{albert-einstein-photo}
 
 \newslide{}
 
@@ -32,7 +32,7 @@
 
 \figure{\columns{\includejpg{\diagramsDir/physics/Norbert_wiener}{100%}{}{left}}{\includepng{\diagramsDir/books/wiener-yellow-peril}{100%}{}{right}}{45%}{45%}}{Norbert Wiener (1894 - 1964). Founder of cybernetics and the information era. He used Gibbs’s ideas to develop a “theory of ignorance” that he deployed in early communication. On the right is Wiener's wartime report that used stochastic processes in forecasting with applications in radar control (image from @Coales-yellow14).}{norbert-wiener-yellow-peril}
 
-\notes{Wiener himself used the processes in his work. He was focused on mathematical theories of communication. Between the world wars he was based at Massachusetts Institute of Technology where the burgeoning theory of electrical engineering was emerging, with a particular focus on communication lines. Winer developed theories of communication that used Gibbs’s entropy to encode information. He also used the ideas behind the Wiener process for developing tracking methods for radar systems in the second world war. These processes are what we know of now as Gaussian processes (@Wiener:yellow49).}
+\notes{Wiener himself used the processes in his work. He was focused on mathematical theories of communication. Between the world wars he was based at Massachusetts Institute of Technology where the burgeoning theory of electrical engineering was emerging, with a particular focus on communication lines. Winer developed theories of communication that used Gibbs’s entropy to encode information. He also used the ideas behind the Wiener process for developing tracking methods for radar systems in the second world war. These processes are what we know of now as Gaussian processes (@Wiener-yellow49).}
 
 
 \endif

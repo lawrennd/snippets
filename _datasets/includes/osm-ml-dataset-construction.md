@@ -3,9 +3,7 @@
 
 \editme
 
-\write{Use the code above to write a function, that given a set of coordinates, outputs a feature vector.}{15}
-
-\code{features = [
+\codeassignment{Use the code above to write a function, that given a set of coordinates, outputs a feature vector.}{features = [
     ("building", None),
     ("amenity", None),
     ("amenity", "school"),
@@ -20,9 +18,9 @@
     ("leisure", "park"),
     ("historic", None),
     ("amenity", "place_of_worship"),
-]}
+]
 
-\code{def get_feature_vector(latitude, longitude, box_size_km=2, features=None):
+def get_feature_vector(latitude, longitude, box_size_km=2, features=None):
     """
     Given a central point (latitude, longitude) and a bounding box size,
     query OpenStreetMap via OSMnx and return a feature vector.
@@ -55,7 +53,7 @@
     # Count features matching each (key, value) in poi_types
     # Return dictionary of counts
 
-    raise NotImplementedError("Feature extraction not implemented yet.")}
+    raise NotImplementedError("Feature extraction not implemented yet.")}{15}
 
 \notes{You will want it to query the area around the following cities.}
 
