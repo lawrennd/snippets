@@ -11,6 +11,10 @@
 ```python
 # access.py
 
+def get_osm_datapoints(latitude, longitude, box_size_km=2, poi_tags=None):
+    # Example function for getting OSM data
+    pass
+
 # assess.py  
 def plot_city_map(place_name, latitude, longitude, box_size_km=2, poi_tags=None):
     # Access and visualize geographic data
