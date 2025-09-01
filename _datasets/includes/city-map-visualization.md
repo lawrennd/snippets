@@ -29,7 +29,7 @@ ax.set_ylim(south, north)
 ax.set_title(place_name, fontsize=14)
 plt.show()}
 
-\notes{Sanity check. Head over to https://www.openstreetmap.org/#map=14/-0.43710/36.95800 and compare your map against the real thing.}
+\notes{Sanity check. Head over to <https://www.openstreetmap.org/#map=14/-0.43710/36.95800> and compare your map against the real thing.}
 
 \notes{This visualization provides a comprehensive view of the urban landscape, showing the relationship between different geographic features. The combination of street networks, buildings, and points of interest gives us insight into the structure and character of the place.}
 
