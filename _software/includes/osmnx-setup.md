@@ -18,6 +18,8 @@ warnings.filterwarnings("ignore", category=FutureWarning, module='osmnx')}
 
 \notes{OSMnx provides a powerful interface to OpenStreetMap data, allowing us to programmatically access geographic information that would otherwise require manual browsing of the OpenStreetMap website.}
 
+\notes{https://www.openstreetmap.org/search?query=nyeri}
+
 \endif
 
 
