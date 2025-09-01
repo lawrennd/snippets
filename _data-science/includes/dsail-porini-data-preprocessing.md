@@ -28,6 +28,7 @@ Access is already done, partly years ago by the DSAIL team, and two cells above 
 \notes{Have a look at the dataset for any issues that could stop us from being able to cleanly analyse it.
 
 Some issues:
+
 - Timestamps not readilly available. Hidden in image filenames.
 - No timestamps available for one of the cameras.
 - No Camera ID, but can be deduced from coordinates.
@@ -97,6 +98,7 @@ print(camera_coords)
 daily.tail()}
 
 \notes{Huh, looks like we have some more issues.
+
 - "Impala, Monkey" is not a species - should be counted towards two!
 - "Can't Tell" shouldn't be a species at all.
 - Some columns don't exist (eg. `C011` has no `ZEBRA`). Let's just fill them with zeros.
