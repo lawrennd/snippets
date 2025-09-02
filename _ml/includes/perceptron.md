@@ -46,14 +46,14 @@
 - Setting $\mappingVector$ to $\dataScalar_i\inputVector_i$ implies
   $$\text{sign}(\mappingVector^\top\inputVector_i) = \text{sign}(\dataScalar_i\inputVector_i^\top \inputVector_i) = \dataScalar_i$$}
   
-\code{%load -s init_perceptron mlai.py}
+\loadcode{init_perceptron}{mlai}
 
 \newslide{Computing Decision Boundary}
 
 \setupplotcode{import mlai.plot as plot}
 
 \plotcode{f, ax = plt.subplots(1, 2, figsize=(14,7))
-w, b = init_perceptron(x_plus, x_minus)
+w, b, x_select = init_perceptron(x_plus, x_minus)
 handle = plot.init_perceptron(f, ax, x_plus, x_minus, w, b)}
 
 \subsection{Drawing Decision Boundary}
