@@ -95,6 +95,7 @@
 \table{
 
 |  | Twitter Data | Facebook Data |
+|---|---|---|
 | Initial dataset | 15,354 | 430,075 |
 | Dataset after Annotation | 3,527 | 4,479 |
 
@@ -106,6 +107,8 @@
 
 \table{
 
+| Category | Score |
+|---|---|
 | Language | 0.89 |
 | Aspect | 0.69 |
 | Sentiment | 0.73 |
