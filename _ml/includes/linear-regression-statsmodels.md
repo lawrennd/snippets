@@ -16,10 +16,11 @@ This gives us a probabilistic model:
 $$p(\dataScalar_i|\inputVector_i) = \gaussianDist{\mappingVector^\top\inputVector_i}{\dataStd^2}$$
 
 The key components are:
-- $\dataScalar_i$ is the target/response variable we want to predict
-- $\inputVector_i$ contains the input features/explanatory variables  
-- $\mappingVector$ contains the parameters/coefficients we learn
-- $\noiseScalar_i$ represents random Gaussian noise with variance $\dataStd^2$
+
+* $\dataScalar_i$ is the target/response variable we want to predict
+* $\inputVector_i$ contains the input features/explanatory variables  
+* $\mappingVector$ contains the parameters/coefficients we learn
+* $\noiseScalar_i$ represents random Gaussian noise with variance $\dataStd^2$
 
 For the full dataset, we can write this in matrix form:
 
@@ -106,29 +107,31 @@ Looking at the model parameters, we see a coefficient of -0.013 for our predicto
 However, the residual diagnostics suggest several potential issues we should investigate:
 
 1. The Durbin-Watson statistic (1.110) indicates positive autocorrelation in the residuals, though not as severe as we might expect. This suggests we might want to:
-   - Consider time series modeling approaches
-   - Add polynomial terms to capture non-linear trends
-   - Investigate if there are distinct "eras" in marathon times
+   
+   * Consider time series modeling approaches
+   * Add polynomial terms to capture non-linear trends
+   * Investigate if there are distinct "eras" in marathon times
 
-2. The highly significant Jarque-Bera test (p-value 7.67e-12) tells us our residuals aren't normally distributed. The skew (1.929) and kurtosis (8.534) values show the distribution is strongly right-skewed with very heavy tails. We might want to:
-   - Look for outliers or influential points
-   - Consider robust regression techniques
-   - Try transforming our response variable
+3. The highly significant Jarque-Bera test (p-value 7.67e-12) tells us our residuals aren't normally distributed. The skew (1.929) and kurtosis (8.534) values show the distribution is strongly right-skewed with very heavy tails. We might want to:
+   
+   * Look for outliers or influential points
+   * Consider robust regression techniques
+   * Try transforming our response variable
 
-3. The large condition number (1.08e+05) suggests potential numerical instability or multicollinearity issues. While less concerning with single-predictor models, we should:
-   - Consider centering and scaling our predictor
-   - Watch for numerical precision issues
-   - Be cautious when extending to multiple predictors
+5. The large condition number (1.08e+05) suggests potential numerical instability or multicollinearity issues. While less concerning with single-predictor models, we should:
+   
+   * Consider centering and scaling our predictor
+   * Watch for numerical precision issues
+   * Be cautious when extending to multiple predictors
 
 The beauty of having one-dimensional data is that we can plot everything to visually confirm these statistical findings. A scatter plot with our fitted line will help us:
-- Visually assess the linearity assumption
-- Identify potential outliers
-- Spot any systematic patterns in the residuals
-- See if the relationship makes practical sense in terms of marathon performance over time
+
+* Visually assess the linearity assumption
+* Identify potential outliers
+* Spot any systematic patterns in the residuals
+* See if the relationship makes practical sense in terms of marathon performance over time
 
 This visual inspection, combined with our statistical diagnostics, will guide our next steps in improving the model.}
-
-
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai
@@ -149,9 +152,10 @@ mlai.write_figure("linear-regression-olympic-marathon-men-statsmodels.svg", dire
 \notes{Looking at our plot and model diagnostics, we can now better understand the large condition number (1.08e+05) in our results. This high value likely stems from using raw year values (e.g., 1896, 1900, etc.) as our predictor variable. Such large numbers can lead to numerical instability in the computations.
 
 To address this, we could consider:
-- Centering the years around their mean
-- Scaling the years to a smaller range (e.g., 0-1)
-- Using years since the first Olympics (e.g., 0, 4, 8, etc.)
+
+* Centering the years around their mean
+* Scaling the years to a smaller range (e.g., 0-1)
+* Using years since the first Olympics (e.g., 0, 4, 8, etc.)
 
 Any of these transformations would help reduce the condition number while preserving the underlying relationship in our data. The coefficients would change, but the fitted values and overall model quality would remain the same.}
 
@@ -161,17 +165,17 @@ Any of these transformations would help reduce the condition number while preser
 
 \notes{The plot reveals several key features that help explain our diagnostic statistics:
 
-- The 1904 St. Louis Olympics appears as a clear outlier, contributing to the non-normal residuals (Jarque-Bera p=0.00432) and right-skewed distribution (skew=1.385)
-- We can observe distinct regimes in the data:
-  - Rapid improvement in times pre-WWI 
-  - Disruption and variation during the war years
-  - More steady, consistent progress post-WWII
-- These regime changes help explain the strong positive autocorrelation (Durbin-Watson=0.242) in our residuals
-- While our high R-squared (0.972) captures the overall downward trend, these features suggest we could improve the model by adding additional features:
-  - Polynomial terms to capture non-linear trends
-  - Indicator variables for different time periods
-  - Interaction terms between features
-  - Variables accounting for external factors like temperature or course conditions
+* The 1904 St. Louis Olympics appears as a clear outlier, contributing to the non-normal residuals (Jarque-Bera p=0.00432) and right-skewed distribution (skew=1.385)
+* We can observe distinct regimes in the data:
+  * Rapid improvement in times pre-WWI 
+  * Disruption and variation during the war years
+  * More steady, consistent progress post-WWII
+* These regime changes help explain the strong positive autocorrelation (Durbin-Watson=0.242) in our residuals
+* While our high R-squared (0.972) captures the overall downward trend, these features suggest we could improve the model by adding additional features:
+  * Polynomial terms to capture non-linear trends
+  * Indicator variables for different time periods
+  * Interaction terms between features
+  * Variables accounting for external factors like temperature or course conditions
 
 To incorporate multiple features into our model, we need a systematic way to organize this additional information. This brings us to the concept of the design matrix.}
 
@@ -229,10 +233,10 @@ x_{n1} & x_{n2} & \cdots & x_{np}
 
 For example, if we're predicting house prices, each row might represent a different house, with columns for features like:
 
-- Square footage
-- Number of bedrooms  
-- Year built
-- Lot size
+* Square footage
+* Number of bedrooms  
+* Year built
+* Lot size
 
 The design matrix provides a compact way to represent all our feature data and is used directly in model fitting. When we write our linear model as $\dataVector = \designMatrix\mappingVector + \noiseVector$, the design matrix $\designMatrix$ is multiplied by our parameter vector $\mappingVector$ to generate predictions.
 
@@ -295,17 +299,20 @@ mlai.write_figure("linear-regression-olympic-marathon-men-augmented-statsmodels.
 \notes{The augmented model with interactions shows a significant improvement in fit compared to the simpler linear model, with an R-squared value of 0.870 (adjusted R-squared of 0.839). This indicates that about 87% of the variance in marathon times is explained by our model.
 
 The model includes several key components:
-- A base time trend (x1 coefficient: -0.6737)
-- Indicator variables for different historical periods (pre-1914, 1914-1945, post-1945)
-- Interaction terms between the time trend and these periods
+
+* A base time trend (x1 coefficient: -0.6737)
+* Indicator variables for different historical periods (pre-1914, 1914-1945, post-1945)
+* Interaction terms between the time trend and these periods
 
 The coefficients reveal interesting patterns:
-- The pre-1914 period shows a significant positive effect (x2: 1.5506, p<0.001)
-- The wartime period 1914-1945 also shows a positive effect (x3: 0.7982, p<0.05)
-- The post-1945 period has a positive effect (x4: 0.6883, p<0.01)
-- The interaction terms (x5, x6) suggest different rates of improvement in different periods, though these are less statistically significant
+
+* The pre-1914 period shows a significant positive effect (x2: 1.5506, p<0.001)
+* The wartime period 1914-1945 also shows a positive effect (x3: 0.7982, p<0.05)
+* The post-1945 period has a positive effect (x4: 0.6883, p<0.01)
+* The interaction terms (x5, x6) suggest different rates of improvement in different periods, though these are less statistically significant
 
 However, there are some concerns:
+
 1. The very high condition number (2.79e+16) suggests serious multicollinearity issues
 2. The Jarque-Bera test (p<0.001) indicates non-normal residuals
 3. There's significant skewness (2.314) and kurtosis (10.325) in the residuals
