@@ -7,7 +7,7 @@
 
 \notes{We'll be using a partial EA FC 25 database for this workshop.}
 
-\figure{\includepng{\diagramsDir/datasets/football-database}}{60%}{}
+\figure{\includepng{\diagramsDir/datasets/football-database}{60%}}{}{football-database}
 
 \notes{Find it in this GitHub repo: `radzim/football_data`}
 
