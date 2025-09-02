@@ -7,7 +7,7 @@
 
 \notes{Sometimes you will be repetitively looking for data that fits multiple criteria at once. The most common example would be coordinates - latitude and longitude.
 
-Imagine if, when looking for houses within 10km of Mt Kenya, you had to search through all the houses on earth one by one. That would be very inefficient. But single indices on latitude and longitude would still not help you that much - there are millions of houses within 10km of the equator, in Kongo, Ecuador, Indonesia - you would first narrow it down to all of those, and then have to search through them again, with respect to longitude.}
+Imagine if, when looking for houses within 10km of Mt Kenya, you had to search through all the houses on earth one by one. That would be very inefficient. But single indices on latitude and longitude would still not help you that much - there are millions of houses within 10km of the equator, in Congo, Ecuador, Indonesia - you would first narrow it down to all of those, and then have to search through them again, with respect to longitude.}
 
 \figure{\includepng{\diagramsDir/datasets/world-map-continents-oceans}}{80%}{}
 
