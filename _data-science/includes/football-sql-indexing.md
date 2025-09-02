@@ -17,14 +17,14 @@ What we usually mean by a database is just a standard digital implementation of 
 
 \subsubsection{Physical Index}
 
-\notes{
-This is what you would usually mean when talking about simple indexes. This is how dictionaries, encyclopedias work. Many datasets have built-in physical indices, even if not explicitly defined.}
+\notes{This is what you would usually mean when talking about simple indexes. This is how dictionaries, encyclopedias work. Many datasets have built-in physical indices, even if not explicitly defined.}
 
 \notes{In our example, we can see that some tables are sorted by an important column - eg. `models.csv` is sorted by `playerid`. We can use this to our advantage when searching through it.
 
 Without abstracting away to library search functions, let's follow through on what it might look like to find who is player `188545`.}
 
 \setupcode{import pandas as pd}
+
 \code{models_df = pd.read_csv('football_data/models.csv')
 
 start = time.time()
