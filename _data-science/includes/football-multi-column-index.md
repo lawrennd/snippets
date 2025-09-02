@@ -9,7 +9,7 @@
 
 Imagine if, when looking for houses within 10km of Mt Kenya, you had to search through all the houses on earth one by one. That would be very inefficient. But single indices on latitude and longitude would still not help you that much - there are millions of houses within 10km of the equator, in Congo, Ecuador, Indonesia - you would first narrow it down to all of those, and then have to search through them again, with respect to longitude.}
 
-\figure{\includepng{\diagramsDir/datasets/world-map-continents-oceans}}{80%}{}
+\figure{\includepng{\diagramsDir/datasets/world-map-continents-oceans}{80%}}{}{world-map-continets-oceans}
 
 \notes{That's why we have multi-column indices. The simplest example would be a map - given a detailed map, I can easily find the area I'm looking for data in.}
 

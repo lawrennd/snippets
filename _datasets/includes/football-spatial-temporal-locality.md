@@ -5,7 +5,7 @@
 
 \subsection{Spatial (and Temporal) locality}
 
-\figure{\includepng{\diagramsDir/datasets/storage-pyramid}}{60%}{}
+\figure{\includepng{\diagramsDir/datasets/storage-pyramid}{60%}}{}{storage-pyramid}
 
 \notes{Spatial locality means a program is likely to access nearby memory addresses soon after accessing one (e.g., iterating through an array). CPUs exploit both by loading data from RAM based on expected patterns of use.
 
