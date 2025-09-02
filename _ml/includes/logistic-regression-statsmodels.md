@@ -237,7 +237,7 @@ From the classification metrics, we can assess:
 
 \newslide{Logistic Regression Classification}
 
-\figure{\includediagram{\diagramsDir/ml/logistic-regression-classification-statsmodels.svg}{80%}}{Logistic regression classification results showing training data and decision boundary with probability contours using `statsmodels`.}{logistic-regression-classification-statsmodels}
+\figure{\includediagram{\diagramsDir/ml/logistic-regression-classification-statsmodels}{80%}}{Logistic regression classification results showing training data and decision boundary with probability contours using `statsmodels`.}{logistic-regression-classification-statsmodels}
 
 \notes{The classification visualization reveals several important aspects of our logistic regression model:
 
@@ -436,7 +436,7 @@ mlai.write_figure("polynomial-logistic-regression-comparison-statsmodels.svg", d
 
 \newslide{Linear vs Polynomial Logistic Regression}
 
-\figure{\includediagram{\diagramsDir/ml/polynomial-logistic-regression-comparison-statsmodels.svg}{80%}}{Comparison between linear and polynomial logistic regression decision boundaries using `statsmodels`.}{polynomial-logistic-regression-comparison-statsmodels}
+\figure{\includediagram{\diagramsDir/ml/polynomial-logistic-regression-comparison-statsmodels}{80%}}{Comparison between linear and polynomial logistic regression decision boundaries using `statsmodels`.}{polynomial-logistic-regression-comparison-statsmodels}
 
 \notes{The comparison between linear and polynomial logistic regression reveals important insights about model flexibility and performance:
 
