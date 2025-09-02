@@ -11,7 +11,7 @@
 
 What we usually mean by a database is just a standard digital implementation of such a system.}
 
-\figure{\includejpg{\diagramsDir/datasets/british-geological-survey}}{50%}{Photo by British Geological Survey}
+\figure{\includejpg{\diagramsDir/datasets/british-geological-survey}{50%}}{Photo by British Geological Survey}{british-geological-survey}
 
 \notes{What makes databases special is the structure - the information is conveyed in a way that allows for complicated lookup operations to be completed quickly.}
 
