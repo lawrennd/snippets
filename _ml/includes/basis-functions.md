@@ -4,6 +4,7 @@
 \section{Basis Functions}
 
 \include{_ml/includes/basis-functions-intro.md}
+\include{_ml/includes/quadratic-basis.md}
 
 \editme
 
@@ -43,3 +44,4 @@ $$
 
 
 \endif
+

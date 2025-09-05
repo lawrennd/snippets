@@ -11,8 +11,8 @@
 * Present results using pace per km.
 * In 1904 Marathon was badly organized leading to very slow times.
 }{
-\includejpg{\diagramsDir/Stephen_Kiprotich}{100%}
-\smalltext{Image from Wikimedia Commons <http://bit.ly/16kMKHQ>}
+\includejpg{\diagramsDir/datasets/eliud-kipchoge_berlin_2015}{100%}
+\smalltext{Image from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eliud_Kipchoge_in_Berlin_-_2015_(cropped).jpg)}
 }{70%}{30%}
 
 \notes{The first thing we will do is load a standard data set for regression modelling. The data consists of the pace of Olympic Gold Medal Marathon winners for the Olympics from 1896 to present. Let's load in the data and plot.}

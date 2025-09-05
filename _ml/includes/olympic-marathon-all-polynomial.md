@@ -25,7 +25,7 @@ basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 import mlai.plot as plot
 import mlai}
 
-\plotcode{plot.rmse_fit(x, y, param_name='number', param_range=(1, 27), 
+\plotcode{plot.rmse_fit(x, y, param_name='number', param_range=(1, 30), 
               model=mlai.LM, 
 			  basis=basis,
               xlim=xlim, objective_ylim=[0, 0.8],
@@ -35,7 +35,7 @@ import mlai}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('olympic_LM_polynomial_number{num_basis:0>3}.svg',
                             directory='\writeDiagramsDir/ml', 
-                            num_basis=IntSlider(1,1,26,1))}
+                            num_basis=IntSlider(1,1,29,1))}
 
 
 \setupcode{import mlai}
@@ -45,7 +45,7 @@ import mlai}
 y = data['Y']
 
 xlim = [1892, 2020]
-max_basis = 27
+max_basis = 30
 
 ll = np.array([np.nan]*(max_basis))
 sum_squares = np.array([np.nan]*(max_basis))
@@ -56,7 +56,7 @@ basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 \slides{
 \define{width}{80%}
 \define{animationName}{olympic_LM_polynomial_number}
-\startanimation{\animationName}{1}{26}
+\startanimation{\animationName}{1}{29}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number001}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number002}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number003}{\width}}{\animationName}
@@ -83,6 +83,9 @@ basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number024}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number025}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number026}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number027}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number028}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number029}{\width}}{\animationName}
 \endanimation
 }
 
