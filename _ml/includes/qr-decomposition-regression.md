@@ -5,7 +5,11 @@
 
 \subsection{Solution with QR Decomposition}
 
-\notes{Performing a solve instead of a matrix inverse is the more numerically stable approach, but we can do even better. A [QR-decomposition](http://en.wikipedia.org/wiki/QR_decomposition) of a matrix factorizes it into a matrix which is an orthogonal matrix $\mathbf{Q}$, so that $\mathbf{Q}^\top \mathbf{Q} = \eye$. And a matrix which is upper triangular, $\mathbf{R}$.}
+\notes{Performing a solve instead of a matrix inverse is the more numerically stable approach, but we can do even better. }
+
+\notes{The problems can arise with very large data sets, where computing $\designMatrix ^\top \designMatrix$ can lead to a very poorly conditioned matrix. Instead, we can compute the solution without having to compute the matrix. The trick is to use a QR decomposition.}
+
+\notes{A [QR-decomposition](http://en.wikipedia.org/wiki/QR_decomposition) of a matrix factorizes it into a matrix which is an orthogonal matrix $\mathbf{Q}$, so that $\mathbf{Q}^\top \mathbf{Q} = \eye$. And a matrix which is upper triangular, $\mathbf{R}$.}
 $$
 \designMatrix^\top \designMatrix \boldsymbol{\beta} =
 \designMatrix^\top \dataVector
@@ -38,9 +42,9 @@ $$
 \notes{This can be more particularly seen when we begin to work with *basis functions* in the next session. Some systems that can be resolved with the QR decomposition cannot be resolved by using solve directly.}
 
 \setupcode{import scipy as sp}
-\code{Q, R = np.linalg.qr(Phi)
+\code{Q, R = np.linalg.qr(X)
 w = sp.linalg.solve_triangular(R, Q.T@y) 
-w = pd.DataFrame(w, index=Phi.columns)
+w = pd.DataFrame(w, index=X.columns)
 w}
 
 \endif
