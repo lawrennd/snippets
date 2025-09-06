@@ -106,7 +106,7 @@ $\mathbf{U}$ and the matrix $\mathbf{V}$. Let's create them as
 
 \code{q = 2 # the dimension of our map of the 'library'
 learn_rate = 0.01
-U = pd.DataFrame(np.random.normal(size=(len(user_names), q))*0.001, index=user_names)
+U = pd.DataFrame(np.random.normal(size=(len(movies.columns), q))*0.001, index=movies.columns)
 V = pd.DataFrame(np.random.normal(size=(len(movies.index), q))*0.001, index=movies.index)}
 
 \notes{We also will subtract the mean from the rating before we try and
@@ -124,7 +124,7 @@ objective and the objective function itself.}
     gV = pd.DataFrame(np.zeros((V.shape)), index=V.index)
     obj = 0.
     for ind, series in Y.iterrows():
-        film = series['index']
+        film = series['film']
         user = series['user']
         rating = series['rating']
         prediction = np.dot(U.loc[user], V.loc[film]) # vTu
