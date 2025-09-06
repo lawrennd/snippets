@@ -144,7 +144,35 @@ for i in range(iterations):
     print("Iteration", i, "Objective function: ", obj)
     U -= learn_rate*gU
     V -= learn_rate*gV}
-	
+
+\notes{Next we'll use `plotly` to create a simple interactive visualisation of the users and the films. In our map, we expect similar films to be close to each other and similar users to be close to each other. Let's look at the user map first, which is stored in the dataframe `U`.}
+
+\setupplotcode{import plotly.express as px}
+
+\plotcode{# The U dataframe with users as index, coordinates in columns 0 and 1
+fig = px.scatter(
+    x=U[0], 
+    y=U[1],
+    hover_name=U.index,  # User names appear on hover
+    title="User Map Visualisation"
+)
+fig.show()}
+
+\notes{Now let's  look at our map of the films which is stored in a dataframe `V`.}
+
+\setupplotcode{import plotly.express as px}
+
+\plotcode{# The V dataframe with films as index, coordinates in columns 0 and 1
+fig = px.scatter(
+    x=V[0], 
+    y=V[1],
+    hover_name=V.index,  # Film names appear on hover
+    title="Film Map Visualisation"
+)
+fig.show()}
+
+\notes{That gives us a first attempt at visualising this rating data.}
+
 \codeassignment{What happens as you increase the number of iterations?
 What happens if you increase the learning rate?}{}{10}
 
