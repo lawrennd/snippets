@@ -92,15 +92,15 @@ used in the algorithm below.}{20}
 
 \subsection{Steepest Descent Algorithm}
 
-In the steepest descent algorithm we aim to minimize the objective
+\notes{In the steepest descent algorithm we aim to minimize the objective
 function by subtacting the gradient of the objective function from the
-parameters.
+parameters.}
 
 \subsection{Initialisation}
 
-To start with though, we need initial values for the matrix
+\notes{To start with though, we need initial values for the matrix
 $\mathbf{U}$ and the matrix $\mathbf{V}$. Let's create them as
-`pandas` data frames and initialise them randomly with small values.
+`pandas` data frames and initialise them randomly with small values.}
 
 \setupcode{import numpy as np}
 
@@ -109,15 +109,15 @@ learn_rate = 0.01
 U = pd.DataFrame(np.random.normal(size=(len(user_names), q))*0.001, index=user_names)
 V = pd.DataFrame(np.random.normal(size=(len(movies.index), q))*0.001, index=movies.index)}
 
-We also will subtract the mean from the rating before we try and
+\notes{We also will subtract the mean from the rating before we try and
 predict them predictions. Have a think about why this might be a good
-idea (*Hint*: what will the gradients be if we don't subtract the mean?).
+idea (*Hint*: what will the gradients be if we don't subtract the mean?).}
 
 \code{Y['rating'] -= Y['rating'].mean()}
 
-Now that we have the initial values set, we can start the
+\notes{Now that we have the initial values set, we can start the
 optimization. First we define a function for the gradient of the
-objective and the objective function itself.
+objective and the objective function itself.}
 
 \code{def objective_gradient(Y, U, V):
     gU = pd.DataFrame(np.zeros((U.shape)), index=U.index)
@@ -134,8 +134,8 @@ objective and the objective function itself.
         gV.loc[film] += 2*diff*U.loc[user]
     return obj, gU, gV}
 	
-Now we can write our simple optimisation route. This allows us to
-observe the objective function as the optimization proceeds.
+\notes{Now we can write our simple optimisation route. This allows us to
+observe the objective function as the optimization proceeds.}
 
 \code{import sys
 iterations = 100
@@ -150,7 +150,7 @@ What happens if you increase the learning rate?}{}{10}
 
 \subsection{Stochastic Gradient Descent or Robbins Monroe Algorithm}
 
-Stochastic gradient descent [@Robbins:stoch51] involves updating separating each gradient
+\notes{In \refnotes{our lectures on objective functions and gradient descent}{objective-functions-and-gradient-descent} we saw how stochastic gradient descent [@Robbins:stoch51] involves updating separating each gradient
 update according to each separate observation, rather than summing
 over them all. It is an approximate optimization method, but it has
 proven convergence under certain conditions and can be much faster in
