@@ -70,7 +70,22 @@ import os}
 \code{# uncomment the line below if you are doing this task by self study.
 pods.access.download_url('https://raw.githubusercontent.com/lawrennd/datasets_mirror/main/movie_recommender/movies.csv', store_directory = 'class_movie', save_name='movies.csv')
 #pods.access.download_url('https://www.dropbox.com/s/s6gqvp9b383b59y/movies.csv?dl=0&raw=1', store_directory = 'class_movie', save_name='movies.csv')
-movies = pd.read_csv(os.path.join('class_movie', 'movies.csv'),encoding='latin-1').set_index('index')}
+raw_movies = pd.read_csv(os.path.join('class_movie', 'movies.csv'),encoding='latin-1', header=1)
+# Extract user names from 15th column (0-indexed as 14)
+usernames = raw_movies.iloc[:, 14]  
+# Extract movie ratings from 16th to fourth last column (indexed 15:-4)
+movie_data = raw_movies.iloc[:, 15:-4]  # columns 16:-4 in 1-based = 15:-4 in 0-based
+    
+# Get movie names from the column headers
+movie_names = movie_data.columns
+    
+# Create the tidied up dataframe structure
+# We need to transpose and set up proper index/columns
+movies = movie_data.T  # Transpose so movies become rows
+movies.columns = usernames  # Set usernames as column headers
+movies.index.name = 'film'  # Name the index
+movies.columns.name = 'user'  # Name the columns
+}
 
 \writeassignment{The movies data is now in a data frame which contains
 one column for each user rating the movie. There are some entries that
@@ -81,11 +96,13 @@ contain `NaN`. What does the `NaN` mean in this context?}{}{5}
 We will now prepare the data set for processing. To do this we are
 going to conver the data into a new format using the `melt` command.
 
-\code{user_names = list(set(movies.columns)-set(movies.columns[:9]))
-Y = pd.melt(movies.reset_index(), id_vars=['Film', 'index'], 
-            var_name='user', value_name='rating', 
-            value_vars=user_names)
-Y = Y.dropna(axis=0)}
+\code{Y = movies.reset_index().melt(
+        id_vars=['film'],           # Keep the movie names as identifier
+        var_name='user',            # Column name for users
+        value_name='rating'         # Column name for ratings
+    )
+Y = Y.dropna(axis=0)
+Y.index.name="index"}
 
 \subsection{What is a pivot table? What does the `pandas` command
 `pd.melt` do?}{}{10}
