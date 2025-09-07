@@ -9,7 +9,7 @@
 
 \code{# Separate train and test
 indices = np.random.permutation(X.shape[0])
-num_train = np.ceil(X.shape[0]/2)r
+num_train = np.ceil(X.shape[0]/2)
 train_indices = indices[:num_train]
 test_indices = indices[num_train:]
 X_train = X.iloc[train_indices]
