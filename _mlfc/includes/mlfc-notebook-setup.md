@@ -12,6 +12,10 @@
 %pip install pods
 %pip install mlai}
 
+\define{podsSoftware}
+\define{notutilsSoftware}
+\define{mlaiSoftware}
+
 \setupcode{import notutils
 import pods
 import mlai

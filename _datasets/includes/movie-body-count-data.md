@@ -15,4 +15,6 @@ movies = data['Y']}
 
 \code{print(', '.join(movies.columns))}
 
+\notes{Once it is loaded in the data can be summarized using the `describe` method in pandas.}
+
 \endif
