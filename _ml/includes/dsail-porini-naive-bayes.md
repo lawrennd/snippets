@@ -9,7 +9,7 @@
 \notes{Using the data we collected in the Access stage and understood in Assess, we can now Address our question, and create a naive Bayesian classification model for predicting the probability of a camera sighting a species on a given day.
 
 $$
-\text{P}(1 \mid c, s, d) = P(1) \cdot P(c \mid 1) \cdot P(s \mid 1) \cdot P(d \mid 1)
+\text{P}(1 \mid c, s, d) = \frac{P(1) \cdot P(c \mid 1) \cdot P(s \mid 1) \cdot P(d \mid 1)}{P(c,s,d)}
 $$
 
 $$
@@ -17,11 +17,19 @@ $$
 $$
 
 $$
-\Rightarrow \text{P}(1 \mid c, s, d) = P(1) \cdot \frac{P(1 \mid c) \cdot P(c)}{P(1)} \cdot \frac{P(1 \mid s) \cdot P(s)}{P(1)} \cdot \frac{P(1 \mid d) \cdot P(d)}{P(1)}
+\Rightarrow \text{P}(1 \mid c, s, d) = \frac{P(1) \cdot \frac{P(1 \mid c) \cdot P(c)}{P(1)} \cdot \frac{P(1 \mid s) \cdot P(s)}{P(1)} \cdot \frac{P(1 \mid d) \cdot P(d)}{P(1)}}{P(c,s,d)}
 $$
 
 $$
-= \frac{P(1 \mid c) \cdot P(1 \mid s) \cdot P(1 \mid d) \cdot P(c) \cdot P(s) \cdot P(d)}{P(1)^2}
+= \frac{P(1 \mid c) \cdot P(1 \mid s) \cdot P(1 \mid d) \cdot P(c) \cdot P(s) \cdot P(d)}{P(1)^2 \cdot P(c,s,d)}
+$$
+
+$$
+\text{Assuming conditional independence:}
+$$
+
+$$
+P(1 \mid c,s,d)=\frac{P(1 \mid c)P(1 \mid s)P(1 \mid d)}{P(1)^2}
 $$
 
 $$
