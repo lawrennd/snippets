@@ -17,17 +17,6 @@ import scipy as sp}
 
 \loadcode{polynomial}{mlai}
 
-\code{def polynomial(x, num_basis=4, data_limits=[-1., 1.]):
-    "Polynomial basis"
-    centre = data_limits[0]/2. + data_limits[1]/2.
-    span = data_limits[1] - data_limits[0]
-    z = np.asarray(x, dtype=float) - centre
-    z = 2*z/span   # scale the inputs to be within -1, 1 where polynomials are well behaved
-    Phi = np.zeros((x.shape[0], num_basis))
-    for i in range(num_basis):
-        Phi[:, i:i+1] = z**i
-    return Phi}
-
 \notes{Now we include the solution for the linear regression through QR-decomposition.}
 
 \code{def basis_fit(Phi, y):
