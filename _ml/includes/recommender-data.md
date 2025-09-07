@@ -75,7 +75,7 @@ def responses(topic=topic, sep="|||", since="all", n=None):
             e = json.loads(line)
             if e.get("event") != "message": continue
             p = (e.get("message") or "").split(sep)
-            rows.append({"name": p[0], "movie": p[1], "rating": pd.to_numeric(p[2], errors="coerce")} if len(p)==3 else {"raw": e.get("message")})
+            rows.append({"name": p[0], "film": p[1], "rating": pd.to_numeric(p[2], errors="coerce")} if len(p)==3 else {"raw": e.get("message")})
             if n and len(rows) >= n: break
     return pd.DataFrame(rows)
 
@@ -158,26 +158,13 @@ Widget.close_all()
 start_movie_rater(target=5)}
 
 \code{# run this cell to collect everyone's responses
-responses()}
-
-\writeassignment{The movies data is now in a data frame, which contains
-one column for each user rating the movie. There are some entries that
-contain `NaN`. What does the `NaN` mean in this context?}{}{5}
+Y = responses()
+Y}
 
 \subsection{Processing the Data}
 
-We will now prepare the data set for processing. To do this, we are
-going to convert the data into a new format using the `melt` command.
+\codeassignment{What is a pivot table? What does the `pandas` command `pd.pivot_table` do? Subsequently, what does `pd.melt` do? 
 
-\code{Y = movies.reset_index().melt(
-        id_vars=['film'],           # Keep the movie names as identifier
-        var_name='user',            # Column name for users
-        value_name='rating'         # Column name for ratings
-    )
-Y = Y.dropna(axis=0)
-Y.index.name="index"}
-
-\writeassignment{What is a pivot table? What does the `pandas` command
-`pd.melt` do?}{}{10}
+Convert the above DataFrame `Y` to a pivot table, and then back again to its current form.}{}{10}
 
 \endif
