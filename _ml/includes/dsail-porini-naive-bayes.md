@@ -25,7 +25,7 @@ $$
 $$
 
 $$
-\text{Assuming conditional independence:}
+\text{Assuming independence:}
 $$
 
 $$
