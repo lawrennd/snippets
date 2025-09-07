@@ -69,7 +69,7 @@ Use this to compute the quadratic fit for the model, again plotting the result t
 import mlai}
 
 \plotcode{max_basis = 28
-data_limits = (1888, 2020)
+data_limits = (1888, 2030)
 basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)
 num_data = x.shape[0]}
 
