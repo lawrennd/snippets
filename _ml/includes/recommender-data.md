@@ -4,6 +4,8 @@
 
 \subsection{Obtaining the Data}
 
+\notes{THIS IS THE OLD APPROACH FROM THE PRACTICAL I RAN IN SHEFFIELD. AIM WAS TO GET THE STUDENTS TO RATE MOVIES THEMSELVES. THE CODE STOPPED WORKING DUE TO CHANGES IN THE GOOGLE API.}
+
 \notes{We are using a functionality of the Open Data Science software
 library to obtain the data. This functionality involves some
 prewritten code which distributes to each of you a google spreadsheet
@@ -66,6 +68,8 @@ command.
 
 \setupcode{import pandas as pd
 import os}
+
+\notes{I'VE FIXED IT UP TO LOAD IN THIS DATA FROM A GOOGLE FORM THAT I USED tO GET MOVIE RATINGS FROM THE PUBLIC FOR A SCIENCE TALK I DID}
 
 \code{# uncomment the line below if you are doing this task by self study.
 pods.access.download_url('https://raw.githubusercontent.com/lawrennd/datasets_mirror/main/movie_recommender/movies.csv', store_directory = 'class_movie', save_name='movies.csv')
