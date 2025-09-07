@@ -108,7 +108,7 @@ going to conver the data into a new format using the `melt` command.
 Y = Y.dropna(axis=0)
 Y.index.name="index"}
 
-\subsection{What is a pivot table? What does the `pandas` command
+\writeassignment{What is a pivot table? What does the `pandas` command
 `pd.melt` do?}{}{10}
 
 \endif
