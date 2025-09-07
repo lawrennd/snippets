@@ -13,7 +13,7 @@
 \slides{* Regress from features `Year`, `Body_Count`, `Length_Minutes` to IMDB_Rating.}
 
 \code{select_features = ['Year', 'Body_Count', 'Length_Minutes']
-\designVariable = movies[select_features]
+\designVariable = movies[select_features].copy()
 \designVariable['Eins'] = 1 # add a column for the offset
 y = movies[['IMDB_Rating']]}
 
