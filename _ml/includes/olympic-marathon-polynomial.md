@@ -10,7 +10,8 @@
 \slides{* Fit linear model with polynomial basis to marathon data.
 * Try different numbers of basis functions (different degress of polynomial).
 * Check the quality of fit.}
-\setupcode{import numpy as np}
+\setupcode{import numpy as np
+import scipy as sp}
 
 \notes{Define the polynomial basis function.}
 
