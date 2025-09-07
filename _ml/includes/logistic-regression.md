@@ -3,16 +3,14 @@
 
 \editme
 
+\subsection{Logistic Regression}
+
 \addreading{@Rogers:book11}{Section 5.2.2 up to pg 182}
 
-\notes{\subsection{Logistic Regression}}
-
 \notes{A logistic regression is an approach to classification which
-extends the linear basis function models we've already
+extends the linear regression models we've already
 explored. Rather than modeling the output of the function directly the
 assumption is that we model the *log-odds* with the basis functions.}
-
-\newslide{Logistic Regression and GLMs - 1}
 
 \slides{
 * Modelling entire density allows any question to be answered
@@ -20,22 +18,23 @@ assumption is that we model the *log-odds* with the basis functions.}
 * Comes at possible expense of *strong* assumptions about data generation distribution
 }
 
-\newslide{Logistic Regression and GLMs - 2}
+\newslide{Logistic Regression}
 
 \slides{
 * In regression we model probability of $\dataScalar_i |\inputVector_i$ directly
 * Allows less flexibility in questions, but more flexibility in model assumptions
-* Framework known as *generalized linear models*
 }
 
 \notes{The [odds](http://en.wikipedia.org/wiki/Odds) are defined as
 the ratio of the probability of a positive outcome, to the probability
-of a negative outcome. Just as we saw in our jumper (sweater) example where:
-
-$$ \log \frac{p(\text{bought})}{p(\text{not bought})} = \weightScalar_0 + \weightScalar_1 \text{age} + \weightScalar_2 \text{latitude} $$
-
+of a negative outcome. Just as we saw in our jumper (sweater) example where
+$$ 
+\log \frac{p(\text{bought})}{p(\text{not bought})} = \weightScalar_0 + \weightScalar_1 \text{age} + \weightScalar_2 \text{latitude} 
+$$
 If the probability of a positive outcome is denoted by $\pi$, then the odds are computed as
-$\frac{\pi}{1-\pi}$. Odds are widely used by
+$\frac{\pi}{1-\pi}$. 
+
+Odds are widely used by
 [bookmakers](http://en.wikipedia.org/wiki/Bookmaker) in gambling,
 although a bookmakers odds won't normalise: i.e. if you look at the
 equivalent probabilities, and sum over the probability of all outcomes
@@ -52,7 +51,7 @@ range between $0$ and $\infty$. Considering the log odds therefore
 takes a number between 0 and 1 (the probability of positive outcome)
 and maps it to the entire real line. The function that does this is
 known as the [logit function](http://en.wikipedia.org/wiki/Logit),
-$g^{-1}(p_i) = \log\frac{p_i}{1-p_i}$. This function is known as a
+$\linkFunction(p_i) = \log\frac{p_i}{1-p_i}$. This function is known as a
 *link function*.}
 
 \newslide{Log Odds - 1}
@@ -90,20 +89,20 @@ $$
 $$
 The odds can never be negative, but can take any value from 0 to $\infty$. We have defined the link function as taking the form $g^{-1}(\cdot)$ implying that the inverse link function is given by $g(\cdot)$. Since we have defined,
 $$
-g^{-1}(\pi) =
+\linkFunction(\pi) =
 \mappingVector^\top \basisVector(\inputVector)
 $$
 we can write $\pi$ in terms of
-the *inverse link* function, $g(\cdot)$ as 
+the *inverse link* function, $\transformationFunction(\cdot)$ as 
 $$
-\pi = g(\mappingVector^\top
+\pi = \transformationFunction(\mappingVector^\top
 \basisVector(\inputVector)).
 $$}
 
 \newslide{Logit Link Function - 1}
 \slides{
 * The [Logit function](http://en.wikipedia.org/wiki/Logit) is our link function
-* $$g^{-1}(\pi_i) = \log\frac{\pi_i}{1-\pi_i}$$
+* $$\linkFunction(\pi_i) = \log\frac{\pi_i}{1-\pi_i}$$
 }
 
 \newslide{Logit Link Function - 2}
@@ -171,7 +170,7 @@ Bernoulli distribution to form the likelihood. Then we can assume
 conditional independence of each data point given the parameters and
 develop a likelihod for the entire data set.
 
-As we discussed last time, the Bernoulli likelihood is of the form,
+The Bernoulli likelihood is of the form,
 $$
 P(\dataScalar_i|\mappingVector, \inputVector) =
 \pi_i^{\dataScalar_i} (1-\pi_i)^{1-\dataScalar_i}
@@ -197,7 +196,7 @@ function within a single mathematical equation.}
   $$\pi(\inputVector,\mappingVector) = \frac{1}{1+
 \exp\left(-\mappingVector^\top \basisVector(\inputVector)\right)}.$$
 * Compute the output of a standard linear basis function composition ($\mappingVector^\top \basisVector(\inputVector)$, as we did for linear regression)
-* Apply the inverse link function, $g(\mappingVector^\top \basisVector(\inputVector))$. 
+* Apply the inverse link function, $\transformationFunction(\mappingVector^\top \basisVector(\inputVector))$. 
 * Use this value in a Bernoulli distribution to form the likelihood.
 }
 
@@ -218,9 +217,15 @@ return 1-pi
 ```
 }
 
-\notes{\subsection{Maximum Likelihood}
+\subsection{Maximum Likelihood}
 
-To obtain the parameters of the model, we need to maximize the likelihood, or minimize the objective function, normally taken to be the negative log likelihood. With a data conditional independence assumption the likelihood has the form,
+\slides{
+* Conditional independence of data:
+  $$P(\dataVector|\mappingVector, \inputMatrix) = \prod_{i=1}^\numData P(\dataScalar_i|\mappingVector,
+\inputVector_i). $$
+}
+
+\notes{To obtain the parameters of the model, we need to maximise the likelihood, or minimise the objective function, normally taken to be the negative log likelihood. With a data conditional independence assumption the likelihood has the form,
 $$
 P(\dataVector|\mappingVector,
 \inputMatrix) = \prod_{i=1}^\numData P(\dataScalar_i|\mappingVector, \inputVector_i). 
@@ -233,25 +238,35 @@ $$
 $$
 and if we take the probability of positive outcome for the $i$th data point to be given by
 $$
-\pi_i = g\left(\mappingVector^\top \basisVector(\inputVector_i)\right),
+\pi_i = \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right),
 $$
 where $g(\cdot)$ is the *inverse* link function, then this leads to an objective function of the form,
 $$
-E(\mappingVector) = -  \sum_{i=1}^\numData \dataScalar_i \log
-g\left(\mappingVector^\top \basisVector(\inputVector_i)\right) -
+\errorFunction(\mappingVector) = -  \sum_{i=1}^\numData \dataScalar_i \log
+\transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right) -
 \sum_{i=1}^\numData(1-\dataScalar_i)\log \left(1-g\left(\mappingVector^\top
 \basisVector(\inputVector_i)\right)\right).
-$$
+$$}
+
+\newslide{Log Likelihood}
+\slides{
+$$\begin{align*}
+  \log P(\dataVector|\mappingVector, \inputMatrix) = &
+  \sum_{i=1}^\numData \log P(\dataScalar_i|\mappingVector, \inputVector_i) \\ = &\sum_{i=1}^\numData \dataScalar_i \log
+  \pi_i \\ & + \sum_{i=1}^\numData (1-\dataScalar_i)\log (1-\pi_i)
+\end{align*}$$
+}
+
 
 \setupcode{import numpy as np}
-\code{def objective(g, y):
+\code{def objective(h, y):
     "Computes the objective function."
 	labs = np.asarray(y, dtype=float).flatten()
     posind = np.where(labs==1)
     negind = np.where(labs==0)
-    return -np.log(g[posind, :]).sum() - np.log(1-g[negind, :]).sum()}
+    return -np.log(h[posind, :]).sum() - np.log(1-h[negind, :]).sum()}
 
-As normal, we would like to minimize this objective. This can be done
+\notes{As normal, we would like to minimise this objective. This can be done
 by differentiating with respect to the parameters of our prediction
 function, $\pi(\inputVector;\mappingVector)$, for optimisation. The
 gradient of the likelihood with respect to
@@ -266,32 +281,17 @@ $$
 \basisVector(\inputVector_i)
 $$
 where we used the chain rule to develop the derivative in terms of
-$\frac{\text{d}g(\mappingFunction_i)}{\text{d}\mappingFunction_i}$,
+$\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d}\mappingFunction_i}$,
 which is the gradient of the inverse link function (in our case the
-gradient of the sigmoid function).
+gradient of the sigmoid function).}
 
-So the objective function now depends on the gradient of the inverse
+\notes{So the objective function now depends on the gradient of the inverse
 link function, as well as the likelihood depends on the gradient of
 the inverse link function, as well as the gradient of the log
 likelihood, and naturally the gradient of the argument of the inverse
 link function with respect to the parameters, which is simply
 $\basisVector(\inputVector_i)$.}
 
-\newslide{Maximum Likelihood}
-\slides{
-* Conditional independence of data:
-  $$P(\dataVector|\mappingVector, \inputMatrix) = \prod_{i=1}^\numData P(\dataScalar_i|\mappingVector,
-\inputVector_i). $$
-}
-
-\newslide{Log Likelihood}
-\slides{
-$$\begin{align*}
-  \log P(\dataVector|\mappingVector, \inputMatrix) = &
-  \sum_{i=1}^\numData \log P(\dataScalar_i|\mappingVector, \inputVector_i) \\ = &\sum_{i=1}^\numData \dataScalar_i \log
-  \pi_i \\ & + \sum_{i=1}^\numData (1-\dataScalar_i)\log (1-\pi_i)
-\end{align*}$$
-}
 
 \newslide{Objective Function}
 \slides{
@@ -307,16 +307,16 @@ $$\begin{align*}
    \end{align*}$$
 }
 
-\newslide{Minimize Objective}
+\newslide{Minimise Objective}
 \slides{
 * Grdient wrt  $\pi(\inputVector;\mappingVector)$
   $$\begin{align*}
-  \frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = &
-  -\sum_{i=1}^\numData \frac{\dataScalar_i}{g\left(\mappingVector^\top
-  \basisVector(\inputVector)\right)}\frac{\text{d}g(\mappingFunction_i)}{\text{d}\mappingFunction_i}
+  \frac{\text{d}\errorFunction(\mappingVector)}{\text{d}\mappingVector} = &
+  -\sum_{i=1}^\numData \frac{\dataScalar_i}{\transformationFunction\left(\mappingVector^\top
+  \basisVector(\inputVector)\right)}\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d}\mappingFunction_i}
   \basisVector(\inputVector_i) \\ & +  \sum_{i=1}^\numData
-  \frac{1-\dataScalar_i}{1-g\left(\mappingVector^\top
-  \basisVector(\inputVector)\right)}\frac{\text{d}g(\mappingFunction_i)}{\text{d}\mappingFunction_i}
+  \frac{1-\dataScalar_i}{1-\transformationFunction\left(\mappingVector^\top
+  \basisVector(\inputVector)\right)}\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d}\mappingFunction_i}
   \basisVector(\inputVector_i)
   \end{align*}$$
 }
@@ -324,85 +324,86 @@ $$\begin{align*}
 \notes{The only missing term is the gradient of the inverse link
 function. For the sigmoid squashing function we have,
 $$\begin{align*}
-g(\mappingFunction_i) &= \frac{1}{1+\exp(-\mappingFunction_i)}\\
+\transformationFunction(\mappingFunction_i) &= \frac{1}{1+\exp(-\mappingFunction_i)}\\
 &=(1+\exp(-\mappingFunction_i))^{-1}
 \end{align*}$$
 and the gradient can be computed as
 $$\begin{align*}
-\frac{\text{d}g(\mappingFunction_i)}{\text{d} \mappingFunction_i} & =
+\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d} \mappingFunction_i} & =
 \exp(-\mappingFunction_i)(1+\exp(-\mappingFunction_i))^{-2}\\
 & = \frac{1}{1+\exp(-\mappingFunction_i)}
 \frac{\exp(-\mappingFunction_i)}{1+\exp(-\mappingFunction_i)} \\
-& = g(\mappingFunction_i) (1-g(\mappingFunction_i))
+& = \transformationFunction(\mappingFunction_i) (1-g(\mappingFunction_i))
 \end{align*}$$
 so the full gradient can be written down as
 $$
-\frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData
-\dataScalar_i\left(1-g\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
+\frac{\text{d}\errorFunction(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData
+\dataScalar_i\left(1-\transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
 \basisVector(\inputVector_i) +  \sum_{i=1}^\numData
 (1-\dataScalar_i)\left(g\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
 \basisVector(\inputVector_i).
 $$
 
 \setupcode{import numpy as np}
-\code{def gradient(g, Phi, y):
+\code{def gradient(h, Phi, y):
     "Generates the gradient of the parameter vector."
 	labs = np.asarray(y, dtype=float).flatten()
     posind = np.where(labs==1)
     dw = -(Phi[posind]*(1-g[posind])).sum(0)
     negind = np.where(labs==0 )
-    dw += (Phi[negind]*g[negind]).sum(0)
+    dw += (Phi[negind]*h[negind]).sum(0)
     return dw[:, None]}
 
-\subsection{Optimization of the Function}
+\subsection{Optimisation of the Function}
 
-Reorganizing the gradient to find a stationary point of the function
+Reorganising the gradient to find a stationary point of the function
 with respect to the parameters $\mappingVector$ turns out to be
-impossible. Optimization has to proceed by *numerical
+impossible. Optimisation has to proceed by *numerical
 methods*. Options include the multidimensional variant of
 [Newton's method](http://en.wikipedia.org/wiki/Newton%27s_method) or
-[gradient based optimization methods](http://en.wikipedia.org/wiki/Gradient_method)
-like we used for optimizing matrix factorization for the movie
-recommender system. We recall from matrix factorization that, for
+[gradient based optimisation methods](http://en.wikipedia.org/wiki/Gradient_method)
+like we used for optimising matrix factorisation for the movie
+recommender system. We recall from matrix factorisation that, for
 large data, *stochastic gradient descent* or the Robbins Munro
-[@Robbins:stoch51] optimization procedure worked best for function
-minimization.}
+[@Robbins:stoch51] optimisation procedure worked best for function
+minimisation.}
 
 \newslide{Link Function Gradient}
 \slides{
 * Also need gradient of inverse link function wrt parameters.
-$$\begin{align*}
-g(\mappingFunction_i) &= \frac{1}{1+\exp(-\mappingFunction_i)}\\
+\begin{aligned}
+\transformationFunction(\mappingFunction_i) &= \frac{1}{1+\exp(-\mappingFunction_i)}\\
 &=(1+\exp(-\mappingFunction_i))^{-1}
-\end{align*}$$
+\end{aligned}
 and the gradient can be computed as
-$$\begin{align*}
-\frac{\text{d}g(\mappingFunction_i)}{\text{d} \mappingFunction_i} & =
+\begin{aligned}
+\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d} \mappingFunction_i} & =
 \exp(-\mappingFunction_i)(1+\exp(-\mappingFunction_i))^{-2}\\
 & = \frac{1}{1+\exp(-\mappingFunction_i)}
 \frac{\exp(-\mappingFunction_i)}{1+\exp(-\mappingFunction_i)} \\
-& = g(\mappingFunction_i) (1-g(\mappingFunction_i))
-\end{align*}$$
+& = \transformationFunction(\mappingFunction_i) (1-\transformationFunction(\mappingFunction_i))
+\end{aligned}
 }
 
 \newslide{Objective Gradient}
 \slides{
-$$\begin{align*}
+\begin{aligned}
 \frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = & -\sum_{i=1}^\numData
-\dataScalar_i\left(1-g\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
+\dataScalar_i\left(1-\transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
 \basisVector(\inputVector_i) \\ & + \sum_{i=1}^\numData
-(1-\dataScalar_i)\left(g\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
+(1-\dataScalar_i)\left(\transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
 \basisVector(\inputVector_i).
-\end{align*}$$
+\end{aligned}
 }
 
-\newslide{Optimization of the Function}
+\newslide{Optimisation of the Function}
 \slides{
 * Can't find a stationary point of the objective function analytically.
-* Optimization has to proceed by *numerical methods*. 
+* Optimisation has to proceed by *numerical methods*. 
     * [Newton's method](http://en.wikipedia.org/wiki/Newton%27s_method) or 
-    * [gradient based optimization methods](http://en.wikipedia.org/wiki/Gradient_method)
-* Similarly to matrix factorization, for large data *stochastic gradient descent*  (Robbins Munro [@Robbins:stoch51] optimization procedure) works well.
+    * [gradient based optimisation methods](http://en.wikipedia.org/wiki/Gradient_method)
+	* Iterative Reweighted Least Squares
+* Similarly to matrix factorisation, for large data *stochastic gradient descent*  (Robbins Munro [@Robbins:stoch51] optimisation procedure) works well.
 }
 
 \endif
