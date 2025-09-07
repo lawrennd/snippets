@@ -9,16 +9,16 @@
 occuring on a massive scale. In every feature film the body count is tolling up.
 But what is the cause of all these deaths? Let's try and investigate.}
 
-\notes{For our first example of data science, we take inspiration from work by [researchers at NJIT](http://www.theswarmlab.com/r-vs-python-round-2/). They researchers were comparing the qualities of Python with R (my brief thoughts on the subject are available in a Google+ post here: https://plus.google.com/116220678599902155344/posts/5iKyqcrNN68). They put together a data base of results from the  the "Internet Movie Database" and the [Movie Body Count](http://www.moviebodycounts.com/) website which will allow us to do some preliminary investigation.}
+\notes{For our first example of data science, we take inspiration from work by [researchers at NJIT](http://www.theswarmlab.com/r-vs-python-round-2/). They researchers were comparing the qualities of Python with R. They put together a data base of results from the  the "Internet Movie Database" and the [Movie Body Count](http://www.moviebodycounts.com/) website which will allow us to do some preliminary investigation.}
 
 \notes{We will make use of data that has already been 'scraped' from the [Movie Body Count](http://www.moviebodycounts.com/) website. Code and the data is available at [a github repository](https://github.com/sjmgarnier/R-vs-
 Python/tree/master/Deadliest%20movies%20scrape/code). Git is a version control
-system and github is a website that hosts code that can be accessed through git.
-By sharing the code publicly through github, the authors are licensing the code
-publicly and allowing you to access and edit it. As well as accessing the code
+system and github is a website that hosts code that can be accessed through git.}
+
+\notes{As well as accessing the code
 via github you can also [download the zip file](https://github.com/sjmgarnier/R-vs-Python/archive/master.zip).}
 
-\notes{For ease of use we've packaged this data set in the ```pods``` library}
+\notes{For ease of use we've packaged this data set in the `pods` library}
 
 \include{_software/includes/pods-software.md}
 
