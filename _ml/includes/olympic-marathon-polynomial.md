@@ -155,13 +155,13 @@ mlai.write_figure(filename='olympic-marathon-polynomial-17.svg',
 
 \figure{\includediagram{\diagramsDir/ml/olympic-marathon-polynomial-17}{80%}}{Fit of a 16-degree polynomial to the Olympic marathon data.}{olympic-marathon-polynomial-17}
 
-\subsection{26th Degree Polynomial Fit}
+\subsection{28th Degree Polynomial Fit}
 
-\slides{$$\mappingFunction(x, \mappingVector) = \mappingScalar_0 + \mappingScalar_1 \inputScalar + \mappingScalar_2 \inputScalar^2 + \dots + \mappingScalar_{26} \inputScalar^{26}$$}
+\slides{$$\mappingFunction(x, \mappingVector) = \mappingScalar_0 + \mappingScalar_1 \inputScalar + \mappingScalar_2 \inputScalar^2 + \dots + \mappingScalar_{28} \inputScalar^{28}$$}
 
 \notes{Now we'll try a 26th degree polynomial fit to the data.}
 
-\code{poly_args = {'num_basis':27, # basis up to x^26
+\code{poly_args = {'num_basis':29, # basis up to x^28
              'data_limits':xlim}
 Phi = polynomial(x, **poly_args)
 w = basis_fit(Phi, y)}
@@ -183,10 +183,10 @@ ax.set_ylim(ylim)
 
 _ = ax.plot(x_pred, f_pred, 'b-', linewidth=2)
 
-mlai.write_figure(filename='olympic-marathon-polynomial-27.svg', 
+mlai.write_figure(filename='olympic-marathon-polynomial-29.svg', 
 				  directory='\writeDiagramsDir/ml')}
 
-\figure{\includediagram{\diagramsDir/ml/olympic-marathon-polynomial-27}{80%}}{Fit of a 26-degree polynomial to the Olympic marathon data.}{olympic-marathon-polynomial-27}
+\figure{\includediagram{\diagramsDir/ml/olympic-marathon-polynomial-29}{80%}}{Fit of a 28-degree polynomial to the Olympic marathon data.}{olympic-marathon-polynomial-29}
 
 
 
