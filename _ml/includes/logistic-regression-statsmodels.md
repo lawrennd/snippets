@@ -3,6 +3,7 @@
 
 \editme
 
+
 \subsection{Logistic Regression with `statsmodels`}
 
 \notes{In logistic regression, we model the relationship between a binary response variable $\dataScalar_i \in \{0,1\}$ and input variables $\inputVector_i$ using the logistic function. Unlike linear regression, we cannot directly model the probability using a linear function since probabilities must lie between 0 and 1.

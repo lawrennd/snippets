@@ -240,11 +240,11 @@ and if we take the probability of positive outcome for the $i$th data point to b
 $$
 \pi_i = \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right),
 $$
-where $g(\cdot)$ is the *inverse* link function, then this leads to an objective function of the form,
+where $\transformationFunction(\cdot)$ is the *inverse* link function, then this leads to an objective function of the form,
 $$
 \errorFunction(\mappingVector) = -  \sum_{i=1}^\numData \dataScalar_i \log
 \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right) -
-\sum_{i=1}^\numData(1-\dataScalar_i)\log \left(1-g\left(\mappingVector^\top
+\sum_{i=1}^\numData(1-\dataScalar_i)\log \left(1-\transformationFunction\left(\mappingVector^\top
 \basisVector(\inputVector_i)\right)\right).
 $$}
 
@@ -272,9 +272,9 @@ function, $\pi(\inputVector;\mappingVector)$, for optimisation. The
 gradient of the likelihood with respect to
 $\pi(\inputVector;\mappingVector)$ is of the form,
 $$
-\frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData
-\frac{\dataScalar_i}{g\left(\mappingVector^\top
-\basisVector(\inputVector)\right)}\frac{\text{d}g(\mappingFunction_i)}{\text{d}\mappingFunction_i}
+\frac{\text{d}\errorFunction(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData
+\frac{\dataScalar_i}{\transformationFunction\left(\mappingVector^\top
+\basisVector(\inputVector)\right)}\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d}\mappingFunction_i}
 \basisVector(\inputVector_i) +  \sum_{i=1}^\numData
 \frac{1-\dataScalar_i}{1-g\left(\mappingVector^\top
 \basisVector(\inputVector)\right)}\frac{\text{d}g(\mappingFunction_i)}{\text{d}\mappingFunction_i}
@@ -296,8 +296,8 @@ $\basisVector(\inputVector_i)$.}
 \newslide{Objective Function}
 \slides{
 * Probability of positive outcome for the $i$th data point 
-  $$\pi_i = g\left(\mappingVector^\top \basisVector(\inputVector_i)\right),$$
-  where $g(\cdot)$ is the *inverse* link function
+  $$\pi_i = \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right),$$
+  where $\transformationFunction(\cdot)$ is the *inverse* link function
 * Objective function of the form 
   $$\begin{align*}
     E(\mappingVector) = & -  \sum_{i=1}^\numData \dataScalar_i \log
@@ -340,7 +340,7 @@ $$
 \frac{\text{d}\errorFunction(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData
 \dataScalar_i\left(1-\transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
 \basisVector(\inputVector_i) +  \sum_{i=1}^\numData
-(1-\dataScalar_i)\left(g\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
+(1-\dataScalar_i)\left(\transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\right)\right)
 \basisVector(\inputVector_i).
 $$
 
