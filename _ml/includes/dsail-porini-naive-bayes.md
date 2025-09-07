@@ -29,7 +29,7 @@ $$
 $$
 
 $$
-P(1 \mid c,s,d)=\frac{P(1 \mid c)P(1 \mid s)P(1 \mid d)}{P(1)^2}
+P(1 \mid c,s,d)=\frac{P(1 \mid c) \cdot P(1 \mid s) \cdot P(1 \mid d)}{P(1)^2}
 $$
 
 $$
