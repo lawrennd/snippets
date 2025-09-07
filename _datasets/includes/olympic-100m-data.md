@@ -9,11 +9,11 @@
 
 *  Gold medal times for Olympic 100 m runners since 1896.
 * One of a number of Olypmic data sets collected by @Rogers:book11.}{
-\includejpg{\diagramsDir/ml/100m_final_start}{100%}\smalltext{Start of the 2012 London 100m race. *Image from Wikimedia Commons* <http://bit.ly/191adDC>}}{70%}{30%}
+\includejpg{\diagramsDir/ml/100m_final_start}{100%}\smalltext{Start of the 2012 London 100m race. *Image by Darren Wilkinson from [Wikimedia Commons](http://bit.ly/191adDC)*}}{70%}{30%}
 
 
 \notes{
-The first thing we will do is load a standard data set for regression modelling. The data consists of the pace of Olympic Gold Medal 100m winners for the Olympics from 1896 to present. First we load in the data and plot.
+The first thing we will do is load a standard data set for regression modelling. The data consists of the time of Olympic Gold Medal 100m winners for the Olympics from 1896 to 2012. First we load in the data and plot.
 }
 
 \include{_data-science/includes/pods-install.md}
