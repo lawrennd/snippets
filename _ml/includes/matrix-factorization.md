@@ -106,8 +106,8 @@ $\mathbf{U}$ and the matrix $\mathbf{V}$. Let's create them as
 
 \code{q = 2 # the dimension of our map of the 'library'
 learn_rate = 0.01
-U = pd.DataFrame(np.random.normal(size=(len(movies.columns), q))*0.001, index=movies.columns)
-V = pd.DataFrame(np.random.normal(size=(len(movies.index), q))*0.001, index=movies.index)}
+U = pd.DataFrame(np.random.normal(size=(len(Y['user'].unique()), q))*0.001, index=Y['user'].unique())
+V = pd.DataFrame(np.random.normal(size=(len(Y['film'].unique()), q))*0.001, index=Y['film'].unique())}
 
 \notes{We also will subtract the mean from the rating before we try and
 predict them predictions. Have a think about why this might be a good
