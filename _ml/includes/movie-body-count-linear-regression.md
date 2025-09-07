@@ -21,7 +21,7 @@ y = movies[['IMDB_Rating']]}
 
 \setupcode{import pandas as pd}
 
-\code{solution = np.linalg.solve(\designVariable.T@\designVariable, \designVariable.T@y # solve linear regression here
+\code{solution = np.linalg.solve(\designVariable.T@\designVariable, \designVariable.T@y) # solve linear regression here
 # Place the solution in the data frame
 w = pd.DataFrame(data=solution, 
                  index = \designVariable.columns,  # columns of \designVariable become rows of w
