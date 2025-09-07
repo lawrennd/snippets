@@ -68,7 +68,7 @@ Use this to compute the quadratic fit for the model, again plotting the result t
 \setupplotcode{import pods
 import mlai}
 
-\plotcode{max_basis = 26
+\plotcode{max_basis = 28
 data_limits = (1888, 2020)
 basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)
 num_data = x.shape[0]}
@@ -116,9 +116,11 @@ num_data = x.shape[0]}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number024}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number025}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number026}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number027}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number028}{\width}}{\animationName}
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number026}{80%}}{Polynomial fit to olympic data with 26 basis functions.}{olympic-lm-polynomial-num-basis-26}}
+\notes{\figure{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number028}{80%}}{Polynomial fit to olympic data with 28 basis functions.}{olympic-lm-polynomial-num-basis-28}}
 
 \endif
