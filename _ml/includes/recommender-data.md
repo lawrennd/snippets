@@ -75,7 +75,7 @@ def responses(topic=topic, sep="|||", since="all", n=None):
             e = json.loads(line)
             if e.get("event") != "message": continue
             p = (e.get("message") or "").split(sep)
-            rows.append({"name": p[0], "film": p[1], "rating": pd.to_numeric(p[2], errors="coerce")} if len(p)==3 else {"raw": e.get("message")})
+            rows.append({"user": p[0], "film": p[1], "rating": pd.to_numeric(p[2], errors="coerce")} if len(p)==3 else {"raw": e.get("message")})
             if n and len(rows) >= n: break
     return pd.DataFrame(rows)
 
