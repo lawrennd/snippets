@@ -6,6 +6,7 @@
 \subsection{Olympic 100m Data}
 
 \columns{
+
 *  Gold medal times for Olympic 100 m runners since 1896.
 * One of a number of Olypmic data sets collected by @Rogers:book11.}{
 \includejpg{\diagramsDir/ml/100m_final_start}{100%}\smalltext{Start of the 2012 London 100m race. *Image from Wikimedia Commons* <http://bit.ly/191adDC>}}{70%}{30%}
