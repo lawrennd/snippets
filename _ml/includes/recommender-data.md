@@ -2,103 +2,172 @@
 \define{recommenderData}
 \editme
 
-\subsection{Obtaining the Data}
+\subsection{Collecting the Data}
 
-\notes{THIS IS THE OLD APPROACH FROM THE PRACTICAL I RAN IN SHEFFIELD. AIM WAS TO GET THE STUDENTS TO RATE MOVIES THEMSELVES. THE CODE STOPPED WORKING DUE TO CHANGES IN THE GOOGLE API.}
+\notes{This functionality involves some prewritten code which connects to a central write server, where you can rate movies that you’ve seen. }
 
-\notes{We are using a functionality of the Open Data Science software
-library to obtain the data. This functionality involves some
-prewritten code which distributes to each of you a google spreadsheet
-where you can rate movies that you've seen. For completeness the code
-follows. Try and read and understand the code, but don't run it! It
-has already been run centrally by me.}
+\notes{Once you have placed your ratings, we can download the data to a file. We will build an algorithm on these ratings and use them to make predictions for the rest of the class. Firstly, here’s the code for which movies we will be rating. Remember to change your name.}
 
-```python
-import pods
-import pandas as pd
-import numpy as np
-user_data = pd.DataFrame(index=movies.index, columns=['title', 'year', 'rating', 'prediction'])
-user_data['title']=movies.Film
-user_data['year']=movies.Year
-
-accumulator=pods.lab.distributor(spreadsheet_title='COM4509/6509 Movie Ratings:', user_sep='\t')
-# function to apply to data before giving it to user 
-# Select 50 movies at random and order them according to year.
-max_movies = 50
-function = lambda x: x.loc[np.random.permutation(x.index)[:max_movies]].sort(columns='year')
-accumulator.write(data_frame=user_data, comment='Film Ratings', 
-                  function=function)
-accumulator.write_comment('Rate Movie Here (score 1-5)', row=1, column=4)
-accumulator.share(share_type='writer', send_notifications=True)
-```
-
-\notes{In your Google drive account you should be able to find a
-spreadsheet called 'COM4509/6509 Movie Ratings: Your Name'. In the
-spreadsheet You should find a number of movies listed according to
-year. In the column titled 'rating' please place your rating using a
-score of 1-5 for *any* of the movies you've seen from the list.}
-
-\notes{Once you have placed your ratings we can download the data from your
-spreadsheets to a central file where the ratings of the whole class
-can be stored. We will build an algorithm on these ratings and use
-them to make predictions for the rest of the class. Firstly, here's
-the code for reading the ratings from each of the spreadsheets.}
-
-```python
-import numpy as np
-import pandas as pd
+\code{import pandas as pd
 import os
+movies_list = [
+    # Kenyan films
+    "Nairobi Half Life",
+    "Rafiki",
+    "Sincerely Daisy",
+    "Supa Modo",
+    "Kati Kati",
+    "Mvera",
+    "NAWI: Dear Future Me",
+    "BOBO",
+    "The First Grader",
+    "Mother Mother",
+    "The Wall Street Boy",
+    "40 Sticks",
+    "TeraStorm",
 
-accumulator = pods.lab.distributor(user_sep='\t')
-data = accumulator.read(usecols=['rating'], dtype={'index':int, 'rating':np.float64}, header=2)
+    # Global all-time blockbuster hits
+    "Avatar",
+    "Avengers: Endgame",
+    "Titanic",
+    "The Lion King",
+    "Frozen",
+    "Spider-Man: No Way Home",
+    "Black Panther",
+    "Top Gun: Maverick",
+    "The Dark Knight",
+    "Inception",
+    "Jurassic World",
+    "Minions: The Rise of Gru",
+    "The Fate of the Furious",
+    "Doctor Strange in the Multiverse of Madness",
+    "Furious 7",
+    "Star Wars: The Force Awakens",
+    "The Avengers",
+    "Beauty and the Beast",
+    "Harry Potter and the Deathly Hallows – Part 2",
+    "Joker",
+    "Aladdin",
+    "Aquaman"
+]
 
-for user in data:
-    if data[user].rating.count()>0: # only add user if they rated something
-        # add a new field to movies with that user's ratings.
-        movies[user] = data[user]['rating']
+name = 'todo' # TODO: your name here - this will be somewhat public so you might not want to use full real names, nickname is fine
+assert name!='todo'}
 
-# Store the csv on disk where it will be shared through dropbox.
-movies.to_csv(os.path.join(pods.lab.class_dir,'movies.csv'), skiprows=1, index_label='ResponseID')
-```
+\notes{The below code starts an interactive Python Widget, which will submit your responses. There's also code for reading the ratings after they've been submitted.}
 
-Now we will convert our data structure into a form that is appropriate
-for processing. We will convert the `movies` object into a data base
-which contains the movie, the user and the score using the following
-command.
+\code{import random, requests, ipywidgets as W
+from ipywidgets import Widget
+from IPython.display import display, clear_output
+import json
 
-\setupcode{import pandas as pd
-import os}
+# Config
+topic, target = "mlfc_movie_ratings", 25
+url = f"https://ntfy.sh/{topic}"
+cache = "rated_movies_cache.txt"
 
-\notes{I'VE FIXED IT UP TO LOAD IN THIS DATA FROM A GOOGLE FORM THAT I USED tO GET MOVIE RATINGS FROM THE PUBLIC FOR A SCIENCE TALK I DID}
+def responses(topic=topic, sep="|||", since="all", n=None):
+    url = f"https://ntfy.sh/{topic}/json?poll=1&since={since}"
+    rows = []
+    with requests.get(url, stream=True) as r:
+        for line in r.iter_lines():
+            if not line: continue
+            e = json.loads(line)
+            if e.get("event") != "message": continue
+            p = (e.get("message") or "").split(sep)
+            rows.append({"name": p[0], "movie": p[1], "rating": pd.to_numeric(p[2], errors="coerce")} if len(p)==3 else {"raw": e.get("message")})
+            if n and len(rows) >= n: break
+    return pd.DataFrame(rows)
 
-\code{# uncomment the line below if you are doing this task by self study.
-pods.access.download_url('https://raw.githubusercontent.com/lawrennd/datasets_mirror/main/movie_recommender/movies.csv', store_directory = 'class_movie', save_name='movies.csv')
-#pods.access.download_url('https://www.dropbox.com/s/s6gqvp9b383b59y/movies.csv?dl=0&raw=1', store_directory = 'class_movie', save_name='movies.csv')
-raw_movies = pd.read_csv(os.path.join('class_movie', 'movies.csv'),encoding='latin-1', header=1)
-# Extract user names from 15th column (0-indexed as 14)
-usernames = raw_movies.iloc[:, 14]  
-# Extract movie ratings from 16th to fourth last column (indexed 15:-4)
-movie_data = raw_movies.iloc[:, 15:-4]  # columns 16:-4 in 1-based = 15:-4 in 0-based
-    
-# Get movie names from the column headers
-movie_names = movie_data.columns
-    
-# Create the tidied up dataframe structure
-# We need to transpose and set up proper index/columns
-movies = movie_data.T  # Transpose so movies become rows
-movies.columns = usernames  # Set usernames as column headers
-movies.index.name = 'film'  # Name the index
-movies.columns.name = 'user'  # Name the columns
-}
+def start_movie_rater(movies_list=movies_list, topic=topic, name=name, target=25):
+    import random, requests
+    import ipywidgets as W
+    from IPython.display import display
 
-\writeassignment{The movies data is now in a data frame which contains
+    url = f"https://ntfy.sh/{topic}"
+    movies = list(dict.fromkeys(map(str, movies_list)))
+    seen = set()  # in-memory only
+    rated, cur, running = 0, None, True
+
+    def rem(): return [m for m in movies if m not in seen]
+    def mark_seen(m):
+        if m not in seen:
+            seen.add(m)
+    def send(m, r):
+        try:
+            requests.post(url, data=f"{name}|||{m}|||{r}".encode("utf-8"), timeout=3)
+        except Exception:
+            pass
+
+    status = W.HTML()
+    btns = [W.Button(description=str(i)) for i in range(1, 11)]
+    skip = W.Button(description="Skip", button_style="warning")
+    finish = W.Button(description="Finish", button_style="success")
+    box = W.VBox([status, W.HBox(btns + [skip, finish])])
+
+    def end(msg):
+        nonlocal running
+        running = False
+        for w in btns + [skip, finish]:
+            w.disabled = True
+        status.value = msg
+
+    def pick_next():
+        nonlocal cur
+        r = rem()
+        cur = random.choice(r) if r else None
+        status.value = f"<b>Rate ({rated}/{target}):</b> {cur}" if cur else ""
+
+    def on_rate(b):
+        nonlocal rated
+        if not running or cur is None:
+            return
+        send(cur, int(b.description))
+        mark_seen(cur)
+        rated += 1
+        if rated >= target:
+            end(f"Done. Rated {rated}.")
+            return
+        pick_next()
+        if cur is None:
+            end(f"No unseen movies left. Rated {rated}.")
+
+    def on_skip(_):
+        if not running or cur is None:
+            return
+        mark_seen(cur)
+        pick_next()
+        if cur is None:
+            end(f"No unseen movies left. Rated {rated}.")
+
+    def on_finish(_):
+        end(f"Finished. Rated {rated}.")
+
+    for b in btns:
+        b.on_click(on_rate)
+    skip.on_click(on_skip)
+    finish.on_click(on_finish)
+
+    display(box)
+    pick_next()
+    if cur is None:
+        end("No unseen movies to rate.")}
+
+\code{# run this cell to provide your ratings
+Widget.close_all()
+start_movie_rater(target=5)}
+
+\code{# run this cell to collect everyone's responses
+responses()}
+
+\writeassignment{The movies data is now in a data frame, which contains
 one column for each user rating the movie. There are some entries that
 contain `NaN`. What does the `NaN` mean in this context?}{}{5}
 
 \subsection{Processing the Data}
 
-We will now prepare the data set for processing. To do this we are
-going to conver the data into a new format using the `melt` command.
+We will now prepare the data set for processing. To do this, we are
+going to convert the data into a new format using the `melt` command.
 
 \code{Y = movies.reset_index().melt(
         id_vars=['film'],           # Keep the movie names as identifier
