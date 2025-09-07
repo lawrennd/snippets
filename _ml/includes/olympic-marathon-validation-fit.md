@@ -89,7 +89,7 @@ num_data = x.shape[0]}
 \slides{
 \define{\width}{80%}
 \define{animationName}{olympic_LM_polynomial_number}
-\startanimation{\animationName}{1}{26}
+\startanimation{\animationName}{1}{28}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number001}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number002}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/olympic_LM_polynomial_number003}{\width}}{\animationName}
