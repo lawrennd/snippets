@@ -159,7 +159,7 @@ mlai.write_figure(filename='olympic-marathon-polynomial-17.svg',
 
 \slides{$$\mappingFunction(x, \mappingVector) = \mappingScalar_0 + \mappingScalar_1 \inputScalar + \mappingScalar_2 \inputScalar^2 + \dots + \mappingScalar_{28} \inputScalar^{28}$$}
 
-\notes{Now we'll try a 26th degree polynomial fit to the data.}
+\notes{Now we'll try a 28th degree polynomial fit to the data.}
 
 \code{poly_args = {'num_basis':29, # basis up to x^28
              'data_limits':xlim}
