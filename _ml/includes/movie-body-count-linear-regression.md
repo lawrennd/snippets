@@ -20,7 +20,10 @@ y = movies[['IMDB_Rating']]}
 \notes{Now let's perform a linear regression. But this time, we will create a pandas data frame for the result so we can store it in a form that we can visualise easily.}
 
 \setupcode{import pandas as pd}
-\code{w = pd.DataFrame(data=np.linalg.solve(\designVariable.T@\designVariable, \designVariable.T@y),  # solve linear regression here
+
+\code{solution = np.linalg.solve(\designVariable.T@\designVariable, \designVariable.T@y # solve linear regression here
+# Place the solution in the data frame
+w = pd.DataFrame(data=solution, 
                  index = \designVariable.columns,  # columns of \designVariable become rows of w
                  columns=['regression_coefficient']) # the column of \designVariable is the value of regression coefficient}
 
