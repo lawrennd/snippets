@@ -9,16 +9,16 @@
 
 \notes{To find the minimum, we look for the point in the curve where the gradient is zero. This can be found by taking the gradient of $\errorFunction(m,c)$ with respect to the parameter.}
 
-\newslide{Learning is Optimization}
+\newslide{Learning is Optimisation}
 \slides{
 
-* Learning is minimization of the cost function.
+* Learning is minimisation of the cost function.
 * At the minima the gradient is zero.
-* Coordinate ascent, find gradient in each coordinate and set to zero.
+* Coordinate descent, find gradient in each coordinate and set to zero.
   $$\frac{\text{d}\errorFunction(c)}{\text{d}c} = -2\sum_{i=1}^\numData \left(\dataScalar_i- m \inputScalar_i - c \right)$$
   $$0 = -2\sum_{i=1}^\numData\left(\dataScalar_i- m\inputScalar_i - c \right)$$}
 
-\newslide{Learning is Optimization}
+\newslide{Learning is Optimisation}
 \slides{
 
 * Fixed point equations
@@ -51,17 +51,17 @@ c = (y - m*x).mean()
 print(c)}
 
 
-\newslide{Learning is Optimization}
+\newslide{Learning is Optimisation}
 
 \slides{
-* Learning is minimization of the cost function.
+* Learning is minimisation of the cost function.
 * At the minima the gradient is zero.
-* Coordinate ascent, find gradient in each coordinate and set to zero.
+* Coordinate descent, find gradient in each coordinate and set to zero.
   $$\frac{\text{d}\errorFunction(m)}{\text{d}m} = -2\sum_{i=1}^\numData \inputScalar_i\left(\dataScalar_i- m \inputScalar_i - c \right)$$
   $$0 = -2\sum_{i=1}^\numData \inputScalar_i \left(\dataScalar_i-m \inputScalar_i - c \right)$$
 }
 
-\newslide{Learning is Optimization}
+\newslide{Learning is Optimisation}
 \slides{
 * Fixed point equations
   $$0 = -2\sum_{i=1}^\numData \inputScalar_i\dataScalar_i+2\sum_{i=1}^\numData m \inputScalar_i^2+2\sum_{i=1}^\numData c\inputScalar_i$$
@@ -152,6 +152,64 @@ plt.plot(x_test, f_test, 'b-')
 plt.plot(x, y, 'rx')}
 
 \notes{Clearly we need more iterations than 10! In the next question you will add more iterations and report on the error as optimisation proceeds.}
+
+\subsection{Gradient Descent Algorithm}
+
+\notes{Let's run the complete gradient descent algorithm and visualize how the parameters evolve over multiple iterations. The animation will show the path taken through parameter space as the algorithm navigates toward the minimum of the error surface.
+
+Each frame shows:
+
+- *Current position*: The green star indicating our current parameter estimates
+- *Error contours*: The background showing the error landscape
+- *Path*: The trajectory we've taken from the starting point to the current position
+
+Watch how the algorithm follows a curved path that eventually spiral into the minimum, demonstrating the iterative nature of gradient-based optimization.}
+
+\setupplotcode{import mlai.plot as plot}
+\plot{num_plots = plot.regression_contour_coordinate_descent(x, y, diagrams='\writeDiagramsDir/ml')}
+
+\setupdisplaycode{import notutils as nu
+from ipywidgets import IntSlider}
+
+\displaycode{nu.display_plots('regression_contour_coordinate_descent{num:0>3}.svg', directory='\writeDiagramsDir/ml', num=IntSlider(0, 0, num_plots, 1))}
+
+\slides{
+\define{width}{60%}
+\startanimation{regression_contour_coordinate_descent}{1}{28}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent000}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent001}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent002}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent003}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent004}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent005}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent006}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent007}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent008}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent009}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent010}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent011}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent012}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent013}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent014}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent015}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent016}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent017}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent018}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent019}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent020}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent021}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent022}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent023}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent024}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent025}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent026}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent027}{\width}}{regression_contour_coordinate_descent}
+\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent028}{\width}}{regression_contour_coordinate_descent}
+\endanimation
+}
+
+\notes{\figure{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent028}{60%}}{Coordinate descent for linear regression showing the path after 14 iterations between $c$ and $m$.}{regression-contour-coordinate-descent-28}}
+
 
 \codeassignment{There is a problem here, we seem to need many interations to get to a good solution. Let's explore what's going on. Write code which alternates between updates of `c` and `m`. Include the following features in your code.
 

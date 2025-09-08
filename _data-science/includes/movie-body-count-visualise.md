@@ -5,8 +5,8 @@
 
 \subsection{Plotting the Data}
 
-\code{print(data['Year'])
-#print(data['Body_Count'])}
+\code{print(movies['Year'])
+#print(movies['Body_Count'])}
 
 \notes{This shows the number of deaths per film across the years. We
 can plot the data as follows.}
@@ -15,7 +15,7 @@ can plot the data as follows.}
 %matplotlib inline 
 import matplotlib.pyplot as plt # this imports the plotting library in python}
 
-\code{plt.plot(data['Year'], data['Body_Count'], 'rx')}
+\code{plt.plot(movies['Year'], movies['Body_Count'], 'rx')}
 
 \notes{You may be curious what the arguments we give to `plt.plot` are
 for, now is the perfect time to look at the documentation}
@@ -26,9 +26,9 @@ for, now is the perfect time to look at the documentation}
 prevent us seeing the detail of the main body of films. First lets
 identify the films with the most deaths.}
 
-\code{data[data['Body_Count']>200]}
+\code{movies[movies['Body_Count']>200]}
 
-\notes{Here we are using the command `data['Kill_Count']>200` to index
+\notes{Here we are using the command `movies['Kill_Count']>200` to index
 the films in the pandas data frame which have over 200 deaths. To sort
 them in order we can also use the `sort` command. The result of this
 command on its own is a data series of `True` and `False`
@@ -38,7 +38,7 @@ series is `True`. We can also sort the result. To sort the result by
 the values in the `Kill_Count` column in *descending* order we use the
 following command.}
 
-\code{data[data['Body_Count']>200].sort_values(by='Body_Count', ascending=False)}
+\code{movies[movies['Body_Count']>200].sort_values(by='Body_Count', ascending=False)}
 
 \notes{We now see that the 'Lord of the Rings' is a large outlier with
 a very large number of kills. We can try and determine how much of an
@@ -46,7 +46,7 @@ outlier by histograming the data.}
 
 \notes{\subsection{Plotting the Data}}
 
-\code{data['Body_Count'].hist(bins=20) # histogram the data with 20 bins.
+\code{movies['Body_Count'].hist(bins=20) # histogram the data with 20 bins.
 plt.title('Histogram of Film Kill Count')}
 
 \writeassignment{Read on the internet about the following python
@@ -56,7 +56,7 @@ other libraries?}{10}
 
 \notes{We could try and remove these outliers, but another approach would be plot the logarithm of the counts against the year.}
 
-\code{plt.plot(data['Year'], data['Body_Count'], 'rx')
+\code{plt.plot(movies['Year'], movies['Body_Count'], 'rx')
 ax = plt.gca() # obtain a handle to the current axis
 ax.set_yscale('log') # use a logarithmic death scale
 # give the plot some titles and labels

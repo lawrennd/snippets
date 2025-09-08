@@ -163,8 +163,9 @@ Y}
 
 \subsection{Processing the Data}
 
-\codeassignment{What is a pivot table? What does the `pandas` command `pd.pivot_table` do? Subsequently, what does `pd.melt` do? 
+\writeassignment{What is a pivot table? What does the `pandas` command `pd.pivot_table` do? Subsequently, what does `pd.melt` do?}{5}
 
-Convert the above DataFrame `Y` to a pivot table, and then back again to its current form.}{}{10}
+
+\codeassignment{Convert the above DataFrame `Y` to a pivot table, and then back again to its current form.}{}{10}
 
 \endif
