@@ -15,7 +15,7 @@
 \smalltext{Image from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Eliud_Kipchoge_in_Berlin_-_2015_(cropped).jpg)}
 }{70%}{30%}
 
-\notes{The first thing we will do is load a standard data set for regression modelling. The data consists of the pace of Olympic Gold Medal Marathon winners for the Olympics from 1896 to present. Let's load in the data and plot.}
+\notes{The Olympic Marathon data is a standard dataset for regression modelling. The data consists of the pace of Olympic Gold Medal Marathon winners for the Olympics from 1896 to present. Let's load in the data and plot.}
 
 \include{_data-science/includes/pods-install.md}
 
