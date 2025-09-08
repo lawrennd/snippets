@@ -13,9 +13,9 @@
 
 \subsection{Maximum Likelihood: Iterative Solution}
 
-\notes{Now we will take the maximum likelihood approach we derived in the lecture to fit a line, $\dataScalar_i=m\inputScalar_i + c$, to the data you've plotted. We are trying to minimize the error function:}
+\notes{Now we will take the maximum likelihood approach we derived in the lecture to fit a line, $\dataScalar_i=m\inputScalar_i + c$, to the data you've plotted. We are trying to minimize the error function,}
 $$
-\errorFunction(m, c) =  \sum_{i=1}^\numData(\dataScalar_i-m\inputScalar_i-c)^2
+\errorFunction(m, c) =  \sum_{i=1}^\numData(\dataScalar_i-m\inputScalar_i-c)^2\notes{,}
 $$
 \notes{with respect to $m$, $c$ and $\sigma^2$. We can start with an initial guess for $m$,}
 

@@ -89,7 +89,7 @@ which is recognised as the sum of squares error for a linear regression.}
 $$
 \sum_{i=1}^q u_i v_i
 $$
-in a more compact notation, $\mathbf{u}\cdot\mathbf{v}.$}
+in vector notation, $\mathbf{u}^\top\mathbf{v}.$}
 
 \notes{Here we are using bold face to represent vectors, and we assume that the individual elements of a vector $\mathbf{z}$ are given as a series of scalars
 $$
