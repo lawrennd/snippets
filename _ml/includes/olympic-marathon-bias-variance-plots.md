@@ -50,19 +50,19 @@ import mlai}
     
     # Use a high-degree polynomial as approximation to true function
     poly_args_true = {'num_basis': max_degree + 5, 'data_limits': xlim}
-    Phi_true = polynomial(x, **poly_args_true)
+    Phi_true = mlai.polynomial(x, **poly_args_true)
     w_true = basis_fit(Phi_true, y)
-    Phi_pred_true = polynomial(x_pred, **poly_args_true)
+    Phi_pred_true = mlai.polynomial(x_pred, **poly_args_true)
     f_true = Phi_pred_true @ w_true
     
     for degree in degrees:
         # Bootstrap predictions for this degree
         poly_args = {'num_basis': degree + 1, 'data_limits': xlim}
-        Phi = polynomial(x, **poly_args)
+        Phi = mlai.polynomial(x, **poly_args)
         W_hat = bootstrap_fit(Phi, y, num_bootstraps)
         
         # Predictions on test points
-        Phi_pred = polynomial(x_pred, **poly_args)
+        Phi_pred = mlai.polynomial(x_pred, **poly_args)
         f_pred_bootstrap = Phi_pred @ W_hat
         
         # Compute bias and variance
@@ -127,10 +127,10 @@ The optimal polynomial degree (around 3-4 in this case) minimizes the total gene
     :param num_bootstraps: number of bootstrap samples
     """
     poly_args = {'num_basis': degree + 1, 'data_limits': xlim}
-    Phi = polynomial(x, **poly_args)
+    Phi = mlai.polynomial(x, **poly_args)
     W_hat = bootstrap_fit(Phi, y, num_bootstraps)
     
-    Phi_pred = polynomial(x_pred, **poly_args)
+    Phi_pred = mlai.polynomial(x_pred, **poly_args)
     f_pred_bootstrap = Phi_pred @ W_hat
     
     # Compute confidence intervals
