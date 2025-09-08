@@ -75,7 +75,7 @@ $$
 \slides{
 * Normally work with the log likelihood:
 \begin{aligned}
-L(m,c,\dataStd^{2})= & -\frac{\numData}{2}\log 2\pi -\frac{\numData}{2}\log \dataStd^2 & -\sum_{i=1}^{\numData}\frac{\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}}{2\dataStd^2}.
+L(m,c,\dataStd^{2})= & -\frac{\numData}{2}\log 2\pi -\frac{\numData}{2}\log \dataStd^2 \\& -\sum_{i=1}^{\numData}\frac{\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}}{2\dataStd^2}.
 \end{aligned}
 }
 
@@ -100,7 +100,7 @@ L(m,c,\dataStd^{2})= & -\frac{\numData}{2}\log 2\pi -\frac{\numData}{2}\log \dat
 \slides{
 * Negative log likelihood leads to an error function 
   \begin{aligned}
-  \errorFunction(m,c,\dataStd^{2})= & \frac{\numData}{2}\log \dataStd^2 & +\frac{1}{2\dataStd^2}\sum _{i=1}^{\numData}\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}.$$
+  \errorFunction(m,c,\dataStd^{2})= & \frac{\numData}{2}\log \dataStd^2 \\& +\frac{1}{2\dataStd^2}\sum _{i=1}^{\numData}\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}.\end{aligned}
 * Learning by minimising error function.
 }
 

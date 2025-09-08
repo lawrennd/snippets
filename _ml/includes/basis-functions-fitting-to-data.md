@@ -6,9 +6,10 @@
 
 \subsection{Fitting to Data}
 
-Now we are going to consider how these basis functions can be adjusted to fit to
+\slides{Notebook example}
+\notes{Now we are going to consider how these basis functions can be adjusted to fit to
 a particular data set. We will return to the olympic marathon data from last
-time. First we will scale the output of the data to be zero mean and variance 1.
+time. First we will scale the output of the data to be zero mean and variance 1.}
 
 \include{_datasets/includes/olympic-marathon-data.md}
 

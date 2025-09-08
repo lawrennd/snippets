@@ -19,7 +19,7 @@ Leading to a log likelihood for the data set of
 
 . . . 
 
-\begin{aligned}L(\mappingVector,\dataStd^2)= & -\frac{\numData}{2}\log \dataStd^2-\frac{\numData}{2}\log 2\pi & -\frac{\sum_{i=1}^{\numData}\left(\dataScalar_i-\mappingVector^{\top}\inputVector_i\right)^{2}}{2\dataStd^2}.\end{aligned}
+\begin{aligned}L(\mappingVector,\dataStd^2)= & -\frac{\numData}{2}\log \dataStd^2-\frac{\numData}{2}\log 2\pi \\ & -\frac{\sum_{i=1}^{\numData}\left(\dataScalar_i-\mappingVector^{\top}\inputVector_i\right)^{2}}{2\dataStd^2}.\end{aligned}
 }
 
 \newslide{Error Function}
