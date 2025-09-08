@@ -7,19 +7,9 @@
 
 \subsection{Polynomial Fits to Olympic Data}
 
-\setupcode{import numpy as np
-import pods}
+\setupcode{import mlai}
 
-\code{basis = mlai.polynomial
-
-data = pods.datasets.olympic_marathon_men()
-
-x = data['X']
-y = data['Y']
-
-xlim = [1888, 2032]
-
-basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
+\code{basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -36,20 +26,6 @@ import mlai}
 \displaycode{nu.display_plots('olympic_LM_polynomial_number{num_basis:0>3}.svg',
                             directory='\writeDiagramsDir/ml', 
                             num_basis=IntSlider(1,1,29,1))}
-
-
-\setupcode{import mlai}
-
-
-\code{x = data['X']
-y = data['Y']
-
-xlim = [1892, 2020]
-max_basis = 30
-
-ll = np.array([np.nan]*(max_basis))
-sum_squares = np.array([np.nan]*(max_basis))
-basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 
                             
 
