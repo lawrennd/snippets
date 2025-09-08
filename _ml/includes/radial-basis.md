@@ -31,6 +31,8 @@ plot.basis(mlai.radial, x_min=-2, x_max=2,
            fig=f, ax=ax, loc=loc, text=text,
            diagrams='\writeDiagramsDir/ml')}
 
+\newslide{Radial Basis Functions}
+
 \define{\basisfunction}{radial_basis}
 \slides{
 \define{\width}{80%}

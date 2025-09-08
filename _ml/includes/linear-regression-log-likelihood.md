@@ -74,9 +74,9 @@ $$
 \newslide{Log Likelihood Function}
 \slides{
 * Normally work with the log likelihood:
-$$
-L(m,c,\dataStd^{2})=-\frac{\numData}{2}\log 2\pi -\frac{\numData}{2}\log \dataStd^2 -\sum_{i=1}^{\numData}\frac{\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}}{2\dataStd^2}.
-$$
+\begin{aligned}
+L(m,c,\dataStd^{2})= & -\frac{\numData}{2}\log 2\pi -\frac{\numData}{2}\log \dataStd^2 & -\sum_{i=1}^{\numData}\frac{\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}}{2\dataStd^2}.
+\end{aligned}
 }
 
 \newslide{Consistency of Maximum Likelihood}
@@ -87,19 +87,21 @@ $$
 * Mainstay of classical statistics [@Wasserman:all03].
 }
 
-\newslide{Probabilistic Interpretation of the Error Function}
+\newslide{Probabilistic Interpretation of Error Function}
 \slides{
 * Probabilistic Interpretation for Error Function is Negative Log Likelihood.
-* *Minimizing* error function is equivalent to *maximizing* log likelihood.
-* Maximizing *log likelihood* is equivalent to maximizing the *likelihood* because $\log$ is monotonic.
+* *Minimizing* error function is equivalent to *maximizing* log likelihood.}
+\newslide{Probabilistic Interpretation of Error Function}
+\slides{* Maximizing *log likelihood* is equivalent to maximizing the *likelihood* because $\log$ is monotonic.
 * Probabilistic interpretation: Minimizing error function is equivalent to maximum likelihood with respect to parameters.
 }
 
 \newslide{Error Function}
 \slides{
-* Negative log likelihood is the error function leading to an error function 
-  $$\errorFunction(m,c,\dataStd^{2})=\frac{\numData}{2}\log \dataStd^2+\frac{1}{2\dataStd^2}\sum _{i=1}^{\numData}\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}.$$
-* Learning proceeds by minimizing this error function for the data set provided.
+* Negative log likelihood leads to an error function 
+  \begin{aligned}
+  \errorFunction(m,c,\dataStd^{2})= & \frac{\numData}{2}\log \dataStd^2 & +\frac{1}{2\dataStd^2}\sum _{i=1}^{\numData}\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}.$$
+* Learning by minimising error function.
 }
 
 \endif

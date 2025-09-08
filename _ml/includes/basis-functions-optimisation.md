@@ -6,15 +6,13 @@
 
 \newslide{Expand the Brackets}
 \notes{To minimize this objective, we first expand the brackets as follows,}
-$$
-\begin{align}
-  \errorFunction(\mappingVector,\dataStd^2) = &\frac{\numData}{2}\log \dataStd^2 + \frac{1}{2\dataStd^2}\sum_{i=1}^{\numData}\dataScalar_i^{2}-\frac{1}{\dataStd^2}\sum_{i=1}^{\numData}\dataScalar_i\mappingVector^{\top}\basisVector_i\\ &+\frac{1}{2\dataStd^2}\sum_{i=1}^{\numData}\mappingVector^{\top}\basisVector_i\basisVector_i^{\top}\mappingVector+\text{const}.
-\end{align}
-$$
+\begin{aligned}
+  \errorFunction(\mappingVector,\dataStd^2) = &\frac{\numData}{2}\log \dataStd^2 + \frac{1}{2\dataStd^2}\sum_{i=1}^{\numData}\dataScalar_i^{2} \\ & -\frac{1}{\dataStd^2}\sum_{i=1}^{\numData}\dataScalar_i\mappingVector^{\top}\basisVector_i\\ &+\frac{1}{2\dataStd^2}\sum_{i=1}^{\numData}\mappingVector^{\top}\basisVector_i\basisVector_i^{\top}\mappingVector+\text{const}.
+\end{aligned}
 
 \newslide{Expand the Brackets}
 \notes{Now we pull out the vectors, $\mappingVector$, to highlight that what we have is a multivariate quadratic form in $\mappingVector$.}
-$$\begin{align} \errorFunction(\mappingVector, \dataStd^2) = & \frac{\numData}{2}\log \dataStd^2 + \frac{1}{2\dataStd^2}\sum_{i=1}^{\numData}\dataScalar_i^{2}-\frac{1}{\dataStd^2} \mappingVector^\top\sum_{i=1}^{\numData}\basisVector_i \dataScalar_i\\ & +\frac{1}{2\dataStd^2}\mappingVector^{\top}\left[\sum_{i=1}^{\numData}\basisVector_i\basisVector_i^{\top}\right]\mappingVector+\text{const}.\end{align}$$
+\begin{aligned} \errorFunction(\mappingVector, \dataStd^2) = & \frac{\numData}{2}\log \dataStd^2 + \frac{1}{2\dataStd^2}\sum_{i=1}^{\numData}\dataScalar_i^{2} \\ & -\frac{1}{\dataStd^2} \mappingVector^\top\sum_{i=1}^{\numData}\basisVector_i \dataScalar_i\\ & +\frac{1}{2\dataStd^2}\mappingVector^{\top}\left[\sum_{i=1}^{\numData}\basisVector_i\basisVector_i^{\top}\right]\mappingVector+\text{const}.\end{aligned}
 
 \subsection{Design Matrices}
 

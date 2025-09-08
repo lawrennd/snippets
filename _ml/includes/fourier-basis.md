@@ -4,7 +4,7 @@
 
 \subsection{Fourier Basis}
 
-\slides{* }
+\slides{* In signal processing we often use the Fourier basis}
 \notes{[Joseph Fourier](https://en.wikipedia.org/wiki/Joseph_Fourier) suggested that functions could be converted to a sum of sines and cosines. A Fourier basis is a linear weighted sum of these functions.}
 $$
 \mappingFunction(\inputScalar) = \mappingScalar_0  + \mappingScalar_1 \sin(\inputScalar) + \mappingScalar_2 \cos(\inputScalar) + \mappingScalar_3 \sin(2\inputScalar) + \mappingScalar_4 \cos(2\inputScalar)

@@ -8,7 +8,10 @@
 * Ignoring terms which don’t depend on $m$ and $c$ gives
   $$\errorFunction(m, c) \propto \sum_{i=1}^\numData (\dataScalar_i - \mappingFunction(\inputScalar_i))^2$$
   where $\mappingFunction(\inputScalar_i) = m\inputScalar_i + c$.
-* This is known as the *sum of squares* error function.
+}
+\newslide{Sum of Squares Error}
+\slides{
+* This is recognised as the *sum of squares* error function.
 * Commonly used and is closely associated with the Gaussian likelihood.
 }
 \newslide{Reminder}
@@ -29,12 +32,19 @@
     * This is known as the sum of squares error.
 }
 \subsection{Legendre}
+\slides{
+* Sum of squares error was first **published** by Legendre in 1805
+* But Laplace had priority - he used it to recover the lost planet Ceres
+* This led to a priority dispute between Legendre and Gauss
+}
 
-\notes{Minimizing the sum of squares error was first proposed by [Legendre](http://en.wikipedia.org/wiki/Adrien-Marie_Legendre) in 1805 [@Legendre:nouvelles05]. His book, which was on the orbit of comets, is available on google books, we can take a look at the relevant page by calling the code below.
+\notes{Minimising the sum of squares error was first proposed by [Legendre](http://en.wikipedia.org/wiki/Adrien-Marie_Legendre) in 1805 [@Legendre:nouvelles05]. His book, which was on the orbit of comets, is available on Google books, we can take a look at the relevant page by calling the code below.}
+
+\newslide{Legendre}
 
 \figure{\includegooglebook{spcAAAAAMAAJ}{PA72}}{Legendre's book was on the determination of orbits of comets. This page describes the formulation of least squares}{legendre-least-squares}
 
-Of course, the main text is in French, but the key part we are interested in can be roughly translated as
+\notes{Of course, the main text is in French, but the key part we are interested in can be roughly translated as
 
 >In most matters where we take measures data through observation, the most accurate results they can offer, it is almost always leads to a system of equations of the form 
 >$$E = a + bx + cy + fz + etc .$$
@@ -97,5 +107,7 @@ $$
 \end{bmatrix}
 $$
 which are each indexed by their position in the vector.}
+
+\notes{Unfortunately for Legendre, Gauss had already used the least squares method in his recoveroy of Ceres. This led to a priority dispute which Gauss's unpublished use being established as predating Legendre's.}
 
 \endif

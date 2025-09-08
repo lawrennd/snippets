@@ -13,9 +13,9 @@
 \newslide{Log Likelihood for Basis Function Model}
 \slides{
 * Leading to a log likelihood for the data set of}
-  $$
-  L(\mappingVector,\dataStd^2)= -\frac{\numData}{2}\log \dataStd^2-\frac{\numData}{2}\log 2\pi -\frac{\sum_{i=1}^{\numData}\left(\dataScalar_i-\mappingVector^{\top}\basisVector_i\right)^{2}}{2\dataStd^2}.
-  $$
+  \begin{aligned}
+  L(\mappingVector,\dataStd^2)= & -\frac{\numData}{2}\log \dataStd^2-\frac{\numData}{2}\log 2\pi \\ & -\frac{\sum_{i=1}^{\numData}\left(\dataScalar_i-\mappingVector^{\top}\basisVector_i\right)^{2}}{2\dataStd^2}.
+  \end{aligned}
 \notes{to give us the likelihood for the whole data set.}
 
 \subsection{Objective Function}

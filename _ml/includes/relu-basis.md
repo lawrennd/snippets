@@ -4,7 +4,7 @@
 
 \subsection{Rectified Linear Units}
 
-\slides{* }
+\slides{* The ReLU is a basis function used in neural nets}
 \notes{The rectified linear unit is a basis function that emerged out of the deep learning community. Rectified linear units are popular in the current generation of multilayer perceptron models, or deep networks. These basis functions start flat, and then become linear functions at a certain threshold.}
 $$
 \basisFunc_j(\inputScalar) = \inputScalar\heaviside(\mappingScalarTwo_j \inputScalar + \mappingScalarTwo_0)
