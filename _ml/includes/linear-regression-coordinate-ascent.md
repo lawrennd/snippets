@@ -44,7 +44,7 @@ The fact that the stationary point is easily extracted in this manner implies th
 $$
 \frac{\text{d}^2\errorFunction(m,c)}{\text{d}c^2} = 2n.
 $$
-The second derivative is positive, which in turn implies that we have found a minimum of the function. This means that setting $c$ in this way will take us to the lowest point along that axes.}
+The second derivative is positive, which implies that we have found a minimum of the function. This means that setting $c$ using this update will take us to the lowest point along that axes.}
 
 \code{# set c to the minimum
 c = (y - m*x).mean()
