@@ -17,7 +17,7 @@ data = pods.datasets.olympic_marathon_men()
 x = data['X']
 y = data['Y']
 
-xlim = [1892, 2020]
+xlim = [1888, 2032]
 
 basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 
