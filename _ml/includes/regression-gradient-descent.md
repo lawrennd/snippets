@@ -5,11 +5,12 @@
 
 \subsection{Steepest Descent}
 
-\notes{Now that we understand the shape of the error surface from our contour plot, we need an algorithm to find the minimum. Gradient descent is one of the most fundamental optimization algorithms in machine learning.
+\notes{Now that we understand the shape of the error surface from our contour plot, we need an algorithm to find the minimum. Gradient descent is one of the most fundamental optimisation algorithms in machine learning.
 
 The intuition behind gradient descent is simple: imagine you're standing on a hillside in fog and want to reach the bottom. Even though you can't see the whole landscape, you can feel the steepest downward slope at your current position. By repeatedly taking steps in the steepest downward direction, you'll eventually reach the bottom.
 
 Mathematically, the gradient points in the direction of steepest ascent, so we move in the negative gradient direction to descend toward the minimum. The algorithm works by:
+
 1. Starting with an initial guess for our parameters
 2. Computing the gradient (slope) of the error function at that point
 3. Taking a small step in the opposite direction of the gradient
@@ -44,11 +45,10 @@ c_star = -5.0}
 \notes{To implement gradient descent, we need to compute the partial derivatives of our error function with respect to each parameter. We'll start with the gradient with respect to the intercept parameter $c$.
 
 Our error function is
-$$\errorFunction(m, c) = \sum_{i=1}^\numData (\dataScalar_i - m\inputScalar_i - c)^2$$
+$$\errorFunction(m, c) = \sum_{i=1}^\numData (\dataScalar_i - m\inputScalar_i - c)^2.$$
 
 To find how the error changes with respect to $c$, we use the chain rule. Each squared term contributes to the gradient, and since $c$ appears in every term with a coefficient of $-1$, the partial derivative becomes:
-$$\frac{\text{d}\errorFunction(m, c)}{\text{d} c} = -2\sum_{i=1}^\numData (\dataScalar_i - m\inputScalar_i - c)$$
-
+$$\frac{\text{d}\errorFunction(m, c)}{\text{d} c} = -2\sum_{i=1}^\numData (\dataScalar_i - m\inputScalar_i - c).$$
 The negative sign comes from differentiating the $-c$ term inside the squared expression, and the factor of 2 comes from differentiating the square.}
 
 \slides{* Gradient of the error wrt $c$,
@@ -118,6 +118,7 @@ print("Gradient with respect to m is ", m_grad)}
 \notes{Now that we have computed both gradients, we can update our parameter estimates. The key insight is that we don't want to simply subtract the full gradient from our current parameter values - this would likely cause us to overshoot the minimum.
 
 Instead, we take small steps in the negative gradient direction. This is crucial because:
+
 1. *Gradient changes*: As we move through parameter space, the gradient itself changes, so we need to recompute it frequently
 2. *Overshooting*: Large steps might cause us to jump over the minimum and potentially diverge
 3. *Local information*: The gradient only gives us local information about the slope, not global information about the entire surface
@@ -146,11 +147,12 @@ changes all the time.
 
 \subsection{Move in Direction of Gradient}
 
-\notes{Let's visualize what a single gradient descent step looks like on our error surface. The plot shows our current parameter position as a green star and the direction we should move (negative gradient direction) as an arrow.
+\notes{Let's visualise what a single gradient descent step looks like on our error surface. The plot shows our current parameter position as a green star and the direction we should move (negative gradient direction) as an arrow.
 
 The arrow points toward lower error values, following the steepest descent path from our current location. Notice how the arrow is perpendicular to the contour lines - this is always true for gradients, which by definition point in the direction of steepest increase (and thus their negative points in the direction of steepest decrease).
 
 The length and direction of this arrow tell us:
+
 - *Direction*: Where to move in parameter space
 - *Magnitude*: How steep the slope is (longer arrows mean steeper slopes)
 - *Step size*: We scale the arrow by the learning rate to determine our actual step size}
@@ -223,7 +225,7 @@ The beauty of this algorithm is its simplicity and general applicability - the s
 
 \subsection{Gradient Descent Algorithm}
 
-\notes{Let's run the complete gradient descent algorithm and visualize how the parameters evolve over multiple iterations. The animation will show the path taken through parameter space as the algorithm navigates toward the minimum of the error surface.
+\notes{Let's run the complete gradient descent algorithm and visualise how the parameters evolve over multiple iterations. The animation will show the path taken through parameter space as the algorithm navigates toward the minimum of the error surface.
 
 Each frame shows:
 
@@ -231,9 +233,10 @@ Each frame shows:
 - *Error contours*: The background showing the error landscape
 - *Path*: The trajectory we've taken from the starting point to the current position
 
-Watch how the algorithm follows a curved path that eventually spiral into the minimum, demonstrating the iterative nature of gradient-based optimization.}
+Watch how the algorithm follows a curved path that eventually spiral into the minimum, demonstrating the iterative nature of gradient-based optimisation.}
 
-\code{num_plots = plot.regression_contour_fit(x, y, diagrams='\writeDiagramsDir/ml')}
+\setupplotcode{import mlai.plot as plot}
+\plot{num_plots = plot.regression_contour_fit(x, y, diagrams='\writeDiagramsDir/ml')}
 
 \setupdisplaycode{import notutils as nu
 from ipywidgets import IntSlider}
@@ -275,14 +278,15 @@ from ipywidgets import IntSlider}
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/regression_contour_fit028}{60%}}{Batch gradient descent for linear regression showing the final converged solution.}{regression-contour-fit-28}
+\notes{\figure{\includediagram{\diagramsDir/ml/regression_contour_fit028}{60%}}{Batch gradient descent for linear regression showing the final converged solution.}{regression-contour-fit-28}}
 
-The final frame shows the algorithm has converged to the minimum of the error surface. Notice how:
+\notes{The final frame shows the algorithm has converged to the minimum of the error surface. Notice how:}
 
+\notes{
 - *Path shape*: The trajectory follows the natural gradient flow, starting with larger steps when gradients are large and taking smaller steps as we approach the minimum
 - *Convergence*: The final position should be very close to our true parameter values ($m_{true} = 1.4$, $c_{true} = -3.1$)
-- *Efficiency*: The algorithm finds the optimal solution automatically without us needing to specify the answer ahead of time
+- *Efficiency*: The algorithm finds the optimal solution automatically without us needing to specify the answer ahead of time}
 
-But note the limitations of gradient-based optimisation: by following local information (the gradient), we can sometimes approach the minimum only very slowly. To improve convergence we can look to more advanced methods that consider curvature or, in neural networks, methods that use a stochastic approximation to the gradient.}
+\notes{But note the limitations of gradient-based optimisation: by following local information (the gradient), we can sometimes approach the minimum only very slowly. To improve convergence we can look to more advanced methods that consider curvature or, in neural networks, methods that use a stochastic approximation to the gradient.}
 
 \endif
