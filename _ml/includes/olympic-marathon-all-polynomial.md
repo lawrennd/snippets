@@ -10,7 +10,7 @@
 \setupcode{import mlai}
 
 \code{data_limits=xlim
-basis=mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)}
+basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -27,20 +27,6 @@ import mlai}
 \displaycode{nu.display_plots('olympic_LM_polynomial_number{num_basis:0>3}.svg',
                             directory='\writeDiagramsDir/ml', 
                             num_basis=IntSlider(1,1,29,1))}
-
-
-\setupcode{import mlai}
-
-
-\code{x = data['X']
-y = data['Y']
-
-xlim = [1892, 2020]
-max_basis = 30
-
-ll = np.array([np.nan]*(max_basis))
-sum_squares = np.array([np.nan]*(max_basis))
-basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
 
                             
 

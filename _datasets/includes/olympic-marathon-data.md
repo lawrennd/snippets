@@ -35,7 +35,7 @@ import mlai.plot as plot
 import mlai}
 
 \plotcode{
-xlim = (1876,2032)
+xlim = (1876,2044)
 ylim = (2.5, 6.5)
 
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
