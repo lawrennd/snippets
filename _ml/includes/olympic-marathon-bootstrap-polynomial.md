@@ -33,13 +33,13 @@
 
 \code{poly_args = {'num_basis':2, # two basis functions (1 and x)
              'data_limits':xlim}
-Phi = polynomial(x, **poly_args)
+Phi = mlai.polynomial(x, **poly_args)
 W_hat = bootstrap_fit(Phi, y, num_bootstraps)}
 
 \notes{Now we make some predictions for the fit.}
 
 \code{x_pred = np.linspace(xlim[0], xlim[1], 400)[:, np.newaxis]
-Phi_pred = polynomial(x_pred, **poly_args)
+Phi_pred = mlai.polynomial(x_pred, **poly_args)
 f_pred = Phi_pred@W_hat}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -67,11 +67,11 @@ mlai.write_figure(filename='olympic-marathon-bootstrap-polynomial-2.svg',
 
 \code{poly_args = {'num_basis':4, # four basis: 1, x, x^2, x^3
              'data_limits':xlim}
-Phi = polynomial(x, **poly_args)
+Phi = mlai.polynomial(x, **poly_args)
 W_hat = bootstrap_fit(Phi, y, num_bootstraps)}
 
 
-\code{Phi_pred = polynomial(x_pred, **poly_args)
+\code{Phi_pred = mlai.polynomial(x_pred, **poly_args)
 f_pred = Phi_pred@W_hat}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -100,11 +100,11 @@ mlai.write_figure(filename='olympic-marathon-bootstrap-polynomial-4.svg',
 
 \code{poly_args = {'num_basis':10, # basis up to x^9
              'data_limits':xlim}
-Phi = polynomial(x, **poly_args)
+Phi = mlai.polynomial(x, **poly_args)
 W_hat = bootstrap_fit(Phi, y, num_bootstraps)}
 
 
-\code{Phi_pred = polynomial(x_pred, **poly_args)
+\code{Phi_pred = mlai.polynomial(x_pred, **poly_args)
 f_pred = Phi_pred@W_hat}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -134,11 +134,11 @@ mlai.write_figure(filename='olympic-marathon-bootstrap-polynomial-10.svg',
 
 \code{poly_args = {'num_basis':17, # basis up to x^16
              'data_limits':xlim}
-Phi = polynomial(x, **poly_args)
+Phi = mlai.polynomial(x, **poly_args)
 W_hat = bootstrap_fit(Phi, y, num_bootstraps)}
 
 
-\code{Phi_pred = polynomial(x_pred, **poly_args)
+\code{Phi_pred = mlai.polynomial(x_pred, **poly_args)
 f_pred = Phi_pred@W_hat}
 
 \setupplotcode{import matplotlib.pyplot as plt
