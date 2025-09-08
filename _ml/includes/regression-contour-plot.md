@@ -23,6 +23,7 @@ c_vals = np.linspace(c_true-3, c_true+3, 100)}
 \code{m_grid, c_grid = np.meshgrid(m_vals, c_vals)}
 
 \notes{Now we compute the error function at each combination of parameters. For each point in our grid, we:
+
 1. Use the parameter values to make predictions: $\hat{y}_i = m \cdot x_i + c$  
 2. Calculate the squared errors: $(y_i - \hat{y}_i)^2$
 3. Sum these squared errors to get the total error for that parameter combination
@@ -38,6 +39,7 @@ for i in range(100):
 \notes{With our error surface computed, we can now create a contour plot to visualize the optimization landscape. A contour plot shows lines of equal error value, similar to elevation contours on a topographic map. 
 
 Insights from this visualisation include:
+
 - *Bowl-shaped surface*: For linear regression with least squares, the error surface is a smooth, convex bowl with a unique global minimum
 - *Contour lines*: Each contour represents parameter combinations that yield the same error value
 - *Minimum location*: The centre of the concentric ellipses shows where the error is minimized - this should be close to our true parameter values
@@ -57,6 +59,7 @@ mlai.write_figure(filename='regression_contour.svg', directory='\writeDiagramsDi
 \notes{The contour plot reveals the characteristic elliptical shape of the least squares error surface. The concentric ellipses represent increasing levels of error as we move away from the optimal parameters. 
 
 Key observations from this visualization:
+
 - *Convex optimisation*: The smooth, bowl-shaped surface guarantees that any local minimum is also the global minimum
 - *Parameter sensitivity*: The shape of the ellipses tells us how sensitive the error is to changes in each parameter
 - *Optimization efficiency*: The regular, predictable shape means we can develop optimisation methods that will converge quickly and reliably
