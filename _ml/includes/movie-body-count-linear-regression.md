@@ -5,12 +5,12 @@
 
 \editme
 
-\subsection{Multivariate Regression on Movie Body Count Data}
+\subsection{Multivariate Regression on Movie Violence Data}
 
 \notes{Now we will build a design matrix based on the numeric features: year, Body_Count, Length_Minutes in an effort to predict the rating. We build the design matrix as follows:}
 
 \notes{Bias as an additional feature.}
-\slides{* Regress from features `Year`, `Body_Count`, `Length_Minutes` to IMDB_Rating.}
+\slides{* Regress from features `Year`, `Body_Count`, `Length_Minutes` to `IMDB_Rating`.}
 
 \code{select_features = ['Year', 'Body_Count', 'Length_Minutes']
 \designVariable = movies[select_features].copy()
@@ -19,7 +19,8 @@ y = movies[['IMDB_Rating']]}
 
 \notes{Now let's perform a linear regression. But this time, we will create a pandas data frame for the result so we can store it in a form that we can visualise easily.}
 
-\setupcode{import pandas as pd}
+\setupcode{import numpy as np
+import pandas as pd}
 
 \code{solution = np.linalg.solve(\designVariable.T@\designVariable, \designVariable.T@y) # solve linear regression here
 # Place the solution in the data frame

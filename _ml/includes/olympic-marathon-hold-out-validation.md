@@ -13,12 +13,13 @@
 * How will the model perform on previously unseen data?
 * Let's consider predicting the future.}
 
-\setupplotcode{import mlai.plot as plot
-import mlai}
+\setupplotcode{import mlai}
 
 \plotcode{data_limits=xlim
 basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)
 max_basis = 11}
+
+\setupplotcode{import mlai.plot as plot}
 
 \plotcode{plot.holdout_fit(x, y, param_name='number', 
                  param_range=(1, max_basis+1), 

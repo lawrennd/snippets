@@ -3,8 +3,11 @@
 
 \editme
 
-\subsection{Movie Body Count Data}
-\slides{* Data containing movie information (year, length, rating, genre, IMDB Rating).}
+\subsection{Movie Violence Data}
+
+\slides{* Data containing movie information (year, length, rating, genre, IMDB Rating).
+* Try and predict what factors influence a movie's violence}
+
 \notes{This is a data set created by Simon Garnier and Rany Olson for exploring the differences between R and Python for data science. The data contains information about different movies augmented by estimates about how many on-screen deaths are contained in the movie. The data is craped from <http://www.moviebodycounts.com>. The data contains the following featuers for each movie: `Year`, `Body_Count`, `MPAA_Rating`, `Genre`, `Director`, `Actors`, `Length_Minutes`, `IMDB_Rating`.}
 
 \setupcode{import pods}

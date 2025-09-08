@@ -7,19 +7,10 @@
 
 \subsection{Polynomial Fits to Olympic Data}
 
-\setupcode{import numpy as np
-import pods}
+\setupcode{import mlai}
 
-\code{basis = mlai.polynomial
-
-data = pods.datasets.olympic_marathon_men()
-
-x = data['X']
-y = data['Y']
-
-xlim = [1892, 2020]
-
-basis=mlai.Basis(mlai.polynomial, number=1, data_limits=xlim)}
+\code{data_limits=xlim
+basis=mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot

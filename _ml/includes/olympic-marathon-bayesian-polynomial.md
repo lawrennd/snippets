@@ -12,7 +12,7 @@
 \setupcode{import mlai
 import pods}
 
-\plotcode{data_limits = (1888, 2020)
+\plotcode{data_limits=xlim
 basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)
 
 max_basis = y.shape[0]}
@@ -23,8 +23,8 @@ max_basis = y.shape[0]}
 			  basis=basis, 
 			  alpha=1, 
 			  sigma2=0.04, 
-			  data_limits=data_limits,
-              xlim=data_limits, 
+			  data_limits=xlim,
+              xlim=xlim, 
 			  objective_ylim=[0.5,1.6]
 			  diagrams='\writeDiagramsDir/ml')}
 

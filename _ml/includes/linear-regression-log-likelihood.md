@@ -66,6 +66,9 @@ i.i.d. assumption
 $$
 p(\dataVector|\inputVector, m, c) = \prod_{i=1}^\numData \frac{1}{\sqrt{2\pi \dataStd^2}}\exp \left(-\frac{\left(\dataScalar_i- m\inputScalar_i-c\right)^{2}}{2\dataStd^2}\right).
 $$
+
+. . .
+
 $$
 p(\dataVector|\inputVector, m, c) = \frac{1}{\left(2\pi \dataStd^2\right)^{\frac{\numData}{2}}}\exp\left(-\frac{\sum_{i=1}^\numData\left(\dataScalar_i-m\inputScalar_i-c\right)^{2}}{2\dataStd^2}\right).
 $$
@@ -80,9 +83,14 @@ L(m,c,\dataStd^{2})= & -\frac{\numData}{2}\log 2\pi -\frac{\numData}{2}\log \dat
 }
 
 \newslide{Consistency of Maximum Likelihood}
+
 \slides{
 * If data was really generated according to probability we specified.
-* Correct parameters will be recovered in limit as $\numData \rightarrow \infty$.
+* Correct parameters will be recovered in limit as $\numData \rightarrow \infty$.}
+
+\newslide{Consistency of Maximum Likelihood}
+
+\slides{
 * This can be proven through sample based approximations (law of large numbers) of "KL divergences".
 * Mainstay of classical statistics [@Wasserman:all03].
 }

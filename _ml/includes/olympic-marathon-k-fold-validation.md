@@ -11,8 +11,7 @@
 * Need to train your algorithm $\numData$ times.
 * An alternative: $k$ fold cross validation.}
 
-\setupplotcode{import mlai
-import pods}
+\setupplotcode{import mlai}
 
 \plotcode{data_limits=xlim
 basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)

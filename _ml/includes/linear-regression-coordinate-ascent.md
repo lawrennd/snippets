@@ -155,71 +155,16 @@ plt.plot(x, y, 'rx')}
 
 \subsection{Coordiate Descent Algorithm}
 
-\notes{Let's run the complete gradient descent algorithm and visualise how the parameters evolve over multiple iterations. The animation will show the path taken through parameter space as the algorithm navigates toward the minimum of the error surface.
-
-Each frame shows:
-
-- *Current position*: The green star indicating our current parameter estimates
-- *Error contours*: The background showing the error landscape
-- *Path*: The trajectory we've taken from the starting point to the current position
-
-Watch how the algorithm follows a "staircase" path that converges towards the minimum. Note that the more correlated $m$ and $c$ are (principle axes of the ellipse contours is diagonal) the slower the convergence towards the minimum demonstrating the potential limitation of coordinate descent.}
-
-\setupplotcode{import mlai.plot as plot}
-\plot{num_plots = plot.regression_contour_coordinate_descent(x, y, diagrams='\writeDiagramsDir/ml')}
-
-\setupdisplaycode{import notutils as nu
-from ipywidgets import IntSlider}
-
-\displaycode{nu.display_plots('regression_contour_coordinate_descent{num:0>3}.svg', directory='\writeDiagramsDir/ml', num=IntSlider(0, 0, num_plots, 1))}
-
-\slides{
-\define{width}{60%}
-\startanimation{regression_contour_coordinate_descent}{1}{28}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent000}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent001}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent002}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent003}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent004}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent005}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent006}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent007}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent008}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent009}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent010}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent011}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent012}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent013}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent014}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent015}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent016}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent017}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent018}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent019}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent020}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent021}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent022}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent023}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent024}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent025}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent026}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent027}{\width}}{regression_contour_coordinate_descent}
-\newframe{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent028}{\width}}{regression_contour_coordinate_descent}
-\endanimation
-}
-
-\notes{\figure{\includediagram{\diagramsDir/ml/regression_contour_coordinate_descent028}{60%}}{Coordinate descent for linear regression showing the path after 14 iterations between $c$ and $m$.}{regression-contour-coordinate-descent-28}}
-
+\notes{Let's run the complete coordiante descent algorithm and visualise how the parameters evolve over multiple iterations. The animation will show the path taken through parameter space as the algorithm navigates toward the minimum of the error surface.}
 
 \codeassignment{There is a problem here, we seem to need many interations to get to a good solution. Let's explore what's going on. Write code which alternates between updates of `c` and `m`. Include the following features in your code.
 
 1. Initialise with `m=-0.4` and `c=80`.
 2. Every 10 iterations
 compute the value of the objective function for the training data and print it
-to the screen (you'll find hints on this in [the lab from last
-week](./week2.ipynb)).
-3. Cause the code to stop running when the error change
-over less than 10 iterations is smaller than $1\times10^{-4}$. This is known as
+to the screen.
+3. Cause the code to stop running when the error changes
+over less than 10 iterations is smaller than $1\times 10^{-4}$. This is known as
 a stopping criterion.
 
 Why do we need so many iterations to get to the solution?}{}{25}
