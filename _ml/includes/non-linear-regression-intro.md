@@ -37,10 +37,19 @@ inputs, it means that there is a non-linear function between the
 inputs and the response variable. Linear functions are functions that
 only involve multiplication and addition, in other words they can be
 represented through *linear algebra*. Linear regression involves
-assuming that a function takes the form}
+assuming that a function takes the form
 $$
 \mappingFunction(\inputVector) = \mappingVector^\top \inputVector
 $$
-\notes{where $\mappingVector$ are our regression weights. A very easy way to make the linear regression non-linear is to introduce non-linear functions. When we are introducing non-linear regression these functions are known as *basis functions*.}
+where $\mappingVector$ are our regression weights. A very easy way to make the linear regression non-linear is to introduce non-linear functions. When we are introducing non-linear regression these functions are known as *basis functions*.}
+
+\slides{* Go from 
+$$
+\mappingFunction(\inputVector) = \mappingVector^\top \inputVector
+$$
+to 
+$$
+\mappingFunction(\inputVector) = \mappingVector^\top \basisVector(\inputVector)
+$$}
 
 \endif

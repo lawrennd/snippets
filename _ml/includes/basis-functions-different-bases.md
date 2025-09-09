@@ -3,8 +3,9 @@
 
 \editme
 
-\subsection{Different Bases}
+\subsection{Choice of Basis}
 
+\slides{* The polynomial represents one choice of basis}
 \notes{Our choice of basis can be made based on what our beliefs about what is appropriate for the data. For example, the polynomial basis extends the quadratic basis to aribrary degree, so we might define the $j$th basis function associated with the model as}
 $$
 \basisFunc_j(\inputScalar_i) = \inputScalar_i^j
@@ -25,6 +26,8 @@ $$
 
 \subsection{Different Basis}
 
+\slides{* Polynomial basis widely used in engineering and graphics.
+* Drawbacks in ML, value rises quickly when $| \inputVector | > 1$. }
 \notes{The polynomial basis is widely used in Engineering and graphics, but it has some drawbacks in machine learning: outside the input region between -1 and 1, the values of the polynomial basis rise very quickly.}
 
 \notes{Now we look at basis functions that have been used as the *activation* functions in neural network model.}

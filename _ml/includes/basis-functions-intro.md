@@ -5,12 +5,14 @@
 \subsection{Basis Functions}
 
 \notes{Here's the idea, instead of working directly on the original input space, $\inputVector$, we build models in a new space, $\basisVector(\inputVector)$ where $\basisVector(\cdot)$ is a *vector-valued* function that is defined on the space $\inputVector$.}
-
+\slides{* Instead of working in input space, $\inputVector$..
+* Build models in a new space $\basisVector(\inputVector)$
+}
 \subsection{Quadratic Basis}
 \slides{
 * Basis functions can be global. E.g. quadratic basis:
   $$
-  \basisVector = [1, \inputScalar, \inputScalar^2]
+  \basisVector^\top = [1, \inputScalar, \inputScalar^2]
   $$
 }
 
@@ -22,15 +24,22 @@ $$
 \basisFunc_3(\inputScalar) & = \inputScalar^2.
 \end{align*}
 $$
-\notes{Now we can consider them together by placing them in a vector,}
+\notes{Now we can consider them together by placing them in a vector,
 $$
 \basisVector(\inputScalar) = \begin{bmatrix} 1\\ \inputScalar \\ \inputScalar^2\end{bmatrix}.
 $$
-\notes{For the vector-valued function, we have simply collected the different functions together in the same vector making them notationally easier to deal with in our mathematics.}
+For the vector-valued function, we have simply collected the different functions together in the same vector making them notationally easier to deal with in our mathematics.}
 
-\newslide{Matrix Valued Function}
+\newslide{Quadratic Basis}
 
-\notes{When we consider the vector-valued function for each data point, then we place all the data into a matrix. The result is a matrix valued function,}
+\slides{$$
+\basisVector(\inputScalar) = \begin{bmatrix} 1\\ \inputScalar \\ \inputScalar^2\end{bmatrix}.
+$$}
+
+
+\newslide{Design Matrix}
+
+\notes{When we consider the vector-valued function for each data point, then we place all the data into a design matrix. The result is a matrix valued function,}
 $$
 \basisMatrix(\inputVector) = 
 \begin{bmatrix} 1 & \inputScalar_1 &
@@ -40,7 +49,7 @@ $$
 1 & \inputScalar_\numData & \inputScalar_\numData^2
 \end{bmatrix}
 $$
-\notes{where we are still in the one dimensional input setting so $\inputVector$ here represents a vector of our inputs with $\numData$ elements.}
+\notes{where here we are still considering the one dimensional input setting so $\inputVector$ here represents a vector of our inputs with $\numData$ elements.}
 
 
 \endif
