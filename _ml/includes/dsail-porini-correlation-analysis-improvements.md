@@ -45,7 +45,7 @@ def improved_sighting_probability(df, camera, species, date) -> float:
 
 \subsection{Extended Exercises}
 
-\notes{We didn't use all of the available data when we just classified days as "sighting" or "no sighting". Extend your analysis to include all the information in the file, like numbers of sightings, and numbers of animals in the photos.
+\notes{We didn't use all of the available data when we just classified days as "sighting" or "no sighting". Extend your analysis to include all the information in the file, like numbers of sightings and numbers of animals in the photos.
 
 This will be quite challenging due to burst shots - assess the dataset and come up with a good definition of what a burst is, and a data structure that has the information you chose as important.
 
@@ -62,9 +62,6 @@ Example burst data:
 
 \codeassignment{Compare the results and note the improvement (or lack thereof) against the two previous prediction functions you created.}
 
-\codeassignment{What other benefits does your new system provide? Can you modify it to provide more predictions, like expected number of sightings, number of animals?}
-
+\codeassignment{What other benefits does your new system provide? Can you modify it to provide more predictions, like the expected number of sightings, the number of animals?}
 
 \endif
-
-
