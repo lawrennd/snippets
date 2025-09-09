@@ -33,7 +33,7 @@ X = data[['emergency_transport',
 y = data['maternal_health_delivery_services']==True  # set label to be whether there's a maternal health delivery service
 
 # Create series of health center types with the relevant index
-s = data['facility_type_display'].apply(pd.Series, 1).stack() 
+s = data['facility_type_display'].apply(pd.Series).stack()
 s.index = s.index.droplevel(-1) # to line up with df's index
 
 # Extract from the series the unique list of types.

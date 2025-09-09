@@ -9,7 +9,7 @@
 
 \code{# Separate train and test
 indices = np.random.permutation(X.shape[0])
-num_train = np.ceil(X.shape[0]/2)
+num_train = int(np.ceil(X.shape[0]/2))
 train_indices = indices[:num_train]
 test_indices = indices[num_train:]
 X_train = X.iloc[train_indices]
@@ -24,7 +24,7 @@ w = np.random.normal(size=(X.shape[1]+1, 1), scale = 0.001)
 eta = 1e-9
 iters = 10000
 for i in range(iters):
-    g, Phi = predict(w, X_train, linear)
+    g, Phi = predict(w, X_train, mlai.linear)
     w -= eta*gradient(g, Phi, y_train) + 0.001*w
     if not i % 100:
         print("Iter", i, "Objective", objective(g, y_train))}
@@ -32,7 +32,16 @@ for i in range(iters):
 \notes{Let's look at the weights and how they relate to the inputs.}
 
 \setupcode{import matplotlib.pyplot as plt}
-\code{print(w)}
+\code{# Convert weights to a pandas DataFrame with column names
+# Plot a histogram of the weights
+plt.figure(figsize=(10, 6))
+plt.bar(w.index, w['weight'])
+plt.xticks(rotation=90)
+plt.xlabel('Features')
+plt.ylabel('Weight Value')
+plt.title('Histogram of Model Weights')
+plt.tight_layout()
+mlai.write_figure('nmis-logistic-regression-weights.svg', directory='\writeDiagramsDir/ml')}
 
 \notes{What does the magnitude of the weight vectors tell you about the different parameters and their influence on outcome? Are the weights of roughly the same size, if not, how might you fix this?}
 
