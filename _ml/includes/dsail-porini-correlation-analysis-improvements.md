@@ -11,7 +11,7 @@
 
 Have a short read through the [DSAIL-Porini paper](https://www.sciencedirect.com/science/article/pii/S2352340922010666) for inspiration about other probability analyses that can be done here.}{}{20}
 
-\notes{Exercise Extension: Use what you found to improve your prediction model, and compare it against the previous one.}
+\notes{Extension: Use what you found to improve your prediction model, and compare it against the previous one.}
 
 \code{from typing import Union
 import pandas as pd
@@ -38,7 +38,7 @@ def improved_sighting_probability(df, camera, species, date) -> float:
     df_blind = df.copy()
     df_blind.loc[date, (camera, species)] = None
 
-    #TODO Exercise 6 Extended
+    #TODO
 
     raise NotImplementedError("Prediction logic not implemented yet.")}
 
