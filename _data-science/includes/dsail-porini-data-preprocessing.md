@@ -116,15 +116,14 @@ binary_rows = []
 
 for (cam, species_str), series in daily_bin.items():
     # Split species (e.g. "IMPALA, MONKEY") into a list of individual species
-    # ignore the "CAN'T TELL" species 
+    # Ignore the "CAN'T TELL" species 
     species_list = [] #TODO
 
     for species in species_list:
-
-      col = pd.Series(series, index=series.index)
+      col = series.copy()
       # Convert every value to 1 if any sightings, otherwise 0
-      col_bin = 
-      binary_rows.append((cam, species, col_bin))
+      col = col # TODO
+      binary_rows.append((cam, species, col))
 
 # Step 3: Rebuild dataframe as binary_df
 
