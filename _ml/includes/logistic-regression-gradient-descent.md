@@ -24,7 +24,7 @@ w = np.random.normal(size=(X.shape[1]+1, 1), scale = 0.001)
 eta = 1e-9
 iters = 10000
 for i in range(iters):
-    g, Phi = predict(w, X_train, linear)
+    g, Phi = predict(w, X_train, mlai.linear)
     w -= eta*gradient(g, Phi, y_train) + 0.001*w
     if not i % 100:
         print("Iter", i, "Objective", objective(g, y_train))}
