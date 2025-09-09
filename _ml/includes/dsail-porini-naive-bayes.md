@@ -78,7 +78,7 @@ def bayes_sighting_probability(df, camera, species, date) -> float:
     df_blind = df.copy()
     df_blind.loc[date, (camera, species)] = None
 
-    #TODO Exercise 4
+    #TODO
 
     raise NotImplementedError("Prediction logic not implemented yet.")
 }{25}
@@ -101,7 +101,7 @@ $$
 $$}
 
 \codeassignment{Implement the loss function below.}{def cross_entropy(y_true, y_pred):
-    #TODO Exercise 5
+    #TODO
     raise NotImplementedError("Cross entropy not implemented yet.")
 
 def evaluate_prediction_system(df, your_function, max_samples=1000):
