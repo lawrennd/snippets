@@ -13,11 +13,11 @@ P(1 \mid c, s, d) = \frac{P(1, c, s, d)}{P(c, s, d)}
 $$
 
 $$
-\text{Using chain rule:} P(1, c, s, d) = P(1) \cdot P(c, s, d \mid 1)
+\text{Using chain rule:} \quad P(1, c, s, d) = P(1) \cdot P(c, s, d \mid 1)
 $$
 
 $$
-\text{Using conditional independence:} P(c, s, d \mid 1) = P(c \mid 1) \cdot P(s \mid 1) \cdot P(d \mid 1)
+\text{Using conditional independence:} \quad P(c, s, d \mid 1) = P(c \mid 1) \cdot P(s \mid 1) \cdot P(d \mid 1)
 $$
 
 
