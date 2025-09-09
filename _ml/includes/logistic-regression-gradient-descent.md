@@ -43,7 +43,7 @@ plt.title('Histogram of Model Weights')
 plt.tight_layout()
 mlai.write_figure('nmis-logistic-regression-weights.svg', directory='\writeDiagramsDir/ml')}
 
-\notes{What does the magnitude of the weight vectors tell you about the different parameters and their influence on outcome? Are the weights of roughly the same size, if not, how might you fix this?}
+\writeassignment{What does the magnitude of the weight vectors tell you about the different parameters and their influence on outcome? Are the weights of roughly the same size, if not, how might you fix this?}{10}
 
 \code{g_test, Phi_test = predict(w, X_test, linear)
 np.sum(g_test[y_test]>0.5)}

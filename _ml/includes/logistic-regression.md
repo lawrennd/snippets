@@ -138,7 +138,7 @@ real line to between 0  & 1. Sometimes also called a 'squashing function'.
 Now we have the basis function let's define the prediction function.
 
 \setupcode{import numpy as np}
-\code{def predict(w, x, basis=linear, **kwargs):
+\code{def predict(w, x, basis=mlai.linear, **kwargs):
     "Generates the prediction function and the basis matrix."
     Phi = basis(x, **kwargs)
     f = np.dot(Phi, w)
