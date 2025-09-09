@@ -13,9 +13,9 @@ $$
 \slides{* $\inputVector$ is inside the non-linearity, but $\mappingVector$ is outside.}\notes{where the vector $\inputVector$ appears inside the basis functions, making our result, $\mappingFunction(\inputVector)$ non-linear in the inputs, but $\mappingVector$ appears outside our basis function, making our result *linear* in the parameters. In practice, our basis function itself may contain its own set of parameters,}
 $$
 \mappingFunction(\inputVector) = \mappingVector^\top \basisVector(\inputVector;
-\boldsymbol{\theta}),
+\mappingVectorTwo),
 $$
-\notes{that we've denoted here as $\boldsymbol{\theta}$. If these parameters appear inside the basis function then our model is *non-linear* in these parameters.}
+\notes{that we've denoted here as $\mappingVectorTwo$. If these parameters appear inside the basis function then our model is *non-linear* in these parameters.}
 
 \writeassignment{For the following prediction functions state whether
 the model is linear in the inputs, the parameters or both.
