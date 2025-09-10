@@ -93,7 +93,7 @@ ax.plot(x[:, 1], y, '.')
 
 # Plot the fitted line
 xpred = np.array(xlim)
-sm.add_constant(xpred)
+xpred = sm.add_constant(xpred)
 fpred = results.predict(xpred)
 
 ax.plot(xpred, fpred, '-')
