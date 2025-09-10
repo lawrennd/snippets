@@ -13,7 +13,7 @@ where $\mappingFunction(\inputVector_i) = \mappingVector^\top\inputVector_i = \s
 
 This gives us a probabilistic model:
 
-$$p(\dataScalar_i|\inputVector_i) = \gaussianDist{\mappingVector^\top\inputVector_i}{\dataStd^2}$$
+$$p(\dataScalar_i|\inputVector_i) = \gaussianDist{\dataScalar_i}{\mappingVector^\top\inputVector_i}{\dataStd^2}$$
 
 The key components are:
 
