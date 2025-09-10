@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Linear Regression with `statsmodels`}
+\subsection{Model Diagnostics and Linear Regression}
 
 \notes{In linear regression, we model the relationship between a continuous response variable $\dataScalar_i$ and input variables $\inputVector_i$ through a linear function with Gaussian noise:
 
