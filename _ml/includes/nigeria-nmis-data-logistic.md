@@ -42,7 +42,7 @@ for i in range(iters):
 \setupcode{import matplotlib.pyplot as plt}
 \code{# Plot a histogram of the weights
 plt.figure(figsize=(10, 6))
-if typeof(w) is pd.DataFrame:
+if type(w) is pd.DataFrame:
     plt.bar(w.index, w['weight'])
 else:
     plt.bar(w)
