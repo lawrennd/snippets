@@ -115,7 +115,7 @@ $$}
 
 \setupplotcode{import mlai.plot as plot}
 
-\plotcode{plot.logistic('\writeDiagramsDir/ml/logistic.svg')}
+\plotcode{plot.logistic('\writeDiagramsDir/ml')}
 
 \newslide{Logistic function - 3}
 \slides{
