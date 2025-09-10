@@ -269,9 +269,7 @@ xlim = (1876,2044)
     
     # Scale the year to avoid numerical issues
     x_scaled = (x - 1900) / 100  # Center around 1900 and scale to century units
-
-    # Add to design matrix indicator variable for pre-1914
-    Phi = (x[:, 0] < 1914).astype(np.float64)[:, np.newaxis]
+    Phi = x_scaled
 
     # Add to design matrix indicator variable for 1914-1945
     Phi = np.hstack([Phi, ((x[:, 0] >= 1914) & (x[:, 0] <= 1945)).astype(np.float64)[:, np.newaxis]])
@@ -281,6 +279,7 @@ xlim = (1876,2044)
 	if product_terms:
         # Add product terms that multiply the scaled year and the indicator variables.
         Phi = np.hstack([Phi, x_scaled[:, 0:1] * Phi[:, 1:2], x_scaled[:, 0:1] * Phi[:, 2:3]])
+	Phi = sm.add_constant(Phi)
 	return Phi
 }
 
