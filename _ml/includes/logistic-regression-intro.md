@@ -15,9 +15,7 @@ explored. Rather than modeling the output of the function directly the
 assumption is that we model the *log-odds* with the basis functions.}
 
 \slides{
-* Modelling entire density allows any question to be answered
-* Also handles missing data
-* Comes at possible expense of *strong* assumptions about data generation distribution
+* Model the log odds with a linear model.
 }
 
 \newslide{Logistic Regression}
@@ -56,19 +54,20 @@ known as the [logit function](http://en.wikipedia.org/wiki/Logit),
 $\linkFunction(p_i) = \log\frac{p_i}{1-p_i}$. This function is known as a
 *link function*.}
 
-\newslide{Log Odds - 1}
+\newslide{Log Odds}
+
 \slides{
 * Model the *log-odds* with basis functions
 * [Odds](http://en.wikipedia.org/wiki/Odds) are ratio of probability of positive vs negative outcome
 }
 
-\newslide{Log Odds - 2} 
+\newslide{Log Odds} 
 \slides{
 * Probability is between zero and one
 * Odds are: $$ \frac{\pi}{1-\pi} $$
 }
 
-\newslide{Log Odds - 3}
+\newslide{Log Odds}
 \slides{
 * Odds are between $0$ and $\infty$
 * Logarithm of odds maps them to $-\infty$ to $\infty$
@@ -127,31 +126,13 @@ real line to between 0  & 1. Sometimes also called a 'squashing function'.
 
 \slides{
 * For classification (logistic regression):
-* $$\log \frac{\pi_i}{1-\pi_i} = \mappingVector^\top \basisVector(\inputVector_i)$$
+  $$\log \frac{\pi_i}{1-\pi_i} = \mappingVector^\top \basisVector(\inputVector_i)$$
 }
 
-\notes{We'll define our prediction, objective and gradient functions below. But before we start, we need to define a basis function for our model. Let's start with the linear basis.
+\notes{We'll define our prediction, objective and gradient functions below. But before we start, we need to define a basis function for our model. Let's start with the linear basis.}
 
 \setupcode{import numpy as np}
 \loadcode{linear}{mlai}
 
-\subsection{Prediction Function}
-
-Now we have the basis function let's define the prediction function.
-
-\setupcode{import numpy as np}
-\code{def predict(w, x, basis=mlai.linear, **kwargs):
-    "Generates the prediction function and the basis matrix."
-    Phi = basis(x, **kwargs)
-    f = np.dot(Phi, w)
-    return 1./(1+np.exp(-f)), Phi}
-
-This inverse of the link function is known as the
-[logistic](http://en.wikipedia.org/wiki/Logistic_function) (thus the
-name logistic regression) or sometimes it is called the sigmoid
-function. For a particular value of the input to the link function,
-$\mappingFunction_i = \mappingVector^\top
-\basisVector(\inputVector_i)$ we can plot the value of the inverse
-link function as below.
 
 \endif

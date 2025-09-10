@@ -100,25 +100,25 @@ results.summary()
 
 \notes{The statsmodels summary provides several key diagnostic measures that help us evaluate our model fit and identify potential areas for improvement. Since we're working with one-dimensional data (year vs time), we can visualize everything easily to complement these statistical measures.
 
-The model fit statistics show a moderately strong fit, with an R-squared of 0.744 indicating that our model explains 74.4% of the variance in the data. The adjusted R-squared of 0.733 confirms this isn't just due to overfitting. The very low F-statistic p-value (7.40e-09) confirms the model's overall significance. The AIC (10.08) and BIC (12.67) values will be useful when we compare this model against alternative specifications we might try.
+The model fit statistics show a moderately strong fit, with an R-squared of 0.730 indicating that our model explains 73.0% of the variance in the data. The adjusted R-squared of 0.721 confirms this isn't just due to overfitting. The very low F-statistic p-value (1.85e-09) confirms the model's overall significance. The AIC (11.33) and BIC (14.13) values will be useful when we compare this model against alternative specifications we might try.
 
-Looking at the model parameters, we see a coefficient of -0.013 for our predictor, with a small standard error (0.002). The t-statistic of -8.515 and p-value of 0.000 indicate this effect is highly significant. The 95% confidence interval [-0.016, -0.010] gives us good confidence in our estimate. The negative coefficient confirms the expected downward trend in marathon times over the years.
+Looking at the model parameters, we see a coefficient of -0.0116 for our predictor, with a small standard error (0.001). The t-statistic of -8.710 and p-value of 0.000 indicate this effect is highly significant. The 95% confidence interval [-0.014, -0.009] gives us good confidence in our estimate. The negative coefficient confirms the expected downward trend in marathon times over the years.
 
 However, the residual diagnostics suggest several potential issues we should investigate:
 
-1. The Durbin-Watson statistic (1.110) indicates positive autocorrelation in the residuals, though not as severe as we might expect. This suggests we might want to:
+1. The Durbin-Watson statistic (0.981) indicates positive autocorrelation in the residuals. This suggests we might want to:
    
    * Consider time series modeling approaches
    * Add polynomial terms to capture non-linear trends
    * Investigate if there are distinct "eras" in marathon times
 
-3. The highly significant Jarque-Bera test (p-value 7.67e-12) tells us our residuals aren't normally distributed. The skew (1.929) and kurtosis (8.534) values show the distribution is strongly right-skewed with very heavy tails. We might want to:
+3. The highly significant Jarque-Bera test (p-value 8.32e-14) tells us our residuals aren't normally distributed. The skew (1.947) and kurtosis (8.746) values show the distribution is strongly right-skewed with very heavy tails. We might want to:
    
    * Look for outliers or influential points
    * Consider robust regression techniques
    * Try transforming our response variable
 
-5. The large condition number (1.08e+05) suggests potential numerical instability or multicollinearity issues. While less concerning with single-predictor models, we should:
+5. The large condition number (9.94e+04) suggests potential numerical instability or multicollinearity issues. While less concerning with single-predictor models, we should:
    
    * Consider centering and scaling our predictor
    * Watch for numerical precision issues
@@ -161,9 +161,9 @@ Any of these transformations would help reduce the condition number while preser
 
 \newslide{Linear Regression Fit}
 
-\figure{\includediagram{\diagramsDir/data-science/linear-regression-olympic-marathon-men-statsmodels.svg}{80%}}{Linear regression fit to Olympic marathon men's times using `statsmodels`.}{linear-regression-olympic-marathon-men-statsmodels}
+\figure{\includediagram{\diagramsDir/data-science/linear-regression-olympic-marathon-men-statsmodels}{80%}}{Linear regression fit to Olympic marathon men's times using `statsmodels`.}{linear-regression-olympic-marathon-men-statsmodels}
 
-\notes{The plot reveals several key features that help explain our diagnostic statistics:
+\notes{The plot reveals features that help explain our diagnostic statistics:
 
 * The 1904 St. Louis Olympics appears as a clear outlier, contributing to the non-normal residuals (Jarque-Bera p=0.00432) and right-skewed distribution (skew=1.385)
 * We can observe distinct regimes in the data:
@@ -294,28 +294,28 @@ mlai.write_figure("linear-regression-olympic-marathon-men-augmented-statsmodels.
 
 \newslide{Augmented Features with Interactions Regression Fit}
 
-\figure{\includediagram{\diagramsDir/data-science/linear-regression-olympic-marathon-men-augmented-statsmodels.svg}{80%}}{Polynomial regression fit to Olympic marathon men's times using `statsmodels`.}{linear-regression-olympic-marathon-men-augmented-statsmodels}
+\figure{\includediagram{\diagramsDir/data-science/linear-regression-olympic-marathon-men-augmented-statsmodels}{80%}}{Polynomial regression fit to Olympic marathon men's times using `statsmodels`.}{linear-regression-olympic-marathon-men-augmented-statsmodels}
 
-\notes{The augmented model with interactions shows a significant improvement in fit compared to the simpler linear model, with an R-squared value of 0.870 (adjusted R-squared of 0.839). This indicates that about 87% of the variance in marathon times is explained by our model.
+\notes{The augmented model with interactions shows a significant improvement in fit compared to the simpler linear model, with an R-squared value of 0.877 (adjusted R-squared of 0.851). This indicates that about 87% of the variance in marathon times is explained by our model.
 
 The model includes several key components:
 
-* A base time trend (x1 coefficient: -0.6737)
+* A base time trend (x1 coefficient: -0.5634)
 * Indicator variables for different historical periods (pre-1914, 1914-1945, post-1945)
 * Interaction terms between the time trend and these periods
 
 The coefficients reveal interesting patterns:
 
-* The pre-1914 period shows a significant positive effect (x2: 1.5506, p<0.001)
-* The wartime period 1914-1945 also shows a positive effect (x3: 0.7982, p<0.05)
-* The post-1945 period has a positive effect (x4: 0.6883, p<0.01)
-* The interaction terms (x5, x6) suggest different rates of improvement in different periods, though these are less statistically significant
+* The pre-1914 period shows a significant positive effect (x2: 1.5700, p<0.001)
+* The wartime period 1914-1945 also shows a positive effect (x3: 0.8176, p=0.030)
+* The post-1945 period has a positive effect (x4: 0.6300, p=0.002)
+* The interaction terms (x5, x6) suggest different rates of improvement in different periods, though these are less statistically significant (x5: -3.0493, p=0.076; x6: -0.1694, p=0.919)
 
 However, there are some concerns:
 
-1. The very high condition number (2.79e+16) suggests serious multicollinearity issues
-2. The Jarque-Bera test (p<0.001) indicates non-normal residuals
-3. There's significant skewness (2.314) and kurtosis (10.325) in the residuals
+1. The very high condition number (2.17e+16) suggests serious multicollinearity issues
+2. The highly significant Jarque-Bera test (p-value 1.34e-24) indicates non-normal residuals
+3. There's significant skewness (2.393) and kurtosis (11.065) in the residuals
 
 Despite these statistical issues, the model captures the major trends in marathon times across different historical periods better than a simple linear regression would.}
 

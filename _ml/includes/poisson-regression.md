@@ -103,6 +103,6 @@ mlai.write_figure("poisson-regression-diagnostics.svg", directory="\writeDiagram
 
 \newslide{Poisson Regression Diagnostics}
 
-\figure{\includediagram{\diagramsDir/ml/poisson-regression-diagnostics.svg}{80%}}{Diagnostic plots for the Poisson regression model showing actual vs predicted counts and residual analysis.}{poisson-regression-diagnostics}
+\figure{\includediagram{\diagramsDir/ml/poisson-regression-diagnostics}{80%}}{Diagnostic plots for the Poisson regression model showing actual vs predicted counts and residual analysis.}{poisson-regression-diagnostics}
 
 \endif

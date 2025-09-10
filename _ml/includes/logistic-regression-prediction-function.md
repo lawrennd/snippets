@@ -3,7 +3,25 @@
 
 \editme
 
+
 \subsection{Prediction Function}
+
+\notes{Now we have the basis function let's define the prediction function.}
+
+\setupcode{import numpy as np}
+\code{def predict(w, x, basis=mlai.linear, **kwargs):
+    "Generates the prediction function and the basis matrix."
+    Phi = basis(x, **kwargs)
+    f = np.dot(Phi, w)
+    return 1./(1+np.exp(-f)), Phi}
+
+\notes{This inverse of the link function is known as the
+[logistic](http://en.wikipedia.org/wiki/Logistic_function) (thus the
+name logistic regression) or sometimes it is called the sigmoid
+function. For a particular value of the input to the link function,
+$\mappingFunction_i = \mappingVector^\top
+\basisVector(\inputVector_i)$ we can plot the value of the inverse
+link function as below.}
 
 \notes{By replacing the inverse link with the sigmoid we can write $\pi$ as a
 function of the input and the parameter vector as,
@@ -44,11 +62,11 @@ function within a single mathematical equation.}
 \slides{Prediction Function}
 
 \slides{
-* Can now write $\pi$ as a function of the input and the parameter vector as, 
+* Can write $\pi$ as a function of input, parameters, 
   $$\pi(\inputVector,\mappingVector) = \frac{1}{1+
 \exp\left(-\mappingVector^\top \basisVector(\inputVector)\right)}.$$
-* Compute the output of a standard linear basis function composition ($\mappingVector^\top \basisVector(\inputVector)$, as we did for linear regression)
-* Apply the inverse link function, $\transformationFunction(\mappingVector^\top \basisVector(\inputVector))$. 
+* Compute the output $\mappingVector^\top \basisVector(\inputVector)$
+* Apply inverse link function, $\transformationFunction(\mappingVector^\top \basisVector(\inputVector))$. 
 * Use this value in a Bernoulli distribution to form the likelihood.
 }
 
