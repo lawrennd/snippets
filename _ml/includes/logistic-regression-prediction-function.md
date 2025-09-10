@@ -83,7 +83,7 @@ def bernoulli(y, pi):
     if y == 1:
         return pi
     else:
-return 1-pi
+        return 1-pi
 ```
 }
 
