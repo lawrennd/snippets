@@ -24,7 +24,7 @@ y_test = y.iloc[test_indices]==True}
 \code{# gradient descent algorithm
 w_vals = np.random.normal(size=(X.shape[1]+1, 1), scale = 0.001)
 # Convert weights to a pandas DataFrame with column names
-if typeof(X_train) is pd.DataFrame:
+if type(X_train) is pd.DataFrame:
 	w = pd.DataFrame(data=w_vals, 
 	                 index=['Eins'] + list(X_train.columns), 
 					 columns=['weight'])
