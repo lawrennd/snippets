@@ -271,7 +271,7 @@ xlim = (1876,2044)
     x_scaled = (x - 1900) / 100  # Center around 1900 and scale to century units
 
     # Add to design matrix indicator variable for pre-1914
-    Phi = (x[:, 0] < 1914).astype(np.float64)[:, np.newaxis]])
+    Phi = (x[:, 0] < 1914).astype(np.float64)[:, np.newaxis]
 
     # Add to design matrix indicator variable for 1914-1945
     Phi = np.hstack([Phi, ((x[:, 0] >= 1914) & (x[:, 0] <= 1945)).astype(np.float64)[:, np.newaxis]])
