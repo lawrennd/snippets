@@ -3,51 +3,51 @@
 
 \editme
 
-\subsection{General Deep Function Composition}
+\subsection{Deep Function Composition}
 
+\notes{Deep learning refers to function composition, so when we are looking to derive gradients we are interested in
 $$
-f_L(f_{L-1}(\cdots f_1(\mathbb{w})))
+\frac{\text{d}\mappingFunction_L(\mappingFunction_{L-1}(\cdots \mappingFunction_1(\mappingVector)))}{\text{d} \mappingVector}
 $$
-
-How do I calculate the derivative of $f_L(\mathbb{w})$ with respect to $\mathbb{w}$?
+This implies we should be using the *chain rule*.}
 
 \subsection{Chain rule}
 
 $$
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}} \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \frac{\partial \mathbf{f}_1}{\partial \mappingVector} 
+\frac{\text{d} \mappingFunctionVector \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 \subsection{How to evaluate this?}
 
 $$
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}} \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \frac{\partial \mathbf{f}_1}{\partial \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 $$
 \small
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \left( \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}} \left( \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \cdots \left( \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \left( \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \frac{\partial \mathbf{f}_1}{\partial \mappingVector} \right) \right) \cdots \right) \right)
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \left( \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \left( \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \left( \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \left( \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} \right) \right) \cdots \right) \right)
 $$
 
 \subsection{Or like this?}
 
 $$
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}} \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \frac{\partial \mathbf{f}_1}{\partial \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 $$
 \small
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \left( \left( \cdots \left( \left( \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}}  \right) \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \right) \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \right) \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \right) \frac{\partial \mathbf{f}_1}{\partial \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \left( \left( \cdots \left( \left( \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}}  \right) \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \right) \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 \subsection{Or in a funky way?}
 
 $$
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}} \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \frac{\partial \mathbf{f}_1}{\partial \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 $$
 \small
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \left( \left( \left( \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}}  \right) \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \right) \left( \left( \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \right) \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \right) \right)\frac{\partial \mathbf{f}_1}{\partial \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \left( \left( \left( \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}}  \right) \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \right) \left( \left( \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \right)\frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 \subsection{Automatic differentiation}
@@ -56,7 +56,7 @@ $$
 
 $$
 \small
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \left( \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}} \left( \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \cdots \left( \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \left( \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \frac{\partial \mathbf{f}_1}{\partial \mappingVector} \right) \right) \cdots \right) \right)
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \left( \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \left( \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \left( \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \left( \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} \right) \right) \cdots \right) \right)
 $$
 
 Cost: 
@@ -71,7 +71,7 @@ $$
 
 $$
 \small
-\frac{\partial \mathbf{f}_L}{\partial \mathbb{w}} = \left( \left( \cdots \left( \left( \frac{\partial \mathbf{f}_L}{\partial \mathbf{f}_{L-1}} \frac{\partial \mathbf{f}_{L-1}}{\partial \mathbf{f}_{L-2}}  \right) \frac{\partial \mathbf{f}_{L-2}}{\partial \mathbf{f}_{L-3}} \right) \cdots \frac{\partial \mathbf{f}_3}{\partial \mathbf{f}_{2}} \right) \frac{\partial \mathbf{f}_2}{\partial \mathbf{f}_{1}} \right) \frac{\partial \mathbf{f}_1}{\partial \mathbb{w}} 
+\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \left( \left( \cdots \left( \left( \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}}  \right) \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \right) \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 Cost:
@@ -82,12 +82,12 @@ $$
 
 \subsection{Memory cost of autodiff}
 
-\notes{Let $d_l$ denote the output dimensionality at layer $l$. Jacobians are evaluated at intermediate activations $\mathbf{f}_l$.}
+\notes{Let $d_l$ denote the output dimensionality at layer $l$. Jacobians are evaluated at intermediate activations $\mappingFunctionVector_l$.}
 
 \subsubsection{Forward-mode}
 
 \slides{Store only:
-* current activation $\mathbf{f}_l$ ($d_l$)
+* current activation $\mappingFunctionVector_l$ ($d_l$)
 * running JVP of size $d_0 \times d_l$
 * current Jacobian $d_l \times d_{l+1}$}
 
@@ -95,7 +95,7 @@ $$
 
 \subsubsection{Reverse-mode}
 
-\slides{Cache activations $\{\mathbf{f}_l\}$ so local Jacobians can be applied during backward; higher memory than forward-mode.}
+\slides{Cache activations $\{\mappingFunctionVector_l\}$ so local Jacobians can be applied during backward; higher memory than forward-mode.}
 
 \notes{Placeholder figure: reverse-mode memory footprint (cached activations reused in backward).}
 
@@ -103,7 +103,7 @@ $$
 
 * in deep learning we're most interested in scalar objectives
 * $d_L=1$, consequently, backward mode is always optimal
-* in the context of neural networks: *backpropagation*
+* in the context of neural networks this is *backpropagation*.
 * backprop has higher memory cost than forwardprop
 
 \subsubsection{Backprop in deep networks}
