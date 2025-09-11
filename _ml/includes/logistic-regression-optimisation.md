@@ -3,15 +3,14 @@
 
 \editme
 
-
-\subsection{Objective Function}
+\subsection{Negative Log Likelihood}
 
 \slides{
-$$\begin{align*}
+\begin{aligned}
   - \log P(\dataVector|\mappingVector, \inputMatrix) = &
   - \sum_{i=1}^\numData \log P(\dataScalar_i|\mappingVector, \inputVector_i) \\ = &- \sum_{i=1}^\numData \dataScalar_i \log
   \pi_i \\ & - \sum_{i=1}^\numData (1-\dataScalar_i)\log (1-\pi_i)
-\end{align*}$$
+\end{aligned}
 }
 
 
@@ -49,8 +48,8 @@ likelihood, and naturally the gradient of the argument of the inverse
 link function with respect to the parameters, which is simply
 $\basisVector(\inputVector_i)$.}
 
-
 \newslide{Objective Function}
+
 \slides{
 * Probability of positive outcome for the $i$th data point 
   $$\pi_i = \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right),$$
@@ -65,9 +64,10 @@ $\basisVector(\inputVector_i)$.}
 }
 
 \newslide{Minimise Objective}
+
 \slides{
 * Grdient wrt  $\pi(\inputVector;\mappingVector)$
-  $$\begin{align*}
+  \begin{aligned}
   \frac{\text{d}\errorFunction(\mappingVector)}{\text{d}\mappingVector} = &
   -\sum_{i=1}^\numData \frac{\dataScalar_i}{\transformationFunction\left(\mappingVector^\top
   \basisVector(\inputVector)\right)}\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d}\mappingFunction_i}
@@ -75,12 +75,12 @@ $\basisVector(\inputVector_i)$.}
   \frac{1-\dataScalar_i}{1-\transformationFunction\left(\mappingVector^\top
   \basisVector(\inputVector)\right)}\frac{\text{d}\transformationFunction(\mappingFunction_i)}{\text{d}\mappingFunction_i}
   \basisVector(\inputVector_i)
-  \end{align*}$$
+  \end{aligned}
 }
 
 \notes{The only missing term is the gradient of the inverse link
 function. For the sigmoid squashing function we have,
-$$\begin{align*}
+\begin{aligned}
 \transformationFunction(\mappingFunction_i) &= \frac{1}{1+\exp(-\mappingFunction_i)}\\
 &=(1+\exp(-\mappingFunction_i))^{-1}
 \end{align*}$$
@@ -91,7 +91,7 @@ $$\begin{align*}
 & = \frac{1}{1+\exp(-\mappingFunction_i)}
 \frac{\exp(-\mappingFunction_i)}{1+\exp(-\mappingFunction_i)} \\
 & = \transformationFunction(\mappingFunction_i) (1-g(\mappingFunction_i))
-\end{align*}$$
+\end{aligned}
 so the full gradient can be written down as
 $$
 \frac{\text{d}\errorFunction(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData

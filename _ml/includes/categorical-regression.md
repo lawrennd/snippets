@@ -7,5 +7,6 @@
 \include{_ml/includes/soft-arg-max-function.md}
 \include{_ml/includes/categorical-regression-prediction-function.md}
 \include{_ml/includes/categorical-regression-maximum-likelihood.md}
+\include{_ml/includes/categorical-regression-optimisation.md}
 
 \endif

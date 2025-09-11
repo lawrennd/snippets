@@ -320,27 +320,34 @@ mlai.write_figure("linear-regression-olympic-marathon-men-augmented-statsmodels.
 
 \code{results.summary()}
 
-\notes{The augmented model with interactions shows a significant improvement in fit compared to the simpler linear model, with an R-squared value of 0.877 (adjusted R-squared of 0.851). This indicates that about 87% of the variance in marathon times is explained by our model.}
+\notes{Using indicator variables for historical periods (and without relying on quadratic terms), the model shows a strong improvement over the simpler linear model, with an R-squared of 0.877 and an adjusted R-squared of 0.851. This indicates that about 87% of the variance in marathon times is explained by our model. The overall model significance is high (F-statistic $p=3.70\times 10^{-10}$), and the information criteria are AIC $=-4.164$, BIC $=4.244$.}
 
-\notes{The model includes several key components:
+\notes{Key parameter estimates (with 95% confidence intervals) are:
 
-* A base time trend (x1 coefficient: -0.5634)
-* Indicator variables for different historical periods (pre-1914, 1914-1945, post-1945)
-* Interaction terms between the time trend and these periods
+* Intercept (const): $4.5876$ (SE $0.113$), $t=40.533$, $p=0.000$, CI $[4.354, 4.821]$
+* $x_1$ (base time trend): $-3.6127$ (SE $1.634$), $t=-2.211$, $p=0.037$, CI $[-6.984, -0.241]$
+* $x_2$ (war period indicator): $-0.7523$ (SE $0.480$), $t=-1.567$, $p=0.130$, CI $[-1.743, 0.239]$
+* $x_3$ (post war indicator): $-0.9399$ (SE $0.211$), $t=-4.449$, $p=0.000$, CI $[-1.376, -0.504]$
+* $x_4$ (wartime time trend): $2.8799$ (SE $2.310$), $t=1.247$, $p=0.225$, CI $[-1.888, 7.648]$
+* $x_5$ (post war time trend): $3.0493$ (SE $1.646$), $t=1.853$, $p=0.076$, CI $[-0.348, 6.446]$
 
-The coefficients reveal interesting patterns:
-
-* The pre-1914 period shows a significant positive effect (x2: 1.5700, p<0.001)
-* The wartime period 1914-1945 also shows a positive effect (x3: 0.8176, p=0.030)
-* The post-1945 period has a positive effect (x4: 0.6300, p=0.002)
-* The interaction terms (x5, x6) suggest different rates of improvement in different periods, though these are less statistically significant (x5: -3.0493, p=0.076; x6: -0.1694, p=0.919)}
+These results suggest a strong negative time trend and statistically significant effects for some period indicators, with others being suggestive but not conclusive.}
 
 \notes{However, there are some concerns:
 
-1. The very high condition number (2.17e+16) suggests serious multicollinearity issues
-2. The highly significant Jarque-Bera test (p-value 1.34e-24) indicates non-normal residuals
-3. There's significant skewness (2.393) and kurtosis (11.065) in the residuals
+1. The Jarque–Bera test ($p=1.34\times 10^{-24}$) indicates non-normal residuals. Skewness is $2.393$ and kurtosis is $11.065$.
+2. The Durbin–Watson statistic is $2.101$, suggesting little residual autocorrelation.
+3. The condition number is $127$, indicating the design is reasonably well conditioned relative to polynomial/interaction-augmented alternatives.
 
-Despite these statistical issues, the model captures the major trends in marathon times across different historical periods better than a simple linear regression would.}
+The indicator-variable model captures key regime differences and substantially improves fit over the baseline linear model. One side-effect of using abrupt indicator boundaries is that the fitted curve is discontinuous at regime change years. This can create edge effects where adjacent observations on either side of a boundary receive different offsets even if they are close in time. 
+
+If continuity is needed we could consider
+
+- Replacing hard indicators with smooth transition functions (e.g., logistic ramps centered on boundary years)
+- Adding interaction terms with polynomial or spline bases to allow the trend to bend smoothly through transitions
+- Using piecewise-linear or spline regression with continuity (and optionally slope) constraints at knots
+- Hierarchical/regularized models that shrink jump sizes toward zero unless strongly supported by data
+
+These approaches preserve the idea of regime structure while avoiding artificial jumps at the boundaries.}
 
 \endif
