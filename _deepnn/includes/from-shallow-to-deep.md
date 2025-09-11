@@ -14,7 +14,7 @@ $$
 \subsection{Gradient-based optimization}
 
 $$
-\mathcal{L}(\theta) = \sum_{n=1}^N \ell(y_n, f(x_n, \theta))
+\mathscr{L}(\theta) = \sum_{n=1}^N \ell(y_n, f(x_n, \theta))
 $$
 
 $$
@@ -25,32 +25,32 @@ $$
 
 $$
 \small
-f_L(x) = \phi\left(b_L + W_L \phi\left(b_{L-1} + W_{L-1} \phi\left( \cdots \phi\left(b_1 + W_1 x\right) \cdots \right)\right)\right)
+\mappingFunction_L(x) = \basisVector\left(b_L + W_L \basisVector\left(b_{L-1} + W_{L-1} \basisVector\left( \cdots \basisVector\left(b_1 + W_1 x\right) \cdots \right)\right)\right)
 $$
 
 \subsubsection{Recursive MLP Definition}
 
 \slides{\small
 \begin{align}
-f_l(x) &= \phi\big(W_l f_{l-1}(x) + b_l\big),\quad l=1,\dots,L\\
-f_0(x) &= x
+\mappingFunction_l(x) &= \basisVector\big(W_l \mappingFunction_{l-1}(x) + b_l\big),\quad l=1,\dots,L\\
+\mappingFunction_0(x) &= x
 \end{align}}
 
 \subsection{Rectified Linear Unit}
 
 \slides{\small
-\phi(x) = \begin{cases}
+\basisVector(x) = \begin{cases}
 0 & x \le 0\\
 x & x > 0
 \end{cases}}
 
 \notes{Placeholder figure: basic ReLU shape (zero for negative inputs, identity for positive).}
 
-\notes{Other activation functions exist (tanh, sigmoid, ELU, leaky ReLU). ReLU is emphasised here for simplicity and fast gradient computation.}
+\notes{Other activation functions that are used include hyperbolic tangent, sigmoid, ELU, leaky ReLU. Although ReLU is often preferred for  simplicity and fast gradient computation.}
 
 \subsection{Shallow ReLU Networks}
 
-\notes{Single hidden layer with 1D input/output for illustration.}
+\notes{A single layer ReLU network is functionally equivalent to a generalised linear model with a ReLU basis. The difference is that we optimise over the basis function inputs.}
 
 \slides{\small
 \begin{align}
@@ -60,9 +60,9 @@ f(x) &= \mathbf{w}_2^{\top} \, \mathbf{h}(x)
 
 \notes{Each hidden unit acts as a basis function with its own kink location and slope.}
 
-\notes{Placeholder figure: coloured activations of individual ReLU units vs input (different kink locations/slopes).}
+\tk{Placeholder figure: coloured activations of individual ReLU units vs input (different kink locations/slopes).}
 
-\notes{Placeholder figure: final output as linear combination of ReLU basis functions; colour-coded kinks correspond to unit activations.}
+\tk{Placeholder figure: final output as linear combination of ReLU basis functions; colour-coded kinks correspond to unit activations.}
 
 \slides{Complexity (1D): number of kinks $\propto$ width of network.}
 
@@ -79,10 +79,10 @@ f(x) &= \mathbf{w}_2^{\top} \, \mathbf{h}(x)
 
 \slides{\small
 \begin{align}
-f_l(x) &= 2\vert f_{l-1}(x)\vert - 2, \quad f_0(x) = x\\
-f_l(x) &= 2 
-  \operatorname{ReLU}(f_{l-1}(x)) + 2 
-  \operatorname{ReLU}(-f_{l-1}(x)) - 2
+\mappingFunction_l(x) &= 2\vert \mappingFunction_{l-1}(x)\vert - 2, \quad \mappingFunction_0(x) = x\\
+\mappingFunction_l(x) &= 2 
+  \operatorname{ReLU}(\mappingFunction_{l-1}(x)) + 2 
+  \operatorname{ReLU}(-\mappingFunction_{l-1}(x)) - 2
 \end{align}}
 
 \notes{In higher dimensions, these become polyhedral regions with constant gradients inside each region.}
