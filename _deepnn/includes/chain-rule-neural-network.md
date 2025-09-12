@@ -13,7 +13,7 @@ $$
 $$
 where the basis vector at any given layer $\layerIndex$ is given by applying the basis functions to the activations,
 $$
-\basisVector_{\layerIndex} = \basisFunctionVector_{\layerIndex}(\mappingFunctionVector_{\layerIndex}),
+\basisVector_{\layerIndex} = \basisVector_{\layerIndex}(\mappingFunctionVector_{\layerIndex}),
 $$
 where $\mappingFunctionVector_{\layerIndex}(\cdot)$ represents the form of the basis functions at the $\layerIndex$th layer. These two equations give us everything we need apart from the first layer and final layers where we have
 $$
@@ -23,7 +23,7 @@ for the first layer. Here we are *not* showing the index on the data point $i$ t
 $$
 \mathbf{\transformationFunction} = \mathbf{\transformationFunction}(\mappingFunctionVector_L).
 $$
-so we can assume dummy-basis functions for the output layer and take $\mathbf{h} = \basisFunctionVector_L$.}
+so we can assume dummy-basis functions for the output layer and take $\mathbf{h} = \basisVector_L$.}
 
 \notes{This formalism isn't fully general as it doesn't capture the possibility of skip connections where a weight matrix connects e.g. basis functions from layer $\layerIndex-2$ to the activations of layer $\layerIndex$. But it's sufficient to capture the main aspects of deep neural network gradients.}
 
