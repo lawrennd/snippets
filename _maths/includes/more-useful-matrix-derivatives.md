@@ -27,7 +27,7 @@ $$
 where $\mathbf{a}_{i, :}$ is a vector formed from the $i$th column of $\mathbf{A}$. So this means means that we should expect our result to consist only of repeated versions of $\mathbf{x}$. From our definition of vector derivatives, we know we are looking for a result with $m$ rows and $nm$ columns. This is where the Kronecker product comes in. We note that $\eye \otimes \mathbf{x}^\top$ provides a tiling of $\mathbf{x}$ of the form,
 $$
 \eye_m \otimes \mathbf{x}^\top = \begin{bmatrix}
-\mathbf{x} & \zerosVector & \cdots & \zerosVector \\
+\mathbf{x}^\top & \zerosVector & \cdots & \zerosVector \\
 \zerosVector & \mathbf{x}^\top & \cdots & \zerosVector \\
 \vdots & \vdots & \ddots & \vdots \\
 \zerosVector & \zerosVector & \cdots& \mathbf{x}^\top
