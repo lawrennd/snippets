@@ -29,7 +29,7 @@ so we can assume dummy-basis functions for the output layer and take $\mathbf{h}
 
 \notes{These fundamental operations now allow us to use our matrix derivative rules to compute the gradients of the neural network with respect to any layer of weights. To do this we need three fundamental gradients. First the activation gradient, $\tfrac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex}$ where we have defined $\mappingFunctionVector_\layerIndex = (\mappingFunctionVector_\layer)\,:$. This gradient is between a $\layerDim_\layerIndex$ dimensional vector, $\mappingFunctionVector_\layerIndex$, and a $(\layerDim_{\layerIndex -1})\layerDim \times 1$ dimensional vector, so it produces a matrix that is $\layerDim_\layerIndex \times (\layerDim_{\layerIndex-1} \layerDim)$,
 $$
-\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex} = \basisFunctionVector_{\ell-1}^\top \otimes \eye_{\layerDim_\layerIndex}.
+\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex} = \basisVector_{\ell-1}^\top \otimes \eye_{\layerDim_\layerIndex}.
 $$
 }
 
