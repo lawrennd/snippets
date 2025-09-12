@@ -9,7 +9,7 @@
 $$
 \frac{\text{d}}{\text{d} \mathbf{a^\prime}} \mathbf{A} \mathbf{x}
 $$
-which must be a matrix of size $m \times mn$. Here we've taken the unusual step of defining $\mathbf{a^\prime} = \vecb{\mathbf{A}^\top}. We construct this form because it means that we are forming $\mathbf{a}^\prime$ by stacking the columns of $\mathbf{A}^\top$, which are the rows of $\mathbf{A}$.}
+which must be a matrix of size $m \times mn$. Here we've taken the unusual step of defining $\mathbf{a^\prime} = \vecb{\mathbf{A}^\top}$. We construct this form because it means that we are forming $\mathbf{a}^\prime$ by stacking the columns of $\mathbf{A}^\top$, which are the rows of $\mathbf{A}$.}
 
 \notes{This makes the derivation straightforward by inspection because the vector $\mathbf{b} = \mathbf{A}\mathbf{x}$ is a vector formed of inner products of the different *rows* of $\mathbf{A}$, 
 $$
@@ -29,8 +29,9 @@ $$
 \eye_m \otimes \mathbf{x}^\top = \begin{bmatrix}
 \mathbf{x} & \zerosVector & \cdots & \zerosVector \\
 \zerosVector & \mathbf{x}^\top & \cdots & \zerosVector \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
-\zerosVector & \zerosVector & \cdots& \mathbf{x}^\top.
+\vdots & \vdots & \ddots & \vdots \\
+\zerosVector & \zerosVector & \cdots& \mathbf{x}^\top
+\end{bmatrix}.
 $$
 where $\eye_m$ is the $m$ dimensional identity matrix. So this means we can write,
 $$
