@@ -39,7 +39,7 @@ $$
 $$
 because we can see that each row of this matrix contains the derivative of $b_i = \mathbf{a}_{i, :}^\top \mathbf{x}$ with respect to $\mathbf{a}^\prime$, wherewe constructed $\mathbf{a}^\prime$ to be the stacking of the *rows* of $\mathbf{A}$. The elements are zero apart from those associated with $\mathbf{a}_{i, :}$ where the elements are $\mathbf{x}$.}
 
-\notes{Now, to get the gradient with respect to $\mathbf{a} = \vec{\mathbf{A}$ instead of with respect to $\mathbf{a}^\prime$ we reverse the order of the Kronecker product
+\notes{Now, to get the gradient with respect to $\mathbf{a} = \vec{\mathbf{A}}$ instead of with respect to $\mathbf{a}^\prime$ we reverse the order of the Kronecker product
 $$
 \frac{\text{d}}{\text{d} \mathbf{a^\prime}} \mathbf{A} \mathbf{x} = \mathbf{x}^\top \otimes \eye_{m} 
 $$
