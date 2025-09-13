@@ -39,9 +39,9 @@ $$
 $$
 which is a $\layerDim_\layerIndex \times \layerDim_\layerIndex$ sized matrix whose elements are given by
 $$
-\frac{\text{d}\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})}{\text{d} \mappingFunctionVector_j^{(\layerIndex)}}
+\frac{\text{d}\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})}{\text{d} \mappingFunction_j^{(\layerIndex)}}
 $$
-where $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})$ is the $i$th basis function from the $\layerIndex$th layer and $\mappingFunctionVector_j^{(\layerIndex)}$ is the $j$th activation from the same layer. If $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex}) = \basisScalar_i^{(\layerIndex)}(\mappingFunction^{(\layerIndex)}_i)$ then this matrix is diagonal.}
+where $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})$ is the $i$th basis function from the $\layerIndex$th layer and $\mappingFunction_j^{(\layerIndex)}$ is the $j$th activation from the same layer. If $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex}) = \basisScalar_i^{(\layerIndex)}(\mappingFunction^{(\layerIndex)}_i)$ then this matrix is diagonal.}
 
 \notes{Then we have the *across layer* gradients
 $$
