@@ -3,37 +3,38 @@
 
 \editme
 
-\subsection{How to evaluate this?}
+\subsection{Evaluating Derivatives}
 
+\notes{The chain of matrix multiplications gives us a choice about how we evaluate this system.}
 $$
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}} \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 $$
 \small
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \left( \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \left( \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \left( \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \left( \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} \right) \right) \cdots \right) \right)
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \left( \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}} \left( \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \cdots \left( \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \left( \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} \right) \right) \cdots \right) \right)
 $$
 
 \subsection{Or like this?}
 
 $$
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}} \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 $$
 \small
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \left( \left( \cdots \left( \left( \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}}  \right) \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \right) \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \left( \left( \cdots \left( \left( \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}}  \right) \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \right) \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 \subsection{Or in a funky way?}
 
 $$
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}} \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 $$
 \small
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \left( \left( \left( \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}}  \right) \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \right) \left( \left( \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \right)\frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \left( \left( \left( \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}}  \right) \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \right) \left( \left( \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \right)\frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 \subsection{Automatic differentiation}
@@ -42,28 +43,27 @@ $$
 
 $$
 \small
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \left( \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}} \left( \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \cdots \left( \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \left( \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} \right) \right) \cdots \right) \right)
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \left( \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}} \left( \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \cdots \left( \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \left( \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} \right) \right) \cdots \right) \right)
 $$
 
 Cost: 
 $$
 \small
-d_0d_1d_2 + d_0d_2d_3 + \ldots + d_0d_{L-1}d_L = d_0 \sum_{l=2}^{L}d_ld_{l-1}
+\layerDim_0 \layerDim_1 \layerDim_2 + \layerDim_0 \layerDim_2 \layerDim_3 + \ldots + \layerDim_0 \layerDim_{\numLayers-1} \layerDim_\numLayers = \layerDim_0 \sum_{\layerIndex=2}^{\numLayers} \layerDim_\layerIndex \layerDim_{\layerIndex-1}
 $$
 
-\subsection{Automatic differentiation}
 
 *Reverse-mode*
 
 $$
 \small
-\frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingVector} = \left( \left( \cdots \left( \left( \frac{\text{d} \mappingFunctionVector_L}{\text{d} \mappingFunctionVector_{L-1}} \frac{\text{d} \mappingFunctionVector_{L-1}}{\text{d} \mappingFunctionVector_{L-2}}  \right) \frac{\text{d} \mappingFunctionVector_{L-2}}{\text{d} \mappingFunctionVector_{L-3}} \right) \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
+\frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \left( \left( \cdots \left( \left( \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}}  \right) \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \right) \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \right) \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \right) \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
 
 Cost:
 $$
 \small
- d_Ld_{L-1}d_{L-2} + d_{L}d_{L-2}d_{L-3} + \ldots + d_Ld_{1}d_0 = d_L \sum_{l=0}^{L-2}d_ld_{l+1}
+ \layerDim_\numLayers \layerDim_{\numLayers-1}\layerDim_{\numLayers-2} + \layerDim_{\numLayers}d_{\numLayers-2} \layerDim_{\numLayers-3} + \ldots + \layerDim_\numLayers \layerDim_{1} \layerDim_0 = \layerDim_\numLayers \sum_{\layerIndex=0}^{\numLayers-2}\layerDim_\layerIndex \layerDim_{\layerIndex+1}
 $$
 
 \subsection{Memory cost of autodiff}
