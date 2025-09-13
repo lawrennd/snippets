@@ -39,20 +39,20 @@ $$
 $$
 which is a $\layerDim_\layerIndex \times \layerDim_\layerIndex$ sized matrix whose elements are given by
 $$
-\frac{\text{d}\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})}{\text{d} \mappingFunctionVector_j^{(\layerIndex)}
+\frac{\text{d}\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})}{\text{d} \mappingFunctionVector_j^{(\layerIndex)}}
 $$
-where $\basisScalar_i^({\layerIndex})(\mappingFunctionVector_{\layerIndex})$ is the $i$th basis function from the $\layerIndex$th layer and $\mappingFunctionVector_j^{(\layerIndex)$ is the $j$th activation from the same layer. If $\basisScalar_i^({\layerIndex})(\mappingFunctionVector_{\layerIndex}) = \basisScalar_i^({\layerIndex})(\mappingFunction^{(\layerIndex)}_i)$ then this matrix is diagonal.}
+where $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})$ is the $i$th basis function from the $\layerIndex$th layer and $\mappingFunctionVector_j^{(\layerIndex)}$ is the $j$th activation from the same layer. If $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex}) = \basisScalar_i^{(\layerIndex)}(\mappingFunction^{(\layerIndex)}_i)$ then this matrix is diagonal.}
 
 \notes{Then we have the *across layer* gradients
 $$
-\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\basisVector_{\layerIndex-1} = \mappingMatrix_\layerIndex,
+\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\basisVector_{\layerIndex-1}} = \mappingMatrix_\layerIndex,
 $$
 which should be a $\layerDim_\layerIndex \times \layerDim_{\layerIndex -1}$ size matrix, which matches the shape of $\mappingMatrix_\layerIndex$. 
 }
 
 \notes{This now gives us the ability to compute the gradient of any $\mappingMatrix_\ell$ in the model,
 $$
-\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k} = \left[\prod_{i=0}^{k-1} \frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right] \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d} \mappingVector_{\ell - k}}
+\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right] \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d} \mappingVector_{\ell - k}}
 $$
 }
 
