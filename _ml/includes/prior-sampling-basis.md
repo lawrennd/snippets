@@ -32,23 +32,26 @@ import pods}
 \code{data = pods.datasets.olympic_marathon_men()
 x = data['X']
 y = data['Y']
-num_data = x.shape[0]
-num_pred_data = 100 # how many points to use for plotting predictions
-x_pred = np.linspace(1890, 2016, num_pred_data)[:, None] # input locations for predictions}
+
+offset = y.mean()
+scale = np.sqrt(y.var())
+yhat = (y - offset)/scale
+xlim = (1876,2044)
+
+num_data = x.shape[0]}
 
 now let's build the basis matrices. We define the polynomial basis as follows.
 
-\code{def polynomial(x, num_basis=2, loc=0., scale=1.):
-    degree=num_basis-1
-    degrees = np.arange(degree+1)
-	return ((x-loc)/scale)**degrees}
+
+\loadcode{polynomial}{mlai}
 
 \setupcode{import mlai}
 
-\code{loc=1950
-scale=1
-degree=4
-basis = mlai.Basis(polynomial, number=degree+1, loc=loc, scale=scale)
+\code{degree=4
+num_pred_data = 100 # how many points to use for plotting predictions
+x_pred = np.linspace(xlim[0], xlim[1], num_pred_data)[:, None] # input locations for predictions
+data_limits=xlim
+basis = mlai.Basis(mlai.polynomial, number=degree+1, data_limits=data_limits)
 Phi_pred = basis.Phi(x_pred)
 Phi = basis.Phi(x)
 }
