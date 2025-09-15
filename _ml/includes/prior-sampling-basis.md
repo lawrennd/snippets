@@ -139,12 +139,7 @@ Now we can combine our sample from the prior with the basis functions to create 
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 _ = ax.plot(x_pred.flatten(), f_sample.flatten(), 'r-', linewidth=3)}
 
-This shows the recurring problem with the polynomial basis (note the scale on the left hand side!). Our prior allows relatively large coefficients for the basis associated with high polynomial degrees. Because we are operating with input values of around 2000, this leads to output functions of very high values. The fix we have used for this before is to rescale our data before we apply the polynomial basis to it. Above, we set the scale of the basis to 1. Here let's set it to 100 and try again.
-
-\code{scale = 100.
-basis = mlai.Basis(polynomial, number=degree+1, loc=loc, scale=scale)
-Phi_pred = basis.Phi(x_pred)
-Phi = basis.Phi(x)}
+Note that we have carefully scaled our data using `xlim` to ensure that the polynomials don't go too large. These samples should be well behaved. 
 
 Now we need to recompute the basis functions from above,
 
