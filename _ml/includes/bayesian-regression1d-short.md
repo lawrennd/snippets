@@ -54,7 +54,7 @@
 \setupdisplaycode{from ipywidgets import IntSlider
 import pods}
 \setupdisplaycode{import notutils as nu}
-\displaycode{nu.display_plots('dem_gaussian{stage:0>2}.svg', 
+\displaycode{nu.display_plots('dem_gaussian{stage:0>3}.svg', 
                             directory='\writeDiagramsDir/ml', 
 							stage=IntSlider(1, 1, 3, 1))}
 \slides{
