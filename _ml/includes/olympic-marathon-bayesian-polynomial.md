@@ -31,7 +31,7 @@ from ipywidgets import IntSlider}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('olympic_BLM_polynomial_number{num_basis:0>3}.svg', 
                             directory='\writeDiagramsDir/ml/', 
-							num_basis=IntSlider(1, 1, 27, 1))}
+							num_basis=IntSlider(1, 1, 29, 1))}
 
 
 \slides{
@@ -63,10 +63,13 @@ from ipywidgets import IntSlider}
 \newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number024}{\width}}{olympic_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number025}{\width}}{olympic_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number026}{\width}}{olympic_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number027}{\width}}{olympic_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number028}{\width}}{olympic_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number029}{\width}}{olympic_BLM_polynomial_number}
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number026}{80%}}{Bayesian fit with 26th degree polynomial and negative marginal log likelihood.}{olympic-blm-polynomial-number-26}}
+\notes{\figure{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number026}{80%}}{Bayesian fit with 26th degree polynomial and negative marginal log likelihood.}{olympic-blm-polynomial-number-29}}
 
 
 \subsection{Hold Out Validation}
@@ -74,7 +77,7 @@ from ipywidgets import IntSlider}
 \notes{For the polynomial fit, we will now look at *hold out* validation, where we are holding out some of the most recent points. This tests the abilit of our model to *extrapolate*.}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{plot.holdout_fit(x, y, param_name='number', param_range=(1, 27),
+\plotcode{plot.holdout_fit(x, y, param_name='number', param_range=(1, 30),
               diagrams='\writeDiagramsDir/ml',
               model=mlai.BLM, 
               basis=basis, 
@@ -89,7 +92,7 @@ from ipywidgets import IntSlider}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('olympic_val_BLM_polynomial_number{num_basis:0>3}.svg', 
                             directory='\writeDiagramsDir/ml', 
-                            num_basis=IntSlider(1, 1, 27, 1))}
+                            num_basis=IntSlider(1, 1, 30, 1))}
 
 \slides{
 \startanimation{olympic_val_BLM_polynomial_number}{1}{26}
@@ -119,17 +122,20 @@ from ipywidgets import IntSlider}
 \newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number024}{\width}}{olympic_val_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number025}{\width}}{olympic_val_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number026}{\width}}{olympic_val_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number027}{\width}}{olympic_val_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number028}{\width}}{olympic_val_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number029}{\width}}{olympic_val_BLM_polynomial_number}
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number026}{80%}}{Bayesian fit with 26th degree polynomial and hold out validation scores.}{olympic-val-blm-polynomial-number-26}}
+\notes{\figure{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number026}{80%}}{Bayesian fit with 29th degree polynomial and hold out validation scores.}{olympic-val-blm-polynomial-number-29}}
 
 \subsection{5-fold Cross Validation}
 
 \notes{Five fold cross validation tests the ability of the model to *interpolate*.}
 
 \plotcode{num_parts=5
-plot.cv_fit(x, y, param_name='number', param_range=(1, 27),  
+plot.cv_fit(x, y, param_name='number', param_range=(1, 30),  
             diagrams='\writeDiagramsDir/ml',
             model=mlai.BLM, 
             basis=basis, 
@@ -145,7 +151,7 @@ from ipywidgets import IntSlider}
 \displaycode{nu.display_plots('olympic_5cv{part:0>2}_BLM_polynomial_number{num_basis:0>3}.svg', 
                             directory='\writeDiagramsDir/ml', 
 							part=(0, 5), 
-							num_basis=IntSlider(1, 1, 27, 1))}
+							num_basis=IntSlider(1, 1, 30, 1))}
 
 
 
@@ -177,9 +183,12 @@ from ipywidgets import IntSlider}
 \newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number024}{\width}}{olympic_5cv05_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number025}{\width}}{olympic_5cv05_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number026}{\width}}{olympic_5cv05_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number027}{\width}}{olympic_5cv05_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number028}{\width}}{olympic_5cv05_BLM_polynomial_number}
+\newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number029}{\width}}{olympic_5cv05_BLM_polynomial_number}
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number026}{80%}}{Bayesian fit with 26th degree polynomial and five fold cross validation scores.}{olympic-5cv05-blm-polynomial-number-26}}
+\notes{\figure{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number026}{80%}}{Bayesian fit with 29th degree polynomial and five fold cross validation scores.}{olympic-5cv05-blm-polynomial-number-29}}
 
 \endif
