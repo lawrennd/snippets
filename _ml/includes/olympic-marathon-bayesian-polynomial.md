@@ -12,9 +12,7 @@
 \setupcode{import mlai
 import pods}
 
-\plotcode{data_limits=xlim
-basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)
-
+\plotcode{basis = mlai.Basis(mlai.polynomial, number=1, data_limits=data_limits)
 max_basis = y.shape[0]}
 
 \plotcode{import mlai.plot as plot}
