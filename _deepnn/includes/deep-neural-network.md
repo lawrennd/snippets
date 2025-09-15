@@ -9,13 +9,40 @@
 
 \setupplotcode{import matplotlib
 # Comment for google colab (no latex available)
-#matplotlib.rc('text', usetex=True)
-#matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]}
+matplotlib.rc('text', usetex=True)
+matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{#plot.deep_nn(diagrams='\writeDiagramsDir/deepgp/')}
+\plotcode{def deep_nn(diagrams='../diagrams'):
+    """Draw a deep neural network."""
+    model = plot.network()
+    model.add_layer(layer(width=6, label='\inputScalar_{index}',
+                    observed=True, text=r'given $\inputVector$'))
+    model.add_layer(layer(width=8, label='\hiddenScalar_{{1, {index}}}',
+                    text=r'$\hiddenScalarVector_1=\basisVector\left(\mappingMatrix_1\inputVector\right)$'.replace('\', '\\')))
+    model.add_layer(layer(width=6, label='\hiddenScalar_{{2, {index}}}',
+                    text=r'$\hiddenScalarVector_2=\basisVector\left(\mappingMatrix_2\hiddenScalarVector_1\right)$'.replace('\', '\\')))
+    model.add_layer(layer(width=4, label='\hiddenScalar_{{3, {index}}}',
+                    text=r'$\hiddenScalarVector_3=\basisVector\left(\mappingMatrix_3\hiddenScalarVector_2\right)$'.replace('\', '\\')))
+    model.add_layer(layer(width=1, label='\dataScalar',
+                    text=r'$\dataScalar=\mappingVector_4^\top\hiddenScalarVector_3$'.repalce('\', '\\'),
+                    observed=True))
+    fig, ax = model.draw()
+    ma.write_figure('deep-neural-network.svg',
+                      directory=diagrams,
+                      figure=fig,
+                      transparent=True)
 
-\slides{\includediagram{\diagramsDir/deepgp/deep-nn1}{50%}}
+    new_text = ['', '', '', '', '']
+    for i, text in enumerate(new_text):
+        model.layers[i].text=text
+    fig, ax = model.draw()
+    ma.write_figure('deep-neural-network.svg',
+                      directory="\writeDiagramsDir/deepnn',
+                      figure=fig,
+                      transparent=True)}
+
+\slides{\includediagram{\diagramsDir/deepnn/deep-neural-network}{50%}}
 
 \newslide{Deep Neural Network}
 

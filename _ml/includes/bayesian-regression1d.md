@@ -1,36 +1,13 @@
 \ifndef{bayesianRegression1d}
 \define{bayesianRegression1d}
-\editme
 
 \include{_ml/includes/bayesian-regression1d-short.md}
+\include{_ml/includes/bayesian-regression1d-maths.md}
 
-\newslide{Main Trick}
+\notes{\subsection{Bayesian Inference in the Univariate Case}
 
-$$p(c) = \frac{1}{\sqrt{2\pi\alpha_1}} \exp\left(-\frac{1}{2\alpha_1}c^2\right)$$
-$$p(\dataVector|\inputVector, c, m, \dataStd^2) = \frac{1}{\left(2\pi\dataStd^2\right)^{\frac{\numData}{2}}} \exp\left(-\frac{1}{2\dataStd^2}\sum_{i=1}^\numData(\dataScalar_i - m\inputScalar_i - c)^2\right)$$
+\notes{This video talks about Bayesian inference across the single parameter, the offset $c$, illustrating how the prior and the likelihood combine in one dimension to form a posterior.}
 
-\newslide{}
-
-$$p(c| \dataVector, \inputVector, m, \dataStd^2) = \frac{p(\dataVector|\inputVector, c, m, \dataStd^2)p(c)}{p(\dataVector|\inputVector, m, \dataStd^2)}$$
-
-$$p(c| \dataVector, \inputVector, m, \dataStd^2) =  \frac{p(\dataVector|\inputVector, c, m, \dataStd^2)p(c)}{\int p(\dataVector|\inputVector, c, m, \dataStd^2)p(c) \text{d} c}$$
-
-\newslide{}
-
-$$p(c| \dataVector, \inputVector, m, \dataStd^2) \propto  p(\dataVector|\inputVector, c, m, \dataStd^2)p(c)$$
-
-$$\begin{aligned}
-    \log p(c | \dataVector, \inputVector, m, \dataStd^2) =&-\frac{1}{2\dataStd^2} \sum_{i=1}^\numData(\dataScalar_i-c - m\inputScalar_i)^2-\frac{1}{2\alpha_1} c^2 + \text{const}\\
-     = &-\frac{1}{2\dataStd^2}\sum_{i=1}^\numData(\dataScalar_i-m\inputScalar_i)^2 -\left(\frac{\numData}{2\dataStd^2} + \frac{1}{2\alpha_1}\right)c^2\\
-    & + c\frac{\sum_{i=1}^\numData(\dataScalar_i-m\inputScalar_i)}{\dataStd^2},
-  \end{aligned}$$
-  
-\newslide{}
-
-complete the square of the quadratic form to obtain
-$$\log p(c | \dataVector, \inputVector, m, \dataStd^2) = -\frac{1}{2\tau^2}(c - \mu)^2 +\text{const},$$
-where $\tau^2 = \left(\numData\dataStd^{-2} +\alpha_1^{-1}\right)^{-1}$
-and
-$\mu = \frac{\tau^2}{\dataStd^2} \sum_{i=1}^\numData(\dataScalar_i-m\inputScalar_i)$.
+\notes{\figure{\includeyoutube{AvlnFnvFw_0}{600}{450}{15}}{Univariate Bayesian inference. Lecture 10 from 2012 MLAI Course.}{univariate-bayesian-inference-video}}
 
 \endif

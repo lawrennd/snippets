@@ -18,10 +18,10 @@
 \subsection{Stress Functions}
 
 \notes{A key concept in iterative dimensionality reduction is the stress function, which measures how well the low-dimensional representation preserves relationships in the original data. The classic Kruskal stress function is:
-
-$$\text{stress} = \sqrt{\frac{\sum_{i<j} (d_{ij} - \hat{d}_{ij})^2}{\sum_{i<j} d_{ij}^2}}$$
-
-where $d_{ij}$ are the original distances and $\hat{d}_{ij}$ are the distances in the reduced space.}
+$$
+\text{stress} = \sqrt{\frac{\sum_{i<j} (\distanceScalar_{ij} - \latentDistanceScalar_{ij})^2}{\sum_{i<j} \distanceScalar_{ij}^2}},
+$$
+where $\distanceScalar_{ij}$ are the original distances and $\latentDistanceScalar_{ij}$ are the distances in the reduced space.}
 
 \setupcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -35,6 +35,6 @@ import mlai.plot as plot}
 
 \notes{Different stress functions place different emphasis on preserving local versus global structure. For example, Sammon mapping modifies the stress function to give more weight to preserving small distances:
 
-$$\text{stress}_{\text{Sammon}} = \frac{1}{\sum_{i<j} d_{ij}} \sum_{i<j} \frac{(d_{ij} - \hat{d}_{ij})^2}{d_{ij}}$$}
+$$\text{stress}_{\text{Sammon}} = \frac{1}{\sum_{i<j} \distanceScalar_{ij}} \sum_{i<j} \frac{(\distanceScalar_{ij} - \latentDistanceScalar_{ij})^2}{\distanceScalar_{ij}}$$}
 
 \endif

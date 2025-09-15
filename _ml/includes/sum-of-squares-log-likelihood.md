@@ -108,6 +108,6 @@ $$
 $$
 which are each indexed by their position in the vector.}
 
-\notes{Unfortunately for Legendre, Gauss had already used the least squares method in his recoveroy of Ceres. This led to a priority dispute which Gauss's unpublished use being established as predating Legendre's.}
+\notes{Unfortunately for Legendre, Gauss had already used the least squares method in his recoveroy of Ceres. This led to a priority dispute which Gauss's unpublished use being established as predating Legendre's.}oes. 
 
 \endif

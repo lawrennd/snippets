@@ -1,5 +1,6 @@
 \ifndef{bayesianRegression1dShort}
 \define{bayesianRegression1dShort}
+
 \editme
 
 \subsection{Prior Distribution}
@@ -7,22 +8,41 @@
 * Bayesian inference requires a prior on the parameters.
 * The prior represents your belief *before* you see the data of the likely value of the parameters.
 * For linear regression, consider a Gaussian prior on the intercept:
-}\notes{The tradition in Bayesian inference is to place a probability density over the parameters of interest in your model. This choice is made regardless of whether you generally believe those parameters to be stochastic or deterministic in origin. In other words, to a Bayesian, the modelling treatment does not differentiate between epistemic and aleatoric uncertainty. For linear regression we could consider the following Gaussian prior on the intercept parameter,}
+}
+
+\notes{The tradition in Bayesian inference is to place a probability density over the parameters of interest in your model. This choice is made regardless of whether you generally believe those parameters to be stochastic or deterministic in origin. In other words, to a Bayesian, the modelling treatment does not differentiate between epistemic and aleatoric uncertainty. For linear regression we could consider the following Gaussian prior on the intercept parameter,}
   $$c \sim \gaussianSamp{0}{\alpha_1}$$
 \notes{where $\alpha_1$ is the variance of the prior distribution, its mean being zero.}
 
 \subsection{Posterior Distribution}
+
 \slides{
 * Posterior distribution is found by combining the prior with the likelihood.
 * Posterior distribution is your belief *after* you see the data of the likely value of the parameters.
-* The posterior is found through **Bayes’ Rule**}\notes{The prior distribution is combined with the likelihood of the data given the parameters $p(\dataScalar|c)$ to give the posterior via *Bayes' rule*,}
+}
+
+\newslide{Posterior Distribution}
+* The posterior is found through **Bayes’ Rule**
   $$
   p(c|\dataScalar) = \frac{p(\dataScalar|c)p(c)}{p(\dataScalar)}
   $$
-  \notes{where $p(\dataScalar)$ is the marginal probability of the data, obtained through integration over the joint density, $p(\dataScalar, c)=p(\dataScalar|c)p(c)$. Overall the equation can be summarized as,}
+  $$
+  \text{posterior} = \frac{\text{likelihood}\times \text{prior}}{\text{marginal likelihood}}
+  $$}
+
+
+
+\notes{The prior distribution is combined with the likelihood of the data given the parameters $p(\dataScalar|c)$ to give the posterior via *Bayes' rule*,
+  $$
+  p(c|\dataScalar) = \frac{p(\dataScalar|c)p(c)}{p(\dataScalar)}
+  $$
+  }
+  
+  \notes{where $p(\dataScalar)$ is the marginal probability of the data, obtained through integration over the joint density, $p(\dataScalar, c)=p(\dataScalar|c)p(c)$. Overall the equation can be summarized as,  
   $$
   \text{posterior} = \frac{\text{likelihood}\times \text{prior}}{\text{marginal likelihood}}.
   $$
+  }
 
 
 

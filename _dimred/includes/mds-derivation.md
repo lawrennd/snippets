@@ -9,11 +9,11 @@
 
 \subsection{The MDS Objective}
 
-\notes{Given $\numData$ entities and a matrix of proximity relationships between them $\Delta$ where $\Delta_{ij}$ is the relationship between entity $i$ and $j$, our task is to find an embedding $\dataMatrix = [\dataVector_1, \ldots, \dataVector_\numData]$ such that $\|\dataVector_i - \dataVector_j\|_{L2} \approx \delta_{ij}$.
+\notes{Given $\numData$ entities and a matrix of proximity relationships between them $\distanceMatrix$ where $\distanceMatrix_{ij}$ is the relationship between entity $i$ and $j$, our task is to find an embedding $\dataMatrix = [\dataVector_1, \ldots, \dataVector_\numData]$ such that $\|\dataVector_i - \dataVector_j\|_{L2} \approx \delta_{ij}$.
 
-In MDS this is formulated as minimizing the Frobenius norm between the given proximity matrix $\Delta$ and the one calculated directly from the embedding $\distanceMatrix$ where $\distanceMatrix_{ij} = \|\dataVector_i - \dataVector_j\|_{L2}$:
+In MDS this is formulated as minimizing the Frobenius norm between the given proximity matrix $\distanceMatrix$ and the one calculated directly from the embedding $\latentDistanceMatrix$ where $\latentDistanceMatrix_{ij} = \|\dataVector_i - \dataVector_j\|_{L2}$:
 
-$$\hat{\dataMatrix} = \argmin_{\dataMatrix} \|\distanceMatrix - \Delta\|_F$$}
+$$\hat{\dataMatrix} = \argmin_{\dataMatrix} \|\latentDistanceMatrix - \distanceMatrix\|_F$$}
 
 \subsection{Properties of the Frobenius Norm}
 
@@ -31,9 +31,9 @@ $$\|\mappingMatrix\|_F = \sqrt{\text{trace}(\mappingMatrix^\top\mappingMatrix)} 
 
 Using this, we can rewrite the MDS optimization problem:
 
-$$\argmin_{\distanceMatrix} \|\distanceMatrix - \Delta\|_F^2 = \argmin_{\distanceMatrix} \text{trace}(\distanceMatrix - \Delta)^2$$
+$$\argmin_{\latentDistanceMatrix} \|\latentDistanceMatrix - \distanceMatrix\|_F^2 = \argmin_{\latentDistanceMatrix} \text{trace}(\latentDistanceMatrix - \distanceMatrix)^2$$
 
-Now we will write $\Delta$ using its eigendecomposition and also rewrite $\distanceMatrix$ using a similar matrix:
+Now we will write $\distanceMatrix$ using its eigendecomposition and also rewrite $\latentDistanceMatrix$ using a similar matrix:
 
 $$\argmin_{\mappingMatrix, \hat{\eigenvalueMatrix}} \text{trace}(\mappingMatrix\hat{\eigenvalueMatrix}\mappingMatrix^\top - \eigenvectorMatrix\eigenvalueMatrix\eigenvectorMatrix^\top)^2$$
 
@@ -49,12 +49,13 @@ $$= \sum_{i=1}^N (\hat{\lambda}_i - \lambda_i)^2$$}
 
 \subsection{Rank-Constrained Solution}
 
-\notes{To provide a rank $d$ approximation $\distanceMatrix$ to $\Delta$ we should therefore match the largest $d$ eigenvalues and choose:
-
-$$\distanceMatrix = \sum_{i=1}^d \lambda_i \eigenvectorScalar_i \eigenvectorScalar_i^\top$$
-
+\notes{To provide a rank $\latentDim$ approximation $\latentDistanceMatrix$ to $\distanceMatrix$ we should therefore match the largest $\latentDim$ eigenvalues and choose
+$$
+\latentDistanceMatrix = \sum_{j=1}^\latentDim \lambda_i \eigenvectorScalar_j \eigenvectorScalar_i^\top
+$$
 where the eigenvalues have been sorted such that $\lambda_i \geq \lambda_j$ when $i < j$. This leads to the following error of the embedding:
-
-$$\|\distanceMatrix - \Delta\|_F = \sqrt{\sum_{i=d+1}^N \lambda_i^2}$$}
+$$
+\|\latentDistanceMatrix - \distanceMatrix\|_F = \sqrt{\sum_{i=\latentDim+1}^\numData \lambda_i^2}
+$$}
 
 \endif
