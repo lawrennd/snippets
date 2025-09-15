@@ -23,7 +23,6 @@ max_basis = y.shape[0]}
 			  basis=basis, 
 			  alpha=1, 
 			  sigma2=0.04, 
-			  data_limits=xlim,
               xlim=xlim, 
 			  objective_ylim=[0.5,1.6]
 			  diagrams='\writeDiagramsDir/ml')}
