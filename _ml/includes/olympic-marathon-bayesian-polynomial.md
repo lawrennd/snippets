@@ -31,12 +31,12 @@ from ipywidgets import IntSlider}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('olympic_BLM_polynomial_number{num_basis:0>3}.svg', 
                             directory='\writeDiagramsDir/ml/', 
-							num_basis=IntSlider(1, 1, 29, 1))}
+							num_basis=IntSlider(1, 1, max_basis, 1))}
 
 
 \slides{
 \define{width}{80%}
-\startanimation{olympic_BLM_polynomial_number}{1}{26}
+\startanimation{olympic_BLM_polynomial_number}{1}{29}
 \newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number001}{\width}}{olympic_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number002}{\width}}{olympic_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_BLM_polynomial_number003}{\width}}{olympic_BLM_polynomial_number}
@@ -77,7 +77,7 @@ from ipywidgets import IntSlider}
 \notes{For the polynomial fit, we will now look at *hold out* validation, where we are holding out some of the most recent points. This tests the abilit of our model to *extrapolate*.}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{plot.holdout_fit(x, y, param_name='number', param_range=(1, 30),
+\plotcode{plot.holdout_fit(x, y, param_name='number', param_range=(1, max_basis+1),
               diagrams='\writeDiagramsDir/ml',
               model=mlai.BLM, 
               basis=basis, 
@@ -92,10 +92,10 @@ from ipywidgets import IntSlider}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('olympic_val_BLM_polynomial_number{num_basis:0>3}.svg', 
                             directory='\writeDiagramsDir/ml', 
-                            num_basis=IntSlider(1, 1, 30, 1))}
+                            num_basis=IntSlider(1, 1, max_basis, 1))}
 
 \slides{
-\startanimation{olympic_val_BLM_polynomial_number}{1}{26}
+\startanimation{olympic_val_BLM_polynomial_number}{1}{29}
 \newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number001}{\width}}{olympic_val_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number002}{\width}}{olympic_val_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_val_BLM_polynomial_number003}{\width}}{olympic_val_BLM_polynomial_number}
@@ -135,7 +135,7 @@ from ipywidgets import IntSlider}
 \notes{Five fold cross validation tests the ability of the model to *interpolate*.}
 
 \plotcode{num_parts=5
-plot.cv_fit(x, y, param_name='number', param_range=(1, 30),  
+plot.cv_fit(x, y, param_name='number', param_range=(1, max_basis+1),  
             diagrams='\writeDiagramsDir/ml',
             model=mlai.BLM, 
             basis=basis, 
@@ -151,12 +151,12 @@ from ipywidgets import IntSlider}
 \displaycode{nu.display_plots('olympic_5cv{part:0>2}_BLM_polynomial_number{num_basis:0>3}.svg', 
                             directory='\writeDiagramsDir/ml', 
 							part=(0, 5), 
-							num_basis=IntSlider(1, 1, 30, 1))}
+							num_basis=IntSlider(1, 1, max_basis, 1))}
 
 
 
 \slides{
-\startanimation{olympic_5cv05_BLM_polynomial_number}{1}{26}
+\startanimation{olympic_5cv05_BLM_polynomial_number}{1}{29}
 \newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number001}{\width}}{olympic_5cv05_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number002}{\width}}{olympic_5cv05_BLM_polynomial_number}
 \newframe{\includediagram{\diagramsDir/ml/olympic_5cv05_BLM_polynomial_number003}{\width}}{olympic_5cv05_BLM_polynomial_number}
