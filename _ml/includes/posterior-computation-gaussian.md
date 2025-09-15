@@ -20,21 +20,15 @@ $$
 $$
 p(\mappingVector|\dataVector, \inputVector) = \frac{p(\dataVector|\inputVector, \mappingVector)p(\mappingVector)}{p(\dataVector)}
 $$
-We've looked at the samples for our function $\mappingFunctionVector = \basisMatrix\mappingVector$, which forms the mean of the Gaussian likelihood, under the prior distribution. I.e. we've sampled from $p(\mappingVector)$ and multiplied the result by the basis matrix. Now we will sample from the posterior density, $p(\mappingVector|\dataVector, \inputVector)$, and check that the new samples fit do correspond to the data, i.e. we want to check that the updated distribution includes information from the data set. First we need to compute the posterior mean and *covariance*.
-
-\subsection{Bayesian Inference in the Univariate Case}
-
-This video talks about Bayesian inference across the single parameter, the offset $c$, illustrating how the prior and the likelihood combine in one dimension to form a posterior.
-
-\figure{\includeyoutube{AvlnFnvFw_0}{600}{450}{15}}{Univariate Bayesian inference. Lecture 10 from 2012 MLAI Course.}{univariate-bayesian-inference-video}
+We've looked at the samples for our function $\mappingFunctionVector = \basisMatrix\mappingVector$, which forms the mean of the Gaussian likelihood, under the prior distribution. I.e. we've sampled from $p(\mappingVector)$ and multiplied the result by the basis matrix. Now we will sample from the posterior density, $p(\mappingVector|\dataVector, \inputVector)$, and check that the new samples fit do correspond to the data, i.e. we want to check that the updated distribution includes information from the data set. First we need to compute the posterior mean and *covariance*.}
 
 \subsection{Multivariate Bayesian Inference}
 
-This section of the lecture talks about how we extend the idea of Bayesian inference for the multivariate case. It goes through the multivariate Gaussian and how to complete the square in the linear algebra as we managed below.
+\notes{This section of the lecture talks about how we extend the idea of Bayesian inference for the multivariate case. It goes through the multivariate Gaussian and how to complete the square in the linear algebra as we managed below.}
 
-\figure{\includeyoutube{Os1iqgpelPw}{800}{600}{1362}}{Multivariate Bayesian inference. Lecture 11 from 2012 MLAI course.}{multivariate-bayesian-inference}
+\notes{\figure{\includeyoutube{Os1iqgpelPw}{800}{600}{1362}}{Multivariate Bayesian inference. Lecture 11 from 2012 MLAI course.}{multivariate-bayesian-inference}}
 
-The lecture informs us the the posterior density for $\mappingVector$ is given by a Gaussian density with covariance
+\notes{The lecture informs us the the posterior density for $\mappingVector$ is given by a Gaussian density with covariance
 $$
 \covarianceMatrix_w = \left(\dataStd^{-2}\basisMatrix^\top \basisMatrix + \alpha^{-1}\eye\right)^{-1}
 $$
