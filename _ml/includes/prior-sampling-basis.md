@@ -106,9 +106,7 @@ Here the `np.sqrt` is necesssary because we need to multiply by the standard dev
 
 To get an idea of the overall shape of the resulting distribution, let's do the same thing with a histogram of the results.
 
-\displaycode{%matplotlib inline}
-
-\plotcode{import matplotlib.pyplot as plt
+\setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot}
 
 
