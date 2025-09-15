@@ -35,7 +35,7 @@
 import pods}
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('dem_gaussian{stage:0>2}.svg', 
-                            diagrams='\writeDiagramsDir/ml', 
+                            directory='\writeDiagramsDir/ml', 
 							stage=IntSlider(1, 1, 3, 1))}
 \slides{
 \define{width}{70%}
