@@ -25,7 +25,8 @@ import mlai.plot as plot}
 kernel = Kernel(exponentiated_quadratic, lengthscale=2.0, variance=1.0)
 plot.computing_covariance(kernel=kernel, x=np.asarray([[-3.],[1.2], [1.4]]), 
                           formula=formula,
-						  stub='eq_three')}
+						  stub='eq_three',
+		                  diagrams='\writeDiagramsDir/kern')}
 
 
 \setupdisplaycode{import notutils as nu
@@ -71,7 +72,8 @@ import mlai.plot as plot}
 kernel = Kernel(exponentiated_quadratic, lengthscale=2.0, variance=1.0)
 plot.computing_covariance(kernel=kernel, x=np.asarray([[-3.],[1.2], [1.4], [2.0]]), 
                           formula=formula,
-						  stub='eq_four')}
+						  stub='eq_four',
+		                  diagrams='\writeDiagramsDir/kern')}
 
 
 \setupdisplaycode{import notutils as nu
@@ -127,7 +129,8 @@ import mlai.plot as plot}
 kernel = Kernel(exponentiated_quadratic, lengthscale=5.0, variance=2.0)
 plot.computing_covariance(kernel=kernel, x=np.asarray([[-3.],[1.2], [1.4]]), 
                           formula=formula,
-						  stub='eq_three_2')}
+						  stub='eq_three_2',
+		                  diagrams='\writeDiagramsDir/kern')}
 
 
 \setupdisplaycode{import notutils as nu
