@@ -26,6 +26,8 @@ num_data = x.shape[0]}
 \setupcode{import mlai}
 
 \code{degree=4
+alpha = 4
+sigma2 = 0.1
 num_pred_data = 100 # how many points to use for plotting predictions
 x_pred = np.linspace(xlim[0], xlim[1], num_pred_data)[:, None] # input locations for predictions
 data_limits=xlim
@@ -41,7 +43,6 @@ Phi = basis.Phi(x)
 \notes{Let's use this way of constructing samples from a Gaussian to check what functions look like *a priori*. The process will be as follows. First, we sample a random vector $K$ dimensional from `np.random.normal`. Then we scale it by $\sqrt{\alpha}$ to obtain a prior sample of $\mappingVector$.}
 
 \code{K = degree + 1
-alpha = 2
 z_vec = np.random.normal(size=K)
 w_sample = z_vec*np.sqrt(alpha)
 print(w_sample)}
