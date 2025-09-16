@@ -3,6 +3,8 @@
 
 \editme
 
+\installcode{GPy}
+
 \subsection{Data Fit Term}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -12,7 +14,7 @@ import os}
 \setupplotcode{import GPy
 import mlai.plot as plot
 import mlai
-import gp_tutorial}
+import mlai.gp_tutorial}
 
 \plotcode{np.random.seed(125)
 diagrams = '\writeDiagramsDir/gp'
