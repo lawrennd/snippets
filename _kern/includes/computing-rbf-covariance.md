@@ -17,12 +17,15 @@ k(\inputVector, \inputVector^\prime) = \alpha \exp\left(-\frac{\left\Vert \input
 
 \newslide{Computing Covariance}
 
+\loadcode{Kernel}{mlai}
+\loadcode{eq_cov}{mlai}
+
 \setupplotcode{import numpy as np
-from mlai import exponentiated_quadratic, Kernel
+import mlai
 import mlai.plot as plot}
 
 \plotcode{formula = r"$k(x_i, x_j)=\alpha\exp\left(-\frac{\left|\left|x_i-x_j\right|\right|^{2}}{2\ell^{2}}\right)$"
-kernel = Kernel(exponentiated_quadratic, lengthscale=2.0, variance=1.0)
+kernel = mlai.Kernel(mlai.eq_cov, lengthscale=2.0, variance=1.0)
 plot.computing_covariance(kernel=kernel, x=np.asarray([[-3.],[1.2], [1.4]]), 
                           formula=formula,
 						  stub='eq_three',
@@ -69,7 +72,7 @@ from mlai import exponentiated_quadratic, Kernel
 import mlai.plot as plot}
 
 \plotcode{formula = r"$k(x_i, x_j)=\alpha\exp\left(-\frac{\left|\left|x_i-x_j\right|\right|^{2}}{2\ell^{2}}\right)$"
-kernel = Kernel(exponentiated_quadratic, lengthscale=2.0, variance=1.0)
+kernel = mlai.Kernel(mlai.eq_cov, lengthscale=2.0, variance=1.0)
 plot.computing_covariance(kernel=kernel, x=np.asarray([[-3.],[1.2], [1.4], [2.0]]), 
                           formula=formula,
 						  stub='eq_four',
@@ -126,7 +129,7 @@ from mlai import exponentiated_quadratic, Kernel
 import mlai.plot as plot}
 
 \plotcode{formula = r"$k(x_i, x_j)=\alpha\exp\left(-\frac{\left|\left|x_i-x_j\right|\right|^{2}}{2\ell^{2}}\right)$"
-kernel = Kernel(exponentiated_quadratic, lengthscale=5.0, variance=2.0)
+kernel = mlai.Kernel(mlai.eq_cov, lengthscale=5.0, variance=2.0)
 plot.computing_covariance(kernel=kernel, x=np.asarray([[-3.],[1.2], [1.4]]), 
                           formula=formula,
 						  stub='eq_three_2',
