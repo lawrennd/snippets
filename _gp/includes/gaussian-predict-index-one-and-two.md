@@ -2,6 +2,32 @@
 \define{gaussianPredictIndexOneAndTwo}
 \editme
 
+
+\subsection{Sampling a Function}
+
+\notes{We will consider a *multivariate Gaussian* with a particular structure of covariance matrix. We will generate a *single* sample from this 25 dimensional Gaussian density.}
+\slides{**Multi-variate Gaussians**
+
+* We will consider a Gaussian with a particular structure of covariance matrix.
+* Generate a single sample from this 25 dimensional Gaussian density,}
+$$
+\mappingFunctionVector=\left[\mappingFunction_{1},\mappingFunction_{2}\dots \mappingFunction_{25}\right].
+$$
+\slides{* We will plot these points against their index.}\notes{in the figure below we plot these data on the $y$-axis against their *indices* on the $x$-axis.}
+
+
+\setupcode{import numpy as np
+np.random.seed(4949)}
+
+\loadcode{Kernel}{mlai}
+\loadcode{polynomial_cov}{mlai}
+\loadcode{exponentiated_quadratic}{mlai}
+
+\setupplotcode{import mlai.plot as plot
+from mlai import Kernel, exponentiated_quadratic}
+\plotcode{kernel=Kernel(function=exponentiated_quadratic, lengthscale=0.5)
+plot.two_point_sample(kernel.K, diagrams='\writeDiagramsDir/gp')}
+
 \subsubsection{Sampling a Function from a Gaussian}
 
 \setupdisplaycode{import notutils as nu

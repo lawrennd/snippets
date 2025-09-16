@@ -10,6 +10,7 @@
 * Gaussian processes is a general framework (basis functions special case)
 * Within the framework you can consider models with infinite basis functions.
 }
+\newslide{Gaussian Processes}
 \notes{Models where we model the entire joint distribution of our training data, $p(\dataVector, \inputMatrix)$ are sometimes described as *generative models*. Because we can use sampling to generate data sets that represent all our assumptions. However, as we discussed in the sessions on \refnotes{logistic regression}{logistic-regression} and \refnotes{naive Bayes}{naive-bayes}, this can be a bad idea, because if our assumptions are wrong then we can make poor predictions. We can try to make more complex assumptions about data to alleviate the problem, but then this typically leads to challenges for tractable application of the sum and rules of probability that are needed to compute the relevant marginal and conditional densities. If we know the form of the question we wish to answer then we typically try and represent that directly, through $p(\dataVector|\inputMatrix)$.  In practice, we also have been making assumptions of conditional independence given the model parameters,}
 $$
 p(\dataVector|\inputMatrix, \mappingVector) =

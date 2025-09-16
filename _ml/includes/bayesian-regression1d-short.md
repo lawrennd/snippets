@@ -14,6 +14,7 @@
   $$c \sim \gaussianSamp{0}{\alpha_1}$$
 \notes{where $\alpha_1$ is the variance of the prior distribution, its mean being zero.}
 
+\notes{The posterior distribution is found by *Bayes' rule*.}
 \subsection{Posterior Distribution}
 
 \slides{
@@ -22,13 +23,13 @@
 }
 
 \newslide{Posterior Distribution}
-* The posterior is found through **Bayes’ Rule**
+\slides{* The posterior is found through **Bayes’ Rule**}
   $$
   p(c|\dataScalar) = \frac{p(\dataScalar|c)p(c)}{p(\dataScalar)}
   $$
   $$
   \text{posterior} = \frac{\text{likelihood}\times \text{prior}}{\text{marginal likelihood}}
-  $$}
+  $$
 
 
 

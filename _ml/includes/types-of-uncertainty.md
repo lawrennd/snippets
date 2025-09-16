@@ -4,7 +4,7 @@
 
 \subsection{A Philosophical Dispute: Probabilistic Treatment of Parameters?}
 
-\slides{* Bayesian is not because of *Bayes rule*
+\slides{* Bayesian is not because of *Bayes' rule*
 * It is because *parameters* (e.g. $m$ and $c$ are treated with distributions
 * Bayesian vs Frequentist controversy
 * My view is its a false dichotomy, these are complementary approaches}
@@ -17,7 +17,7 @@
 
 \notes{A segment from the lecture in 2012 on philsophical underpinnings.}
 
-\figure{\includeyoutube{AvlnFnvFw_0}{600}{450}{1215}{1900}}{The philosophical underpinnings of uncertainty, as discussed in 2012 MLAI lecture.}{philosophical-underpinnings-uncertainty}
+\notes{\figure{\includeyoutube{AvlnFnvFw_0}{600}{450}{1215}{1900}}{The philosophical underpinnings of uncertainty, as discussed in 2012 MLAI lecture.}{philosophical-underpinnings-uncertainty}}
 
 \newslide{Noise Models}
 

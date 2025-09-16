@@ -18,98 +18,50 @@ basis function models, where the parameters are sampled from a prior,
 but move to thinking about sampling from the marginal likelihood
 directly.}
 
-\subsection{Sampling from the Prior}
+\slides{* Build on our understanding of marginal likelihood.}
 
-\notes{The first thing we'll do is to set up the parameters of the
-model, these include the parameters of the prior, the parameters of
-the basis functions and the noise level.}
-
-\code{# set prior variance on w
-alpha = 4.
-# set the order of the polynomial basis set
-degree = 5
-# set the noise variance
-sigma2 = 0.01}
-
-\notes{Now we have the variance, we can sample from the prior
-distribution to see what form we are imposing on the functions *a
-priori*.
-
-Let's now compute a range of values to make predictions at, spanning
-the *new* space of inputs,}
-
-\setupcode{import numpy as np}
-\code{def polynomial(x, degree, loc, scale):
-    degrees = np.arange(degree+1)
-    return ((x-loc)/scale)**degrees}
-
-\notes{now let's build the basis matrices. First we load in the data}
-
-\setupcode{import pods}
-\code{data = pods.datasets.olympic_marathon_men()
-x = data['X']
-y = data['Y']}
-
-\code{loc = 1950.
-scale = 100.
-num_data = x.shape[0]
-num_pred_data = 100 # how many points to use for plotting predictions
-x_pred = np.linspace(1880, 2030, num_pred_data)[:, np.newaxis] # input locations for predictions
-Phi_pred = polynomial(x_pred, degree=degree, loc=loc, scale=scale)
-Phi = polynomial(x, degree=degree, loc=loc, scale=scale)}
-
-\subsection{Weight Space View}
-
-\notes{To generate typical functional predictions from the model, we
-need a set of model parameters. We assume that the parameters are
-drawn independently from a Gaussian density,}
-$$
-\weightVector \sim \gaussianSamp{\zerosVector}{\alpha\eye},
-$$
-\notes{then we can combine this with the
-definition of our prediction function $\mappingFunction(\inputVector)$,}
-$$
-\mappingFunction(\inputVector) = \weightVector^\top \basisVector(\inputVector).
-$$
-\notes{We can now sample from the
-prior density to obtain a vector $\weightVector$ using the function
-`np.random.normal` and combine these parameters with our basis to create some
-samples of what $\mappingFunction(\inputVector)$ looks like,}
-
-\setupdisplaycode{import matplotlib.pyplot as plt}
-
-\displaycode{num_samples = 10
-K = degree+1
-for i in range(num_samples):
-    z_vec = np.random.normal(size=(K, 1))
-    w_sample = z_vec*np.sqrt(alpha)
-    f_sample = Phi_pred@w_sample
-    plt.plot(x_pred, f_sample)}
+\include{_ml/includes/prior-sampling-basis.md}
 
 
 \subsection{Function Space View}
 
 \notes{The process we have used to generate the samples is a
 two stage process. To obtain each function, we first generated a sample from the
-prior,}
+prior,
 $$
 \weightVector \sim \gaussianSamp{\zerosVector}{\alpha \eye}
 $$
-\notes{then if we compose our basis matrix, $\basisMatrix$ from the basis
-functions associated with each row then we get,}
+then if we compose our basis matrix, $\basisMatrix$ from the basis
+functions associated with each row then we get,
 $$
 \basisMatrix = \begin{bmatrix}\basisVector(\inputVector_1) \\ \vdots \\
 \basisVector(\inputVector_\numData)\end{bmatrix}
 $$
-\notes{then we can write down the vector of function values, as evaluated at}
+then we can write down the vector of function values, as evaluated at
 $$
 \mappingFunctionVector = \begin{bmatrix} \mappingFunction_1
-\\ \vdots \mappingFunction_\numData\end{bmatrix}
+\\ \vdots \\  \mappingFunction_\numData\end{bmatrix}
 $$
-\notes{in the form}
+in the form
 $$
 \mappingFunctionVector = \basisMatrix\weightVector.
+$$}
+
+\slides{$$
+\weightVector \sim \gaussianSamp{\zerosVector}{\alpha \eye}
 $$
+$$
+\basisMatrix = \begin{bmatrix}\basisVector(\inputVector_1) \\ \vdots \\
+\basisVector(\inputVector_\numData)\end{bmatrix}
+$$
+$$
+\mappingFunctionVector = \begin{bmatrix} \mappingFunction_1
+\\ \vdots \\  \mappingFunction_\numData\end{bmatrix}
+$$
+$$
+\mappingFunctionVector = \basisMatrix\weightVector.
+$$}
+
 \newslide{}
 
 \notes{Now we can use standard properties of multivariate Gaussians to
@@ -145,10 +97,10 @@ $\kernelMatrix$ and zero mean,}
 
 \newslide{}
 
-\slides{```{.python}
+\slides{\slidesmall{```{.python}
 K = alpha*Phi_pred@Phi_pred.T
 f_sample = np.random.multivariate_normal(mean=np.zeros(x_pred.size), cov=K)
-```}
+```}}
 
 \code{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 for i in range(10):
