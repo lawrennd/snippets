@@ -9,7 +9,7 @@
 \loadplotcode{Kernel}{mlai}
 \loadplotcode{ratquad_cov}{mlai}
 
-\plotcode{kernel = Kernel(function=ratquad_cov,
+\plotcode{kernel = Kernel(function=mlai.ratquad_cov,
                      name='Rational Quadratic',
                      shortname='ratquad',					 
                      formula='\formula',

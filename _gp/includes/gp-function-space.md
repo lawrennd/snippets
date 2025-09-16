@@ -23,7 +23,7 @@ $$
 
 \notes{Now we can image the resulting covariance,}
 
-\code{kernel = Kernel(function=eq_cov, variance=1., lengthscale=10.)
+\code{kernel = mlai.Kernel(function=mlai.eq_cov, variance=1., lengthscale=10.)
 K = kernel.K(x_pred, x_pred)}
 
 \notes{To visualise the covariance between the points we can use the `imshow` function in matplotlib.}
@@ -143,7 +143,7 @@ ax.axvline(x.shape[0]-1, color='w')
 ax.axhline(x.shape[0]-1, color='w')
 fig.colorbar(im)
 
-mlai.write_figure('block-predictive-covariance.svg', diagrams='\writeDiagramsDir/gp')
+mlai.write_figure('block-predictive-covariance.svg', directory='\writeDiagramsDir/gp')
 }
 
 \figure{\includediagram{\diagramsDir/gp/block-predictive-covariance}{80%}}{Different blocks of the covariance function. The upper left block is the covariance of the training data with itself, $\kernelMatrix$. The top right is the cross covariance between training data (rows) and prediction locations (columns). The lower left is the same matrix transposed. The bottom right is the covariance matrix of the test data with itself.}{block-predictive-covariance}

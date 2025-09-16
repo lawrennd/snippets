@@ -28,11 +28,11 @@ import mlai
 import numpy as np}
 
 \plotcode{
-basis = mlai.Basis(function=radial, 
+basis = mlai.Basis(function=mlai.radial, 
                    number=3,
 	               data_limits=[-0.5, 0.5], 
                    width=0.125)
-kernel = mlai.Kernel(function=basis_cov,
+kernel = mlai.Kernel(function=mlai.basis_cov,
                      name='Basis',
                      shortname='basis',					 
                      formula='\formula',

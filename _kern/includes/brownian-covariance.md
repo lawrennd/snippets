@@ -13,7 +13,7 @@ import mlai
 import numpy as np}
 
 \plotcode{t=np.linspace(0, 2, 200)[:, np.newaxis]
-kernel = mlai.Kernel(function=brownian_cov,
+kernel = mlai.Kernel(function=mlai.brownian_cov,
                      name='Brownian',
                      formula='\formula',
                      shortname='brownian')

@@ -20,7 +20,7 @@
 import mlai
 import numpy as np}
 
-\plotcode{kernel = mlai.Kernel(function=sinc_cov,
+\plotcode{kernel = mlai.Kernel(function=mlai.sinc_cov,
                      name='Sinc',
                      shortname='sinc',					 
                      formula='\formula',

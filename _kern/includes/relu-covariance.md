@@ -17,7 +17,7 @@
 import mlai
 import numpy as np}
 
-\plotcode{kernel = mlai.Kernel(function=relu_cov,
+\plotcode{kernel = mlai.Kernel(function=mlai.relu_cov,
                      name='RELU',
                      shortname='relu',					 
                      formula='\kernelScalar(\inputVector, \inputVector^\prime) = \alpha \arcsin\left(\frac{w \inputVector^\top \inputVector^\prime + b}{\sqrt{\left(w \inputVector^\top \inputVector + b + 1\right)\left(w \left.\inputVector^\prime\right.^\top \inputVector^\prime + b + 1\right)}}\right)',

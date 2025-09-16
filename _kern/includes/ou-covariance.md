@@ -9,7 +9,7 @@
 \loadplotcode{Kernel}{mlai}
 \loadplotcode{eq_cov}{mlai}
 
-\plotcode{kernel = Kernel(function=ou_cov,
+\plotcode{kernel = Kernel(function=mlai.ou_cov,
                      name='Ornstein Uhlenbeck',
                      shortname='ou',					 
                      formula='\formula',

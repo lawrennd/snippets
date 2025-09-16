@@ -12,7 +12,7 @@
 import mlai
 import numpy as np}
 
-\plotcode{kernel = mlai.Kernel(function=polynomial_cov,
+\plotcode{kernel = mlai.Kernel(function=mlai.polynomial_cov,
                      name='Polynomial',
                      shortname='polynomial',					 
                      formula='\formula',

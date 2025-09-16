@@ -13,7 +13,7 @@
 import mlai
 import numpy as np}
 
-\plotcode{kernel = mlai.Kernel(function=periodic_cov,
+\plotcode{kernel = mlai.Kernel(function=mlai.periodic_cov,
                      name='Periodic',
                      shortname='periodic',					 
                      formula='\formula',

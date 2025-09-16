@@ -12,7 +12,7 @@ import mlai
 import numpy as np}
 
 \plotcode{K, anim=plot.animate_covariance_function(mlai.compute_kernel, 
-                                         kernel=lmc_cov, subkernel=eq_cov,
+                                         kernel=mlai.lmc_cov, subkernel=mlai.eq_cov,
 										 B = np.asarray([[1, 0.5],[0.5, 1.5]]))}
 
 \setupdisplaycode{from IPython.core.display import HTML}

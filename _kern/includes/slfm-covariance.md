@@ -14,7 +14,7 @@ import mlai
 import numpy as np}
 
 \code{K, anim=plot.animate_covariance_function(mlai.compute_kernel, 
-                                         kernel=slfm_cov, subkernel=eq_cov,
+                                         kernel=mlai.slfm_cov, subkernel=mlai.eq_cov,
 										 W = np.asarray([[1],[5]])}
 
 \setupcode{from IPython.core.display import HTML}

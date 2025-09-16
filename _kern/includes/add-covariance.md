@@ -14,7 +14,7 @@
 
 \loadplotcode{add_cov}{mlai}
 
-\plotcode{kernel = Kernel(function=add_cov,
+\plotcode{kernel = Kernel(function=mlai.add_cov,
                      name='Additive',
                      shortname='add',                     
                      formula='\formula', 

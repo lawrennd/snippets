@@ -15,11 +15,11 @@
 
 \loadplotcode{prod_cov}{mlai}
 
-\plotcode{kernel = Kernel(function=prod_cov,
+\plotcode{kernel = Kernel(function=mlai.prod_cov,
                      name='Product',
                      shortname='prod',                     
                      formula='\formula', 
-                     kerns=[linear_cov, eq_cov], 
+                     kerns=[mlai.linear_cov, mlai.eq_cov], 
                      kern_args=[{'variance': 25}, {'lengthscale' : 0.2}])}
 
 \setupplotcode{import mlai.plot as plot}

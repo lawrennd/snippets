@@ -9,7 +9,7 @@
 \loadplotcode{Kernel}{mlai}
 \loadplotcode{matern32_cov}{mlai}
 
-\plotcode{kernel = Kernel(function=matern32_cov,
+\plotcode{kernel = Kernel(function=mlai.matern32_cov,
                      name='Matérn 3/2',
                      shortname='matern32',					 
                      formula='\formula',
