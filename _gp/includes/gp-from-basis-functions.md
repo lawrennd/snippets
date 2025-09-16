@@ -22,7 +22,6 @@ directly.}
 
 \include{_ml/includes/prior-sampling-basis.md}
 
-
 \subsection{Function Space View}
 
 \notes{The process we have used to generate the samples is a
