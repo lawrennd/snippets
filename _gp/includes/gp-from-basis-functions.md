@@ -97,7 +97,7 @@ $\kernelMatrix$ and zero mean,}
 
 \newslide{}
 
-\slides{\slidesmall{```{.python}
+\slides{\slidesmall{```
 K = alpha*Phi_pred@Phi_pred.T
 f_sample = np.random.multivariate_normal(mean=np.zeros(x_pred.size), cov=K)
 ```}}
@@ -173,6 +173,8 @@ mlai.write_figure('gp-sample-basis-function-plus-noise.svg',
 \notes{where the effect of our noise term is to roughen the sampled
 functions, we can also increase the variance of the noise to see a
 different effect,}
+
+\newslide{}
 
 \code{sigma2 = 1.
 K = alpha*Phi_pred@Phi_pred.T + sigma2*np.eye(x_pred.size)}
