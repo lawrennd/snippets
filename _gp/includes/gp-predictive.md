@@ -65,7 +65,7 @@ lengthscale = 8
 # set noise variance
 sigma2 = 0.05
 
-kernel = mlai.Kernel(mlai.eq_cov, variance=variance, lengthscale=lengthscale)
+kernel = Kernel(eq_cov, variance=variance, lengthscale=lengthscale)
 K = kernel.K(x, x)
 K_star = kernel.K(x, x_pred)
 K_starstar = kernel.K(x_pred, x_pred)}

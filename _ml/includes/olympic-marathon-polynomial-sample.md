@@ -31,7 +31,7 @@ sigma2 = 0.1
 num_pred_data = 100 # how many points to use for plotting predictions
 x_pred = np.linspace(xlim[0], xlim[1], num_pred_data)[:, None] # input locations for predictions
 data_limits=xlim
-basis = mlai.Basis(mlai.polynomial, number=degree+1, data_limits=data_limits)
+basis = mlai.Basis(polynomial, number=degree+1, data_limits=data_limits)
 Phi_pred = basis.Phi(x_pred)
 Phi = basis.Phi(x)
 }
