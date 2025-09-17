@@ -25,10 +25,10 @@ However, in the Gaussian process case, when the likelihood also assumes Gaussian
 
 \loadplotcode{eq_cov}{mlai}
 
-\plotcode{kernel = mlai.Kernel(function=mlai.eq_cov,
-                     name='Exponentiated Quadratic',
-                     shortname='eq',					 
-					 lengthscale=0.25)}
+\plotcode{kernel = Kernel(function=eq_cov,
+              name='Exponentiated Quadratic',
+              shortname='eq',					 
+			  lengthscale=0.25)}
 
 \notes{Next, we sample from a multivariate normal density (a multivariate Gaussian), using the covariance function as the covariance matrix.}
 
