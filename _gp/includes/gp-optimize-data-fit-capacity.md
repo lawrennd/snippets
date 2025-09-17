@@ -45,15 +45,16 @@ gp = GP(x, y, sigma2=0.01, kernel=kernel)}
 \plotcode{
 lengthscales = np.asarray([0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 4, 8, 16, 100])
 
-fig1, ax1 = plt.subplots(figsize=plot.one_figsize)    
-fig2, ax2 = plt.subplots(figsize=plot.one_figsize)    
-line = ax2.semilogx(np.nan, np.nan, 'x-', 
+fig, ax = plt.subplots(1, 2, figsize=plot.big_wide_figsize)    
+plt.subplots_adjust(wspace=0.3)
+plt.tight_layout()
+line = ax[1].semilogx(np.nan, np.nan, 'x-', 
                     color=black_color)
-ax2.set_ylim(err_y_lim)
-ax2.set_xlim([0.01, 100])
-ax2.grid(True)
-ax2.set_xticks([0.01, 0.1, 1, 10, 100])
-ax2.set_xticklabels(['$10^{-2}$', '$10^{-1}$', '$10^0$', '$10^1$', '$10^2$'])
+ax[1].set_ylim(err_y_lim)
+ax[1].set_xlim([0.01, 100])
+ax[1].grid(True)
+ax[1].set_xticks([0.01, 0.1, 1, 10, 100])
+ax[1].set_xticklabels(['$10^{-2}$', '$10^{-1}$', '$10^0$', '$10^1$', '$10^2$'])
 
 
 err = np.zeros_like(lengthscales)
@@ -69,62 +70,64 @@ for i, ls in enumerate(lengthscales):
     err_fit[i] = 0.5*y.T@gp.Kinv@y
     ypred_mean, ypred_var = gp.predict(xtest)
     ypred_sd = np.sqrt(ypred_var)
-    ax1.clear()
+    ax[0].clear()
     _ = gp_tutorial.gpplot(xtest.flatten(),
                            ypred_mean.flatten(),
                            ypred_mean.flatten()-2*ypred_sd.flatten(),
                            ypred_mean.flatten()+2*ypred_sd.flatten(), 
-                           ax=ax1)
-    x_lim = ax1.get_xlim()
-    ax1.set_ylabel('$f(x)$', fontsize=fontsize)
-    ax1.set_xlabel('$x$', fontsize=fontsize)
+                           ax=ax[0])
+    x_lim = ax[0].get_xlim()
+    ax[0].set_ylabel('$f(x)$', fontsize=fontsize)
+    ax[0].set_xlabel('$x$', fontsize=fontsize)
 
-    p = ax1.plot(x, y, markertype, color=black_color, markersize=markersize, linewidth=linewidth)
-    ax1.set_ylim(y_lim)
-    ax1.set_xlim(x_lim)                                    
-    ax1.set_xticks(x_ticks)
+    p = ax[0].plot(x, y, markertype, color=black_color, markersize=markersize, linewidth=linewidth)
+    ax[0].set_ylim(y_lim)
+    ax[0].set_xlim(x_lim)                                    
+    ax[0].set_xticks(x_ticks)
         #ax.set(box=False)
            
-    ax1.plot([x_lim[0], x_lim[0]], y_lim, color=black_color)
-    ax1.plot(x_lim, [y_lim[0], y_lim[0]], color=black_color)
+    ax[0].plot([x_lim[0], x_lim[0]], y_lim, color=black_color)
+    ax[0].plot(x_lim, [y_lim[0], y_lim[0]], color=black_color)
 
-    file_name = 'gp-optimise{counter:0>3}.svg'.format(counter=counter)
-    mlai.write_figure(os.path.join(diagrams, file_name),
-                      figure=fig1,
-                      transparent=True)
-    counter += 1
 
-    ax2.clear()
-    t = ax2.semilogx(lengthscales[0:i+1], err[0:i+1], 'x-', 
+    ax[1].clear()
+    t = ax[1].semilogx(lengthscales[0:i+1], err[0:i+1], 'x-', 
                      color=magenta_color, 
                      markersize=markersize,
                      linewidth=linewidth)
-    t2 = ax2.semilogx(lengthscales[0:i+1], err_log_det[0:i+1], 'x-', 
+    t2 = ax[1].semilogx(lengthscales[0:i+1], err_log_det[0:i+1], 'x-', 
                       color=blue_color, 
                       markersize=markersize,
                       linewidth=linewidth)
-    t3 = ax2.semilogx(lengthscales[0:i+1], err_fit[0:i+1], 'x-', 
+    t3 = ax[1].semilogx(lengthscales[0:i+1], err_fit[0:i+1], 'x-', 
                       color=red_color, 
                       markersize=markersize,
                       linewidth=linewidth)
-    ax2.set_ylim(err_y_lim)
-    ax2.set_xlim([0.025, 32])
-    ax2.set_xticks([0.01, 0.1, 1, 10, 100])
-    ax2.set_xticklabels(['$10^{-2}$', '$10^{-1}$', '$10^0$', '$10^1$', '$10^2$'])
+    ax[1].set_ylim(err_y_lim)
+    ax[1].set_xlim([0.025, 32])
+    ax[1].set_xticks([0.01, 0.1, 1, 10, 100])
+    ax[1].set_xticklabels(['$10^{-2}$', '$10^{-1}$', '$10^0$', '$10^1$', '$10^2$'])
 
-    ax2.grid(True)
+    ax[1].grid(True)
 
-    ax2.set_ylabel('negative log likelihood', fontsize=fontsize)
-    ax2.set_xlabel('length scale, $\ell$', fontsize=fontsize)
+    ax[1].set_ylabel('negative log likelihood', fontsize=fontsize)
+    ax[1].set_xlabel('length scale, $\ell$', fontsize=fontsize)
+	xlim = ax[1].get_xlim()
+    ax[1].plot([xlim[0], xlim[0]], err_y_lim, color=black_color)
+    ax[1].plot(xlim, [err_y_lim[0], err_y_lim[0]], color=black_color)
+	
     file_name = 'gp-optimise{counter:0>3}.svg'.format(counter=counter)
     mlai.write_figure(os.path.join(diagrams, file_name),
-                      figure=fig2,
+                      figure=fig,
                       transparent=True)
-    counter += 1
-    #ax.set_box(False)
-    xlim = ax2.get_xlim()
-    ax2.plot([xlim[0], xlim[0]], err_y_lim, color=black_color)
-    ax2.plot(xlim, [err_y_lim[0], err_y_lim[0]], color=black_color)}
+    counter += 1}
+
+
+\setupdisplaycode{import notutils as nu
+from ipywidgets import IntSlider}
+\displaycode{nu.display_plots('gp-optimise{sample:0>3}.svg', 
+                                          directory='\writeDiagramsDir/gp', 
+			                  sample=IntSlider(0, 0, 10, 1))}
 
 \slides{
 \startanimation{gp-optimise}{0}{10}
