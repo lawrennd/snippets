@@ -2,21 +2,6 @@
 \define{gpOptimize}
 \editme
 
-\helpercode{def rotateObject(rotationMatrix, handle):
-    for i = 1:prod(size(handle))
-        type = get(handle(i), 'type');
-        if strcmp(type, 'text'):
-            xy = get(handle(i), 'position');
-            xy(1:2) = rotationMatrix*xy(1:2)';
-            set(handle(i), 'position', xy);
-        else:
-            xd = get(handle(i), 'xdata');
-            yd = get(handle(i), 'ydata');
-            new = rotationMatrix*[xd(:)'; yd(:)'];
-            set(handle(i), 'xdata', new(1, :));
-            set(handle(i), 'ydata', new(2, :));
-}
-
 \subsection{Learning Covariance Parameters}
 
 Can we determine covariance parameters from the data?

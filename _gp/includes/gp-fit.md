@@ -40,16 +40,15 @@ mlai.write_figure(figure=fig,
 \figure{\includediagram{\diagramsDir/gp/olympic-marathon-gp}{80%}}{Gaussian process fit to the Olympic Marathon data. The error bars are too large, perhaps due to the outlier from 1904.}{olympic-marathon-gp}
 
 
-\notes{
 \subsection{Fit Quality}
 
-In the fit we see that the error bars (coming mainly from the noise variance) are quite large. This is likely due to the outlier point in 1904, ignoring that point we can see that a tighter fit is obtained. To see this make a version of the model, ```m_clean```, where that point is removed.}
+\notes{In the fit we see that the error bars (coming mainly from the noise variance) are quite large. This is likely due to the outlier point in 1904, ignoring that point we can see that a tighter fit is obtained. To see this make a version of the model, ```m_clean```, where that point is removed.}
 
 \code{x_clean=np.vstack((x[0:2, :], x[3:, :]))
 y_clean=np.vstack((yhat[0:2, :], yhat[3:, :]))
 
 m_clean = GPy.models.GPRegression(x_clean,y_clean)
-_ = m_clean.optimize()}}
+_ = m_clean.optimize()}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -60,6 +59,12 @@ plot.model_output(m_clean, scale=scale, offset=offset, ax=ax, xlabel='year', yla
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)
 mlai.write_figure(figure=fig,
-                  filename='\writeDiagramsDir/gp/olympic-marathon-gp.svg', 
+                  filename='\writeDiagramsDir/gp/olympic-marathon-gp-outlier-removed.svg', 
                   transparent=True, frameon=True)}
+
+\newslide{Remove Outlier: Olympic Marathon Data GP}
+
+\figure{\includediagram{\diagramsDir/gp/olympic-marathon-gp-outlier-removed}{80%}}{Gaussian process fit to the Olympic Marathon data. Here we've removed the outlier from 1904.}{olympic-marathon-gp-outlier-removed}
+
+
 \endif
