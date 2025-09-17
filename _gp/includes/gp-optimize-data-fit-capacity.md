@@ -7,7 +7,8 @@
 
 \setupplotcode{import mlai.plot as plot
 import mlai
-from mlai import gp_tutorial}
+from mlai import gp_tutorial
+import os}
 
 \plotcode{np.random.seed(125)
 diagrams = '\writeDiagramsDir/gp'
