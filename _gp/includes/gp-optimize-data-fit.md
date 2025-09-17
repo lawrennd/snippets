@@ -7,25 +7,14 @@
 
 \newslide{Data Fit: $\color{\redColor}{\frac{\dataVector^\top\kernelMatrix^{-1}\dataVector}{2}}$}
 
-\plotcode{    # Generate GP optimization quadratic data fit visualization
-    # This replaces the original MATLAB code with Python implementation
-    from mlai.plot import gp_optimize_quadratic
-    
-    # Create the animated visualization with default parameters
-    # lambda1=3, lambda2=1, generates 3 frames for animation
-    gp_optimize_quadratic(
-        lambda1=3,
-        lambda2=1, 
-        diagrams=directory,
-        fontsize=20,
-        plot_width=0.6,
-        generate_frames=True
-    )
-    
-    # The function generates three SVG files:
-    # - gp-optimise-quadratic000.svg (initial contours with eigenvalue axes)
-    # - gp-optimise-quadratic001.svg (with data point added)
-    # - gp-optimise-quadratic002.svg (rotated coordinate system view)
+\plotcode{gp_optimize_quadratic(
+    lambda1=3,
+    lambda2=1, 
+    diagrams='\writeDiagramsDir/gp',
+    fontsize=20,
+    plot_width=0.6,
+    generate_frames=True
+)    
 }
 
 \setupdisplaycode{import notutils as nu
