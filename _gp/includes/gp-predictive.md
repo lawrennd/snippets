@@ -88,6 +88,8 @@ $$
 & \kernelMatrix_{\ast,\ast}\end{bmatrix}
 $$
 
+\newslide{Making Predictions}
+
 \setupplotcode{import mlai}
 
 \plotcode{fig, ax = plt.subplots(figsize=(8,8))

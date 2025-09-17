@@ -36,7 +36,10 @@ and a non-degenerate kernel matrix leads to $\det{\kernelMatrix} = 0$ defeating 
   & = \alpha \sum_k \activationScalar\left(\mappingVector^{(1)}_k, \inputVector_i\right) \activationScalar\left(\mappingVector^{(1)}_k, \inputVector_j\right)
   \end{align*}
   $$
-\notes{if instead of considering a finite number you sample infinitely many of these activation functions, sampling parameters from a prior density, $p(\mappingVectorTwo)$, for each one,}\slides{* Sample infinitely many from a prior density, $p(\mappingVector^{(1)})$,}
+\notes{if instead of considering a finite number you sample infinitely many of these activation functions, sampling parameters from a prior density, $p(\mappingVectorTwo)$, for each one,}\newslide{}
+\slides{ 
+
+* Sample infinitely many from a prior density, $p(\mappingVector^{(1)})$,}
 $$
 \kernel_\mappingFunction\left(\inputVector_i, \inputVector_j\right) = \alpha \int \activationScalar\left(\mappingVector^{(1)}, \inputVector_i\right) \activationScalar\left(\mappingVector^{(1)}, \inputVector_j\right) p(\mappingVector^{(1)}) \text{d}\mappingVector^{(1)}
 $$

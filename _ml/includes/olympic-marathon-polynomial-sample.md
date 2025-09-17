@@ -47,16 +47,31 @@ z_vec = np.random.normal(size=K)
 w_sample = z_vec*np.sqrt(alpha)
 print(w_sample)}
 
+\slides{
+```
+K = degree + 1
+z_vec = np.random.normal(size=K)
+w_sample = z_vec*np.sqrt(alpha)
+```}
+
 \notes{Now we can combine our sample from the prior with the basis functions to create a function,}
 
+\newslide{}
+
+\slides{```f_sample = Phi_pred@w_sample```}
 \setupcode{import numpy as np}
-\code{f_sample = np.dot(Phi_pred,w_sample)}
+\code{f_sample = Phi_pred@w_sample}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
-_ = ax.plot(x_pred.flatten(), f_sample.flatten(), 'r-', linewidth=3)}
+_ = ax.plot(x_pred.flatten(), f_sample.flatten(), 'r-', linewidth=3)
+
+mlai.write_figure(filename='polynomial-prior-sample.svg', directory='\writeDiagramsDir/ml')}
+
+
+\figure{\includediagram{\diagramsDir/ml/polynomial-prior-sample}{80%}}{Prior sample of $\basisMatrix \mappingVector$ with $\mappingVector$ taken from the prior.}{polynomial-prior-sample}
 
 \notes{Note that we have carefully scaled our data using `xlim` to ensure that the polynomials don't go too large. These samples should be well behaved.}
 
@@ -75,7 +90,7 @@ $$
 
 \setupcode{import numpy as np}
 
-\code{f_sample = np.dot(Phi_pred, w_sample)}
+\code{f_sample = Phi_pred@w_sample}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot}
@@ -95,6 +110,16 @@ for i in range(num_samples):
     _ = ax.plot(x_pred.flatten(), f_sample.flatten(), linewidth=2)
 	
 mlai.write_figure(filename='polynomial-prior-samples.svg', directory='\writeDiagramsDir/ml')}
+
+\slides{```
+for i in range(num_samples):
+    z_vec = np.random.normal(size=K)
+    w_sample = z_vec*np.sqrt(alpha)
+    f_sample = np.dot(Phi_pred,w_sample)
+    _ = ax.plot(x_pred.flatten(), f_sample.flatten(), linewidth=2)
+```}
+
+\newslide{}
 
 \figure{\includediagram{\diagramsDir/ml/polynomial-prior-samples}{80%}}{Samples of $\basisMatrix \mappingVector$ with $\mappingVector$ taken from the prior.}{polynomial-prior-samples}
 

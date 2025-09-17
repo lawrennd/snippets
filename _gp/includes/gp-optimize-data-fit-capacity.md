@@ -48,11 +48,11 @@ fig1, ax1 = plt.subplots(figsize=plot.one_figsize)
 fig2, ax2 = plt.subplots(figsize=plot.one_figsize)    
 line = ax2.semilogx(np.nan, np.nan, 'x-', 
                     color=black_color)
-ax.set_ylim(err_y_lim)
-ax.set_xlim([0.025, 32])
-ax.grid(True)
-ax.set_xticks([0.01, 0.1, 1, 10, 100])
-ax.set_xticklabels(['$10^{-2}$', '$10^{-1}$', '$10^0$', '$10^1$', '$10^2$'])
+ax2.set_ylim(err_y_lim)
+ax2.set_xlim([0.01, 100])
+ax2.grid(True)
+ax2.set_xticks([0.01, 0.1, 1, 10, 100])
+ax2.set_xticklabels(['$10^{-2}$', '$10^{-1}$', '$10^0$', '$10^1$', '$10^2$'])
 
 
 err = np.zeros_like(lengthscales)
@@ -62,7 +62,7 @@ err_fit = np.zeros_like(lengthscales)
 counter = 0
 for i, ls in enumerate(lengthscales):
     gp.kernel.parameters["lengthscale"] = ls
-    gp.update_inverse() 
+    gp.update_kernel_matrix() 
     err[i] = 0.5*(gp.logdetK + y.T@gp.Kinv@y)
     err_log_det[i] = 0.5*gp.logdetK
     err_fit[i] = 0.5*y.T@gp.Kinv@y
