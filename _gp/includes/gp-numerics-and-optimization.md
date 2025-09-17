@@ -9,7 +9,7 @@ In practice we shouldn't be using matrix inverse directly to solve the GP system
 
 \loadcode{update_inverse}{mlai}
 
-\code{mlai.GP.update_inverse = mlai.update_inverse}
+\code{GP.update_inverse = update_inverse}
 
 \subsection{Capacity Control}
 
