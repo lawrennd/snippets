@@ -7,7 +7,9 @@
 
 \newslide{Data Fit: $\color{\redColor}{\frac{\dataVector^\top\kernelMatrix^{-1}\dataVector}{2}}$}
 
-\plotcode{gp_optimize_quadratic(
+\setupplotcode{from mlai import plot}
+
+\plotcode{plot.gp_optimize_quadratic(
     lambda1=3,
     lambda2=1, 
     diagrams='\writeDiagramsDir/gp',
