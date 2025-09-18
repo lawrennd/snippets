@@ -95,7 +95,7 @@ print('True variance should be ', (sigmas**2).sum(), ' standard deviation ', np.
 \notes{Of course, we can histogram `y_vec` as well.}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
-ax.hist(y_vec, bins=30, normed=True)
+ax.hist(y_vec, bins=30, density=True)
 ax.legend('$y$')}
 
 \subsection{Matrix Multiplication of Gaussian Variables}
