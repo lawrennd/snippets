@@ -7,6 +7,8 @@
 
 \notes{Let's test the relationship between samples and the true mean numerically. First we will draw 200 samples from a standard normal.}
 
+\setupcode{import numpy as np}
+
 \code{w_vec = np.random.normal(size=200)}
 
 \notes{We can compute the mean of these samples and their variance}
