@@ -5,7 +5,7 @@
 
 \subsection{Sinc Covariance}
 
-\notes{Another approach to developing covariance function exploits Bochner's theorem @Bochner:book59. Bochner's theorem tells us that any positve filter in Fourier space implies has an associated Gaussian process with a stationary covariance function. The covariance function is the *inverse Fourier transform* of the filter applied in Fourier space.}
+\notes{Another approach to developing covariance function exploits Bochner's theorem @Bochner-book59. Bochner's theorem tells us that any positve filter in Fourier space implies has an associated Gaussian process with a stationary covariance function. The covariance function is the *inverse Fourier transform* of the filter applied in Fourier space.}
 
 \notes{For example, in signal processing, *band limitations* are commonly applied as an assumption. For example, we may believe that no frequency above $w=2$ exists in the signal. This is equivalent to a rectangle function being applied as a the filter in Fourier space.}
 
