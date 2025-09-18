@@ -21,11 +21,10 @@ np.random.seed(4949)}
 
 \loadcode{Kernel}{mlai}
 \loadcode{polynomial_cov}{mlai}
-\loadcode{exponentiated_quadratic}{mlai}
+\loadcode{eq_cov}{mlai}
 
-\setupplotcode{import mlai.plot as plot
-from mlai import Kernel, exponentiated_quadratic}
-\plotcode{kernel=Kernel(function=exponentiated_quadratic, lengthscale=0.5)
+\setupplotcode{import mlai.plot as plot}
+\plotcode{kernel=Kernel(function=eq_cov, lengthscale=0.5)
 plot.two_point_sample(kernel.K, diagrams='\writeDiagramsDir/gp')}
 
 \subsubsection{Sampling a Function from a Gaussian}
