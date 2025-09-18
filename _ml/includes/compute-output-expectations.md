@@ -38,7 +38,7 @@ $$
 
 \codeassignment{Compute the predictive mean for the function at all
 the values of the basis function given by `Phi_pred`. Call the vector of
-predictions `\mappingFunction_pred_mean`. Plot the predictions alongside the data. We can also
+predictions `f_pred_mean`. Plot the predictions alongside the data. We can also
 compute what the training error was. Use the output from your model to compute
 the predictive mean, and then compute the sum of squares error of that
 predictive mean.
