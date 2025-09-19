@@ -13,7 +13,7 @@
 import mlai
 import numpy as np}
 
-\plotcode{kernel = mlai.Kernel(function=mlai.mlp_cov,
+\plotcode{kernel = mlai.Kernel(function=mlp_cov,
                      name='Multilayer Perceptron',
                      shortname='mlp',					 
                      formula='\formula',

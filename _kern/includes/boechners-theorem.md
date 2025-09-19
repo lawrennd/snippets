@@ -11,7 +11,7 @@
   $$
 \slides{$Q$ is continuous since for a fixed $x$, the function $e^{-itx}$ is continuous and periodic.  The function $Q$ is a positive definite function, i.e. the kernel $\kernelScalar(\inputScalar, \inputScalar^\prime)= Q(\inputScalar^\prime - \inputScalar)$ is positive definite.}
   
-\slides{Bochner's theorem [@Bochner:book59] says the converse is true, i.e. every positive definite function $Q$ is the Fourier transform of a positive finite Borel measure.  A proof can be sketched as follows [@Stein:interpolation99]}
+\slides{Bochner's theorem [@Bochner-book59] says the converse is true, i.e. every positive definite function $Q$ is the Fourier transform of a positive finite Borel measure.  A proof can be sketched as follows [@Stein:interpolation99]}
   
 \notes{Imagine we are given data and we wish to generalize from it. Without making further assumptions, we have no more information than the given data set. We can think of this ssomewhat like a weighted sum of Dirac delta functions. The Dirac delta function is defined to be a function with an integral of one, which is zero at all places apart from zero, where it is infinite. Given observations at particular times (or locations) $\inputVector_i$ we can think of our observations as being a function,}
 $$
