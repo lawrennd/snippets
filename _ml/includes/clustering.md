@@ -5,13 +5,11 @@
 
 \subsection{Clustering}
 
-\newslide{Clustering}
-
-* Common approach for grouping data points
+\slides{* Common approach for grouping data points
 * Assigns data points to discrete groups
 * Examples include:
   * Animal classification
-  * Political affiliation grouping
+  * Political affiliation grouping}
 
 \notes{Clustering is a common approach to data analysis, though we will not cover it in great depth in this course. The fundamental idea is to associate each data point $\dataVector_{i, :}$ with one of $k$ different discrete groups. This approach raises interesting questions - for instance, when clustering animals into groups, we might ask whether animal traits are truly discrete or continuous in nature. Similar questions arise when clustering political affiliations.
 
