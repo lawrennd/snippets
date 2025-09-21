@@ -19,7 +19,7 @@
 
 \code{# Generate 1000D Gaussian data
 np.random.seed(22)
-Y = np.random.randn(1000, 1000)
+Y = np.random.randn(1000, 1000)}
 
 \setupplotcode{import mlai
 import mlai.plot}
@@ -38,17 +38,15 @@ import mlai.plot}
   
 **Distance distribution for a Gaussian with $\dataDim=1000$}, \emph{$\numData=100$**}
 
-\setupplotcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.spatial.distance import pdist, squareform
-from scipy.stats import gamma
-import mlai
-import mlai.plot as plot}
+\setupcode{import numpy as np}
 
-\plotcode{# Generate 1000D Gaussian data with 100 points
-np.random.seed(42)
-Y = np.random.randn(100, 1000)
-fig, ax = plot_squared_distances(Y, 'gaussian-distances-100', Gaussian Distances (1000D, 100 points)', directory='\writeDiagramsDir/dimred')}
+\code{# Generate 1000D Gaussian data with 100 points
+np.random.seed(22)
+Y = np.random.randn(100, 1000)}
+
+\setupplotcode{import mlai.plot as plot}
+
+\plotcode{plot.squared_distances(Y, 'gaussian-distances-100', 'Gaussian Distances (1000D, 100 points)', directory='\writeDiagramsDir/dimred')}
 
 \figure{\includediagram{\diagramsDir/dimred/gaussian-distances-100}{40%}}{A good match betwen theory and the samples for a 100 dimensional Gaussian distribution.}
 
