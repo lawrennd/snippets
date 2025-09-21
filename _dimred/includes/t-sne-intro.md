@@ -7,6 +7,28 @@
 
 \notes{t-Distributed Stochastic Neighbor Embedding (t-SNE) is a dimensionality reduction technique that focuses on preserving local structure. It converts distances between points into probabilities and tries to match these probabilities in the low-dimensional space.}
 
+\notes{The idea in t-SNE is to convert distances in data space into probabilities. This is done through two stages. First a neighbourhood graph is formed, so each point, $i$, is related to its $k$ nearest neighbours.}
+
+\notes{If the squared distances between two data points are given by $\distanceScalar_{i,j}^2$, then the probability of point $i$ linking to point $j$ is given by,
+$$
+p(r_{i,j} | \distanceMatrix) = \pi_{i,j} =  \frac{\exp -\frac{\distanceScalar_{i,j}^2}{2\sigma^2}}{\sum_{k\in \neighborhood{i}}\exp -\distanceScalar_{i,j}}
+$$
+where $r_{i,j} = 1$ if the two points are linked, $\pi_{i,j}$ is the probability of that link and the neighbourhood of $i$ is given by $\mathscr{N}(i)$.}
+
+\notes{This is compared with probabilities in *latent* space which are given by 
+$$
+p(s_{i,j} | \latentDistanceMatrix) = q_{i,j} = (1 + \latentDistanceScalar_{i,j})^(-1)}{\sum_{k\in \neighborhood{i}}/ (1 + \latentDistanceScalar_{i, k})^(-1)},
+$$
+where $s_{i,j} = 1$ if two points are linked in the latent space and $q_{i,j}$ is the probability of that link. The latent distances are given by
+$$
+\latentDistanceScalar_{i,j} = (\latentVector_{i, :} - \latentVector_{j, :})^\top*\latentVector_{i, :} - \latentVector_{j, :}).
+$$}
+
+\notes{$t$-SNE then minimises the KL divergence between these two link distributions.
+$$
+\errorFunction(\latentMatrix} = \sum_i \sum_{j\in\neighborhood{i}} p_{i,k} \log \frac{p_{i,k}}{q_{i,k}}
+$$}
+
 \slides{
 * Converts distances to probabilities
 * Uses t-distribution in low-dimensional space
