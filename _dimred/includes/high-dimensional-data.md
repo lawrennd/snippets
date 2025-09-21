@@ -64,22 +64,25 @@ import notutils as nu}
 \notes{Consider a different type of model. One where we take a prototype six and we rotate it left and right to create new data.}
 
 \installcode{scikit-image}
-\setupplotcode{from skimage.transform import rotate}
+\setupcode{from skimage.transform import rotate
+import numpy as np}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-six_image = mlai.load_pgm('br1561_6.3.pgm', directory ='\writeDiagramsDir/ml')
+\code{six_image = mlai.load_pgm('br1561_6.3.pgm', directory ='\writeDiagramsDir/ml')
 six_image = np.hstack([np.zeros((rows, 3)), six_image, np.zeros((rows, 4))])
 dim_one = np.asarray(six_image.shape)
 angles = range(360)
 i = 0
 Y = np.zeros((len(angles), np.prod(dim_one)))
 for angle in angles:
-    rot_image = rotate(six_image, angle)
+    rot_image = rotate(six_image, angle, cval=1.0)
     dim_two = np.asarray(rot_image.shape)
     start = [int(round((dim_two[0] - dim_one[0])/2)), int(round((dim_two[1] - dim_one[1])/2))]
     crop_image = rot_image[start[0]+np.array(range(dim_one[0])), :][:, start[1]+np.array(range(dim_one[1]))]
     Y[i, :] = crop_image.flatten()
-    ax.imshow(rot_image,interpolation='none').set_cmap('gray')
+}
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
+for angle in range(6):
+    ax.imshow(np.reshape(Y[i, :], dim_one),interpolation='none').set_cmap('gray')
     mlai.write_figure(f"dem_six_rotate{angle:0>3}.png", directory="\writeDiagramsDir/dimred/")}
 
 \setupdisplaycode{import notutils as nu}
