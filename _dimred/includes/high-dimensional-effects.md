@@ -84,6 +84,6 @@ This effect is exactly what we observe in real datasets - they typically have mu
 * This is why PCA and other dimension reduction works!
 }
 
-\codeassignment{Generate your own high-dimensional dataset with known structure and visualize its distance distribution. Try varying the intrinsic dimensionality (e.g. use 3D or 4D latent space) and observe how the distance distribution changes. What happens if you add some noise to the structured data?}{30}
+\codeassignment{Generate your own high-dimensional dataset with known structure and visualize its distance distribution. Try varying the intrinsic dimensionality (e.g. use 3D or 4D latent space) and observe how the distance distribution changes. What happens if you add some noise to the structured data?}{}{30}
 
 \endif

@@ -3,6 +3,48 @@
 
 \editme
 
+\comment{\subsection{Yeast Cell Cycle Data}
+
+\begin{frame}
+  \frametitle{Microarray Data}
+  \begin{columns}
+    \column{0.55\textwidth}
+    \begin{itemize}
+    \item Gene expression measurements reflecting the cell cycle in yeast {\footnotesize \citep{Spellman:yeastcellcy98}}. 
+    \item $\dataDim=6,178$ Genes measured for $\numData=77$ experiments
+    \item Data available from \url{http://genome-www.stanford.edu/cellcycle/data/rawdata/individual.htm}.
+    \end{itemize}
+
+    \column{0.45\textwidth}
+
+    \begin{center}
+      % 
+      \begin{minipage}[b][0.8\textheight][t]{0.5\columnwidth}%
+        % 
+        \begin{minipage}[c][0.3\textheight]{1\columnwidth}%
+          \begin{center}
+            Yeast
+          \end{center}%
+        \end{minipage}\\
+        % 
+        \begin{minipage}[c][0.3\textheight]{1\columnwidth}%
+          \begin{center}
+            Cell
+          \end{center}%
+        \end{minipage}\\
+        % 
+        \begin{minipage}[c][0.3\textheight]{1\columnwidth}%
+          \begin{center}
+            Cycle
+          \end{center}
+        \end{minipage}
+      \end{minipage}\includegraphics[height=0.8\textheight]{../../../dimred/tex/diagrams/spellman}
+    \end{center}
+    
+  \end{columns}
+  
+\end{frame}
+}
 \subsection{Spellman Yeast Cell Cycle Data}
 
 \notes{This data set collection is from an classic early microarray paper on the yeast cell cycle [@Spellman:yeastcellcy98].}

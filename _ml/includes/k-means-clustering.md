@@ -8,11 +8,11 @@
 \newslide{Mathematical Formulation} 
 \slides{
 * Represent objects as data vectors $\inputVector_i$
-* Represent cluster centers as vectors $\meanVector_j$
-* Define similarity/distance between objects and centers
+* Represent cluster centres as vectors $\meanVector_j$
+* Define similarity/distance between objects and centres
 * Distance function: $\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j)$}
 
-\notes{To implement clustering computationally, we need to mathematically represent both our objects and cluster centers as vectors ($\inputVector_i$ and $\meanVector_j$ respectively) and define a notion of either similarity or distance between them. The distance function $\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j)$ measures how far each object is from potential cluster centers. For example, we might cluster customers by representing them through their purchase history and measuring their distance to different customer archetypes.}
+\notes{To implement clustering computationally, we need to mathematically represent both our objects and cluster centres as vectors ($\inputVector_i$ and $\meanVector_j$ respectively) and define a notion of either similarity or distance between them. The distance function $\distanceScalar_{ij} = \mappingFunction(\inputVector_i, \meanVector_j)$ measures how far each object is from potential cluster centres. For example, we might cluster customers by representing them through their purchase history and measuring their distance to different customer archetypes.}
 
 \subsection{Squared Distance}
 \slides{
@@ -20,15 +20,15 @@
 $$
 \distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2
 $$
-* Goal: find centers close to many data points}
+* Goal: find centres close to many data points}
 
-\notes{A commonly used distance metric is the squared distance: $\distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2$. This metric appears frequently in machine learning - we saw it earlier measuring prediction errors in regression, and here it measures dissimilarity between data points and cluster centers.}
+\notes{A commonly used distance metric is the squared distance: $\distanceScalar_{ij} = (\inputVector_i - \meanVector_j)^2$. This metric appears frequently in machine learning - we saw it earlier measuring prediction errors in regression, and here it measures dissimilarity between data points and cluster centres.}
 
 
 \newslide{Objective Function}
 \slides{
-* Given similarity measure, need number of  cluster centers, $\numComps$.
-* Find their location by allocating each center to a sub-set of the points and minimizing the sum of the squared errors,}\notes{Once we have decided on the distance or similarity function, we can decide a number of cluster centers, $K$. We find their location by allocating each center to a sub-set of the points and minimizing the sum of the squared errors,}
+* Given similarity measure, need number of  cluster centres, $\numComps$.
+* Find their location by allocating each center to a sub-set of the points and minimizing the sum of the squared errors,}\notes{Once we have decided on the distance or similarity function, we can decide a number of cluster centres, $K$. We find their location by allocating each center to a sub-set of the points and minimizing the sum of the squared errors,}
 $$
 \errorFunction(\meanMatrix) = \sum_{i \in \mathbf{i}_j} (\inputVector_i - \meanVector_j)^2
 $$
@@ -44,17 +44,17 @@ $$
 \slides{
 * Initialisation is the process of selecting a starting set of parameters.
 * Optimisation result can depend on the starting point.
-* For $k$-means clustering you need to choose an initial set of centers.
+* For $k$-means clustering you need to choose an initial set of centres.
 * Optimisation surface has many local optima, algorithm gets stuck in ones near initialisation.}
-\notes{One approach to minimizing this objective function is known as *$k$-means clustering*. It is simple and relatively quick to implement, but it is an initialization sensitive algorithm. Initialization is the process of choosing an initial set of parameters before optimization. For $k$-means clustering you need to choose an initial set of centers. In $k$-means clustering your final set of clusters is very sensitive to the initial choice of centers. For more technical details on $k$-means clustering you can watch a video of Alex Ihler introducing the algorithm here.}
+\notes{One approach to minimizing this objective function is known as *$k$-means clustering*. It is simple and relatively quick to implement, but it is an initialization sensitive algorithm. Initialization is the process of choosing an initial set of parameters before optimization. For $k$-means clustering you need to choose an initial set of centres. In $k$-means clustering your final set of clusters is very sensitive to the initial choice of centres. For more technical details on $k$-means clustering you can watch a video of Alex Ihler introducing the algorithm here.}
 
 \newslide{$k$-means Algorithm}
 
 \slides{* Simple iterative clustering algorithm
 * Key steps:
-  1. Initialize with random centers
+  1. Initialize with random centres
   2. Assign points to nearest center
-  3. Update centers as cluster means
+  3. Update centres as cluster means
   4. Repeat until stable}
 
 \notes{The $k$-means algorithm provides a straightforward approach to clustering data. It requires two key elements: a set of $k$ cluster centres and a way to assign each data point to a cluster. The algorithm follows a simple iterative process:
@@ -77,67 +77,140 @@ This process is intuitive and relatively easy to implement, though it comes with
 
 \notes{The $k$-means algorithm works by minimizing an objective function that measures the sum of squared Euclidean distances between each point and its assigned cluster center. This objective function can be written mathematically as shown above, where $\meanVector_{j, :}$ represents the mean of cluster $j$.
 
-It's important to understand that while this algorithm will always converge to a minimum, this minimum is not guaranteed to be either global or unique. The optimization problem is non-convex, meaning there can be multiple local minima. Different initializations of the cluster centers can lead to different final solutions, which is one of the key challenges in applying $k$-means clustering in practice.}
+It's important to understand that while this algorithm will always converge to a minimum, this minimum is not guaranteed to be either global or unique. The optimization problem is non-convex, meaning there can be multiple local minima. Different initializations of the cluster centres can lead to different final solutions, which is one of the key challenges in applying $k$-means clustering in practice.}
 
 \setupcode{import mlai
 import numpy as np
 import os}
 
-\helpercode{def write_plot(counter, caption):
-    directory = "\writeDiagramsDir/ml"
-    filestub = f"kmeans_clustering_{counter:0>3}"
-    mlai.write_figure(filestub+".svg", directory=directory)
-    f = open(os.path.join(directory,filestub) + '.md', 'w')
-    f.write(caption)
-    f.close()}
+\setuphelpercode{import matplotlib.pyplot as plt
+from mlai import plot}
+
+\helpercode{def generate_cluster_data(n_points_per_cluster=30):
+    """Generate synthetic data with clear cluster structure for educational purposes"""
+    # Define cluster centres in 2D space
+    cluster_centres = np.array([[2.5, 2.5], [-2.5, -2.5], [2.5, -2.5]])
+    
+    # Generate data points around each center
+    data_points = []
+    for center in cluster_centres:
+        # Generate points with some spread around each center
+        cluster_points = np.random.normal(loc=center, scale=0.8, size=(n_points_per_cluster, 2))
+        data_points.append(cluster_points)
+    
+    return np.vstack(data_points)
+}
+
+\loadcode{dist2}{mlai}
+\loadcode{kmeans_assignments}{mlai}
+\loadcode{kmeans_update}{mlai}
+\loadcode{kmeans_objective}{mlai}
+
+\setupcode{import numpy as np}
+\code{# Generate synthetic data with cluster structure
+np.random.seed(24)
+Y = generate_cluster_data(n_points_per_cluster=30)
+
+# Initialize cluster centres from first cluster
+# Note: this is a *bad* initialisation so we can observe algorithm.
+nclusters = 3
+centres = Y[:nclusters, :].copy()}
+
+\code{# Run k-means algorithm for several iterations
+niters = 10
+centres_store = [centres.copy()]  # Store initial centres
+objective_store = [kmeans_objective(Y, centres)]  # Calculate initial objective
+
+print(f"Initial objective: {objective_store[0]:.2f}")
+print("Running k-means algorithm...")
+
+for iteration in range(niters):
+    centres, assignments = kmeans_update(Y, centres)
+    objective = kmeans_objective(Y, centres)
+    
+    print(f"  Iteration {iteration+1}: objective = {objective:.2f}")
+    
+    # Store results for plotting
+    centres_store.append(centres.copy())
+    objective_store.append(objective)
+
+print(f"Final objective: {objective_store[-1]:.2f}")
+print(f"Objective improvement: {objective_store[0] - objective_store[-1]:.2f}")}
+
 
 \setupplotcode{from matplotlib import pyplot as plt
+import mlai
 from mlai import plot}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-fontsize = 20
+colors = ['red', 'green', 'blue']  # Colors for each cluster
+markers = ['x', 'o', '+']  # Different markers for each cluster
 
-num_clust_points = 30
+centres = centres_store[0]
+objective = objective_store[0]
 
-Y = np.vstack([np.random.normal(size=(num_clust_points, 2)) + 2.5,
-       np.random.normal(size=(num_clust_points, 2)) - 2.5,
-       np.random.normal(size=(num_clust_points, 2)) + np.array([2.5, -2.5])])
-
-centre_inds = np.random.permutation(Y.shape[0])[:3]
-centres = Y[centre_inds, :]
-
-ax.cla()
-
-ax.plot(Y[:, 0], Y[:, 1], '.', color=[0, 0, 0], markersize=10)
+# Plot initial data
+h_data = ax.plot(Y[:, 0], Y[:, 1], '.', color='black', markersize=10, alpha=0.6)[0]
 ax.set_xlabel('$y_1$')
 ax.set_ylabel('$y_2$')
-ax.set_title('Data')
-counter=0
-write_plot(counter, 'Data set to be analyzed. Initialize cluster centres.')
-ax.plot(centres[:, 0], centres[:, 1], 'o', color=[0,0,0], linewidth=3, markersize=12)    
-counter+=1
-write_plot(counter, 'Allocate each point to the cluster with the nearest centre')
-i = 0
+ax.grid(True, alpha=0.3)
 
-for i in range(10):
-    dist_mat = ((Y[:, :, None] - centres.T[None, :, :])**2).sum(1)
-    ind = dist_mat.argmin(1)
-    ax.cla()
-    ax.plot(Y[ind==0, 0], Y[ind==0, 1], 'x', color= [1, 0, 0], markersize=10)
-    ax.plot(Y[ind==1, 0], Y[ind==1, 1], 'o', color=[0, 1, 0], markersize=10)
-    ax.plot(Y[ind==2, 0], Y[ind==2, 1], '+', color=[0, 0, 1], markersize=10)
-    c = ax.plot(centres[:, 0], centres[:, 1], 'o', color=[0,0, 0], markersize=12, linewidth=3)
-    ax.set_xlabel('$y_1$',fontsize=fontsize)
-    ax.set_ylabel('$y_2$',fontsize=fontsize)
-    ax.set_title('Iteration ' + str(i))
-    counter+=1
-    write_plot(counter, 'Update each centre by setting to the mean of the allocated points.')
-    for j in range(centres.shape[0]):
-          centres[j, :] = np.mean(Y[ind==j, :], 0)
-    c[0].set_data(centres[:, 0], centres[:, 1])
-    counter+=1
-    write_plot(counter, 'Allocate each data point to the nearest cluster centre.')}
+# Save initial plot
+counter = 0
+mlai.write_figure_caption(counter, 'Data set to be analysed and initialise cluster centres.', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")
 
+# Plot initial centres
+h_centres = ax.plot(centres_store[0][:, 0], centres_store[0][:, 1], 'o', color='black', 
+        linewidth=3, markersize=12)[0]
+
+counter += 1
+mlai.write_figure_caption(counter, 'Allocate each point to the cluster with the nearest centre', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")
+
+# Compute initial assignments
+assignments = kmeans_assignments(Y, centres)
+
+# Initialize plot handles for each cluster
+h_points = [None]*nclusters
+h_data.set_data([], [])
+for cluster_id in range(nclusters):
+    cluster_mask = assignments == cluster_id
+    if np.any(cluster_mask):  # Only plot if cluster has points
+        h_points[cluster_id] = ax.plot(Y[cluster_mask, 0], Y[cluster_mask, 1], 
+                markers[cluster_id], color=colors[cluster_id], 
+                markersize=10, alpha=0.7)[0]  # Get the Line2D object
+
+counter += 1
+mlai.write_figure_caption(counter, 'Initial centre allocations', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")
+for iteration in range(len(centres_store)-1):
+    centres = centres_store[iteration+1]
+    assignments = kmeans_assignments(Y, centres)
+    objective = objective_store[iteration+1]
+    
+    # Update centres plot
+    h_centres.set_data(centres[:, 0], centres[:, 1])
+    
+    # Update data points for each cluster
+    for cluster_id in range(nclusters):
+        cluster_mask = assignments == cluster_id
+        if np.any(cluster_mask):  # Only update if cluster has points
+            if h_points[cluster_id] is None:
+                # Create new plot handle if it doesn't exist
+                h_points[cluster_id] = ax.plot(Y[cluster_mask, 0], Y[cluster_mask, 1], 
+                     markers[cluster_id], color=colors[cluster_id], 
+                     markersize=10, alpha=0.7)[0]
+            else:
+                # Update existing plot handle
+                h_points[cluster_id].set_data(Y[cluster_mask, 0], Y[cluster_mask, 1])
+        else:
+            # Hide cluster if it has no points
+            if h_points[cluster_id] is not None:
+                h_points[cluster_id].set_data([], [])
+    
+    # Save plot for animation
+    counter += 1
+    mlai.write_figure_caption(counter, f'Iteration {iteration + 1}: Update centres to mean of assigned points', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")}
+    
+    
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("kmeans_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 
                             text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 21))}
@@ -175,7 +248,6 @@ mlai.write_figure("cluster_data01.svg", directory="\writeDiagramsDir/ml/")}
 
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('cluster_data{counter:0>2}.svg', directory='\writeDiagramsDir/ml', counter=(0, 1))}
-
 
 
 \newslide{$k$-Means Clustering}

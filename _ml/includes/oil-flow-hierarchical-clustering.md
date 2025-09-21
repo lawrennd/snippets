@@ -6,6 +6,9 @@
 
 \subsection{Hierarchical Clustering of Oil Flow Data}
 
+\notes{In this example, we'll apply hierarchical clustering to the oil flow data set. The data contains measurements from different flow regimes in a multiphase flow facility. The dendrogram shows how measurements naturally cluster into different flow types. Ward's linkage method is used as it tends to create compact, evenly-sized clusters.}
+
+
 \setupcode{import numpy as np
 from scipy.cluster.hierarchy import dendrogram, linkage
 import pods}
@@ -32,5 +35,5 @@ mlai.write_figure('hierarchical-clustering-oil.svg', directory='\writeDiagramsDi
 
 \figure{\includediagram{\diagramsDir/dimred/hierarchical-clustering-oil}{60%}}{Hierarchical clustering applied to oil flow data. The dendrogram shows how different flow regimes are grouped based on their measurement similarities. The three main flow regimes (homogeneous, annular, and laminar) should form distinct clusters.}{hierarchical-clustering-oil}
 
-\notes{In this example, we've applied hierarchical clustering to the oil flow data set. The data contains measurements from different flow regimes in a multiphase flow facility. The dendrogram shows how measurements naturally cluster into different flow types. Ward's linkage method is used as it tends to create compact, evenly-sized clusters. 
+
 \endif

@@ -3,6 +3,61 @@
 
 \editme
 
+\comment{\subsection{Oil Data}
+
+\begin{frame}
+  \frametitle{Oil Data}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \begin{itemize}
+    \item Simulated measurements from an oil pipeline {\footnotesize \citep{Bishop:oil93}}.
+    \item Pipleline contains oil, water and gas.
+    \item Three phases of flow in pipeline---homogeneous, stratified and annular.
+    \item <2->Gamma densitometry sensors arranged in a configuration around
+      pipeline.
+    \end{itemize}
+
+    \column{0.3\textwidth}
+
+    \begin{center}
+      % 
+      \begin{minipage}[b][0.8\textheight][t]{0.5\columnwidth}%
+        % 
+        \begin{minipage}[t][0.3\textheight]{1\columnwidth}%
+          \begin{center}
+            Homogeneous
+          \end{center}%
+        \end{minipage}\\
+        % 
+        \begin{minipage}[t][0.3\textheight]{1\columnwidth}%
+          \begin{center}
+            Stratified
+          \end{center}%
+        \end{minipage}\\
+        % 
+        \begin{minipage}[t][0.3\textheight]{1\columnwidth}%
+          \begin{center}
+            Annular
+          \end{center}%
+        \end{minipage}%
+      \end{minipage}
+      \end{center}
+  \column{0.2\textwidth}
+  \begin{center}
+    \includegraphics<1>[height=0.8\textheight]{../../../dimred/tex/diagrams/oilData}
+    \includegraphics<2>[height=0.8\textheight]{../../../dimred/tex/diagrams/oilDataSensors}
+  \end{center}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Oil Data}
+  \begin{itemize}
+  \item 12 simulated measurements of oil flow in a pipe.
+  \item Nature of flow is dependent on relative proportion of oil, water and
+    gas.
+  \end{itemize}
+}
 \subsection{Oil Flow Data}
 
 \notes{This data set is from a physics-based simulation of oil flow in a pipeline. The data was generated as part of a project to determine the fraction of oil, water and gas in North Sea oil pipes [@Bishop:gtm96].}

@@ -44,7 +44,7 @@ import notutils as nu}
 
 
 \slides{\define{width}{40%}
-\startanimation{dem-six-sample}{0}{4}
+\startanimation{dem-six-sample}{0}{4}{Six Samples}
 \newframe{\includepng{\diagramsDir/dimred/dem_six000}{\width}}{dem-six-sample}
 \newframe{\includepng{\diagramsDir/dimred/dem_six001}{\width}}{dem-six-sample}
 \newframe{\includepng{\diagramsDir/dimred/dem_six002}{\width}}{dem-six-sample}
@@ -62,8 +62,6 @@ import notutils as nu}
 \notes{So, an independent pixel model for this digit doesn't seem sensible. The total space is enormous, and yet the space occupied by the type of data we're interested in is relatively small.}
 
 \notes{Consider a different type of model. One where we take a prototype six and we rotate it left and right to create new data.}
-
-\slides{* Rotate a prototype }
 
 \installcode{scikit-image}
 \setupplotcode{from skimage.transform import rotate}
@@ -88,7 +86,7 @@ for angle in angles:
 \displaycode{nu.display_plots('dem_six_rotate{counter:0>3}.png', directory='\writeDiagramsDir/dimred', counter=(0, 6))}
 
 \slides{\define{width}{40%}
-\startanimation{dem-six-rotate}{1}{6}
+\startanimation{dem-six-rotate}{1}{6}{Rotate Prototype}
 \newframe{\includepng{\diagramsDir/dimred/dem_six_rotate001}{\width}}{dem-six-rotate}
 \newframe{\includepng{\diagramsDir/dimred/dem_six_rotate002}{\width}}{dem-six-rotate}
 \newframe{\includepng{\diagramsDir/dimred/dem_six_rotate003}{\width}}{dem-six-rotate}
