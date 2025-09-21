@@ -27,18 +27,7 @@ $$q_{ij} = \frac{(1 + \|\latentVector_i - \latentVector_j\|^2)^{-1}}{\sum_{k \ne
 
 \setupcode{from sklearn.manifold import TSNE}
 
-\helpercode{def plot_tsne_example(X, labels, perplexities=[5, 30, 50], random_state=42):
-    """Plot t-SNE embeddings with different perplexity values"""
-    fig, axes = plt.subplots(1, len(perplexities), 
-                            figsize=(5*len(perplexities), 5))
-    
-    for ax, perplexity in zip(axes, perplexities):
-        tsne = TSNE(n_components=2, perplexity=perplexity, 
-                    random_state=random_state)
-        X_tsne = tsne.fit_transform(X)
-        ax.scatter(X_tsne[:, 0], X_tsne[:, 1], c=labels, 
-                  cmap=plt.cm.viridis)
-        ax.set_title(f'Perplexity = {perplexity}')}
+\loadcode{tsne_example}{mlai.plot}
 
 \undef{oilFlowData}
 \include{_datasets/includes/oil-flow-data.md}
@@ -47,7 +36,7 @@ $$q_{ij} = \frac{(1 + \|\latentVector_i - \latentVector_j\|^2)^{-1}}{\sum_{k \ne
 import mlai
 from mlai import plot}
 
-\plotcode{plot_tsne_example(X, Y)
+\plotcode{tsne_example(X, Y)
 mlai.write_figure('t-sne-oil-flow.svg', directory='\writeDiagramsDir/dimred')}
 
 \newslide{t-SNE Embedding of Oil Flow Data}
