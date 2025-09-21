@@ -78,7 +78,7 @@ fig, ax = plot_squared_distances(Y, 'gaussian-distances-100', Gaussian Distances
 
 \slides{**Distance distribution for a different Gaussian with $\dataDim=1000$**}
 
-\setupcode{import numpy as np
+\setupcode{import numpy as np}
 
 \code{# Create low-rank covariance matrix
 np.random.seed(22)
@@ -108,6 +108,9 @@ v = distances[distances > 1e-10]  # Remove very small distances
 # Normalize distances
 v = 2 * v / np.mean(v)}
 
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai}
+
 \plotcode{# Create histogram
 fig, ax = plt.subplots(figsize=plot.big_figsize)
 vals, x = np.histogram(v, bins=50, density=True)
@@ -116,7 +119,7 @@ ax.bar(x_centers, vals, alpha=0.7, color='blue', width=x[1]-x[0])
 
 # Theoretical gamma distribution (assuming effective dimension of 2)
 x_theory = np.linspace(0, 6, 100)
-gamma_pdf = gamma.pdf(x_theory, W.shape[1]/2, scale=W.shape[1]/4)
+gamma_pdf = gamma.pdf(x_theory, W.shape[1]/2, scale=scale=2*np.mean(v)/W.shape[1])
 ax.plot(x_theory, gamma_pdf, 'k-', linewidth=3)
 
 ax.set_xlim([0, 6])
