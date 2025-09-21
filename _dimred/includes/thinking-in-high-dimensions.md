@@ -38,58 +38,35 @@ noise with a particular covariance matrix.}
 \setupplotcode{import mlai
 import mlai.plot as plot}
     
-\code{for j in range(2):
-  model = plot.mog(20, 200)
-  
-  if model.d > 2:
-      model = model.project(2)
-      
-  model_type = model.type
-  model_type = model_type[0].upper() + model_type[1:]
-  
-  file_name = f'dem-artificial-{model_type}{j+1}'
-  
-  # First plot with ovals
-  fig, ax = plt.subplots()
-  ax.set_position([0.05, 0.05, 0.9, 0.9])
-  plot.mog_plot_2d(model, ax)
-  
-  pi_vals = np.linspace(-np.pi, np.pi, 200)
-  for i in range(model.m):
-      ax.plot(model.mean[i,0], model.mean[i,1], 'o', 
-              linewidth=2, markersize=10)
-      x = np.vstack([np.sin(pi_vals), np.cos(pi_vals)]).T
-      el = x @ model.U[i]
-      ax.plot(model.mean[i,0] + el[:,0], 
-              model.mean[i,1] + el[:,1],
-              linewidth=2)
-      
-  x_lim = np.array([model.Y[:,0].min(), model.Y[:,0].max()]) * 1.1
-  y_lim = np.array([model.Y[:,1].min(), model.Y[:,1].max()]) * 1.1
-  ax.set_xlim(x_lim)
-  ax.set_ylim(y_lim)
-  ax.set_xticks([-2, -1, 0, 1, 2])
-  ax.set_yticks([-2, -1, 0, 1, 2])
-  
-  mlai.write_figure(f'{file_name}_slides', 
-                    '\writeDiagramsDir/dimred')
-  
-  # Second plot without ovals
-  fig, ax = plt.subplots(figsize=plot.big_figsize)
-  ax.set_position([0.05, 0.05, 0.9, 0.9])
-  plot.mog_plot_2d(model, ax)
-  
-  ax.set_xlim(x_lim)
-  ax.set_ylim(y_lim) 
-  ax.set_xticks([-2, -1, 0, 1, 2])
-  ax.set_yticks([-2, -1, 0, 1, 2])
-  
-  ma.write_figure(filename=f'{file_name}NoOvals_slides',
-                    directory='\writeDiagramsDir/dimred')}
+\code{fig, ax = plt.subplots(figsize=(5,5))
 
-\figure{\includediagram{\diagramsDir/dimred/dem-artificial-mog-1}{40%}}{Two dimensional Gaussian data set.}{artificial-mog-1-no-ovals}
+num_centres = 20
+num_data = 200
+centres = np.random.normal(size=(num_centres, 2))
+w = np.random.normal(size=(num_centres, 2))*0.1
+alloc = np.random.randint(0, num_centres, size=(num_data))
+sigma = np.random.normal(size=(num_centres, 1))*0.05
+epsilon = np.random.normal(size=(num_data,2))*sigma[alloc, :]
 
-\figure{\includediagram{\diagramsDir/dimred/dem-artificial-mog-2}{40%}}{Two dimensional data sets. Complex structure not a problem for mixtures of Gaussians.}{artificial-mog-2}
+Y = w[alloc, :]*np.random.normal(size=(num_data, 1)) + centres[alloc, :] + epsilon
+
+ax.plot(Y[:, 0], Y[:, 1], 'rx')
+ax.set_xlabel('$y_1$', fontsize=20)
+ax.set_ylabel('$y_2$', fontsize=20)
+
+mlai.write_figure("artificial-mog-1.svg", directory="\writeDiagramsDir/dimred/")
+pi_vals = np.linspace(-np.pi, np.pi, 200)[:, None]
+for i in range(num_centres):
+    ax.plot(centres[i, 0], centres[i, 1], 'o', markersize=5, color=[0, 0, 0], linewidth=2)
+    x = np.hstack([np.sin(pi_vals), np.cos(pi_vals)])
+    L = np.linalg.cholesky(np.outer(w[i, :],w[i, :]) + sigma[i]**2*np.eye(2))
+    el = np.dot(x, L.T)
+    ax.plot(centres[i, 0] + el[:, 0], centres[i, 1] + el[:, 1], linewidth=2, color=[0,0,0])
+mlai.write_figure("artificial-mog-2.svg", directory="\writeDiagramsDir/dimred/")}
+
+\figure{\includediagram{\diagramsDir/dimred/artificial-mog-1}{40%}}{Two dimensional Gaussian data set.}{artificial-mog-1-no-ovals}
+
+\figure{\includediagram{\diagramsDir/dimred/artificial-mog-2}{40%}}{Two dimensional data sets. Complex structure not a problem for mixtures of Gaussians.}{artificial-mog-2}
 
     
 \section{High Dimensional Data}
