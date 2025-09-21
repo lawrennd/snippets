@@ -35,7 +35,8 @@ noise with a particular covariance matrix.}
 
 \subsection{Mixtures of Gaussians}
 
-\setupplotcode{import mlai
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
 import mlai.plot as plot}
     
 \code{fig, ax = plt.subplots(figsize=(5,5))
@@ -142,11 +143,7 @@ are dependent on the dimensionality of our egg.}
 
 \figure{}
   
-\setuphelpercode{import numpy as np
-from scipy.stats import norm, multivariate_normal
-import matplotlib.pyplot as plt
-import mlai
-import mlai.plot as plot}
+\setupplotcode{import mlai.plot as plot}
 
 \helpercode{plot.gaussian_volume_1D(directory='\writeDiagramsDir/dimred/')
 plot.gaussian_volume_2D(directory='\writeDiagramsDir/dimred/')
@@ -165,12 +162,17 @@ data directly to the density over squared distances from the mean that
 the Gaussian implies. Before we introduce that approach, we show three
 low dimensional Gaussian eggs below indicating
 their associated masses for the yolk, the green, the white and the shell.}
- 
-\figure{\includediagram{}{40%}}{Volumes associated with the one dimensional Gaussian egg. Here the yolk has 65.8%, the green has 4.8% and the white has 29.4% of the mass.}{}
 
-\figure{\includediagram{}{40%}}{Volumes associated with the regions in the two dimensional Gaussian egg. The yolk contains 59.4%, the green contains 7.4% and the white 33.2%.}{}
+\newslide{}
+\figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-1D}{40%}}{Volumes associated with the one dimensional Gaussian egg. Here the yolk has 65.8%, the green has 4.8% and the white has 29.4% of the mass.}{}
 
-\figure{\includediagram{}{40%}}{Volumes associated with the regions in the three
+\newslide{}
+
+\figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-2D}{40%}}{Volumes associated with the regions in the two dimensional Gaussian egg. The yolk contains 59.4%, the green contains 7.4% and the white 33.2%.}{}
+
+\newslide{}
+
+\figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-13}{40%}}{Volumes associated with the regions in the three
  dimensional Gaussian egg. Here the yolk has 56.1% the green has 9.2% the white has 34.7%.}{}
  
 \newslide{Mathematics}
