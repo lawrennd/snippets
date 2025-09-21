@@ -113,7 +113,7 @@ mlai.write_figure_caption(1, 'Dendogram of the clustering',
 
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("hierarchical_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 
-                            text_top='hierarchical_clustering_{counter:0>3}.tex', counter=(0, 2))}
+                            text_top='hierarchical_clustering_{counter:0>3}.tex', counter=(0, 1))}
 
 
 \notes{Other approaches to clustering involve forming taxonomies of the cluster 
