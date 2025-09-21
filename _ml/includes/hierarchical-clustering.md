@@ -90,7 +90,7 @@ ax.set_xlabel('$y_1$')
 ax.set_ylabel('$y_2$')
 ax.grid(True, alpha=0.3)
 
-mlai.write_figure_caption(counter, 'Initial data points - each point is its own cluster', 
+mlai.write_figure_caption(0, 'Initial data points - each point is its own cluster', 
                          filestub="hierarchical_clustering", ext="svg", directory="\writeDiagramsDir/ml")}
 
 \setupplotcode{from scipy.cluster.hierarchy import dendrogram}
@@ -103,8 +103,8 @@ ax.set_ylabel('Distance')
 
 plt.tight_layout()
 
-mlai.write_figure_caption(counter, 'Dendogram of the clustering', 
-                         filestub="hierarchical_clustering_dendogram", ext="svg", directory="\writeDiagramsDir/ml")
+mlai.write_figure_caption(1, 'Dendogram of the clustering', 
+                         filestub="hierarchical_clustering", ext="svg", directory="\writeDiagramsDir/ml")
 }
 
 
@@ -113,7 +113,7 @@ mlai.write_figure_caption(counter, 'Dendogram of the clustering',
 
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("hierarchical_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 
-                            text_top='hierarchical_clustering_{counter:0>3}.tex', counter=(0, 10))}
+                            text_top='hierarchical_clustering_{counter:0>3}.tex', counter=(0, 2))}
 
 
 \notes{Other approaches to clustering involve forming taxonomies of the cluster 
