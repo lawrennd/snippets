@@ -192,7 +192,7 @@ for iteration in range(len(centres_store)-1):
     
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("kmeans_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 
-                            text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 21))}
+                            text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 12))}
 
 
 \setupplotcode{import matplotlib.pyplot as plt
