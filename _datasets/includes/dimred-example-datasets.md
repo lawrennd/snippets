@@ -117,7 +117,7 @@ ax.bar(x_centers, vals, alpha=0.7, color='blue', width=x[1]-x[0])
 
 # Theoretical gamma distribution (assuming effective dimension of 2)
 x_theory = np.linspace(0, 6, 100)
-gamma_pdf = gamma.pdf(x_theory, W.shape[1]/2, scale=scale=2*np.mean(v)/W.shape[1])
+gamma_pdf = gamma.pdf(x_theory, W.shape[1]/2, scale=2*np.mean(v)/W.shape[1])
 ax.plot(x_theory, gamma_pdf, 'k-', linewidth=3)
 
 ax.set_xlim([0, 6])
