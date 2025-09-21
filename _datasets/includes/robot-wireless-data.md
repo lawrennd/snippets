@@ -31,6 +31,10 @@ mlai.write_figure(figure=fig,
 
 \notes{We will ignore this ground truth in making our predictions, but see if the model can recover something similar in one of the latent layers.}
 
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
+import mlai.plot}
+
 \plotcode{output_dim=1
 xlim = (-0.3, 1.3)
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
@@ -45,7 +49,7 @@ ylim = (-0.6, 2.0)
 ax.set_xlim(xlim)
 ax.set_ylim(ylim)
 
-ma.write_figure(figure=fig, 
+mlai.write_figure(figure=fig, 
                 filename='robot-wireless-dim-' + str(output_dim) + '.svg', 
                 directory='\writeDiagramsDir/datasets')}
 
