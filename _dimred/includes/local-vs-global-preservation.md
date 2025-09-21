@@ -11,15 +11,7 @@
 import matplotlib.pyplot as plt
 import mlai.plot as plot}
 
-\code{def generate_swiss_roll(n_points=1000, noise=0.05):
-    """Generate Swiss roll dataset"""
-    t = 1.5 * np.pi * (1 + 2 * np.random.rand(n_points))
-    y = 21 * np.random.rand(n_points)
-    x = t * np.cos(t)
-    z = t * np.sin(t)
-    X = np.stack([x, y, z])
-    X += noise * np.random.randn(*X.shape)
-    return X.T, t}
+\loadcode{generate_swiss_roll}{mlai}
 
 \plotcode{# Generate and plot Swiss roll
 X, t = generate_swiss_roll()
