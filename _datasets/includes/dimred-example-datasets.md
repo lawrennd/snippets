@@ -15,13 +15,16 @@
 **Distance distribution for a Gaussian with $\dataDim=1000$, $\numData=1000$**}
 
 
+\setupcode{import numpy as np}
+
+\code{# Generate 1000D Gaussian data
+np.random.seed(22)
+Y = np.random.randn(1000, 1000)
+
 \setupplotcode{import mlai
 import mlai.plot}
 
-\plotcode{# Generate 1000D Gaussian data
-np.random.seed(42)
-Y = np.random.randn(1000, 1000)
-fig, ax = plot.squared_distances(Y, 'gaussian-distances-1000', 'Gaussian Distances (1000D, 1000 points)', directory='\writeDiagramsDir/dimred')}
+\plotcode{plot.squared_distances(Y, 'gaussian-distances-1000', 'Gaussian Distances (1000D, 1000 points)', directory='\writeDiagramsDir/dimred')}
 
 \figure{\inputdiagram{\diagramsDir/dimred/gaussian-distances-1000}{40%}}{A good match betwen theory and the samples for a 1000 dimensional Gaussian distribution.}
 
