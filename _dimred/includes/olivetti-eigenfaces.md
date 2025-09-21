@@ -9,7 +9,8 @@
 
 \setupplotcode{import pods
 import matplotlib.pyplot as plt
-import mlai}
+import mlai
+import numpy as np}
 
 \plotcode{data = pods.datasets.olivetti_glasses()
 Y = data['X'] # this data set is set up for classification, but we will model the inputs.
