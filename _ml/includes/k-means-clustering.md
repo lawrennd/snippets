@@ -79,28 +79,7 @@ This process is intuitive and relatively easy to implement, though it comes with
 
 It's important to understand that while this algorithm will always converge to a minimum, this minimum is not guaranteed to be either global or unique. The optimization problem is non-convex, meaning there can be multiple local minima. Different initializations of the cluster centres can lead to different final solutions, which is one of the key challenges in applying $k$-means clustering in practice.}
 
-\setupcode{import mlai
-import numpy as np
-import os}
-
-\setuphelpercode{import matplotlib.pyplot as plt
-from mlai import plot}
-
-\helpercode{def generate_cluster_data(n_points_per_cluster=30):
-    """Generate synthetic data with clear cluster structure for educational purposes"""
-    # Define cluster centres in 2D space
-    cluster_centres = np.array([[2.5, 2.5], [-2.5, -2.5], [2.5, -2.5]])
-    
-    # Generate data points around each center
-    data_points = []
-    for center in cluster_centres:
-        # Generate points with some spread around each center
-        cluster_points = np.random.normal(loc=center, scale=0.8, size=(n_points_per_cluster, 2))
-        data_points.append(cluster_points)
-    
-    return np.vstack(data_points)
-}
-
+\loadcode{generate_cluster_data}{mlai}
 \loadcode{dist2}{mlai}
 \loadcode{kmeans_assignments}{mlai}
 \loadcode{kmeans_update}{mlai}

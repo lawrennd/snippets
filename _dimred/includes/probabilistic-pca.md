@@ -116,20 +116,10 @@ This view helps explain why PPCA works well when the manifold hypothesis holds a
 We will now implement this algorithm in python.}
 
 \setupcode{import numpy as np}
-\code{# probabilistic PCA algorithm
-def ppca(Y, q):
-    # remove mean
-    Y_cent = Y - Y.mean(0)
 
-    # Comute covariance
-    S = np.dot(Y_cent.T, Y_cent)/Y.shape[0]
-    lambd, U = np.linalg.eig(S)
+\loadcode{ppca_eig}{mlai}
 
-    # Choose number of eigenvectors
-    sigma2 = np.sum(lambd[q:])/(Y.shape[1]-q)
-    l = np.sqrt(lambd[:q]-sigma2)
-    W = U[:, :q]*l[None, :]
-    return W, sigma2}
+\code{ppca = ppca_eig}
 
 \notes{In practice we may not wish to compute the eigenvectors of the
 covariance matrix directly. This is because it requires us to estimate
@@ -293,33 +283,12 @@ by $d_{i} = \frac{\ell_i}{\noiseStd^2 + \ell_i^2}$.}
 
 \setupcode{import scipy as sp
 import numpy as np}
-\code{# probabilistic PCA algorithm using SVD
-def ppca(Y, q, center=True):
-    """Probabilistic PCA through singular value decomposition"""
-    # remove mean
-    if center:
-        Y_cent = Y - Y.mean(0)
-    else:
-        Y_cent = Y
-        
-    # Comute singluar values, discard 'R' as we will assume orthogonal
-    U, sqlambd, _ = sp.linalg.svd(Y_cent.T,full_matrices=False)
-    lambd = (sqlambd**2)/Y.shape[0]
-    # Compute residual and extract eigenvectors
-    sigma2 = np.sum(lambd[q:])/(Y.shape[1]-q)
-    ell = np.sqrt(lambd[:q]-sigma2)
-    return U[:, :q], ell, sigma2
 
-def posterior(Y, U, ell, sigma2, center=True):
-    """Posterior computation for the latent variables given the eigendecomposition."""
-    if center:
-        Y_cent = Y - Y.mean(0)
-    else:
-        Y_cent = Y
-    C_x = np.diag(sigma2/(sigma2+ell**2))
-    d = ell/(sigma2+ell**2)
-    mu_x = np.dot(Y_cent, U)*d[None, :]
-    return mu_x, C_x}
+\loadcode{ppca_svd}{mlai}
+\loadcode{ppca_posterior}{mlai}
+
+\code{ppca = ppca_svd
+posterior = ppca_posterior}
 
 \include{_dimred/includes/oil-flow-sklearn-pca.md}
 

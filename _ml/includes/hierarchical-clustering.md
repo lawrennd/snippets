@@ -54,237 +54,62 @@ from mlai import plot}
     
     return np.vstack(data_points)
 
-def single_linkage_distance(cluster1, cluster2):
-    """Calculate single linkage distance between two clusters"""
-    min_dist = np.inf
-    for point1 in cluster1:
-        for point2 in cluster2:
-            dist = np.sqrt(np.sum((point1 - point2)**2))
-            min_dist = min(min_dist, dist)
-    return min_dist
+}
+\loadcode{generate_cluster_data}{mlai}
 
-def hierarchical_clustering_step(data, clusters, linkage='single'):
-    """Perform one step of hierarchical clustering"""
-    if len(clusters) <= 1:
-        return clusters, None, None
-    
-    # Find the two closest clusters
-    min_dist = np.inf
-    merge_i, merge_j = 0, 1
-    
-    for i in range(len(clusters)):
-        for j in range(i+1, len(clusters)):
-            if linkage == 'single':
-                dist = single_linkage_distance(clusters[i], clusters[j])
-            else:
-                # For simplicity, use single linkage for now
-                dist = single_linkage_distance(clusters[i], clusters[j])
-            
-            if dist < min_dist:
-                min_dist = dist
-                merge_i, merge_j = i, j
-    
-    # Merge the two closest clusters
-    new_clusters = []
-    for k, cluster in enumerate(clusters):
-        if k != merge_i and k != merge_j:
-            new_clusters.append(cluster)
-        elif k == merge_i:
-            new_clusters.append(clusters[merge_i] + clusters[merge_j])
-    
-    return new_clusters, merge_i, merge_j}
+\loadcode{ClusterModel}{mlai}
+\loadcode{WardsMethod}{mlai}
 
-\code{# Generate small synthetic data for testing
-np.random.seed(42)
-# Create just 6 points in 2 clear clusters
-Y = np.array([
-    [1, 1], [1.2, 1.1], [1.1, 0.9],  # Cluster 1
-    [3, 3], [3.2, 3.1], [3.1, 2.9]   # Cluster 2
-])
+\code{# Generate synthetic data with cluster structure
+np.random.seed(24)
+Y = generate_cluster_data(n_points_per_cluster=30)
 
-print(f"Data points: {Y.shape[0]} points")
-print("Points:")
-for i, point in enumerate(Y):
-    print(f"  Point {i}: ({point[0]:.1f}, {point[1]:.1f})")
+# Apply Ward's method using scipy (more reliable)
+from scipy.cluster.hierarchy import linkage, ward
+from scipy.spatial.distance import pdist
 
-# Initialize: each point is its own cluster
-clusters = [[point] for point in Y]
-merge_history = []
-distances = []
+# Compute pairwise distances
+distances = pdist(Y, metric='euclidean')
 
-print(f"\nStarting with {len(clusters)} clusters")
-print("Running hierarchical clustering...")
+# Apply Ward linkage
+linkage_matrix = ward(distances)
 
-# Run hierarchical clustering for just a few steps
-step = 0
-max_steps = 3  # Just do 3 merges for testing
+print(f"\nFinal clustering completed in {len(linkage_matrix)} steps")
+print(f"Ward distances at each step: {[f'{d:.3f}' for d in linkage_matrix[:, 2]]}")}
 
-while len(clusters) > 1 and step < max_steps:
-    old_clusters = [cluster.copy() for cluster in clusters]
-    clusters, merge_i, merge_j = hierarchical_clustering_step(Y, clusters)
-    
-    if merge_i is not None and merge_j is not None:
-        # Calculate distance between the clusters that were merged
-        if merge_i < len(old_clusters) and merge_j < len(old_clusters):
-            dist = single_linkage_distance(old_clusters[merge_i], old_clusters[merge_j])
-        else:
-            dist = 0
-        
-        merge_history.append((merge_i, merge_j))
-        distances.append(dist)
-        
-        print(f"  Step {step+1}: Merged clusters {merge_i} and {merge_j}, distance = {dist:.3f}")
-        print(f"    Remaining clusters: {len(clusters)}")
-        step += 1
 
-print(f"Final result: {len(clusters)} cluster(s)")
-print(f"Total merge steps: {len(merge_history)}")}
+\setupplotcode{import mlai
+from mlai import plot
+import matplotlib.pyplot as plt}
 
-\setupplotcode{from matplotlib import pyplot as plt
-import mlai
-from mlai import plot}
+\plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
 
-\plotcode{# Create simple figure focusing on data points
-fig, ax = plt.subplots(figsize=(8, 6))
-
-# Set up the plot
+# Plot data
+ax.plot(Y[:, 0], Y[:, 1], '.', color='black', markersize=10, alpha=0.6)
 ax.set_xlabel('$y_1$')
 ax.set_ylabel('$y_2$')
 ax.grid(True, alpha=0.3)
 
-# Plot initial data points with labels
-h_points = []
-h_lines = []  # Track connecting lines
-h_centers = []  # Track cluster centers
-for i, point in enumerate(Y):
-    h = ax.plot(point[0], point[1], '.', color='black', markersize=12, alpha=0.8)
-    h_points.append(h[0])
-    # Add point labels
-    ax.annotate(f'{i}', (point[0], point[1]), xytext=(5, 5), 
-                textcoords='offset points', fontsize=10, fontweight='bold')
-
-ax.set_xlim(0.5, 3.5)
-ax.set_ylim(0.5, 3.5)
-
-# Save initial plot
-counter = 0
 mlai.write_figure_caption(counter, 'Initial data points - each point is its own cluster', 
-                         filestub="hierarchical_clustering", ext="svg", directory="\writeDiagramsDir/ml")
+                         filestub="hierarchical_clustering", ext="svg", directory="\writeDiagramsDir/ml")}
 
-# Now run the clustering step by step
-clusters = [[point] for point in Y]
-step = 0
-max_steps = 5  # Need 5 steps to go from 6 points to 1 cluster
+\setupplotcode{from scipy.cluster.hierarchy import dendrogram}
 
-while len(clusters) > 1 and step < max_steps:
-    # Store old clusters before merging
-    old_clusters = [cluster.copy() for cluster in clusters]
-    
-    # Perform one merge step
-    clusters, merge_i, merge_j = hierarchical_clustering_step(Y, clusters)
-    
-    if merge_i is not None and merge_j is not None:
-        print(f"Visualising step {step+1}: merging clusters {merge_i} and {merge_j}")
-        
-        # Get the points that were merged
-        cluster_i_points = old_clusters[merge_i]
-        cluster_j_points = old_clusters[merge_j]
-        
-        # Step 1: Show connection (draw lines between points being merged)
-        current_lines = []
-        
-        # Handle case where clusters might be single points (cluster centers) or arrays of points
-        if len(cluster_i_points) == 1 and len(cluster_j_points) == 1:
-            # Both are single points (could be cluster centers)
-            point_i = cluster_i_points[0]
-            point_j = cluster_j_points[0]
-            line = ax.plot([point_i[0], point_j[0]], [point_i[1], point_j[1]], 
-                         'r-', linewidth=3, alpha=0.7)
-            current_lines.append(line[0])
-        else:
-            # At least one cluster has multiple points, draw lines between all combinations
-            for point_i in cluster_i_points:
-                for point_j in cluster_j_points:
-                    line = ax.plot([point_i[0], point_j[0]], [point_i[1], point_j[1]], 
-                                 'r-', linewidth=3, alpha=0.7)
-                    current_lines.append(line[0])
-        
-        # Store the lines for later hiding
-        h_lines.extend(current_lines)
-        
-        counter += 1
-        mlai.write_figure_caption(counter, f'Step {step+1}: Connect clusters {merge_i} and {merge_j}', 
-                                 filestub="hierarchical_clustering", ext="svg", directory="\writeDiagramsDir/ml")
-        
-        # Step 2: Show merge (replace individual points with cluster center)
-        # Calculate the center of the merged cluster
-        all_merged_points = cluster_i_points + cluster_j_points
-        cluster_center = np.mean(all_merged_points, axis=0)
-        
-        # Hide the individual points that were merged by setting their data to empty
-        print(f"  Hiding points that were merged...")
-        points_to_hide = []
-        
-        # Check if we're merging individual data points (not cluster centers)
-        if len(cluster_i_points) > 1 or len(cluster_j_points) > 1:
-            # We're merging individual data points, hide them
-            for i, point in enumerate(Y):
-                # Check if this point is in either of the merged clusters
-                in_cluster_i = any(np.allclose(point, cluster_point, atol=1e-10) for cluster_point in cluster_i_points)
-                in_cluster_j = any(np.allclose(point, cluster_point, atol=1e-10) for cluster_point in cluster_j_points)
-                
-                if in_cluster_i or in_cluster_j:
-                    h_points[i].set_data([], [])  
-                    points_to_hide.append(i)
-                    print(f"    Hiding point {i}: {point}")
-        else:
-            # We're merging cluster centers, don't hide individual data points
-            print(f"    Merging cluster centers, not hiding individual data points")
-        
-        print(f"  Hidden {len(points_to_hide)} points: {points_to_hide}")
-        
-        # Hide the connecting lines from this step when the cluster center appears
-        for line in current_lines:
-            line.set_data([], [])
-        
-        # Hide old cluster centers that were merged
-        # When we merge clusters, we need to hide the centers that represent the individual clusters being merged
-        print(f"  Checking which centers to hide...")
-        centers_to_hide = []
-        
-        # Check each existing center to see if it's being merged
-        for i, center in enumerate(h_centers):
-            center_pos = center.get_data()
-            if len(center_pos[0]) > 0:  # Center is still visible
-                center_x, center_y = center_pos[0][0], center_pos[1][0]
-                center_point = np.array([center_x, center_y])
-                
-                # Check if this center is in either of the merged clusters
-                in_cluster_i = any(np.allclose(center_point, cluster_point, atol=1e-10) for cluster_point in cluster_i_points)
-                in_cluster_j = any(np.allclose(center_point, cluster_point, atol=1e-10) for cluster_point in cluster_j_points)
-                
-                if in_cluster_i or in_cluster_j:
-                    center.set_data([], [])  # Hide the center
-                    centers_to_hide.append(i)
-                    print(f"    Hiding center {i}: {center_point}")
-        
-        print(f"  Hidden {len(centers_to_hide)} centers: {centers_to_hide}")
-        
-        # Add the new cluster center
-        center = ax.plot(cluster_center[0], cluster_center[1], 'o', color='red', markersize=12, 
-                        markeredgecolor='red', markeredgewidth=2)
-        h_centers.append(center[0])
-        
-        # Add annotation for the cluster center
-        ax.annotate(f'C{step+1}', (cluster_center[0], cluster_center[1]), 
-                   xytext=(0, -20), textcoords='offset points', 
-                   fontsize=12, fontweight='bold', ha='center')
-        
-        counter += 1
-        mlai.write_figure_caption(counter, f'Step {step+1}: Merge into cluster center', 
-                                 filestub="hierarchical_clustering", ext="svg", directory="\writeDiagramsDir/ml")
-        
-        step += 1}
+\plotcode{# Plot dendrogram
+fig, ax = plt.subplots(figsize=plot.one_figsize)
+dendrogram(linkage_matrix, ax=ax)
+ax.set_xlabel('Sample Index')
+ax.set_ylabel('Distance')
+
+plt.tight_layout()
+
+mlai.write_figure_caption(counter, 'Dendogram of the clustering', 
+                         filestub="hierarchical_clustering_dendogram", ext="svg", directory="\writeDiagramsDir/ml")
+}
+
+
+\figure{\columns{\includediagram{\diagramsDir/ml/hierarchical_clustering}{100%}}{\includediagram{\diagramsDir/ml/hierarchical_clustering_dendogram}{100%}}{40%}{40%}}{Hierarchical clustering of some artificial data.}{hierarchical-clustering}
+
 
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("hierarchical_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 

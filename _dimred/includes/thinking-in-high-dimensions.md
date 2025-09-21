@@ -81,22 +81,22 @@ mlai.write_figure("artificial-mog-2.svg", directory="\writeDiagramsDir/dimred/")
   3. These affects apply to many densities.
 * Let's consider a Gaussian "egg".}
 
-Such a model seems intuitively appealing. When the
-\emph{\gls{expectation_maximization}} approach to optimizing such
+\notes{Such a model seems intuitively appealing. When the
+*expectation maximization* approach to optimizing such
 powerful models was first described by \cite{Dempster:EM77} the
 statistics community it must have seemed to some that the main
 remaining challenge for density estimation was principally
 computational. There are, of course, applications for which for which
 a mixture of Gaussians\index{mixture of Gaussians} is an appropriate
-model (\emph{e.g.}  low dimensional data). Such applications are not
-the focus of \emph{this} book. We are more interested in the failings
-of the Gaussian mixture\index{mixture of Gaussians}. There are two
+model (e.g.  low dimensional data). Such applications are not
+the focus of *this* lecture. We are more interested in the failings
+of the Gaussian mixture. There are two
 foundation assumptions which underpin this model. We described them
 both in our early appeal to intuition. The first assumption is that
-the data is generated through prototypes\index{data prototypes}. We
+the data is generated through prototypes. We
 will not consider this assumption further. We will focus on the second
 assumption: how the prototypes are corrupted to obtain the data we
-observe. For the Gaussian mixture\index{mixture of Gaussians} model
+observe. For the Gaussian mixture model
 the prototypes are corrupted by Gaussian noise with a particular
 covariance. It is this second assumption that we would like to
 consider first. In particular, we are going to examine the special
@@ -105,11 +105,11 @@ will see that the behavior of a Gaussian in low dimensional space can
 be quite misleading when we develop intuitions as to how these
 densities behave in higher dimensions. By higher dimensionality we can
 think of dimensionality that is difficult to visualize directly,
-\emph{i.e.}\ dimensionality greater than $\dataDim=3$.
+*i.e.* dimensionality greater than $\dataDim=3$.}
 
 \subsection{Dimensionality Greater than Three}
 
-In higher dimensions \emph{models} that seem reasonable in two or
+\notes{In higher dimensions *models* that seem reasonable in two or
 three dimensions can fail dramatically. Note the emphasis on models.
 In this section, we are not making any statements about how a
 `realistic' data set behaves in higher dimensions, we are making
@@ -134,53 +134,7 @@ exponentiated negative squared Euclidean distance from the mean. We
 take the overall mass of our egg to be one. The question we now ask is
 how much of our egg's mass is now taken up by the three component
 parts: the green, the white and the yolk. The proportions of the mass
-are dependent on the dimensionality of our egg.
-
-The answer is found through integrating over the Gaussian. For a one
-dimensional egg we can find the portion of the Gaussian that sits
-inside 0.95 of a standard deviation's distance from the mean as
-\[
-\int_{-0.95\dataStd}^{0.95\dataStd} \gaussianDist{\dataScalar}{0}{\dataStd^{2}} \text{d}\dataScalar.
-\]
-The other portions can be found similarly. For higher dimensional
-Gaussians the integral is slightly more difficult. To compute it, we
-will switch from considering the Gaussian density that governs the
-data directly to the density over squared distances from the mean that
-the Gaussian implies. Before we introduce that approach, we show three
-low dimensional Gaussian eggs in
-\reffigrange{fig:oneDGaussianEgg}{fig:threeDGaussianEgg} indicating
-their associated masses for the yolk, the green and the white.
-% 
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.4\textwidth]{../diagrams/oneDgaussian_nobrown}
-  \end{center}
-
-  \caption{Volumes associated with the one dimensional Gaussian
-    egg. Here the yolk has 65.8\%, the green has 4.8\% and the white
-    has 29.4\% of the mass. }\label{fig:oneDGaussianEgg}
-\end{figure}
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.4\textwidth]{../diagrams/twoDgaussian_nobrown2}
-  \end{center}
-
-  \caption{Volumes associated with the regions in the two dimensional
-    Gaussian egg. The yolk contains 59.4\%, the green contains 7.4\%
-    and the white 33.2\%.}\label{fig:twoDGaussianEgg}
-
-\end{figure}
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.4\textwidth]{../diagrams/threeDgaussian_nobrown}
-  \end{center}
-
-  \caption{Volumes associated with the regions in the three
-    dimensional Gaussian egg. Here the yolk has 56.1\% the green has
-    9.2\% the white has 34.7\%.}\label{fig:threeDGaussianEgg}
-\end{figure}
-
+are dependent on the dimensionality of our egg.}
 
 \subsection{The Gaussian Egg}
 
@@ -198,17 +152,26 @@ import mlai.plot as plot}
 plot.gaussian_volume_2D(directory='\writeDiagramsDir/dimred/')
 plot.gaussian_volume_3D(directory='\writeDiagramsDir/dimred/')}
 
-\slides{
-One D: \colorbox{lightpurple}{
-        \textcolor{yellow}{65.8\%}, \color{ironsulf}4.8\%
-        \textcolor{white}{29.4\%}}}
-Two D: \colorbox{lightpurple}{\textcolor{yellow}{59.4\%},
-        \color{ironsulf}7.4\% \textcolor{white}{33.2\%}}}
+\notes{The answer is found through integrating over the Gaussian. For a one
+dimensional egg we can find the portion of the Gaussian that sits
+inside 0.95 of a standard deviation's distance from the mean as
+$$
+\int_{-0.95\dataStd}^{0.95\dataStd} \gaussianDist{\dataScalar}{0}{\dataStd^{2}} \text{d}\dataScalar.
+$$
+The other portions can be found similarly. For higher dimensional
+Gaussians the integral is slightly more difficult. To compute it, we
+will switch from considering the Gaussian density that governs the
+data directly to the density over squared distances from the mean that
+the Gaussian implies. Before we introduce that approach, we show three
+low dimensional Gaussian eggs below indicating
+their associated masses for the yolk, the green, the white and the shell.}
+ 
+\figure{\includediagram{}{40%}}{Volumes associated with the one dimensional Gaussian egg. Here the yolk has 65.8%, the green has 4.8% and the white has 29.4% of the mass.}{}
 
-Three D: \colorbox{lightpurple}{
-        \textcolor{yellow}{56.1\%}, \color{ironsulf}9.2\%,
-        \textcolor{white}{34.7\%}}}
- }
+\figure{\includediagram{}{40%}}{Volumes associated with the regions in the two dimensional Gaussian egg. The yolk contains 59.4%, the green contains 7.4% and the white 33.2%.}{}
+
+\figure{\includediagram{}{40%}}{Volumes associated with the regions in the three
+ dimensional Gaussian egg. Here the yolk has 56.1% the green has 9.2% the white has 34.7%.}{}
  
 \newslide{Mathematics}
 
@@ -216,13 +179,13 @@ Three D: \colorbox{lightpurple}{
 
 For a d-dimensional Gaussian distribution:
 
-1. **Individual components**: $y_{i,k} \sim \mathcal{N}(0, \sigma^2)$
-2. **Squared components**: $y_{i,k}^2 \sim \sigma^2 \chi_1^2$ (scaled chi-squared)
-3. **Gamma distribution**: $y_{i,k}^2 \sim \text{Gamma}(\frac{1}{2}, \frac{1}{2\sigma^2})$
-4. **Sum of squares**: $\sum_{k=1}^d y_{i,k}^2 \sim \text{Gamma}(\frac{d}{2}, \frac{1}{2\sigma^2})$
-5. **Expected value**: $\langle \sum_{k=1}^d y_{i,k}^2 \rangle = d\sigma^2$
-6. **Normalized sum**: $\frac{1}{d}\sum_{k=1}^d y_{i,k}^2 \sim \text{Gamma}(\frac{d}{2}, \frac{d}{2\sigma^2})$
-7. **Expected normalized**: $\langle \frac{1}{d}\sum_{k=1}^d y_{i,k}^2 \rangle = \sigma^2$}
+1. **Individual components**: $\dataScalar_{i,k} \sim \gaussianSamp{0}{\dataStd^2}$
+2. **Squared components**: $\dataScalar_{i,k}^2 \sim \dataStd^2 \chi_1^2$ (scaled chi-squared)
+3. **Gamma distribution**: $\dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{1}{2}, \frac{1}{2\dataScalar^2})$
+4. **Sum of squares**: $\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{\dataDim}{2}, \frac{1}{2\dataStd^2})$
+5. **Expected value**: $\langle \sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \rangle = \dataDim\dataStd^2$
+6. **Normalized sum**: $\frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{\dataDim}{2}, \frac{d}{2\dataStd^2})$
+7. **Expected normalized**: $\langle \frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \rangle = \dataStd^2$}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -230,7 +193,7 @@ from scipy.stats import gamma, chi2
 import mlai
 import mlai.plot as plot}
 
-\code{def plot_distance_distributions():
+\code{def plot_distance_distributions(ax=ax):
     """Plot distance distributions for different dimensions"""
     fig, axes = plt.subplots(1, 3, figsize=(12, 4))
     
@@ -268,34 +231,33 @@ import mlai.plot as plot}
 fig = plot_distance_distributions()
 mlai.write_figure(filename='distance-distributions', directory='\writeDiagramsDir/dimred')}
 
-\slides{
-\begin{center}
-  \only<1>{Square of sample from Gaussian is scaled chi-squared
-    density}
-  \only<2>{Chi squared density is a variant of the gamma
-    density with shape parameter $a=\frac{1}{2}$, rate parameter
-    $b=\frac{1}{2\dataStd^{2}}$, $\gammaDist
-    xab=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}$.}
-  \only<3-4>{Addition
-    of gamma random variables with the same rate is gamma with sum
-    of shape parameters ($y_{i,k}$s are
-    independent)}
-  \only<5>{Scaling of gamma density scales the rate
-    parameter}
-\end{center}
+\newslide{}
+\slides{ 
+* Square of sample from Gaussian is scaled chi-squared density
+* Chi squared density is a variant of the gamma density with shape parameter $a=\frac{1}{2}$, rate parameter
+    $b=\frac{1}{2\dataStd^{2}}$, 
+	$$
+	\gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}
+	$$
 }
+\newslide{}
+
+\slides{
+* Addition
+    of gamma random variables with the same rate is gamma with sum
+    of shape parameters ($\dataScalar_{i,k}$s are
+    independent)
+* Scaling of gamma density scales the rate
+    parameter}
+
 \newslide{Where is the Mass?}
 
 \slides{* Squared distances are gamma distributed.}
-\begin{figure}
 
 \setupplotcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import gamma
-import mlai
-import mlai.plot as plot}
+from scipy.stats import gamma}
 
-\plotcode{
+\code{
 # Set up dimensions
 x = np.arange(0, 11)
 D = 2.0**x
@@ -306,9 +268,13 @@ lim3 = 100
 # Compute values of cumulative gammas
 y = gamma.cdf(lim1*lim1, D/2, scale=2/D)
 y2 = gamma.cdf(lim2*lim2, D/2, scale=2/D)
-y3 = gamma.cdf(lim3*lim3, D/2, scale=2/D)
+y3 = gamma.cdf(lim3*lim3, D/2, scale=2/D)}
 
-# Create figure
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot}
+
+\plotcode{# Create figure
 fig, ax = plt.subplots(figsize=plot.big_figsize)
 
 # Compute patch outlines
@@ -376,17 +342,17 @@ The chi squared density is a special case of the gamma
 density  with shape
 parameter $a=\frac{1}{2}$ and rate parameter
 $b=\frac{1}{2\dataStd^{2}}$,
-\[
+$$
 \gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}.
-\]}
+$$}
 
 \include{_statistics/includes/the-gamma-density.md}
 
 \notes{So we have the squared distance from the mean for a single feature being given
 by
-\[
+$$
 \dataScalar_{i,k}^{2}\sim\gammaSamp{\frac{1}{2}}{\frac{1}{2\dataStd^{2}}}.
-\]
+$$
 Of course, we are interested in the distance from the mean of the data
 point given by $\dataVector_{i,:}=\left[\dataScalar_{i,1}, \dots,
   \dataScalar_{i,\dataDim}\right]^\top$. The \emph{squared} distance
@@ -395,14 +361,14 @@ $\sum_{k=1}^\dataDim \dataScalar_{i,k}^2$. Fortunately, the properties
 of the gamma density\index{gamma density} (see \refbox{box:gamma})
 mean we can also compute the density of the resulting random variable,
 in particular we have
-\[
-\sum_{k=1}^{\dataDim}y_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{1}{2\dataStd^{2}}}.
-\]
+$$
+\sum_{k=1}^{\dataDim} \dataScalar_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{1}{2\dataStd^{2}}}.
+$$
 We can compute the mean and standard deviation of the squared distance
 for each point from the mean,
-\[
-\expectation{\sum_{k=1}^{\dataDim}y_{i,k}^{2}}=\dataDim\dataStd^{2},
-\]
+$$
+\expectation{\sum_{k=1}^{\dataDim} \dataScalar_{i,k}^{2}}=\dataDim\dataStd^{2},
+$$
 which, we note, scales linearly with the dimensionality of the
 data. The average squared distance of each feature will be distributed as
 follows,
@@ -412,7 +378,7 @@ follows,
 the mean for which is simply the variance of the underlying Gaussian
 density,
 \[
-\expectation{\frac{1}{\dataDim}\sum_{k=1}^{\dataDim}y_{i,k}^{2}}=\dataStd^{2}.
+\expectation{\frac{1}{\dataDim}\sum_{k=1}^{\dataDim} \dataScalar_{i,k}^{2}}=\dataStd^{2}.
 \]
 We can use this gamma density to work out how much of the mass of the
 Gaussian egg is in the different zones. The cumulative distribution
@@ -467,20 +433,30 @@ the mean. But, when we consider that the data near the mean has been
 projected down from potentially many dimensions we understand that in
 fact there is very little data near the mean.}
 
-\setupplotcode{}
+\setupcode{import numpy as np}
 
-\plotcode{
-    close all
-    a = randn(2);
-    a = a*a';
-    Y = gsamp([0, 0], a, 300);
-    a = plot(Y(:, 1), Y(:, 2), 'rx');
-    set(a, 'linewidth', 3);
-    %set(a, 'markersize', 10);
-    %set(gca, 'fontsize', 20)
-    zeroAxes(gca);
-    printLatexPlot('twoDGaussianSamples', '../../../dimred/tex/diagrams/', 0.8*textWidth)
-}
+\code{# Generate random covariance matrix
+np.random.seed(22)  # For reproducibility
+a = np.random.randn(2, 2)
+cov_matrix = a @ a.T
+
+# Sample from multivariate Gaussian
+mean = np.array([0, 0])
+Y = np.random.multivariate_normal(mean, cov_matrix, 300)}
+
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot}
+
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
+ax.plot(Y[:, 0], Y[:, 1], 'rx', markersize=4, linewidth=3)
+ax.set_xlim([Y[:, 0].min()*1.1, Y[:, 0].max()*1.1])
+ax.set_ylim([Y[:, 1].min()*1.1, Y[:, 1].max()*1.1])
+ax.set_aspect('equal')
+ax.grid(True, alpha=0.3)
+
+mlai.write_figure(filename='projected-2d-gaussian.svg', 
+                  directory='\writeDiagramsDir/dimred')}
 
 \figure{\includediagram{\diagramsDir/dimred/projected-2d-gaussian}{40%}}{Looking at a projected Gaussian. This plot shows, in two
     dimensions, samples from a potentially very high dimensional
@@ -506,58 +482,28 @@ then the stability of these $k$ neighbors with respect to small data
 perturbations would be poor.}
 
 \notes{\tk{Something wrong here} Can show this for Gaussians with a similar proof to the above,
-\[
+$$
 \dataScalar_{i,k}\sim\gaussianSamp 0{\dataStd_{k}^{2}}\quad\quad\dataScalar_{j,k}\sim\gaussianSamp 0{\dataStd_{k}^{2}}
-\]
-\[
+$$
+$$
 \dataScalar_{i,k}-\dataScalar_{j,k}\sim\gaussianSamp 0{2\dataStd_{k}^{2}}]
-\]
-\[
+$$
+$$
 \left(\dataScalar_{i,k}-\dataScalar_{j,k}\right)^{2}\sim\gammaSamp{\frac{1}{2}}{\frac{1}{4\dataStd_{k}^{2}}}
-\]
+$$
 Once again we can consider the specific case where the data is
 spherical, $\dataStd_{k}^{2}=\dataStd^{2}$, as we can always
 individually rescale the data input dimensions to ensure this is the
 case
-\[
+$$
 \sum_{k=1}^{\dataDim}\left(\dataScalar_{i,k}-\dataScalar_{j,k}\right)^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{1}{4\dataStd^{2}}}
-\]
-\[
+$$
+$$
 \frac{1}{\dataDim}\sum_{k=1}^{\dataDim}\left(\dataScalar_{i,k}-\dataScalar_{j,k}\right)^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{D}{4\dataStd^{2}}}
-\]
+$$
 The dimension normalized squared distance between points is Gamma
 distributed.  Mean is $2\dataStd^{2}$. Variance is
-$\frac{8\dataStd^{2}}{D}$.}
-
-\newslide{Looking at Gaussian Samples}
-
-  \begin{figure}
-\setupplotcode{import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import multivariate_normal
-import mlai
-import mlai.plot as plot}
-
-\code{# Generate random covariance matrix
-np.random.seed(42)  # For reproducibility
-a = np.random.randn(2, 2)
-cov_matrix = a @ a.T
-
-# Sample from multivariate Gaussian
-mean = np.array([0, 0])
-Y = np.random.multivariate_normal(mean, cov_matrix, 300)
-
-# Create plot
-fig, ax = plt.subplots(figsize=plot.big_figsize)
-ax.plot(Y[:, 0], Y[:, 1], 'rx', markersize=4)
-ax.set_xlim([Y[:, 0].min()*1.1, Y[:, 0].max()*1.1])
-ax.set_ylim([Y[:, 1].min()*1.1, Y[:, 1].max()*1.1])
-ax.set_aspect('equal')
-ax.grid(True, alpha=0.3)
-
-mlai.write_figure(filename='two-d-gaussian-samples.svg', 
-                  directory='\writeDiagramsDir/dimred')}
-
+$\frac{8\dataStd^{2}}{\dataDim}$.}
 
 
 \newslide{Interpoint Distances}
@@ -577,13 +523,13 @@ mlai.write_figure(filename='two-d-gaussian-samples.svg',
     
     For spherical Gaussian where $\sigma_k^2 = \sigma^2$:
     
-    4. **Sum of squared differences**: $\sum_{k=1}^d (y_{i,k} - y_{j,k})^2 \sim \text{Gamma}(\frac{d}{2}, \frac{1}{4\sigma^2})$
-    5. **Normalized distance**: $\frac{1}{d}\sum_{k=1}^d (y_{i,k} - y_{j,k})^2 \sim \text{Gamma}(\frac{d}{2}, \frac{d}{4\sigma^2})$
+    4. **Sum of squared differences**: $\sum_{k=1}^\dataDim (y_{i,k} - \dataScalar_{j,k})^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{1}{4\dataStd^2}}$
+    5. **Normalized distance**: $\frac{1}{\dataDim}\sum_{k=1}^\dataDim (\datasScalar_{i,k} - \dataScalar_{j,k})^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{\dataDim}{4\dataStd^2}}$
     
     **Key Results:**
-    - Mean distance: $2\sigma^2$
-    - Variance: $\frac{8\sigma^2}{d}$ (decreases with dimension!)
-    - All points become equidistant as $d \to \infty$
+    - Mean distance: $2\dataStd^2$
+    - Variance: $\frac{8\dataStd^2}{\dataDim}$ (decreases with dimension!)
+    - All points become equidistant as $\dataDim \to \infty$
 }
 
 

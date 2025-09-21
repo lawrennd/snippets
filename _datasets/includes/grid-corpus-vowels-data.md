@@ -75,7 +75,7 @@
 }
 \subsection{Grid Corpus Vowels Data}
 
-\notes{This data set collection is from an classic early microarray paper on the yeast cell cycle [@Spellman:yeastcellcy98].}
+\notes{}
 
 
 \setupcode{import pods}
