@@ -9,7 +9,7 @@
 
 \setupcode{%%capture
 %pip install notutils
-%pip install pods
+%pip install git+https://github.com/lawrennd/pods.git
 %pip install git+https://github.com/lawrennd/mlai.git}
 
 \define{podsSoftware}
