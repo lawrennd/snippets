@@ -139,15 +139,11 @@ are dependent on the dimensionality of our egg.}
 
 \subsection{The Gaussian Egg}
 
-\notes{* See also Exercise 1.4 in @Bishop:book95
-
-\figure{}
+\notes{* See also Exercise 1.4 in @Bishop:book95}
   
 \setupplotcode{import mlai.plot as plot}
 
-\helpercode{plot.gaussian_volume_1D(directory='\writeDiagramsDir/dimred/')
-plot.gaussian_volume_2D(directory='\writeDiagramsDir/dimred/')
-plot.gaussian_volume_3D(directory='\writeDiagramsDir/dimred/')}
+\plotcode{plot.gaussian_volume_1D(directory='\writeDiagramsDir/dimred/')}
 
 \notes{The answer is found through integrating over the Gaussian. For a one
 dimensional egg we can find the portion of the Gaussian that sits
@@ -168,9 +164,13 @@ their associated masses for the yolk, the green, the white and the shell.}
 
 \newslide{}
 
+\plotcode{plot.gaussian_volume_2D(directory='\writeDiagramsDir/dimred/')}
+
 \figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-2D}{40%}}{Volumes associated with the regions in the two dimensional Gaussian egg. The yolk contains 59.4%, the green contains 7.4% and the white 33.2%.}{}
 
 \newslide{}
+
+\plotcode{plot.gaussian_volume_3D(directory='\writeDiagramsDir/dimred/')}
 
 \figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-13}{40%}}{Volumes associated with the regions in the three
  dimensional Gaussian egg. Here the yolk has 56.1% the green has 9.2% the white has 34.7%.}{}
