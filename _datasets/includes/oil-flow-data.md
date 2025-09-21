@@ -60,7 +60,7 @@
 }
 \subsection{Oil Flow Data}
 
-\notes{This data set is from a physics-based simulation of oil flow in a pipeline. The data was generated as part of a project to determine the fraction of oil, water and gas in North Sea oil pipes [@Bishop:gtm96].}
+\notes{This data set is from a physics-based simulation of oil flow in a pipeline. The data was generated as part of a project to determine the fraction of oil, water and gas in North Sea oil pipes [@Bishop-oil93].}
 
 \setupcode{import pods}
 
