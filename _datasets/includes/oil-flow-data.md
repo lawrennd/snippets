@@ -92,7 +92,7 @@ import numpy as np}
 classes = np.unique(labels)
 colors = ['r', 'g', 'b']
 for i, cls in enumerate(classes):
-    idx = data['Y'] == cls
+    idx = labels == cls
     ax.plot(data['X'][idx, 0], data['X'][idx, 1], colors[i] + '.', 
             markersize=10, label=f'Class {cls}')
 ax.set_xlabel('1st dimension')

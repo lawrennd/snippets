@@ -10,15 +10,14 @@
 \slides{**Data sampled from independent Gaussian distribution**
 
 * If dimensions are independent, we expect low variance, Gaussian behavior
-    for the distribution of squared distances.
+    for the distribution of squared distances.}
 
-**Distance distribution for a Gaussian with $\dataDim=1000$, $\numData=1000$**}
-
+\newslide{Sanity Check}
 
 \setupcode{import numpy as np}
 
 \code{# Generate 1000D Gaussian data
-np.random.seed(22)
+np.random.seed(24)
 Y = np.random.randn(1000, 1000)}
 
 \setupplotcode{import mlai
@@ -28,15 +27,17 @@ import mlai.plot}
 
 \figure{\inputdiagram{\diagramsDir/dimred/gaussian-distances-1000}{40%}}{A good match betwen theory and the samples for a 1000 dimensional Gaussian distribution.}
 
+\slides{\aligncenter{Distance distribution for a Gaussian with $\dataDim=1000$, $\numData=1000$ and theory}}
+
 
 \newslide{Sanity Check}
 
 \slides{**Same data generation, but fewer data points.**
 
 * If dimensions are independent, we expect low variance, Gaussian behaviour
-    for the distribution of squared distances.
+    for the distribution of squared distances.}
   
-**Distance distribution for a Gaussian with $\dataDim=1000$}, \emph{$\numData=100$**}
+\newslide{Sanity Check}
 
 \setupcode{import numpy as np}
 
@@ -50,14 +51,16 @@ Y = np.random.randn(100, 1000)}
 
 \figure{\includediagram{\diagramsDir/dimred/gaussian-distances-100}{40%}}{A good match betwen theory and the samples for a 100 dimensional Gaussian distribution.}
 
+\slides{\aligncenter{Distance distribution for a Gaussian with $\dataDim=1000$ and $\numData=100$}}
+
 \include{_datasets/includes/oil-flow-data.md}
 \includesquareddistance{oil-flow}{Simulation of oil flow}{}
 
 \include{_datasets/includes/osu-run1-data.md}
 \includesquareddistance{osu-run1}{Ohio State University motion capture}{}
 
-\include{_datasets/includes/spellman-yeast-data.md}
-\includesquareddistance{spellman-yeast}{Spellman yeast cell cycle}{}
+<!--include{_datasets/includes/spellman-yeast-data.md}
+includesquareddistance{spellman-yeast}{Spellman yeast cell cycle}{}-->
 
 \include{_datasets/includes/della-gatta-gene-data.md}
 \includesquareddistance{della-gatta-gene}{Della Gatta gene expression}{}

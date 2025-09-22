@@ -29,16 +29,23 @@
 
 \slides{
 * Ward's method minimizes the increase in within-cluster variance
-* Mathematical formulation: $\Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2$
-* Where $\mathbf{c}_i, \mathbf{c}_j$ are cluster centroids and $n_i, n_j$ are cluster sizes
-* Creates compact, roughly spherical clusters
-* Particularly effective for data with clear cluster structure}
+* Set every data point as cluster size 1.
+* Select as
+  $$
+  \Delta_{i,j} = \frac{n_i n_j}{n_i + n_j} \|\meanVector_i - \meanVector_j\|^2
+  $$
+* Where $\meanVector_i, \meanVector_j$ are cluster centroids and $n_i, n_j$ are cluster sizes}
 
-\notes{Ward's criterion minimises the increase in within-cluster sum of squares (WCSS) when merging two clusters. The selection criterion for merging is
+\newslide{Ward's Criterion}
+\slides{
+* Creates compact, roughly spherical clusters
+* Effective for data with clear cluster structure}
+
+\notes{Ward's criterion minimises the increase in within-cluster sum of squares ($\errorFunction(\meanMatrix)$) when merging two clusters. The selection criterion for merging is
 $$
-\Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2,
+\Delta_{i,j} = \frac{n_i n_j}{n_i + n_j} \|\meanVector_i - \meanVector_j\|^2,
 $$ 
-where $\mathbf{c}_i$ and $\mathbf{c}_j$ are the centroids of clusters $i$ and $j$, and $n_i, n_j$ are their sizes. This formula comes from greedy minimisation of the within cluster variance. The normalisation by $n_i$ and $n_j$ ensures that the distance between cluster centroids with their sizes - larger clusters are penalized more heavily for being far apart, encouraging the formation of compact, well-separated groups.}
+where $\meanVector_i$ and $\meanVector_j$ are the centroids of clusters $i$ and $j$, and $n_i, n_j$ are their sizes. This formula comes from greedy minimisation of the within cluster variance. The normalisation by $n_i$ and $n_j$ ensures that the distance between cluster centroids with their sizes - larger clusters are penalized more heavily for being far apart, encouraging the formation of compact, well-separated groups.}
 
 \slides{
 * **Why Ward's works well:**
@@ -52,97 +59,102 @@ where $\mathbf{c}_i$ and $\mathbf{c}_j$ are the centroids of clusters $i$ and $j
 \subsection{Mathematical Derivation}
 
 \slides{
-* *Within-cluster sum of squares (WCSS):*
-  * $WCSS = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_i\|^2$
-* *Ward's criterion:* Minimise increase in WCSS when merging
+* *Within-cluster sum of squares ($\errorFunction(\meanMatrix)$):*
+  * $\errorFunction(\meanMatrix) = \sum_{i=1}^k \sum_{\inputVector \in C_i} \|\inputVector - \meanVector_i\|^2$
+* *Ward's criterion:* Minimise increase in $\errorFunction(\meanMatrix)$ when merging
 * This is the same criterion as used for objective in $k$-means
 * **Key insight:** For spherical clusters, this is equivalent to minimising centroid distance weighted by cluster sizes}
 
-\notes{We can show that Ward's method is optimal for spherical clusters. We can derive the relationship between cluster merging and within-cluster variance. The within-cluster sum of squares (WCSS) measures the total squared distance from each point to its cluster centroid, 
+\notes{We can show that Ward's method is optimal for spherical clusters. We can derive the relationship between cluster merging and within-cluster variance. The within-cluster sum of squares ($\errorFunction(\meanMatrix)$) measures the total squared distance from each point to its cluster centroid, 
 $$
-WCSS = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_i\|^2.
+\errorFunction(\meanMatrix) = \sum_{i=1}^k \sum_{\inputVector \in C_i} \|\inputVector - \meanVector_i\|^2.
 $$ 
 This is the same objective function that $k$-means clustering minimises. When we merge two clusters, we want to minimise the increase in this total variance.}
 
 \newslide{Mathematical Derivation of Ward Distance}
 
 \slides{
-* Start with two clusters $C_i$ and $C_j$ with centroids $\mathbf{c}_i, \mathbf{c}_j$
+* Start with two clusters $C_i$ and $C_j$ with centroids $\meanVector_i, \meanVector_j$
 * After merging: new centroid 
   $$
-  \mathbf{c}_{ij} = \frac{n_i \mathbf{c}_i + n_j \mathbf{c}_j}{n_i + n_j}
+  \meanVector_{ij} = \frac{n_i \meanVector_i + n_j \meanVector_j}{n_i + n_j}
   $$
-* Increase in WCSS: 
+* Increase in $\errorFunction(\meanMatrix)$: 
   $$
-  \Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2
+  \Delta_{i,j} = \frac{n_i n_j}{n_i + n_j} \|\meanVector_i - \meanVector_j\|^2
   $$}
 
-\notes{Consider two clusters $C_i$ and $C_j$ with $n_i$ and $n_j$ points respectively, and centroids $\mathbf{c}_i$ and $\mathbf{c}_j$. When we merge them, the new centroid becomes $\mathbf{c}_{ij} = \frac{n_i \mathbf{c}_i + n_j \mathbf{c}_j}{n_i + n_j}$.}
+\notes{Consider two clusters $C_i$ and $C_j$ with $n_i$ and $n_j$ points respectively, and centroids $\meanVector_i$ and $\meanVector_j$. When we merge them, the new centroid becomes $\meanVector_{ij} = \frac{n_i \meanVector_i + n_j \meanVector_j}{n_i + n_j}$.}
 
 \newslide{Mathematical Derivation - II}
 
 \slides{
-* *Step 1:* Original WCSS for separate clusters
+* *Step 1:* Original $\errorFunction(\meanMatrix)$ for separate clusters
   $$
-  WCSS_{original} = \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_i\|^2 + \sum_{\mathbf{x} \in C_j} \|\mathbf{x} - \mathbf{c}_j\|^2
+  \errorFunction(\meanMatrix)_{\text{original}} = \sum_{\inputVector \in C_i} \|\inputVector - \meanVector_i\|^2 + \sum_{\inputVector \in C_j} \|\inputVector - \meanVector_j\|^2
   $$
-* *Step 2:* New WCSS after merging
+* *Step 2:* New $\errorFunction(\meanMatrix)$ after merging
   $$
-  WCSS_{new} = \sum_{\mathbf{x} \in C_i \cup C_j} \|\mathbf{x} - \mathbf{c}_{ij}\|^2
+  \errorFunction(\meanMatrix)_{\text{new}} = \sum_{\inputVector \in C_i \cup C_j} \|\inputVector - \meanVector_{ij}\|^2
   $$
-* *Step 3:* Increase in WCSS
+* *Step 3:* Increase in $\errorFunction(\meanMatrix)$
   $$
-  \Delta = WCSS_{new} - WCSS_{original}
+  \Delta_{i,j} = \errorFunction(\meanMatrix)_{\text{new}} - \errorFunction(\meanMatrix)_{\text{original}}
   $$}
 
-\notes{The increase in WCSS is $\Delta = WCSS_{new} - WCSS_{original}$. Let's expand this step by step. For the new cluster, we have:}
+\notes{The increase in $\errorFunction(\meanMatrix)$ is $\Delta_{i,j} = \errorFunction(\meanMatrix)_{\text{new}} - \errorFunction(\meanMatrix)_{\text{original}}$. Let's expand this step by step. For the new cluster, we have:}
 
 \newslide{Mathematical Derivation - III}
 
 \slides{
-* *Expanding the new WCSS:*
+* *Expanding the new $\errorFunction(\meanMatrix)$:*
   $$
-  WCSS_{new} = \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_{ij}\|^2 + \sum_{\mathbf{x} \in C_j} \|\mathbf{x} - \mathbf{c}_{ij}\|^2
+  \errorFunction(\meanMatrix)_{\text{new}} = \sum_{\inputVector \in C_i} \|\inputVector - \meanVector_{ij}\|^2 + \sum_{\inputVector \in C_j} \|\inputVector - \meanVector_{ij}\|^2
   $$
-* **Key identity:** 
-  $$
-  \|\mathbf{x} - \mathbf{c}_{ij}\|^2 = \|\mathbf{x} - \mathbf{c}_i\|^2 + \|\mathbf{c}_i - \mathbf{c}_{ij}\|^2 + 2(\mathbf{x} - \mathbf{c}_i)^T(\mathbf{c}_i - \mathbf{c}_{ij})$$}
+* **Key identity** 
+  \begin{aligned}
+  \|\inputVector - \meanVector_{ij}\|^2 = & \|\inputVector - \meanVector_i\|^2 \\ & + \|\meanVector_i - \meanVector_{ij}\|^2 \\ & + 2(\inputVector - \meanVector_i)^\top(\meanVector_i - \meanVector_{ij})
+  \end{aligned}}
 
-\notes{Using the identity $\|\mathbf{x} - \mathbf{c}_{ij}\|^2 = \|\mathbf{x} - \mathbf{c}_i\|^2 + \|\mathbf{c}_i - \mathbf{c}_{ij}\|^2 + 2(\mathbf{x} - \mathbf{c}_i)^T(\mathbf{c}_i - \mathbf{c}_{ij})$, we can expand the new WCSS. The cross-term $2(\mathbf{x} - \mathbf{c}_i)^T(\mathbf{c}_i - \mathbf{c}_{ij})$ sums to zero because $\sum_{\mathbf{x} \in C_i} (\mathbf{x} - \mathbf{c}_i) = 0$ by definition of centroid.}
+\notes{Using the identity $\|\inputVector - \meanVector_{ij}\|^2 = \|\inputVector - \meanVector_i\|^2 + \|\meanVector_i - \meanVector_{ij}\|^2 + 2(\inputVector - \meanVector_i)^T(\meanVector_i - \meanVector_{ij})$, we can expand the new $\errorFunction(\meanMatrix)$. The cross-term $2(\inputVector - \meanVector_i)^T(\meanVector_i - \meanVector_{ij})$ sums to zero because $\sum_{\inputVector \in C_i} (\inputVector - \meanVector_i) = 0$ by definition of centroid.}
 
 \newslide{Mathematical Derivation - IV}
 
 \slides{
-* *After simplification:*
+* After simplification
+  \begin{aligned}
+  \errorFunction(\meanMatrix)_{\text{new}} = & \errorFunction(\meanMatrix)_{\text{original}} \\ & + n_i \|\meanVector_i - \meanVector_{ij}\|^2 \\ & + n_j \|\meanVector_j - \meanVector_{ij}\|^2
+  \end{aligned}
+}
+
+\newslide{Mathematica Derivation - V}
+
+\slides{
+* Substituting the centroid formula
   $$
-  WCSS_{new} = WCSS_{original} + n_i \|\mathbf{c}_i - \mathbf{c}_{ij}\|^2 + n_j \|\mathbf{c}_j - \mathbf{c}_{ij}\|^2
-  $$
-* *Substituting the centroid formula:*
-  $$
-  \mathbf{c}_{ij} = \frac{n_i \mathbf{c}_i + n_j \mathbf{c}_j}{n_i + n_j}
+  \meanVector_{ij} = \frac{n_i \meanVector_i + n_j \meanVector_j}{n_i + n_j}
   $$
 * **Final result:**
   $$
-  \Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2
+  \Delta_{i,j} = \frac{n_i n_j}{n_i + n_j} \|\meanVector_i - \meanVector_j\|^2
   $$}
 
 \notes{We can manipulate to find that 
 $$
-\Delta = n_i \|\mathbf{c}_i - \mathbf{c}_{ij}\|^2 + n_j \|\mathbf{c}_j - \mathbf{c}_{ij}\|^2$. Substituting $\mathbf{c}_{ij} = \frac{n_i \mathbf{c}_i + n_j \mathbf{c}_j}{n_i + n_j}
+\Delta_{i,j} = n_i \|\meanVector_i - \meanVector_{ij}\|^2 + n_j \|\meanVector_j - \meanVector_{ij}\|^2$. Substituting $\meanVector_{ij} = \frac{n_i \meanVector_i + n_j \meanVector_j}{n_i + n_j}
 $$ 
 and simplifying, we get the Ward distance formula
 $$
-\Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2.
+\Delta_{i,j} = \frac{n_i n_j}{n_i + n_j} \|\meanVector_i - \meanVector_j\|^2.
 $$}
 
 \newslide{Local Optimality}
 \slides{
-* *Why this works well for spherical clusters:*
-  * Spherical clusters have minimal WCSS for given number of points
-  * Ward's method makes *locally* optimal choices at each merge step
-  * The weighting $\frac{n_i n_j}{n_i + n_j}$ prevents premature merging of large clusters}
+ * Spherical clusters have minimal $\errorFunction(\meanMatrix)$ for given number of points
+ * Ward's method makes *locally* optimal choices at each merge step
+ * The weighting $\frac{n_i n_j}{n_i + n_j}$ prevents premature merging of large clusters}
 
-\notes{For spherical clusters, the WCSS is minimised when points are as close as possible to their centroid. Ward's method makes locally optimal choices by always choosing the merge that results in the smallest possible increase in total variance. However, this is *greedy optimal*, it makes the best choice at each step without considering the global consequences. The weighting factor we derived, $\frac{n_i n_j}{n_i + n_j}$, ensures that merging two large clusters is penalised more heavily than merging small clusters, preventing the algorithm from prematurely combining large, well-separated groups. While Ward's method is not guaranteed to find the globally optimal hierarchical clustering, it often produces good results for spherical cluster structures.}
+\notes{For spherical clusters, the $\errorFunction(\meanMatrix)$ is minimised when points are as close as possible to their centroid. Ward's method makes locally optimal choices by always choosing the merge that results in the smallest possible increase in total variance. However, this is *greedy optimal*, it makes the best choice at each step without considering the global consequences. The weighting factor we derived, $\frac{n_i n_j}{n_i + n_j}$, ensures that merging two large clusters is penalised more heavily than merging small clusters, preventing the algorithm from prematurely combining large, well-separated groups. While Ward's method is not guaranteed to find the globally optimal hierarchical clustering, it often produces good results for spherical cluster structures.}
 
 \newslide{Algorithm}
 
@@ -164,7 +176,7 @@ $$}
 np.random.seed(24)
 Y = generate_cluster_data(n_points_per_cluster=30)
 
-ward = WardsMethod(X)
+ward = WardsMethod(Y)
 ward.fit()
 
 linkage_matrix = ward.get_linkage_matrix()
@@ -201,8 +213,9 @@ plt.tight_layout()
 mlai.write_figure(filename="hierarchical_clustering_001.svg", directory="\writeDiagramsDir/ml")
 }
 
+\newslide{Ward's Criterion on Artificial Data}
 
-\figure{\columns{\includediagram{\diagramsDir/ml/hierarchical_clustering_000}{100%}}{\includediagram{\diagramsDir/ml/hierarchical_clustering_001}{100%}}{40%}{40%}}{Hierarchical clustering of some artificial data. On the left we have an artificially generated data set containing three clusters. On the right we can see the dendogram formed by clustering using Ward's criterion.}{hierarchical-clustering}
+\figure{\columns{\includediagram{\diagramsDir/ml/hierarchical_clustering_000}{100%}}{\includediagramclass{\diagramsDir/ml/hierarchical_clustering_001}{100%}}{40%}{40%}}{Hierarchical clustering of some artificial data. On the left we have an artificially generated data set containing three clusters. On the right we can see the dendogram formed by clustering using Ward's criterion.}{hierarchical-clustering}
 
 
 \setupdisplaycode{import notutils as nu}

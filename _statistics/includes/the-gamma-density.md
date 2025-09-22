@@ -48,7 +48,8 @@ and shape parameter $a^\prime = \sum_{k=1}^\dataDim a_k$.}
 \newslide{Gamma Density Formula}
 
 \slides{
-  $$\gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}$$
+  \aligncenter{$$\gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}$$}
+  
   * Shape parameter: $a$ (controls form)
   * Rate parameter: $b$ (controls scale)
   * Gamma function: $\Gamma\left(a\right)=\int_{0}^{\infty}x^{a-1}e^{-x}\text{d}x$
@@ -67,8 +68,10 @@ and shape parameter $a^\prime = \sum_{k=1}^\dataDim a_k$.}
 
 \newslide{Special Cases}
 \slides{ 
-  * *Exponential:* $a=1$ $\rightarrow$ $\expDist{x}{b}$
-  * *Chi-squared (1 df):* $a=\frac{1}{2}, b=\frac{1}{2}$ $\rightarrow$ $\chiSquaredDist{1}{x}$
+  * Exponential
+    $a=1$ $\rightarrow$ $\expDist{x}{b}$
+  * $\chi^2$ (chi-squared, 1 df) 
+    $a=\frac{1}{2}, b=\frac{1}{2}$ $\rightarrow$ $\chiSquaredDist{1}{x}$
 }
 
 \newslide{Other Important Applications}
@@ -84,12 +87,12 @@ and shape parameter $a^\prime = \sum_{k=1}^\dataDim a_k$.}
 \slides{
   * If 
   $$
-  X_k \sim \text{Gamma}(a_k, b)
+  x_k \sim \text{Gamma}(a_k, b)
   $$ 
-  for $k=1,\ldots,d$
+  for $k=1,\ldots,\dataDim$
   * Then 
   $$
-  \sum_{k=1}^d X_k \sim \text{Gamma}(\sum_{k=1}^d a_k, b)
+  \sum_{k=1}^\dataDim x_k \sim \text{Gamma}(\sum_{k=1}^d a_k, b)
   $$
 }
 

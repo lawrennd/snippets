@@ -39,7 +39,7 @@ noise with a particular covariance matrix.}
 import mlai
 import mlai.plot as plot}
     
-\code{fig, ax = plt.subplots(figsize=(5,5))
+\code{fig, ax = plt.subplots(figsize=plot.big_figsize)
 
 num_centres = 20
 num_data = 200
@@ -65,9 +65,14 @@ for i in range(num_centres):
     ax.plot(centres[i, 0] + el[:, 0], centres[i, 1] + el[:, 1], linewidth=2, color=[0,0,0])
 mlai.write_figure("artificial-mog-2.svg", directory="\writeDiagramsDir/dimred/")}
 
-\figure{\includediagram{\diagramsDir/dimred/artificial-mog-1}{40%}}{Two dimensional Gaussian data set.}{artificial-mog-1-no-ovals}
+\figure{\includediagram{\diagramsDir/dimred/artificial-mog-1}{60%}}{Two dimensional Gaussian data set.}{artificial-mog-1-no-ovals}
 
-\figure{\includediagram{\diagramsDir/dimred/artificial-mog-2}{40%}}{Two dimensional data sets. Complex structure not a problem for mixtures of Gaussians.}{artificial-mog-2}
+\setupdisplaycode{import notutils as nu}
+\displaycode{nu.display_plots('cluster_data{counter:0>2}.svg', directory='\writeDiagramsDir/ml', counter=(0, 1))}
+
+\newslide{Mixtures of Gaussians}
+
+\figure{\includediagram{\diagramsDir/dimred/artificial-mog-2}{60%}}{Two dimensional data sets. Complex structure not a problem for mixtures of Gaussians.}{artificial-mog-2}
 
     
 \section{High Dimensional Data}
@@ -107,6 +112,11 @@ be quite misleading when we develop intuitions as to how these
 densities behave in higher dimensions. By higher dimensionality we can
 think of dimensionality that is difficult to visualize directly,
 *i.e.* dimensionality greater than $\dataDim=3$.}
+
+\newslide{Distance from a Mean}
+
+\figure{\includediagram{\diagramsDir/dimred/distance2}{40%}}{Distance from mean of the density (circle) to a given data point (square).}{distance2}
+
 
 \subsection{Dimensionality Greater than Three}
 
@@ -159,14 +169,17 @@ the Gaussian implies. Before we introduce that approach, we show three
 low dimensional Gaussian eggs below indicating
 their associated masses for the yolk, the green, the white and the shell.}
 
-\newslide{}
+\newslide{1D Egg}
 \figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-1D}{40%}}{Volumes associated with the one dimensional Gaussian egg. Here the yolk has 65.8%, the green has 4.8% and the white has 29.4% of the mass.}{}
 
+\slides{\aligncenter{Here the \coloryellow{yolk} has 65.8%, the \colorgreen{green} has 4.8% and the white has 29.4%}}
 \newslide{}
 
 \plotcode{plot.gaussian_volume_2D(directory='\writeDiagramsDir/dimred/')}
 
 \figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-2D}{40%}}{Volumes associated with the regions in the two dimensional Gaussian egg. The yolk contains 59.4%, the green contains 7.4% and the white 33.2%.}{}
+
+\slides{\aligncenter{Here the \coloryellow{yolk} has 59.4%, the \colorgreen{green} has 7.4% and the white has 33.2%}}
 
 \newslide{}
 
@@ -175,19 +188,85 @@ their associated masses for the yolk, the green, the white and the shell.}
 \figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-3D}{40%}}{Volumes associated with the regions in the three
  dimensional Gaussian egg. Here the yolk has 56.1% the green has 9.2% the white has 34.7%.}{}
  
+\slides{\aligncenter{Here the \coloryellow{yolk} has 56.1%, the \colorgreen{green} has 9.2% and the white has 34.7%}}
+
+\include{_statistics/includes/the-gamma-density.md}
+
+
 \newslide{Mathematics}
 
 \slides{**What is the density of probability mass?**
 
-For a d-dimensional Gaussian distribution:
+For a $\dataDim$-dimensional Gaussian distribution:
 
-1. **Individual components**: $\dataScalar_{i,k} \sim \gaussianSamp{0}{\dataStd^2}$
-2. **Squared components**: $\dataScalar_{i,k}^2 \sim \dataStd^2 \chi_1^2$ (scaled chi-squared)
-3. **Gamma distribution**: $\dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{1}{2}, \frac{1}{2\dataScalar^2})$
-4. **Sum of squares**: $\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{\dataDim}{2}, \frac{1}{2\dataStd^2})$
-5. **Expected value**: $\langle \sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \rangle = \dataDim\dataStd^2$
-6. **Normalized sum**: $\frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{\dataDim}{2}, \frac{d}{2\dataStd^2})$
-7. **Expected normalized**: $\langle \frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \rangle = \dataStd^2$}
+*Individual components*: 
+$$
+\dataScalar_{i,k} \sim \gaussianSamp{0}{\dataStd^2}
+$$}
+
+\newslide{Mathematics}
+
+\slides{**What is the density of probability mass?**
+
+For a $\dataDim$-dimensional Gaussian distribution:
+
+*Squared components*: 
+$$
+\dataScalar_{i,k}^2 \sim \dataStd^2 \chi_1^2
+$$ (scaled chi-squared)}
+
+\newslide{Mathematics}
+
+\slides{**What is the density of probability mass?**
+
+For a $\dataDim$-dimensional Gaussian distribution:
+
+
+*Gamma distribution*: 
+$$
+\dataScalar_{i,k}^2 \sim \gammaSamp{\frac{1}{2}}{\frac{1}{2\dataStd^2}}
+$$}
+
+\newslide{Mathematics}
+
+\slides{**What is the density of probability mass?**
+
+For a $\dataDim$-dimensional Gaussian distribution:
+
+**Sum of squares**: 
+$$
+\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{1}{2\dataStd^2}}
+$$}
+
+\newslide{Mathematics}
+
+\slides{**What is the density of probability mass?**
+
+For a $\dataDim$-dimensional Gaussian distribution:
+
+**Expected value**: 
+
+$$
+\expSamp{\sum_{k=1}^\dataDim \dataScalar_{i,k}^2} = \dataDim\dataStd^2
+$$}
+
+\newslide{Mathematics}
+
+\slides{**What is the density of probability mass?**
+
+**Normalized sum**: 
+$$
+\frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{d}{2\dataStd^2}}
+$$}
+
+\newslide{Mathematics}
+
+\slides{**What is the density of probability mass?**
+
+**Expected normalised**: 
+$$
+\frac{1}{\dataDim}\expSamp{\sum_{k=1}^\dataDim \dataScalar_{i,k}^2} = \dataStd^2
+$$}
 
 
 \subsection{Distribution of Mass against Dimensionality }
@@ -198,7 +277,7 @@ increases. The green and the white increase in mass and the yolk
 decreases in mass. Of greater interest to us is the behavior of this
 distribution of mass in higher dimensions. It turns out we can compute
 this through the cumulative distribution function of the gamma
-density. }
+density.}
 
 \notes{We will compute the distribution of the density mass in the three
 regions by assuming each data point is sampled independently from our
@@ -230,7 +309,6 @@ $$
 \gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}.
 $$}
 
-\include{_statistics/includes/the-gamma-density.md}
 
 \subsection{chi-squared Distributions}
 \setupplotcode{import numpy as np
@@ -239,11 +317,11 @@ from scipy.stats import gamma, chi2
 import mlai
 import mlai.plot as plot}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
+\plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
     
 x = np.linspace(0, 10, 100)
 chi2_1d = chi2.pdf(x, df=1)
-ax.plot(x, chi2_1d, '-', linewidth=2)
+ax.plot(x, chi2_1d, '-', linewidth=3)
 ax.set_xlabel(r'$\text{distance}^2$')
 ax.set_ylabel('density')
 ax.grid(True, alpha=0.3)
@@ -252,12 +330,12 @@ mlai.write_figure(filename="chi-squared-1d.svg", directory="\writeDiagramsDir/di
 
 \newslide{$z^2$}
 
-\figure{\includediagram{\diagramsDir/dimred/chi-squared-1d}{40%}}{The $\chi^2$ distribution which gives the distribution of the square of a standardised normal variable $z^2$.}{chi-squared-1d}
+\figure{\includediagram{\diagramsDir/dimred/chi-squared-1d}{70%}}{The $\chi^2$ distribution which gives the distribution of the square of a standardised normal variable $z^2$.}{chi-squared-1d}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
+\plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 
 gamma_2d = gamma.pdf(x, a=1, scale=1)
-ax.plot(x, gamma_2d, '-', linewidth=2)
+ax.plot(x, gamma_2d, '-', linewidth=3)
 ax.set_xlabel(r'$\text{distance}^2$')
 ax.set_ylabel('density')
 ax.grid(True, alpha=0.3)
@@ -266,13 +344,13 @@ mlai.write_figure(filename="gamma-2d.svg", directory="\writeDiagramsDir/dimred")
 
 \newslide{$z_1^2 + z_2^2$}
 
-\figure{\includediagram{\diagramsDir/dimred/gamma-2d}{40%}}{The scaled $\chi^2$ squared, equivalent to the sum of two standardised normal variables $z_1^2 + z_2^2$.}{gamma-2d}
+\figure{\includediagram{\diagramsDir/dimred/gamma-2d}{70%}}{The scaled $\chi^2$ squared, equivalent to the sum of two standardised normal variables $z_1^2 + z_2^2$.}{gamma-2d}
 
 
- \plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
+ \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 
 gamma_high = gamma.pdf(x, a=5, scale=0.2)
-ax.plot(x, gamma_high, '-', linewidth=2, label='Gamma(5,0.2)')
+ax.plot(x, gamma_high, '-', linewidth=3)
 ax.set_xlabel(r'$\text{distance}^2$')
 ax.set_ylabel('density')
 ax.grid(True, alpha=0.3)
@@ -281,18 +359,17 @@ mlai.write_figure(filename="gamma-5d.svg", directory="\writeDiagramsDir/dimred")
 
 \newslide{$\sum_{i=1}^5 z^2_i$}
 
-\figure{\includediagram{\diagramsDir/dimred/gamma-5d}{40%}}{The scaled $\chi^2$ squared, equivalent to the sum of five standardised normal variables $\sum_{i=1}^5 z^2_i$.}{gamma-5d}
+\figure{\includediagram{\diagramsDir/dimred/gamma-5d}{70%}}{The scaled $\chi^2$ squared, equivalent to the sum of five standardised normal variables $\sum_{i=1}^5 z^2_i$.}{gamma-5d}
 
-\newslide{}
+\newslide{Square of Sample}
 \slides{ 
 * Square of sample from Gaussian is scaled chi-squared density
-* Chi squared density is a variant of the gamma density with shape parameter $a=\frac{1}{2}$, rate parameter
-    $b=\frac{1}{2\dataStd^{2}}$, 
+* $\chi^2$ density is a variant of the gamma  $a=\frac{1}{2}$,  $b=\frac{1}{2\dataStd^{2}}$, 
 	$$
 	\gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}
 	$$
 }
-\newslide{}
+\newslide{Distance Distributions}
 
 \slides{
 * Addition
@@ -303,8 +380,6 @@ mlai.write_figure(filename="gamma-5d.svg", directory="\writeDiagramsDir/dimred")
     parameter}
 
 \newslide{Where is the Mass?}
-
-\slides{* Squared distances are gamma distributed.}
 
 \setupplotcode{import numpy as np
 from scipy.stats import gamma}
@@ -353,11 +428,12 @@ mlai.write_figure(filename='dimension-mass.svg',
                   directory='\writeDiagramsDir/dimred')}
 				  
 				  
-\figure{\includediagram{\diagramsDir/dimred/dimension-mass}{40%}}{Plot of probability mass versus dimension. Plot shows the
+\figure{\includediagramclass{\diagramsDir/dimred/dimension-mass}{60%}}{Plot of probability mass versus dimension. Plot shows the
     volume of density inside 0.95 of a standard deviation (yellow),
     between 0.95 and 1.05 standard deviations (green), over 1.05
     and standard deviations (white).}{dimension-mass}
 
+\slides{\aligncenter{Proportions of volumes between yolk, green and white as $\dataDim \rightarrow 1024$ (log scale)}}
 
 \notes{So we have the squared distance from the mean for a single feature being given
 by
@@ -408,7 +484,6 @@ $(0.95/\dataStd)^2$ and $(1.05/\dataStd)^2$. Data in the white will
 have a squared distance from the mean greater than
 $(1.05/\dataStd)^2$.}
 
-\figure{\includediagram{\diagramsDir/dimred/distance2}{40%}}{Distance from mean of the density (circle) to a given data point (square).}{distance2}
 
 \subsection{Looking at Gaussian Samples}
 
@@ -447,7 +522,7 @@ fact there is very little data near the mean.}
 \setupcode{import numpy as np}
 
 \code{# Generate random covariance matrix
-np.random.seed(22)  # For reproducibility
+np.random.seed(24)  # For reproducibility
 a = np.random.randn(2, 2)
 cov_matrix = a @ a.T
 
@@ -469,7 +544,7 @@ ax.grid(True, alpha=0.3)
 mlai.write_figure(filename='projected-2d-gaussian.svg', 
                   directory='\writeDiagramsDir/dimred')}
 
-\figure{\includediagram{\diagramsDir/dimred/projected-2d-gaussian}{40%}}{Looking at a projected Gaussian. This plot shows, in two
+\figure{\includediagram{\diagramsDir/dimred/projected-2d-gaussian}{60%}}{Looking at a projected Gaussian. This plot shows, in two
     dimensions, samples from a potentially very high dimensional
     Gaussian density. The mean of the Gaussian is at the origin. There
     appears to be a lot of data near the mean, but when we bear in
@@ -522,38 +597,52 @@ $\frac{8\dataStd^{2}}{\dataDim}$.}
 \slides{* The other effect in high dimensions is all points become
     equidistant.
 * Can show this for Gaussians with a similar proof to the
-    above:
+    above.}
+ 
+\newslide{Interpoint Distance Analysis}
+\slides{
+For two points $i$ and $j$ in d-dimensional space:
     
-    **Interpoint Distance Analysis:**
+1. *Individual components*: $y_{i,k} \sim \mathcal{N}(0, \sigma_k^2)$ and $y_{j,k} \sim \mathcal{N}(0, \sigma_k^2)$
+2. *Difference*: $y_{i,k} - y_{j,k} \sim \mathcal{N}(0, 2\sigma_k^2)$
+3. *Squared difference*: $(y_{i,k} - y_{j,k})^2 \sim \gammaSamp{\frac{1}{2}}{\frac{1}{4\sigma_k^2}}$}
+	
+\newslide{Interpoint Distance Analysis}
     
-    For two points $i$ and $j$ in d-dimensional space:
+\slides{
+For spherical Gaussian where $\sigma_k^2 = \sigma^2$:
+   
+*Sum of squared differences*: 
+$$
+\sum_{k=1}^\dataDim (y_{i,k} - \dataScalar_{j,k})^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{1}{4\dataStd^2}}
+$$}
+
+
+\newslide{Interpoint Distance Analysis}
     
-    1. **Individual components**: $y_{i,k} \sim \mathcal{N}(0, \sigma_k^2)$ and $y_{j,k} \sim \mathcal{N}(0, \sigma_k^2)$
-    2. **Difference**: $y_{i,k} - y_{j,k} \sim \mathcal{N}(0, 2\sigma_k^2)$
-    3. **Squared difference**: $(y_{i,k} - y_{j,k})^2 \sim \text{Gamma}(\frac{1}{2}, \frac{1}{4\sigma_k^2})$
-    
-    For spherical Gaussian where $\sigma_k^2 = \sigma^2$:
-    
-    4. **Sum of squared differences**: $\sum_{k=1}^\dataDim (y_{i,k} - \dataScalar_{j,k})^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{1}{4\dataStd^2}}$
-    5. **Normalized distance**: $\frac{1}{\dataDim}\sum_{k=1}^\dataDim (\datasScalar_{i,k} - \dataScalar_{j,k})^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{\dataDim}{4\dataStd^2}}$
-    
-    **Key Results:**
-    - Mean distance: $2\dataStd^2$
-    - Variance: $\frac{8\dataStd^2}{\dataDim}$ (decreases with dimension!)
-    - All points become equidistant as $\dataDim \to \infty$
+\slides{*Normalised distance*: 
+$$
+\frac{1}{\dataDim}\sum_{k=1}^\dataDim (\dataScalar_{i,k} - \dataScalar_{j,k})^2 \sim \gammaSamp{\frac{\dataDim}{2}}{\frac{\dataDim}{4\dataStd^2}}
+$$}
+
+\newslide{Key Results}
+
+\slides{
+* Mean distance: $2\dataStd^2$
+* Variance: $\frac{8\dataStd^2}{\dataDim}$ (decreases with dimension!)
+* All points become equidistant as $\dataDim \to \infty$
 }
 
 
 \newslide{Central Limit Theorem and Non-Gaussian Case}
 
-\slides{* We can compute the density of squared distance *analytically*
+\slides{* *Analytic*
     for spherical, independent Gaussian data.
-* More generally, for *independent* data, the *central
+* For *independent* data, the *central
       limit theorem* applies.
-
-  * The mean squared distance in high dimensional space is the mean
+* The mean squared distance in high D is the mean
       of the variances.
-  * The variance about the mean scales as $\dataDim^{-1}$.}
+* The variance about the mean scales as $\dataDim^{-1}$.}
 
 
 \newslide{Summary}
@@ -563,6 +652,11 @@ $\frac{8\dataStd^{2}}{\dataDim}$.}
 * All data sits at one standard deviation from the mean.
 * The densities of squared distances can be analytically
     calculated for the Gaussian case.
+}
+
+\newslide{Summary}
+
+\slides{
 * For non-Gaussian \emph{independent} systems we can invoke the central
     limit theorem.
 * Next we will consider example data sets and see how their interpoint

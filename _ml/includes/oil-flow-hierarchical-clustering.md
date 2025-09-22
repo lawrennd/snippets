@@ -33,7 +33,7 @@ plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels
 plt.tight_layout()
 mlai.write_figure('hierarchical-clustering-oil.svg', directory='\writeDiagramsDir/dimred')}
 
-\figure{\includediagram{\diagramsDir/dimred/hierarchical-clustering-oil}{60%}}{Hierarchical clustering applied to oil flow data. The dendrogram shows how different flow regimes are grouped based on their measurement similarities. The three main flow regimes (homogeneous, annular, and laminar) should form distinct clusters.}{hierarchical-clustering-oil}
+\figure{\includediagramclass{\diagramsDir/dimred/hierarchical-clustering-oil}{60%}}{Hierarchical clustering applied to oil flow data. The dendrogram shows how different flow regimes are grouped based on their measurement similarities. The three main flow regimes (homogeneous, annular, and laminar) should form distinct clusters.}{hierarchical-clustering-oil}
 
 
 \endif

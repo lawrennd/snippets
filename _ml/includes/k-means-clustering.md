@@ -167,6 +167,12 @@ for iteration in range(len(centres_store)-1):
     
     # Update centres plot
     h_centres.set_data(centres[:, 0], centres[:, 1])
+	
+    # Save plot for animation
+    counter += 1
+    print(f"Plot {counter}")
+    mlai.write_figure_caption(counter, f'Iteration {iteration + 1}: Update centres to mean of assigned points', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")
+	
     
     # Update data points for each cluster
     for cluster_id in range(nclusters):
@@ -187,19 +193,21 @@ for iteration in range(len(centres_store)-1):
     
     # Save plot for animation
     counter += 1
-    mlai.write_figure_caption(counter, f'Iteration {iteration + 1}: Update centres to mean of assigned points', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")}
+    print(f"Plot {counter}")
+    mlai.write_figure_caption(counter, f'Iteration {iteration + 1}: Update assignments to centres', filestub="kmeans_clustering", ext="svg", directory="\writeDiagramsDir/ml")}
     
     
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots("kmeans_clustering_{counter:0>3}.svg", directory="\writeDiagramsDir/ml", 
-                            text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 12))}
+                            text_top='kmeans_clustering_{counter:0>3}.tex', counter=(0, 22))}
 
 \newslide{$k$-Means Clustering}
 
 \slides{
 \define{\width}{40%}
 \define{animationName}{kmeans-clustering}
-\startanimation{\animationName}{1}{12}{$k$-means}
+\startanimation{\animationName}{0}{22}{$k$-means}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_000}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_001}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_002}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_003}{\width}}{\animationName}
@@ -212,10 +220,20 @@ for iteration in range(len(centres_store)-1):
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_010}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_011}{\width}}{\animationName}
 \newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_012}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_014}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_015}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_016}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_017}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_018}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_019}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_020}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_021}{\width}}{\animationName}
+\newframe{\includediagram{\diagramsDir/ml/kmeans_clustering_022}{\width}}{\animationName}
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-012}}
+\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-026}}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import numpy as np
