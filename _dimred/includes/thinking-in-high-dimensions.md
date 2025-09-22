@@ -223,7 +223,7 @@ distributed according the *chi-squared density*,
 \dataScalar_{i,k}^{2}\sim\dataStd^{2}\chi_{1}^{2},
 \]
 The chi squared density is a special case of the gamma
-density  with shape
+density with shape
 parameter $a=\frac{1}{2}$ and rate parameter
 $b=\frac{1}{2\dataStd^{2}}$,
 $$
@@ -232,49 +232,56 @@ $$}
 
 \include{_statistics/includes/the-gamma-density.md}
 
+\subsection{chi-squared Distributions}
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import gamma, chi2
 import mlai
 import mlai.plot as plot}
 
-\code{def plot_distance_distributions(ax=ax):
-    """Plot distance distributions for different dimensions"""
-    fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+\plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
     
-    # 1D case
-    x = np.linspace(0, 10, 100)
-    chi2_1d = chi2.pdf(x, df=1)
-    axes[0].plot(x, chi2_1d, 'b-', linewidth=2, label='χ²(1)')
-    axes[0].set_title('1D: χ² distribution')
-    axes[0].set_xlabel('Distance²')
-    axes[0].set_ylabel('Density')
-    axes[0].legend()
-    axes[0].grid(True, alpha=0.3)
-    
-    # 2D case
-    gamma_2d = gamma.pdf(x, a=1, scale=1)
-    axes[1].plot(x, gamma_2d, 'r-', linewidth=2, label='Gamma(1,1)')
-    axes[1].set_title('2D: Gamma distribution')
-    axes[1].set_xlabel('Distance²')
-    axes[1].set_ylabel('Density')
-    axes[1].legend()
-    axes[1].grid(True, alpha=0.3)
-    
-    # High-dimensional case
-    gamma_high = gamma.pdf(x, a=5, scale=0.2)
-    axes[2].plot(x, gamma_high, 'g-', linewidth=2, label='Gamma(5,0.2)')
-    axes[2].set_title('High-D: Concentrated Gamma')
-    axes[2].set_xlabel('Distance²')
-    axes[2].set_ylabel('Density')
-    axes[2].legend()
-    axes[2].grid(True, alpha=0.3)
-    
-    plt.tight_layout()
-    return fig
+x = np.linspace(0, 10, 100)
+chi2_1d = chi2.pdf(x, df=1)
+ax.plot(x, chi2_1d, '-', linewidth=2)
+ax.set_xlabel(r'$\text{distance}^2$')
+ax.set_ylabel('density')
+ax.grid(True, alpha=0.3)
 
-fig = plot_distance_distributions()
-mlai.write_figure(filename='distance-distributions', directory='\writeDiagramsDir/dimred')}
+mlai.write_figure(filename="chi-squared-1d.svg", directory="\writeDiagramsDir/dimred")}
+
+\newslide{$z^2$}
+
+\figure{\includediagram{\diagramsDir/dimred/chi-squared-1d}{40%}}{The $\chi^2$ distribution which gives the distribution of the square of a standardised normal variable $z^2$.}{chi-squared-1d}
+
+\plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
+
+gamma_2d = gamma.pdf(x, a=1, scale=1)
+ax.plot(x, gamma_2d, '-', linewidth=2)
+ax.set_xlabel(r'$\text{distance}^2$')
+ax.set_ylabel('density')
+ax.grid(True, alpha=0.3)
+    
+mlai.write_figure(filename="gamma-2d.svg", directory="\writeDiagramsDir/dimred")}
+
+\newslide{$z_1^2 + z_2^2$}
+
+\figure{\includediagram{\diagramsDir/dimred/gamma-2d}{40%}}{The scaled $\chi^2$ squared, equivalent to the sum of two standardised normal variables $z_1^2 + z_2^2$.}{gamma-2d}
+
+
+ \plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
+
+gamma_high = gamma.pdf(x, a=5, scale=0.2)
+ax.plot(x, gamma_high, '-', linewidth=2, label='Gamma(5,0.2)')
+ax.set_xlabel(r'$\text{distance}^2$')
+ax.set_ylabel('density')
+ax.grid(True, alpha=0.3)
+
+mlai.write_figure(filename="gamma-5d.svg", directory="\writeDiagramsDir/dimred")}
+
+\newslide{$\sum_{i=1}^5 z^2_i$}
+
+\figure{\includediagram{\diagramsDir/dimred/gamma-5d}{40%}}{The scaled $\chi^2$ squared, equivalent to the sum of five standardised normal variables $\sum_{i=1}^5 z^2_i$.}{gamma-5d}
 
 \newslide{}
 \slides{ 
@@ -376,20 +383,20 @@ $$
 which, we note, scales linearly with the dimensionality of the
 data. The average squared distance of each feature will be distributed as
 follows,
-\[
+$$
 \frac{1}{\dataDim}\sum_{k=1}^{\dataDim}y_{i,k}^{2}\sim\gammaSamp{\frac{\dataDim}{2}}{\frac{\dataDim}{2\dataStd^{2}}}
-\]
+$$
 the mean for which is simply the variance of the underlying Gaussian
 density,
-\[
+$$
 \expectation{\frac{1}{\dataDim}\sum_{k=1}^{\dataDim} \dataScalar_{i,k}^{2}}=\dataStd^{2}.
-\]
+$$
 We can use this gamma density to work out how much of the mass of the
 Gaussian egg is in the different zones. The cumulative distribution
 function for the gamma density,
-\[
+$$
 \gammaCdf{z}{a}{b} = \int_0^{x}\gammaDist{z}{a}{b} \text{d} z,
-\]
+$$
 doesn't have a nice analytical form, but implementations of it are
 provided for many programming languages including R, \textsc{Matlab},
 Octave and Python. We can use the cumulative distribution to give the
@@ -400,7 +407,7 @@ the green we expect its squared distance from the mean to be between
 $(0.95/\dataStd)^2$ and $(1.05/\dataStd)^2$. Data in the white will
 have a squared distance from the mean greater than
 $(1.05/\dataStd)^2$.}
-%
+
 \figure{\includediagram{\diagramsDir/dimred/distance2}{40%}}{Distance from mean of the density (circle) to a given data point (square).}{distance2}
 
 \subsection{Looking at Gaussian Samples}
