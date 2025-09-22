@@ -13,7 +13,7 @@
 * Continue until all points are in one cluster
 * Result: A tree structure (dendrogram) showing merge history}
 
-\notes{Hierarchical clustering builds a tree structure by iteratively merging the closest clusters. Unlike k-means, we don't need to specify the number of clusters in advance. Instead, we start with each point as its own cluster and merge the closest pairs until we have one cluster containing all points. The result is a dendrogram - a tree that shows the complete merge history and allows us to extract any number of clusters by cutting the tree at different heights.}
+\notes{Hierarchical clustering builds a tree structure by iteratively merging the closest clusters. Unlike $k$-means, we don't need to specify the number of clusters in advance. Instead, we start with each point as its own cluster and merge the closest pairs until we have one cluster containing all points. The result is a dendrogram - a tree that shows the complete merge history and allows us to extract any number of clusters by cutting the tree at different heights.}
 
 \subsection{Linkage Criteria}
 
@@ -34,7 +34,11 @@
 * Creates compact, roughly spherical clusters
 * Particularly effective for data with clear cluster structure}
 
-\notes{Ward's criterion minimises the increase in within-cluster sum of squares (WCSS) when merging two clusters. The mathematical formulation is $\Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2$, where $\mathbf{c}_i$ and $\mathbf{c}_j$ are the centroids of clusters $i$ and $j$, and $n_i, n_j$ are their respective sizes. This formula balances the distance between cluster centroids with their sizes - larger clusters are penalized more heavily for being far apart, encouraging the formation of compact, well-separated groups.}
+\notes{Ward's criterion minimises the increase in within-cluster sum of squares (WCSS) when merging two clusters. The selection criterion for merging is
+$$
+\Delta = \frac{n_i n_j}{n_i + n_j} \|\mathbf{c}_i - \mathbf{c}_j\|^2,
+$$ 
+where $\mathbf{c}_i$ and $\mathbf{c}_j$ are the centroids of clusters $i$ and $j$, and $n_i, n_j$ are their sizes. This formula comes from greedy minimisation of the within cluster variance. The normalisation by $n_i$ and $n_j$ ensures that the distance between cluster centroids with their sizes - larger clusters are penalized more heavily for being far apart, encouraging the formation of compact, well-separated groups.}
 
 \slides{
 * **Why Ward's works well:**
@@ -54,7 +58,11 @@
 * This is the same criterion as used for objective in $k$-means
 * **Key insight:** For spherical clusters, this is equivalent to minimising centroid distance weighted by cluster sizes}
 
-\notes{We can show that Ward's method is optimal for spherical clusters. We can derive the relationship between cluster merging and within-cluster variance. The within-cluster sum of squares (WCSS) measures the total squared distance from each point to its cluster centroid: $WCSS = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_i\|^2$. This is exactly the same objective function that $k$-means clustering minimises. When we merge two clusters, we want to minimise the increase in this total variance.}
+\notes{We can show that Ward's method is optimal for spherical clusters. We can derive the relationship between cluster merging and within-cluster variance. The within-cluster sum of squares (WCSS) measures the total squared distance from each point to its cluster centroid, 
+$$
+WCSS = \sum_{i=1}^k \sum_{\mathbf{x} \in C_i} \|\mathbf{x} - \mathbf{c}_i\|^2.
+$$ 
+This is the same objective function that $k$-means clustering minimises. When we merge two clusters, we want to minimise the increase in this total variance.}
 
 \newslide{Mathematical Derivation of Ward Distance}
 
