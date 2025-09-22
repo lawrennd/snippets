@@ -99,7 +99,7 @@ import mlai.plot as plot}
                 head_width=0.1, head_length=0.1, fc='k', ec='k')
         mlai.write_figure(f"pca-directions-{counter:03d}.svg", directory='\writeDiagramsDir/dimred')}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize())
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
 pca_plot(ax, X)}
 
 
