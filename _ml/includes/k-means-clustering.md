@@ -233,7 +233,7 @@ for iteration in range(len(centres_store)-1):
 \endanimation
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_013}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-026}}
+\notes{\figure{\includediagram{\diagramsDir/ml/kmeans_clustering_022}{\width}}{Clustering with the $k$-means clustering algorithm.}{kmeans-clustering-022}}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import numpy as np
