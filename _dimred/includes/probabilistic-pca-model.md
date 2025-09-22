@@ -80,9 +80,9 @@ for i in range(number_across):
 ax1.plot([-1.25, -1.25], [-1.25, 0.25], 'k-', linewidth=1)
 ax1.plot([-1.25, 0.25], [-1.25, -1.25], 'k-', linewidth=1)
 
-ax1.set_xlabel('$\\latentScalar_1$', fontsize=12)
-ax1.set_ylabel('$\\latentScalar_2$', fontsize=12)
-ax1.set_title('$\\latentMatrix$', fontsize=14)
+ax1.set_xlabel(r'$\latentScalar_1$', fontsize=12)
+ax1.set_ylabel(r'$\latentScalar_2$', fontsize=12)
+ax1.set_title(r'$\latentMatrix$', fontsize=14)
 ax1.set_aspect('equal')
 ax1.axis('off')
 
@@ -112,9 +112,9 @@ ax2.plot([-1.25, 0.25], [-1.25, -1.25], [-1.25, -1.25], 'k-', linewidth=1)
 ax2.plot([-1.25, -1.25], [-1.25, -1.25], [-1.25, 0.25], 'k-', linewidth=1)
 
 # Add axis labels
-ax2.text(-0.5, -1.25, -1.25, '$\\dataScalar_1$', fontsize=10)
-ax2.text(-1.25, -0.5, -1.25, '$\\dataScalar_2$', fontsize=10)
-ax2.text(-1.25, -1.25, -0.5, '$\\dataScalar_3$', fontsize=10)
+ax2.text(-0.5, -1.25, -1.25, r'$\dataScalar_1$', fontsize=10)
+ax2.text(-1.25, -0.5, -1.25, r'$\dataScalar_2$', fontsize=10)
+ax2.text(-1.25, -1.25, -0.5, r'$\dataScalar_3$', fontsize=10)
 
 ax2.set_title('$\\dataMatrix$', fontsize=14)
 ax2.axis('off')
@@ -124,9 +124,9 @@ ax3 = fig.add_subplot(1, 3, 2)
 ax3.set_xlim(0, 1)
 ax3.set_ylim(0, 1)
 ax3.axis('off')
-ax3.text(0.5, 0.55, '$\\dataScalar_j = \\mappingFunction_j(\\latentVector)$', 
+ax3.text(0.5, 0.55, r'$\dataScalar_j = \mappingFunction_j(\latentVector)$', 
          fontsize=14, ha='center', va='center')
-ax3.text(0.5, 0.45, '$\\longrightarrow$', fontsize=20, ha='center', va='center')
+ax3.text(0.5, 0.45, r'$\longrightarrow$', fontsize=20, ha='center', va='center')
 
 plt.tight_layout()
 
