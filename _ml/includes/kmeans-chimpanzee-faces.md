@@ -51,7 +51,7 @@ ax.set_xticks([]); ax.set_yticks([])}
 \notes{
 We will now apply K-means clustering on the mappings to group similar faces together.}
 
-\notes{Let's implement the algorithm as presented in the [lecture](https://mlatcl.github.io/mlfc/lectures/04-01-latent-variable-modelling.html).
+\notes{Let's implement the algorithm as presented in the [lecture](https://mlatcl.github.io/mlfc/lectures/04-01-clustering-and-high-dimensions.html).
 
 ```
 1.  First, initialize cluster centres by randomly selecting k data points
