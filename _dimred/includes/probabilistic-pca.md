@@ -52,11 +52,11 @@ This probabilistic formulation, developed by Tipping and Bishop [@Tipping-probpc
 import mlai
 from matplotlib import pyplot as plt}
 
-\plotcode{pgm = plot.ppca_graph()
-filename = mlai.filename_join('ppca_graph.svg', directory='\writeDiagramsDir/dimred')
+\plotcode{pgm = plot.ppca_graphical_model()
+filename = mlai.filename_join('ppca_graphical_model.svg', directory='\writeDiagramsDir/dimred')
 pgm.render().figure.savefig(filename, transparent=True)}
 
-\figure{\includediagram{\diagramsDir/dimred/ppca_graph}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graph}
+\figure{\includediagram{\diagramsDir/dimred/ppca_graphical_model}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical_model}
 
 \section{Probabilistic PCA}
 
