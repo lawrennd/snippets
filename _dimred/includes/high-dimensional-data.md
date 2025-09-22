@@ -74,7 +74,7 @@ angles = range(360)
 i = 0
 Y = np.zeros((len(angles), np.prod(dim_one)))
 for angle in angles:
-    rot_image = rotate(six_image, angle, cval=1.0)
+    rot_image = rotate(six_image, angle, cval=255)
     dim_two = np.asarray(rot_image.shape)
     start = [int(round((dim_two[0] - dim_one[0])/2)), int(round((dim_two[1] - dim_one[1])/2))]
     crop_image = rot_image[start[0]+np.array(range(dim_one[0])), :][:, start[1]+np.array(range(dim_one[1]))]
