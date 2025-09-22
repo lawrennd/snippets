@@ -402,7 +402,7 @@ import mlai
 import mlai.plot as plot}
 
 \plotcode{# Create figure
-fig, ax = plt.subplots(figsize=plot.big_figsize)
+fig, ax = plt.subplots(figsize=plot.wide_figsize)
 
 # Compute patch outlines
 xp1 = np.concatenate([[x[0]], x, [x[-1]], [x[0]]])
