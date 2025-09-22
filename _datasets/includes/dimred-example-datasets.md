@@ -25,9 +25,10 @@ import mlai.plot}
 
 \plotcode{plot.squared_distances(Y, 'gaussian-distances-1000', 'Gaussian Distances (1000D, 1000 points)', directory='\writeDiagramsDir/dimred')}
 
-\figure{\inputdiagram{\diagramsDir/dimred/gaussian-distances-1000}{40%}}{A good match betwen theory and the samples for a 1000 dimensional Gaussian distribution.}
+\figure{\includediagram{\diagramsDir/dimred/gaussian-distances-1000_squared-distances}{60%}}{A good match betwen theory and the samples for a 1000 dimensional Gaussian distribution.}{gaussian-distances-1000}
 
-\slides{\aligncenter{Distance distribution for a Gaussian with $\dataDim=1000$, $\numData=1000$ and theory}}
+
+\slides{\aligncenter{Distance distribution for a Gaussian with $\dataDim=1000$, $\numData=1000$ with theoretical curve}}
 
 
 \newslide{Sanity Check}
@@ -42,16 +43,16 @@ import mlai.plot}
 \setupcode{import numpy as np}
 
 \code{# Generate 1000D Gaussian data with 100 points
-np.random.seed(22)
+np.random.seed(24)
 Y = np.random.randn(100, 1000)}
 
 \setupplotcode{import mlai.plot as plot}
 
 \plotcode{plot.squared_distances(Y, 'gaussian-distances-100', 'Gaussian Distances (1000D, 100 points)', directory='\writeDiagramsDir/dimred')}
 
-\figure{\includediagram{\diagramsDir/dimred/gaussian-distances-100}{40%}}{A good match betwen theory and the samples for a 100 dimensional Gaussian distribution.}
+\figure{\includediagram{\diagramsDir/dimred/gaussian-distances-100_squared-distances}{60%}}{A good match betwen theory and the samples for a 1000 dimensional Gaussian distribution with 100 points.}{gaussian-distances-100}
 
-\slides{\aligncenter{Distance distribution for a Gaussian with $\dataDim=1000$ and $\numData=100$}}
+\slides{\aligncenter{Distance distribution for a Gaussian with $\dataDim=1000$ and $\numData=100$ with theoretical curve}}
 
 \include{_datasets/includes/oil-flow-data.md}
 \includesquareddistance{oil-flow}{Simulation of oil flow}{}
@@ -61,9 +62,6 @@ Y = np.random.randn(100, 1000)}
 
 <!--include{_datasets/includes/spellman-yeast-data.md}
 includesquareddistance{spellman-yeast}{Spellman yeast cell cycle}{}-->
-
-\include{_datasets/includes/della-gatta-gene-data.md}
-\includesquareddistance{della-gatta-gene}{Della Gatta gene expression}{}
 
 \include{_datasets/includes/robot-wireless-data.md}
 \includesquareddistance{robot-wireless}{Robot wireless navigation}{}
@@ -94,6 +92,10 @@ Y = np.random.multivariate_normal(mean, cov_matrix, 1000)}
 
 \plotcode{plot.squared_distances(Y, 'correlated-gaussian-distances-1000', 'Correlated Gaussian (1000D)', directory='\writeDiagramsDir/dimred')}
 
+\newslide{}
+
+\figure{\includediagram{\diagramsDir/dimred/correlated-gaussian-distances-1000_squared-distances}{60%}}{Interpoint squared distance distribution for Gaussian with $\dataDim=1000$ but low rank covariance.}{correlated-gaussian-distances-1000}
+
 \setupcode{from scipy.spatial.distance import pdist, squareform
 from scipy.stats import gamma}
 
@@ -113,7 +115,7 @@ v = 2 * v / np.mean(v)}
 import mlai}
 
 \plotcode{# Create histogram
-fig, ax = plt.subplots(figsize=plot.big_figsize)
+fig, ax = plt.subplots(figsize=plot.wide_figsize)
 vals, x = np.histogram(v, bins=50, density=True)
 x_centers = (x[:-1] + x[1:]) / 2
 ax.bar(x_centers, vals, alpha=0.7, color='blue', width=x[1]-x[0])
@@ -131,7 +133,9 @@ ax.grid(True, alpha=0.3)
 mlai.write_figure(filename='correlated-gaussian-distances2.svg', 
                   directory='\writeDiagramsDir/dimred')}
 
-\figure{\includediagram{\diagramsDir/dimred/correlated-gaussian-distances2}{40%}Interpoint squared distance distribution for Gaussian with $\dataDim=1000$.}{correlated-gaussian-distances2}
+\newslide{}
+
+\figure{\includediagram{\diagramsDir/dimred/correlated-gaussian-distances2}{60%}}{Interpoint squared distance distribution for Gaussian with $\dataDim=1000$ and theoretical curve for $\dataDim=2$.}{correlated-gaussian-distances2}
 
 \newslide{}
 

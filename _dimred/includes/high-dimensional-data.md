@@ -215,92 +215,67 @@ eigenvalues = s**2 / Y.shape[0]
 
 # Project data onto principal components
 # Standard approach: X = U @ diag(s) gives the projections
-X = U @ np.diag(s)
+X = U @ np.diag(s)}
 
-# Save the results
-np.savez('dem_manifold.npz', X=X, Y=Y, eigenvalues=eigenvalues, eigenvectors=Vt.T)}
+\code{def plot_pca_manifold(X, Y, dims, filename, show_every=20, angle_ranges=None, colors=None):
+    """Plot PCA manifold with optional angle range filtering"""
+    fig, ax = plt.subplots(figsize=plot.big_figsize)
+    h_points = ax.plot(X[:, 0], X[:, 1], 'rx', linewidth=2, alpha=0.7)[0]
+    show_indices = range(0, len(X), show_every)  # Every 20 degrees
+    if angle_ranges is None:
+        # Plot all points
+        show_indices = range(0, len(X), show_every)  # Every 20 degrees
+    else:
+        # Plot specific angle ranges
+        h_points.set_data([], [])
+        for i, (start, end, color) in enumerate(zip(angle_ranges['starts'], 
+                                                   angle_ranges['ends'], 
+                                                   colors or ['r', 'b'])):
+            mask = (np.arange(len(X)) >= start) & (np.arange(len(X)) < end)
+            ax.plot(X[mask, 0], X[mask, 1], f'{color}x', linewidth=2, alpha=0.7)
+        
+        # Show images only in specified ranges
+        orig_show = show_indices
+        show_indices = []
+        for start, end in zip(angle_ranges['starts'], angle_ranges['ends']):
+            for ind in orig_show:
+                if ind >= start and ind <= end:
+                    show_indices.append(ind)
+    
+    # Add small image insets
+    for i in show_indices:
+        if i < len(X):
+            ax.scatter(X[i, 0], X[i, 1], s=50)
+            
+            # Calculate position for small image
+            x_pos, y_pos = X[i, 0], X[i, 1]
+            
+            # Get plot limits and convert to figure coordinates
+            x_min, x_max = ax.get_xlim()
+            y_min, y_max = ax.get_ylim()
+            
+            x_fig = 0.1 + 0.8 * (x_pos - x_min) / (x_max - x_min)
+            y_fig = 0.1 + 0.8 * (y_pos - y_min) / (y_max - y_min)
+            
+            inset_ax = fig.add_axes([x_fig, y_fig, 0.05, 0.05])
+            rotated_img = Y[i, :].reshape(dims)
+            inset_ax.imshow(rotated_img, cmap='gray')
+            inset_ax.axis('off')
+    
+    ax.grid(True, alpha=0.3)
+    
+    mlai.write_figure(filename, directory='\writeDiagramsDir/dimred/')
+    return fig, ax}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-
-# Plot the first two principal components
-ax.plot(X[:, 0], X[:, 1], 'rx', linewidth=2, alpha=0.7)
-# Create small image axes at every 30 degrees of rotation around the circle
-k = 20  # Show every k degrees
-ax.scatter(X[::k, 0], X[::k, 1], s=50)
-for i in range(0, 360, k):
-    if i < len(X):
-        # Calculate position for small image
-        x_pos = X[i, 0]
-        y_pos = X[i, 1]
-        
-        # Create small inset axis positioned relative to the actual plot limits
-        x_min, x_max = ax.get_xlim()
-        y_min, y_max = ax.get_ylim()
-        
-        # Convert PCA coordinates to figure coordinates
-        x_fig = 0.1 + 0.8 * (x_pos - x_min) / (x_max - x_min)
-        y_fig = 0.1 + 0.8 * (y_pos - y_min) / (y_max - y_min)
-        
-        inset_ax = fig.add_axes([x_fig, y_fig, 0.05, 0.05])
-        
-        # Show the rotated image
-        rotated_img = Y[i, :].reshape(dim_one)
-        inset_ax.imshow(rotated_img, cmap='gray')
-        inset_ax.axis('off')
-        
-
-ax.set_xlabel('First Principal Component')
-ax.set_ylabel('Second Principal Component')
-ax.grid(True, alpha=0.3)
-
-mlai.write_figure('six_manifold_001.svg', directory='\writeDiagramsDir/dimred/')}
+\plotcode{fig, ax = plot_pca_manifold(X, Y, dim_one, 'six_manifold_001.svg')}
 
 \figure{\includediagram{\diagramsDir/dimred/six_manifold_001}{60%}}{The rotated sixes projected onto the first two principal components. The data lives on a one-dimensional manifold in the high-dimensional space, forming approximately a circle in the 2D projection.}{six-manifold-001}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
+\plotcode{fig, ax = plot_pca_manifold(X, Y, dim_one, 'six_manifold_002.svg',
+                                    angle_ranges={'starts': [0, 135, 315], 'ends': [45, 225, 360]},
+                                    colors=['r', 'b', 'r'])}
 
-# Plot the first two principal components
-span = 45
-offset = -22
-ax.plot(X[:span+offset, 0], X[:span+offset, 1], 'rx', linewidth=2, alpha=0.7)
-ax.plot(X[-span+offset:, 0], X[-span+offset:, 1], 'rx', linewidth=2, alpha=0.7)
-def show_image(i, span, offset):
-    if i >= 0 and i < span+offset:
-        return True
-    if i > 360-span+offset and i < len(X):
-        return True
-    if i >= 180-span+offset and i < 180+span+offset:
-        return True
-
-ax.plot(X[180-span+offset:180+span+offset, 0], X[180-span+offset:180+span+offset, 1], 'bx', linewidth=2, alpha=0.7)
-# Create small image axes at every 30 degrees of rotation around the circle
-k = 20  # Show every 30 degrees
-for i in range(0, 360, k):
-    if show_image(i, span, offset):
-        ax.scatter(X[i, 0], X[i, 1], s=50)
-
-        # Calculate position for small image
-        x_pos = X[i, 0]
-        y_pos = X[i, 1]
-        
-        # Create small inset axis positioned relative to the actual plot limits
-        x_min, x_max = ax.get_xlim()
-        y_min, y_max = ax.get_ylim()
-        
-        # Convert PCA coordinates to figure coordinates
-        x_fig = 0.1 + 0.8 * (x_pos - x_min) / (x_max - x_min)
-        y_fig = 0.1 + 0.8 * (y_pos - y_min) / (y_max - y_min)
-        
-        inset_ax = fig.add_axes([x_fig, y_fig, 0.05, 0.05])
-        
-        # Show the rotated image
-        rotated_img = Y[i, :].reshape(dim_one)
-        inset_ax.imshow(rotated_img, cmap='gray')
-        ax.set_xlabel('First Principal Component')
-ax.set_ylabel('Second Principal Component')
-ax.grid(True, alpha=0.3)
-
-mlai.write_figure('six_manifold_002.svg', directory='\writeDiagramsDir/dimred/')}
+\figure{\includediagram{\diagramsDir/dimred/six_manifold_002}{60%}}{The rotated sixes projected onto the first two principal components as sixes and nines. The six and nine data live on two separate one-dimensional manifolds in the high-dimensional space, forming two arcs from a  circle in the 2D projection.}{six-manifold-002}
 
 \figure{\includediagram{\diagramsDir/dimred/six_manifold_002}{60%}}{The rotated sixes projected onto the first two principal components as sixes and nines. The six and nine data live on two separate one-dimensional manifolds in the high-dimensional space, forming two arcs from a  circle in the 2D projection.}{six-manifold-002}
 
