@@ -59,7 +59,6 @@ F = X @ W.T
 
 # Plot 1: 2D latent space
 ax1 = fig.add_subplot(1, 3, 1)
-ax1.hold(True)
 
 # Plot grid lines in x1 direction
 for i in range(number_across):
