@@ -21,6 +21,14 @@
 pca.fit(X)
 X_pca = pca.transform(X)}
 
+\code{# Find rows with 1 in first column (class 0)
+class0 = (Y[:, 0] == 1).astype(int) * 0
+# Find rows with 1 in second column (class 1) 
+class1 = (Y[:, 1] == 1).astype(int) * 1
+# Find rows with 1 in third column (class 2)
+class2 = (Y[:, 2] == 1).astype(int) * 2
+# Combine into single array of class labels 0,1,2
+lbls = class0 + class1 + class2}
 \setupplotcode{from matplotlib import pyplot as plt
 import mlai
 from mlai import plot}
@@ -29,7 +37,7 @@ from mlai import plot}
 # Three labels stored in Y
 labels = ["homogeneous", "annular", "stratified"]
 for i in range(3):
-    ax.scatter(X_pca[y==i, 0], X_pca[y==i, 1], label=f'Label {i}')
+    ax.scatter(X_pca[lbls==i, 0], X_pca[lbls==i, 1], label=f'{labels[i]}')
 ax.set_xlabel('First principal component')
 ax.set_ylabel('Second principal component')
 ax.legend()
