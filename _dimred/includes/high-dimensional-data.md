@@ -189,7 +189,7 @@ ax.set_ylabel('Rotation Angle (degrees)')
 cbar = plt.colorbar(im, ax=ax)
 cbar.set_label('Squared Distance')
 
-mlai.write_figure('dem-six-distances-360.svg', directory='\\writeDiagramsDir/dimred/')}
+mlai.write_figure('dem-six-distances-360.svg', directory='\writeDiagramsDir/dimred/')}
 
 \figure{\includediagram{\diagramsDir/dimred/dem-six-distances-360}{60%}}{Inter-point squared distances for the rotated digits data. Much of the data structure can be seen in the matrix. All points are ordered by angle of rotation. We can see that the distance between two points with similar angle of rotation is small (note in the upper right and lower left corners the low distances associated with 6s rotated by roughly 360 degrees and unrotated 6s).}{six-distances-360}
 
