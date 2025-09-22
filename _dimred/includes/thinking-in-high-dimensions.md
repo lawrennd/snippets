@@ -172,7 +172,7 @@ their associated masses for the yolk, the green, the white and the shell.}
 
 \plotcode{plot.gaussian_volume_3D(directory='\writeDiagramsDir/dimred/')}
 
-\figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-13}{40%}}{Volumes associated with the regions in the three
+\figure{\includediagramclass{\diagramsDir/dimred/gaussian-volume-3D}{40%}}{Volumes associated with the regions in the three
  dimensional Gaussian egg. Here the yolk has 56.1% the green has 9.2% the white has 34.7%.}{}
  
 \newslide{Mathematics}
@@ -188,6 +188,49 @@ For a d-dimensional Gaussian distribution:
 5. **Expected value**: $\langle \sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \rangle = \dataDim\dataStd^2$
 6. **Normalized sum**: $\frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \sim \text{Gamma}(\frac{\dataDim}{2}, \frac{d}{2\dataStd^2})$
 7. **Expected normalized**: $\langle \frac{1}{\dataDim}\sum_{k=1}^\dataDim \dataScalar_{i,k}^2 \rangle = \dataStd^2$}
+
+
+\subsection{Distribution of Mass against Dimensionality }
+
+\notes{For the three low dimensional Gaussians, we note that the allocation
+of the egg's mass to the three zones changes as the dimensionality
+increases. The green and the white increase in mass and the yolk
+decreases in mass. Of greater interest to us is the behavior of this
+distribution of mass in higher dimensions. It turns out we can compute
+this through the cumulative distribution function of the gamma
+density. }
+
+\notes{We will compute the distribution of the density mass in the three
+regions by assuming each data point is sampled independently from our
+spherical covariance Gaussian density,
+\[
+\dataVector_{i, :} \sim \gaussianSamp{\zerosVector}{\dataStd^2\eye}
+\]
+where $\dataVector_{i, :}$ is the $i$th data point. Independence
+across features also means we can consider the density associated with
+the $k$th feature of the $i$th data point, $\dataScalar_{i,k}$,
+\[
+\dataScalar_{i,k}\sim\gaussianSamp{0}{\dataStd^{2}}.
+\]
+We are interested in the squared distance of any given sample from the
+mean. Our choice of a zero mean Gaussian density means that the
+squared distance of each feature from the mean is easily computed as
+$\dataScalar_{i,k}^2$. We can exploit a useful characteristic of the
+Gaussian to describe the density of these squared distances. The
+squares of a Gaussian distributed random variable are known to be
+distributed according the *chi-squared density*,
+\[
+\dataScalar_{i,k}^{2}\sim\dataStd^{2}\chi_{1}^{2},
+\]
+The chi squared density is a special case of the gamma
+density  with shape
+parameter $a=\frac{1}{2}$ and rate parameter
+$b=\frac{1}{2\dataStd^{2}}$,
+$$
+\gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}.
+$$}
+
+\include{_statistics/includes/the-gamma-density.md}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -303,52 +346,11 @@ mlai.write_figure(filename='dimension-mass.svg',
                   directory='\writeDiagramsDir/dimred')}
 				  
 				  
-\figure{\includediagram{\diagramsDir/dimension-mass}{40%}}{Plot of probability mass versus dimension. Plot shows the
+\figure{\includediagram{\diagramsDir/dimred/dimension-mass}{40%}}{Plot of probability mass versus dimension. Plot shows the
     volume of density inside 0.95 of a standard deviation (yellow),
     between 0.95 and 1.05 standard deviations (green), over 1.05
     and standard deviations (white).}{dimension-mass}
 
-\subsection{Distribution of Mass against Dimensionality }
-
-\notes{For the three low dimensional Gaussians, we note that the allocation
-of the egg's mass to the three zones changes as the dimensionality
-increases. The green and the white increase in mass and the yolk
-decreases in mass. Of greater interest to us is the behavior of this
-distribution of mass in higher dimensions. It turns out we can compute
-this through the cumulative distribution function of the gamma
-density. }
-
-\notes{We will compute the distribution of the density mass in the three
-regions by assuming each data point is sampled independently from our
-spherical covariance Gaussian density,
-\[
-\dataVector_{i, :} \sim \gaussianSamp{\zerosVector}{\dataStd^2\eye}
-\]
-where $\dataVector_{i, :}$ is the $i$th data point. Independence
-across features also means we can consider the density associated with
-the $k$th feature of the $i$th data point, $\dataScalar_{i,k}$,
-\[
-\dataScalar_{i,k}\sim\gaussianSamp{0}{\dataStd^{2}}.
-\]
-We are interested in the squared distance of any given sample from the
-mean. Our choice of a zero mean Gaussian density means that the
-squared distance of each feature from the mean is easily computed as
-$\dataScalar_{i,k}^2$. We can exploit a useful characteristic of the
-Gaussian to describe the density of these squared distances. The
-squares of a Gaussian distributed random variable are known to be
-distributed according the *chi-squared density*,
-\[
-\dataScalar_{i,k}^{2}\sim\dataStd^{2}\chi_{1}^{2},
-\]
-The chi squared density is a special case of the gamma
-density  with shape
-parameter $a=\frac{1}{2}$ and rate parameter
-$b=\frac{1}{2\dataStd^{2}}$,
-$$
-\gammaDist{x}{a}{b}=\frac{b^{a}}{\Gamma\left(a\right)}x^{a-1}e^{-bx}.
-$$}
-
-\include{_statistics/includes/the-gamma-density.md}
 
 \notes{So we have the squared distance from the mean for a single feature being given
 by
