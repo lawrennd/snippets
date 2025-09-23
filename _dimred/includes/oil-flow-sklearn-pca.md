@@ -40,10 +40,9 @@ for i in range(3):
     ax.scatter(X_pca[lbls==i, 0], X_pca[lbls==i, 1], label=f'{labels[i]}')
 ax.set_xlabel('First principal component')
 ax.set_ylabel('Second principal component')
-ax.legend()
 
 mlai.write_figure("oil-flow-pca-sklearn.svg", directory='\writeDiagramsDir/dimred')}
 
-\figure{\includediagram{\diagramsDir/dimred/oil-flow-pca_sklearn}{60%}}{PCA of the oil flow data.}{oil-flow-pca-sklearn}
+\figure{\includediagram{\diagramsDir/dimred/oil-flow-pca_sklearn}{60%}}{PCA of the oil flow data. The flow is homogeneous, annular and stratified.}{oil-flow-pca-sklearn}
 
 \endif
