@@ -42,7 +42,7 @@ ax.set_xlabel('First principal component')
 ax.set_ylabel('Second principal component')
 ax.legend()
 
-plot.write_figure("oil-flow-pca-sklearn", directory='\writeDiagramsDir/dimred')}
+mlai.write_figure("oil-flow-pca-sklearn", directory='\writeDiagramsDir/dimred')}
 
 \figure{\includegraphics[width=0.5\textwidth]{\diagramsDir/dimred/oil-flow-pca_sklearn.svg}}{PCA of the oil flow data.}{oil-flow-pca-sklearn}
 
