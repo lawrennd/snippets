@@ -6,7 +6,7 @@
 \subsection{Robot Navigation Example}
 
 \slides{* Example involving 215 observations of 30 access points.
-* Infer location of 'robot' and accesspoints.
+* Infer location of 'robot' and access points.
 * This is known as SLAM (simulataneous localization and mapping).
 }
 \notes{In the next example we will load in data from a

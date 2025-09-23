@@ -9,7 +9,7 @@
 * 3648 dimensions (64 rows, 57 columns)
 * Space contains much more than just this digit.}
 
-\notes{To introduce high dimensional data, we will first of all introduce a hand written digit from the U.S. Postal Service handwritten digit data set (originally collected from scanning enveolopes) and used in the first convolutional neural network paper [@LeCun:zip89].}
+\notes{To introduce how to think about high dimensional data, we will first of all introduce a hand written digit from the U.S. Postal Service handwritten digit data set (originally collected from scanning enveolopes) and used in the first convolutional neural network paper [@LeCun:zip89].}
 
 \notes{@LeCun:zip89 downscaled the images to $16 \times 16$, here we use an image at the original scale, containing 64 rows and 57 columns. Since the pixels are binary, and the number of dimensions is 3,648, this space contains $2^{3,648}$ possible images. So this space contains a lot more than just one digit.}
 
@@ -43,7 +43,7 @@ import notutils as nu}
 \displaycode{nu.display_plots('dem_six{counter:0>3}.png', directory='\writeDiagramsDir/dimred', counter=IntSlider(0, 0, 3, 1))}
 
 
-\slides{\define{width}{40%}
+\slides{\define{width}{50%}
 \startanimation{dem-six-sample}{0}{4}{Six Samples}
 \newframe{\includepng{\diagramsDir/dimred/dem_six000}{\width}}{dem-six-sample}
 \newframe{\includepng{\diagramsDir/dimred/dem_six001}{\width}}{dem-six-sample}
@@ -53,13 +53,10 @@ import notutils as nu}
 
 \notes{\figure{\threeColumns{\includepng{\diagramsDir/dimred/dem_six000}{100%}}{\includepng{\diagramsDir/dimred/dem_six001}{100%}}{\includepng{\diagramsDir/dimred/dem_six002}{100%}}{30%}{30%}{30%}}{Even if we sample every nano second from now until the end of the universe we won't see the original six again.}{dem-six-sample}}
 
-\slides{* Even if we sample every nanonsecond from now until end of universe you won't see original six!}
-
-\notes{Even if we sample every nanosecond from now until the end of the universe you won't see the original six again.}
 
 \subsection{Simple Model of Digit}
 
-\notes{So, an independent pixel model for this digit doesn't seem sensible. The total space is enormous, and yet the space occupied by the type of data we're interested in is relatively small.}
+\notes{An independent pixel model for this digit doesn't seem sensible. The total space is enormous, and yet the space occupied by the type of data we're interested in is relatively small.}
 
 \subsection{Probability of Random Image Generation}
 
@@ -131,6 +128,8 @@ for i, angle in enumerate(show_angles):
 	
     mlai.write_figure(f"dem_six_rotate{i:0>3}.png", directory="\writeDiagramsDir/dimred/")}
 
+\newslide{Rotate a Prototype}
+
 \setupdisplaycode{import notutils as nu}
 \displaycode{nu.display_plots('dem_six_rotate{counter:0>3}.png', directory='\writeDiagramsDir/dimred', counter=(0, 5))}
 
@@ -146,58 +145,6 @@ for i, angle in enumerate(show_angles):
 
 \notes{\figure{\threeColumns{\includepng{\diagramsDir/dimred/dem_six_rotate001}{100%}}{\includepng{\diagramsDir/dimred/dem_six_rotate003}{100%}}{\includepng{\diagramsDir/dimred/dem_six_rotate005}{100%}}{30%}{30%}{30%}}{Rotate a prototype six to form a set of plausible sixes.}{dem-six-rotate}}
 
-\subsection{Interpoint Distances for Rotated Sixes}
-
-\notes{In this section we take all 360 examples of the rotated digits and analyze their interpoint distances. The data set is inherently one dimensional, with the dimension associated with the rotation transformation. A pure rotation would lead to a pure circle in the projected space. In practice, rotation of images requires some interpolation and this leads to small corruptions of the latent projections away from the circle.}
-
-\setupplotcode{import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
-import mlai
-import mlai.plot as plot}
-
-\code{# Calculate variance of each dimension
-varY = np.var(Y, axis=0)
-# Sort by variance in descending order
-sorted_indices = np.argsort(varY)[::-1]
-# Take top q dimensions (e.g., q=50 for dimensionality reduction)
-q = 50
-order = sorted_indices[:q]
-
-# Calculate interpoint distances for selected dimensions
-Y_selected = Y[:, order]
-# Compute squared distances between all pairs
-distMat = np.zeros((Y.shape[0], Y.shape[0]))
-for i in range(Y.shape[0]):
-    for j in range(Y.shape[0]):
-        distMat[i, j] = np.sum((Y_selected[i, :] - Y_selected[j, :])**2) / q
-
-# Calculate error term
-e = 2 * np.sum(varY[sorted_indices[q:]]) / Y.shape[1]}
-
-\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-
-# Create heatmap of interpoint distances
-im = ax.imshow(distMat, cmap='RdBu_r', aspect='equal', origin='upper', 
-               extent=[0, 360, 360, 0])  # extent: [left, right, bottom, top]
-ax.set_xticks([0, 90, 180, 270, 360])
-ax.set_yticks([0, 90, 180, 270, 360])
-ax.set_xlabel('Rotation Angle (degrees)')
-ax.set_ylabel('Rotation Angle (degrees)')
-
-# Add colorbar
-cbar = plt.colorbar(im, ax=ax)
-cbar.set_label('Squared Distance')
-
-mlai.write_figure('dem-six-distances-360.svg', directory='\writeDiagramsDir/dimred/')}
-
-\figure{\includediagram{\diagramsDir/dimred/dem-six-distances-360}{60%}}{Inter-point squared distances for the rotated digits data. Much of the data structure can be seen in the matrix. All points are ordered by angle of rotation. We can see that the distance between two points with similar angle of rotation is small (note in the upper right and lower left corners the low distances associated with 6s rotated by roughly 360 degrees and unrotated 6s).}{six-distances-360}
-
-
-\setupplotcode{import mlai.plot}
-\plotcode{plot.squared_distances(Y, 'rotated-sixes', 'Rotated sixes', directory='\writeDiagramsDir/dimred')}
-
-\figure{\includediagram{\diagramsDir/dimred/rotated-sixes_squared-distances}{60%}}{Hisgogram of squared distances vs theory for the rotated sixes.}{rotated-sixes-squared-distances}
 
 \subsection{PCA of Rotated Sixes}
 
@@ -271,17 +218,66 @@ X = U @ np.diag(s)}
 
 \figure{\includediagram{\diagramsDir/dimred/six_manifold_001}{60%}}{The rotated sixes projected onto the first two principal components. The data lives on a one-dimensional manifold in the high-dimensional space, forming approximately a circle in the 2D projection.}{six-manifold-001}
 
+\newslide{}
+
 \plotcode{fig, ax = plot_pca_manifold(X, Y, dim_one, 'six_manifold_002.svg',
                                     angle_ranges={'starts': [0, 135, 315], 'ends': [45, 225, 360]},
                                     colors=['r', 'b', 'r'])}
 
 \figure{\includediagram{\diagramsDir/dimred/six_manifold_002}{60%}}{The rotated sixes projected onto the first two principal components as sixes and nines. The six and nine data live on two separate one-dimensional manifolds in the high-dimensional space, forming two arcs from a  circle in the 2D projection.}{six-manifold-002}
 
-\figure{\includediagram{\diagramsDir/dimred/six_manifold_002}{60%}}{The rotated sixes projected onto the first two principal components as sixes and nines. The six and nine data live on two separate one-dimensional manifolds in the high-dimensional space, forming two arcs from a  circle in the 2D projection.}{six-manifold-002}
+\subsection{Interpoint Distances for Rotated Sixes}
 
-\newslide{}
+\notes{In this section we take all 360 examples of the rotated digits and analyze their interpoint distances. The data set is inherently one dimensional, with the dimension associated with the rotation transformation. A pure rotation would lead to a pure circle in the projected space. In practice, rotation of images requires some interpolation and this leads to small corruptions of the latent projections away from the circle.}
 
-\figure{\columns{\includepng{\diagramsDir/dimred/six_manifold_001}{100%}}{\includepng{\diagramsDir/dimred/six_manifold_002}{100%}}{30%}{30%}}{The rotated sixes projected onto the first two principal components of the 'rotated data set'. The data lives on a one dimensional manifold in the 3,648 dimensional space.}{six-mainfold}
+\setupplotcode{import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+import mlai
+import mlai.plot as plot}
+
+\code{# Calculate variance of each dimension
+varY = np.var(Y, axis=0)
+# Sort by variance in descending order
+sorted_indices = np.argsort(varY)[::-1]
+# Take top q dimensions (e.g., q=50 for dimensionality reduction)
+q = 50
+order = sorted_indices[:q]
+
+# Calculate interpoint distances for selected dimensions
+Y_selected = Y[:, order]
+# Compute squared distances between all pairs
+distMat = np.zeros((Y.shape[0], Y.shape[0]))
+for i in range(Y.shape[0]):
+    for j in range(Y.shape[0]):
+        distMat[i, j] = np.sum((Y_selected[i, :] - Y_selected[j, :])**2) / q
+
+# Calculate error term
+e = 2 * np.sum(varY[sorted_indices[q:]]) / Y.shape[1]}
+
+\plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
+
+# Create heatmap of interpoint distances
+im = ax.imshow(distMat, cmap='RdBu_r', aspect='equal', origin='upper', 
+               extent=[0, 360, 360, 0])  # extent: [left, right, bottom, top]
+ax.set_xticks([0, 90, 180, 270, 360])
+ax.set_yticks([0, 90, 180, 270, 360])
+ax.set_xlabel('Rotation Angle (degrees)')
+ax.set_ylabel('Rotation Angle (degrees)')
+
+# Add colorbar
+cbar = plt.colorbar(im, ax=ax)
+cbar.set_label('Squared Distance')
+
+mlai.write_figure('dem-six-distances-360.svg', directory='\writeDiagramsDir/dimred/')}
+
+\figure{\includediagram{\diagramsDir/dimred/dem-six-distances-360}{60%}}{Inter-point squared distances for the rotated digits data. Much of the data structure can be seen in the matrix. All points are ordered by angle of rotation. We can see that the distance between two points with similar angle of rotation is small (note in the upper right and lower left corners the low distances associated with 6s rotated by roughly 360 degrees and unrotated 6s).}{six-distances-360}
+
+
+\setupplotcode{import mlai.plot}
+\plotcode{plot.squared_distances(Y, 'rotated-sixes', 'Rotated sixes', directory='\writeDiagramsDir/dimred')}
+
+\figure{\includediagram{\diagramsDir/dimred/rotated-sixes_squared-distances}{60%}}{Hisgogram of squared distances vs theory for the rotated sixes.}{rotated-sixes-squared-distances}
 
 \subsection{Low Dimensional Manifolds}
 

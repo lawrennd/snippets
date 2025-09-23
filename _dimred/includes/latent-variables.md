@@ -320,9 +320,9 @@ given by an *eigenvalue decomposition* of the empirical covariance matrix.}
 
 \subsection{Computation of the Marginal Likelihood}
 
-$$
+\small{$$
 \dataVector_{i,:}=\mappingMatrix\latentVector_{i,:}+\noiseVector_{i,:},\quad \latentVector_{i,:} \sim \gaussianSamp{\zerosVector}{\eye}, \quad \noiseVector_{i,:} \sim \gaussianSamp{\zerosVector}{\noiseStd^{2}\eye}
-$$
+$$}
 
 $$
 \mappingMatrix\latentVector_{i,:} \sim \gaussianSamp{\zerosVector}{\mappingMatrix\mappingMatrix^\top}
@@ -335,7 +335,7 @@ $$
 \newslide{Linear Latent Variable Model II}
   **Probabilistic PCA Max. Likelihood Soln** (@Tipping-probpca99)
 
-\figure{\includepng{\diagramsDir/dimred/ppca_graph}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graph}
+\figure{\includepng{\diagramsDir/dimred/ppca_graphical}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical}
 
 $$p\left(\dataMatrix|\mappingMatrix\right)=\prod_{i=1}^{\numData}\gaussianDist{\dataVector_{i, :}}{\zerosVector}{\mappingMatrix\mappingMatrix^{\top}+\noiseStd^{2}\eye}$$
 
