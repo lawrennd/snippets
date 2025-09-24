@@ -36,30 +36,7 @@ matplotlib.rc('text', usetex=True)
 matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{def deep_nn(diagrams='../diagrams'):
-    """Draw a deep neural network."""
-    model = plot.network()
-    model.add_layer(layer(width=4, label='\inputScalar_{index}',
-                    observed=True, text=r'given $\inputVector$'))
-    model.add_layer(layer(width=8, label='\hiddenScalar_{1, {index}}',
-                    text=r'$\hiddenVector_1=\basisVector\left(\mappingMatrix_1\inputVector \right)$'.replace('\', '\\')))
-    model.add_layer(layer(width=1, label='\dataScalar',
-                    text=r'$\mappingFunction_2 =\mappingVector_2^\top\hiddenVector_1$'.repalce('\', '\\'),
-                    observed=True))
-    fig, ax = model.draw()
-    ma.write_figure('neural-network.svg',
-                      directory=diagrams,
-                      figure=fig,
-                      transparent=True)
-
-    new_text = ['', '', '', '', '']
-    for i, text in enumerate(new_text):
-        model.layers[i].text=text
-    fig, ax = model.draw()
-    ma.write_figure('neural-network.svg',
-                      directory="\writeDiagramsDir/ml',
-                      figure=fig,
-                      transparent=True)}
+\plotcode{plot.neural_network()}
 
 \figure{\includediagram{\diagramsDir/ml/neural-network}{70%}}{A neural network. Input nodes are shown at the bottom. The hidden layer is the result of applying an affine transformation to the input layer and placing through an activation function.}{deep-neural-network}}
 
