@@ -1,9 +1,9 @@
-\ifndef{basisToNeuralNetworksJax}
-\define{basisToNeuralNetworksJax}
+\ifndef{basisToNeuralNetworks}
+\define{basisToNeuralNetworks}
 
 \editme
 
-\subsection{From Basis Functions to Neural Networks (JAX)}
+\subsection{From Basis Functions to Neural Networks}
 
 \notes{So far we have been using `numpy` for building our models. In this session we are going to make use of `JAX`.}
 
