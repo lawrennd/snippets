@@ -1,9 +1,9 @@
-\ifndef{basisToNeuralNetworksJax}
-\define{basisToNeuralNetworksJax}
+\ifndef{basisToNeuralNetworks}
+\define{basisToNeuralNetworks}
 
 \editme
 
-\subsection{Shallow and Deep Learning}
+\subsection{From Basis Functions to Neural Networks}
 
 \notes{So far, we have been talking about *linear models* or *shallow learning* as we might think of it. Let's pause for a moment and consider a *fully connected* deep neural network model to relate the two ideas.}
 
