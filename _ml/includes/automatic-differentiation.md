@@ -7,7 +7,7 @@
 
 \notes{See also the presentation by Ferenc Huszár on the Deep Neural Network course at the University of Cambridge. Ferenc's original slides [are here](https://hackmd.io/@fhuszar/H1WZ70kl_#) and his notes on approximating with ReLU are [here](https://hackmd.io/@fhuszar/S1UdOvZe_). His notes on automatic differentiation [are here](https://hackmd.io/@fhuszar/SyHTInWeu). His Google colab notebook is [here](https://colab.research.google.com/drive/1qioPLq-dxOwudPKXU3MxpHr2s4Su3dxI?usp=sharing). He also recommended a review paper from [JMLR](https://jmlr.org/papers/v18/17-468.html) @Baydin-autodiff18 (See Figure 2).}
 
-\notes{The chain of matrix multiplications gives us a choice about how we evaluate this system.}
+\notes{The chain of matrix multiplications gives us a choice about how we evaluate this system. If we want to take the derivative of the ouptut function with respect to the weights we need to compute the chain rule.}
 $$
 \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingVector} = \frac{\text{d} \mappingFunctionVector_\numLayers}{\text{d} \mappingFunctionVector_{\numLayers-1}} \frac{\text{d} \mappingFunctionVector_{\numLayers-1}}{\text{d} \mappingFunctionVector_{\numLayers-2}} \frac{\text{d} \mappingFunctionVector_{\numLayers-2}}{\text{d} \mappingFunctionVector_{\numLayers-3}} \cdots \frac{\text{d} \mappingFunctionVector_3}{\text{d} \mappingFunctionVector_{2}} \frac{\text{d} \mappingFunctionVector_2}{\text{d} \mappingFunctionVector_{1}} \frac{\text{d} \mappingFunctionVector_1}{\text{d} \mappingVector} 
 $$
