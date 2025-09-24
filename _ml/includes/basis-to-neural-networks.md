@@ -51,7 +51,7 @@ We defined a basis, such as the polynomial basis.}
 \setupplotcode{import matplotlib
 # Comment for google colab (no latex available)
 matplotlib.rc('text', usetex=True)
-matplotlib.rcParams['text.latex.preamble']=[r"\usepackage{amsmath}"]}
+matplotlib.rcParams['text.latex.preamble']= r'\usepackage{amsmath}'}
 
 \setupplotcode{import mlai.plot as plot}
 \plotcode{plot.neural_network()}
