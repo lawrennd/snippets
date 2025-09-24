@@ -14,18 +14,18 @@ $$
 \subsection{Gradient-based optimization}
 
 $$
-\mathscr{L}(\theta) = \sum_{n=1}^N \ell(y_n, f(x_n, \theta))
+\errorFunction(\mappingMatrix) = \sum_{i=1}^\numData \errorFunction(\dataVector_i, \mappingFunction(\inputVector_i; \mappingMatrix))
 $$
 
 $$
-\theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}(\theta)
+\mappingMatrix_{t+1} = \mappingMatrix_t - \eta \nabla_\mappingMatrix \errorFunction(\mappingMatrix)
 $$
 
 \subsubsection{Basic Multilayer Perceptron}
 
 $$
 \small
-\mappingFunction_L(x) = \basisVector\left(b_L + W_L \basisVector\left(b_{L-1} + W_{L-1} \basisVector\left( \cdots \basisVector\left(b_1 + W_1 x\right) \cdots \right)\right)\right)
+\mappingFunction_\numLayers(\inputVector) = \basisVector\left(\biasVector_\numLayers + \mappingMatrix_\numLayers \basisVector\left(\biasVector_{\numLayers-1} + \mappingMatrix_{\numLayers-1} \basisVector\left( \cdots \basisVector\left(\biasVector_1 + \mappingMatrix_1 \inputVector\right) \cdots \right)\right)\right)
 $$
 
 \subsubsection{Recursive MLP Definition}
