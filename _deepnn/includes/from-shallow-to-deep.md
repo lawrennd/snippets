@@ -32,8 +32,8 @@ $$
 
 \slides{\small
 \begin{align}
-\mappingFunction_l(x) &= \basisVector\big(W_l \mappingFunction_{l-1}(x) + b_l\big),\quad l=1,\dots,L\\
-\mappingFunction_0(x) &= x
+\mappingFunction_\layerIndex(\inputVector) &= \basisVector\left(\mappingMatrix_\layerIndex \mappingFunction_{\layerIndex-1}(\inputVector) + \biasVector_\layerIndex\right),\quad l=1,\dots,\numLayers\\
+\mappingFunction_0(\inputVector) &= \inputVector
 \end{align}}
 
 \subsection{Rectified Linear Unit}
