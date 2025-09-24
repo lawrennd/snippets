@@ -5,7 +5,7 @@
 
 \subsection{Deep Neural Network}
 
-\installcode{daft}
+\installcode{'daft-pgm'}
 
 \setupplotcode{import matplotlib
 # Comment for google colab (no latex available)
