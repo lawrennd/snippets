@@ -7,7 +7,8 @@
 
 \notes{So far, we have been talking about *linear models* or *shallow learning* as we might think of it. Let's pause for a moment and consider a *fully connected* deep neural network model to relate the two ideas.}
 
-\subsection{From Basis Functions to Neural Networks}
+\slides{* So far: linear models or "shallow learning"
+* Consider instead function composition or "deep learning"}
 
 \newslide{Neural Network Prediction Function}
 
@@ -43,9 +44,9 @@ $$
 $$
 \mappingFunction(\inputVector_i) = \mappingVector^\top \basisFuncVector(\inputVector_i).
 $$
-We defined a basis, such as the quadratic basis.}
+We defined a basis, such as the polynomial basis.}
 
-\loadcode{quadratic_basis}{mlai}
+\loadcode{polynomial}{mlai}
 
 \setupplotcode{import matplotlib
 # Comment for google colab (no latex available)

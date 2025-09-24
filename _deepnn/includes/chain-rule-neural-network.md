@@ -5,8 +5,24 @@
 
 \subsection{Chain Rule for Neural Networks}
 
+\newslide{Neural Network Chain Rule}
+
+\slides{* **Goal**: compute gradients for neural networks
+* **Approach**: apply matrix derivative rules
+* **Key**: three fundamental gradients needed}
+
 \notes{We're now in a position to write down the chain rule for neural
 networks.}
+
+\newslide{Neural Network Structure}
+
+\slidesmall{$$\mappingFunctionVector_\layerIndex = \mappingMatrix_\layerIndex \basisVector_{\layerIndex-1}$$}
+
+\slidesmall{$$\basisVector_{\layerIndex} = \basisVector_{\layerIndex}(\mappingFunctionVector_{\layerIndex})$$}
+
+\slides{* **Activations**: $\mappingFunctionVector_\layerIndex$ at layer $\layerIndex$
+* **Basis functions**: applied to activations
+* **Weight matrix**: $\mappingMatrix_\layerIndex$}
 
 \notes{To make our derivations general, we will split up the neural
 network in the following way. First we describe the activations at
@@ -21,7 +37,19 @@ where the basis vector at any given layer $\layerIndex$ is given by applying the
 $$
 \basisVector_{\layerIndex} = \basisVector_{\layerIndex}(\mappingFunctionVector_{\layerIndex}),
 $$
-where $\mappingFunctionVector_{\layerIndex}(\cdot)$ represents the form of the basis functions at the $\layerIndex$th layer. These two equations give us everything we need apart from the first layer and final layers where we have
+where $\mappingFunctionVector_{\layerIndex}(\cdot)$ represents the form of the basis functions at the $\layerIndex$th layer.}
+
+\newslide{First and Final Layers}
+
+\slidesmall{$$f_1 = \mappingMatrix_1 \inputVector$$}
+
+\slidesmall{$$\mathbf{\transformationFunction} = \mathbf{\transformationFunction}(\mappingFunctionVector_L)$$}
+
+\slides{* **First layer**: $f_1 = \mappingMatrix_1 \inputVector$
+* **Final layer**: inverse link function
+* **Dummy basis**: $\mathbf{h} = \basisVector_L$}
+
+\notes{These two equations give us everything we need apart from the first layer and final layers where we have
 $$
 f_1 = \mappingMatrix_1 \inputVector
 $$
@@ -31,13 +59,34 @@ $$
 $$
 so we can assume dummy-basis functions for the output layer and take $\mathbf{h} = \basisVector_L$.}
 
+\newslide{Limitations}
+
+\slides{* **Skip connections**: not captured in this formalism
+* **Example**: layer $\layerIndex-2$ → layer $\layerIndex$
+* **Sufficient**: for main aspects of deep network gradients}
+
 \notes{This formalism isn't fully general as it doesn't capture the possibility of skip connections where a weight matrix connects e.g. basis functions from layer $\layerIndex-2$ to the activations of layer $\layerIndex$. But it's sufficient to capture the main aspects of deep neural network gradients.}
+
+\newslide{Three Fundamental Gradients}
+
+\slides{* **Activation gradient**: $\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex}$
+* **Basis gradient**: $\frac{\text{d}\basisVector_{\layerIndex}}{\text{d} \mappingFunctionVector_{\layerIndex}}$
+* **Across-layer gradient**: $\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\basisVector_{\layerIndex-1}}$}
 
 \notes{These fundamental operations now allow us to use our matrix
 derivative rules to compute the gradients of the neural network with
 respect to any layer of weights. To do this we need three fundamental
-gradients. First the activation gradient,
-$\tfrac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex}$
+gradients. First the activation gradient,}
+
+\newslide{Activation Gradient}
+
+\slidesmall{$$\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex} = \basisVector_{\ell-1}^\top \otimes \eye_{\layerDim_\layerIndex}$$}
+
+\slides{* **Size**: $\layerDim_\layerIndex \times (\layerDim_{\layerIndex-1} \layerDim)$
+* **Input**: $\mappingFunctionVector_\layerIndex$ and $\mappingVector_\layerIndex$
+* **Kronecker product**: key to the result}
+
+\notes{$\tfrac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex}$
 where we have defined $\mappingFunctionVector_\layerIndex =
 (\mappingFunctionVector_\layerIndex)\!:$. This gradient is between a
 $\layerDim_\layerIndex$ dimensional vector,
@@ -50,6 +99,16 @@ $$
 = \basisVector_{\ell-1}^\top \otimes \eye_{\layerDim_\layerIndex}.  
 $$
 }
+
+\newslide{Basis Gradient}
+
+\slidesmall{$$\frac{\text{d}\basisVector_{\layerIndex}}{\text{d} \mappingFunctionVector_{\layerIndex}} = \basisMatrix^\prime$$}
+
+\slidesmall{$$\frac{\text{d}\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})}{\text{d} \mappingFunction_j^{(\layerIndex)}}$$}
+
+\slides{* **Size**: $\layerDim_\layerIndex \times \layerDim_\layerIndex$ matrix
+* **Elements**: derivatives of basis functions
+* **Diagonal**: if basis functions depend only on their own activations}
 
 \notes{We represent the gradient 
 $$
@@ -68,12 +127,28 @@ $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})
 = \basisScalar_i^{(\layerIndex)}(\mappingFunction^{(\layerIndex)}_i)$
 then this matrix is diagonal.}
 
+\newslide{Across-Layer Gradient}
+
+\slidesmall{$$\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\basisVector_{\layerIndex-1}} = \mappingMatrix_\layerIndex$$}
+
+\slides{* **Size**: $\layerDim_\layerIndex \times \layerDim_{\layerIndex -1}$
+* **Matches**: shape of $\mappingMatrix_\layerIndex$
+* **Simple**: just the weight matrix itself}
+
 \notes{Then we have the *across layer* gradients
 $$
 \frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\basisVector_{\layerIndex-1}} = \mappingMatrix_\layerIndex,
 $$
 which should be a $\layerDim_\layerIndex \times \layerDim_{\layerIndex -1}$ size matrix, which matches the shape of $\mappingMatrix_\layerIndex$. 
 }
+
+\newslide{Complete Chain Rule}
+
+\slidesmall{$$\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right] \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d} \mappingVector_{\ell - k}}$$}
+
+\slides{* **Product**: of all intermediate gradients
+* **Chain**: from layer $\ell$ back to layer $\ell-k$
+* **Complete**: gradient computation for any layer}
 
 \notes{This now gives us the ability to compute the gradient of any
 $\mappingMatrix_\ell$ in the model,
