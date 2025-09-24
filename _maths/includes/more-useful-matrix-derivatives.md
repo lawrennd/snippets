@@ -59,7 +59,7 @@ $$
 which disperses the elements of $\mathbf{x}$ across the matrix,
 $$
 \mathbf{x}^\top \otimes \eye_{m}  = \begin{bmatrix}
-x_1 \eye_m & x_2 \eye_m & \cdot & x_n \eye_m
+x_1 \eye_m & x_2 \eye_m & \cdots & x_n \eye_m
 \end{bmatrix}
 $$ 
 and is the correct for when we are stacking the columns of $\mathbf{A}.
