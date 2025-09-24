@@ -41,8 +41,9 @@ fig, ax = plt.subplots(figsize=(8,8))
 W = U*ell[None, :]
 ax.plot(W[:, 0], W[:, 1], 'bo')
 ax.set_title('Access Point Inferred Locations')
-mlai.write_figure("dem_robot_wireless_pca.svg", directory="dimred")}
+mlai.write_figure("robot_wireless_pca.svg", directory="dimred")}
 
-\code{U, ell, sigma2 = ppca(Y.T, q)}
+
+\figure{\includediagram{\diagramsDir/dimred/robot_wireless_pca}}{PCA of the robot wireless data.}{robot-wireless-pca}
 
 \endif

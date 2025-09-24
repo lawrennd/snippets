@@ -11,7 +11,7 @@
 
 \notes{HAMs are not representing states of the outside world with analogous states inside the machine, they are also not (directly) processing digital states through logic gates to draw their conclusions (although they are implemented on digital computers that do this to enable them to update).}
 
-\figure{\includepng{\diagramsDir/ai/human-analogue-machine}{60%}}{The human analogue machine creates a feature space which is analagous to that we use to reason, one way of doing this is to have a machine attempt to compress all human generated text in an auto-regressive manner.}{human-analogue-machine}
+\notes{\figure{\includepng{\diagramsDir/ai/processor-ham}{60%}}{The human analogue machine creates a feature space which is analagous to that we use to reason, one way of doing this is to have a machine attempt to compress all human generated text in an auto-regressive manner.}{human-analogue-machine}}
 
 \slides{\include{_ai/includes/processor-ham.md}}
 

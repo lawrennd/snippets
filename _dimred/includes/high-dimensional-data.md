@@ -81,13 +81,18 @@ p(\dataVector=\text{given\,image}) = \binomProb^{849}(1-\binomProb)^{3,648 - 849
 $$}
 
 \slides{
-* **Independent pixel model:**
+* Independent pixel model
   * Each pixel modeled as independent binomial trial
-  * Probability of pixel being "on": $\binomProb = \frac{849}{3,648} \approx 0.233$
-* **Probability of original image:**
-  * $p(\text{original six}) = \binomProb^{849}(1-\binomProb)^{2799} = 2.67 \times 10^{-860}$
-* **This is astronomically small!**
-  * Even sampling every nanosecond until end of universe won't find it}
+  * Probability of pixel being "on"$$\binomProb = \frac{849}{3,648} \approx 0.233$$
+* Probability of original image
+  $$p(\text{original six}) = \binomProb^{849}(1-\binomProb)^{2799} = 2.67 \times 10^{-860}
+  $$
+}
+  
+\newslide{Probability of Random Image Generation}
+\slides{
+* This is astronomically small!
+* Even sampling every nanosecond until end of universe won't find it}
 
 \notes{This demonstrates why independent pixel models are inadequate for high-dimensional data. The probability of generating the original image by random sampling is so small ($2.67 \times 10^{-860}$) that it's effectively impossible. This highlights the need for more sophisticated models that capture the underlying structure and dependencies in the data.}
 
@@ -126,24 +131,24 @@ for i, angle in enumerate(show_angles):
     ax.tick_params(which='major', size=0)  
 	ax.tick_params(labelbottom=False, labelleft=False)	
 	
-    mlai.write_figure(f"dem_six_rotate{i:0>3}.png", directory="\writeDiagramsDir/dimred/")}
+    mlai.write_figure(f"six_rotate{i:0>3}.svg", directory="\writeDiagramsDir/dimred/")}
 
 \newslide{Rotate a Prototype}
 
 \setupdisplaycode{import notutils as nu}
-\displaycode{nu.display_plots('dem_six_rotate{counter:0>3}.png', directory='\writeDiagramsDir/dimred', counter=(0, 5))}
+\displaycode{nu.display_plots('six_rotate{counter:0>3}.svg', directory='\writeDiagramsDir/dimred', counter=(0, 5))}
 
-\slides{\define{width}{60%}
-\startanimation{dem-six-rotate}{0}{5}{Rotate Prototype}
-\newframe{\includepng{\diagramsDir/dimred/dem_six_rotate000}{\width}}{dem-six-rotate}
-\newframe{\includepng{\diagramsDir/dimred/dem_six_rotate001}{\width}}{dem-six-rotate}
-\newframe{\includepng{\diagramsDir/dimred/dem_six_rotate002}{\width}}{dem-six-rotate}
-\newframe{\includepng{\diagramsDir/dimred/dem_six_rotate003}{\width}}{dem-six-rotate}
-\newframe{\includepng{\diagramsDir/dimred/dem_six_rotate004}{\width}}{dem-six-rotate}
-\newframe{\includepng{\diagramsDir/dimred/dem_six_rotate005}{\width}}{dem-six-rotate}
+\slides{\define{width}{50%}
+\startanimation{six-rotate}{1}{5}{Rotate Prototype}
+\newframe{\includediagram{\diagramsDir/dimred/six_rotate000}{\width}}{six-rotate}
+\newframe{\includediagram{\diagramsDir/dimred/six_rotate001}{\width}}{six-rotate}
+\newframe{\includediagram{\diagramsDir/dimred/six_rotate002}{\width}}{six-rotate}
+\newframe{\includediagram{\diagramsDir/dimred/six_rotate003}{\width}}{six-rotate}
+\newframe{\includediagram{\diagramsDir/dimred/six_rotate004}{\width}}{six-rotate}
+\newframe{\includediagram{\diagramsDir/dimred/six_rotate005}{\width}}{six-rotate}
 \endanimation}
 
-\notes{\figure{\threeColumns{\includepng{\diagramsDir/dimred/dem_six_rotate001}{100%}}{\includepng{\diagramsDir/dimred/dem_six_rotate003}{100%}}{\includepng{\diagramsDir/dimred/dem_six_rotate005}{100%}}{30%}{30%}{30%}}{Rotate a prototype six to form a set of plausible sixes.}{dem-six-rotate}}
+\notes{\figure{\threeColumns{\includediagram{\diagramsDir/dimred/six_rotate001}{100%}}{\includediagram{\diagramsDir/dimred/six_rotate003}{100%}}{\includepng{\diagramsDir/dimred/six_rotate005}{100%}}{30%}{30%}{30%}}{Rotate a prototype six to form a set of plausible sixes.}{six-rotate-summary}}
 
 
 \subsection{PCA of Rotated Sixes}

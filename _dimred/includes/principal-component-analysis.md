@@ -38,8 +38,9 @@ $$
   $$
 
 * Gradient with respect to $\mathbf{u}_{1}$
-  $$\frac{\text{d}L\left(\mathbf{u}_{1},\lambda_{1}\right)}{\text{d}\mathbf{u}_{1}}=2\mathbf{S}\mathbf{u}_{1}-2\lambda_{1}\mathbf{u}_{1}$$
-  rearrange to form
+  $$\frac{\text{d}L\left(\mathbf{u}_{1},\lambda_{1}\right)}{\text{d}\mathbf{u}_{1}}=2\mathbf{S}\mathbf{u}_{1}-2\lambda_{1}\mathbf{u}_{1}$$}
+  \newslide{Lagrangian}
+  \slides{* Rearrange to form
   $$\mathbf{S}\mathbf{u}_{1}=\lambda_{1}\mathbf{u}_{1}.$$
   Which is known as an [*eigenvalue problem*](https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors).
 * Further directions that are *orthogonal* to the first can also be shown to be eigenvectors of the covariance.

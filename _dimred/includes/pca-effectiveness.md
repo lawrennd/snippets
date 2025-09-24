@@ -24,7 +24,7 @@ perhaps initially triggered by
 paper on eigenfaces, but also with
 [eigenvoices](https://wiki.inf.ed.ac.uk/twiki/pub/CSTR/ListenSemester1_2007_8/kuhn-
 junqua-eigenvoice-icslp1998.pdf) and
-[eigengenes](http://www.biomedcentral.com/1752-0509/1/54). 
+[eigengenes](http://www.biomedcentral.com/1752-0509/1/54). }
 
 \notes{This seems
 to be an instantiation of a wider, and hopefully subconcious, tendency

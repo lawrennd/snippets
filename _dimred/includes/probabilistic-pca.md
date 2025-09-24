@@ -38,6 +38,8 @@ p(\dataVector_{i,:}|\mappingMatrix) = \gaussianDist{\dataVector_{i,:}}{\zerosVec
 $$
 This probabilistic formulation, developed by Tipping and Bishop [@Tipping-probpca99], provides a principled framework that not only recovers classical PCA as a special case when $\noiseStd^2 \to 0$, but also enables extensions like handling missing data and mixture models.}
 
+\newslide{Probabilistic PCA}
+
 \slides{
 * PPCA defines a probabilistic model where:
   * Data is generated from latent variables through linear transformation
@@ -56,9 +58,9 @@ from matplotlib import pyplot as plt}
 filename = mlai.filename_join('ppca_graphical_model.svg', directory='\writeDiagramsDir/dimred')
 pgm.render().figure.savefig(filename, transparent=True)}
 
-\figure{\includediagram{\diagramsDir/dimred/ppca_graphical_model}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical_model}
+\figure{\includediagram{\diagramsDir/dimred/ppca_graphical_model}{60%}}{Graphical model representing probabilistic PCA.}{ppca-graphical_model}
 
-\section{Probabilistic PCA}
+\notes{\subsection{Probabilistic PCA}}
 
 \notes{In 1997
 [Tipping and Bishop](http://research.microsoft.com/pubs/67218/bishop-ppca-jrss.pdf)
@@ -67,41 +69,41 @@ pgm.render().figure.savefig(filename, transparent=True)}
 [@Roweis-SPCA97] independently revisited Hotelling's model and
 considered the case where the noise variance was finite, but *shared*
 across all output dimensons. Their model can be thought of as a factor
-analysis where}
+analysis where
 $$
 \boldsymbol{\Sigma} = \noiseStd^2 \eye.
 $$
-\notes{This leads to a marginal likelihood of the form}
+This leads to a marginal likelihood of the form
 $$
 p(\dataMatrix|\mappingMatrix, \noiseStd^2)
 = \prod_{i=1}^\numData\gaussianDist{\dataVector_{i, :}}{\zerosVector}{\mappingMatrix\mappingMatrix^\top + \noiseStd^2 \eye}
 $$
-\notes{where the limit of
+where the limit of
 $\noiseStd^2\rightarrow 0$ is *not* taken. This defines a proper probabilistic
 model. Tippping and Bishop then went on to prove that the *maximum likelihood*
 solution of this model with respect to $\mappingMatrix$ is given by an eigenvalue
 problem. In the probabilistic PCA case the eigenvalues and eigenvectors are
-given as follows.}
+given as follows.
 $$
 \mappingMatrix = \mathbf{U}\mathbf{L} \mathbf{R}^\top
 $$
-\notes{where $\mathbf{U}$ is the eigenvectors of the empirical covariance matrix }
+where $\mathbf{U}$ is the eigenvectors of the empirical covariance matrix 
 $$
-\mathbf{S} = \sum_{i=1}^\numData (\dataVector_{i, :} - \meanVector)(\dataVector_{i,:} - \meanVector)^\top,
+\sampleCovMatrix = \sum_{i=1}^\numData (\dataVector_{i, :} - \meanVector)(\dataVector_{i,:} - \meanVector)^\top,
 $$ 
-\notes{which can be written $\mathbf{S} = \frac{1}{\numData}
+which can be written $\sampleCovMatrix = \frac{1}{\numData}
 \dataMatrix^\top\dataMatrix$ if the data is zero mean. The matrix $\mathbf{L}$ is
-diagonal and is dependent on the *eigenvalues* of $\mathbf{S}$,
+diagonal and is dependent on the *eigenvalues* of $\sampleCovMatrix$,
 $\boldsymbol{\Lambda}$. If the $i$th diagonal element of this matrix is given by
-$\lambda_i$ then the corresponding element of $\mathbf{L}$ is }
+$\lambda_i$ then the corresponding element of $\mathbf{L}$ is
 $$
 \ell_i = \sqrt{\lambda_i - \noiseStd^2}
 $$
-\notes{where $\noiseStd^2$ is the noise variance. Note that
+where $\noiseStd^2$ is the noise variance. Note that
 if $\noiseStd^2$ is larger than any particular eigenvalue, then that eigenvalue
 (along with its corresponding eigenvector) is *discarded* from the solution.}
 
-\subsection{PPCA as Manifold Learning}
+\notes{\subsection{PPCA as Manifold Learning}}
 
 \notes{Probabilistic PCA can be viewed as a simple manifold learning algorithm. It assumes that:
 

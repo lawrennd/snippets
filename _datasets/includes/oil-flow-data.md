@@ -91,10 +91,12 @@ import numpy as np}
 # Plot first two dimensions of the data
 classes = np.unique(labels)
 colors = ['r', 'g', 'b']
+labels = ["homogeneous", "annular", "stratified"]
+
 for i, cls in enumerate(classes):
     idx = labels == cls
     ax.plot(data['X'][idx, 0], data['X'][idx, 1], colors[i] + '.', 
-            markersize=10, label=f'Class {cls}')
+            markersize=10, label=f'{labels[i]}')
 ax.set_xlabel('1st dimension')
 ax.set_ylabel('2nd dimension')
 ax.legend()

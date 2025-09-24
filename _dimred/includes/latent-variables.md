@@ -5,6 +5,11 @@
 
 \section{Latent Variables}
 
+
+\slides{* *Hidden/unobservable* variables we infer from observations
+* *Compression* of complex data into simpler concepts
+* *Examples*: motives, intentions, underlying causes}
+
 \notes{Latent means hidden, and hidden variables are simply *unobservable*
 variables. The idea of a latent variable is crucial to the concept of artificial
 intelligence, machine learning and experimental design. A latent variable could
@@ -29,6 +34,12 @@ given our observation, but they are still *latent* variables. Unless we follow
 the man back to his appartment, or start making other enquirires about the man,
 we don't know the true answer.}
 
+\newslide{Robotics and State Estimation}
+
+\slides{* *Robot state*: position, speed, direction (latent)
+* *Sensors*: only provide partial observations
+* *Uncertainty*: true state must be inferred}
+
 \notes{It's clear that to do inference about any
 complex system we *must* include latent variables. Latent variables are
 extremely powerful. In robotics, they are used to represent the *state* of the
@@ -43,9 +54,15 @@ you are a really excellent orienteer, when you are far from any given landmark,
 you will probably be *uncertain* about your true position on the map. These
 states are also latent variables.}
 
+\newslide{Experimental Design and Confounders}
+
+\slides{* *Confounders*: hidden variables affecting outcomes
+* *Randomisation*: breaks correlation with treatment
+* *Example*: sunlight vs fertiliser effect}
+
 \notes{In statistical analysis of experiments you
 try to control for each aspect of the experiment, in particular by
-*randomization*. So if I'm interested in the ability of a particular fertilizer
+*randomisation*. So if I'm interested in the ability of a particular fertiliser
 to improve the yield of a particular plant I may design an experiment where I
 apply the fertilizer to some plants (the treatment group) and withold the
 fertilizer from others (the control group). I then test to see whether the yield
@@ -54,10 +71,10 @@ that I have an excellent yield for the treatment group. However, what if I'd
 (unknowlingly) planted all my treatment plants in a sunny part of the field, and
 all the control plants in a shady part of the field. That would also be a latent
 variable, in this case known as a *confounder*. In statistical experimental
-design *randomization* is used to attempt to eliminate the correlated effects of
+design *randomisation* is used to attempt to eliminate the correlated effects of
 these confounders: you aim to ensure that if these confounders *do* exist their
 effects are not correlated with treatment and contorl. This is known as a
-[randomized control
+[randomised control
 trial](http://en.wikipedia.org/wiki/Randomized_controlled_trial).}
 
 \notes{Greek philosophers worried a great deal about what was knowable and what was
@@ -78,6 +95,12 @@ Such motives or underlying principles are difficult to observe directly, our
 conclusions about them emerge over a period of time by observing indirect
 consequences of the latent variables.}
 
+\newslide{Probabilistic Framework}
+
+\slides{* *Epistemic uncertainty*: degree of belief as probability
+* *State space models*: probabilistic graphical models
+* *This session*: linear latent variable models}
+
 \notes{Epistemic uncertainty allows us to deal
 with these worries by associating our degree of belief about the state of the
 world with a probaiblity distribution. This core idea underpins state space
@@ -86,7 +109,12 @@ modelling. In this session we are going to explore the idea in a simple linear
 system and see how it relates to *factor analysis* and *principal component
 analysis*.}
 
-\section{Your Personality}
+\subsection{Your Personality}
+
+\slides{\centeralign{**Factor Analysis in Psychology**}
+* *High-dimensional* questionnaire responses
+* *Few underlying traits* drive behaviour
+* *Compression*: many questions → few factors}
 
 \notes{At the beginning of the 20th century there was
 a great deal of interest amoungst psychologists in formalizing patterns of
@@ -159,8 +187,7 @@ observations in a *design matrix*, $\dataMatrix$, where each *row* of
 $\dataMatrix$ contains the observation for one individual. To emphasize that
 $\dataVector$ is a vector derived from a row of $\dataMatrix$ we represent the
 observation of the features associated with the $i$th individual by
-$\dataVector_{i, :}$, and place each individual in our data matrix,}
-\newslide{Data Representation}
+$\dataVector_{i, :}$, and place each individual in our data matrix,}\newslide{Data Representation}
 $$
 \dataMatrix
 = \begin{bmatrix} \dataVector_{1, :}^\top \\ \dataVector_{2, :}^\top \\ \vdots \\
@@ -196,6 +223,12 @@ f_j(\latentVector_{i, :}) = \weightVector_{j, :}^\top
 $$}{10}
 
 \subsection{Latent Variables vs Linear Regression}
+
+\newslide{Latent vs Observed Variables}
+
+\slides{* *Regression*: covariates $\latentMatrix$ are observed
+* *Factor analysis*: $\latentMatrix$ are latent/unknown
+* *Solution*: treat as probability distributions}
 
 \notes{The difference between this model and a multiple output
 regression is that in the regression case we are provided with the covariates
@@ -269,6 +302,12 @@ of factor analysis.}
 
 \section{Principal Component Analysis}
 
+\newslide{Hotelling's PCA (1933)}
+
+\slides{* *Mathematical foundation* for factor analysis
+* *Noiseless limit*: $\noiseStd^2_i \rightarrow 0$
+* *Eigenvalue decomposition* of covariance matrix}
+
 \notes{In 1933 [Harold
 Hotelling](http://en.wikipedia.org/wiki/Harold_Hotelling) published on
 *principal component analysis* the first mention of this approach [@Hotelling:analysis33]. Hotelling's
@@ -320,7 +359,7 @@ given by an *eigenvalue decomposition* of the empirical covariance matrix.}
 
 \subsection{Computation of the Marginal Likelihood}
 
-\small{$$
+\slidesmall{$$
 \dataVector_{i,:}=\mappingMatrix\latentVector_{i,:}+\noiseVector_{i,:},\quad \latentVector_{i,:} \sim \gaussianSamp{\zerosVector}{\eye}, \quad \noiseVector_{i,:} \sim \gaussianSamp{\zerosVector}{\noiseStd^{2}\eye}
 $$}
 
@@ -333,25 +372,25 @@ $$
 $$
 
 \newslide{Linear Latent Variable Model II}
-  **Probabilistic PCA Max. Likelihood Soln** (@Tipping-probpca99)
+  *Probabilistic PCA Max. Likelihood Soln* (@Tipping-probpca99)
 
-\figure{\includepng{\diagramsDir/dimred/ppca_graphical}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical}
+\figure{\includediagram{\diagramsDir/dimred/ppca_graphical}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical}
 
 $$p\left(\dataMatrix|\mappingMatrix\right)=\prod_{i=1}^{\numData}\gaussianDist{\dataVector_{i, :}}{\zerosVector}{\mappingMatrix\mappingMatrix^{\top}+\noiseStd^{2}\eye}$$
 
 \newslide{Linear Latent Variable Model II}
   
-\slides{**Probabilistic PCA Max. Likelihood Soln** (@Tipping-probpca99)
-  $$
+\slides{*Probabilistic PCA Max. Likelihood Soln* (@Tipping-probpca99)
+  \slidesmall{$$
   p\left(\dataMatrix|\mappingMatrix\right)=\prod_{i=1}^{\numData}\gaussianDist{\dataVector_{i,:}}{\zerosVector}{\covarianceMatrix},\quad \covarianceMatrix=\mappingMatrix\mappingMatrix^{\top}+\noiseStd^{2}\eye
-  $$
-  $$
+  $$}
+  \slidesmall{$$
   \log p\left(\dataMatrix|\mappingMatrix\right)=-\frac{\numData}{2}\log\left|\covarianceMatrix\right|-\frac{1}{2}\text{tr}\left(\covarianceMatrix^{-1}\dataMatrix^{\top}\dataMatrix\right)+\text{const.}
-  $$
+  $$}
   If $\mathbf{U}_{q}$ are first $q$ principal eigenvectors of $n^{-1}\dataMatrix^{\top}\dataMatrix$ and the corresponding eigenvalues are $\boldsymbol{\Lambda}_{q}$,
-  $$
+  \slidesmall{$$
   \mappingMatrix=\mathbf{U}_{q}\mathbf{L}\mathbf{R}^{\top},\quad\mathbf{L}=\left(\boldsymbol{\Lambda}_{q}-\noiseStd^{2}\eye\right)^{\frac{1}{2}}
-  $$
+  $$}
   where $\mathbf{R}$ is an arbitrary rotation matrix.}
 
 
