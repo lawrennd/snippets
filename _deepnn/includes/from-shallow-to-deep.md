@@ -231,7 +231,7 @@ import matplotlib.pyplot as plt
 import mlai
 import mlai.plot as plot}
 
-\plotcode{nn = NeuralNetwork([2, 4, 4, 1], [relu_activation, relu_activation, linear_activation])
+\plotcode{nn = NeuralNetwork([2, 4, 4, 1], [ReLUActivation, ReLUActivation, LinearActivation])
 
 # Create 2D input grid
 x1 = np.linspace(-3, 3, 100)

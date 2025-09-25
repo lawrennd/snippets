@@ -216,4 +216,150 @@ $$
 $$
 where $\basisMatrix^\prime_{\ell - i -1}$ is the derivative matrix for the basis functions at layer $\ell - i -1$. This gives us the complete gradient computation for any weight matrix in the network.}
 
+\subsection{Gradient Verification}
+
+\loadcode{finite_difference_jacobian}{mlai}
+\loadcode{verify_gradient_implementation}{mlai}
+
+\setupcode{import numpy as np}
+
+\code{# Test data
+x = np.array([1.0, -2.0, 0.5, -0.1])
+results = {}}
+
+\code{# Test Linear Activation
+linear_activation = LinearActivation()
+def linear_func(x):
+	return linear_activation.forward(x)
+
+numerical_grad = finite_difference_gradient(linear_func, x)
+analytical_grad = linear_activation.gradient(x)
+results['Linear'] = verify_gradient_implementation(analytical_grad, numerical_grad)
+print(f"Linear Activation: {'PASS' if results['Linear'] else 'FAIL'}")}
+    
+\code{# Test ReLU Activation
+relu_activation = ReLUActivation()
+def relu_func(x):
+	return relu_activation.forward(x)
+
+numerical_grad = finite_difference_gradient(relu_func, x)
+analytical_grad = relu_activation.gradient(x)
+results['ReLU'] = verify_gradient_implementation(analytical_grad, numerical_grad)
+print(f"ReLU Activation: {'PASS' if results['ReLU'] else 'FAIL'}")}
+    
+\code{# Test Sigmoid Activation
+sigmoid_activation = SigmoidActivation()
+def sigmoid_func(x):
+	return sigmoid_activation.forward(x)
+
+numerical_grad = finite_difference_gradient(sigmoid_func, x)
+analytical_grad = sigmoid_activation.gradient(x)
+results['Sigmoid'] = verify_gradient_implementation(analytical_grad, 
+numerical_grad)
+print(f"Sigmoid Activation: {'PASS' if results['Sigmoid'] else 'FAIL'}")}
+    
+\code{# Test Soft ReLU Activation
+soft_relu_activation = SoftReLUActivation()
+def soft_relu_func(x):
+	return soft_relu_activation.forward(x)
+
+numerical_grad = finite_difference_gradient(soft_relu_func, x)
+analytical_grad = soft_relu_activation.gradient(x)
+results['SoftReLU'] = verify_gradient_implementation(analytical_grad, 
+numerical_grad)
+print(f"Soft ReLU Activation: {'PASS' if results['SoftReLU'] else 'FAIL'}")}
+	
+\subsection{Verify Neural Network Gradients}
+
+\notes{Testing neural network gradients with finite differences}
+    
+\code{results = {}}
+    
+\code{# Test 1: Simple linear network
+print("\nTesting simple linear network...")
+dimensions = [2, 2, 1]
+activations = [LinearActivation(), LinearActivation()]
+
+# Create network
+network = NeuralNetwork(dimensions, activations)
+x = np.array([[1.0, 2.0]])
+
+# Forward pass to populate z and a attributes
+network.predict(x)
+
+# Test gradient with respect to first weight matrix
+def network_output_w0(w0_flat):
+	w0 = w0_flat.reshape(network.weights[0].shape)
+	test_network = NeuralNetwork(dimensions, activations)
+	test_network.weights[0] = w0
+	test_network.biases[0] = network.biases[0]
+	test_network.weights[1] = network.weights[1]
+	test_network.biases[1] = network.biases[1]
+	return test_network.predict(x).flatten()
+
+w0_flat = network.weights[0].flatten()
+numerical_grad = finite_difference_gradient(network_output_w0, w0_flat)
+
+output_gradient = np.array([[1.0]])
+analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten()
+
+results['Linear_Network'] = verify_gradient_implementation(analytical_grad, 
+numerical_grad, rtol=1e-4)
+print(f"Linear Network: {'PASS' if results['Linear_Network'] else 'FAIL'}")
+
+\code{# Test 2: Network with ReLU activation
+print("\nTesting network with ReLU activation...")
+dimensions = [2, 3, 1]
+activations = [ReLUActivation(), LinearActivation()]
+network = NeuralNetwork(dimensions, activations)
+
+# Forward pass to populate z and a attributes
+network.predict(x)
+
+def network_output_w0_relu(w0_flat):
+	w0 = w0_flat.reshape(network.weights[0].shape)
+	test_network = NeuralNetwork(dimensions, activations)
+	test_network.weights[0] = w0
+	test_network.biases[0] = network.biases[0]
+	test_network.weights[1] = network.weights[1]
+	test_network.biases[1] = network.biases[1]
+	return test_network.predict(x).flatten()
+
+w0_flat = network.weights[0].flatten()
+numerical_grad = finite_difference_gradient(network_output_w0_relu, w0_flat)
+
+analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten()
+
+results['ReLU_Network'] = verify_gradient_implementation(analytical_grad, 
+numerical_grad, rtol=1e-4)
+print(f"ReLU Network: {'PASS' if results['ReLU_Network'] else 'FAIL'}")}
+    
+\code{# Test Network with sigmoid activation
+print("\nTesting network with sigmoid activation...")
+dimensions = [2, 3, 1]
+activations = [SigmoidActivation(), LinearActivation()]
+network = NeuralNetwork(dimensions, activations)
+
+# Forward pass to populate z and a attributes
+network.predict(x)
+
+def network_output_w0_sigmoid(w0_flat):
+	w0 = w0_flat.reshape(network.weights[0].shape)
+	test_network = NeuralNetwork(dimensions, activations)
+	test_network.weights[0] = w0
+	test_network.biases[0] = network.biases[0]
+	test_network.weights[1] = network.weights[1]
+	test_network.biases[1] = network.biases[1]
+	return test_network.predict(x).flatten()
+
+w0_flat = network.weights[0].flatten()
+numerical_grad = finite_difference_gradient(network_output_w0_sigmoid, w0_flat)
+
+analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten()
+
+results['Sigmoid_Network'] = verify_gradient_implementation(analytical_grad, 
+numerical_grad, rtol=1e-4)
+print(f"Sigmoid Network: {'PASS' if results['Sigmoid_Network'] else 'FAIL'}")
+}    
+
 \endif
