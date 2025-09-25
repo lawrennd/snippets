@@ -38,7 +38,7 @@ $$
 
 \subsection{Rectified Linear Unit}
 
-\slides{\small
+\slides{
 \basisVector(x) = \begin{cases}
 0 & x \le 0\\
 x & x > 0

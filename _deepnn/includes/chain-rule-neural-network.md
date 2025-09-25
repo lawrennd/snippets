@@ -127,6 +127,46 @@ $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})
 = \basisScalar_i^{(\layerIndex)}(\mappingFunction^{(\layerIndex)}_i)$
 then this matrix is diagonal.}
 
+\setupcode{from mlai import Activation}
+
+\loadcode{LinearActivation}
+\loadcode{ReLUActivation}
+\loadcode{SigmoidActivation}
+\loadcode{SoftReLUActivation}
+
+\code{x = np.linspace(-3, 3, 100)
+activations = {
+    'Linear': LinearActivation(),
+    'ReLU': ReLUActivation(),
+    'Sigmoid': SigmoidActivation(),
+    'Soft ReLU': SoftReLUActivation()
+}
+
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
+from mlai import plot}
+\plotcode{plt.figure(figsize=plot.big_wide_figsize)
+for i, (name, activation) in enumerate(activations.items()):
+    plt.subplot(2, 2, i+1)
+    y = activation.forward(x)
+    y_grad = activation.gradient(x)
+    
+    plt.plot(x, y, 'b-', linewidth=2, label=f'{name}(x)')
+    plt.plot(x, y_grad, 'r--', linewidth=2, label=f"d{name}/dx")
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.title(f'{name} Activation Function')
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+
+mlai.write_figure('activation-functions.svg', directory="\writeDiagramsDir/deepnn")}
+
+\newslide{Activations and Gradients}
+
+\figure{\includediagram{\diagramsDir/deepnn/activation-functions}{70%}}{Some different activation functions and their gradients}{activation-functions}
+
 \newslide{Across-Layer Gradient}
 
 \slidesmall{$$\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\basisVector_{\layerIndex-1}} = \mappingMatrix_\layerIndex$$}
@@ -150,6 +190,14 @@ which should be a $\layerDim_\layerIndex \times \layerDim_{\layerIndex -1}$ size
 * **Chain**: from layer $\ell$ back to layer $\ell-k$
 * **Complete**: gradient computation for any layer}
 
+\newslide{Substituted Matrix Form}
+
+\slidesmall{$$\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \mappingMatrix_{\ell - i} \basisMatrix^\prime_{\ell - i -1}\right] \basisVector_{\ell-k-1}^\top \otimes \eye_{\layerDim_{\ell-k}}$$}
+
+\slides{* **Weight matrices**: $\mappingMatrix_{\ell - i}$ for across-layer gradients
+* **Basis derivatives**: $\basisMatrix^\prime_{\ell - i -1}$ for activation derivatives
+* **Final term**: Kronecker product for activation gradient}
+
 \notes{This now gives us the ability to compute the gradient of any
 $\mappingMatrix_\ell$ in the model,
 $$
@@ -159,6 +207,13 @@ $$
 \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d}
 \mappingVector_{\ell - k}}
 $$
-}
+Substituting the matrix derivatives we derived:
+$$
+\frac{\text{d}
+\mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} =
+\left[\prod_{i=0}^{k-1} \mappingMatrix_{\ell - i} \basisMatrix^\prime_{\ell - i -1}\right]
+\basisVector_{\ell-k-1}^\top \otimes \eye_{\layerDim_{\ell-k}}
+$$
+where $\basisMatrix^\prime_{\ell - i -1}$ is the derivative matrix for the basis functions at layer $\ell - i -1$. This gives us the complete gradient computation for any weight matrix in the network.}
 
 \endif

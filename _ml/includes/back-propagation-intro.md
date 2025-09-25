@@ -38,7 +38,7 @@ $$}
 
 \newslide{Chain Rule Application}
 
-\slidesmall{$$\frac{\text{d}\mappingFunction^L_i}{\text{d}\mappingMatrixTwo} = \frac{\text{d}\mappingFunction_i}{\text{d}\basisVector_i}\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}$$}
+$$\frac{\text{d}\mappingFunction_i}{\text{d}\mappingMatrixTwo} = \frac{\text{d}\mappingFunction_i}{\text{d}\basisVector_i}\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}$$
 
 \newslide{The Matrix Challenge}
 
@@ -48,7 +48,7 @@ $$}
 
 \notes{we now need the gradient with respect to $\mappingVectorTwo$. This can be computed by the chain rule as,
 $$
-\frac{\text{d}\mappingFunction^L_i}{\text{d}\mappingMatrixTwo} = \frac{\text{d}\mappingFunction_i}{\text{d}\basisVector_i}\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}.
+\frac{\text{d}\mappingFunction_i}{\text{d}\mappingMatrixTwo} = \frac{\text{d}\mappingFunction_i}{\text{d}\basisVector_i}\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}.
 $$
 But we have to be careful here. This is the chain rule, but it contains a new challenge, $\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}$ is the derivative of a *vector* with respect to a *matrix*. How do we deal with this?}
 

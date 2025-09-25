@@ -8,13 +8,13 @@
 \installcode{daft}
 
 \setupplotcode{import matplotlib
-# Comment for google colab (no latex available)
 matplotlib.rc('text', usetex=True)
-matplotlib.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'
+matplotlib.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{plot.deep_nn()}
-\slides{\includediagram{\diagramsDir/deepnn/deep-neural-network}{50%}}
+\plotcode{plot.deep_nn(directory="\writeDiagramsDir/deepnn")}
+
+\figure{\includediagram{\diagramsDir/deepnn/deep-neural-network}{50%}}{A deep neural network}{deep-neural-network}
 
 \newslide{Deep Neural Network}
 

@@ -17,7 +17,7 @@ details are given by @Brookes-matrix05.}
 
 \newslide{Brookes' Approach}
 
-\slides{* **Never compute** matrix derivatives directly
+\slides{* *Never* compute matrix derivatives directly
 * **Stacking operation**: intermediate step
 * **Vector derivatives**: easier to handle}
 
@@ -30,7 +30,7 @@ form an intermediate *stacking* operation.}
 
 \newslide{Vector Derivatives}
 
-\slidesmall{$$\frac{\text{d} \mathbf{a}}{\text{d} \mathbf{b}} \in \Re^{m \times n}$$}
+$$\frac{\text{d} \mathbf{a}}{\text{d} \mathbf{b}} \in \Re^{m \times n}$$
 
 \slides{* **Input**: $\mathbf{a} \in \Re^{m \times 1}$, $\mathbf{b} \in \Re^{n \times 1}$
 * **Output**: $m \times n$ matrix
@@ -46,7 +46,7 @@ if $\mathbf{a} \in \Re^{m \times 1}$ and $\mathbf{b} \in \Re^{n \times
 
 \newslide{Matrix Stacking Notation}
 
-\slides{* **$\mathbf{C}:$**: vector formed from matrix $\mathbf{C}$
+\slides{* **$\mathbf{C}\!:$** vector formed from matrix $\mathbf{C}$
 * **Stacking**: columns of $\mathbf{C}$ → $\Re^{mn \times 1}$ vector
 * **Condition**: $\mathbf{C} \in \Re^{m \times n}$}
 
@@ -57,7 +57,7 @@ n \times 1}$ vector if $\mathbf{C} \in \Re^{m \times n}$.}
 
 \newslide{Matrix-Matrix Derivatives}
 
-\slidesmall{$$\frac{\text{d} \mathbf{E}}{\text{d} \mathbf{C}} \in \Re^{pq \times mn}$$}
+$$\frac{\text{d} \mathbf{E}}{\text{d} \mathbf{C}} \in \Re^{pq \times mn}$$
 
 \slides{* **Input**: $\mathbf{E} \in \Re^{p \times q}$, $\mathbf{C} \in \Re^{m \times n}$
 * **Output**: $pq \times mn$ matrix
@@ -85,7 +85,7 @@ Kronecker product of $\mathbf{F}$ and $\mathbf{G}$ as $\mathbf{F}
 
 \newslide{Kronecker Product Simplification}
 
-\slidesmall{$$(\mathbf{E}:)^{\top} \mathbf{F} \otimes \mathbf{G}=\left(\left(\mathbf{G}^{\top} \mathbf{E F}\right):\right)^{\top}$$}
+$$(\mathbf{E}:)^{\top} \mathbf{F} \otimes \mathbf{G}=\left(\left(\mathbf{G}^{\top} \mathbf{E F}\right):\right)^{\top}$$
 
 \slides{* **Removal rule**: Kronecker products often simplified
 * **Chain rule**: typically produces this form
@@ -100,9 +100,9 @@ this form typically arises whenever the chain rule is applied,}
 
 \newslide{Chain Rule Application}
 
-\slidesmall{$$\frac{\text{d} \errorFunction}{\text{d} \mathbf{H}:} \frac{\text{d} \mathbf{H}:}{\text{d} \mathbf{J}:}=\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}:}$$}
+$$\frac{\text{d} \errorFunction}{\text{d} \mathbf{H}:} \frac{\text{d} \mathbf{H}:}{\text{d} \mathbf{J}:}=\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}:}$$
 
-\slidesmall{$$\frac{\text{d}\mathbf{H}}{\text{d} \mathbf{J}} = \mathbf{F} \otimes \mathbf{G}$$}
+$$\frac{\text{d}\mathbf{H}}{\text{d} \mathbf{J}} = \mathbf{F} \otimes \mathbf{G}$$
 
 \notes{$$ 
 \frac{\text{d} \errorFunction}{\text{d} \mathbf{H}:} \frac{\text{d}
@@ -142,7 +142,7 @@ $$}
 * **Row vector**: easier computation
 * **Matrix**: better summarization}
 
-\slidesmall{$$\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}:}=\left(\left(\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}}\right):\right)^{\top}$$}
+$$\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}:}=\left(\left(\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}}\right):\right)^{\top}$$
 
 \notes{Generally we will use two ways of writing the derivative of a scalar
 with respect to a matrix, $\frac{\text{d} \errorFunction}{\text{d}

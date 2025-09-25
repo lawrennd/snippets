@@ -54,6 +54,7 @@ $$
 \layerDim_0 \layerDim_1 \layerDim_2 + \layerDim_0 \layerDim_2 \layerDim_3 + \ldots + \layerDim_0 \layerDim_{\numLayers-1} \layerDim_\numLayers = \layerDim_0 \sum_{\layerIndex=2}^{\numLayers} \layerDim_\layerIndex \layerDim_{\layerIndex-1}
 $$
 
+\newslide{Automatic Differentiation}
 
 *Reverse-mode*
 
@@ -75,6 +76,7 @@ $$
 \subsubsection{Forward-mode}
 
 \slides{Store only:
+
 * current activation $\mappingFunctionVector_l$ ($d_l$)
 * running JVP of size $d_0 \times d_l$
 * current Jacobian $d_l \times d_{l+1}$}
@@ -102,8 +104,11 @@ $$
 
 \slides{* *Terminology*: forward-mode = JVP; reverse-mode = VJP
 * *Non-scalar outputs*: seed vector required (e.g. `backward(grad_outputs)`)
-* *Stopping grads*: `.detach()`, `no_grad()` in PyTorch
-* *Grad accumulation*: `.grad` accumulates by default; call `zero_grad()`
+* *Stopping grads*: `.detach()`, `no_grad()` in PyTorch}
+
+\newslide{Autodiff: Practical Details}
+
+\slides{* *Grad accumulation*: `.grad` accumulates by default; call `zero_grad()`
 * *Memory*: backprop caches intermediates; use checkpointing/rematerialisation
 * *Mixed-mode*: combine forward+reverse for Hessian-vector products}
 

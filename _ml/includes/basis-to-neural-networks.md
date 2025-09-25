@@ -40,23 +40,24 @@ $$
 
 \subsection{Linear Models as Basis + Weights}
 
-\notes{The generalised linear models we work with allow us to create a model that is non-linear in inputs, but linear in the parameters,
+\notes{The generalised linear models we work with allow us to create a model that is non-linear in inputs, but linear in the parameters,}
 $$
 \mappingFunction(\inputVector_i) = \mappingVector^\top \basisFuncVector(\inputVector_i).
 $$
-We defined a basis, such as the polynomial basis.}
+\notes{We defined a basis, such as the polynomial basis.}
 
 \loadcode{polynomial}{mlai}
 
 \setupplotcode{import matplotlib
 # Comment for google colab (no latex available)
 matplotlib.rc('text', usetex=True)
-matplotlib.rcParams['text.latex.preamble']= r'\usepackage{amsmath}'}
+matplotlib.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{plot.neural_network()}
+\plotcode{plot.neural_network(directory="\writeDiagramsDir/ml")}
 
-\figure{\includediagram{\diagramsDir/ml/neural-network}{70%}}{A neural network. Input nodes are shown at the bottom. The hidden layer is the result of applying an affine transformation to the input layer and placing through an activation function.}{deep-neural-network}}
+\
+\figure{\includediagram{\diagramsDir/ml/neural-network}{70%}}{A neural network. Input nodes are shown at the bottom. The hidden layer is the result of applying an affine transformation to the input layer and placing through an activation function.}{deep-neural-network}
 
 \addreading{Bishop-deeplearning24}{Chapter 8}
 
