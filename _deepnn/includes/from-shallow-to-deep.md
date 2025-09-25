@@ -54,9 +54,9 @@ import mlai.plot as plot}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 x = np.linspace(-3, 3, 100)
-y = ReLUActivation.forward(x)
+y = ReLUActivation().forward(x)
 
-ax.plot(x, y, 'b-', linewidth=3)
+ax.plot(x, act, 'b-', linewidth=3)
 ax.set_xlabel('$x$')
 ax.set_ylabel('$\operatorname{ReLU}(x)$')
 ax.grid(True, alpha=0.3)
@@ -88,7 +88,7 @@ import mlai.plot as plot}
 \code{x1 = np.linspace(-2, 2, 50)
 x2 = np.linspace(-2, 2, 50)
 X1, X2 = np.meshgrid(x1, x2)
-nn = NeuralNetwork([2, 10, 1], [ReLUActivation, LinearActivation])
+nn = NeuralNetwork([2, 10, 1], [ReLUActivation(), LinearActivation()])
 X_pred = np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxis]])
 f_pred = nn.predict(X_pred)}
 
@@ -139,7 +139,7 @@ x2 = np.linspace(-2, 2, 50)
 X1, X2 = np.meshgrid(x1, x2)
 
 # Create and use network
-nn = NeuralNetwork([2, 10, 1], [ReLUActivation, LinearActivation])}
+nn = NeuralNetwork([2, 10, 1], [ReLUActivation(), LinearActivation()])}
 
 \newslide{ReLU Activations}
 
@@ -251,7 +251,7 @@ nn.biases[1] = np.array([0, -0.5, 0.5, 0])
 nn.weights[2] = np.ones((4, 1))
 nn.biases[2] = np.zeros(1)
 
-f = nn.predict(np.hstack([X1(:), X2(:)]))
+f = nn.predict(np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxis]]))
 
 # Plot the result
 fig, ax = plt.subplots(figsize=plot.big_figsize)

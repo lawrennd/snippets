@@ -129,10 +129,10 @@ then this matrix is diagonal.}
 
 \setupcode{from mlai import Activation}
 
-\loadcode{LinearActivation}
-\loadcode{ReLUActivation}
-\loadcode{SigmoidActivation}
-\loadcode{SoftReLUActivation}
+\loadcode{LinearActivation}{mlai}
+\loadcode{ReLUActivation}{mlai}
+\loadcode{SigmoidActivation}{mlai}
+\loadcode{SoftReLUActivation}{mlai}
 
 \code{x = np.linspace(-3, 3, 100)
 activations = {

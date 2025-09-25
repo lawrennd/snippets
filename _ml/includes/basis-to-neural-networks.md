@@ -31,9 +31,9 @@ $$
 
 \notes{In our session on basis funcitons we showed how linear models can be used to create non linear prediction functions. Amoung the basis functions we considered were the ReLU basis function.}
 
-\loadcode{linear_activation}{mlai}
-\loadcode{sigmoid_activation}{mlai}
-\loadcode{relu_activation}{mlai}
+\loadcode{LinearActivation}{mlai}
+\loadcode{SigmoidActivation}{mlai}
+\loadcode{ReLUActivation}{mlai}
 
 \setupcode{from mlai import Model}
 \loadcode{NeuralNetwork}{mlai}
@@ -54,7 +54,8 @@ matplotlib.rc('text', usetex=True)
 matplotlib.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{plot.neural_network(directory="\writeDiagramsDir/ml")}
+
+\plotcode{plot.neural_network(directory="\writeDiagramsDir/ml/")}
 
 \
 \figure{\includediagram{\diagramsDir/ml/neural-network}{70%}}{A neural network. Input nodes are shown at the bottom. The hidden layer is the result of applying an affine transformation to the input layer and placing through an activation function.}{deep-neural-network}
