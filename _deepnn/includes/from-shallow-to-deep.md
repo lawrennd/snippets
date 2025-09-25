@@ -44,7 +44,9 @@ $$
 x & x > 0
 \end{cases}}
 
-\loadcode{relu_activation}{mlai}
+\setupcode{from mlai import Activation}
+\loadcode{ReLUActivation}{mlai}
+
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
 import mlai
@@ -52,7 +54,7 @@ import mlai.plot as plot}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 x = np.linspace(-3, 3, 100)
-y = relu_activation(x)
+y = ReLUActivation.forward(x)
 
 ax.plot(x, y, 'b-', linewidth=3)
 ax.set_xlabel('$x$')
@@ -86,7 +88,7 @@ import mlai.plot as plot}
 \code{x1 = np.linspace(-2, 2, 50)
 x2 = np.linspace(-2, 2, 50)
 X1, X2 = np.meshgrid(x1, x2)
-nn = NeuralNetwork([2, 10, 1], [relu_activation, linear_activation])
+nn = NeuralNetwork([2, 10, 1], [ReLUActivation, LinearActivation])
 X_pred = np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxis]])
 f_pred = nn.predict(X_pred)}
 
@@ -114,172 +116,48 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap}
 
 
-\helpercode{def visualize_relu_activations(nn, X1, X2, layer_idx=0):
-    """
-    Visualize which ReLU units are activated in a specific layer.
+\helpercode{# Cell 2: Create Synthetic Data
+def create_synthetic_data(n_samples=100, task='regression'):
+    """Create synthetic datasets for demonstration."""
+    np.random.seed(42)
     
-    :param nn: Trained neural network
-    :param X1, X2: Meshgrid coordinates
-    :param layer_idx: Which hidden layer to visualize (0-indexed)
-    """
-    # Get input data
-    X_pred = np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxis]])
+    if task == 'regression':
+        # Non-linear regression: y = x1^2 + x2^2 + noise
+        X = np.random.randn(n_samples, 2)
+        y = (X[:, 0]**2 + X[:, 1]**2).reshape(-1, 1) + 0.1 * np.random.randn(n_samples, 1)
+        return X, y
     
-    # Forward pass to get activations
-    _ = nn.predict(X_pred)
-    
-    # Get activations for the specified layer (before activation function)
-    z_layer = nn.z[layer_idx + 1]  # +1 because z[0] is input
-    a_layer = nn.a[layer_idx + 1]  # Activations after ReLU
-    
-    n_units = z_layer.shape[1]
-    n_cols = min(5, n_units)
-    n_rows = (n_units + n_cols - 1) // n_cols
-    
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(3*n_cols, 3*n_rows))
-    if n_units == 1:
-        axes = [axes]
-    elif n_rows == 1:
-        axes = axes.reshape(1, -1)
-    
-    for i in range(n_units):
-        row, col = i // n_cols, i % n_cols
-        ax = axes[row, col] if n_rows > 1 else axes[col]
-        
-        # Reshape activations back to grid
-        activation_grid = a_layer[:, i].reshape(X1.shape)
-        
-        # Create binary mask for active/inactive regions
-        active_mask = activation_grid > 0
-        
-        # Plot with clear active/inactive distinction
-        im = ax.contourf(X1, X2, activation_grid, levels=20, cmap='RdYlBu_r')
-        
-        # Overlay contour lines to show zero boundary
-        ax.contour(X1, X2, activation_grid, levels=[0], colors='black', linewidths=2)
-        
-        ax.set_title(f'ReLU Unit {i+1}')
-        ax.set_xlabel('$x_1$')
-        ax.set_ylabel('$x_2$')
-        
-        # Add colorbar for each subplot
-        plt.colorbar(im, ax=ax)
-    
-    # Hide empty subplots
-    for i in range(n_units, n_rows * n_cols):
-        if n_rows > 1:
-            row, col = i // n_cols, i % n_cols
-            axes[row, col].set_visible(False)
-        elif n_cols > 1 and i < len(axes):
-            axes[i].set_visible(False)
-    
-    plt.tight_layout()
-    plt.suptitle(f'ReLU Activations - Layer {layer_idx + 1}', y=1.02, fontsize=16)
-    return fig
+    elif task == 'classification':
+        # Binary classification: x1^2 + x2^2 > 1
+        X = np.random.randn(n_samples, 2)
+        y = ((X[:, 0]**2 + X[:, 1]**2) > 1.0).astype(float).reshape(-1, 1)
+        return X, y
+}
 
-def visualize_activation_summary(nn, X1, X2, layer_idx=0):
-    """
-    Create a summary visualization showing:
-    1. Network output
-    2. Number of active ReLUs per point
-    3. Binary activation pattern
-    """
-    X_pred = np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxis]])
-    
-    # Get network output and activations
-    f_pred = nn.predict(X_pred)
-    a_layer = nn.a[layer_idx + 1]  # Activations after ReLU
-    
-    # Count active units per input point
-    active_count = np.sum(a_layer > 0, axis=1)
-    
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-    
-    # 1. Network output
-    im1 = axes[0].contourf(X1, X2, f_pred.reshape(X1.shape), levels=20, cmap='viridis')
-    axes[0].set_title('Network Output')
-    axes[0].set_xlabel('$x_1$')
-    axes[0].set_ylabel('$x_2$')
-    plt.colorbar(im1, ax=axes[0])
-    
-    # 2. Number of active ReLUs
-    im2 = axes[1].contourf(X1, X2, active_count.reshape(X1.shape), 
-                          levels=np.arange(0, np.max(active_count)+2), cmap='plasma')
-    axes[1].set_title('Number of Active ReLU Units')
-    axes[1].set_xlabel('$x_1$')
-    axes[1].set_ylabel('$x_2$')
-    plt.colorbar(im2, ax=axes[1])
-    
-    # 3. Activation patterns (binary)
-    # Create a custom colormap for binary visualization
-    colors = ['darkblue', 'lightcoral']
-    binary_cmap = ListedColormap(colors)
-    
-    # Average activation strength (normalized)
-    avg_activation = np.mean(a_layer, axis=1)
-    binary_mask = (avg_activation > 0).astype(int)
-    
-    im3 = axes[2].contourf(X1, X2, binary_mask.reshape(X1.shape), 
-                          levels=[0, 0.5, 1], cmap=binary_cmap)
-    axes[2].set_title('Average Activation Pattern\n(Blue=Inactive, Red=Active)')
-    axes[2].set_xlabel('$x_1$')
-    axes[2].set_ylabel('$x_2$')
-    
-    plt.tight_layout()
-    return fig
-
-def visualize_decision_boundaries(nn, X1, X2, layer_idx=0):
-    """
-    Visualize the linear decision boundaries created by each ReLU unit.
-    """
-    X_pred = np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxis]])
-    
-    # Get pre-activation values (before ReLU)
-    _ = nn.predict(X_pred)
-    z_layer = nn.z[layer_idx + 1]
-    
-    n_units = z_layer.shape[1]
-    
-    fig, ax = plt.subplots(figsize=(8, 8))
-    
-    # Plot decision boundary for each unit
-    colors = plt.cm.tab10(np.linspace(0, 1, n_units))
-    
-    for i in range(n_units):
-        z_grid = z_layer[:, i].reshape(X1.shape)
-        
-        # Plot the zero-level contour (decision boundary)
-        contour = ax.contour(X1, X2, z_grid, levels=[0], 
-                           colors=[colors[i]], linewidths=2, alpha=0.7)
-        
-        # Label the contour - check if contour has any paths
-        if contour.get_paths():
-            ax.clabel(contour, inline=True, fontsize=10, fmt=f'Unit {i+1}')
-    
-    # Also show regions where network output is positive/negative
-    f_pred = nn.predict(X_pred)
-    ax.contourf(X1, X2, f_pred.reshape(X1.shape), levels=[-100, 0, 100], 
-               colors=['lightblue', 'lightcoral'], alpha=0.3)
-    
-    ax.set_xlabel('$x_1$')
-    ax.set_ylabel('$x_2$')
-    ax.set_title('ReLU Decision Boundaries\n(Background: Network Output Sign)')
-    ax.grid(True, alpha=0.3)
-    
-    return fig}
-
-\plotcode{x1 = np.linspace(-2, 2, 50)
+\code{x1 = np.linspace(-2, 2, 50)
 x2 = np.linspace(-2, 2, 50)
 X1, X2 = np.meshgrid(x1, x2)
 
 # Create and use network
-nn = NeuralNetwork([2, 10, 1], [relu_activation, linear_activation])
+nn = NeuralNetwork([2, 10, 1], [ReLUActivation, LinearActivation])}
 
-# Generate visualizations
-fig1 = visualize_relu_activations(nn, X1, X2, layer_idx=0)
-fig2 = visualize_activation_summary(nn, X1, X2, layer_idx=0)
-fig3 = visualize_decision_boundaries(nn, X1, X2, layer_idx=0)}
+\newslide{ReLU Activations}
 
+\plotcode{plot.visualise_relu_activations(nn, X1, X2, layer_idx=0, directory="\writeDiagramsDir/deepnn")}
+
+\figure{\includediagram{\diagramsDir/deepnn/relu-activations}{50%}}{Decision boundaries for the ReLU network.}{relu-activations}
+
+\newslide{Decision Boundaries}
+
+\plotcode{plot.visualise_activation_summary(nn, X1, X2, layer_idx=0, directory="\writeDiagramsDir/deepnn")}
+
+\figure{\includediagram{\diagramsDir/deepnn/activation-summary}{50%}}{Decision boundaries for the ReLU network.}{decision-boundaries}
+
+\newslide{Decision Boundaries}
+
+\plotcode{plot.visualise_decision_boundaries(nn, X1, X2, layer_idx=0, directory='\writeDiagramsDir/deepnn')}
+
+\figure{\includediagram{\diagramsDir/deepnn/decision-boundaries}{50%}}{Decision boundaries for the ReLU network.}{decision-boundaries}
 
 \slides{Complexity (1D): number of kinks $\propto$ width of network.}
 
@@ -292,7 +170,7 @@ fig3 = visualize_decision_boundaries(nn, X1, X2, layer_idx=0)}
 
 \subsection{Sawtooth Construction}
 
-\notes{The sawtooth construction provides a concrete example of how depth leads to exponential growth in representational power. This 1D construction shows how each layer doubles the number of linear segments.}
+\notes{The sawtooth construction provides an example of how depth can to exponential growth in representational power. This 1D construction shows how each layer doubles the number of linear segments.}
 
 \slides{\small
 \begin{align}
