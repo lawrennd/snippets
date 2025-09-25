@@ -32,7 +32,7 @@ $$
 
 \loadcode{LinearActivation}{mlai}
 \loadcode{SigmoidActivation}{mlai}
-\loadcode{SigmoidActivation}{mlai}
+\loadcode{ReLUActivation}{mlai}
 
 \setupcode{from mlai import Model}
 \loadcode{NeuralNetwork}{mlai}
