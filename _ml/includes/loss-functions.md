@@ -5,6 +5,8 @@
 
 \subsection{Loss Functions}
 
+\setupcode{from mlai import LossFunction}
+
 \loadcode{MeanSquaredError}{mlai}
 \loadcode{MeanAbsoluteError}{mlai}
 \loadcode{BinaryCrossEntropyLoss}{mlai}
