@@ -50,6 +50,8 @@ $$
 
 \loadcode{polynomial}{mlai}
 
+\installcode{daft-pgm}
+
 \setupplotcode{import matplotlib
 # Comment for google colab (no latex available)
 matplotlib.rc('text', usetex=True)
