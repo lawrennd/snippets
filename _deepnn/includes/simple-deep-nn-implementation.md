@@ -20,14 +20,15 @@
         # Binary classification: x1^2 + x2^2 > 1
         X = np.random.randn(n_samples, 2)
         y = ((X[:, 0]**2 + X[:, 1]**2) > 1.0).astype(float).reshape(-1, 1)
-        return X, y}
+        return X, y}}
 
+\code{
 # Create data
 X_reg, y_reg = create_synthetic_data(200, 'regression')
 X_cls, y_cls = create_synthetic_data(200, 'classification')
 
 print(f"Regression data: {X_reg.shape} -> {y_reg.shape}")
-print(f"Classification data: {X_cls.shape} -> {y_cls.shape}")
+print(f"Classification data: {X_cls.shape} -> {y_cls.shape}")}
 
 
 
