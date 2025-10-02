@@ -54,7 +54,7 @@ import mlai.plot as plot}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 x = np.linspace(-3, 3, 100)
-y = ReLUActivation().forward(x)
+act = ReLUActivation().forward(x)
 
 ax.plot(x, act, 'b-', linewidth=3)
 ax.set_xlabel('$x$')
@@ -231,7 +231,7 @@ import matplotlib.pyplot as plt
 import mlai
 import mlai.plot as plot}
 
-\plotcode{nn = NeuralNetwork([2, 4, 4, 1], [ReLUActivation, ReLUActivation, LinearActivation])
+\plotcode{nn = NeuralNetwork([2, 4, 4, 1], [ReLUActivation(), ReLUActivation(), LinearActivation()])
 
 # Create 2D input grid
 x1 = np.linspace(-3, 3, 100)
@@ -240,11 +240,11 @@ X1, X2 = np.meshgrid(x1, x2)
 
 # Deep ReLU network: 2 inputs -> 4 hidden -> 4 hidden -> 1 output
 # Layer 1 weights and biases
-nn.weights[0] = np.array([[1, 0.5], [0.5, 1], [-0.5, 0.5], [0.5, -0.5]])
+nn.weights[0] = np.array([[1, 0.5], [0.5, 1], [-0.5, 0.5], [0.5, -0.5]]).T
 nn.biases[0] = np.array([0, -0.5, 0.5, 0])
 
 # Layer 2 weights and biases  
-nn.weights[1] = np.array([[1, 0.5, -0.5, 0.5], [0.5, 1, 0.5, -0.5], [-0.5, 0.5, 1, 0.5], [0.5, -0.5, 0.5, 1]])
+nn.weights[1] = np.array([[1, 0.5, -0.5, 0.5], [0.5, 1, 0.5, -0.5], [-0.5, 0.5, 1, 0.5], [0.5, -0.5, 0.5, 1]]).T
 nn.biases[1] = np.array([0, -0.5, 0.5, 0])
 
 # Layer 3 weights and biases
@@ -255,7 +255,7 @@ f = nn.predict(np.hstack([X1.flatten()[:, np.newaxis], X2.flatten()[:, np.newaxi
 
 # Plot the result
 fig, ax = plt.subplots(figsize=plot.big_figsize)
-contour = ax.contourf(X1, X2, f, levels=30, cmap='viridis')
+contour = ax.contourf(X1, X2, f.reshape(X1.shape), levels=30, cmap='viridis')
 ax.set_xlabel('$x_1$')
 ax.set_ylabel('$x_2$')
 plt.colorbar(contour, ax=ax)

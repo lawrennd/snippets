@@ -141,6 +141,7 @@ activations = {
     'Sigmoid': SigmoidActivation(),
     'Soft ReLU': SoftReLUActivation()
 }
+}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai
@@ -156,7 +157,6 @@ for i, (name, activation) in enumerate(activations.items()):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.title(f'{name} Activation Function')
-    plt.legend()
     plt.grid(True, alpha=0.3)
 
 plt.tight_layout()
@@ -165,7 +165,7 @@ mlai.write_figure('activation-functions.svg', directory="\writeDiagramsDir/deepn
 
 \newslide{Activations and Gradients}
 
-\figure{\includediagram{\diagramsDir/deepnn/activation-functions}{70%}}{Some different activation functions and their gradients}{activation-functions}
+\figure{\includediagram{\diagramsDir/deepnn/activation-functions}{70%}}{Some different activation functions (solid line) and their gradients (dashed line).}{activation-functions}
 
 \newslide{Across-Layer Gradient}
 
@@ -232,8 +232,8 @@ linear_activation = LinearActivation()
 def linear_func(x):
 	return linear_activation.forward(x)
 
-numerical_grad = finite_difference_gradient(linear_func, x)
-analytical_grad = linear_activation.gradient(x)
+numerical_grad = finite_difference_jacobian(linear_func, x)
+analytical_grad = np.diag(linear_activation.gradient(x))
 results['Linear'] = verify_gradient_implementation(analytical_grad, numerical_grad)
 print(f"Linear Activation: {'PASS' if results['Linear'] else 'FAIL'}")}
     
@@ -242,8 +242,8 @@ relu_activation = ReLUActivation()
 def relu_func(x):
 	return relu_activation.forward(x)
 
-numerical_grad = finite_difference_gradient(relu_func, x)
-analytical_grad = relu_activation.gradient(x)
+numerical_grad = finite_difference_jacobian(relu_func, x)
+analytical_grad = np.diag(relu_activation.gradient(x))
 results['ReLU'] = verify_gradient_implementation(analytical_grad, numerical_grad)
 print(f"ReLU Activation: {'PASS' if results['ReLU'] else 'FAIL'}")}
     
@@ -252,8 +252,8 @@ sigmoid_activation = SigmoidActivation()
 def sigmoid_func(x):
 	return sigmoid_activation.forward(x)
 
-numerical_grad = finite_difference_gradient(sigmoid_func, x)
-analytical_grad = sigmoid_activation.gradient(x)
+numerical_grad = finite_difference_jacobian(sigmoid_func, x)
+analytical_grad = np.diag(sigmoid_activation.gradient(x))
 results['Sigmoid'] = verify_gradient_implementation(analytical_grad, 
 numerical_grad)
 print(f"Sigmoid Activation: {'PASS' if results['Sigmoid'] else 'FAIL'}")}
@@ -263,8 +263,8 @@ soft_relu_activation = SoftReLUActivation()
 def soft_relu_func(x):
 	return soft_relu_activation.forward(x)
 
-numerical_grad = finite_difference_gradient(soft_relu_func, x)
-analytical_grad = soft_relu_activation.gradient(x)
+numerical_grad = finite_difference_jacobian(soft_relu_func, x)
+analytical_grad = np.diag(soft_relu_activation.gradient(x))
 results['SoftReLU'] = verify_gradient_implementation(analytical_grad, 
 numerical_grad)
 print(f"Soft ReLU Activation: {'PASS' if results['SoftReLU'] else 'FAIL'}")}
@@ -298,14 +298,14 @@ def network_output_w0(w0_flat):
 	return test_network.predict(x).flatten()
 
 w0_flat = network.weights[0].flatten()
-numerical_grad = finite_difference_gradient(network_output_w0, w0_flat)
+numerical_grad = finite_difference_jacobian(network_output_w0, w0_flat).flatten()
 
 output_gradient = np.array([[1.0]])
 analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten()
 
 results['Linear_Network'] = verify_gradient_implementation(analytical_grad, 
 numerical_grad, rtol=1e-4)
-print(f"Linear Network: {'PASS' if results['Linear_Network'] else 'FAIL'}")
+print(f"Linear Network: {'PASS' if results['Linear_Network'] else 'FAIL'}")}
 
 \code{# Test 2: Network with ReLU activation
 print("\nTesting network with ReLU activation...")
@@ -326,7 +326,7 @@ def network_output_w0_relu(w0_flat):
 	return test_network.predict(x).flatten()
 
 w0_flat = network.weights[0].flatten()
-numerical_grad = finite_difference_gradient(network_output_w0_relu, w0_flat)
+numerical_grad = finite_difference_jacobian(network_output_w0_relu, w0_flat).flatten()
 
 analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten()
 
@@ -353,7 +353,7 @@ def network_output_w0_sigmoid(w0_flat):
 	return test_network.predict(x).flatten()
 
 w0_flat = network.weights[0].flatten()
-numerical_grad = finite_difference_gradient(network_output_w0_sigmoid, w0_flat)
+numerical_grad = finite_difference_jacobian(network_output_w0_sigmoid, w0_flat).flatten()
 
 analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten()
 
