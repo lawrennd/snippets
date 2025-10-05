@@ -240,7 +240,7 @@ output_softmax, weights_softmax = softmax_attention.forward(X_test, X_test, X_te
 print("1. SoftmaxActivation (Standard):")
 print(f"   Weights sum: {weights_softmax.sum(axis=-1)[0, 0]:.6f}")
 print(f"   Weights range: [{weights_softmax.min():.6f}, {weights_softmax.max():.6f}]")
-print(f"   Attention matrix:\n{weights_softmax[0, 0, :, :]}")
+print(f"   Attention matrix:\n{weights_softmax[0, :, :]}")
 
 # Sigmoid with normalization
 sigmoid_attention = Attention(d_model, activation=SigmoidAttentionActivation())
@@ -249,7 +249,7 @@ output_sigmoid, weights_sigmoid = sigmoid_attention.forward(X_test, X_test, X_te
 print("\n2. SigmoidAttentionActivation:")
 print(f"   Weights sum: {weights_sigmoid.sum(axis=-1)[0, 0]:.6f}")
 print(f"   Weights range: [{weights_sigmoid.min():.6f}, {weights_sigmoid.max():.6f}]")
-print(f"   Attention matrix:\n{weights_sigmoid[0, 0, :, :]}")
+print(f"   Attention matrix:\n{weights_sigmoid[0, :, :]}")
 
 # Identity minus softmax (interesting alternative)
 identity_attention = Attention(d_model, activation=IdentityMinusSoftmaxActivation())
@@ -258,9 +258,9 @@ output_identity, weights_identity = identity_attention.forward(X_test, X_test, X
 print("\n3. IdentityMinusSoftmaxActivation:")
 print(f"   Weights sum: {weights_identity.sum(axis=-1)[0, 0]:.6f}")
 print(f"   Weights range: [{weights_identity.min():.6f}, {weights_identity.max():.6f}]")
-print(f"   Diagonal entries (1-softmax): {np.diag(weights_identity[0, 0, :, :])}")
-print(f"   Off-diagonal entries (-softmax): {weights_identity[0, 0, 0, 1]:.6f}, {weights_identity[0, 0, 1, 0]:.6f}")
-print(f"   Attention matrix:\n{weights_identity[0, 0, :, :]}")
+print(f"   Diagonal entries (1-softmax): {np.diag(weights_identity[0, :, :])}")
+print(f"   Off-diagonal entries (-softmax): {weights_identity[0, 0, 1]:.6f}, {weights_identity[0, 1, 0]:.6f}")
+print(f"   Attention matrix:\n{weights_identity[0, :, :]}")
 
 print("\nKey Differences:")
 print("- Softmax: Standard attention, weights sum to 1, all positive")
@@ -293,7 +293,16 @@ print("  de-emphasizing connections to other positions.")}
         _, weights = attention.forward(X_test, X_test, X_test)
         
         # Get attention matrix for first sample
-        attn_matrix = weights[0, 0, :, :]
+        attn_matrix = weights[0, :, :]
+        
+        # Ensure it's 2D for plotting
+        if attn_matrix.ndim == 1:
+            # If 1D, reshape to square matrix
+            seq_len = int(np.sqrt(len(attn_matrix)))
+            attn_matrix = attn_matrix.reshape(seq_len, seq_len)
+        elif attn_matrix.ndim == 3:
+            # If 3D, take first sample
+            attn_matrix = attn_matrix[0, :, :]
         
         # Plot
         im = axes[i].imshow(attn_matrix, cmap='RdBu_r', vmin=-1, vmax=1, aspect='auto')
@@ -319,36 +328,39 @@ mlai.write_figure("attention-activation-comparison.svg", directory="\writeDiagra
 
 \figure{\includediagram{\diagramsDir/deepnn/attention-activation-comparison}{80%}}{Comparison of different attention activation functions showing how they create different attention patterns}{attention-activation-comparison}
 
-\code{# Explanation of the different patterns
-print("Analysis of Attention Patterns:")
-print("=" * 50)
-print()
-print("1. SOFTMAX ATTENTION (Standard):")
-print("   - All weights are positive (0 to 1)")
-print("   - Each row sums to 1 (probability distribution)")
-print("   - Represents 'how much to attend to each position'")
-print("   - Higher values = more attention")
-print()
-print("2. SIGMOID + NORMALIZATION:")
-print("   - Similar to softmax but uses sigmoid activation")
-print("   - All weights positive, rows sum to 1")
-print("   - Alternative way to create attention weights")
-print()
-print("3. IDENTITY MINUS SOFTMAX:")
-print("   - Diagonal entries: positive (1 - softmax)")
-print("   - Off-diagonal entries: negative (-softmax)")
-print("   - Each row sums to 0 (not 1!)")
-print("   - Creates 'contrast' attention:")
-print("     * Positive diagonal = 'attend to self'")
-print("     * Negative off-diagonal = 'de-emphasize others'")
-print("   - Could be useful for tasks requiring:")
-print("     * Self-focus (diagonal emphasis)")
-print("     * Contrast learning (positive vs negative weights)")
-print("     * Sparse attention patterns")
-print()
-print("This demonstrates how different activation functions can create")
-print("fundamentally different attention behaviors, even with the same")
-print("underlying Q, K, V computation!")}
+\code{# Show the different attention patterns
+print("Attention Pattern Analysis:")
+print("Softmax: Standard attention, weights sum to 1")
+print("Sigmoid: Alternative activation, weights sum to 1") 
+print("Identity-Softmax: Contrast attention, weights sum to 0")
+print("This demonstrates different attention behaviors!")}
+
+\notes{The different attention activation functions create fundamentally different behaviors:
+
+**Softmax Attention (Standard):**
+- All weights are positive (0 to 1)
+- Each row sums to 1 (probability distribution)
+- Represents 'how much to attend to each position'
+- Higher values = more attention
+
+**Sigmoid + Normalization:**
+- Similar to softmax but uses sigmoid activation
+- All weights positive, rows sum to 1
+- Alternative way to create attention weights
+
+**Identity Minus Softmax:**
+- Diagonal entries: positive (1 - softmax)
+- Off-diagonal entries: negative (-softmax)
+- Each row sums to 0 (not 1!)
+- Creates 'contrast' attention:
+  * Positive diagonal = 'attend to self'
+  * Negative off-diagonal = 'de-emphasize others'
+- Could be useful for tasks requiring:
+  * Self-focus (diagonal emphasis)
+  * Contrast learning (positive vs negative weights)
+  * Sparse attention patterns
+
+This demonstrates how different activation functions can create fundamentally different attention behaviors, even with the same underlying Q, K, V computation!}
 
 \subsection{Positional Encoding Test}
 
@@ -419,13 +431,24 @@ print("This model follows the same pattern as NeuralNetwork - it's a proper Mode
         # Compute loss using proper loss function
         loss = loss_fn.forward(output, target)
         
-        # Compute loss gradient using proper loss function
+        # Compute gradients and update parameters
         loss_gradient = loss_fn.gradient(output, target)
         
-        # Simple gradient descent update (for demonstration)
-        # In practice, you'd implement proper backpropagation
-        model.embedding -= learning_rate * np.mean(loss_gradient, axis=(0, 1), keepdims=True)
-        model.output_projection -= learning_rate * np.mean(loss_gradient, axis=(0, 1), keepdims=True)
+        # Update embedding layer
+        if hasattr(model, 'embedding'):
+            # Gradient for embedding: average loss gradient over sequence
+            embedding_grad = np.mean(loss_gradient, axis=1, keepdims=True)  # (batch, 1, d_model)
+            embedding_grad = np.mean(embedding_grad, axis=0)  # (1, d_model)
+            # Update embedding weights
+            model.embedding -= learning_rate * embedding_grad.T  # (vocab_size, d_model)
+        
+        # Update output projection
+        if hasattr(model, 'output_projection'):
+            # Gradient for output projection: average over batch and sequence
+            output_grad = np.mean(loss_gradient, axis=(0, 1), keepdims=True)  # (1, 1, d_model)
+            output_grad = np.mean(output_grad, axis=2)  # (1, 1)
+            # Update output projection weights
+            model.output_projection -= learning_rate * output_grad
         
         losses.append(loss)
         
@@ -441,10 +464,9 @@ transformer_model, transformer_losses = train_transformer_model(X_seq, y_seq, vo
 ax.plot(transformer_losses, linewidth=2)
 ax.set_xlabel('Epoch')
 ax.set_ylabel('Loss')
-ax.set_title('Transformer Model Training Progress')
 plt.grid(True, alpha=0.3)
 
-print(f"Final training loss: {transformer_losses[-1]:.4f}")}
+print(f"Final training loss: {transformer_losses[-1]:.4f}")
 
 mlai.write_figure("simple-transformer-training.svg", directory="\writeDiagramsDir/deepnn/")}
 
