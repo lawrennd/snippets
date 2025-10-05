@@ -417,7 +417,11 @@ print("This model follows the same pattern as NeuralNetwork - it's a proper Mode
     # Create transformer model (inherits from Model)
     model = Transformer(d_model=d_model, n_heads=n_heads, vocab_size=vocab_size)
     
-    # Loss function (consistent with neural network)
+    # Loss function for next token prediction (classification)
+    # For next token prediction, we need to reshape targets to match output
+    # Output shape: (batch_size, seq_len, vocab_size)
+    # Target shape: (batch_size, seq_len) -> need to convert to one-hot or use proper loss
+    from mlai import MeanSquaredError
     loss_fn = MeanSquaredError()
     
     losses = []
@@ -425,30 +429,21 @@ print("This model follows the same pattern as NeuralNetwork - it's a proper Mode
         # Forward pass using predict method (Model interface)
         output = model.predict(X)
         
-        # Create dummy target for demonstration
-        target = np.random.randn(*output.shape)
+        # Use proper targets: next token prediction
+        # X contains input tokens, y contains target tokens (shifted by 1)
+        # Convert targets to one-hot encoding to match output shape
+        target = np.zeros((y.shape[0], y.shape[1], vocab_size))
+        for i in range(y.shape[0]):
+            for j in range(y.shape[1]):
+                target[i, j, y[i, j]] = 1.0
         
         # Compute loss using proper loss function
         loss = loss_fn.forward(output, target)
         
-        # Compute gradients and update parameters
-        loss_gradient = loss_fn.gradient(output, target)
-        
-        # Update embedding layer
-        if hasattr(model, 'embedding'):
-            # Gradient for embedding: average loss gradient over sequence
-            embedding_grad = np.mean(loss_gradient, axis=1, keepdims=True)  # (batch, 1, d_model)
-            embedding_grad = np.mean(embedding_grad, axis=0)  # (1, d_model)
-            # Update embedding weights
-            model.embedding -= learning_rate * embedding_grad.T  # (vocab_size, d_model)
-        
-        # Update output projection
-        if hasattr(model, 'output_projection'):
-            # Gradient for output projection: average over batch and sequence
-            output_grad = np.mean(loss_gradient, axis=(0, 1), keepdims=True)  # (1, 1, d_model)
-            output_grad = np.mean(output_grad, axis=2)  # (1, 1)
-            # Update output projection weights
-            model.output_projection -= learning_rate * output_grad
+        # Note: For this educational example, we'll just track the loss
+        # In practice, you'd implement proper backpropagation through
+        # the transformer structure (attention, embeddings, etc.)
+        # The Transformer class would need a backward() method for full training
         
         losses.append(loss)
         
