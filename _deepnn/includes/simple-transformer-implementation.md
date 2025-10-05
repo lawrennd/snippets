@@ -129,14 +129,24 @@ print(f"Gradient verification: {np.allclose(gradients['grad_input'], gradients['
         # Backward pass (demonstrates chain rule)
         loss_gradient = loss_fn.gradient(output, y_embedded)
         
-        # Simple gradient descent update (for demonstration)
-        # In practice, you'd use proper optimizers
-        for head in model.attention_heads:
-            # Update weights with simple gradient descent
-            head.W_q -= learning_rate * np.mean(loss_gradient, axis=0, keepdims=True)
-            head.W_k -= learning_rate * np.mean(loss_gradient, axis=0, keepdims=True)
-            head.W_v -= learning_rate * np.mean(loss_gradient, axis=0, keepdims=True)
-            head.W_o -= learning_rate * np.mean(loss_gradient, axis=0, keepdims=True)
+        # Use the existing backward method from the Attention class
+        # This demonstrates proper gradient computation through the attention mechanism
+        for i, head in enumerate(model.attention_heads):
+            # Get the corresponding head data
+            head_query = X_embedded[:, :, i*model.d_k:(i+1)*model.d_k]
+            head_key = X_embedded[:, :, i*model.d_k:(i+1)*model.d_k] 
+            head_value = X_embedded[:, :, i*model.d_k:(i+1)*model.d_k]
+            head_weights = attn_weights[:, i]  # Get weights for this head
+            
+            # Compute gradients using the existing backward method
+            gradients = head.backward(loss_gradient[:, :, i*model.d_k:(i+1)*model.d_k], 
+                                    head_query, head_key, head_value, head_weights)
+            
+            # Update weights using computed gradients
+            head.W_q -= learning_rate * gradients['grad_W_q']
+            head.W_k -= learning_rate * gradients['grad_W_k']
+            head.W_v -= learning_rate * gradients['grad_W_v']
+            head.W_o -= learning_rate * gradients['grad_W_o']
         
         losses.append(loss)
         
