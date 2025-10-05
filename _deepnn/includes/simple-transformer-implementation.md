@@ -5,9 +5,11 @@
 
 \subsection{Simple Transformer Implementation}
 
+\setupcode{import numpy as np}
+
 \helpercode{def create_synthetic_sequence_data(n_samples=100, seq_length=10, vocab_size=50):
     """Create synthetic sequence data for demonstration."""
-    np.random.seed(42)
+    np.random.seed(24)
     
     # Create random sequences
     X = np.random.randint(0, vocab_size, (n_samples, seq_length))
