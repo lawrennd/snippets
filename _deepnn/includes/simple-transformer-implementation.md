@@ -167,7 +167,7 @@ ax.set_xlabel('Epoch')
 ax.set_ylabel('Loss')
 plt.grid(True, alpha=0.3)
 
-print(f"Final training loss: {losses[-1]:.4f}")}
+print(f"Final training loss: {losses[-1]:.4f}")
 
 mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagramsDir/deepnn")}
 
@@ -190,7 +190,6 @@ mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagrams
     
     ax.set_xlabel('Key Position')
     ax.set_ylabel('Query Position')
-    ax.set_title('Attention Weights (First Head)')
     
     plt.colorbar(im, ax=ax)
     plt.tight_layout()
@@ -199,7 +198,7 @@ mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagrams
 
 \plotcode{visualise_attention_weights(model, X_seq, "attention-weights.svg", directory="\writeDiagramsDir/deepnn/")}
 
-\figure{\includediagram{\diagramsDir/deepnn/attention-weights}{60%}}{Attention weights visualisation showing which positions the model attends to}{attention-weights}
+\figure{\includediagram{\diagramsDir/deepnn/attention-weights}{60%}}{Attention weights visualisation from the first head showing which positions the model attends to}{attention-weights}
 
 \subsection{Test Different Numbers of Heads}
 
@@ -270,10 +269,10 @@ print("- Identity-Minus-Softmax: Diagonal positive (1-softmax), off-diagonal neg
 print("  This creates a 'contrast' attention pattern that emphasizes self-connections while")
 print("  de-emphasizing connections to other positions.")}
 
-\subsection{Visualize Different Attention Patterns}
+\subsection{Visualise Different Attention Patterns}
 
-\helpercode{def visualize_attention_patterns():
-    """Visualize different attention activation patterns."""
+\helpercode{def visualise_attention_patterns():
+    """Visualise different attention activation patterns."""
     import matplotlib.pyplot as plt
     
     d_model = 16
@@ -315,13 +314,13 @@ print("  de-emphasizing connections to other positions.")}
     plt.tight_layout()
     return fig}
 
-\plotcode{fig = visualize_attention_patterns()
+\plotcode{fig = visualise_attention_patterns()
 mlai.write_figure("attention-activation-comparison.svg", directory="\writeDiagramsDir/deepnn/")}
 
 \figure{\includediagram{\diagramsDir/deepnn/attention-activation-comparison}{80%}}{Comparison of different attention activation functions showing how they create different attention patterns}{attention-activation-comparison}
 
-\code{# Educational explanation of the different patterns
-print("Educational Analysis of Attention Patterns:")
+\code{# Explanation of the different patterns
+print("Analysis of Attention Patterns:")
 print("=" * 50)
 print()
 print("1. SOFTMAX ATTENTION (Standard):")
