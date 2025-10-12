@@ -7,5 +7,6 @@
 \include{_maths/includes/matrix-vector-chain-rule.md}
 \include{_maths/includes/more-useful-matrix-derivatives.md}
 \include{_deepnn/includes/chain-rule-neural-network.md}
+\include{_deepnn/includes/chain-rule-cnn-layered.md}
 
 \endif

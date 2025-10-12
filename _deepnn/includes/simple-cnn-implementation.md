@@ -5,47 +5,9 @@
 
 \subsection{Simple CNN Implementation}
 
-\setupcode{import numpy as np}
+\setupcode{import numpy as np
+from mlai import create_image_data}
 
-\helpercode{def create_image_data(n_samples=100, image_size=28, n_classes=3):
-    """Create synthetic image data for CNN demonstration."""
-    np.random.seed(24)
-    
-    # Create different types of synthetic images
-    X = []
-    y = []
-    
-    for i in range(n_samples):
-        # Create a synthetic image with different patterns
-        image = np.zeros((image_size, image_size))
-        
-        # Add some geometric patterns
-        if i % 3 == 0:
-            # Horizontal lines
-            for row in range(5, image_size-5, 3):
-                image[row:row+2, 5:image_size-5] = 1.0
-        elif i % 3 == 1:
-            # Vertical lines  
-            for col in range(5, image_size-5, 3):
-                image[5:image_size-5, col:col+2] = 1.0
-        else:
-            # Diagonal patterns
-            for d in range(0, image_size, 4):
-                for j in range(max(0, d-image_size+1), min(d+1, image_size)):
-                    if j < image_size and d-j < image_size:
-                        image[j, d-j] = 1.0
-        
-        # Add some noise
-        image += 0.1 * np.random.randn(image_size, image_size)
-        
-        # Reshape to (channels, height, width) format
-        image = image.reshape(1, image_size, image_size)
-        X.append(image)
-        
-        # Create labels based on pattern type
-        y.append(i % n_classes)
-    
-    return np.array(X), np.array(y)}
 
 \code{
 # Create synthetic image data
