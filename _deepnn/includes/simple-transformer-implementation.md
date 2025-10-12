@@ -7,26 +7,63 @@
 
 \setupcode{import numpy as np}
 
-\helpercode{def create_synthetic_sequence_data(n_samples=100, seq_length=10, vocab_size=50):
-    """Create synthetic sequence data for demonstration."""
-    np.random.seed(24)
+\helpercode{def create_interesting_sequence_data(pattern_type='arithmetic'):
+    """Create interesting sequence data for transformer demonstration."""
+    from mlai.data import generate_sequence_data
     
-    # Create random sequences
-    X = np.random.randint(0, vocab_size, (n_samples, seq_length))
-    
-    # Create target: next token prediction
-    y = np.roll(X, -1, axis=1)
-    y[:, -1] = 0  # Padding token for last position
+    # Generate different types of interesting sequences
+    if pattern_type == 'arithmetic':
+        X, y = generate_sequence_data(n_samples=200, seq_length=8, vocab_size=20, pattern_type='arithmetic')
+        print("Arithmetic sequences: Learn mathematical patterns (2, 4, 6, 8, ...)")
+    elif pattern_type == 'pattern':
+        X, y = generate_sequence_data(n_samples=200, seq_length=10, vocab_size=15, pattern_type='pattern')
+        print("Pattern sequences: Learn repeating patterns (A, B, C, A, B, C, ...)")
+    elif pattern_type == 'text':
+        X, y = generate_sequence_data(n_samples=200, seq_length=12, vocab_size=26, pattern_type='text')
+        print("Text sequences: Learn word-like structures with spaces and punctuation")
+    else:
+        X, y = generate_sequence_data(n_samples=200, seq_length=8, vocab_size=20, pattern_type='next_token')
+        print("Next token sequences: Standard language modeling task")
     
     return X, y}
 
 \code{
-# Create data
-X_seq, y_seq = create_synthetic_sequence_data(200, 8, 30)
+# Create interesting arithmetic sequence data
+X_seq, y_seq = create_interesting_sequence_data('arithmetic')
 
 print(f"Sequence data: {X_seq.shape} -> {y_seq.shape}")
 print(f"Sample sequence: {X_seq[0]}")
-print(f"Target sequence: {y_seq[0]}")}
+print(f"Target sequence: {y_seq[0]}")
+print(f"Pattern: {X_seq[0]} -> {y_seq[0]} (arithmetic progression)")}
+
+\subsection{Explore Different Sequence Types}
+
+\code{# Let's explore different types of interesting sequences
+print("Different Sequence Types for Transformer Learning:")
+print("=" * 60)
+
+# 1. Arithmetic sequences (mathematical patterns)
+X_arith, y_arith = create_interesting_sequence_data('arithmetic')
+print(f"\nArithmetic sequences:")
+print(f"  Example: {X_arith[0]} -> {y_arith[0]}")
+print(f"  Pattern: Each number increases by a fixed step")
+
+# 2. Pattern sequences (repeating patterns)
+X_pattern, y_pattern = create_interesting_sequence_data('pattern')
+print(f"\nPattern sequences:")
+print(f"  Example: {X_pattern[0]} -> {y_pattern[0]}")
+print(f"  Pattern: Repeating cycles (A, B, C, A, B, C, ...)")
+
+# 3. Text-like sequences (natural language structure)
+X_text, y_text = create_interesting_sequence_data('text')
+print(f"\nText sequences:")
+print(f"  Example: {X_text[0]} -> {y_text[0]}")
+print(f"  Pattern: Word-like structures with spaces and punctuation")
+
+print(f"\nThese different sequence types test different transformer capabilities:")
+print(f"- Arithmetic: Mathematical reasoning and number relationships")
+print(f"- Pattern: Memory and pattern recognition across sequences")
+print(f"- Text: Natural language structure and word boundaries")}
 
 \subsection{Create and Test Basic Attention Layer}
 
@@ -146,7 +183,7 @@ print("Gradients are computed using our comprehensive gradient testing framework
     
     return model, losses}
 
-\code{X_seq, y_seq = create_synthetic_sequence_data(200, 8, 30)
+\code{X_seq, y_seq = create_interesting_sequence_data('arithmetic')
 model, losses = train_attention_model(X_seq, y_seq)}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -451,8 +488,8 @@ print("Each layer can be composed and tested independently!")}
     
     return model, losses}
 
-\code{X_seq, y_seq = create_synthetic_sequence_data(200, 8, 30)
-transformer_model, transformer_losses = train_transformer_model(X_seq, y_seq, vocab_size=30)}
+\code{X_seq, y_seq = create_interesting_sequence_data('pattern')
+transformer_model, transformer_losses = train_transformer_model(X_seq, y_seq, vocab_size=15)}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 ax.plot(transformer_losses, linewidth=2)
@@ -465,6 +502,36 @@ print(f"Final training loss: {transformer_losses[-1]:.4f}")
 mlai.write_figure("simple-transformer-training.svg", directory="\writeDiagramsDir/deepnn/")}
 
 \figure{\includediagram{\diagramsDir/deepnn/simple-transformer-training}{50%}}{Simple Transformer Training Progress}{simple-transformer-training}
+
+\subsection{Compare Different Sequence Types}
+
+\code{# Train on different sequence types to see how transformers handle different patterns
+print("Training Transformers on Different Sequence Types:")
+print("=" * 60)
+
+# Train on arithmetic sequences
+print("\n1. Arithmetic Sequences (Mathematical Patterns):")
+X_arith, y_arith = create_interesting_sequence_data('arithmetic')
+model_arith, losses_arith = train_attention_model(X_arith, y_arith)
+print(f"Final loss: {losses_arith[-1]:.4f}")
+
+# Train on pattern sequences  
+print("\n2. Pattern Sequences (Repeating Patterns):")
+X_pattern, y_pattern = create_interesting_sequence_data('pattern')
+model_pattern, losses_pattern = train_attention_model(X_pattern, y_pattern)
+print(f"Final loss: {losses_pattern[-1]:.4f}")
+
+# Train on text sequences
+print("\n3. Text Sequences (Natural Language Structure):")
+X_text, y_text = create_interesting_sequence_data('text')
+model_text, losses_text = train_attention_model(X_text, y_text)
+print(f"Final loss: {losses_text[-1]:.4f}")
+
+print(f"\nResults Analysis:")
+print(f"- Arithmetic sequences: Tests mathematical reasoning")
+print(f"- Pattern sequences: Tests memory and pattern recognition")
+print(f"- Text sequences: Tests natural language understanding")
+print(f"Lower loss indicates better learning of the underlying pattern!")}
 
 \subsection{Benefits of the New Layered Architecture}
 
