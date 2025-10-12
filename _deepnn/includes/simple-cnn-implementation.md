@@ -5,6 +5,8 @@
 
 \subsection{Simple CNN Implementation}
 
+\todo{Need to explain the layered architecture here, what the new software philosophy is. Compare it to popular frameworks like Pytorch, tensorflow, JAX.}
+
 \setupcode{import numpy as np
 from mlai import create_image_data}
 
