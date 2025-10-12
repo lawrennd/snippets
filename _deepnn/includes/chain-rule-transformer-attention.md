@@ -74,30 +74,51 @@
 
 \notes{The gradients for the weight matrices follow the standard pattern: input matrix transposed times the gradient of the output.}
 
-\newslide{Multi-Head Attention}
+\newslide{Multi-Head Attention with Layered Architecture}
 
 \slides{* **Multiple heads**: $\attentionHead_i = \attentionFunction(\queryMatrix_i, \keyMatrix_i, \valueMatrix_i)$
 * **Concatenation**: $\multiHeadOutput = \concat(\attentionHead_1, \ldots, \attentionHead_h) \outputWeightMatrix$
-* **Gradient complexity**: Each head has its own $Q$, $K$, $V$ gradients}
+* **Layered implementation**: Each head is an independent $\attentionLayer$ instance
+* **Gradient flow**: Gradients computed independently for each head, then combined}
 
-\notes{Multi-head attention adds another layer of complexity. Each head computes its own attention, and the gradients must be computed for each head separately before being combined.}
+\notes{Our implementation uses a layered architecture where MultiHeadAttentionLayer composes multiple AttentionLayer instances. Each head computes its own attention independently, and gradients flow through each head separately before being combined.}
+
+\newslide{Cross-Attention and Mixed Attention}
+
+\slides{* **Cross-attention**: $\queryMatrix = \queryInput \queryWeightMatrix$, $\keyMatrix = \keyValueInput \keyWeightMatrix$, $\valueMatrix = \keyValueInput \valueWeightMatrix$
+* **Mixed attention**: $\queryMatrix = \inputMatrix \queryWeightMatrix$, $\keyMatrix = \keyValueInput \keyWeightMatrix$, $\valueMatrix = \keyValueInput \valueWeightMatrix$
+* **Gradient complexity**: Different input sources create separate gradient paths}
+
+\notes{Our implementation supports three attention modes: self-attention (single input), cross-attention (separate query and key-value inputs), and mixed attention (query from one input, key-value from another). Each mode has its own gradient computation pattern.}
 
 \newslide{Implementation Considerations}
 
 \slides{* **Memory efficiency**: Store intermediate computations
 * **Numerical stability**: Scale attention weights appropriately  
 * **Parallel computation**: Each head can be computed independently
-* **Gradient accumulation**: Sum gradients across heads}
+* **Gradient accumulation**: Sum gradients across heads
+* **Output projection**: Additional $W_o$ matrix requires gradient computation}
 
-\notes{Implementing transformer gradients efficiently requires careful attention to memory usage and numerical stability. The softmax operation can be numerically unstable for large attention scores.}
+\notes{Implementing transformer gradients efficiently requires careful attention to memory usage and numerical stability. The softmax operation can be numerically unstable for large attention scores. Our implementation includes output projection which adds another gradient path.}
 
 \newslide{Summary}
 
 \slides{* **Three-path chain rule**: Input appears in $Q$, $K$, $V$ transformations
 * **Softmax gradient**: Standard formula with attention weight constraints
 * **Multi-head complexity**: Each head has independent gradients
-* **Efficient implementation**: Careful memory and numerical considerations}
+* **Cross/mixed attention**: Different input sources create separate gradient paths
+* **Layered architecture**: Modular design with independent gradient computation
+* **Output projection**: Additional gradient path through $W_o$ matrix}
 
-\notes{The transformer attention mechanism requires a more sophisticated understanding of the chain rule because the same input participates in multiple parallel computations.}
+\notes{The transformer attention mechanism requires a more sophisticated understanding of the chain rule because the same input participates in multiple parallel computations. Our layered implementation makes this complexity manageable by separating concerns and providing comprehensive gradient testing.}
+
+\newslide{Verification with Our Implementation}
+
+\slides{* **Gradient testing**: Use $\finiteDifferenceGradient$ to verify analytical gradients
+* **Three-path verification**: Check that $\gradInput = \gradQuery + \gradKey + \gradValue$
+* **Cross-attention testing**: Verify separate gradient paths for different inputs
+* **Multi-head testing**: Each head tested independently with finite differences}
+
+\notes{Students can verify the chain rule implementation using our comprehensive gradient testing framework. The tests in \texttt{test\_neural\_networks.py} demonstrate how to use finite differences to verify that our analytical gradients match the mathematical theory.}
 
 \endif
