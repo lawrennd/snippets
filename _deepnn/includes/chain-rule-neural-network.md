@@ -127,12 +127,12 @@ $\basisScalar_i^{(\layerIndex)}(\mappingFunctionVector_{\layerIndex})
 = \basisScalar_i^{(\layerIndex)}(\mappingFunction^{(\layerIndex)}_i)$
 then this matrix is diagonal.}
 
-\setupcode{from mlai import Activation}
+\setupcode{from mlai.neural_networks import Activation}
 
-\loadcode{LinearActivation}{mlai}
-\loadcode{ReLUActivation}{mlai}
-\loadcode{SigmoidActivation}{mlai}
-\loadcode{SoftReLUActivation}{mlai}
+\loadcode{LinearActivation}{mlai.neural_networks}
+\loadcode{ReLUActivation}{mlai.neural_networks}
+\loadcode{SigmoidActivation}{mlai.neural_networks}
+\loadcode{SoftReLUActivation}{mlai.neural_networks}
 
 \code{x = np.linspace(-3, 3, 100)
 activations = {
@@ -144,7 +144,7 @@ activations = {
 }
 
 \setupplotcode{import matplotlib.pyplot as plt
-import mlai
+from mlai.utils import write_figure
 from mlai import plot}
 \plotcode{plt.figure(figsize=plot.big_wide_figsize)
 for i, (name, activation) in enumerate(activations.items()):
@@ -161,7 +161,7 @@ for i, (name, activation) in enumerate(activations.items()):
 
 plt.tight_layout()
 
-mlai.write_figure('activation-functions.svg', directory="\writeDiagramsDir/deepnn")}
+write_figure('activation-functions.svg', directory="\writeDiagramsDir/deepnn")}
 
 \newslide{Activations and Gradients}
 
@@ -218,8 +218,8 @@ where $\basisMatrix^\prime_{\ell - i -1}$ is the derivative matrix for the basis
 
 \subsection{Gradient Verification}
 
-\loadcode{finite_difference_jacobian}{mlai}
-\loadcode{verify_gradient_implementation}{mlai}
+\loadcode{finite_difference_jacobian}{mlai.utils}
+\loadcode{verify_gradient_implementation}{mlai.utils}
 
 \setupcode{import numpy as np}
 
