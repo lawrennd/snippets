@@ -5,11 +5,11 @@
 
 \subsection{Loss Functions}
 
-\setupcode{from mlai import LossFunction}
+\setupcode{from mlai.loss import LossFunction}
 
-\loadcode{MeanSquaredError}{mlai}
-\loadcode{MeanAbsoluteError}{mlai}
-\loadcode{BinaryCrossEntropyLoss}{mlai}
+\loadcode{MeanSquaredError}{mlai.loss}
+\loadcode{MeanAbsoluteError}{mlai.loss}
+\loadcode{BinaryCrossEntropyLoss}{mlai.loss}
 
 \setupcode{import numpy as np}
 
@@ -37,8 +37,8 @@ for name, loss in losses.items():
 \subsection{Test loss function gradients}
 
 \notes{Testing loss function gradients with finite differences.}
-\loadcode{finite_difference_jacobian}{mlai}
-\loadcode{verify_gradient_implementation}{mlai}
+\loadcode{finite_difference_jacobian}{mlai.utils}
+\loadcode{verify_gradient_implementation}{mlai.utils}
 
 
 \code{# Test data
@@ -67,7 +67,7 @@ analytical_grad = mae_loss.gradient(y_pred, y_true).flatten()
 results['MAE'] = verify_gradient_implementation(analytical_grad, numerical_grad)
 print(f"Mean Absolute Error: {'PASS' if results['MAE'] else 'FAIL'}")}
 
-\loadcode{HuberLoss}{mlai}
+\loadcode{HuberLoss}{mlai.loss}
 
 \code{# Test Huber Loss
 huber_loss = HuberLoss(delta=1.0)
@@ -92,7 +92,7 @@ analytical_grad = bce_loss.gradient(y_pred_bce, y_true_bce).flatten()
 results['BCE'] = verify_gradient_implementation(analytical_grad, numerical_grad)
 print(f"Binary Cross Entropy: {'PASS' if results['BCE'] else 'FAIL'}")}
 
-\loadcode{CrossEntropyLoss}{mlai}
+\loadcode{CrossEntropyLoss}{mlai.loss}
 
 \code{# Test Cross Entropy
 ce_loss = CrossEntropyLoss()
