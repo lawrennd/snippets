@@ -34,7 +34,7 @@ print(f"Classification data: {X_cls.shape} -> {y_cls.shape}")}
 
 \subsection{Create and Test Neural Network}
 
-\setupcode{from mlai import ReLUActivation, LinearActivation, NeuralNetwork}
+\setupcode{from mlai import ReLUActivation, LinearActivation, NeuralNetwork, SGD, train_model, MeanSquaredError, BinaryCrossEntropyLoss, SigmoidActivation}
 
 \code{dimensions = [2, 5, 1]  # 2 inputs, 1 hidden layer (5 neurons), 1 output
 activations = [ReLUActivation(), LinearActivation()]
@@ -74,10 +74,41 @@ print(f"Weight gradients shapes: {[g.shape for g in gradients['weight_gradients'
 print(f"Bias gradients shapes: {[g.shape for g in gradients['bias_gradients']]}")
 }
 
+\subsection{Unified Optimisation Interface}
+
+\code{# Demonstrate the unified optimization interface with traditional NeuralNetwork
+from mlai import NeuralNetwork, ReLUActivation, LinearActivation, SGD, train_model, MeanSquaredError
+
+# Create a traditional neural network
+dimensions = [2, 5, 3, 1]
+activations = [ReLUActivation(), ReLUActivation(), LinearActivation()]
+network = NeuralNetwork(dimensions, activations)
+
+# Test the unified interface
+X_test = np.array([[1.0, 2.0], [0.5, -1.0]])
+y_test = np.array([[3.0], [1.5]])
+
+# Forward pass
+y_pred = network.predict(X_test)
+print(f"Network output: {y_pred.flatten()}")
+
+# Set up for gradient computation
+loss_fn = MeanSquaredError()
+loss = loss_fn.forward(y_pred, y_test)
+loss_gradient = loss_fn.gradient(y_pred, y_test)
+network.set_output_gradient(loss_gradient)
+
+# Get gradients using the unified interface
+gradients = network.gradients
+print(f"Gradients shape: {gradients.shape}")
+print(f"Parameters shape: {network.parameters.shape}")
+print(f"Gradients and parameters shapes match: {gradients.shape == network.parameters.shape}")
+print("This demonstrates the unified optimization interface for traditional neural networks!")}
+
 \subsection{Train Network for Regression}
 
 \helpercode{def train_network_regression(X, y, n_epochs=50, learning_rate=0.01):
-    """Train a neural network for regression."""
+    """Train a neural network for regression using SGD optimizer."""
     # Create network
     dimensions = [2, 10, 10, 1]
     activations = [ReLUActivation(), ReLUActivation(), LinearActivation()]
@@ -86,30 +117,16 @@ print(f"Bias gradients shapes: {[g.shape for g in gradients['bias_gradients']]}"
     # Loss function
     loss_fn = MeanSquaredError()
     
-    # Training loop
-    losses = []
-    for epoch in range(n_epochs):
-        # Forward pass
-        y_pred = network.predict(X)
-        loss = loss_fn.forward(y_pred, y)
-        
-        # Backward pass
-        loss_gradient = loss_fn.gradient(y_pred, y)
-        gradients = network.backward(loss_gradient)
-        
-        # Update weights (simple gradient descent)
-        for i in range(len(network.weights)):
-            network.weights[i] -= learning_rate * gradients['weight_gradients'][i]
-            network.biases[i] -= learning_rate * gradients['bias_gradients'][i]
-        
-        losses.append(loss)
-        
-        if epoch % 10 == 0:
-            print(f"Epoch {epoch:3d}: Loss = {loss:.4f}")
+    # Create SGD optimizer
+    sgd_opt = SGD(learning_rate=learning_rate)
+    
+    # Use unified training interface
+    losses = train_model(network, X, y, loss_fn, sgd_opt, n_epochs=n_epochs, verbose=True)
     
     return network, losses}
 
-\code{X_reg, y_reg = create_synthetic_data(200, 'regression')
+\code{# Train with SGD optimizer
+X_reg, y_reg = create_synthetic_data(200, 'regression')
 network_reg, losses = train_network_regression(X_reg, y_reg)}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -130,7 +147,7 @@ mlai.write_figure("nn-regression-training-progress.svg", directory="\writeDiagra
 
 
 \helpercode{def train_network_classification(X, y, n_epochs=500, learning_rate=0.1):
-    """Train a neural network for classification."""
+    """Train a neural network for classification using SGD optimizer."""
     # Create network
     dimensions = [2, 8, 8, 8, 8, 8, 8, 1]
     activations = [ReLUActivation(), ReLUActivation(), ReLUActivation(), ReLUActivation(), ReLUActivation(), ReLUActivation(), SigmoidActivation()]  # Sigmoid for binary classification
@@ -139,7 +156,10 @@ mlai.write_figure("nn-regression-training-progress.svg", directory="\writeDiagra
     # Loss function
     loss_fn = BinaryCrossEntropyLoss()
     
-    # Training loop
+    # Create SGD optimizer
+    sgd_opt = SGD(learning_rate=learning_rate)
+    
+    # Training loop with custom accuracy tracking
     losses = []
     accuracies = []
     
@@ -148,14 +168,12 @@ mlai.write_figure("nn-regression-training-progress.svg", directory="\writeDiagra
         y_pred = network.predict(X)
         loss = loss_fn.forward(y_pred, y)
         
-        # Backward pass
+        # Set output gradient for model
         loss_gradient = loss_fn.gradient(y_pred, y)
-        gradients = network.backward(loss_gradient)
+        network.set_output_gradient(loss_gradient)
         
-        # Update weights
-        for i in range(len(network.weights)):
-            network.weights[i] -= learning_rate * gradients['weight_gradients'][i]
-            network.biases[i] -= learning_rate * gradients['bias_gradients'][i]
+        # SGD optimizer step
+        sgd_opt.step(network)
         
         # Calculate accuracy
         predictions = (y_pred > 0.5).astype(float)
