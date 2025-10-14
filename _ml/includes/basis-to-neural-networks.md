@@ -31,7 +31,7 @@ $$
 
 \notes{In our session on basis funcitons we showed how linear models can be used to create non linear prediction functions. Amoung the basis functions we considered were the ReLU basis function.}
 
-\code{from mlai import Activation.neural_networks}
+\code{from mlai.neural_networks import Activation}
 
 \loadcode{LinearActivation}{mlai.neural_networks}
 \loadcode{SigmoidActivation}{mlai.neural_networks}
