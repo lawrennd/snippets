@@ -44,12 +44,12 @@ $$
 x & x > 0
 \end{cases}}
 
-\setupcode{from mlai import Activation}
-\loadcode{ReLUActivation}{mlai}
+\setupcode{from mlai.neural_networks import Activation}
+\loadcode{ReLUActivation}{mlai.neural_networks}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
-import mlai
+from mlai.utils import write_figure
 import mlai.plot as plot}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
@@ -61,7 +61,7 @@ ax.set_xlabel('$x$')
 ax.set_ylabel('$\operatorname{ReLU}(x)$')
 ax.grid(True, alpha=0.3)
 
-mlai.write_figure(filename='relu-activation.svg', directory='\writeDiagramsDir/deepnn')}
+write_figure(filename='relu-activation.svg', directory='\writeDiagramsDir/deepnn')}
 
 \figure{\includediagram{\diagramsDir/deepnn/relu-activation}{60%}}{The ReLU activation function: zero for negative inputs, identity for positive inputs.}{relu-activation}
 
@@ -79,10 +79,10 @@ f(x) &= \mathbf{w}_2^{\top} \, \mathbf{h}(x)
 
 \notes{Each hidden unit acts as a basis function with its own kink location and slope.}
 
-\loadcode{NeuralNetwork}{mlai}
+\loadcode{NeuralNetwork}{mlai.neural_networks}
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
-import mlai
+from mlai.utils import write_figure
 import mlai.plot as plot}
 
 \code{x1 = np.linspace(-2, 2, 50)
@@ -107,7 +107,7 @@ ax.set_ylabel('$x_2$', fontsize=12)
 cbar = plt.colorbar(contour, ax=ax)
 cbar.set_label('Network Output', fontsize=12)
 
-mlai.write_figure(filename='relu-network-2d.svg', directory='\writeDiagramsDir/deepnn')}
+write_figure(filename='relu-network-2d.svg', directory='\writeDiagramsDir/deepnn')}
 
 \figure{\includediagram{\diagramsDir/deepnn/relu-network-2d}{60%}}{Output of a 2D ReLU network with 3 hidden units, showing piecewise-linear regions.}{relu-network-2d}
 
@@ -115,24 +115,7 @@ mlai.write_figure(filename='relu-network-2d.svg', directory='\writeDiagramsDir/d
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap}
 
-
-\helpercode{# Cell 2: Create Synthetic Data
-def create_synthetic_data(n_samples=100, task='regression'):
-    """Create synthetic datasets for demonstration."""
-    np.random.seed(42)
-    
-    if task == 'regression':
-        # Non-linear regression: y = x1^2 + x2^2 + noise
-        X = np.random.randn(n_samples, 2)
-        y = (X[:, 0]**2 + X[:, 1]**2).reshape(-1, 1) + 0.1 * np.random.randn(n_samples, 1)
-        return X, y
-    
-    elif task == 'classification':
-        # Binary classification: x1^2 + x2^2 > 1
-        X = np.random.randn(n_samples, 2)
-        y = ((X[:, 0]**2 + X[:, 1]**2) > 1.0).astype(float).reshape(-1, 1)
-        return X, y
-}
+\setupcode{from mlai.data import create_synthetic_data}
 
 \code{x1 = np.linspace(-2, 2, 50)
 x2 = np.linspace(-2, 2, 50)
@@ -184,7 +167,7 @@ nn = NeuralNetwork([2, 10, 1], [ReLUActivation(), LinearActivation()])}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
-import mlai
+from mlai.utils import write_figure
 import mlai.plot as plot}
 
 \plotcode{# Sawtooth construction visualization
@@ -212,7 +195,7 @@ for depth in range(6):
     axes[depth].grid(True, alpha=0.3)
 
 plt.tight_layout()
-mlai.write_figure(filename='sawtooth-construction.svg', directory='\writeDiagramsDir/deepnn')}
+write_figure(filename='sawtooth-construction.svg', directory='\writeDiagramsDir/deepnn')}
 
 \figure{\includediagram{\diagramsDir/deepnn/sawtooth-construction}{80%}}{Sawtooth construction showing exponential growth of linear segments with depth. Each layer doubles the number of kinks.}{sawtooth-construction}
 
@@ -228,7 +211,7 @@ mlai.write_figure(filename='sawtooth-construction.svg', directory='\writeDiagram
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
-import mlai
+from mlai.utils import write_figure
 import mlai.plot as plot}
 
 \plotcode{nn = NeuralNetwork([2, 4, 4, 1], [ReLUActivation(), ReLUActivation(), LinearActivation()])
@@ -260,7 +243,7 @@ ax.set_xlabel('$x_1$')
 ax.set_ylabel('$x_2$')
 plt.colorbar(contour, ax=ax)
 
-mlai.write_figure(filename='deep-relu-2d.svg', directory='\writeDiagramsDir/deepnn')}
+write_figure(filename='deep-relu-2d.svg', directory='\writeDiagramsDir/deepnn')}
 
 \figure{\includediagram{\diagramsDir/deepnn/deep-relu-2d}{60%}}{Deep ReLU network output showing complex piecewise-linear regions in 2D. Each region has constant gradient, but the overall function is continuous.}{deep-relu-2d}
 

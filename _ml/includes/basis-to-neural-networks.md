@@ -31,14 +31,14 @@ $$
 
 \notes{In our session on basis funcitons we showed how linear models can be used to create non linear prediction functions. Amoung the basis functions we considered were the ReLU basis function.}
 
-\code{from mlai import Activation}
+\code{from mlai import Activation.neural_networks}
 
-\loadcode{LinearActivation}{mlai}
-\loadcode{SigmoidActivation}{mlai}
-\loadcode{ReLUActivation}{mlai}
+\loadcode{LinearActivation}{mlai.neural_networks}
+\loadcode{SigmoidActivation}{mlai.neural_networks}
+\loadcode{ReLUActivation}{mlai.neural_networks}
 
-\setupcode{from mlai import Model}
-\loadcode{NeuralNetwork}{mlai}
+\setupcode{from mlai.models import Model}
+\loadcode{NeuralNetwork}{mlai.neural_networks}
 
 \subsection{Linear Models as Basis + Weights}
 
@@ -48,7 +48,7 @@ $$
 $$
 \notes{We defined a basis, such as the polynomial basis.}
 
-\loadcode{polynomial}{mlai}
+\loadcode{polynomial}{mlai.linear_models}
 
 \installcode{daft-pgm}
 
