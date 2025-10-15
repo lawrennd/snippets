@@ -34,7 +34,9 @@ print(f"Classification data: {X_cls.shape} -> {y_cls.shape}")}
 
 \subsection{Create and Test Neural Network}
 
-\setupcode{from mlai import ReLUActivation, LinearActivation, NeuralNetwork, SGD, train_model, MeanSquaredError, BinaryCrossEntropyLoss, SigmoidActivation}
+\setupcode{from mlai.neural_networks import ReLUActivation, LinearActivation, NeuralNetwork, SigmoidActivation
+from mlai.loss import MeanSquaredError, BinaryCrossEntropyLoss
+from mlai.optimise import SGD, train_model}
 
 \code{dimensions = [2, 5, 1]  # 2 inputs, 1 hidden layer (5 neurons), 1 output
 activations = [ReLUActivation(), LinearActivation()]
