@@ -55,7 +55,7 @@ $$
 \setupplotcode{import matplotlib
 import shutil
 
-if shutil.which('latex'):
+if shutil.which('latex') is None:
     plt.rcParams['text.usetex'] = False
 else:
     plt.rcParams['text.usetex'] = True

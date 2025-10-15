@@ -6,7 +6,7 @@
 \setupplotcode{import matplotlib.pyplot as plt
 import shutil
 
-if shutil.which('latex'):
+if shutil.which('latex') is None:
     plt.rcParams['text.usetex'] = False
 else:
     plt.rcParams['text.usetex'] = True

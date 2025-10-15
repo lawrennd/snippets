@@ -76,8 +76,17 @@ print(f"Bias gradients shapes: {[g.shape for g in gradients['bias_gradients']]}"
 
 \subsection{Unified Optimisation Interface}
 
+\loadcode{SGD}{mlai}
+
+\code{# Demonstrate the SGD optimizer
+sgd_opt = SGD(learning_rate=0.01)
+print(f"SGD optimizer created with learning rate: {sgd_opt.learning_rate}")
+print("SGD implements: parameters = parameters - learning_rate * gradients")}
+
+\loadcode{train_model}{mlai}
+
 \code{# Demonstrate the unified optimization interface with traditional NeuralNetwork
-from mlai import NeuralNetwork, ReLUActivation, LinearActivation, SGD, train_model, MeanSquaredError
+from mlai import NeuralNetwork, ReLUActivation, LinearActivation, MeanSquaredError
 
 # Create a traditional neural network
 dimensions = [2, 5, 3, 1]
@@ -117,7 +126,7 @@ print("This demonstrates the unified optimization interface for traditional neur
     # Loss function
     loss_fn = MeanSquaredError()
     
-    # Create SGD optimizer
+    # Create SGD optimiser
     sgd_opt = SGD(learning_rate=learning_rate)
     
     # Use unified training interface
