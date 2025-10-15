@@ -4,6 +4,14 @@
 \editme
 
 \setupplotcode{import matplotlib.pyplot as plt
+import shutil
+
+if shutil.which('latex'):
+    plt.rcParams['text.usetex'] = False
+else:
+    plt.rcParams['text.usetex'] = True
+    plt.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'
+
 plt.rcParams.update({'font.size': 22})}
 
 <!--setupplotcode{import seaborn as sns
