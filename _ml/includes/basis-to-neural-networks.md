@@ -53,9 +53,15 @@ $$
 \installcode{daft-pgm}
 
 \setupplotcode{import matplotlib
-# Comment for google colab (no latex available)
-matplotlib.rc('text', usetex=True)
-matplotlib.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'}
+import shutil
+
+if shutil.which('latex'):
+    plt.rcParams['text.usetex'] = False
+else:
+    plt.rcParams['text.usetex'] = True
+    plt.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'
+
+plt.rcParams.update({'font.size': 22})}
 
 \setupplotcode{import mlai.plot as plot}
 
