@@ -5,9 +5,9 @@
 
 \subsection{Deep Neural Network}
 
-\installcode{'daft-pgm'}
+\installifneeded{daft}{'daft-pgm'}
 
-\setupplotcode{import matplotlib
+\setupplotcode{import matplotlib.pyplot as plt
 import shutil
 
 if shutil.which('latex') is None:

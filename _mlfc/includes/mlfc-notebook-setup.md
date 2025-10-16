@@ -7,10 +7,9 @@
 
 \notes{We install some bespoke codes for creating and saving plots as well as loading data sets.}
 
-\setupcode{%%capture
-%pip install notutils
-%pip install git+https://github.com/lawrennd/ods.git
-%pip install git+https://github.com/lawrennd/mlai.git}
+\installcode{notutils}
+\installcode{pods}
+\installcode{mlai}
 
 \define{podsSoftware}
 \define{notutilsSoftware}
