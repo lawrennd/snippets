@@ -50,7 +50,7 @@ $$
 
 \loadcode{polynomial}{mlai.linear_models}
 
-\installcode{daft-pgm}
+\installcode{daft}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import shutil
