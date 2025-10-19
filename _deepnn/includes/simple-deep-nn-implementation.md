@@ -139,7 +139,7 @@ print(f"Final training loss: {losses[-1]:.4f}")}
 mlai.write_figure("nn-regression-training-progress.svg", directory="\writeDiagramsDir/ml")
 }
 
-\figure{\includediagram{\diagramsDir/ml/nn-regression-trainng-progress"}{50%}}{Neural Network Training Progress for a regression model){nn-regression-training-progress}
+\figure{\includediagram{\diagramsDir/ml/nn-regression-training-progress}{50%}}{Neural Network Training Progress for a regression model.){nn-regression-training-progress}
 
 
 \helpercode{def train_network_classification(X, y, n_epochs=500, learning_rate=0.1):

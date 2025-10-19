@@ -122,13 +122,16 @@ $$
 
 \notes{Minimal PyTorch example (CPU/GPU agnostic):}
 
-\code{import torch as th
-x = th.tensor(4.0, requires_grad=True)
+\installcode{torch}
+
+\setupcode{import torch as th}
+
+\code{x = th.tensor(4.0, requires_grad=True)
 y = th.tensor(2.0)
 f = (x + x*y)*2
 f.backward()
 x.grad  # == 2*(x + x*y)*(1 + y) = 8.0}
 
-\notes{PyTorch attaches `grad_fn` to results, constructs the graph dynamically during forward, and supports GPU execution via `.cuda()`. These conveniences, together with autodiff, enable fast deep learning experimentation.}
+\notes{PyTorch attaches `grad_fn` to results, constructs the graph dynamically during forward, and supports GPU execution via `.cuda()`. These conveniences, together with automatic differentiation, enable fast deep learning experimentation.}
 
 \endif

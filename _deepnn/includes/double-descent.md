@@ -70,7 +70,7 @@ locations become easier to find and they provide good generalization
 properties. In machine learning this is known as the "double descent
 phenomenon" (see e.g., @Belkin:reconciling19).}
 
-\notes{Diagram from @Nakkiran-deepdouble19}
+<!--notes{Diagram from @Nakkiran-deepdouble19}-->
 
 \notes{See also this talk by Misha Belkin:  <http://www.ipam.ucla.edu/abstract/?tid=15552&pcode=GLWS4> and these related papers <https://www.pnas.org/content/116/32/15849.short>, <https://www.pnas.org/content/117/20/10625>}
 
