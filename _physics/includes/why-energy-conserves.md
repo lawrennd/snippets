@@ -197,9 +197,9 @@ $$
 *Need:* Structure on $\mathbf{v}$
 }
 
-\newslide{The Naive Answer}
+\newslide{One Answer}
 
-\notes{The naive answer is: "$\mathbf{v}$ must be perpendicular to $\nabla E$". This is true, but not very useful, the answer depends on the form of $E$.
+\notes{One answer would be that "$\mathbf{v}$ must be perpendicular to $\nabla E$". The inner product between two perpendicular vectors is zero. This answer is correct, but doesn't turn out to be useful. because the  answer depends on the form of $E$, it's not general.
 
 We want something stronger: a structure that conserves *any* energy function we might choose. This means the structure must be built into the dynamics itself, independent of $E$.}
 
