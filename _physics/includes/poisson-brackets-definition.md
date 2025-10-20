@@ -369,5 +369,10 @@ The key is the antisymmetric structure $A$ and the properties it satisfies, not 
 *Key:* Antisymmetric structure, not specific form
 }
 
+\addreading{@Marsden:book99}{Chapter 2.7: Poisson Brackets}
+\addreading{@Marsden:book99}{Chapter 3.3: Examples: Poisson Brackets and Conserved Quantities}
+\addreading{@Marsden:book99}{Chapter 5.5: Poisson Brackets on Symplectic Manifolds}
+\addreading{@Marsden:book99}{Chapter 10.1-10.2: The Definition of Poisson Manifolds}
+
 \endif
 

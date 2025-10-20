@@ -261,5 +261,9 @@ $$
 *Casimirs = bridge between conservation & geometry*
 }
 
+\addreading{@Marsden:book99}{Chapter 10.2: Hamiltonian Vector Fields and Casimir Functions}
+\addreading{@Marsden:book99}{Chapter 11.4: Conservation of Momentum Maps}
+\addreading{@Marsden:book99}{Chapter 12.6: Momentum Maps and Casimir Functions}
+
 \endif
 

@@ -249,5 +249,8 @@ The mathematics is elegant: two matrices with opposite symmetry properties gener
 *Mathematics:* Opposite symmetries $\rightarrow$ complementary dynamics
 }
 
+\addreading{@Marsden:book99}{Chapter 10.1: The Definition of Poisson Manifolds}
+\addreading{@Marsden:book99}{Chapter 10.5: Quotients of Poisson Manifolds}
+
 \endif
 
