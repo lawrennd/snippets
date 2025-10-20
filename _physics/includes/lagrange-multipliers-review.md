@@ -28,19 +28,19 @@ $$
 
 The Lagrangian method introduces an auxiliary variable $\lambda$ (the Lagrange multiplier)
 $$
-\mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda(g(\mathbf{x}) - c).
+\mathscr{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda(g(\mathbf{x}) - c).
 $$
 At the optimum, both conditions must hold,
 \begin{align}
-\nabla_{\mathbf{x}} \mathcal{L} &= \nabla f + \lambda \nabla g = 0 \\
-\frac{\partial \mathcal{L}}{\partial \lambda} &= g(\mathbf{x}) - c = 0.
+\nabla_{\mathbf{x}} \mathscr{L} &= \nabla f + \lambda \nabla g = 0 \\
+\frac{\partial \mathscr{L}}{\partial \lambda} &= g(\mathbf{x}) - c = 0.
 \end{align}
 The first equation says: the gradient of $f$ must be perpendicular to the constraint surface (pointing along $\nabla g$). The second equation enforces the constraint itself.}
 
 \slides{
 **Standard Lagrange Multipliers:**
 $$
-\mathcal{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda(g(\mathbf{x}) - c)
+\mathscr{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda(g(\mathbf{x}) - c)
 $$
 
 **Optimality conditions:**
@@ -142,13 +142,13 @@ $$
 
 \notes{For The Inaccessible Game, we want to maximize entropy $H$ while conserving marginal entropies. The Lagrangian is
 $$
-\mathcal{L}(\boldsymbol{\theta}, \nu) = -H(\boldsymbol{\theta}) + \nu\left(\sum_{i=1}^N h_i(\boldsymbol{\theta}) - C\right).
+\mathscr{L}(\boldsymbol{\theta}, \nu) = -H(\boldsymbol{\theta}) + \nu\left(\sum_{i=1}^N h_i(\boldsymbol{\theta}) - C\right).
 $$
 We use $-H$ because by convention Lagrangians are minimised. The Lagrange multiplier $\nu$ (we use $\nu$ instead of $\lambda$ to avoid confusion with eigenvalues) enforces the constraint.
 
 Recall that $I + H = C$, so maximising $H$ is equivalent to minimising multi-information $I$. We could  write the Lagrangian as
 $$
-\mathcal{L}(\boldsymbol{\theta}, \nu) = I(\boldsymbol{\theta}) + \nu\left(\sum_{i=1}^N h_i(\boldsymbol{\theta}) - C\right).
+\mathscr{L}(\boldsymbol{\theta}, \nu) = I(\boldsymbol{\theta}) + \nu\left(\sum_{i=1}^N h_i(\boldsymbol{\theta}) - C\right).
 $$
 This makes explicit the information relaxation picture: we're minimising correlation structure (multi-information) subject to the conservation constraint.
 
@@ -157,7 +157,7 @@ The key difference from static optimisation: *$\nu$ becomes a function of time*,
 \slides{
 **Information Lagrangian:**
 $$
-\mathcal{L}(\boldsymbol{\theta}, \nu) = -H(\boldsymbol{\theta}) + \nu\left(\sum h_i - C\right)
+\mathscr{L}(\boldsymbol{\theta}, \nu) = -H(\boldsymbol{\theta}) + \nu\left(\sum h_i - C\right)
 $$
 
 * $-H$: Minimize negative entropy = maximize entropy
@@ -171,12 +171,12 @@ $$
 
 \notes{Taking the gradient of the Lagrangian with respect to $\boldsymbol{\theta}$:
 $$
-\nabla_{\boldsymbol{\theta}} \mathcal{L} = -\nabla H + \nu \sum_{i=1}^N \nabla h_i = -\nabla H + \nu a(\boldsymbol{\theta})
+\nabla_{\boldsymbol{\theta}} \mathscr{L} = -\nabla H + \nu \sum_{i=1}^N \nabla h_i = -\nabla H + \nu a(\boldsymbol{\theta})
 $$
 
 For maximum entropy production under the constraint, we follow (negative) gradient flow:
 $$
-\dot{\boldsymbol{\theta}} = -\nabla_{\boldsymbol{\theta}} \mathcal{L} = \nabla H - \nu a(\boldsymbol{\theta})
+\dot{\boldsymbol{\theta}} = -\nabla_{\boldsymbol{\theta}} \mathscr{L} = \nabla H - \nu a(\boldsymbol{\theta})
 $$
 
 Recall that for exponential families, $\nabla H = -G(\boldsymbol{\theta})\boldsymbol{\theta}$. This gives
@@ -239,7 +239,7 @@ $$
 \notes{The Lagrangian approach to constrained information dynamics gives us:
 
 1. **Constraint**: $\sum h_i(\boldsymbol{\theta}) = C$ maintained for all time
-2. **Lagrangian**: $\mathcal{L} = -H + \nu(\sum h_i - C)$
+2. **Lagrangian**: $\mathscr{L} = -H + \nu(\sum h_i - C)$
 3. **Dynamics**: $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} - \nu a$
 4. **Multiplier**: $\nu(t) = -\frac{a^\top G\boldsymbol{\theta}}{a^\top a}$ (determined by constraint)
 5. **Geometric picture**: Projected gradient flow $\dot{\boldsymbol{\theta}} = -\Pi_\parallel G\boldsymbol{\theta}$
