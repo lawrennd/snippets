@@ -166,7 +166,9 @@ Eigenvalues determine behavior:
 * Pure exponential dynamics
 }
 
-\notes{**Summary:** At second order (Gaussian regime), the dynamics near equilibrium are purely dissipative. The symmetric matrix $S$ drives entropy production and relaxation toward equilibrium. This is standard perturbation theory, but it's not the full story. In the next section, we'll see how non-Gaussian effects and constraint geometry introduce conservative dynamics at higher order.}
+\notes{**Summary:** At second order (Gaussian regime), the dynamics near equilibrium are purely dissipative. The symmetric matrix $S$ drives entropy production and relaxation toward equilibrium. This is standard perturbation theory, but it's not the full story. In the next section, we'll see how non-Gaussian effects and constraint geometry introduce conservative dynamics at higher order.
+
+**Note on locality:** This analysis is a local linearisation around a reference point $\boldsymbol{\theta}^\ast$ (typically an equilibrium). For general nonlinear systems, the matrices $S$, $A$, and $M$ vary with position on the manifold. However, for linear systems (constant $G$ and linear constraints), these matrices are the same everywhere, making the decomposition global rather than local. This is the case for our binary variables example in the computational demonstration.}
 
 \endif
 

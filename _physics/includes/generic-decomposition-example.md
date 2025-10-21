@@ -7,7 +7,7 @@
 
 \notes{Let's make the GENERIC decomposition concrete by computing it explicitly for the two binary variables example from Lecture 6.
 
-**Recall the setup:** At equilibrium $\boldsymbol{\theta}^\ast = (0, 0, 0)$ (uniform distribution), we computed the Fisher information matrix
+**Recall the setup:** For the binary variables system at $\boldsymbol{\theta} = (0, 0, 0)$ (uniform distribution, which is also an equilibrium), we computed the Fisher information matrix
 $$
 G = \begin{pmatrix}
 1/4 & 0 & 1/8 \\
@@ -15,13 +15,15 @@ G = \begin{pmatrix}
 1/8 & 1/8 & 3/16
 \end{pmatrix}.
 $$
-For this maximum entropy equilibrium, $\nu^\ast = 0$ and the constraint gradient is $a = (a_1, a_1, 0)$ where $a_1 < 0$ (since increasing $\theta_i$ decreases entropy from maximum).
+The constraint gradient is $a = (-1/4, -1/4, 0)^\top$ and at this point $\nu = 0$.
 
-The linearisation matrix is
+**Key insight:** For this system, both $G$ and $a$ are **constant** (independent of $\boldsymbol{\theta}$). This means the linearisation matrix
 $$
 M = -G + \frac{aa^\top G}{\|a\|^2}
 $$
-Let's compute this and decompose it into $S + A$ parts.}
+is the same everywhere on the constraint manifold. So the GENERIC decomposition $M = S + A$ we compute describes the *global flow structure* of this system, not just local behaviour near one point.
+
+Let's compute $M$ and decompose it into its symmetric ($S$) and antisymmetric ($A$) parts.}
 
 \slides{
 **Computational Example**
@@ -113,11 +115,13 @@ for i, lam in enumerate(eigs_A):
 
 \notes{**Observations:**
 
-1. *$S$ has real eigenvalues* (as expected for symmetric matrices)
-2. *$A$ has purely imaginary eigenvalues* (as expected for antisymmetric matrices)
-3. *$M$ combines both*: real parts from $S$ (dissipation), imaginary parts from $A$ (oscillation)
+1. **$S$ has real eigenvalues** (as expected for symmetric matrices). Note that $S$ has one positive eigenvalue (~0.035), two negative (~-0.22, ~-0.25), and $M$ has one zero eigenvalue. The positive eigenvalue in $S$ means trajectories flow **away** from $\boldsymbol{\theta}=(0,0,0)$ in that eigendirection. This doesn't indicate a problem, it simply describes the flow structure. Since $M$ is constant everywhere on this manifold, this decomposition describes how trajectories move throughout parameter space, not just the stability of a single point.
 
-At this maximum entropy equilibrium, the antisymmetric part is relatively small (the system is nearly Gaussian), so the dynamics are dominated by dissipation.}
+2. **$A$ has purely imaginary eigenvalues** (as expected for antisymmetric matrices). This gives the oscillatory/rotational component.
+
+3. **$M$ combines both**: real parts from $S$ (growth/decay), imaginary parts from $A$ (oscillation). The zero eigenvalue in $M$ indicates a direction with no net flow, this is related to the constraint structure.
+
+At this point in parameter space (maximum entropy with $\nu=0$), the antisymmetric part is relatively small ($\|A\|/\|S\| \approx 0.37$) because the system is in the Gaussian regime, so dissipative effects dominate over rotational ones.}
 
 \subsection{Phase Space Trajectories}
 
@@ -248,7 +252,9 @@ mlai.write_figure('generic-energy-evolution.svg',
 
 This is exactly the GENERIC structure: the symmetric part drives irreversible energy dissipation, while the antisymmetric part creates reversible oscillations.}
 
-\notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics, it has a dynamical meaning. The symmetric part $S$ controls stability and dissipation, while the antisymmetric part $A$ controls rotation and oscillation. Together they combine to create the rich dynamics we see in physical and information-theoretic systems.}
+\notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics, it describes the structure of dynamical flow in parameter space. The symmetric part $S$ controls growth/decay directions, while the antisymmetric part $A$ controls rotation and oscillation. Together they reveal how trajectories move through the system.
+
+For this special linear case (constant $G$ and constraint), the decomposition is *global*, describing flow structure everywhere on the manifold. For general nonlinear systems, the decomposition varies with position, but the fundamental insight remains: information dynamics naturally decompose into dissipative (thermodynamic) and conservative (mechanical) components.}
 
 \endif
 
