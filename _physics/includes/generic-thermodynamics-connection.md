@@ -1,0 +1,352 @@
+\ifndef{genericThermodynamicsConnection}
+\define{genericThermodynamicsConnection}
+
+\editme
+
+\subsection{GENERIC as Generalized Thermodynamics}
+
+\notes{GENERIC provides a framework that *generalizes* classical thermodynamics to arbitrary non-equilibrium systems. Where classical thermodynamics describes systems near equilibrium with linear response, GENERIC handles systems arbitrarily far from equilibrium with full nonlinear dynamics.
+
+**Classical thermodynamics** (Clausius, Kelvin, Carnot):
+- Equilibrium states
+- Quasi-static processes
+- Entropy maximization at equilibrium
+- No dynamics, only relations between states
+
+**Linear irreversible thermodynamics** (Onsager, Prigogine):
+- Near-equilibrium dynamics
+- Linear force-flux relations
+- Onsager reciprocity
+- Valid only for small deviations
+
+**GENERIC** (Grmela, Öttinger):
+- Arbitrary far-from-equilibrium states
+- Nonlinear dynamics
+- Combines reversible + irreversible
+- Reduces to classical thermo at equilibrium
+
+GENERIC is the completion of thermodynamics—it describes the full dynamical evolution, not just equilibrium endpoints.}
+
+\slides{
+**Hierarchy of Thermodynamics**
+
+**Classical:** Equilibrium only, no dynamics
+
+**Linear irreversible:** Near equilibrium, linear response
+
+**GENERIC:** Full dynamics, far from equilibrium
+
+$$\text{Classical} \subset \text{Linear} \subset \text{GENERIC}$$
+
+GENERIC = completion of thermodynamics!
+}
+
+\subsection{The Laws of Thermodynamics in GENERIC}
+
+\notes{GENERIC automatically encodes the fundamental laws of thermodynamics. Let's see how:
+
+**Zeroth Law** (Transitivity of equilibrium):
+At equilibrium, $\dot{x} = L \nabla E + M \nabla S = 0$. If systems A and B are each in equilibrium with C, and equilibrium is defined by the same functionals $E$ and $S$, then A and B are in equilibrium with each other. This follows from the uniqueness of critical points.
+
+**First Law** (Energy conservation):
+$$
+\frac{\text{d}E}{\text{d}t} = \langle \nabla E, \dot{x} \rangle = \langle \nabla E, L \nabla E + M \nabla S \rangle
+$$
+Using antisymmetry of $L$: $\langle \nabla E, L \nabla E \rangle = 0$
+
+Using degeneracy condition 1: $\langle \nabla E, M \nabla S \rangle = 0$
+
+Therefore: $\frac{\text{d}E}{\text{d}t} = 0$ (energy is conserved!)
+
+The first law is built into GENERIC structure through antisymmetry and degeneracy.
+
+**Second Law** (Entropy increase):
+$$
+\frac{\text{d}S}{\text{d}t} = \langle \nabla S, \dot{x} \rangle = \langle \nabla S, L \nabla E + M \nabla S \rangle
+$$
+Using degeneracy condition 2: $\langle \nabla S, L \nabla E \rangle = 0$
+
+Using positive semi-definiteness of $M$: $\langle \nabla S, M \nabla S \rangle \geq 0$
+
+Therefore: $\frac{\text{d}S}{\text{d}t} \geq 0$ (entropy increases!)
+
+The second law is built into GENERIC through degeneracy and positive semi-definiteness.
+
+**Third Law** (Entropy vanishes at zero temperature):
+This is more subtle and depends on the specific form of $S$ and $M$, but GENERIC is compatible with quantum mechanical formulations where the third law emerges naturally.}
+
+\slides{
+**Laws in GENERIC**
+
+**0th Law:** Equilibrium transitivity (uniqueness)
+
+**1st Law:** Energy conserved
+$$\frac{\text{d}E}{\text{d}t} = 0$$
+* From antisymmetry + degeneracy 1
+
+**2nd Law:** Entropy increases
+$$\frac{\text{d}S}{\text{d}t} \geq 0$$
+* From degeneracy 2 + positive semi-definite
+
+Laws = consequences of GENERIC structure!
+}
+
+\subsection{Onsager Reciprocity Relations}
+
+\notes{One of the crowning achievements of linear irreversible thermodynamics was Onsager's reciprocity relations [@Onsager-reciprocal31]. These state that near equilibrium, the response matrix relating thermodynamic forces to fluxes is symmetric.
+
+GENERIC provides a non-linear generalization of Onsager reciprocity through the **symmetry of the friction operator** $M$.
+
+Near equilibrium, expand $M(\nabla S)$ to leading order:
+$$
+M(x) \nabla S(x) \approx M(x_{\text{eq}}) \nabla^2 S(x_{\text{eq}}) (x - x_{\text{eq}}) = M_0 H_S (x - x_{\text{eq}})
+$$
+where $H_S$ is the Hessian of entropy at equilibrium.
+
+The flux is $J = M_0 H_S \delta x$ and the thermodynamic force is $X = H_S \delta x$. The response matrix is:
+$$
+J = L X \quad \text{where} \quad L = M_0
+$$
+
+Since $M_0$ is symmetric (GENERIC requirement), we have $L_{ij} = L_{ji}$, which is exactly Onsager reciprocity!
+
+**Key insight:** Onsager reciprocity isn't a separate postulate—it's a consequence of the symmetric structure of the friction operator, which in turn follows from thermodynamic consistency (entropy increase).}
+
+\slides{
+**Onsager Reciprocity**
+
+Near equilibrium: flux = response × force
+
+$$J = L X$$
+
+GENERIC: $M$ is symmetric → $L_{ij} = L_{ji}$
+
+**Onsager reciprocity = consequence of GENERIC!**
+
+(Not separate postulate, follows from structure)
+
+Historical: Onsager (1931) → GENERIC (1997)
+
+Now understood as special case!
+}
+
+\subsection{Entropy Production}
+
+\notes{A central concept in non-equilibrium thermodynamics is **entropy production**—the rate at which entropy is generated by irreversible processes. In GENERIC, this has a beautiful formulation.
+
+The total entropy rate is:
+$$
+\frac{\text{d}S}{\text{d}t} = \langle \nabla S, L \nabla E + M \nabla S \rangle = \langle \nabla S, M \nabla S \rangle
+$$
+(using degeneracy 2: $L \nabla S = 0$)
+
+We can decompose this as:
+$$
+\dot{S} = \sigma_S \geq 0
+$$
+where $\sigma_S = \langle \nabla S, M \nabla S \rangle$ is the **entropy production rate**.
+
+Key properties:
+1. **Non-negative:** $\sigma_S \geq 0$ (from positive semi-definiteness of $M$)
+2. **Vanishes at equilibrium:** When $\nabla S = 0$, we have $\sigma_S = 0$
+3. **Measures irreversibility:** $\sigma_S$ quantifies how far the system is from reversible dynamics
+
+For our information dynamics:
+$$
+\sigma_S = \langle -G\boldsymbol{\theta}, G(-G\boldsymbol{\theta}) \rangle = \boldsymbol{\theta}^\top G^2 \boldsymbol{\theta}
+$$
+
+This is exactly the entropy production from maximum entropy dynamics (Lecture 3)! The Fisher information matrix $G$ governs the rate of entropy increase.}
+
+\slides{
+**Entropy Production**
+
+$$\frac{\text{d}S}{\text{d}t} = \sigma_S = \langle \nabla S, M \nabla S \rangle \geq 0$$
+
+**Properties:**
+* Non-negative (always)
+* Zero at equilibrium
+* Measures irreversibility
+
+**Information dynamics:**
+$$\sigma_S = \boldsymbol{\theta}^\top G^2 \boldsymbol{\theta}$$
+
+Fisher $G$ = rate of entropy production!
+
+(Recall Lecture 3: Maximum entropy production)
+}
+
+\subsection{Free Energy and Dissipation}
+
+\notes{In equilibrium thermodynamics, the **free energy** $F = E - TS$ (where $T$ is temperature) determines equilibrium states: systems minimize $F$ at fixed temperature.
+
+In GENERIC, we can define a generalized free energy functional and show that it decreases along trajectories (for isothermal processes).
+
+For a system at temperature $T$, define:
+$$
+\mathcal{F} = E - T S
+$$
+
+The rate of change is:
+$$
+\frac{\text{d}\mathcal{F}}{\text{d}t} = \frac{\text{d}E}{\text{d}t} - T\frac{\text{d}S}{\text{d}t} = 0 - T \sigma_S = -T \langle \nabla S, M \nabla S \rangle \leq 0
+$$
+
+So free energy decreases! The system dissipates toward minimum free energy at equilibrium.
+
+For information dynamics, this connects to the free energy in exponential families:
+$$
+\mathcal{F}(\boldsymbol{\theta}) = -A(\boldsymbol{\theta}) + \boldsymbol{\theta}^\top \mathbb{E}[T(\mathbf{x})]
+$$
+where $A(\boldsymbol{\theta})$ is the log partition function. The dynamics $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta}$ perform gradient descent on free energy (under constraints).}
+
+\slides{
+**Free Energy Dissipation**
+
+Free energy: $\mathcal{F} = E - TS$
+
+**Rate of change:**
+$$\frac{\text{d}\mathcal{F}}{\text{d}t} = -T\sigma_S \leq 0$$
+
+Free energy decreases → equilibrium at minimum
+
+**Information dynamics:**
+$$\mathcal{F}(\boldsymbol{\theta}) = -A(\boldsymbol{\theta}) + \boldsymbol{\theta}^\top \mathbb{E}[T]$$
+
+Dynamics = gradient descent on $\mathcal{F}$ (under constraints)
+}
+
+\subsection{Fluctuation-Dissipation Relations}
+
+\notes{Another deep result from statistical mechanics is the **fluctuation-dissipation theorem**, which relates the response of a system to perturbations to its spontaneous fluctuations at equilibrium.
+
+Near equilibrium, fluctuations in a variable $x_i$ have variance:
+$$
+\langle (\delta x_i)^2 \rangle \propto k_B T
+$$
+
+The response to a small force $f_j$ is:
+$$
+\langle \delta x_i \rangle = \chi_{ij} f_j
+$$
+
+The fluctuation-dissipation theorem states:
+$$
+\chi_{ij} \propto \frac{\langle \delta x_i \delta x_j \rangle}{k_B T}
+$$
+
+In GENERIC, this emerges naturally from the structure. The friction operator $M$ governs both:
+- **Dissipation:** How perturbations relax
+- **Fluctuations:** Equilibrium variance (through Gibbs distribution)
+
+For our information dynamics, $M = G$ (Fisher information), which is exactly the inverse covariance matrix for Gaussian distributions! So:
+$$
+G_{ij}^{-1} = \text{Cov}(T_i, T_j) = \langle (\delta T_i)(\delta T_j) \rangle
+$$
+
+The Fisher information (dissipation) and the covariance (fluctuations) are inverses—a direct manifestation of fluctuation-dissipation!}
+
+\slides{
+**Fluctuation-Dissipation**
+
+**Theorem:** Response $\propto$ Equilibrium fluctuations
+
+$$\chi_{ij} \propto \frac{\langle \delta x_i \delta x_j \rangle}{k_B T}$$
+
+**GENERIC:** $M$ governs both dissipation and fluctuations
+
+**Information dynamics:**
+$$G^{-1} = \text{Cov}(T_i, T_j)$$
+
+Fisher (dissipation) $\leftrightarrow$ Covariance (fluctuations)
+
+Direct manifestation of theorem!
+}
+
+\subsection{Maximum Entropy Production Principle}
+
+\notes{The **maximum entropy production principle** (MEPP) states that non-equilibrium steady states are characterized by maximum entropy production rate subject to constraints. This principle is debated in thermodynamics, but GENERIC provides a framework for understanding when it applies.
+
+From Lecture 3, we derived that unconstrained information dynamics maximize entropy production:
+$$
+\dot{S} = \max_{\dot{\boldsymbol{\theta}}} \{\dot{S}(\dot{\boldsymbol{\theta}}) : \text{Fisher-constrained}\}
+$$
+
+With constraints, the dynamics become:
+$$
+\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} - \nu a
+$$
+
+This still maximizes entropy production *on the constraint manifold*:
+$$
+\dot{S} = \max_{\dot{\boldsymbol{\theta}} : a^\top\dot{\boldsymbol{\theta}}=0} \{-\boldsymbol{\theta}^\top G \dot{\boldsymbol{\theta}}\}
+$$
+
+So MEPP holds for information dynamics as a consequence of GENERIC structure + Fisher information as friction.
+
+The general lesson: MEPP emerges when:
+1. The friction operator is related to the entropy Hessian (Fisher information)
+2. Constraints are properly accounted for via Lagrange multipliers
+3. The system is not externally driven
+
+GENERIC provides the mathematical framework for understanding when MEPP applies and when it doesn't.}
+
+\slides{
+**Maximum Entropy Production**
+
+**Principle:** Non-equilibrium steady states maximize $\dot{S}$
+
+**Information dynamics (L3):**
+$$\dot{S} = \max \{-\boldsymbol{\theta}^\top G\dot{\boldsymbol{\theta}} : a^\top\dot{\boldsymbol{\theta}} = 0\}$$
+
+**MEPP emerges when:**
+1. $M$ related to entropy Hessian (Fisher!)
+2. Constraints via Lagrange multipliers
+3. No external driving
+
+GENERIC explains when/why MEPP applies!
+}
+
+\subsection{Connection to Non-Equilibrium Statistical Mechanics}
+
+\notes{GENERIC bridges macroscopic thermodynamics and microscopic statistical mechanics. While we've been working at the level of distributions and information, GENERIC can be derived from:
+
+**Microscopic foundations:**
+- **Liouville equation** for phase space density
+- **BBGKY hierarchy** for reduced distributions  
+- **Projection operator methods** (Zwanzig-Mori)
+
+These microscopic theories show how reversible microscopic dynamics (Hamiltonian) give rise to irreversible macroscopic dynamics (dissipation) through **coarse-graining** and **loss of information**.
+
+The antisymmetric part $L$ preserves the fine-grained microscopic reversibility. The symmetric part $M$ captures the effective irreversibility from ignored microscopic degrees of freedom.
+
+For information dynamics:
+- Fine-grained: Full joint distribution $p(\mathbf{x})$
+- Coarse-grained: Natural parameters $\boldsymbol{\theta}$ (exponential family)
+- $L$: Preserves structure within parameter space
+- $M = G$: Dissipation from unobserved correlations
+
+This connects our information-theoretic approach to fundamental stat-mech!}
+
+\slides{
+**Microscopic Foundations**
+
+GENERIC from:
+* Liouville equation (phase space)
+* BBGKY hierarchy (reductions)
+* Projection operators (Zwanzig-Mori)
+
+**Coarse-graining:**
+* Fine → coarse: lose information
+* Reversible → irreversible
+* $L$: Preserves structure
+* $M$: Captures dissipation from unobserved DOF
+
+Information dynamics = coarse-grained stat-mech!
+}
+
+\notes{**Summary:** GENERIC generalizes classical thermodynamics to arbitrary non-equilibrium dynamics. The laws of thermodynamics, Onsager reciprocity, entropy production, fluctuation-dissipation, and maximum entropy production all emerge as consequences of GENERIC structure. For information dynamics, Fisher information plays the role of thermodynamic friction, connecting information theory to the foundations of statistical mechanics and thermodynamics. The framework we built from axioms (Lectures 1-7) is not just mathematically consistent—it's thermodynamically fundamental.}
+
+\endif
+
+
