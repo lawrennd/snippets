@@ -47,7 +47,7 @@ Any matrix $M = S + A$ where:
 
 \subsection{Physical Interpretation}
 
-\notes{Why do we care about this decomposition? In dynamics $\dot{x} = Mx$, the two parts have fundamentally different physical meanings.
+\notes{Why do we care about this decomposition? In dynamics $\dot{x} = Mx$, the two parts represent different aspects of the system.
 
 **Symmetric part $S$:**
 - Represents dissipation or gradient flow
