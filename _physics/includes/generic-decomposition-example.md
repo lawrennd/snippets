@@ -165,6 +165,62 @@ for i, lam in enumerate(eigs_A):
 
 The small ratio $\|A\|/\|S\|$ indicates that at this point, dissipative effects strongly dominate over rotational ones. This is typical for regions where the system is close to Gaussian behavior. At other points on the manifold (especially with tighter constraints or stronger correlations), the antisymmetric part can become more prominent.}
 
+\subsection{Where Does the Antisymmetric Part Come From?}
+
+\notes{To understand the origin of the antisymmetric component, let's compare the constrained and unconstrained dynamics.}
+
+\code{# Compare: Unconstrained vs Constrained
+print("Constrained vs Unconstrained Comparison:")
+print("=" * 50)
+
+# Unconstrained dynamics: dθ/dt = -Gθ (no constraint)
+M_unconstrained = -G
+
+print("\nUnconstrained: dθ/dt = -Gθ")
+print("  Jacobian M = -G (Fisher matrix only)")
+
+S_unc = (M_unconstrained + M_unconstrained.T) / 2
+A_unc = (M_unconstrained - M_unconstrained.T) / 2
+
+print(f"  ||S|| = {np.linalg.norm(S_unc, 'fro'):.4f}")
+print(f"  ||A|| = {np.linalg.norm(A_unc, 'fro'):.4f}")
+print(f"  Is M symmetric? {np.allclose(M_unconstrained, M_unconstrained.T)}")
+
+print("\nConstrained: dθ/dt = -Gθ - νa (with h₁+h₂=C)")
+print("  Jacobian includes constraint terms")
+print(f"  ||S|| = {np.linalg.norm(S, 'fro'):.4f}")
+print(f"  ||A|| = {np.linalg.norm(A, 'fro'):.4f}")
+print(f"  Is M symmetric? {np.allclose(M, M.T)}")
+
+print("\n" + "=" * 50)
+print("Conclusion: A emerges from constraint geometry!")
+}
+
+\notes{**Key insight:** Without constraints, the dynamics $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta}$ have a **symmetric** Jacobian $M = -G$. There is no antisymmetric part ($A = 0$), only pure dissipation toward maximum entropy.
+
+With the marginal entropy constraint $h_1 + h_2 = C$, the dynamics become $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} - \nu a$. The Lagrange multiplier $\nu$ varies with position (to enforce tangency), and the constraint gradient $a$ varies with position (constraint surface curvature). These create additional terms in the Jacobian:
+$$
+M = \frac{\partial F}{\partial \boldsymbol{\theta}} = -G + \text{(constraint terms)}
+$$
+
+The constraint terms break the symmetry, introducing an antisymmetric component $A \neq 0$. This is the **geometric origin** of conservative dynamics: the constraint surface curves through parameter space, creating geometric phases (Berry-like effects) that manifest as rotation/oscillation.
+
+**Physical interpretation:** As trajectories move along the curved constraint manifold, they experience geometric "twisting" from the constraint geometry. This is analogous to parallel transport on a curved surface—even if you move in what feels like a "straight line" locally, the curvature causes rotation. This geometric effect is precisely what the antisymmetric part $A$ captures.}
+
+\slides{
+**Origin of Antisymmetric Part**
+
+Unconstrained: $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta}$
+* $M = -G$ (symmetric)
+* $A = 0$ (no rotation)
+
+Constrained: $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} - \nu a$
+* Constraint terms break symmetry
+* $A \neq 0$ (rotation emerges!)
+
+**Constraint geometry creates conservative dynamics**
+}
+
 \subsection{Phase Space Trajectories}
 
 \notes{Let's visualize how trajectories evolve under the three different dynamics to see the difference between dissipative, conservative, and combined flow.}
