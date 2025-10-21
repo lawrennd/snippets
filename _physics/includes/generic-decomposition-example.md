@@ -7,62 +7,104 @@
 
 \notes{Let's make the GENERIC decomposition concrete by computing it explicitly for the two binary variables example from Lecture 6.
 
-**Recall the setup:** For the binary variables system at $\boldsymbol{\theta} = (0, 0, 0)$ (uniform distribution, which is also an equilibrium), we computed the Fisher information matrix
-$$
-G = \begin{pmatrix}
-1/4 & 0 & 1/8 \\
-0 & 1/4 & 1/8 \\
-1/8 & 1/8 & 3/16
-\end{pmatrix}.
-$$
-The constraint gradient is $a = (-1/4, -1/4, 0)^\top$ and at this point $\nu = 0$.
+We'll analyse the local flow structure at a point on the constraint manifold: $\boldsymbol{\theta} = (0.3, -0.2, 0.1)$. This is *not* an equilibrium point (the dynamics $\dot{\boldsymbol{\theta}} \neq 0$ here), which makes it more representative of general flow behavior.
 
-**Key insight:** For this system, both $G$ and $a$ are **constant** (independent of $\boldsymbol{\theta}$). This means the linearisation matrix
-$$
-M = -G + \frac{aa^\top G}{\|a\|^2}
-$$
-is the same everywhere on the constraint manifold. So the GENERIC decomposition $M = S + A$ we compute describes the *global flow structure* of this system, not just local behaviour near one point.
+At this point, we:
 
-Let's compute $M$ and decompose it into its symmetric ($S$) and antisymmetric ($A$) parts.}
+1. Compute the Fisher information matrix $G(\boldsymbol{\theta})$
+2. Compute the constraint gradient $a(\boldsymbol{\theta}) = \nabla(h_1 + h_2)$
+3. Determine the Lagrange multiplier $\nu$ from the tangency condition
+4. Compute the linearisation matrix $M = \partial F/\partial \boldsymbol{\theta}$ where $F(\boldsymbol{\theta}) = -G\boldsymbol{\theta} - \nu a$
+5. Decompose $M = S + A$ to reveal the GENERIC structure
+
+This analysis reveals how information flows through this region of parameter space.}
 
 \slides{
 **Computational Example**
 
-Binary variables at equilibrium:
-$$
-G = \begin{pmatrix}
-1/4 & 0 & 1/8 \\
-0 & 1/4 & 1/8 \\
-1/8 & 1/8 & 3/16
-\end{pmatrix}
-$$
+Analyze at $\boldsymbol{\theta} = (0.3, -0.2, 0.1)$
 
-Compute: $M = -G + \frac{aa^\top G}{\|a\|^2}$
+Steps:
+1. Compute $G(\boldsymbol{\theta})$, $a(\boldsymbol{\theta})$
+2. Find $\nu$ from tangency
+3. Linearize: $M = \partial F/\partial \boldsymbol{\theta}$
+4. Decompose: $M = S + A$
 
-Decompose: $M = S + A$
+Reveals local flow structure
 }
 
 \setupcode{import numpy as np
 import matplotlib.pyplot as plt
 from scipy.linalg import expm}
 
-\code{# Fisher information at equilibrium
-G = np.array([
-    [1/4, 0, 1/8],
-    [0, 1/4, 1/8],
-    [1/8, 1/8, 3/16]
-])
+\code{# Define helper functions for computing system properties
+def compute_marginals_binary(theta1, theta2, theta12):
+    """Compute marginal probabilities for 2D binary exponential family"""
+    logits = np.array([0, theta1, theta2, theta1 + theta2 + theta12])
+    log_Z = np.logaddexp.reduce(logits)
+    probs = np.exp(logits - log_Z)
+    p1 = np.array([probs[0] + probs[2], probs[1] + probs[3]])
+    p2 = np.array([probs[0] + probs[1], probs[2] + probs[3]])
+    return p1, p2, probs
 
-# Constraint gradient (approximate for uniform marginals)
-# Increasing theta_i decreases entropy from max, so a_1 < 0
-a = np.array([-0.25, -0.25, 0.0])
+def compute_fisher_binary(theta1, theta2, theta12):
+    """Compute Fisher information matrix"""
+    _, _, probs = compute_marginals_binary(theta1, theta2, theta12)
+    phi_vals = np.array([[0, 0, 0], [1, 0, 0], [0, 1, 0], [1, 1, 1]])
+    mean_phi = probs @ phi_vals
+    cov_matrix = sum(p * np.outer(phi, phi) for p, phi in zip(probs, phi_vals))
+    return cov_matrix - np.outer(mean_phi, mean_phi)
 
-# Linearization matrix M
-# For maximum entropy equilibrium: nu* = 0
-# M = -G + (a a^T G) / ||a||^2
-M = -G + np.outer(a, a @ G) / (a @ a)
+def marginal_entropy(p):
+    """Compute Shannon entropy"""
+    p_clean = p[p > 1e-10]
+    return -np.sum(p_clean * np.log(p_clean))
 
-print("Linearization matrix M:")
+def compute_constraint_gradient(theta1, theta2, theta12, eps=1e-5):
+    """Numerically compute ∇(h₁ + h₂)"""
+    p1, p2, _ = compute_marginals_binary(theta1, theta2, theta12)
+    h_base = marginal_entropy(p1) + marginal_entropy(p2)
+    grad = np.zeros(3)
+    for i, delta in enumerate([np.array([eps,0,0]), np.array([0,eps,0]), np.array([0,0,eps])]):
+        p1_p, p2_p, _ = compute_marginals_binary(
+            theta1 + delta[0], theta2 + delta[1], theta12 + delta[2])
+        h_plus = marginal_entropy(p1_p) + marginal_entropy(p2_p)
+        grad[i] = (h_plus - h_base) / eps
+    return grad
+
+# Analyze at a typical (non-equilibrium) point
+theta = np.array([0.3, -0.2, 0.1])
+
+print(f"Analyzing at θ = {theta}\n")
+
+# Compute system properties at this point
+G = compute_fisher_binary(theta[0], theta[1], theta[2])
+a = compute_constraint_gradient(theta[0], theta[1], theta[2])
+
+# Compute Lagrange multiplier from tangency condition
+F_unconstrained = -G @ theta
+nu = -np.dot(F_unconstrained, a) / np.dot(a, a)
+
+# Dynamics at this point
+F = F_unconstrained - nu * a
+
+print(f"ν = {nu:.4f}")
+print(f"||F(θ)|| = {np.linalg.norm(F):.4f} (non-zero, not equilibrium)\n")
+
+# Compute linearization M = ∂F/∂θ numerically
+eps_diff = 1e-5
+M = np.zeros((3, 3))
+for i in range(3):
+    theta_plus = theta.copy()
+    theta_plus[i] += eps_diff
+    G_plus = compute_fisher_binary(theta_plus[0], theta_plus[1], theta_plus[2])
+    a_plus = compute_constraint_gradient(theta_plus[0], theta_plus[1], theta_plus[2])
+    F_unc_plus = -G_plus @ theta_plus
+    nu_plus = -np.dot(F_unc_plus, a_plus) / np.dot(a_plus, a_plus)
+    F_plus = F_unc_plus - nu_plus * a_plus
+    M[:, i] = (F_plus - F) / eps_diff
+
+print("Linearization matrix M = ∂F/∂θ:")
 print(M)
 print(f"\nM is {'symmetric' if np.allclose(M, M.T) else 'NOT symmetric'}")
 }
@@ -115,13 +157,13 @@ for i, lam in enumerate(eigs_A):
 
 \notes{**Observations:**
 
-1. **$S$ has real eigenvalues** (as expected for symmetric matrices). Note that $S$ has one positive eigenvalue (~0.035), two negative (~-0.22, ~-0.25), and $M$ has one zero eigenvalue. The positive eigenvalue in $S$ means trajectories flow **away** from $\boldsymbol{\theta}=(0,0,0)$ in that eigendirection. This doesn't indicate a problem, it simply describes the flow structure. Since $M$ is constant everywhere on this manifold, this decomposition describes how trajectories move throughout parameter space, not just the stability of a single point.
+1. **$S$ has real eigenvalues** (as expected for symmetric matrices). All three eigenvalues are negative (~-0.03, ~-0.44, ~-0.85), indicating that in the absence of the antisymmetric part, trajectories would converge toward this point. This describes the local dissipative structure.
 
-2. **$A$ has purely imaginary eigenvalues** (as expected for antisymmetric matrices). This gives the oscillatory/rotational component.
+2. **$A$ has purely imaginary eigenvalues** (as expected for antisymmetric matrices). The imaginary parts (~±0.012i) give the local oscillatory/rotational frequency. The antisymmetric part is relatively small ($\|A\|/\|S\| \approx 0.017$) at this point.
 
-3. **$M$ combines both**: real parts from $S$ (growth/decay), imaginary parts from $A$ (oscillation). The zero eigenvalue in $M$ indicates a direction with no net flow, this is related to the constraint structure.
+3. **$M$ combines both**: real parts from $S$ (growth/decay), imaginary parts from $A$ (oscillation/rotation). Together they describe how perturbations evolve in this neighborhood of parameter space.
 
-At this point in parameter space (maximum entropy with $\nu=0$), the antisymmetric part is relatively small ($\|A\|/\|S\| \approx 0.37$) because the system is in the Gaussian regime, so dissipative effects dominate over rotational ones.}
+The small ratio $\|A\|/\|S\|$ indicates that at this point, dissipative effects strongly dominate over rotational ones. This is typical for regions where the system is close to Gaussian behavior. At other points on the manifold (especially with tighter constraints or stronger correlations), the antisymmetric part can become more prominent.}
 
 \subsection{Phase Space Trajectories}
 
@@ -189,15 +231,15 @@ mlai.write_figure('generic-decomposition-trajectories.svg',
 
 \notes{**Key insights from the visualization:**
 
-Note: The trajectories are shown over an extended time ($t \in [0, 30]$) to make the rotation from $A$ clearly visible. The oscillation period is approximately $2\pi/0.088 \approx 71$ time units, so we see about 0.4 cycles.
+Note: The trajectories are shown over an extended time ($t \in [0, 30]$) to make the rotation from $A$ clearly visible. The oscillation period is approximately $2\pi/0.012 \approx 524$ time units, so we see only a small fraction of a full cycle.
 
-1. **Pure $S$ dynamics (left)**: Trajectories decay exponentially toward the origin. This is pure dissipation—entropy production drives the system to equilibrium. All eigenvalues are real and negative.
+1. **Pure $S$ dynamics (left)**: Trajectories decay toward the origin. This is pure dissipation—the symmetric part drives convergence. All eigenvalues of $S$ are real and negative at this point.
 
-2. **Pure $A$ dynamics (center)**: Trajectories circulate without approaching the origin. This is conservative dynamics—no entropy production, just rotation on the constraint manifold. The norm $\|q\|$ is perfectly conserved. Eigenvalues are purely imaginary.
+2. **Pure $A$ dynamics (centre)**: Trajectories circulate with conserved norm $\|q\|$. This is conservative dynamics—pure rotation with no dissipation. Eigenvalues of $A$ are purely imaginary.
 
-3. **Combined $M = S + A$ dynamics (right)**: Trajectories spiral inward. The symmetric part causes decay while the antisymmetric part causes rotation. This is the GENERIC structure: dissipation + conservation = damped oscillation.
+3. **Combined $M = S + A$ dynamics (right)**: Trajectories spiral inward, combining decay (from $S$) with rotation (from $A$). This is the GENERIC structure: dissipation + conservation working together.
 
-**Why is the antisymmetric effect weak here?** At this particular equilibrium (maximum entropy with $\nu^\ast = 0$), we're deep in the Gaussian regime where $\|A\|/\|S\| \approx 0.37$. The antisymmetric part emerges from third-order corrections (third cumulants and constraint curvature). If we moved to equilibria with tighter constraints ($\nu > 0$) or more non-Gaussian distributions, the antisymmetric part would become more prominent, and mechanical behavior would dominate.}
+**Why is the antisymmetric effect weak here?** At this point in parameter space, $\|A\|/\|S\| \approx 0.017$. The system is in a regime where dissipative behavior strongly dominates. The antisymmetric part emerges from third-order corrections (third cumulants and constraint geometry). At other points—especially with tighter constraints or stronger correlations—the antisymmetric part becomes more prominent.}
 
 \slides{**Phase Space Behavior**
 
@@ -252,9 +294,9 @@ mlai.write_figure('generic-energy-evolution.svg',
 
 This is exactly the GENERIC structure: the symmetric part drives irreversible energy dissipation, while the antisymmetric part creates reversible oscillations.}
 
-\notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics, it describes the structure of dynamical flow in parameter space. The symmetric part $S$ controls growth/decay directions, while the antisymmetric part $A$ controls rotation and oscillation. Together they reveal how trajectories move through the system.
+\notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics, it reveals the local structure of dynamical flow in parameter space. The symmetric part $S$ controls growth/decay directions, while the antisymmetric part $A$ controls rotation and oscillation. Together they describe how perturbations evolve in the neighborhood of the analysis point.
 
-For this special linear case (constant $G$ and constraint), the decomposition is *global*, describing flow structure everywhere on the manifold. For general nonlinear systems, the decomposition varies with position, but the fundamental insight remains: information dynamics naturally decompose into dissipative (thermodynamic) and conservative (mechanical) components.}
+The linearization $M = \partial F/\partial \boldsymbol{\theta}$ varies across the parameter manifold (both $G(\boldsymbol{\theta})$ and $a(\boldsymbol{\theta})$ depend on position), making the GENERIC decomposition truly local. However, the insight holds everywhere: information dynamics naturally decompose into dissipative (thermodynamic) and conservative (mechanical) components, with the balance between them varying across the manifold depending on local geometry and constraint tightness.}
 
 \endif
 

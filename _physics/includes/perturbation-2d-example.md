@@ -260,7 +260,7 @@ With tight constraint ($\nu > 0$):
 **Universal structure** across distribution families!
 }
 
-\notes{**Important note on the linearisation:** While we analyzed the linearisation at the equilibrium $\boldsymbol{\theta}^\ast = (0,0,0)$ for pedagogical clarity, this system has a special property: because both $G$ and the constraint are constant (don't depend on $\boldsymbol{\theta}$), the linearisation matrix $M$ is the same everywhere on the constraint manifold. This means the GENERIC decomposition $M = S + A$ we'll see in Lecture 7 describes the *global flow structure* of this system, not just local behavior near equilibrium. For general nonlinear systems (where $G = G(\boldsymbol{\theta})$), the linearisation varies with position, and the analysis is truly local.}
+\notes{**Looking ahead to Lecture 7:** The GENERIC decomposition $M = S + A$ applies to the linearisation at any point on the constraint manifold, not just equilibria. For this binary system, both $G(\boldsymbol{\theta})$ and the constraint gradient $a(\boldsymbol{\theta})$ vary with position, so the local structure of the decomposition changes across parameter space. The balance between dissipative ($S$) and conservative ($A$) components depends on the local geometry and the tightness of constraints at each point.}
 
 \notes{**Summary:** This discrete example demonstrates all the key elements of perturbation analysis—equilibria, Fisher information, linearisation matrix, and the interplay between entropy gradient and constraint geometry—in a fully computable setting. The same principles apply to continuous systems, but with the Gaussian approximation marginal entropies become tractable.}
 
