@@ -42,7 +42,7 @@ Recall from our formulation of the Lagrangian, computing $\nabla h_i$ is exponen
 * MEP dynamics $\rightarrow$ Gaussian-like regimes
 * Laplace approximation: near equilibrium ≈ Gaussian
 
-**For perturbation analysis:** Working near equilibrium = working in computable regime
+**For perturbation analysis:** Working near equilibrium $\equiv$ working in computable regime
 }
 
 \subsection{Laplace Approximation Connection}
