@@ -242,7 +242,7 @@ ax2.set_ylim(-1, 1)
 
 plt.tight_layout()
 
-write_figure('harmonic-oscillator-phase-space.svg', directory='\writeDiagrams/physics')}
+write_figure('harmonic-oscillator-phase-space.svg', directory='\writeDiagramsDir/physics')}
 
 \figure{\includediagram{\diagramsDir/physics/harmonic-oscillator-phase-space}{80%}}{Left: Phase space trajectories for the harmonic oscillator at three different energy levels. Each orbit is a perfect circle, demonstrating that energy surfaces in phase space are closed curves. The antisymmetric structure ensures flow is tangent to these curves (energy conserved). Right: Numerical verification of energy conservation—errors are at machine precision level, confirming the Hamiltonian flow preserves energy.}{harmonic-oscillator-phase-space}
 

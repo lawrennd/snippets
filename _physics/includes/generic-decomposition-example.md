@@ -272,7 +272,7 @@ ax.set_aspect('equal', adjustable='box')
 
 plt.tight_layout()
 mlai.write_figure('unconstrained-vs-constrained-flow.svg', 
-                  directory='\writeDiagrams/physics')}
+                  directory='\writeDiagramsDir/physics')}
 
 \figure{\includediagram{\diagramsDir/physics/unconstrained-vs-constrained-flow}{80%}}{Comparison of unconstrained vs constrained dynamics. Left: Without constraints, flow is purely radial toward θ=0 (symmetric $M=-G$, no antisymmetric part). Right: With constraint $h_1+h_2=C$, flow includes rotational component from constraint geometry (antisymmetric part $A \neq 0$).}{unconstrained-vs-constrained-flow}
 
@@ -354,11 +354,11 @@ for ax, (title, matrix) in zip(axes, dynamics):
 
 plt.tight_layout()
 mlai.write_figure('generic-decomposition-trajectories.svg', 
-                  directory='\writeDiagrams/physics')}
+                  directory='\writeDiagramsDir/physics')}
 
-\figure{\includediagram{\diagramsDir/physics/generic-decomposition-trajectories}{80%}}{Phase space trajectories showing: (left) pure dissipation from $S$ - all trajectories decay to origin; (center) pure rotation from $A$ - trajectories circulate without decay; (right) combined dynamics from $M = S+A$ - damped rotation spiraling toward equilibrium.}{generic-decomposition-trajectories}
+\figure{\includediagram{\diagramsDir/physics/generic-decomposition-trajectories}{80%}}{Phase space trajectories showing: (left) pure dissipation from $S$ - all trajectories decay to origin; (center) pure rotation from $A$ - trajectories circulate without decay; (right) combined dynamics from $M = S+A$ - heavily damped rotation toward equilibrium.}{generic-decomposition-trajectories}
 
-\notes{**Key insights from the visualization:**
+\notes{**Key insights from the visualisation:**
 
 Note: The trajectories are shown over an extended time ($t \in [0, 30]$) to make the rotation from $A$ clearly visible. The oscillation period is approximately $2\pi/0.012 \approx 524$ time units, so we see only a small fraction of a full cycle.
 
@@ -412,7 +412,7 @@ ax.grid(True, alpha=0.3)
 ax.set_ylim([0, None])
 
 mlai.write_figure('generic-energy-evolution.svg', 
-                  directory='\writeDiagrams/physics')}
+                  directory='\writeDiagramsDir/physics')}
 
 \figure{\includediagram{\diagramsDir/physics/generic-energy-evolution}{70%}}{Energy evolution showing: (blue) pure $S$ dynamics monotonically decrease energy; (red dashed) pure $A$ dynamics conserve energy; (green) combined $M$ dynamics show damped oscillations with overall energy decrease.}{generic-energy-evolution}
 

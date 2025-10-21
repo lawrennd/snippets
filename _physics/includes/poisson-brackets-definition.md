@@ -258,7 +258,7 @@ ax2.set_ylabel('y')
 
 plt.tight_layout()
 
-write_figure('lie-algebra-rotation-example.svg', directory='\writeDiagrams/physics')}
+write_figure('lie-algebra-rotation-example.svg', directory='\writeDiagramsDir/physics')}
 
 \figure{\includediagram{\diagramsDir/physics/lie-algebra-rotation-example}{80%}}{Left: The generator $J$ defines the infinitesimal rotation—it points perpendicular to the current position (tangent to the circle). Right: A finite rotation is built by exponentiating the generator, equivalent to taking many tiny steps. The Lie algebra is the "linearized" view of rotations.}{lie-algebra-rotation-example}
 
