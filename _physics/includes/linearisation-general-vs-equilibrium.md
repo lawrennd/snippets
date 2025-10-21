@@ -87,7 +87,9 @@ $$
 - Constant drift $F(\boldsymbol{\theta}_0)$ carries the system along the flow
 - Linear corrections $M\delta\boldsymbol{\theta}$ describe how nearby trajectories diverge/converge/rotate relative to the reference trajectory
 
-The physical interpretation is that at a non-equilibrium point, you're sitting on a "moving platform" (the flow $F(\boldsymbol{\theta}_0)$) and watching how nearby trajectories behave relative to you. The matrix $M$ tells you whether they come closer, move away, or rotate around you as you all flow together.}
+The physical interpretation is that at a non-equilibrium point, you're sitting on a "moving platform" (the flow $F(\boldsymbol{\theta}_0)$) and watching how nearby trajectories behave relative to you. The matrix $M$ tells you whether they come closer, move away, or rotate around you as you all flow together.
+
+**Analogy—cycling peloton:** Think of a cycling race where you're riding in the peloton (the main pack). The peloton as a whole races down the road (this is the drift, $F$). But if you're one rider in the pack, you notice the riders around you aren't just moving forward, they're moving *relative* to you: some drift closer (drafting behind you), some pull ahead, some fall back, some move laterally to find better position. A group of riders might even break away from the pack entirely, showing a bifurcation. The matrix $M$ describes exactly these relative dynamics: it tells you how nearby riders (trajectories) move with respect to you as you all race forward together.}
 
 \slides{
 **Equilibrium vs Non-Equilibrium**
@@ -98,7 +100,12 @@ The physical interpretation is that at a non-equilibrium point, you're sitting o
 | Dynamics | $\dot{q} = Mq$ | $\dot{\boldsymbol{\theta}} = F_0 + M\delta\boldsymbol{\theta}$ |
 | Interpretation | Perturbations evolve | Relative to flow |
 
-**Key:** $M$ describes **local flow structure** everywhere!
+**Analogy:** Cycling peloton
+* Pack races down road (drift $F$)
+* Riders move relative to each other (Jacobian $M$)
+* Drafting, positioning, breakaways
+
+**Key:** $M$ describes local flow structure everywhere!
 }
 
 \subsection{Why Does the Jacobian $M$ Matter?}
