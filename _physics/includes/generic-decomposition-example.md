@@ -221,6 +221,79 @@ Constrained: $\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} - \nu a$
 **Constraint geometry creates conservative dynamics**
 }
 
+\subsubsection{Visualizing Unconstrained vs Constrained Flow}
+
+\notes{Let's visualize the difference between unconstrained and constrained dynamics to see how the constraint creates rotational flow.}
+
+\plotcode{# Compare unconstrained vs constrained trajectories
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+# Time span and initial conditions
+t_span = np.linspace(0, 5, 100)
+initial_points = [
+    np.array([0.3, -0.2, 0.1]),
+    np.array([0.2, 0.1, -0.05]),
+    np.array([-0.1, 0.2, 0.05]),
+]
+
+# Left: Unconstrained dynamics (pure -Gθ)
+ax = axes[0]
+ax.set_title('Unconstrained: dθ/dt = -Gθ')
+ax.set_xlabel('θ₁')
+ax.set_ylabel('θ₂')
+
+for theta0 in initial_points:
+    # Unconstrained flow
+    trajectory = np.array([expm(M_unconstrained * t) @ theta0 for t in t_span])
+    ax.plot(trajectory[:, 0], trajectory[:, 1], 'b-', alpha=0.6, linewidth=2)
+    ax.plot(theta0[0], theta0[1], 'ro', markersize=6)
+
+ax.plot(0, 0, 'k*', markersize=12, label='θ=0 (max entropy)')
+ax.grid(True, alpha=0.3)
+ax.legend()
+ax.set_aspect('equal', adjustable='box')
+
+# Right: Constrained dynamics (with constraint forcing)
+ax = axes[1]
+ax.set_title('Constrained: dθ/dt = -Gθ - νa')
+ax.set_xlabel('θ₁')
+ax.set_ylabel('θ₂')
+
+for theta0 in initial_points:
+    # Constrained flow (using M from earlier computation)
+    trajectory = np.array([expm(M * t) @ theta0 for t in t_span])
+    ax.plot(trajectory[:, 0], trajectory[:, 1], 'g-', alpha=0.6, linewidth=2)
+    ax.plot(theta0[0], theta0[1], 'ro', markersize=6)
+
+ax.plot(0, 0, 'k*', markersize=12, label='θ=0')
+ax.grid(True, alpha=0.3)
+ax.legend()
+ax.set_aspect('equal', adjustable='box')
+
+plt.tight_layout()
+mlai.write_figure('unconstrained-vs-constrained-flow.svg', 
+                  directory='\writeDiagrams/physics')}
+
+\figure{\includediagram{\diagramsDir/physics/unconstrained-vs-constrained-flow}{80%}}{Comparison of unconstrained vs constrained dynamics. Left: Without constraints, flow is purely radial toward θ=0 (symmetric $M=-G$, no antisymmetric part). Right: With constraint $h_1+h_2=C$, flow includes rotational component from constraint geometry (antisymmetric part $A \neq 0$).}{unconstrained-vs-constrained-flow}
+
+\notes{**Observations:**
+
+**Unconstrained (left):** Trajectories flow radially toward θ=0, following pure gradient descent on entropy. The dynamics are symmetric—no rotation, just convergence. This is pure dissipation.
+
+**Constrained (right):** Trajectories flow along the constraint surface with a tangential component. The constraint forces the flow to bend, creating rotational motion. This geometric bending is what creates the antisymmetric part $A$.
+
+The difference between these two panels is precisely the effect of constraint geometry. The antisymmetric part doesn't exist in unconstrained dynamics—it emerges from the requirement to stay on the curved constraint manifold.}
+
+\slides{
+**Unconstrained vs Constrained Flow**
+
+\includediagram{\diagramsDir/physics/unconstrained-vs-constrained-flow}{70%}
+
+* Left: Pure radial flow (A = 0)
+* Right: Flow with rotation (A ≠ 0)
+* Constraint geometry creates antisymmetric component!
+}
+
 \subsection{Phase Space Trajectories}
 
 \notes{Let's visualize how trajectories evolve under the three different dynamics to see the difference between dissipative, conservative, and combined flow.}
