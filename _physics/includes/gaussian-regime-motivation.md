@@ -49,7 +49,7 @@ Recall from our formulation of the Lagrangian, computing $\nabla h_i$ is exponen
 
 \notes{The *Laplace approximation* is a standard technique for approximating integrals. The idea: if you have an integral
 $$
-Z = \int e^{-Nf(x)} dx
+Z = \int e^{-Nf(x)} \text{d}x
 $$
 for large $N$, then the integral is dominated by the neighborhood of the minimum of $f(x)$. Expanding $f(x) \approx f(x^\ast) + \frac{1}{2}(x-x^\ast)^2 f^{\prime\prime}(x^\ast)$ gives a Gaussian approximation.
 
@@ -65,23 +65,23 @@ This isn't the main technique we'll use (we'll do standard linearization), but i
 \slides{
 **Laplace Approximation (Conceptual Foundation)**
 
-Standard technique: $\int e^{-Nf(x)} dx$ dominated by minimum of $f(x)$
+Standard technique: $\int e^{-Nf(x)} \text{d}x$ dominated by minimum of $f(x)$
 
 **Connection to TIG:**
 
-* Near equilibrium: distribution ≈ Gaussian
-* Justifies linearization
+* Near equilibrium: distribution $\approx$ Gaussian
+* Justifies linearisation
 * Tells us when perturbation valid
 
 **Not center stage**, but explains why this works!
 }
 
-\notes{**Summary:** The Gaussian regime isn't just a convenient assumption—it's the regime where:
+\notes{**Summary:** The Gaussian regime isn't just a convenient assumption, it's the regime where:
 1. Dynamics are computable (marginal entropies tractable)
 2. MEP naturally leads us (maximum entropy property)
 3. Perturbation analysis is valid (Laplace approximation)
 
-This is why we focus on linearization around equilibrium in Gaussian regimes.}
+This is why we focus on linearisation around equilibrium in Gaussian regimes.}
 
 \endif
 

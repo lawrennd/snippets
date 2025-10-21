@@ -13,16 +13,14 @@ G = \begin{pmatrix}
 1/4 & 0 & 1/8 \\
 0 & 1/4 & 1/8 \\
 1/8 & 1/8 & 3/16
-\end{pmatrix}
+\end{pmatrix}.
 $$
-
 For this maximum entropy equilibrium, $\nu^\ast = 0$ and the constraint gradient is $a = (a_1, a_1, 0)$ where $a_1 < 0$ (since increasing $\theta_i$ decreases entropy from maximum).
 
 The linearisation matrix is
 $$
 M = -G + \frac{aa^\top G}{\|a\|^2}
 $$
-
 Let's compute this and decompose it into $S + A$ parts.}
 
 \slides{
@@ -114,9 +112,10 @@ for i, lam in enumerate(eigs_A):
 }
 
 \notes{**Observations:**
-1. **$S$ has real eigenvalues** (as expected for symmetric matrices)
-2. **$A$ has purely imaginary eigenvalues** (as expected for antisymmetric matrices)
-3. **$M$ combines both**: real parts from $S$ (dissipation), imaginary parts from $A$ (oscillation)
+
+1. *$S$ has real eigenvalues* (as expected for symmetric matrices)
+2. *$A$ has purely imaginary eigenvalues* (as expected for antisymmetric matrices)
+3. *$M$ combines both*: real parts from $S$ (dissipation), imaginary parts from $A$ (oscillation)
 
 At this maximum entropy equilibrium, the antisymmetric part is relatively small (the system is nearly Gaussian), so the dynamics are dominated by dissipation.}
 
@@ -130,8 +129,8 @@ from matplotlib.patches import FancyArrowPatch}
 \plotcode{# Create figure with three subplots
 fig, axes = plt.subplots(1, 3, figsize=(14, 4))
 
-# Time evolution
-t_span = np.linspace(0, 5, 100)
+# Time evolution (extended to show rotation from A)
+t_span = np.linspace(0, 30, 200)
 
 # Initial conditions (small perturbations)
 q0_list = [
@@ -180,22 +179,23 @@ for ax, (title, matrix) in zip(axes, dynamics):
 
 plt.tight_layout()
 mlai.write_figure('generic-decomposition-trajectories.svg', 
-                  directory='./physics/diagrams')}
+                  directory='\writeDiagrams/physics')}
 
 \figure{\includediagram{\diagramsDir/physics/generic-decomposition-trajectories}{80%}}{Phase space trajectories showing: (left) pure dissipation from $S$ - all trajectories decay to origin; (center) pure rotation from $A$ - trajectories circulate without decay; (right) combined dynamics from $M = S+A$ - damped rotation spiraling toward equilibrium.}{generic-decomposition-trajectories}
 
 \notes{**Key insights from the visualization:**
 
+Note: The trajectories are shown over an extended time ($t \in [0, 30]$) to make the rotation from $A$ clearly visible. The oscillation period is approximately $2\pi/0.088 \approx 71$ time units, so we see about 0.4 cycles.
+
 1. **Pure $S$ dynamics (left)**: Trajectories decay exponentially toward the origin. This is pure dissipation—entropy production drives the system to equilibrium. All eigenvalues are real and negative.
 
-2. **Pure $A$ dynamics (center)**: Trajectories circulate without approaching the origin. This is conservative dynamics—no entropy production, just rotation on the constraint manifold. Eigenvalues are purely imaginary.
+2. **Pure $A$ dynamics (center)**: Trajectories circulate without approaching the origin. This is conservative dynamics—no entropy production, just rotation on the constraint manifold. The norm $\|q\|$ is perfectly conserved. Eigenvalues are purely imaginary.
 
 3. **Combined $M = S + A$ dynamics (right)**: Trajectories spiral inward. The symmetric part causes decay while the antisymmetric part causes rotation. This is the GENERIC structure: dissipation + conservation = damped oscillation.
 
-At this particular equilibrium (maximum entropy with $\nu^\ast = 0$), the antisymmetric part is relatively weak because we're deep in the Gaussian regime. If we moved to equilibria with tighter constraints ($\nu > 0$), the antisymmetric part would become more prominent.}
+**Why is the antisymmetric effect weak here?** At this particular equilibrium (maximum entropy with $\nu^\ast = 0$), we're deep in the Gaussian regime where $\|A\|/\|S\| \approx 0.37$. The antisymmetric part emerges from third-order corrections (third cumulants and constraint curvature). If we moved to equilibria with tighter constraints ($\nu > 0$) or more non-Gaussian distributions, the antisymmetric part would become more prominent, and mechanical behavior would dominate.}
 
-\slides{
-**Phase Space Behavior**
+\slides{**Phase Space Behavior**
 
 \includediagram{\diagramsDir/physics/generic-decomposition-trajectories}{70%}
 
@@ -212,7 +212,7 @@ At this particular equilibrium (maximum entropy with $\nu^\ast = 0$), the antisy
 
 \code{# Compute energy evolution for one trajectory
 q0 = np.array([0.1, 0.08, 0.0])
-t_span = np.linspace(0, 5, 200)
+t_span = np.linspace(0, 30, 200)
 
 energies = {}
 for name, matrix in [("S", S), ("A", A), ("M", M)]:
@@ -237,7 +237,7 @@ ax.grid(True, alpha=0.3)
 ax.set_ylim([0, None])
 
 mlai.write_figure('generic-energy-evolution.svg', 
-                  directory='./physics/diagrams')}
+                  directory='\writeDiagrams/physics')}
 
 \figure{\includediagram{\diagramsDir/physics/generic-energy-evolution}{70%}}{Energy evolution showing: (blue) pure $S$ dynamics monotonically decrease energy; (red dashed) pure $A$ dynamics conserve energy; (green) combined $M$ dynamics show damped oscillations with overall energy decrease.}{generic-energy-evolution}
 
@@ -248,7 +248,7 @@ mlai.write_figure('generic-energy-evolution.svg',
 
 This is exactly the GENERIC structure: the symmetric part drives irreversible energy dissipation, while the antisymmetric part creates reversible oscillations.}
 
-\notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics—it has clear dynamical meaning. The symmetric part $S$ controls stability and dissipation, while the antisymmetric part $A$ controls rotation and oscillation. Together they create the rich dynamics we see in physical and information-theoretic systems.}
+\notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics, it has a dynamical meaning. The symmetric part $S$ controls stability and dissipation, while the antisymmetric part $A$ controls rotation and oscillation. Together they combine to create the rich dynamics we see in physical and information-theoretic systems.}
 
 \endif
 
