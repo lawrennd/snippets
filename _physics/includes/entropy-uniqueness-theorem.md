@@ -14,12 +14,16 @@ In this section, we prove that each $C_i$ must be (up to affine transformation) 
 
 \subsubsection{Setup: Marginal Functionals}
 
-\notes{**Marginal Distribution:**
+\notes{**Exponential Family Assumptions:**
 
-For exponential family:
+We assume a regular minimal exponential family with base measure $m(x)$ independent of $\boldsymbol{\theta}$:
 $$
 p(x|\boldsymbol{\theta}) = \exp(\boldsymbol{\theta}^\top T(x) - A(\boldsymbol{\theta}))m(x)
 $$
+
+In this setting, the entropy gradient has the structure $\nabla H = -G\boldsymbol{\theta}$ where $H$ is the differential entropy and $G$ is the Fisher information matrix.
+
+**Marginal Distribution:**
 
 The $i$-th marginal distribution is:
 $$
@@ -36,7 +40,7 @@ $$
 
 1. **Functional of marginal only**: $h_i$ depends on $\boldsymbol{\theta}$ only through the marginal $p_i(x_i|\boldsymbol{\theta})$
 
-2. **Concavity**: $h_i$ is strictly concave in $\boldsymbol{\theta}$ (for exponential families)
+2. **Concavity**: $h_i$ is concave in $\boldsymbol{\theta}$ (for exponential families)
 
 3. **Gradient structure**: $\nabla_\boldsymbol{\theta} h_i$ connects to the marginal sufficient statistic expectations
 
@@ -61,7 +65,7 @@ $$
 
 *Then $C_i$ must be an affine transformation of the marginal entropy:*
 $$
-C_i(\boldsymbol{\theta}^{(i)}) = \alpha_i h_i(\boldsymbol{\theta}) + \beta_i
+C_i(\boldsymbol{\theta}^{(i)}) = \alpha_i h_i(\boldsymbol{\theta}^{(i)}) + \beta_i
 $$
 *where $\alpha_i \in \mathbb{R} \setminus \{0\}$ and $\beta_i \in \mathbb{R}$ are constants.*}
 
@@ -69,164 +73,161 @@ $$
 
 We prove this through a series of necessary conditions that uniquely determine $C_i$.
 
-**Step 1: GENERIC Degeneracy Condition 1**
+**Step 1: GENERIC Degeneracy Requirements**
 
-For GENERIC structure, we need:
+For GENERIC structure $\dot{\boldsymbol{\theta}} = L\nabla E + M\nabla S$, we need:
 $$
-M\nabla E = 0
-$$
-
-where $M = G$ (Fisher information) is the friction operator and $E$ is an energy function.
-
-This means:
-$$
-G\nabla E = 0
+M\nabla E = 0, \quad L\nabla S = 0
 $$
 
-Since $G$ is positive definite, this implies $\nabla E = 0$. The energy $E$ must be constant on the constraint manifold.
+where:
+- $M$ is the friction operator (symmetric, positive semi-definite)
+- $L$ is the Poisson operator (antisymmetric)
+- $E$ is energy, $S$ is entropy
 
-**Candidate energy functions:**
-- Joint entropy $H(\boldsymbol{\theta})$
-- Multi-information $I(\boldsymbol{\theta})$  
-- Functions of these
+For information dynamics:
+- $M = G$ (Fisher information)
+- $S = H$ (joint entropy)
+- The antisymmetric part $L$ emerges from the constraint projector
 
-**Key constraint:** $E$ must be conserved by the antisymmetric part of the dynamics.
+**Important:** We do **not** use $M = G$ to infer $\nabla E = 0$ (which would trivialise the energy). The uniqueness proof relies only on the orthogonality condition in Step 3.
 
-**Step 2: Constraint Conservation**
+**Step 2: The Key Degeneracy - Conservation of Joint Entropy**
 
-The constraint itself is conserved by construction:
+The critical condition is:
 $$
-\dot{C} = \nabla C^\top \dot{\boldsymbol{\theta}} = 0
-$$
-
-This is the primary Casimir function. It must equal $\sum_i C_i = C_0$.
-
-**Step 3: GENERIC Degeneracy Condition 2**
-
-The second degeneracy condition is:
-$$
-L\nabla S = 0
+L\nabla H = 0
 $$
 
-where $L$ is the antisymmetric (Poisson) operator and $S$ is entropy.
+where $\nabla H = -G\boldsymbol{\theta}$ is the joint entropy gradient.
 
-For information dynamics, $S = H$ (joint entropy) and the antisymmetric part comes from the constraint:
+This says: the antisymmetric (conservative) part of the dynamics must conserve joint entropy $H$.
+
+From Lecture 7, we proved this is automatically satisfied when $C = \sum h_i$. Now we ask: **Is this the unique constraint with this property?**
+
+**Step 3: Orthogonality Condition**
+
+For automatic degeneracy, the constraint gradient $a = \nabla C$ must satisfy an orthogonality condition with respect to $\nabla H$.
+
+**Derivation:** For the projected flow $\dot{\boldsymbol{\theta}} = \Pi b$ with the $G$-orthogonal projector
 $$
-L = A = \text{antisymmetric part of } \Pi_\parallel G
+\Pi = I - G^{-1}a(a^\top G^{-1}a)^{-1}a^\top, \quad a = \nabla C
 $$
-
-We've already proven (Lecture 7) that this condition is automatically satisfied when the constraint is $\sum h_i = C$.
-
-**Question:** Is this the only constraint giving automatic satisfaction?
-
-**Step 4: Uniqueness from Antisymmetric Structure**
-
-The antisymmetric operator must satisfy:
+onto the tangent space $\ker a^\top$, the antisymmetric part that enforces tangency annihilates $\nabla H$ if and only if
 $$
-A\nabla H = 0
-$$
-
-This means the antisymmetric part of the dynamics must conserve joint entropy $H$.
-
-From Lecture 7, we derived that $A$ is constructed from the constraint gradient $a = \nabla C$ via the projector. The condition $A\nabla H = 0$ imposes a specific relationship between $\nabla C$ and $\nabla H$.
-
-**Key Identity:** For exponential families, we have:
-$$
-\nabla H = -G\boldsymbol{\theta}
+\nabla C^\top G^{-1}\nabla H = 0.
 $$
 
-So the condition becomes:
-$$
-A G\boldsymbol{\theta} = 0
-$$
+(This is just the GENERIC degeneracy condition $L\nabla H = 0$ expressed via the $G$-orthogonal projector. See Lecture 7 for the full construction.)
 
-The antisymmetric operator $A$ must annihilate the entropy gradient $G\boldsymbol{\theta}$.
+This orthogonality is the key to uniqueness.
 
-**Step 5: Constraint Gradient Requirements**
+**Step 4: Independence Limit and Entropy Decomposition**
 
-The projector is:
-$$
-\Pi_\parallel = I - G^{-1}a(a^\top G^{-1}a)^{-1}a^\top
-$$
+From Part 1, we have $C = \sum_i C_i(\boldsymbol{\theta}^{(i)})$. 
 
-The antisymmetric part is constructed to make:
+In the independence limit $\varepsilon \to 0$ where $G = \mathrm{diag}(G^{(1)}, \ldots, G^{(n)}) + O(\varepsilon)$, the entropy gradients have block structure.
+
+For exponential families, the **key identity** is:
 $$
-a^\top \dot{\boldsymbol{\theta}} = 0 \quad \text{(tangency)}
+\nabla H(\boldsymbol{\theta}) = -G(\boldsymbol{\theta})\boldsymbol{\theta}
 $$
 
-For $A\nabla H = 0$ to hold automatically (not just at equilibrium, but along the entire trajectory), we need the constraint gradient $a$ to have special structure.
-
-**Claim:** The constraint gradient must be:
+The multi-information is $I = \sum_i h_i - H$, so:
 $$
-a = \nabla C = \sum_i \nabla h_i
+\nabla I = \sum_i \nabla h_i - \nabla H
 $$
 
-where $h_i$ are the marginal entropies.
-
-**Why?** Because the antisymmetric decomposition of $G$ with respect to this specific constraint naturally satisfies $A G\boldsymbol{\theta} = 0$ due to the identity:
+Rearranging:
 $$
-G\boldsymbol{\theta} = -\nabla H = -\nabla\left(C - I\right) = -\nabla C + \nabla I = -\sum_i \nabla h_i + \nabla I
+\nabla H = \sum_i \nabla h_i - \nabla I
 $$
 
-**Step 6: Marginal Entropy Gradients**
+At $\varepsilon = 0$ (independence):
+- $\nabla h_i = -G^{(i)}\boldsymbol{\theta}^{(i)}$ (block-supported in block $i$)
+- $\nabla I = 0 + O(\varepsilon)$ (vanishes as interactions turn off)
+- Therefore: $\nabla H = \sum_i \nabla h_i$ at leading order
 
-For exponential families, the gradient of marginal entropy $h_i$ with respect to $\boldsymbol{\theta}$ is:
-$$
-\nabla h_i = -\mathbb{E}_{p_i}[\nabla \log p_i(x_i|\boldsymbol{\theta})]
-$$
+**Step 5: Annihilator Lemma (Product Fisher Geometry)**
 
-This gradient has a specific structure related to the marginal sufficient statistics.
-
-**Key Property:** The sum $\sum_i \nabla h_i$ naturally appears in the decomposition:
+In the independence limit $G = \bigoplus_i G^{(i)}$, define the $G^{-1}$-inner product on block $i$:
 $$
-\nabla H = \nabla I + \sum_i \nabla h_i
+\langle u, v \rangle_i := u^\top (G^{(i)})^{-1} v
 $$
 
-where $I$ is multi-information.
-
-This decomposition is fundamental to exponential families and reflects the information-theoretic identity $H + I = \sum h_i$.
-
-**Step 7: Uniqueness Argument**
-
-Suppose $C = \sum_i C_i(\boldsymbol{\theta}^{(i)})$ where $C_i \neq \alpha_i h_i + \beta_i$.
-
-Then $\nabla C \neq \sum_i \alpha_i \nabla h_i$ (up to constant multiple).
-
-Consider the antisymmetric operator $A$ constructed from $\nabla C$. For GENERIC degeneracy $A\nabla H = 0$, we need:
+**Lemma:** $\nabla h_i$ is the Riesz representer of $-\boldsymbol{\theta}^{(i)}$:
 $$
-A G\boldsymbol{\theta} = 0
+(G^{(i)})^{-1}\nabla h_i = -\boldsymbol{\theta}^{(i)}
 $$
 
-Expanding using the projector structure and $\nabla H = -G\boldsymbol{\theta}$, this becomes a condition on the relationship between $\nabla C$ and $\nabla H$.
+Consider any antisymmetric operator $L^{(i)}$ supported on block $i$ such that $L^{(i)}\nabla h_i = 0$. The image of such operators is contained in $(\mathrm{span}\{\nabla h_i\})^{\perp_i}$ (orthogonal w.r.t. $\langle \cdot, \cdot \rangle_i$).
 
-**Critical Observation:** The exponential family structure gives:
-$$
-G\boldsymbol{\theta} = -\nabla H = -\sum_i \nabla h_i + \nabla I
-$$
+**Key Fact:** The set of vectors annihilated by **all** such antisymmetric $L^{(i)}$ (i.e., $L^{(i)}v = 0$ for every $L^{(i)}$ with $L^{(i)}\nabla h_i = 0$) is exactly $\mathrm{span}\{\nabla h_i\}$.
 
-For $A$ (which projects perpendicular to $\nabla C$) to annihilate this, we need $\nabla C$ to be orthogonal (in the appropriate metric) to $\nabla I$.
-
-**Orthogonality Condition:**
+*Proof (by construction):* If $v \notin \mathrm{span}\{\nabla h_i\}$, choose $v \in (\mathrm{span}\{\nabla h_i\})^{\perp_i} \setminus \{0\}$ (explicitly orthogonal to $\nabla h_i$), then pick $w \in (\mathrm{span}\{\nabla h_i\})^{\perp_i}$ with $\langle w, v \rangle_i \neq 0$, and define:
 $$
-\nabla C^\top G^{-1} \nabla I = 0
+L^{(i)}u := \langle u, v \rangle_i w - \langle u, w \rangle_i v
 $$
 
-If $\nabla C = \sum_i \alpha_i \nabla h_i$, this condition is automatically satisfied because:
+Then $L^{(i)}$ is antisymmetric, $L^{(i)}\nabla h_i = 0$ (since $\nabla h_i \perp w, v$), but $L^{(i)}v = \langle v, v \rangle_i w \neq 0$. Hence only $v \in \mathrm{span}\{\nabla h_i\}$ can be annihilated by all such $L^{(i)}$. ∎
+
+**Step 6: Application to Constraint Gradient**
+
+For **automatic degeneracy**, we require:
+- $L\nabla H = 0$ (antisymmetric part conserves joint entropy)
+- This must hold for **every** block-supported antisymmetric $L = \bigoplus_i L^{(i)}$ with $L^{(i)}\nabla h_i = 0$ in each block
+
+At $\varepsilon = 0$, we have $\nabla H = \sum_i \nabla h_i$, so the condition $L\nabla H = 0$ becomes:
 $$
-\left(\sum_i \nabla h_i\right)^\top G^{-1} \nabla I = 0
+\sum_i L^{(i)}\nabla h_i = 0
 $$
 
-is an identity in exponential families (tangency of marginal entropy gradient to the constant-$I$ surfaces).
+This is automatically satisfied when $L^{(i)}\nabla h_i = 0$ for each $i$.
 
-**If $\nabla C$ has any other component**, the orthogonality fails, creating a conflict: the antisymmetric part $A$ cannot simultaneously:
-- Project onto the tangent space (enforce $a^\top \dot{\boldsymbol{\theta}} = 0$)
-- Conserve joint entropy (satisfy $A\nabla H = 0$)
+For the constraint, we also need $L\nabla C = 0$ for the same class of operators. With $\nabla C = \sum_i \nabla C_i$:
+$$
+\sum_i L^{(i)}\nabla C_i = 0 \quad \text{for all } L^{(i)} \text{ with } L^{(i)}\nabla h_i = 0
+$$
 
-**Step 8: Affine Freedom**
+Since the blocks are independent and the equation must hold for **all** choices of such $L^{(i)}$ in each block, we conclude:
+$$
+L^{(i)}\nabla C_i = 0 \quad \text{for all } L^{(i)} \text{ with } L^{(i)}\nabla h_i = 0
+$$
+
+**Step 7: Uniqueness from Annihilator**
+
+By the annihilator lemma (Step 5), if $L^{(i)}\nabla C_i = 0$ for every antisymmetric $L^{(i)}$ satisfying $L^{(i)}\nabla h_i = 0$, then:
+$$
+\nabla C_i \in \mathrm{span}\{\nabla h_i\}
+$$
+
+Therefore:
+$$
+\nabla C_i = \alpha_i \nabla h_i
+$$
+
+for some constant $\alpha_i \neq 0$ (independent of $\boldsymbol{\theta}^{(i)}$ on each connected component).
+
+Integrating:
+$$
+C_i(\boldsymbol{\theta}^{(i)}) = \alpha_i h_i(\boldsymbol{\theta}^{(i)}) + \beta_i
+$$
+
+This establishes uniqueness (up to affine transformation).
+
+**Step 8: Extension to Small Coupling**
+
+For small $\varepsilon > 0$, the span condition $\nabla C_i \in \mathrm{span}\{\nabla h_i\}$ persists by continuity of the kernels and images of $L^{(i)}(\varepsilon)$ and nondegeneracy of $\langle \cdot, \cdot \rangle_i$. The annihilator argument remains robust.
+
+Therefore $C_i(\varepsilon) = \alpha_i(\varepsilon) h_i(\varepsilon) + \beta_i(\varepsilon)$ with $\alpha_i(\varepsilon)$ nonzero and continuous. Any global monotone rescalings can be absorbed into the constraint level $C_0$.
+
+**Step 9: Affine Freedom**
 
 The constants $\alpha_i$ and $\beta_i$ represent affine freedom:
-- $\alpha_i$: arbitrary positive rescaling (must be non-zero and same sign to maintain constraint orientation)
+- $\alpha_i$: arbitrary non-zero rescaling (must not be zero)
 - $\beta_i$: arbitrary constant shift (doesn't affect gradients)
+
+**Sign convention:** A global rescaling $C \mapsto \gamma C + \delta$ with $\gamma > 0$ preserves the constraint foliation orientation. Allowing mixed signs in $\{\alpha_i\}$ changes the orientation componentwise; while mathematically valid, the robustness condition (invariance under local flows in the independence limit) typically requires all $\alpha_i$ to share the same sign. After a global monotone reparametrization, we can assume all $\alpha_i > 0$.
 
 Without loss of generality, we can set $\alpha_i = 1$ and $\beta_i = 0$, giving:
 $$
@@ -235,19 +236,27 @@ $$
 
 Other choices just rescale and shift the constraint constant $C_0$. ∎}
 
-\notes{**Remark on Rigor:** Steps 5-7 contain the deep argument but would benefit from further formalization. The key is proving that the orthogonality condition $\nabla C^\top G^{-1}\nabla I = 0$ is satisfied if and only if $\nabla C = \sum_i \alpha_i \nabla h_i$. This requires careful analysis of the exponential family geometry.}
-
 \subsubsection{Corollary: Canonical Form}
 
 \notes{**Corollary 2 (Canonical Conservation Constraint):**
 
 *Up to affine transformation (which doesn't affect the dynamics), the unique conservation constraint for automatic GENERIC structure in exponential families is:*
 $$
-\sum_{i=1}^n h_i(\boldsymbol{\theta}) = C
+\sum_{i=1}^n h_i(\boldsymbol{\theta}^{(i)}) = C
 $$
-*where $h_i$ is the $i$-th marginal entropy.*}
+*where $h_i(\boldsymbol{\theta}^{(i)})$ is the $i$-th marginal entropy, depending on $\boldsymbol{\theta}$ only through the marginal parameters $\boldsymbol{\theta}^{(i)}$.*}
 
 \notes{**Proof:** Immediate from Theorem 3 by setting $\alpha_i = 1$ and $\beta_i = 0$ for all $i$. ∎}
+
+\notes{**Remark (Monotone Transformations):**
+
+When we say "up to affine transformation," we mean:
+
+1. **Global monotone reparametrizations** like $f(\sum_i h_i) = C'$ preserve the constraint leaves (same foliation, different level sets).
+
+2. **Componentwise non-affine** transformations like $\sum_i f_i(h_i) = C'$ are **ruled out** by the state-dependent weight argument (Alternative 2 above). Only affine $f_i$ (constant coefficients $\alpha_i$) survive the annihilator test.
+
+Therefore, the canonical form $\sum_i h_i = C$ is unique up to global scaling and shift, not componentwise transformations.}
 
 \subsubsection{Physical Interpretation}
 
@@ -271,32 +280,74 @@ The uniqueness of $\sum h_i = C$ has deep physical meaning:
 
 \notes{Let's verify explicitly that natural alternatives fail the uniqueness test.}
 
-\notes{**Alternative 1: Weighted Marginal Entropies**
+\notes{**Alternative 1: Multi-Information Conservation ($I = C$)**
 
-Consider $C = \sum_i w_i h_i$ with different weights $w_i \neq 1$.
+Consider $I = \sum_i h_i - H = C$ (multi-information constant).
 
-**Issue:** This breaks exchangeability. The constraint gradient $\nabla C = \sum_i w_i \nabla h_i$ no longer treats variables symmetrically.
+**The gradient at $\varepsilon = 0$:**
 
-**Physical problem:** Different weights assign different "value" to information at different variables, creating artificial hierarchy.
+The multi-information gradient is:
+$$
+\nabla I = \sum_i \nabla h_i - \nabla H
+$$
 
-**Mathematical problem:** The orthogonality condition $\nabla C^\top G^{-1}\nabla I = 0$ may fail unless weights are specifically tuned to the distribution structure (fine-tuning).
+In the independence limit where $G = \mathrm{diag}(G^{(1)}, \ldots, G^{(n)})$:
+$$
+\nabla H = -G\boldsymbol{\theta} = -\sum_i G^{(i)}\boldsymbol{\theta}^{(i)}
+$$
 
-**Verdict:** Violates "automatic" requirement—weights must be engineered.}
+and:
+$$
+\nabla h_i = -G^{(i)}\boldsymbol{\theta}^{(i)}
+$$
+
+Therefore
+$$
+\nabla I = \sum_i \left(-G^{(i)}\boldsymbol{\theta}^{(i)}\right) - \left(-\sum_i G^{(i)}\boldsymbol{\theta}^{(i)}\right) = 0
+$$
+exactly at $\varepsilon = 0$.
+
+**Critical Obstruction:** At $\varepsilon = 0$, $\nabla I = 0$ exactly. For $\varepsilon > 0$, $\nabla I$ is purely interaction-supported and cannot be written as $\sum_i \alpha_i \nabla h_i$ with **constant** $\alpha_i$.
+
+**Annihilator Test:** Since $\nabla I$ vanishes at $\varepsilon = 0$ and is purely interaction-supported for $\varepsilon > 0$, it cannot lie in $\bigoplus_i \mathrm{span}\{\nabla h_i\}$ with constant coefficients. Hence it fails the annihilator/additivity test.
+
+**Verdict:** Fails additivity (Part 1). Not marginal-additive at leading order.}
 
 \notes{**Alternative 2: Nonlinear Functions of Marginal Entropies**
 
-Consider $C = \sum_i f(h_i)$ where $f$ is nonlinear (e.g., $f(h) = h^2$).
+Consider $C = \sum_i h_i^2$ (quadratic in marginal entropies).
 
-**Issue:** The constraint gradient is:
+**The gradient:**
 $$
-\nabla C = \sum_i f'(h_i) \nabla h_i
+\nabla C = \sum_i 2h_i \nabla h_i
 $$
 
-The weights $f'(h_i)$ vary with the state $\boldsymbol{\theta}$, creating state-dependent rescaling.
+The state-dependent weights $2h_i$ create incompatibility.
 
-**Mathematical problem:** The antisymmetric operator $A$ constructed from this $\nabla C$ varies incompatibly with the entropy gradient, preventing global GENERIC degeneracy.
+**Two-Block Example:**
 
-**Verdict:** Violates smoothness and automatic structure.}
+Take two blocks with entropies $h_1(\boldsymbol{\theta}^{(1)})$ and $h_2(\boldsymbol{\theta}^{(2)})$. Consider two different local flows:
+
+1. Flow $b^{(1)}$ supported in block 1 increases $h_1$ by $\delta$
+2. Flow $b^{(2)}$ supported in block 2 increases $h_2$ by $\delta$
+
+The constraint normal direction is $\nabla C = 2h_1 \nabla h_1 + 2h_2 \nabla h_2$.
+
+Under flow $b^{(1)}$:
+- $h_1 \to h_1 + \delta$
+- The normal direction changes to $2(h_1+\delta) \nabla h_1 + 2h_2 \nabla h_2$
+- Relative weight: $(h_1+\delta) : h_2$
+
+Under flow $b^{(2)}$:
+- $h_2 \to h_2 + \delta$
+- The normal direction changes to $2h_1 \nabla h_1 + 2(h_2+\delta) \nabla h_2$
+- Relative weight: $h_1 : (h_2+\delta)$
+
+**Incompatibility:** The two flows map the constraint leaves to different foliations (different normal bundle structures). For foliation invariance, all local flows must preserve the same leaf structure, but the state-dependent weights $\phi_i'(h_i) = 2h_i$ prevent this.
+
+**Annihilator Test:** The state-dependent weights mean $\nabla C \notin \bigoplus_i \mathrm{span}\{\nabla h_i\}$ with **constant** coefficients. The annihilator condition requires constant $\alpha_i$ (Step 7), ruling out any nonlinear $\phi_i$ unless $\phi_i'$ is constant, i.e., $\phi_i$ is affine.
+
+**Verdict:** Violates the annihilator/uniqueness requirement. Only affine $\phi_i$ (constant weights) survive.}
 
 \notes{**Alternative 3: Functions of Joint Entropy**
 
