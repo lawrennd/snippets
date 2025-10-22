@@ -50,9 +50,9 @@ $$
 \{f, g\} = -\{g, f\}
 $$
 
-→ $\{f, f\} = 0$
+$\rightarrow$ $\{f, f\} = 0$
 
-→ $\{E, E\} = 0$. (energy conserves itself)
+$\rightarrow$ $\{E, E\} = 0$. (energy conserves itself)
 }
 
 \newslide{2. Bilinearity}
@@ -264,7 +264,7 @@ write_figure('lie-algebra-rotation-example.svg', directory='\writeDiagramsDir/ph
 
 \notes{The figure gives the insight on Lie algebras. 
 - **Left**: The generator $J$ acts on a vector by rotating it infinitesimally. The direction is perpendicular (tangent to the circular orbit).
-- **Right**: A finite rotation of 60° is built by applying many tiny rotations. The limit as steps → ∞ is $e^{\theta J}$.
+- **Right**: A finite rotation of $60^\degrees$ is built by applying many tiny rotations. The limit as steps $\rightarrow$ ∞ is $e^{\theta J}$.
 
 This is why Lie algebras are powerful: they linearise the nonlinear group structure, making calculations tractable while preserving the essential geometry.}
 
@@ -362,9 +362,9 @@ The key is the antisymmetric structure $A$ and the properties it satisfies, not 
 \slides{
 **Beyond Canonical:**
 
-* Curved spaces → adapt to geometry
-* Degenerate $A$ → Casimirs (next)
-* Information systems → from probability geometry
+* Curved spaces $\rightarrow$ adapt to geometry
+* Degenerate $A$ $\rightarrow$ Casimirs (next)
+* Information systems $\rightarrow$ from probability geometry
 
 *Key:* Antisymmetric structure, not specific form
 }
