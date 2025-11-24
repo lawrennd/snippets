@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{The I + H = C Structure}
+\subsection{The $I + H = C$ Structure}
 
 \notes{We have established four axioms, with the fourth axiom stating that the sum of marginal entropies is conserved,
 $$
@@ -51,7 +51,7 @@ $$
 *Measures "shared information"*
 }
 
-\subsection{The Information Action Principle: I + H = C}
+\subsection{The Information Action Principle: $I + H = C$}
 
 \notes{Using the definition of multi-information, we can rewrite our conservation law. From $I = \sum_{i=1}^N h_i - H$, we have:
 $$
@@ -264,7 +264,7 @@ The marginal entropies $h_1$ and $h_2$ stay constant throughout this evolution. 
 * Conservation: $I + H = C$ (black line)
 * Marginals: $h_1$, $h_2$ constant (inaccessible!)
 
-*Internal reorganization invisible to external observer*
+*Internal reorganisation invisible to external observer*
 }
 
 \subsection{Connection to Marginal Entropy Conservation}
