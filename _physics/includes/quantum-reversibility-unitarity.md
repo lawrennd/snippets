@@ -146,6 +146,8 @@ $$
 $$
 So ``noncommutative probability'' collapses to classical probability on the finite sample space $\Omega=\{1,\dots,d\}$.
 
+Structural note: the diagonal matrices form a \emph{maximal abelian subalgebra}—the only matrices that commute with all diagonal matrices are themselves diagonal. So restricting to commuting observables isn't just a convenience; it's the structural reason why classical probability sits inside quantum probability as a special case.}
+
 Now look at reversible transformations. If we want to stay inside the diagonal algebra, the allowed unitaries are permutations of the basis.
 Let $U_\pi$ be the permutation matrix for a bijection $\pi:\Omega\to\Omega$. Then conjugation gives
 $$

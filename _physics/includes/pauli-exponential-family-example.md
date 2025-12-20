@@ -92,10 +92,16 @@ So we cannot "pull down" $\sigma_x$ from inside the exponential naively.}
 
 \subsubsection{Duhamel formula fixes it}
 
-\notes{The correct derivative formula is the Duhamel integral:
+\notes{The correct derivative formula is the Duhamel integral (Fréchet derivative):
 $$
 \partial_1 e^{K(\theta)} = \int_0^1 e^{(1-s)K(\theta)} \sigma_x e^{sK(\theta)}\,\text{d}s.
 $$
+
+**Computational note:** In practice, you'd compute this using the block-matrix trick:
+$$
+L_{\exp}(K,\sigma_x)=\exp\begin{pmatrix}K&\sigma_x\\0&K\end{pmatrix}_{(1,2)},
+$$
+where the subscript means "take the upper-right $2\times 2$ block" of the $4\times 4$ exponential. This is how autodiff frameworks implement gradients through `expm`.
 
 Now compute $\partial_1\psi$:
 $$

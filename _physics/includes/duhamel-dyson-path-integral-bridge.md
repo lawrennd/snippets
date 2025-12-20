@@ -84,13 +84,20 @@ Expands into ordered integrals (time-ordering = noncommutativity bookkeeping)
 
 \notes{Path integrals can be introduced as a computational method by time-slicing (Trotterisation).
 
-For example, in (imaginary-time) statistical mechanics one uses
+The Trotter product formula states:
+$$
+e^{t(A+B)}
+=\lim_{n\to\infty}\left(e^{tA/n}\,e^{tB/n}\right)^n
+$$
+for suitable operators $A$ and $B$ (e.g., bounded operators, or self-adjoint with appropriate domain conditions).
+
+**Error analysis:** The simple splitting above has error $O(t^2/n)$. For practical time-stepping, symmetric (Strang) splitting $e^{tA/(2n)}e^{tB/n}e^{tA/(2n)}$ gives error $O(t^3/n^2)$. There is a large literature on higher-order splittings for numerical simulation.
+
+For example, in (imaginary-time) statistical mechanics:
 $$
 e^{-\beta(H_0+V)}
-=\lim_{n\to\infty}\left(e^{-\beta H_0/n}\,e^{-\beta V/n}\right)^n
+=\lim_{n\to\infty}\left(e^{-\beta H_0/n}\,e^{-\beta V/n}\right)^n.
 $$
-(Trotter product formula).
-
 In real time one has an analogous statement for $e^{-it(H_0+V)}$.
 
 Now insert resolutions of the identity between the factors (e.g. position eigenstates for particles, spin basis for spins). In the limit of many slices, the product becomes an integral over intermediate configurations: that limiting object is the (Euclidean or real-time) path integral.
