@@ -12,9 +12,11 @@
 
 Informally: the system is globally fully specified (no global uncertainty), but every subsystem looks maximally uncertain on its own.
 
-In classical probability (commutative setting), this origin is impossible. The obstruction is not a technicality — it is a structural inequality: classical conditional entropy is nonnegative.
+If your modeling desiderata include this configuration—globally pure but locally maximally uncertain—classical probability cannot represent it. The obstruction is not a technicality; it is a structural inequality: classical conditional entropy is nonnegative.
 
-The quantum (noncommutative) resolution is equally structural: von Neumann conditional entropy can be negative for entangled states, and those are exactly the configurations that look ``locally maximally uncertain'' while remaining globally pure.}
+Quantum states (specifically, entangled states) \emph{can} represent this configuration: von Neumann conditional entropy can be negative, and maximally entangled states are exactly the configurations that achieve ``locally maximally uncertain'' while remaining globally pure.
+
+This does not prove quantum mechanics is necessary for all purposes; it shows that if you want this particular constraint set realised, you need the quantum framework.}
 
 \slides{
 **Origin target:**

@@ -63,10 +63,12 @@ where:
 - $\psi(\theta)=\log\text{tr}\,e^{K(\theta)}$ is the log-partition function (now a trace over operator exponential),
 - $\rho(\theta)$ is the density matrix (analogous to the probability density $p$).
 
+(Physics often writes $K=-\beta H$ with a minus sign; here we absorb signs into the $\theta_i$ parameters.)
+
 \textbf{What stays the same:}
 
-1. **Expectations from $\psi$**: $\langle F_i\rangle=\text{tr}(\rho F_i)=\partial_i \psi(\theta)$.
-2. **Fisher-like metric**: $G_{ij}(\theta)=\partial_i\partial_j\psi(\theta)$ is the Bogoliubov–Kubo–Mori (BKM) metric.
+1. **Expectations from $\psi$**: $\langle F_i\rangle=\text{tr}(\rho F_i)=\partial_i \psi(\theta)$. Noncommutativity complicates $\partial_i e^K$, but trace cyclicity plus Duhamel still yields this identity.
+2. **Fisher-like metric**: $G_{ij}(\theta)=\partial_i\partial_j\psi(\theta)$ is the Bogoliubov–Kubo–Mori (BKM) metric, one canonical quantum analog of Fisher information, and the one that naturally appears in thermodynamic linear response.
 3. **Geometry**: $G$ is still a Riemannian metric governing local linear response.
 4. **$\psi$ is still a scalar function** of real parameters $\theta\in\mathbb{R}^d$.
 
@@ -81,10 +83,12 @@ This is the \emph{only} obstacle, but it requires new calculus.}
 
 $$\rho(\theta)=\exp(K(\theta)-\psi(\theta)),\quad K=\sum_i\theta_i F_i$$
 
+(Physics: $K=-\beta H$; we absorb signs into $\theta$)
+
 **What stays the same:**
 
-- $\langle F_i\rangle=\partial_i\psi$ (expectations from $\psi$)
-- $G_{ij}=\partial_i\partial_j\psi$ (Fisher-like metric, now BKM)
+- $\langle F_i\rangle=\partial_i\psi$ (trace cyclicity + Duhamel preserves this)
+- $G_{ij}=\partial_i\partial_j\psi$ (BKM metric—canonical quantum Fisher)
 - $\psi$ is still a scalar real-valued function
 
 **What breaks:**

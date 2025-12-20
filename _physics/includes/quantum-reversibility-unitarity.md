@@ -5,7 +5,7 @@
 
 \subsection{Quantum Preview: Reversibility Forces Unitarity}
 
-\notes{So far, the course has largely lived in a \emph{commutative} setting: we talk about random variables, joint distributions, and entropies of those distributions.
+\notes{So far, the course has largely lived in a \emph{commutative} setting. In a commutative setting we can talk about random variables, joint distributions, and entropies of those distributions.
 
 The new TIG paper makes a sharper point: the ``origin'' configuration we want (max multi-information with zero joint entropy, i.e. globally pure but locally maximally uncertain) is \emph{forbidden} in the classical/Shannon setting because classical conditional entropy is nonnegative.
 
@@ -39,18 +39,20 @@ In the information-loss framing, reversible means: it preserves information (equ
 
 This is a real shift from normal (commutative) probability. Classically, if you have a sample space $\Omega$ and random variables are functions $\Omega\to\mathbb{R}$, then a reversible transformation is (morally) an invertible relabelling $\phi:\Omega\to\Omega$ that preserves probabilities; observables are pushed forward/pulled back by composition, and you really can think in terms of ``moving points around'' in $\Omega$.
 
-In noncommutative probability there is \emph{no underlying joint sample space} when observables don't commute. So ``reversibility'' can't mean a pointwise relabelling of outcomes; instead it means an isomorphism of the \emph{observable algebra} (a $*$-isomorphism) that preserves the expectation structure. In finite dimensions those algebra isomorphisms are implemented by unitary conjugation.
+In noncommutative probability there is \emph{no underlying joint sample space} when observables don't commute. So ``reversibility'' can't mean a pointwise relabelling of outcomes; instead it means an isomorphism of the \emph{observable algebra} (a $*$-isomorphism) that preserves the expectation structure. In finite dimensions, for \emph{closed systems}, those algebra isomorphisms are implemented by unitary (or antiunitary) conjugation.
 
-In noncommutative probability, the reversible transformations are exactly the ones implemented by unitary conjugation:
+For closed finite-dimensional quantum systems, the reversible transformations are exactly the ones implemented by unitary conjugation:
 \[
 \rho \mapsto U\rho U^\dagger,\qquad U^\dagger U = I.
 \]
-This is not an additional modelling assumption; it is the structural notion of ``symmetry'' compatible with noncommutative probability.}
+This is not an additional modelling assumption; it is the structural notion of ``symmetry'' compatible with noncommutative probability. (Open systems with dissipation require the broader class of completely positive trace-preserving maps; unitary is the reversible special case.)}
 
 \slides{
-**Reversible (entropy-preserving) ⇒ unitary:**
+**Reversible (closed system) ⇒ unitary:**
 
 $\rho \mapsto U\rho U^\dagger$
+
+(Open systems: CPTP maps; unitary = reversible case)
 }
 
 \subsubsection{Infinitesimal form: commutator dynamics}
