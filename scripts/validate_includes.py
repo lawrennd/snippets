@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 Validate that _*/includes/*.md files have correct \ifndef, \define, and \endif structure.
 
 Usage:
@@ -44,7 +44,7 @@ def is_valid_filename(filename: str) -> bool:
 
 
 def validate_file(file_path: Path) -> Tuple[bool, List[str]]:
-    """Validate that a file has correct \ifndef, \define, and \endif structure.
+    r"""Validate that a file has correct \ifndef, \define, and \endif structure.
     
     Args:
         file_path: Path to the file to validate
@@ -108,7 +108,7 @@ def validate_file(file_path: Path) -> Tuple[bool, List[str]]:
 
 
 def fix_file(file_path: Path) -> bool:
-    """Automatically fix a file's \ifndef, \define, and \endif structure.
+    r"""Automatically fix a file's \ifndef, \define, and \endif structure.
     
     Note: This only fixes the file content, not the filename itself.
     
