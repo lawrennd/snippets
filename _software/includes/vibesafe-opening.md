@@ -18,10 +18,10 @@ But you've probably also experienced the flip side: debugging code that an AI ge
 \subsection{The Cost Model Has Inverted}
 
 \slides{
-* **Traditional development:**
+* *Traditional development:*
   * Writing code: Expensive (human time)
   * Documentation: "We'll do it later"
-* **AI-assisted development:**
+* *AI-assisted development:*
   * Generating documentation: Cheap (AI does it)
   * Debugging misimplementation: Expensive (discovery lag)
 }
