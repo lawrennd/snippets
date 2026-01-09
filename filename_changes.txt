@@ -1,0 +1,37 @@
+# Filename changes needed for include files
+# Format: OLD_PATH -> NEW_PATH
+
+/Users/neil/lawrennd/snippets/_address/includes/Applying_Model_Framework.md -> /Users/neil/lawrennd/snippets/_address/includes/applying-model-framework.md
+/Users/neil/lawrennd/snippets/_address/includes/Basis_Function_Models.md -> /Users/neil/lawrennd/snippets/_address/includes/basis-function-models.md
+/Users/neil/lawrennd/snippets/_address/includes/Generalised_Linear_Models.md -> /Users/neil/lawrennd/snippets/_address/includes/generalised-linear-models.md
+/Users/neil/lawrennd/snippets/_address/includes/Learning_Generalised_Linear_Models.md -> /Users/neil/lawrennd/snippets/_address/includes/learning-generalised-linear-models.md
+/Users/neil/lawrennd/snippets/_address/includes/Localised_Basis_Functions.md -> /Users/neil/lawrennd/snippets/_address/includes/localised-basis-functions.md
+/Users/neil/lawrennd/snippets/_address/includes/Practical_Modelling.md -> /Users/neil/lawrennd/snippets/_address/includes/practical-modelling.md
+/Users/neil/lawrennd/snippets/_address/includes/Regularisation.md -> /Users/neil/lawrennd/snippets/_address/includes/regularisation.md
+/Users/neil/lawrennd/snippets/_atomic-human/includes/.#us-that-adapt-to-the-machine.md -> /Users/neil/lawrennd/snippets/_atomic-human/includes/.#us-that-adapt-to-the-machine.md
+/Users/neil/lawrennd/snippets/_gp/includes/basis_functions.md -> /Users/neil/lawrennd/snippets/_gp/includes/basis-functions.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_big_data.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-big-data.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_big_data_technical.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-big-data-technical.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_covariance_construction.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-covariance-construction.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_covariance_construction_short.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-covariance-construction-short.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_extremely_short.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-extremely-short.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_gene_expression_optimize_example.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-gene-expression-optimize-example.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_interpolation.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-interpolation.md
+/Users/neil/lawrennd/snippets/_gp/includes/gp_kalman_filter_kronecker.md -> /Users/neil/lawrennd/snippets/_gp/includes/gp-kalman-filter-kronecker.md
+/Users/neil/lawrennd/snippets/_gp/includes/graphical_gplvm.md -> /Users/neil/lawrennd/snippets/_gp/includes/graphical-gplvm.md
+/Users/neil/lawrennd/snippets/_gp/includes/overdetermined_gp.md -> /Users/neil/lawrennd/snippets/_gp/includes/overdetermined-gp.md
+/Users/neil/lawrennd/snippets/_gp/includes/underdetermined_gp.md -> /Users/neil/lawrennd/snippets/_gp/includes/underdetermined-gp.md
+/Users/neil/lawrennd/snippets/_gp/includes/univariate_gaussian_properties.md -> /Users/neil/lawrennd/snippets/_gp/includes/univariate-gaussian-properties.md
+/Users/neil/lawrennd/snippets/_gp/includes/variational_bayes_gplvm_long.md -> /Users/neil/lawrennd/snippets/_gp/includes/variational-bayes-gplvm-long.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/ard_gplvm.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/ard-gplvm.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/ard_model.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/ard-model.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/ard_results.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/ard-results.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/bayes_gplvm.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/bayes-gplvm.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/discriminative_gplvm.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/discriminative-gplvm.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/gaussian_face.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/gaussian-face.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/gaussian_face_result.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/gaussian-face-result.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/graphical_gplvm.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/graphical-gplvm.md
+/Users/neil/lawrennd/snippets/_gplvm/includes/mackay_bathwater.md -> /Users/neil/lawrennd/snippets/_gplvm/includes/mackay-bathwater.md
+/Users/neil/lawrennd/snippets/_health/includes/deep_health_parts.md -> /Users/neil/lawrennd/snippets/_health/includes/deep-health-parts.md
+/Users/neil/lawrennd/snippets/_kern/includes/eq_covariance.md -> /Users/neil/lawrennd/snippets/_kern/includes/eq-covariance.md
+/Users/neil/lawrennd/snippets/_ml/includes/linear_function.md -> /Users/neil/lawrennd/snippets/_ml/includes/linear-function.md
