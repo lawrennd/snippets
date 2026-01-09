@@ -51,18 +51,17 @@ def search_for_references(search_dirs: List[Path], old_filename: str) -> List[Tu
         if not search_dir.exists():
             continue
             
-        # Search all text files (md, yml, yaml, txt, etc.)
-        for ext in ['*.md', '*.yml', '*.yaml', '*.txt', '*.html', '*.ipynb']:
-            for file_path in search_dir.rglob(ext):
-                try:
-                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                        for line_num, line in enumerate(f, 1):
-                            # Check if the old filename appears in the line
-                            if old_filename in line or basename_no_ext in line:
-                                matches.append((file_path, line_num, line.strip()))
-                except Exception:
-                    # Skip files that can't be read
-                    pass
+        # Search only .md files
+        for file_path in search_dir.rglob('*.md'):
+            try:
+                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                    for line_num, line in enumerate(f, 1):
+                        # Check if the old filename appears in the line
+                        if old_filename in line or basename_no_ext in line:
+                            matches.append((file_path, line_num, line.strip()))
+            except Exception:
+                # Skip files that can't be read
+                pass
     
     return matches
 
