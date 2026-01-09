@@ -1,5 +1,5 @@
-
-``` {#mycode .octave .numberLines startFrom="0"}
+\ifndef{underdeterminedGp}
+\define{underdeterminedGp}
 
 %}
   importTool('ndlutil');
@@ -122,4 +122,4 @@ overprint end
 
 columns end
 
-frame end
+\endif

@@ -1,5 +1,5 @@
-``` {#mycode .octave .numberLines startFrom="0"}
-
+\ifndef{gpKalmanFilterKronecker}
+\define{gpKalmanFilterKronecker}
   %}
   gpKalmanFilterKroneckerInit
   %{
@@ -187,4 +187,4 @@ or
 $$\dataVector \sim \gaussianSamp{0}{\mappingMatrix\mappingMatrix^\top \otimes \kernelMatrix + \eye\dataStd^2}$$
 
 <!--frame end-->
-
+\endif

@@ -1,5 +1,5 @@
-<!--frame start-->
-### Two Important Gaussian Properties
+\ifndef{univariateGaussianProperties}
+\define{univariateGaussianProperties}
 
 **Sum of Gaussians**
 
@@ -22,4 +22,4 @@
     $${w}{y}\sim {\mathcal{N}\left({w}{\mu},{w}^2 \sigma^2\right)}$$
 
 <!--frame end-->
-
+\endif

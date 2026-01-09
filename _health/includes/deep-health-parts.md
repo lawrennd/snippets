@@ -1,5 +1,5 @@
-\include{../gplvm/includes/stack_gp_intro.md}
-\include{../gplvm/includes/stacked_pca.md}
+\ifndef{deepHealthParts}
+\define{deepHealthParts}
 \include{../gplvm/includes/stacked_gp.md}
 
 <!--frame start-->
@@ -20,4 +20,4 @@
 -   These methodologies are part of that picture.
 
 <!--frame end-->
-\include{../health/includes/deep_health_model.md}
+\endif

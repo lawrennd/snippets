@@ -1,5 +1,5 @@
-``` {#mycode .octave .numberLines startFrom="0"}
-
+\ifndef{gpExtremelyShort}
+\define{gpExtremelyShort}
 %}
   importLatest('GPmat')
   importLatest('netlab')
@@ -97,4 +97,4 @@
 \only<4->{\inputdiagram{../../../gplvm/tex/diagrams/gpRejectionSamples}}
 
 <!--frame end-->
-
+\endif

@@ -1,5 +1,5 @@
-<!--frame start-->
-### Graphical Representations of GP-LVM
+\ifndef{graphicalGplvm}
+\define{graphicalGplvm}
 
 \def\layersep{2cm}
 
@@ -231,4 +231,4 @@
 \only<5->{$\dataScalar \sim \gaussianSamp{\latentVector^\top \mappingVector}{\dataStd^2}$}
 
 <!--frame end-->
-
+\endif

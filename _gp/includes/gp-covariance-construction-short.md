@@ -1,5 +1,5 @@
-<!--frame start-->
-### Direct Construction of Covariance Matrix
+\ifndef{gpCovarianceConstructionShort}
+\define{gpCovarianceConstructionShort}
 
 \only<1->{Use matrix notation to write function,
     \[
@@ -43,4 +43,4 @@
 distributions.**
 
 <!--frame end-->
-
+\endif

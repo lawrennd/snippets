@@ -1,5 +1,5 @@
-### Basis Function Form
-
+\ifndef{basisFunctions}
+\define{basisFunctions}
 *Radial basis functions* commonly have the form
 $$
 \basisFunction_k\left(\latentVector_i\right) = \exp\left( -\frac{\left\vert \latentVector_i - \locationVector_k\right\vert^2}{2\rbfWidth^2}\right).
@@ -25,4 +25,4 @@ $$
 $$
 \mappingFunction(\latentScalar) = \sum_{k=1}^\numBasisFunc \mappingScalar_{k}\basisFunction_k(\latentScalar),$$ where elements of $\mappingVector$ are independently sampled from a Gaussian density, $$\mappingScalar_{k} \sim \gaussianSamp{0}{\alpha}.
 $$
-
+\endif

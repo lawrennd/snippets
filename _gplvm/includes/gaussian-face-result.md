@@ -1,5 +1,5 @@
-frame start
-
+\ifndef{gaussianFaceResult}
+\define{gaussianFaceResult}
 ### GaussianFace
 
 \begin{flushright}
@@ -12,4 +12,4 @@ frame start
 
 [\includegraphics[trim=1.5cm 17.8cm 2cm 1cm, clip=true, width=\textwidth,page=8]{../../../gplvm/tex/diagrams/GaussianFace.pdf}](http://arxiv.org/abs/1404.3840)
 
-frame end
+\endif

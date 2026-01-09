@@ -1,5 +1,5 @@
-
-``` {#mycode .octave .numberLines startFrom="0"}
+\ifndef{overdeterminedGp}
+\define{overdeterminedGp}
 
 %}
   importTool('ndlutil');
@@ -176,4 +176,4 @@ frame start
 $x = 3$, $y=1$ $$1 = 3m + c + \epsilon_2$$ point 3: $x = 2$, $y=2.5$
 $$2.5 = 2m + c + \epsilon_3$$
 
-frame end
+\endif

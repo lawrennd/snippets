@@ -1,5 +1,5 @@
-<!--frame start-->
-![image](../../../gplvm/tex/diagrams/mackayBaby){height="\textheight"}
+\ifndef{mackayBathwater}
+\define{mackayBathwater}
 
 <!--frame end-->
 <!--frame start-->
@@ -10,4 +10,4 @@ bathwater?” [Published as @MacKay:gpintroduction98] Also noted by
 [@Wilson:gprn12]
 
 <!--frame end-->
-
+\endif

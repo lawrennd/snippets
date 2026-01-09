@@ -1,5 +1,5 @@
-frame start
-
+\ifndef{discriminativeGplvm}
+\define{discriminativeGplvm}
 ### Prior for Supervised Learning
 
 \begin{flushright}
@@ -62,4 +62,4 @@ frame start
   \end{figure}
 }
 
-frame end
+\endif

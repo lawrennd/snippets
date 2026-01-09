@@ -1,5 +1,5 @@
-### Priors for Latent Space
-
+\ifndef{ardModel}
+\define{ardModel}
 <div align="right">
     [@Titsias:bayesGPLVM10]
 </div>
@@ -11,5 +11,5 @@
 
 -   First example: learn the dimensionality of latent space.
 
-\include{../../_gplvm/includes/graphical_gplvm.md}
-\include{../../_gplvm/includes/ard_description.md}
+\include{../../_gplvm/includes/graphical-gplvm.md}
+\endif

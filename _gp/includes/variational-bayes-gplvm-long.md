@@ -1,5 +1,5 @@
-<!--frame start-->
-### Standard Variational Approach Fails
+\ifndef{variationalBayesGplvmLong}
+\define{variationalBayesGplvmLong}
 
 -   &lt;1-&gt; Standard variational bound has the form:
     $$\likelihoodBound = \expDist{\log p(\dataVector|\latentMatrix)}{q(\latentMatrix)} + \KL{q(\latentMatrix)}{p(\latentMatrix)}$$
@@ -48,4 +48,4 @@
     which can be computed analytically for some covariance functions.
 
 <!--frame end-->
-
+\endif

@@ -1,3 +1,3 @@
-![image](../../../_gplvm/tex/diagrams/andreasDeepTalk){width="80%"}
-
-
+\ifndef{ardResults}
+\define{ardResults}
+\endif
