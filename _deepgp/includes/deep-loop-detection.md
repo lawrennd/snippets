@@ -1,5 +1,5 @@
-<!--frame start-->
-### Loop Detection in Robotics
+\ifndef{deepLoopDetection}
+\define{deepLoopDetection}
 
 <img src="./diagrams/robot_path.png"  width="30%" class="negate" align="cener" style="background:none; border:none; box-shadow:none;">
 
@@ -22,4 +22,4 @@
 dimensions*
 
 <!--frame end-->
-
+\endif

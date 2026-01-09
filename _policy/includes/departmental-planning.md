@@ -14,4 +14,4 @@
 \notes{To a large extent this may have already happened, in the last CSR I'm sure it was politically opportune to include plans for spending around e.g. artificial intelligence. But I'd be curious to know to what extent those plans received critical review. Because there's a danger that that funding doesn't influence the culture of the department, but merely creates an additional arm of operations that doesn't interconnect with the wider agenda.}
 
 \endif
-
+\endif

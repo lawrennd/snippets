@@ -1,5 +1,5 @@
-\newslide{Perceptron}
-
+\ifndef{thePerceptron}
+\define{thePerceptron}
 \slides{
 \define{width}{80%}
 \define{animationName}{perceptron-algorithm}
@@ -53,4 +53,4 @@
 *Simple classification with the perceptron algorithm.*
 }
 
-\notes{\figure{\includediagram{\diagramsDir/ml/perceptron001}{80%}\includediagram{\diagramsDir/ml/perceptron044}{80%}}{The perceptron algorithm.}{the-perceptron-algorithm}}
+\endif

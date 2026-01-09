@@ -1,5 +1,5 @@
-\ifndef{dsailPoriniAnalysisImprovements}
-\define{dsailPoriniAnalysisImprovements}
+\ifndef{dsailPoriniCorrelationAnalysisImprovements}
+\define{dsailPoriniCorrelationAnalysisImprovements}
 
 \editme
 

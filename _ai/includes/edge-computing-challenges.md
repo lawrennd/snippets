@@ -64,4 +64,4 @@ These drivers create several investment implications:
 * New business models emerging
 } 
 
-\endif{edgeComputingChallenges}
+\endif

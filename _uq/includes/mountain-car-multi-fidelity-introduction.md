@@ -1,5 +1,5 @@
-\ifndef{moutainCarMultiFidelityIntroduction}
-\define{moutainCarMultiFidelityIntroduction}
+\ifndef{mountainCarMultiFidelityIntroduction}
+\define{mountainCarMultiFidelityIntroduction}
 
 \editme
 

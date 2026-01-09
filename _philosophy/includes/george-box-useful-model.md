@@ -22,4 +22,4 @@ sweater). Indeed, I most often see it quoted at the beginning of a talk in a way
 > George E. P. Box [@Box-science76]
 
 \endif
-
+\endif

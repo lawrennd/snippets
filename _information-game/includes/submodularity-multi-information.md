@@ -175,4 +175,4 @@ In Lecture 3, we'll derive the basic dynamics (maximum entropy production subjec
 }
 
 \endif
-
+\endif

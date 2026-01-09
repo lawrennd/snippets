@@ -1,5 +1,5 @@
-\subsection{What's Changed (Changing) for Medical Data?}
-
+\ifndef{dataDiversity}
+\define{dataDiversity}
 \slides{* Genotyping.
 * Epigenotyping.
 * Transcriptome.
@@ -11,4 +11,4 @@
 
 The challenge is in the massive unstructured data sources we need to pull together to exploit this information.}
 
-
+\endif

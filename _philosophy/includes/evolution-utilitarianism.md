@@ -1,5 +1,5 @@
-\ifndef{evolutionAndUtilitarianism}
-\define{evolutionAndUtilitarianism}
+\ifndef{evolutionUtilitarianism}
+\define{evolutionUtilitarianism}
 \editme
 
 \subsection{Evolution and Utilitarianism}

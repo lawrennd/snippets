@@ -64,4 +64,4 @@
   which can be computed analytically for some covariance functions [@Damianou:variational15] or through sampling [@Damianou:thesis2015;@Salimbeni:doubly2017].
 
 \endif
-
+\endif

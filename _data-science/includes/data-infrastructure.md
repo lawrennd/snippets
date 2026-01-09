@@ -1,5 +1,5 @@
 \ifndef{dataInfrastructure}
-\define{dataInfrasrtucture}
+\define{dataInfrastructure}
 \editme
 
 \setupdisplaycode{import notutils as nu}

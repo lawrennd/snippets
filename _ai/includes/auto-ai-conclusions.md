@@ -1,5 +1,5 @@
-\ifndef{dataOrientedConclusions}
-\define{dataOrientedConclusions}
+\ifndef{autoAiConclusions}
+\define{autoAiConclusions}
 
 \editme
 

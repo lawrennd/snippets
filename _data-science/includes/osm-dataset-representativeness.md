@@ -1,5 +1,5 @@
 \ifndef{osmDatasetRepresentativeness}
-\define{osmDdatasetRepresentativeness}
+\define{osmDatasetRepresentativeness}
 
 \editme
 

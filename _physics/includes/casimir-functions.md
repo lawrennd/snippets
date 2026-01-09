@@ -266,4 +266,4 @@ $$
 \addreading{@Marsden:book99}{Chapter 12.6: Momentum Maps and Casimir Functions}
 
 \endif
-
+\endif

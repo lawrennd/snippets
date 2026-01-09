@@ -1,5 +1,5 @@
-\ifndef{logistRegressionStatsmodelsShort}
-\define{logistRegressionStatsmodelsShort}
+\ifndef{logisticRegressionStatsmodelsShort}
+\define{logisticRegressionStatsmodelsShort}
 
 
 \editme

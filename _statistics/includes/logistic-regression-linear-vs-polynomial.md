@@ -1,5 +1,5 @@
-\ifndef{logisticRegressionEvaluation}
-\define{logisticRegressionEvaluation}
+\ifndef{logisticRegressionLinearVsPolynomial}
+\define{logisticRegressionLinearVsPolynomial}
 
 \editme
 

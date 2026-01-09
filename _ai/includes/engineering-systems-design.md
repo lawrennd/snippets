@@ -1,5 +1,5 @@
 \ifndef{engineeringSystemsDesign}
-
+\define{engineeringSystemsDesign}
 \subsection{Engineering Systems Design}
 
 \slides{
@@ -67,4 +67,4 @@ We can imagine a driverless car operating on a highway (a more controlled enviro
 * One that is robust to unforeseen circumstances. 
 }
 
-\notes{Deployment in uncontrolled environments may require a different approach to systems design, one that accounts for uncertainty in the environment and one that is robust to unforeseen circumstances.}
+\endif

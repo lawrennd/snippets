@@ -58,7 +58,7 @@ At room temperature: $\sim 3 \times 10^{-21}$ Joules/bit
 
 \newslide{Implications for Computation}
 
-\notes{Modern computers operate billions of times above the Landauer limit due to engineering constraints. But even if we could build computers at the thermodynamic limit, consider a brain-scale computation. @Lawrence-living17 reviews estimates suggesting it would require over an exaflop ($10^{18}$ floating point operations per second) to perform a full simulation of the human brain, based on @Ananthanarayanan-catscale09. Other authors have suggested the operations could be as low as $10^{15}$ [@Sandberg-whole08; @Moravec-mind98]
+\notes{Modern computers operate billions of times above the Landauer limit due to engineering constraints. But even if we could build computers at the thermodynamic limit, consider a brain-scale computation. @Lawrence-embodiment17 reviews estimates suggesting it would require over an exaflop ($10^{18}$ floating point operations per second) to perform a full simulation of the human brain, based on @Ananthanarayanan-cat09. Other authors have suggested the operations could be as low as $10^{15}$ [@Sandberg-whole08; @Moravec-mind98]
 
 Taking the most conservative estimate of $10^{15}$ operations/sec for functionally relevant computation:
 - $\sim 10^{15}$ operations/sec
@@ -81,7 +81,7 @@ The actual human brain consumes about 20W continuously, or $\sim 6 \times 10^8$ 
 \slides{
 **Brain-Scale Computation:**
 
-$10^{15}$-$10^{18}$ ops/sec [@Lawrence-living17; @Sandberg-whole08; @Moravec-mind98]
+$10^{15}$-$10^{18}$ ops/sec [@Lawrence-embodiment17; @Sandberg-whole08; @Moravec-mind98]
 
 $\sim 10^{15}$ ops/sec running 1 year at 300K:
 
@@ -172,4 +172,4 @@ Trying to build unbounded intelligence is like trying to build a perpetual motio
 \notes{This doesn't mean AI can't be powerful or transformative --- internal combustion engines transformed the world despite thermodynamic limits. But it does mean there are hard bounds on what's possible, and claims that ignore these bounds are as unrealistic as promises of perpetual motion.}
 
 \endif
-
+\endif

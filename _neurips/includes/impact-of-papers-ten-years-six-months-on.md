@@ -1,5 +1,5 @@
-\ifndef{impactOfPapersTenSixMonthsYearsOn}
-\define{impactOfPapersTenSixMonthsYearsOn}
+\ifndef{impactOfPapersTenYearsSixMonthsOn}
+\define{impactOfPapersTenYearsSixMonthsOn}
 
 \editme
 

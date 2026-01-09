@@ -1,5 +1,5 @@
-\ifndef{theSupplyChainOfIdeas}
-\define{theSupplyChainOfIdeas}
+\ifndef{supplyChainOfIdeas}
+\define{supplyChainOfIdeas}
 
 \editme
 

@@ -32,4 +32,4 @@ In machine learning, low rank approximations date back to @Smola:sparsegp00, @Wi
 Modern variational interpretations of these low rank approaches were first explored in @Titsias:variational09. A more modern summary which considers each of these approximations as an $\alpha$-divergence is given by @Thang:unifying17.}
 
 \endif
-
+\endif

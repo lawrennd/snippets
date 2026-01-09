@@ -1,5 +1,5 @@
-\newslide{Artificial Intelligence}
-\slides{
+\ifndef{aiVsDataScience}
+\define{aiVsDataScience}
 * ML is the principal technology underlying AI advances.
 * Different to  "good old fashioned AI" (GOFAI).
 * GOFAI relied on symbolic logic.
@@ -39,4 +39,4 @@
 * Recreate 'intelligent' behaviour.
 * Either *general intelligence* or emulate *human* capabilities.
 }
-\notes{In contrast, *Artificial intelligence* originates in *cybernetics*. It is the challenge of recreating 'intelligent' behaviour. In some cases it can mean  *general intelligence* or emulation of *human* capabilities. Machine learning is important because of success of data-driven artificial intelligence. Data-driven artificial intelligence: instead of solving from first principles, collect data.}
+\endif

@@ -1,5 +1,5 @@
-\ifndef{sistineChapelCeiling}
-\define{sistineChapelCeiling}
+\ifndef{michelangeloSistineChapelCeiling}
+\define{michelangeloSistineChapelCeiling}
 
 \editme
 

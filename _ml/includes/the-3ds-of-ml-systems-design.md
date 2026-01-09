@@ -1,5 +1,5 @@
-\ifndef{theThreeDsOfMlSystemDesign}
-\define{theThreeDsOfMlSystemDesign}
+\ifndef{the3dsOfMlSystemsDesign}
+\define{the3dsOfMlSystemsDesign}
 \editme
 
 \section{The Three Ds of Machine Learning Systems Design}

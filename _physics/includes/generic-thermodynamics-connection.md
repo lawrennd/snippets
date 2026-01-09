@@ -349,4 +349,4 @@ Information dynamics = coarse-grained stat-mech!
 
 \endif
 
-
+\endif

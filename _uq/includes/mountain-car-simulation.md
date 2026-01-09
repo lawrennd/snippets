@@ -1,5 +1,5 @@
-\ifndef{mountainCarSimulator}
-\define{mountainCarSimulator}
+\ifndef{mountainCarSimulation}
+\define{mountainCarSimulation}
 \editme
 
 \subsection{Mountain Car Simulator}

@@ -1,5 +1,5 @@
-\ifndef{sqliteDatabaseCreation}
-\define{sqliteDatabaseCreation}
+\ifndef{dsailPoriniSqliteDatabaseCreation}
+\define{dsailPoriniSqliteDatabaseCreation}
 
 \editme
 
@@ -25,4 +25,4 @@ Remember to include reusable code from this and previous exercises in your Fynes
 
 \endif
 
-
+\endif

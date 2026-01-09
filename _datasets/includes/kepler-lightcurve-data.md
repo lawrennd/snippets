@@ -1,5 +1,5 @@
-\ifndef{keplerLightCurveData}
-\define{keplerLightCurveData}
+\ifndef{keplerLightcurveData}
+\define{keplerLightcurveData}
 
 \editme
 

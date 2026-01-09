@@ -1,5 +1,5 @@
-\ifndef{deepGpEnhanced}
-\define{deepGpEnhanced}
+\ifndef{deepgpEnhance}
+\define{deepgpEnhance}
 \editme
 
 \notes{The deep Gaussian process code we are using is research code by Andreas Damianou. 

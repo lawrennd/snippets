@@ -1,5 +1,5 @@
-\ifndef{trackingHypeAboutHype}
-\define{trackingHypeAboutHype}
+\ifndef{hypeAboutHype}
+\define{hypeAboutHype}
 
 \editme
 

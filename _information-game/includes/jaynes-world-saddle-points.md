@@ -1,5 +1,5 @@
-\ifndef{saddlePoints}
-\define{saddlePoints}
+\ifndef{jaynesWorldSaddlePoints}
+\define{jaynesWorldSaddlePoints}
 
 \editme
 

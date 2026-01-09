@@ -1,5 +1,5 @@
-\ifndef{informationInertiaComponent}
-\define{informationInertiaComponent}
+\ifndef{inertiaInformationComponent}
+\define{inertiaInformationComponent}
 
 \editme
 

@@ -1,5 +1,5 @@
 \ifndef{behindTheMirror}
-\define{behindTheMirror}}
+\define{behindTheMirror}
 
 \editme
 

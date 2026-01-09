@@ -1,5 +1,5 @@
-\ifndef{moreUsefulMultivariateDerivatives}
-\define{moreUsefulMultivariateDerivatives}
+\ifndef{moreUsefulMatrixDerivatives}
+\define{moreUsefulMatrixDerivatives}
 
 \editme
 

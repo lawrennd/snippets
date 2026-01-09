@@ -1,5 +1,5 @@
-frame start
-
+\ifndef{mercer}
+\define{mercer}
 ### Covariance Functions and Mercer Kernels
 
 -   Mercer Kernels and Covariance Functions are similar. \pause
@@ -10,4 +10,4 @@ frame start
 -   Algorithms can be simpler, but probabilistic interpretation is
     crucial for kernel parameter optimization.
 
-frame end
+\endif

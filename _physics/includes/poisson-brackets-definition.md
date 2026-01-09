@@ -375,4 +375,4 @@ The key is the antisymmetric structure $A$ and the properties it satisfies, not 
 \addreading{@Marsden:book99}{Chapter 10.1-10.2: The Definition of Poisson Manifolds}
 
 \endif
-
+\endif

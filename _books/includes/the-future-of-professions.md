@@ -10,4 +10,4 @@
 \notes{Richard and Daniel Susskind's 2015 book foresaw that the next wave of automation, artificial intelligence, would have an effect on professional work, information work. And that looks likely to be the case. But professionals are typically well educated and can adapt to changes in their circumstances. For example stocks have already been revolutionised by algorithmic trading, businesses and individuals have adapted to those changes.}
 
 \endif
-
+\endif

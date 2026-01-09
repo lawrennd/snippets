@@ -53,7 +53,7 @@ $$
 \notes{Among all possible dynamics that conserve marginal entropy, which path should we choose? Our answer comes from a principle that has emerged across multiple domains of physics: *maximum entropy production* (MEP).
 
 The MEP principle states that, subject to constraints, systems evolve along the path of steepest entropy increase. This principle has been observed in:
-- Non-equilibrium thermodynamics [@Ziegler:book77; @Beretta-steepest84]
+- Non-equilibrium thermodynamics [@Ziegler-maximal87; @Beretta-fourth20]
 - Fluid dynamics and turbulence
 - Ecology and self-organization
 - Climate dynamics
@@ -143,7 +143,7 @@ $$
 
 3. **Conserves marginal entropies**: For systems with the exchangeable structure we've assumed, this flow keeps $\sum h_i$ constant.
 
-4. **Connects to thermodynamics**: This is exactly the "steepest entropy ascent" dynamics explored e.g. in non-equilibrium thermodynamics by Beretta  [@Beretta-steepest84].
+4. **Connects to thermodynamics**: This is exactly the "steepest entropy ascent" dynamics explored e.g. in non-equilibrium thermodynamics by Beretta  [@Beretta-fourth20].
 
 The information relaxation principle—that systems evolve from correlation to entropy—combined with MEP, uniquely determines these dynamics.}
 
@@ -241,8 +241,8 @@ The key insight remains: **information relaxation through maximum entropy produc
 *MEP + constraints = complete dynamics*
 }
 
-\addreading{@Beretta-steepest84}{Steepest entropy ascent in thermodynamics}
-\addreading{@Ziegler:book77}{Thermomechanics and variational principles}
+\addreading{@Beretta-fourth20}{Steepest entropy ascent in thermodynamics}
+\addreading{@Ziegler-maximal87}{Thermomechanics and variational principles}
 
 \endif
-
+\endif

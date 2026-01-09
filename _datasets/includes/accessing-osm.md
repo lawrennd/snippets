@@ -176,4 +176,4 @@ poi_counts_df = pd.DataFrame(list(poi_counts.items()), columns=['POI Type', 'Cou
 
 \endif
 
-poi_counts_df}
+\endif

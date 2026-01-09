@@ -1,5 +1,5 @@
-\ifndef{dimRedFailureModes}
-\define{dimRedFailureModes}
+\ifndef{dimensionalityReductionFailureModes}
+\define{dimensionalityReductionFailureModes}
 
 \editme
 

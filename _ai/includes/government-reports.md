@@ -1,5 +1,5 @@
-### Hall Presenti
-
+\ifndef{governmentReports}
+\define{governmentReports}
 ### Industrial Strategy
 
-### AI Sector Deal
+\endif

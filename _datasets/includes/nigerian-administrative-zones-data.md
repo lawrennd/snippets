@@ -1,5 +1,5 @@
-\ifndef{nigerianAdministrativeZones}
-\define{nigerianAdministrativeZones}
+\ifndef{nigerianAdministrativeZonesData}
+\define{nigerianAdministrativeZonesData}
 
 \editme
 

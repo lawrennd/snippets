@@ -81,4 +81,4 @@ $$F(f) = c(H(p) - H(q))$$
 \notes{This provides a foundational justification for using entropy as our measure of information. It's not just a convenient choice, it's the unique measure that satisfies natural requirements for measuring information loss.}
 
 \endif
-
+\endif

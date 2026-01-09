@@ -1,5 +1,5 @@
-
-### The Maths {.slide: data-transition="none"}
+\ifndef{breadthOrDepthMath}
+\define{breadthOrDepthMath}
 
 $$ \dataMatrix = \begin{bmatrix}
 \dataScalar_{1, 1} & \dataScalar_{1, 2} &\dots & \dataScalar_{1,p}\\
@@ -247,4 +247,4 @@ $$p(\boldsymbol{\theta} | \dataVector)$$
 
 <!-- * This is similar to the Bayesian posterior distribution. -->
 
-<!-- * But it's placed over a set of 'pseudo-observations'. -->
+\endif

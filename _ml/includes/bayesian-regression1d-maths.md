@@ -1,5 +1,5 @@
-\ifndef{bayesian1dMaths}
-\define{bayesian1dMaths}
+\ifndef{bayesianRegression1dMaths}
+\define{bayesianRegression1dMaths}
 
 \editme
 

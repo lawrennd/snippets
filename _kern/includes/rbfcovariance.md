@@ -1,5 +1,5 @@
-### Covariance Functions
-
+\ifndef{rbfcovariance}
+\define{rbfcovariance}
 #### Where did this covariance matrix come from?
 
 **Exponentiated Quadratic Kernel Function (RBF, Squared Exponential,
@@ -14,4 +14,4 @@ $$\kernelScalar\left(\inputVals,\inputVals^{\prime}\right)=\alpha\exp\left(-\fra
 -   For the example above it was based on Euclidean distance.
 
 -   The covariance function is also know as a kernel.
-
+\endif

@@ -1,5 +1,5 @@
-\include{_ml/includes/movie-body-count-data.md}
-
+\ifndef{probabilityMovieBodyCount}
+\define{probabilityMovieBodyCount}
 \notes{Let's use the sum rule to compute the approximate
 probability that a film from the movie body count website has over 40 deaths.}
 
@@ -50,4 +50,4 @@ file
 for you, it only needs to be run once per file).}{20}
 
 
-\notes{}
+\endif

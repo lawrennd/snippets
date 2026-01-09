@@ -1,5 +1,5 @@
-\ifndef{attentionFlywheelExampleAIatCam}
-\define{attentionFlywheelExampleAIatCam}
+\ifndef{attentionFlywheelExampleAiAtCam}
+\define{attentionFlywheelExampleAiAtCam}
 
 \editme
 

@@ -1,5 +1,5 @@
-\ifndef{rapidDiagnosisAndConsulting}
-\define{rapidDiagnosisAndConsulting}
+\ifndef{rapidDiagnosisAndConsultation}
+\define{rapidDiagnosisAndConsultation}
 \editme
 
 \notes{\subsubsection{Rapid Diagnosis and Consulting}}

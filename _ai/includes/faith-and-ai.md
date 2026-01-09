@@ -1,5 +1,5 @@
-\ifndef{faithAndAI}
-\define{faithAndAI}
+\ifndef{faithAndAi}
+\define{faithAndAi}
 \editme
 
 \subsection{Faith and AI}

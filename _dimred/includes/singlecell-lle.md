@@ -27,4 +27,4 @@ mlai.write_figure('singlecell-lle.svg', directory='\writeDiagramsDir/dimred')}
 \figure{\includediagram{\diagramsDir/dimred/singlecell-lle}{60%}}{Visualisation of the @Guo:fate10 blastocyst development data with a locally linear embedding.}{singlecell-lle}
 
 \endif
-
+\endif

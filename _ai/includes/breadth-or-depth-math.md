@@ -1,5 +1,5 @@
-
-### The Maths {.slide: data-transition="none"}
+\ifndef{breadthOrDepthMath}
+\define{breadthOrDepthMath}
 
 $$ \dataMatrix = \begin{bmatrix}
 \dataScalar_{1, 1} & \dataScalar_{1, 2} &\dots & \dataScalar_{1,p}\\
@@ -164,4 +164,4 @@ $$p(\paramVector | \dataVector)$$
 * Similar for digital computers. So we need to assume that we can only store a finite number of things about the data $\dataVector$. 
 
 * This pushes us back towards *parametric* models. 
-
+\endif

@@ -1,4 +1,4 @@
-24\ifndef{simpleCnnImplementation}
+\ifndef{simpleCnnImplementation}
 \define{simpleCnnImplementation}
 
 \editme

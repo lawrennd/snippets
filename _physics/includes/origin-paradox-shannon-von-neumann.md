@@ -116,4 +116,4 @@ So the quantum/noncommutative formalism makes the origin \emph{representable} wi
 From here, the next question is: once expectations are primitive, what are the reversible transformations that preserve this expectation structure? That leads into the unitary/commutator story.}
 
 \endif
-
+\endif

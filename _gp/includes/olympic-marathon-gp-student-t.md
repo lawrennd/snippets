@@ -1,5 +1,5 @@
-\ifndef{olympicMarathonGpStudentt}
-\define{olympicMarathonGpStudentt}
+\ifndef{olympicMarathonGpStudentT}
+\define{olympicMarathonGpStudentT}
 
 \include{_gp/includes/olympic-marathon-gp.md}
 

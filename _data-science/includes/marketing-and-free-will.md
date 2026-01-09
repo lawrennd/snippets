@@ -1,5 +1,5 @@
-\ifndef{margetingAndFreeWill}
-\define{margetingAndFreeWill}
+\ifndef{marketingAndFreeWill}
+\define{marketingAndFreeWill}
 
 \editme
 

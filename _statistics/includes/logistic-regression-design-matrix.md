@@ -1,5 +1,5 @@
-\ifndef{logisticRegressionEvaluation}
-\define{logisticRegressionEvaluation}
+\ifndef{logisticRegressionDesignMatrix}
+\define{logisticRegressionDesignMatrix}
 
 \editme
 

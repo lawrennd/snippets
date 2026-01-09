@@ -1,5 +1,5 @@
-\includetalkfile{../../../gp/tex/talks/gp_big_data.tex}
-\begin{frame}
+\ifndef{healthMotivation}
+\define{healthMotivation}
   \frametitle{What's Changed (Changing) for Medical Data?}
   \begin{itemize}
   \item Try Googling for: ``patient data ''...
@@ -15,4 +15,4 @@
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: ../../../health/tex/latest/deep_health
-%%% End: 
+\endif

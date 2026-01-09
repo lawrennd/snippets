@@ -1,5 +1,5 @@
-\ifndef{mlDatasetConstruction}
-\define{mlDatasetConstruction}
+\ifndef{osmMlDatasetConstruction}
+\define{osmMlDatasetConstruction}
 
 \editme
 

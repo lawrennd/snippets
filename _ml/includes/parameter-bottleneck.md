@@ -1,5 +1,5 @@
-\ifndef{parametricBottleneck}
-\define{parametricBottleneck}
+\ifndef{parameterBottleneck}
+\define{parameterBottleneck}
 
 \editme
 

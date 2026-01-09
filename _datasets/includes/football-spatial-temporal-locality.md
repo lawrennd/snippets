@@ -1,5 +1,5 @@
-\ifndef{footballSpatialTemoralLocality}
-\define{footballSpatialTemoralLocality}
+\ifndef{footballSpatialTemporalLocality}
+\define{footballSpatialTemporalLocality}
 
 \editme
 

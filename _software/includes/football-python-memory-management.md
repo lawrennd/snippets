@@ -1,5 +1,5 @@
-\ifndef{pythonMemoryManagement}
-\define{pythonMemoryManagement}
+\ifndef{footballPythonMemoryManagement}
+\define{footballPythonMemoryManagement}
 
 \editme
 

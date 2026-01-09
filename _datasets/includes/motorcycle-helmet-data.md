@@ -1,4 +1,4 @@
-\ifndef{motorcycleHemletData}
+\ifndef{motorcycleHelmetData}
 \define{motorcycleHelmetData}
 \editme
 

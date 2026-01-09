@@ -1,5 +1,5 @@
-\ifndef{cameraTrapBurstDetectionAnalysis}
-\define{cameraTrapBurstDetectionAnalysis}
+\ifndef{dsailPoriniBurstDetectionAnalysis}
+\define{dsailPoriniBurstDetectionAnalysis}
 
 \editme
 
@@ -25,4 +25,4 @@ Particular hardship around deduplicating multi-species sightings.}
 
 \endif
 
-
+\endif

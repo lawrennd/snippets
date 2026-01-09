@@ -1,5 +1,5 @@
-\ifndef{biasVarianceInML}
-\define{biasVarianceInML}
+\ifndef{biasVarianceInMl}
+\define{biasVarianceInMl}
 
 \editme
 

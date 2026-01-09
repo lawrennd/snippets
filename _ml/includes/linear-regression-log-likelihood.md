@@ -1,5 +1,5 @@
 \ifndef{linearRegressionLogLikelihood}
-\define{linearRegressionLogLikleihood}
+\define{linearRegressionLogLikelihood}
 
 \editme
 

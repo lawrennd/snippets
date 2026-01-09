@@ -98,4 +98,4 @@ This formalises the metaphor from *The Atomic Human* [@Lawrence-atomic24]: "In g
 }
 
 \endif
-
+\endif

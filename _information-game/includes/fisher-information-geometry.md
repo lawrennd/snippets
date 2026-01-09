@@ -178,4 +178,4 @@ Understanding Fisher information as *geometry*, not just as a statistical tool, 
 }
 
 \endif 
-
+\endif

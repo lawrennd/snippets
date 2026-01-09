@@ -1,5 +1,5 @@
-\include{_deepgp/includes/deep-neural-network.md}
-
+\ifndef{whatIsADeepGp}
+\define{whatIsADeepGp}
 
 \subsection{Overfitting}
 
@@ -130,4 +130,4 @@ mlai.write_figure(figure=fig, filename='\writeDiagramsDir/wisuvt.svg')
 -   These methodologies are part of that picture.
 
 \include{_health/includes/deep-health-model.md}
-\include{_health/includes/deep-health-rangers.md}
+\endif

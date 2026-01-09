@@ -1,5 +1,5 @@
-\ifndef{informationReservoirs}
-\define{informationReservoirs}
+\ifndef{jaynesWorldInformationReservoirs}
+\define{jaynesWorldInformationReservoirs}
 
 \editme
 

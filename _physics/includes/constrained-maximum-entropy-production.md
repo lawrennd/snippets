@@ -147,4 +147,4 @@ When $\nu \approx 0$, the constraint gradient is nearly orthogonal to the flow, 
 \notes{As we'll see next, this tension between the information geometry and the constraint structure is what generates the GENERIC-like decomposition into dissipative and conservative parts.}
 
 \endif
-
+\endif

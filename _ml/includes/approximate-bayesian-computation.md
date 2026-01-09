@@ -1,5 +1,5 @@
-\ifndef{abcInference}
-\define{abcInference}
+\ifndef{approximateBayesianComputation}
+\define{approximateBayesianComputation}
 
 \editme
 

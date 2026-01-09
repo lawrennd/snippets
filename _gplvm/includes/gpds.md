@@ -1,5 +1,5 @@
-<!--frame failure start-->
-
+\ifndef{gpds}
+\define{gpds}
   \frametitle{Gaussian Process Dynamical Systems}
   \begin{flushright}
     {\scriptsize \citep{Damianou:vgpds11}}
@@ -53,4 +53,4 @@
 \figure{\includeyoutube{i9TEoYxaBxQ}{800}{600}}{Probabilistic video reconstruction with a variational Gaussian process dynamical system}{probabilistic-video-reconstruction}
 
 <!--frame end-->
-
+\endif

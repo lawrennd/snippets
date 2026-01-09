@@ -1,5 +1,5 @@
-\notes{\subsubsection{Bandwidth Constrained Conversations}}
-
+\ifndef{anneBobTalk}
+\define{anneBobTalk}
 \setupdisplaycode{import notutils as nu
 from ipywidgets import IntSlider}
 
@@ -52,4 +52,4 @@ from ipywidgets import IntSlider}
 
 \notes{Control of self is vitally important to these communications.}
 
-\notes{The high availability of data available to humans undermines human-to-human communication channels by providing new routes to undermining our control of self.}
+\endif

@@ -194,4 +194,4 @@ If you can do matrix exp + trace, you can do quantum exp families!
 
 \endif
 
-
+\endif

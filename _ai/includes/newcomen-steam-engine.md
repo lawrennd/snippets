@@ -1,5 +1,5 @@
-\ifndef{newcomenEngine}
-\define{newcomenEngine}
+\ifndef{newcomenSteamEngine}
+\define{newcomenSteamEngine}
 
 \editme
 

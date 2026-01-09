@@ -11,7 +11,7 @@
 * [science.ai.cam.ac.uk](https://science.ai.cam.ac.uk)
 * [datascienceafrica.org](https://www.datascienceafrica.org/)
 * [ai.cam.ac.uk](https://ai.cam.ac.uk)
-}}
+}
 
 \endif
-
+\endif

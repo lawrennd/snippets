@@ -34,4 +34,4 @@ The hybrid approach allows Facebook to make rapid predictions about ad performan
 
 \notes{Importantly, from our perspective, the researchers found that *feature selection* was the most critical factor - particularly choosing the features that capture historical information about users and ads. Given the 'right' features and model architecture, adapting the system to accommodate other aspects such as data freshness and learning rate tuning provided smaller incremental gains. To handle the scale of the task the system used a cascade of classifies to handle thecandidate ads per request efficiently. The hybrid model served as the final stage classifier. The paper also discusses practical considerations around implementing online learning and managing computational resources at scale.}
 
-\endir
+\endif

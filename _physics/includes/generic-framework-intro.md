@@ -35,7 +35,7 @@ Examples of such systems:
 - **Chemical reactions:** Reaction kinetics (reversible) + diffusion (irreversible)
 - **Complex materials:** Elastic deformation (reversible) + plastic flow (irreversible)
 
-Two researchers, Miroslav Grmela and Hans Christian Öttinger, independently developed a unified framework in the 1990s that they called **GENERIC**: *General Equation for Non-Equilibrium Reversible-Irreversible Coupling* [@Grmela-dynamics97;@Ottinger-generic97;@Ottinger-thermodynamics05].}
+Two researchers, Miroslav Grmela and Hans Christian Öttinger, independently developed a unified framework in the 1990s that they called **GENERIC**: *General Equation for Non-Equilibrium Reversible-Irreversible Coupling* [@Grmela-dynamics97;@Ottinger-generic97;@Ottinger-beyond05].}
 
 \slides{
 **Non-Equilibrium Challenge (1980s-90s)**
@@ -199,4 +199,4 @@ The framework is now recognized as a fundamental structure in non-equilibrium st
 
 \endif
 
-
+\endif

@@ -1,5 +1,5 @@
-\ifndef{machineLearningAndNarratives}
-\define{machineLearningAndNarratives}
+\ifndef{embodimentAndNarrative}
+\define{embodimentAndNarrative}
 
 \editme 
 

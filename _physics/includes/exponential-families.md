@@ -261,4 +261,4 @@ For the inaccessible game, exponential families provide the setting where inform
 }
 
 \endif
-
+\endif

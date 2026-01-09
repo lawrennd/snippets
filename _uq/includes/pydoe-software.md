@@ -1,5 +1,5 @@
-\ifndef{pyDoeSoftware}
-\define{pyDoeSoftware}
+\ifndef{pydoeSoftware}
+\define{pydoeSoftware}
 
 
 \editme

@@ -265,4 +265,4 @@ With tight constraint ($\nu > 0$):
 \notes{**Summary:** This discrete example demonstrates all the key elements of perturbation analysis—equilibria, Fisher information, linearisation matrix, and the interplay between entropy gradient and constraint geometry—in a fully computable setting. The same principles apply to continuous systems, but with the Gaussian approximation marginal entropies become tractable.}
 
 \endif
-
+\endif

@@ -1,5 +1,5 @@
-\ifndef{conceptualFramework}
-\define{conceptualFramework}
+\ifndef{jaynesWorldConceptualFramework}
+\define{jaynesWorldConceptualFramework}
 
 \editme
 

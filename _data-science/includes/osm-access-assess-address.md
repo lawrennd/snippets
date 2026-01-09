@@ -1,5 +1,5 @@
-\ifndef{accessAssessAddress}
-\define{accessAssessAddress}
+\ifndef{osmAccessAssessAddress}
+\define{osmAccessAssessAddress}
 
 \editme
 

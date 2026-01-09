@@ -1,5 +1,5 @@
-\ifndef{philosophersStoneToAGI}
-\define{philosophersStoneToAGI}
+\ifndef{philosophersStoneToAgi}
+\define{philosophersStoneToAgi}
 
 \editme
 
@@ -27,4 +27,4 @@
 
 \notes{To understand the flaws, consider the concept of an "artificial general vehicle" - a vehicle that would dominate all other vehicles in all circumstances, regardless of whether you're traveling from Nairobi to Nyeri or just to the end of your road. While there are general principles of transportation, the idea of a single vehicle that would be optimal in all situations is absurd. Similarly, intelligence is composed of various capabilities that are appropriate in different contexts, not a single formula that dominates in all respects.}
 
-\endif 
+\endif

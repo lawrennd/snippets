@@ -193,4 +193,4 @@ is the shadow of a deeper structural message:
 We will now develop Poisson brackets as a concrete, classical calculus for this reversible sector.}
 
 \endif
-
+\endif

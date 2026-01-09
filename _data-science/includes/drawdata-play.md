@@ -1,5 +1,5 @@
-\ifndef{dataDrawPlay}
-\define{dataDrawPlay}
+\ifndef{drawdataPlay}
+\define{drawdataPlay}
 
 \editme
 

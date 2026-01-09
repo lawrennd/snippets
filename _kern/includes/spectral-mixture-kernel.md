@@ -1,5 +1,5 @@
-
 \ifndef{spectralMixtureKernel}
+\define{spectralMixtureKernel}
 \define{spectralMixtureKernel}
 
 \editme

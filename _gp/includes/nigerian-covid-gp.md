@@ -1,5 +1,5 @@
-\ifndef{nigeriaCovidGp}
-\define{nigeriaCovidGp}
+\ifndef{nigerianCovidGp}
+\define{nigerianCovidGp}
 
 \editme
 

@@ -83,4 +83,4 @@ $$\Delta(\sum h_i) = 0 \Rightarrow \text{observer learns nothing!}$$
 \notes{The inaccessible game provides an information-theoretic foundation for thermodynamic principles. It suggests that physical laws might emerge from information-theoretic constraints, rather than information theory being derived from physics.}
 
 \endif
-
+\endif

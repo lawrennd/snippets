@@ -68,4 +68,4 @@ I'd love to hear how it works (or doesn't work) for your projects.}
 \notes{Thank you. Let's open it up for discussion. Your experience and insights will be invaluable in understanding whether this approach has legs, what needs to change, and how it might fit into real engineering practice.}
 
 \endif
-
+\endif

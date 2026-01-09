@@ -16,4 +16,4 @@ In the original Nystr\"om method the columns to incorporate are sampled from the
 
 \endif
 
-
+\endif

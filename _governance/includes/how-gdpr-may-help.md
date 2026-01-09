@@ -1,5 +1,5 @@
-\ifndef{howTheGdprMayHelp}
-\define{howTheGdprMayHelp}
+\ifndef{howGdprMayHelp}
+\define{howGdprMayHelp}
 
 \edit
 
@@ -25,4 +25,4 @@ Similarly, with regard to data minimization principles. Retaining the minimum am
 If GDPR is truly reflecting the interests of individuals, then it is also reflecting the interests of consumers, patients, users etc, each of whom make use of these systems. For any company that is customer facing, or any service that prides itself on the quality of its delivery to those individuals, "good data practice" should become part of the DNA of the organization.}
 
 \endif
-
+\endif

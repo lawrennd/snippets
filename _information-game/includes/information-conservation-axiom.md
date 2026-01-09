@@ -187,4 +187,4 @@ From these four axioms, we will derive (in Lecture 3) a constrained dynamical sy
 }
 
 \endif
-
+\endif

@@ -1,5 +1,5 @@
-\ifndef{bethSinglerCreation}
-\define{bethSinglerCreation}
+\ifndef{bethSingerCreation}
+\define{bethSingerCreation}
 
 \editme
 

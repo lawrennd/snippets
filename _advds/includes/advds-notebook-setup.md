@@ -1,5 +1,5 @@
-\ifndef{adsNotebookSetup}
-\define{adsNotebookSetup}
+\ifndef{advdsNotebookSetup}
+\define{advdsNotebookSetup}
 
 \editme
 

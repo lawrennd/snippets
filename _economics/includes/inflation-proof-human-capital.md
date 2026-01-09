@@ -21,4 +21,4 @@
 
 \notes{So, the closer we get to the atomic human the more difficult it is to measure the value of the associated human attention.}
 
-\editme
+\endif

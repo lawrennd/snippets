@@ -1,5 +1,5 @@
-\ifndef{bochnersTheorem}
-\define{bochnersTheorem}
+\ifndef{boechnersTheorem}
+\define{boechnersTheorem}
 
 \editme
 

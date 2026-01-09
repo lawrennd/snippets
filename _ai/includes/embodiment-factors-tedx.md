@@ -53,7 +53,7 @@ For a typical computer, to communicate everything it computes in one second, it 
 
 If intelligence is fundamentally about processing and sharing of information. This gives us a fundamental constraint on human intelligence that dictates its nature.
 
-I call this ratio between the time it takes to compute something, and the time it takes to say it, the embodiment factor [@Lawrence:embodiment17]. Because it reflects how embodied our cognition is.
+I call this ratio between the time it takes to compute something, and the time it takes to say it, the embodiment factor [@Lawrence-embodiment17]. Because it reflects how embodied our cognition is.
 
 If it takes you two minutes to say the thing you have thought in a second, then you are a computer. If it takes you 15 billion years, then you are a human.}
 

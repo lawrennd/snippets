@@ -1,5 +1,5 @@
-\ifdefined\blackBackground\global\long\def\redColor{cyan}
-\global\long\def\magentaColor{green} \global\long\def\blueColor{yellow}
+\ifndef{gpoptimize}
+\define{gpoptimize}
 \else\global\long\def\redColor{red}
 \global\long\def\magentaColor{magenta} \global\long\def\blueColor{blue}
 \fi
@@ -132,4 +132,4 @@ $$\errorFunction(\parameterVector) = {\color{\blueColor}\frac{1}{2}\log\det{\ker
 
 frame end
 
-[../../../gp/tex/talks/gp\_gene\_expression\_optimize\_example](../../../gp/tex/talks/gp_gene_expression_optimize_example.md)
+\endif

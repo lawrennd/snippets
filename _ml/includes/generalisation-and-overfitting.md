@@ -1,5 +1,5 @@
-\ifndef{generalizationAndOverfitting}
-\define{generalizationAndOverfitting}
+\ifndef{generalisationAndOverfitting}
+\define{generalisationAndOverfitting}
 \editme
 
 \subsection{Generalization and Overfitting}

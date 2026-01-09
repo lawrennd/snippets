@@ -354,4 +354,4 @@ $$
 \addreading{@Marsden:book99}{Chapter 5.4: Hamiltonian Systems}
 
 \endif
-
+\endif

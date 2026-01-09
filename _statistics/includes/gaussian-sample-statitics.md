@@ -1,5 +1,5 @@
-\ifndef{gaussianSampleStatistics}
-\define{gaussianSampleStatistics}
+\ifndef{gaussianSampleStatitics}
+\define{gaussianSampleStatitics}
 
 \editme
 

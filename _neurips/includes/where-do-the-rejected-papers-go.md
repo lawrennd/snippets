@@ -1,5 +1,5 @@
-\ifndef{whereDoRejectedPapersGo}
-\define{whereDoRejectedPapersGo}
+\ifndef{whereDoTheRejectedPapersGo}
+\define{whereDoTheRejectedPapersGo}
 
 \editme
 

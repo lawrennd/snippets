@@ -1,5 +1,5 @@
-<!--frame start-->
-![](../../../gplvm/tex/diagrams/gp_prior_samples_few.png)
+\ifndef{test}
+\define{test}
 
 <!--frame end-->
 <!--frame start-->
@@ -15,4 +15,4 @@
 ![](../../../gplvm/tex/diagrams/gp_rejection_samples.png)
 
 <!--frame end-->
-
+\endif

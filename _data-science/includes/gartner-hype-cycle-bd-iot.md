@@ -1,5 +1,5 @@
-\ifndef{gartnerHypeCycleBdIoT}
-\define{gartnerHypeCycleBdIoT}
+\ifndef{gartnerHypeCycleBdIot}
+\define{gartnerHypeCycleBdIot}
 
 \editme
 

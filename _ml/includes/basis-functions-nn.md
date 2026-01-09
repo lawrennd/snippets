@@ -1,5 +1,5 @@
-\ifndef{basisFunctionsIntro}
-\define{basisFunctionsIntro}
+\ifndef{basisFunctionsNn}
+\define{basisFunctionsNn}
 \editme
 
 \subsection{Basis Functions}

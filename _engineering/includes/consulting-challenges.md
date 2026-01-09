@@ -1,5 +1,5 @@
-\ifndef{consultationChallenges}
-\define{consultationChallenges}
+\ifndef{consultingChallenges}
+\define{consultingChallenges}
 
 \editme
 

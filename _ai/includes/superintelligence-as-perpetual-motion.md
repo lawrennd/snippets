@@ -1,5 +1,5 @@
-\ifndef{superintelligenceAsPerpetuaMotion}
-\define{superintelligenceAsPerpetuaMotion}
+\ifndef{superintelligenceAsPerpetualMotion}
+\define{superintelligenceAsPerpetualMotion}
 
 \editme
 
@@ -118,4 +118,4 @@ $G$ determines:
 \notes{Just as perpetual motion machines attracted investors in the 19th and early 20th centuries, superintelligence  claims attract billions today. But the fundamental constraints haven't changed. The idea of this work is that information theory provides as firm a bound on intelligence as thermodynamics provides on engines.}
 
 \endif
-
+\endif

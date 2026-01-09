@@ -1,5 +1,5 @@
-\ifndef{hippocampusAnatomy}
-\define{hippocampusAnatomy}
+\ifndef{hippocampus}
+\define{hippocampus}
 
 \editme
 

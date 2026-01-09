@@ -1,5 +1,5 @@
 \ifndef{linearRegressionRegularisation}
-\define{linearRegressionregularisation}
+\define{linearRegressionRegularisation}
 
 \editme
 

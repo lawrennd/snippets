@@ -84,4 +84,4 @@ Standard technique: $\int e^{-Nf(x)} \text{d}x$ dominated by minimum of $f(x)$
 This is why we focus on linearisation around equilibrium in Gaussian regimes.}
 
 \endif
-
+\endif

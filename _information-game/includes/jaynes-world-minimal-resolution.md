@@ -1,5 +1,5 @@
-
-
+\ifndef{jaynesWorldMinimalResolution}
+\define{jaynesWorldMinimalResolution}
 \ifndef{jaynesWorldMinimalResolution}
 \define{jaynesWorldMinimalResolution}
 

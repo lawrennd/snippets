@@ -26,4 +26,4 @@ The challenge of Intellectual Debt means that it's possible for a bank to produc
 [^gdpr-footnote]: The GDPR is "General Data Protection Regulation" but it does not 'protect data' it 'protects individuals' with regard to decision making based on their personal data. The misnomer data-protection is unfortunate, a better way of viewing this legislation is "personal data rights" legislation. 
 
 
-\editme
+\endif

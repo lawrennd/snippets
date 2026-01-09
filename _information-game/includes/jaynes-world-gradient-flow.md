@@ -1,5 +1,5 @@
-\ifndef{jaynesGradientFlow}
-\define{jaynesGradientFlow}
+\ifndef{jaynesWorldGradientFlow}
+\define{jaynesWorldGradientFlow}
 
 \editme
 

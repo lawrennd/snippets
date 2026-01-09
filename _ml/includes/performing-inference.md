@@ -1,5 +1,5 @@
-\subsection{Performing Inference}
-
+\ifndef{performingInference}
+\define{performingInference}
 \slides{
 * Easy to write in probabilities
 
@@ -38,4 +38,4 @@ The Gaussian likelihood given above implies that the data observation is related
 \newslide{Linear Gaussian Models}
 
 \slides{* Normally integrals are complex but for this Gaussian linear case they are trivial.}\notes{and while normally integrating over high dimensional parameter vectors is highly complex, here it is *trivial*. That is because of a property of the multivariate Gaussian.}
-
+\endif

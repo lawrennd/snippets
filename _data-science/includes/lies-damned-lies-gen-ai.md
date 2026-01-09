@@ -1,5 +1,5 @@
-\ifndef{liesDamnedLiesGenAI}
-\define{liesDamnedLiesGenAI}
+\ifndef{liesDamnedLiesGenAi}
+\define{liesDamnedLiesGenAi}
 
 \editme
 

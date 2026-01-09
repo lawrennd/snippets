@@ -54,4 +54,4 @@ for state in ['before', 'after']:
 \notes{And that's it. Those are the simple 'physical laws' for Conway's game.}
 
 \endif
-
+\endif

@@ -1,5 +1,5 @@
 \ifndef{computerLaboratory}
-\define{comptuerLaboratory}
+\define{computerLaboratory}
 
 \editme
 

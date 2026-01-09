@@ -1,5 +1,5 @@
-\ifndef{fascinationWithOurSelves}
-\define{fascinationWithOurSelves}
+\ifndef{fascinationWithOurselves}
+\define{fascinationWithOurselves}
 
 \editme
 

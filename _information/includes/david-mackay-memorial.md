@@ -7,7 +7,7 @@
 
 \notes{This talk is given at a memorial meeting for David MacKay, who made fundamental contributions to our understanding of the relationship between information theory, energy, and practical systems. David's work on information theory and inference provided elegant bridges between abstract mathematical principles and real-world applications.}
 
-\notes{David's book "Information Theory, Inference, and Learning Algorithms" [@MacKay-information03] demonstrated how information-theoretic thinking could illuminate everything from error-correcting codes to neural networks to thermodynamics. His later work on sustainable energy [@MacKay-sustainable08] showed how careful quantitative reasoning about physical constraints could cut through hype and wishful thinking.}
+\notes{David's book "Information Theory, Inference, and Learning Algorithms" [@MacKay-information03] demonstrated how information-theoretic thinking could illuminate everything from error-correcting codes to neural networks to thermodynamics. His later work on sustainable energy [@MacKay-energy08] showed how careful quantitative reasoning about physical constraints could cut through hype and wishful thinking.}
 
 \slides{
 **David MacKay (1967-2016)**
@@ -32,4 +32,4 @@
 }
 
 \endif
-
+\endif

@@ -1,3 +1,3 @@
-\define{\stubname}{anne-bob}
-
-\include{_ai/includes/anne-bob-talk.md}
+\ifndef{conversationTechnical}
+\define{conversationTechnical}
+\endif

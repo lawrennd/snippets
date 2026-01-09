@@ -300,4 +300,4 @@ Next, we'll see how our information dynamics fit this framework perfectly.}
 
 \endif
 
-
+\endif

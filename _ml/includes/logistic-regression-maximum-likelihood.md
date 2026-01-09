@@ -1,5 +1,5 @@
-\ifndef{logisticRegressionLogLikelihood}
-\define{logisticRegressionLogLikelihood}
+\ifndef{logisticRegressionMaximumLikelihood}
+\define{logisticRegressionMaximumLikelihood}
 
 \editme
 

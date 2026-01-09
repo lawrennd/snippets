@@ -1,5 +1,5 @@
-\ifndef{jjThomsonAvenue}
-\define{jjThomsonAvenue}
+\ifndef{jJThomsonAvenue}
+\define{jJThomsonAvenue}
 
 \editme
 

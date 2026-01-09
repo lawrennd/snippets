@@ -49,4 +49,4 @@ $$\frac{\text{d}H}{\text{d}t} \geq 0$$
 \notes{I've no doubt that AI technologies will transform our world just as much as the automobile has. But I also have no doubt that the promise of superintelligence is just as silly as the promise of perpetual motion. The inaccessible game provides one way of understanding why.}
 
 \endif
-
+\endif

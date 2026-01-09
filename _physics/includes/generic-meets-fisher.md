@@ -302,4 +302,4 @@ Knowing our system is GENERIC lets us import results from non-equilibrium thermo
 
 \endif
 
-
+\endif

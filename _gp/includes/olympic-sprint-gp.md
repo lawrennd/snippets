@@ -1,5 +1,5 @@
 \ifndef{olympicSprintGp}
-\define{olypmicSprintGp}
+\define{olympicSprintGp}
 
 \include{_datasets/includes/olympic-sprint-data.md}
 

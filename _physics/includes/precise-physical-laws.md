@@ -1,5 +1,5 @@
-\ifndef{preciseLaws}
-\define{preciseLaws}
+\ifndef{precisePhysicalLaws}
+\define{precisePhysicalLaws}
 
 \editme
 

@@ -75,4 +75,4 @@ Why wait? Because you don't want to create detailed implementation tasks for a d
 This means VibeSafe works with Cursor, GitHub Copilot, Claude Code, Codex, or any other AI assistant that can read project files. Following VibeSafe's own tenets: user autonomy over prescription.}
 
 \endif
-
+\endif

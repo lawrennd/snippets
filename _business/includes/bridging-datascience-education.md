@@ -1,5 +1,5 @@
-\ifndef{bridgingDataScienceEducation}
-\define{bridgingDataScienceEducation}
+\ifndef{bridgingDatascienceEducation}
+\define{bridgingDatascienceEducation}
 
 \editme
 

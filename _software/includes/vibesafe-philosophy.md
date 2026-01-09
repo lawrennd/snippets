@@ -45,4 +45,4 @@ $$\text{Tenets} \rightarrow \text{Requirements} \rightarrow \text{CIPs} \rightar
 Each level is explicit, reviewable, and provides a checkpoint for ensuring shared understanding.}
 
 \endif
-
+\endif

@@ -1,5 +1,5 @@
 \ifndef{bigDataParadoxExamples}
-\define{bigDataParadoxExamples]
+\define{bigDataParadoxExamples}
 
 \editme
 

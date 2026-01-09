@@ -132,4 +132,4 @@ Again: the "Lie closure" choice is an implementation trick for computation, not 
 In this course, we treat $s$ as a purely computational ordering parameter. It is not a dynamical clock.}
 
 \endif
-
+\endif

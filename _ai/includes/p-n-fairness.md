@@ -1,5 +1,5 @@
-\ifndef{pnFairness}
-\define{pnFairness}
+\ifndef{pNFairness}
+\define{pNFairness}
 
 \editme
 

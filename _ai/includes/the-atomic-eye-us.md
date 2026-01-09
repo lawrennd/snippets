@@ -1,5 +1,5 @@
-\ifndef{theAtomicEye}
-\define{theAtomicEye}
+\ifndef{theAtomicEyeUs}
+\define{theAtomicEyeUs}
 
 \editme
 

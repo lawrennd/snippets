@@ -1,5 +1,5 @@
-\ifndef{datascienceNotebookSetup}
-\define{datascienceNotebookSetup}
+\ifndef{dataScienceNotebookSetup}
+\define{dataScienceNotebookSetup}
 
 \editme
 

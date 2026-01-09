@@ -1,5 +1,5 @@
-\ifndef{codeReuseFynesse}
-\define{codeReuseFynesse}
+\ifndef{osmCodeReuseFynesse}
+\define{osmCodeReuseFynesse}
 
 \editme
 
@@ -20,4 +20,4 @@ import fynesse}
 
 \endif
 
-
+\endif

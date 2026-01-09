@@ -1,5 +1,5 @@
-\ifndef{theDabbaWalas}
-\define{theDabbaWalas}
+\ifndef{theDabbawalas}
+\define{theDabbawalas}
 
 \editme
 

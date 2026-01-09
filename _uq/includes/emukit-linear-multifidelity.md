@@ -1,5 +1,5 @@
-\ifndef{linearMultifidelity}
-\define{linearMultifidelity}
+\ifndef{emukitLinearMultifidelity}
+\define{emukitLinearMultifidelity}
 
 \editme
 

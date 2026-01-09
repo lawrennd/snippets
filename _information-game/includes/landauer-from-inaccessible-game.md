@@ -117,4 +117,4 @@ $$\boxed{Q_{\text{dissipated}} \geq k_BT\log 2}$$
 \notes{The information-theoretic constraint provides the foundation, with thermodynamic energy appearing as its dual in the large-system limit. This reverses the usual derivation where information bounds follow from thermodynamics --- here thermodynamic bounds follow from information theory.}
 
 \endif
-
+\endif

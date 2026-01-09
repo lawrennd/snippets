@@ -1,5 +1,5 @@
-\setupcode{
-  importTool('GPmat')
+\ifndef{ode1ArtificialExample}
+\define{ode1ArtificialExample}
   gpmatToolboxes
   randn('seed', 1e4);
   rand('seed', 1e4);
@@ -134,4 +134,4 @@ end
 }
 
 include{\diagramsDir/sysbio/infer-tf-from-gene-text.md}
-
+\endif

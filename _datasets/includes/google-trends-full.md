@@ -1,5 +1,5 @@
-::: {.cell .markdown}
-# Datasets: Downloading Data from Google Trends
+\ifndef{googleTrendsFull}
+\define{googleTrendsFull}
 
 ### 28th May 2014 {#28th-may-2014}
 
@@ -259,4 +259,4 @@ data['data frame'].plot(ax=ax, rot=45)
 ::: {.cell .code}
 ``` {.python}
 ```
-:::
+\endif

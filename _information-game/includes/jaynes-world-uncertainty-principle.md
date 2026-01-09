@@ -1,5 +1,5 @@
-\ifndef{uncertaintyPrinciple}
-\define{uncertaintyPrinciple}
+\ifndef{jaynesWorldUncertaintyPrinciple}
+\define{jaynesWorldUncertaintyPrinciple}
 
 \editme
 

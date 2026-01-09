@@ -1,5 +1,5 @@
-\ifndef{thePerceptron}
-\define{thePerceptron}
+\ifndef{thePerceptronAlgorithm}
+\define{thePerceptronAlgorithm}
 
 \editme
 

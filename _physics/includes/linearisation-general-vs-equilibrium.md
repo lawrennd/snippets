@@ -174,4 +174,4 @@ But the framework is *general*:
 \notes{**Summary:** Linearisation is not restricted to an equilibrium. At any point $\boldsymbol{\theta}_0$ on the constraint manifold, we can linearise to get $\dot{\boldsymbol{\theta}} \approx F(\boldsymbol{\theta}_0) + M(\boldsymbol{\theta}_0)\delta\boldsymbol{\theta}$. The Jacobian $M$ captures the local flow geometry, and its decomposition $M = S + A$ reveals the balance between dissipative and conservative dynamics at that point. Equilibria are just the special case where the drift term $F$ vanishes, simplifying the analysis but not fundamentally changing the structure. In today's lecture, we'll explore this decomposition and see what it tells us about information dynamics.}
 
 \endif
-
+\endif

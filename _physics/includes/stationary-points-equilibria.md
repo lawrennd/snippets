@@ -273,4 +273,4 @@ The next lecture (Lecture 5) will introduce the Poisson bracket structure, showi
 }
 
 \endif
-
+\endif

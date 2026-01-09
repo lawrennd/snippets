@@ -194,4 +194,4 @@ The punchline: if you know exponential families + Fisher information + natural g
 
 \endif
 
-
+\endif

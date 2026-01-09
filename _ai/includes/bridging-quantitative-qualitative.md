@@ -1,5 +1,5 @@
 \ifndef{bridgingQuantitativeQualitative}
-\define{birdgingQuantitativeQualitative}
+\define{bridgingQuantitativeQualitative}
 
 \editme
 

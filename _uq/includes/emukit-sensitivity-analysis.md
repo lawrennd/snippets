@@ -1,5 +1,5 @@
-
 \ifndef{emukitSensitivityAnalysis}
+\define{emukitSensitivityAnalysis}
 \define{emukitSensitivityAnalysis}
 
 \editme

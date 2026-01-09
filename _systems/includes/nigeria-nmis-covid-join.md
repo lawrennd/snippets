@@ -1,5 +1,5 @@
-\ifndef{nigerianNmisCovidJoin}
-\define{nigerianNmisCovidJoin}
+\ifndef{nigeriaNmisCovidJoin}
+\define{nigeriaNmisCovidJoin}
 
 
 \editme

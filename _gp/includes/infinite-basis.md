@@ -1,5 +1,5 @@
-\subsection{Selecting Number and Location of Basis}
-\slides{
+\ifndef{infiniteBasis}
+\define{infiniteBasis}
 * Need to choose
   1. location of centers
   2. number of basis functions
@@ -85,4 +85,4 @@ where we’ve scaled variance of process by $\Delta\locationScalar$.
   * this is a special case,
   * in general they are very different
 }
-\notes{Note that while the functional form of the basis function and the covariance function are similar, in general if we repeated this analysis for other basis functions the covariance function will have a very different form. For example the error function, $\text{erf}(\cdot)$, results in an $\asin(\cdot)$ form. See @Williams:infinite96 for more details.}
+\endif
