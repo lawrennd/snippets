@@ -82,12 +82,12 @@ mlai.write_figure(figure=fig, filename='\writeDiagramsDir/wisuvt.svg')
 <!--Bayesian GP-LVM-->
 
 
-<!--include{_gplvm/includes/ard_gplvm.md} -->
+<!--include{_gplvm/includes/ard-gplvm.md} -->
 <!-- \include{_gplvm/includes/bayes_gplvm_intro.md} -->
-<!-- \include{_gplvm/includes/variational_bayes_gplvm_long.md} -->
+<!-- \include{_gplvm/includes/variational-bayes-gplvm-long.md} -->
 
-<!-- \include{_gp/includes/gp_big_data_technical.md} -->
-<!--\include{_gp/includes/gp_big_data.md}-->
+<!-- \include{_gp/includes/gp-big-data-technical.md} -->
+<!--\include{_gp/includes/gp-big-data.md}-->
 
 \include{_deepgp/includes/deep-gps.md}
 
@@ -102,8 +102,8 @@ mlai.write_figure(figure=fig, filename='\writeDiagramsDir/wisuvt.svg')
 
 <!--Conclusions-->
 
-<!-- \include{_gplvm/includes/ard_model.md} -->
-<!-- \include{_gplvm/includes/ard_results.md} -->
+<!-- \include{_gplvm/includes/ard-model.md} -->
+<!-- \include{_gplvm/includes/ard-results.md} -->
 
 <!--Gaussian Process Dynamical Systems-->
 
