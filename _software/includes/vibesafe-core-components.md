@@ -13,7 +13,7 @@
 * Example: "User Autonomy Over Prescription"
 }
 
-\notes{Tenets are your project's guiding principles—typically 5-7 of them, enough to cover key decisions but few enough to actually remember and apply.
+\notes{Tenets are your project's guiding principles, eventually 5-7 of them, enough to cover key decisions but few enough to actually remember and apply.
 
 They're not rigid rules. When tenets conflict, you need judgment. For example, VibeSafe has a tenet of "User Autonomy Over Prescription" (let users configure things) that can conflict with "Simplicity at All Levels" (don't overwhelm with options). The resolution: sensible defaults with configuration options.}
 
@@ -39,7 +39,7 @@ This separation is crucial because it lets the AI (or you) explore multiple appr
 * Review before implementing
 }
 
-\notes{CIPs—Code Improvement Plans—are where you document design decisions before implementing them.
+\notes{Code/Capability Improvement Plans (CIPs) are where you document design decisions before implementing them.
 
 Each CIP includes:
 - What problem it solves (Motivation)
