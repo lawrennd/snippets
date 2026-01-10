@@ -43,4 +43,3 @@ With AI assistance, this inverts. The AI can generate documentation quickly. But
 But we're not in that model anymore. The bottleneck has shifted.}
 
 \endif
-\endif
