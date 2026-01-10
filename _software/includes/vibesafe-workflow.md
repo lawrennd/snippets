@@ -64,7 +64,7 @@ It's useful when an AI assistant or human starts the session, it gets immediate 
 * Future developers understand **what**, not just **how**
 }
 
-\notes{After implementation is complete and a CIP is closed, there's a final step: compression.
+\notes{After implementation is complete and a CIP is closed, there's a final step: *compression*.
 
 You've now got the development history, why you made certain decisions, what alternatives you considered, how you implemented it. This is valuable, but future developers (human or AI) don't need to read all of that to understand the current state.
 
