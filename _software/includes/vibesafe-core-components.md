@@ -9,7 +9,7 @@
 
 \slides{
 * 5-7 guiding principles
-* Not rigid rules—principles to balance
+* Not rigid rules --- principles to balance
 * Example: "User Autonomy Over Prescription"
 }
 
