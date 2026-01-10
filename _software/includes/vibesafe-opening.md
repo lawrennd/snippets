@@ -11,7 +11,7 @@
 * But have you debugged AI-generated code at 2am?
 }
 
-\notes{You're all experienced engineers. You've been using AI coding assistants—GitHub Copilot, Cursor, Claude Code, maybe others. And you've seen the promise: code generation that's faster than anything we've had before.
+\notes{You're all experienced engineers. You've been using AI coding assistants such as GitHub Copilot, Cursor, Claude Code, maybe others. And you've seen the promise: code generation that's faster than anything we've had before.
 
 But you've probably also experienced the flip side: debugging code that an AI generated based on a misunderstanding of your intent. Maybe it was a subtle architectural assumption. Maybe it interpreted "user authentication" differently than you meant. And you discovered it late, after it was wired through multiple files.}
 
