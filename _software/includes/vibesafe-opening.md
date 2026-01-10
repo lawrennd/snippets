@@ -28,7 +28,7 @@ But you've probably also experienced the flip side: debugging code that an AI ge
 
 \notes{In traditional development, writing code was the expensive part, i.e. human engineering time. Documentation was often deferred or skipped.
 
-With AI assistance, this inverts. The AI can generate documentation quickly. But if the AI misunderstands your intent and implements the wrong thing, you discover it late. The cost isn't in writing the code—it's in unwinding the wrong implementation after it's integrated into your system.}
+With AI assistance, this inverts. The AI can generate documentation quickly. But if the AI misunderstands your intent and implements the wrong thing, you discover it late. The cost isn't in writing the code, it's in unwinding the wrong implementation after it's integrated into your system.}
 
 \subsection{A Natural Reaction}
 
