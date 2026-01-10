@@ -15,7 +15,7 @@
 
 \notes{What do you gain from this approach?
 
-*Early detection*: You catch AI misunderstandings when they're cheap to fix—editing a CIP instead of unwinding code.
+*Early detection*: You catch AI misunderstandings when they're cheap to fix, i.e. editing a CIP instead of unwinding code.
 
 *Shared context*: When a new team member joins (human or AI), they can read your tenets, requirements, and CIPs to understand not just what the code does, but why it does it that way.
 
