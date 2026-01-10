@@ -15,13 +15,13 @@
 
 \notes{What do you gain from this approach?
 
-**Early detection**: You catch AI misunderstandings when they're cheap to fix—editing a CIP instead of unwinding code.
+*Early detection*: You catch AI misunderstandings when they're cheap to fix—editing a CIP instead of unwinding code.
 
-**Shared context**: When a new team member joins (human or AI), they can read your tenets, requirements, and CIPs to understand not just what the code does, but why it does it that way.
+*Shared context*: When a new team member joins (human or AI), they can read your tenets, requirements, and CIPs to understand not just what the code does, but why it does it that way.
 
-**Traceability**: You can trace from implementation back through CIPs to requirements to tenets. "Why did we choose this architecture?" has a documented answer.
+*Traceability*: You can trace from implementation back through CIPs to requirements to tenets. "Why did we choose this architecture?" has a documented answer.
 
-**Better AI interactions**: By making context explicit, AI assistants give better suggestions. They understand your project's principles and constraints.}
+*Better AI interactions*: By making context explicit, AI assistants give better suggestions. They understand your project's principles and constraints.}
 
 \subsection{What It Costs}
 
@@ -33,11 +33,11 @@
 
 \notes{What does it cost?
 
-**Upfront time**: Yes, you spend more time documenting before implementing. In the old cost model, this was pure overhead. In the AI-assisted model, it's front-loading the verification work.
+*Upfront time*: Yes, you spend more time documenting before implementing. In the old cost model, this was pure overhead. In the AI-assisted model, it's front-loading the verification work.
 
-**Learning curve**: Your team needs to learn the VibeSafe workflow. This takes time and adjustment, especially for engineers used to moving straight to implementation.
+*Learning curve*: Your team needs to learn the VibeSafe workflow. This takes time and adjustment, especially for engineers used to moving straight to implementation.
 
-**Maintenance**: More files to keep updated. CIPs need status updates. Requirements need validation. Tenets need to be actually applied, not just written once and forgotten.}
+*Maintenance*: More files to keep updated. CIPs need status updates. Requirements need validation. Tenets need to be actually applied, not just written once and forgotten.}
 
 \subsection{When Does This Make Sense?}
 
