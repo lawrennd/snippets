@@ -71,4 +71,4 @@ You've now got the development history, why you made certain decisions, what alt
 Compression means distilling the closed CIPs into streamlined formal documentation (like Sphinx docs). The history is preserved for those who need it, but the primary docs stay clean and focused.}
 
 \endif
-\endif
+

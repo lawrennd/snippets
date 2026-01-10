@@ -97,11 +97,18 @@ def validate_file(file_path: Path) -> Tuple[bool, List[str]]:
         errors.append(f"Second line should be: {expected_define}")
         errors.append(f"  Found: {second_line}")
     
-    # Check last line: \endif
-    last_line = lines[-1].strip()
+    # Check last non-blank line: \endif
+    # Strip trailing blank lines and whitespace
+    last_line = ""
+    for line in reversed(lines):
+        stripped = line.strip()
+        if stripped:
+            last_line = stripped
+            break
+    
     expected_endif = "\\endif"
     if last_line != expected_endif:
-        errors.append(f"Last line should be: {expected_endif}")
+        errors.append(f"Last non-blank line should be: {expected_endif}")
         errors.append(f"  Found: {last_line}")
     
     return len(errors) == 0, errors
@@ -139,8 +146,16 @@ def fix_file(file_path: Path) -> bool:
     # Fix second line
     lines[1] = f"\\define{{{expected_camel}}}\n"
     
-    # Fix last line
-    lines[-1] = "\\endif\n"
+    # Find and fix last non-blank line
+    # Strip trailing blank lines, replace last non-blank line with \endif, ensure file ends with newline
+    while lines and lines[-1].strip() == '':
+        lines.pop()
+    
+    if lines:
+        lines[-1] = "\\endif\n"
+    else:
+        # Should not happen if file has content, but handle gracefully
+        lines = [f"\\ifndef{{{expected_camel}}}\n", f"\\define{{{expected_camel}}}\n", "\\endif\n"]
     
     # Write back
     try:
