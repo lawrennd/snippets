@@ -17,9 +17,9 @@
 
 First, you check your project's tenets. Maybe you have a tenet about "Security Without Friction" that guides this decision.
 
-Then you write a requirement: "Users must authenticate securely with support for single sign-on." This is the **what**—the outcome you need.
+Then you write a requirement: "Users must authenticate securely with support for single sign-on." This is the WHAT—the outcome you need.
 
-Next, you create a CIP to explore the **how**: JWT tokens? Session-based auth? OAuth2 integration? The CIP documents your reasoning, trade-offs, and chosen approach. You review this with your team (human or AI) before implementing.}
+Next, you create a CIP to explore the HOW: JWT tokens? Session-based auth? OAuth2 integration? The CIP documents your reasoning, trade-offs, and chosen approach. You review this with your team (human or AI) before implementing.}
 
 \subsection{AI Natural Breakpoints}
 
