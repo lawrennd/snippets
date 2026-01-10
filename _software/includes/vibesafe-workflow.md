@@ -31,9 +31,9 @@ Next, you create a CIP to explore the HOW: JWT tokens? Session-based auth? OAuth
 
 \notes{VibeSafe defines natural breakpoints in the workflow where AI assistants should pause for human review:
 
-1. After creating a CIP (status: Proposed) — let the human(s) review the design
-2. After accepting a CIP — ask if we should create backlog tasks now
-3. After implementation — let the human test and validate
+1. After creating a CIP (status: Proposed) let the human(s) review the design.
+2. After accepting a CIP ask if we should create backlog tasks now.
+3. After implementation let the human test and validate.
 
 These aren't arbitrary, they're the points where human judgment is most valuable. The AI can generate the content, but humans verify it matches intent.}
 
