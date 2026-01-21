@@ -11,8 +11,4 @@
 \else
   \ifeq{\databaseType}{mariadb}
     \include{_systems/includes/nigerian-population-data-mariadb.md}
-  \endif
-\endif
-
-
 \endif

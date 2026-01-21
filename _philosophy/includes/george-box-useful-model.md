@@ -20,6 +20,4 @@ sweater). Indeed, I most often see it quoted at the beginning of a talk in a way
 > Since all models are wrong the scientist must be alert to what is importantly wrong. It is inappropriate to be concerned about mice when there are tigers abroad.
 >
 > George E. P. Box [@Box-science76]
-
-\endif
 \endif

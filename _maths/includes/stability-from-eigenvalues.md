@@ -155,7 +155,4 @@ Eigenvalues: $\lambda = -\gamma \pm \sqrt{\gamma^2 - \omega_0^2}$
 }
 
 \notes{**Summary:** Eigenvalue analysis provides a complete picture of near-equilibrium behavior. The GENERIC decomposition $M = S + A$ makes the physical meaning transparent: $S$ controls stability through real parts, $A$ controls oscillations through imaginary parts.}
-
-\endif
-
 \endif

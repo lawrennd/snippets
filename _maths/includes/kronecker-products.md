@@ -116,7 +116,4 @@ $$}
 1. **Memory efficiency**: Instead of storing an $n \times n$ matrix, we store smaller component matrices
 2. **Computational efficiency**: Matrix operations scale better with Kronecker structure
 3. **Numerical stability**: Often more stable than direct computation of large matrices}
-
-
-\endif
 \endif

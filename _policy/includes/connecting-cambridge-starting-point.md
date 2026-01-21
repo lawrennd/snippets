@@ -46,6 +46,4 @@
 }
 
 \notes{This model of "connecting Cambridge" becomes a starting point because it demonstrates that before we can deploy AI to solve societal problems, we need to connect the people who understand those problems with the people developing AI tools. The attention reinvestment cycle requires these human networks as much as it requires technical infrastructure.}
-
-\endif
 \endif

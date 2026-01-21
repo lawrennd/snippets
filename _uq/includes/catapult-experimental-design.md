@@ -64,7 +64,4 @@ ed = ExperimentalDesignLoop(space=space,
 ed.run_loop(catapult_distance, 10)}
 
 \writeAssignment{The experiment above was a little slow because we used the integrated variance reduction instead of uncertainty sampling. Try repeating the experiment using uncertainty sampling (make sure not to overwrite your existing model!). What happens? Why does this happen and would you expect it to lead to a better or worse result?}{}{10}
-
-
-\endif
 \endif

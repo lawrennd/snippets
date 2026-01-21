@@ -157,7 +157,4 @@ $$
 }
 
 \notes{**Summary:** Every matrix splits uniquely into symmetric (dissipative) and antisymmetric (conservative) parts. This decomposition is fundamental in physics, where it separates irreversible processes (entropy production) from reversible ones (Hamiltonian dynamics).}
-
-\endif
-
 \endif
