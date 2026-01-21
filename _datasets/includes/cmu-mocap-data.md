@@ -30,6 +30,4 @@ motion=['01']}
 \code{print(data['info'])
 print()
 print(data['details'])}
-
-\endif
 \endif

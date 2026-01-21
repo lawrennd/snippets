@@ -21,8 +21,4 @@ Helpful links:
 [Multi-Column Indices](https://stackoverflow.com/questions/179085/multiple-indexes-vs-multi-column-indexes)
 
 Remember to include reusable code from this and previous exercises in your Fynesse library!}{}{20}
-
-
-\endif
-
 \endif

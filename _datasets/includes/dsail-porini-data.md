@@ -35,8 +35,4 @@ porini_file = download_if_not_exists(
 
 \code{porini_df = pd.read_excel(porini_file)
 porini_df.head()}
-
-\endif
-
-
 \endif

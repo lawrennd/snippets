@@ -173,7 +173,4 @@ for tag in poi_types:
     poi_counts[tag] = 0
 
 poi_counts_df = pd.DataFrame(list(poi_counts.items()), columns=['POI Type', 'Count'])
-
-\endif
-
 \endif

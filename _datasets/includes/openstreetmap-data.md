@@ -29,10 +29,4 @@ bbox = (west, south, east, north)}
 \include{_datasets/includes/poi-extraction-osm.md}
 
 \include{_datasets/includes/city-map-visualization.md}
-
-\endif
-
-
-
-
 \endif

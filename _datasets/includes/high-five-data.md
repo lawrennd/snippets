@@ -30,6 +30,4 @@ data['Y2'].shape}
 \code{print(data['info'])
 print()
 print(data['details'])}
-
-\endif
 \endif

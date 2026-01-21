@@ -661,7 +661,4 @@ $$}
     limit theorem.
 * Next we will consider example data sets and see how their interpoint
     distances are distributed.}
-
-\endif
-
 \endif
