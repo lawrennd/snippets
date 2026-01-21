@@ -17,7 +17,4 @@
 
 \addarticle{Sunday Times article "Our lives may be enhanced by AI, but Big Tech just sees dollar signs"}{https://www.thetimes.com/business-money/technology/article/our-lives-may-be-enhanced-by-ai-but-big-tech-just-sees-dollar-signs-2g5xcsk35}
 \addarticle{Times article "Don't expect AI to just fix everything, professor warns"}{https://www.thetimes.com/business-money/technology/article/dont-expect-ai-to-just-fix-everything-professor-warns-j2nzrn56g}
-
-\endif
-
 \endif

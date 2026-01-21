@@ -11,9 +11,4 @@
 
 
 \notes{In the past when decisions became too difficult, we invoked higher powers in the forms of gods, and "trial by ordeal". Today we face a similar challenge with AI. When a decision becomes difficult there is a danger that we hand it to the machine, but it is precisely these difficult decisions that need to contain a human element.}
-
-
-
-\endif
-
 \endif
