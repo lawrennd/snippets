@@ -62,6 +62,4 @@
   \expDist{\kernelMatrix_{\mappingFunctionVector,\inducingVector}\kernelMatrix_{\inducingVector,\inducingVector}^{-1}\kernelMatrix_{\inducingVector,\mappingFunctionVector}}{q(\latentMatrix)}
   $$
   which can be computed analytically for some covariance functions [@Damianou:variational15] or through sampling [@Damianou:thesis2015;@Salimbeni:doubly2017].
-
-\endif
 \endif

@@ -23,6 +23,4 @@ If we think of the legislation as protecting individuals, and we note that it se
 Similarly, with regard to data minimization principles. Retaining the minimum amount of personal data needed to drive decisions could well lead to *better* decision making as it causes us to become intentional about which data is used rather than the sloppier thinking that "more is better" encourages. Particularly when we consider that to be truly useful data has to be cleaned and maintained.
 
 If GDPR is truly reflecting the interests of individuals, then it is also reflecting the interests of consumers, patients, users etc, each of whom make use of these systems. For any company that is customer facing, or any service that prides itself on the quality of its delivery to those individuals, "good data practice" should become part of the DNA of the organization.}
-
-\endif
 \endif

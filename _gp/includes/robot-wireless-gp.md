@@ -28,7 +28,4 @@ mlai.write_figure(filename='robot-wireless-gp-dim-' + str(output_dim)+ '.svg',
 
 
 \figure{\includediagram{\diagramsDir/gp/robot-wireless-gp-dim-1}{80%}}{Gaussian process fit to the Robot Wireless dimension 1.}{robot-wireless-gp-dim-1}
-
-
-\endif
 \endif

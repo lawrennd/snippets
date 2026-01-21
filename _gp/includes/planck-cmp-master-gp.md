@@ -109,7 +109,4 @@ mlai.write_figure('mollweide-sample-cmb.png',
 \figure{\div{<img src="\diagramsDir/earth_PNG37.png" width="20%" style="display:inline-block;background:none;vertical-align:middle;border:none;box-shadow:none;">$=f\Bigg($<img src="\diagramsDir/Planck_CMB.png"  width="50%" style="display:inline-block;background:none;vertical-align:middle;border:none;box-shadow:none;">$\Bigg)$}{}{fontsize:120px;vertical-align:middle}}{What we observe today is some non-linear function of the cosmic microwave background.}{modern-universe-non-linear-function}
 
 \notes{We can think of today's observed Universe, though, as a being a consequence of those temperature fluctuations in the CMB. Those fluctuations are only order $10^{-6}$ of the scale of the overall temperature of the Universe. But minor fluctuations in that density are what triggered the pattern of formation of the Galaxies. They determined how stars formed and created the elements that are the building blocks of our Earth [@Vogelsberger-cosmological20].}
-
-
-\endif
 \endif

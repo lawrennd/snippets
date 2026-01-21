@@ -77,7 +77,4 @@
   \end{tikzpicture}
   Separate ARD parameters for mappings to $\dataMatrix^{(1)}$ and $\dataMatrix^{(2)}$.
 \end{center}
-  
-
-\endif
 \endif

@@ -116,4 +116,3 @@ $${\only<1>{\color{\redColor}}\log \gaussianDist{\dataVector}{{\only<2->{\color{
   }
 \only<4->{\begin{center} \emph{cf} wake sleep algorithm. {\color{\magentaColor}recognition network} and {\color{\blueColor}generation network} @Hinton:science95.\end{center} }
 \endif
-\endif
