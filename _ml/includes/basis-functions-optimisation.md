@@ -118,3 +118,5 @@ import mlai}
 \else
 \notes{Don't forget, the multivariate solution should be computed using QR decomposition.}
 \endif
+
+\endif

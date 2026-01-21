@@ -111,17 +111,17 @@ def validate_file(file_path: Path) -> Tuple[bool, List[str]]:
         errors.append(f"Last non-blank line should be: {expected_endif}")
         errors.append(f"  Found: {last_line}")
     
-    # Check for duplicate consecutive \endif at the end
-    endif_count = 0
-    for line in reversed(lines):
-        stripped = line.strip()
-        if stripped == expected_endif:
-            endif_count += 1
-        elif stripped:  # Non-empty, non-endif line
-            break
+    # Check for truly duplicate \endif (imbalanced ifndef/ifdef vs endif)
+    # Count all conditional opens (ifndef + ifdef) and closes (endif)
+    content_str = ''.join(lines)
+    ifndef_count = content_str.count("\\ifndef")
+    ifdef_count = content_str.count("\\ifdef")
+    endif_count_total = content_str.count("\\endif")
     
-    if endif_count > 1:
-        errors.append(f"Found {endif_count} consecutive \\endif statements at end of file (should be exactly 1)")
+    total_opens = ifndef_count + ifdef_count
+    if total_opens != endif_count_total:
+        errors.append(f"Imbalanced conditionals: {ifndef_count} \\ifndef + {ifdef_count} \\ifdef = {total_opens} opens, but {endif_count_total} \\endif")
+        errors.append(f"  Note: Consecutive \\endif at end is OK if they close nested blocks")
     
     return len(errors) == 0, errors
 

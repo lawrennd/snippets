@@ -77,3 +77,5 @@ and models need retraining or restructuring.
 \else
 \include{_data-science/includes/data-oriented-architectures-short.md}
 \endif
+
+\endif
