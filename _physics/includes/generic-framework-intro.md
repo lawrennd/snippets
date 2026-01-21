@@ -198,5 +198,3 @@ Structure we built = GENERIC!
 The framework is now recognized as a fundamental structure in non-equilibrium statistical mechanics. Our contribution is showing it emerges naturally from information-theoretic first principles.}
 
 \endif
-
-\endif
