@@ -128,4 +128,3 @@ $$\text{Information axioms} \Rightarrow \text{Thermodynamics}$$
 \notes{In Grmela and Öttinger's original work, satisfying the degeneracy conditions requires careful construction (see e.g. Chapter 4 of @Ottinger-beyond05). The fact that they emerge automatically in our framework suggests that marginal entropy conservation has special geometric significance for non-equilibrium dynamics.}
 
 \endif
-\endif
