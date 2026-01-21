@@ -28,6 +28,4 @@
 \newslide{}
 
 Work by [Licong Xu and Boris Boillet et al.](https://arxiv.org/abs/2507.07257)
-
-\endif
 \endif

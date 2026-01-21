@@ -7,7 +7,4 @@
 \define{\initials}{ai-bd-dl}
 
 \include{_data-science/includes/gartner-hype-cycle-base.md}
-
-
-\endif
 \endif

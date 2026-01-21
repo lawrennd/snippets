@@ -70,6 +70,3 @@ We become exposed to mischief and adversaries. Adversaries intentionally may wis
 * [Mike Jordan's Medium Post](https://medium.com/@mijordan3/artificial-intelligence-the-revolution-hasnt-happened-yet-5e1d5812e1e7)
 }
 \endif
-
-
-\endif

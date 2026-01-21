@@ -11,7 +11,4 @@
 * Softmax turns unnormalised scores into probabilities
 * Invariant to adding a constant to all scores
 }
-
-\endif
-
 \endif

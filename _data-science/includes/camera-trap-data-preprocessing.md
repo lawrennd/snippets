@@ -85,7 +85,4 @@ print(f"\nDaily counts shape: {daily_counts.shape}")
 daily_counts.tail()}
 
 \notes{This preprocessing step transforms our raw observational data into a structured format suitable for time series analysis and machine learning. The systematic approach ensures we don't lose important information while making the data analytically tractable.}
-
-\endif
-
 \endif

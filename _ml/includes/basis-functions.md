@@ -12,6 +12,4 @@
 \include{_ml/includes/relu-basis.md}
 \include{_ml/includes/hyperbolic-tangent-basis.md}
 \include{_ml/includes/fourier-basis.md}
-
-\endif
 \endif

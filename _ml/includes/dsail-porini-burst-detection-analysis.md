@@ -22,7 +22,4 @@ Particular hardship around deduplicating multi-species sightings.}
 \codeassignment{Compare the results and note the improvement (or lack thereof) against the two previous prediction functions you created.}
 
 \codeassignment{What other benefits does your new system provide? Can you modify it to provide more predictions, like the expected number of sightings, the number of animals?}
-
-\endif
-
 \endif

@@ -134,7 +134,4 @@ evaluate_prediction_system(binary_df, bayes_sighting_probability)}{20}
 \notes{For reference, predicting a constant probability (eg. 0.5%) gives a loss of around 0.026. This should be the benchmark number we want to improve on. If your model does better than that, well done!}
 
 \notes{*Note: our approach included look-ahead bias - making predictions based on data that we would not have access to at the time. For real-life deployment, we would need to limit our training data to before individual test cases.*}
-
-\endif
-
 \endif

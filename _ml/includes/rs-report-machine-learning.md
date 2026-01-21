@@ -10,6 +10,4 @@
 \include{_ml/includes/rs-report-mention.md}
 
 \addatomic{Royal Society; machine learning review and}{25, 321, 395}
-
-\endif
 \endif

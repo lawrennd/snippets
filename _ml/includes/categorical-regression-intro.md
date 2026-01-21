@@ -11,7 +11,4 @@
 * Multi-class extension of logistic regression
 * Model class scores with linear functions, convert to probabilities via softmax
 }
-
-\endif
-
 \endif

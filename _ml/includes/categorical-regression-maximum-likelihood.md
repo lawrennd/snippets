@@ -20,7 +20,4 @@ $$}
 * One-hot targets $\dataVector_i$, softmax probabilities $\pi_{ik}$
 * Negative log-likelihood: $E = -\sum_i \sum_k \dataScalar_{ik}\log\pi_{ik}$
 }
-
-\endif
-
 \endif

@@ -77,6 +77,3 @@ compare [digital oligarchy](https://www.theguardian.com/media-network/2015/mar/0
 * [Andrej Karpathy's Medium Post](https://medium.com/@karpathy/software-2-0-a64152b37c35)
 }
 \endif
-
-
-\endif

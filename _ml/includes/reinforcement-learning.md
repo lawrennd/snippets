@@ -153,10 +153,4 @@ Bayesian optimization arises when we can't directly relate the parameters in the
 \subsection{Model-Based and Model Free: Performance}
 
 \notes{Because of their different philosophies, if a class of prediction functions is chosen, then a model-based approach might have better average case performance. At least in terms of *data efficiency*. A model free approach may well have better worst-case performance though, because it makes less assumptions about the nature of the data. To put it another way, making assumptions about the data is helpful if they are right: and if the model is sensible they'll be right on average. However, it is unhelpful if the model is wrong. Indeed, it could be actively damaging. Since we can't usually guarantee the model is absolutely right, the worst-case performance of a model-based approach would be poor.}
-
-
-\endif
-
-
-
 \endif

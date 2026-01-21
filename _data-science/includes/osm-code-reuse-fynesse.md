@@ -17,7 +17,4 @@ import fynesse}
 
 \code{# Example: Plot a city map using your reusable function
 # fynesse.access.plot_city_map('Nyeri, Kenya', -0.4371, 36.9580, 2)}
-
-\endif
-
 \endif

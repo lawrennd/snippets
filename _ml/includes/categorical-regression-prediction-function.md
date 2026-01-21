@@ -16,7 +16,4 @@ $$}
 * Class scores: $f_k(\inputVector)=\mappingVector_k^\top\basisVector(\inputVector)$
 * Probabilities via softmax: $\pi_k = \exp(f_k)/\sum_j \exp(f_j)$
 }
-
-\endif
-
 \endif

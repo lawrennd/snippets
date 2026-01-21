@@ -149,7 +149,4 @@ full_columns = pd.MultiIndex.from_product([all_cameras, all_species], names=["ca
 binary_df = binary_df.reindex(columns=full_columns, fill_value=0)
 
 binary_df.tail()}{15}
-
-\endif
-
 \endif

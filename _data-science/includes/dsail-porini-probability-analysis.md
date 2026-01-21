@@ -38,7 +38,4 @@ plt.show()
 \notes{Extension: which of these relationships that you found are statistically significant?}
 
 \code{# TODO}
-
-\endif
-
 \endif

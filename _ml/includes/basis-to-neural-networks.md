@@ -71,7 +71,4 @@ plt.rcParams.update({'font.size': 22})}
 \figure{\includediagram{\diagramsDir/ml/neural-network}{70%}}{A neural network. Input nodes are shown at the bottom. The hidden layer is the result of applying an affine transformation to the input layer and placing through an activation function.}{deep-neural-network}
 
 \addreading{Bishop-deeplearning24}{Chapter 8}
-
-
-\endif
 \endif

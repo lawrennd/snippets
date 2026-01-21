@@ -26,5 +26,3 @@
 3. Deployment
 }
 \endif
-
-\endif
