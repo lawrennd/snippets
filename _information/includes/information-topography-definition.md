@@ -105,6 +105,4 @@ $$\boldsymbol{\theta}(t) \rightarrow G(\boldsymbol{\theta}(t)) \rightarrow \dot{
 }
 
 \notes{This formalisation gives mathematical precision to the intuitive notion from *The Atomic Human* that information movement is constrained by structure. The Fisher information matrix *is* that structure, and the inaccessible game describes how systems evolve within it.}
-
-\endif
 \endif

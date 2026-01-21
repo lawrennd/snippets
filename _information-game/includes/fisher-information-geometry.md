@@ -176,6 +176,4 @@ Understanding Fisher information as *geometry*, not just as a statistical tool, 
 
 *Fisher information as geometry → key to everything*
 }
-
-\endif 
 \endif

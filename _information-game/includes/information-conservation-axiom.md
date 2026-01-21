@@ -185,6 +185,4 @@ From these four axioms, we will derive (in Lecture 3) a constrained dynamical sy
 
 *Next (L3):* Derive dynamics from axioms
 }
-
-\endif
 \endif

@@ -170,6 +170,4 @@ Trying to build unbounded intelligence is like trying to build a perpetual motio
 }
 
 \notes{This doesn't mean AI can't be powerful or transformative --- internal combustion engines transformed the world despite thermodynamic limits. But it does mean there are hard bounds on what's possible, and claims that ignore these bounds are as unrealistic as promises of perpetual motion.}
-
-\endif
 \endif
