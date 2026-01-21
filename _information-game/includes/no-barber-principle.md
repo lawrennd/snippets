@@ -19,6 +19,24 @@ Does the barber shave themselves?
 **Paradox:** Definition includes itself in scope
 }
 
+\newslide{The Munchkin Provision}
+
+\notes{Without such consistency, we would require what we might call a "Munchkin provision." In the Munchkin card game [@Jackson-munchkin01], it is acknowledged that the cards and rules may be inconsistent. Their resolution? "Any other disputes should be settled by loud arguments, with the owner of the game having the last word."}
+
+\notes{While this works for card games, it's unsatisfying for foundational mathematics. We want our game to be **internally consistent**, not requiring an external referee to resolve paradoxes.}
+
+\slides{
+**Munchkin Card Game [@Jackson-munchkin01]:**
+
+*Rules may be inconsistent*
+
+**Resolution:** "Loud arguments, with owner having last word"
+
+**For foundations:** Need something better!
+
+*No external referee for mathematics*
+}
+
 \newslide{No External Adjudicators}
 
 \notes{The no-barber principle says that admissible rules must be **internally adjudicable**: they depend only on quantities definable from within the system's internal language, without requiring:
