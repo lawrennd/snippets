@@ -156,4 +156,3 @@ $$\text{Information theory} \Rightarrow \text{Thermodynamics}$$
 }
 
 \endif
-\endif
