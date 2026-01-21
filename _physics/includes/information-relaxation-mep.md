@@ -245,4 +245,3 @@ The key insight remains: **information relaxation through maximum entropy produc
 \addreading{@Ziegler-maximal87}{Thermomechanics and variational principles}
 
 \endif
-\endif
