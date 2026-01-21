@@ -299,5 +299,3 @@ Actually, for finite-dimensional systems with constant $M$ and $L$, the degenera
 Next, we'll see how our information dynamics fit this framework perfectly.}
 
 \endif
-
-\endif
