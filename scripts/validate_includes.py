@@ -111,6 +111,18 @@ def validate_file(file_path: Path) -> Tuple[bool, List[str]]:
         errors.append(f"Last non-blank line should be: {expected_endif}")
         errors.append(f"  Found: {last_line}")
     
+    # Check for duplicate consecutive \endif at the end
+    endif_count = 0
+    for line in reversed(lines):
+        stripped = line.strip()
+        if stripped == expected_endif:
+            endif_count += 1
+        elif stripped:  # Non-empty, non-endif line
+            break
+    
+    if endif_count > 1:
+        errors.append(f"Found {endif_count} consecutive \\endif statements at end of file (should be exactly 1)")
+    
     return len(errors) == 0, errors
 
 
@@ -149,6 +161,10 @@ def fix_file(file_path: Path) -> bool:
     # Find and fix last non-blank line
     # Strip trailing blank lines, replace last non-blank line with \endif, ensure file ends with newline
     while lines and lines[-1].strip() == '':
+        lines.pop()
+    
+    # Remove any duplicate consecutive \endif at the end
+    while len(lines) > 1 and lines[-1].strip() == "\\endif" and lines[-2].strip() == "\\endif":
         lines.pop()
     
     if lines:
