@@ -299,7 +299,4 @@ Knowing our system is GENERIC lets us import results from non-equilibrium thermo
 }
 
 \notes{**Summary:** The information dynamics we built from axioms is GENERIC, with Fisher information as the friction operator and constraint geometry providing the Poisson structure. This reveals information theory as a special case of non-equilibrium thermodynamics—or perhaps thermodynamics as a special case of information theory!}
-
-\endif
-
 \endif

@@ -304,6 +304,4 @@ This is precisely the obstruction identified in Theorem 1. ∎}
 **Intuition:** Non-additive constraints create "twisting" that fights against the natural factorization structure of exponential families, causing singularities or discontinuities in the Lagrange multiplier $\nu(\boldsymbol{\theta})$.}
 
 \notes{**Next Step:** We've established that $C = \sum_i C_i(\boldsymbol{\theta}^{(i)})$ where each $C_i$ is a functional of $p_i(x_i|\boldsymbol{\theta})$. In Part 2, we must prove that **$C_i = h_i$ (marginal entropy)** is the unique functional (up to monotonic transformation) compatible with exponential family structure and GENERIC dynamics.}
-
-\endif
 \endif

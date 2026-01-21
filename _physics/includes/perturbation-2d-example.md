@@ -263,6 +263,4 @@ With tight constraint ($\nu > 0$):
 \notes{**Looking ahead to Lecture 7:** The GENERIC decomposition $M = S + A$ applies to the linearisation at any point on the constraint manifold, not just equilibria. For this binary system, both $G(\boldsymbol{\theta})$ and the constraint gradient $a(\boldsymbol{\theta})$ vary with position, so the local structure of the decomposition changes across parameter space. The balance between dissipative ($S$) and conservative ($A$) components depends on the local geometry and the tightness of constraints at each point.}
 
 \notes{**Summary:** This discrete example demonstrates all the key elements of perturbation analysis—equilibria, Fisher information, linearisation matrix, and the interplay between entropy gradient and constraint geometry—in a fully computable setting. The same principles apply to continuous systems, but with the Gaussian approximation marginal entropies become tractable.}
-
-\endif
 \endif

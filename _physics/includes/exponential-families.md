@@ -259,6 +259,4 @@ For the inaccessible game, exponential families provide the setting where inform
 * Entropy gradients → drive dynamics
 * $\nabla H = -G(\boldsymbol{\theta})\boldsymbol{\theta}$ → key to everything
 }
-
-\endif
 \endif

@@ -253,7 +253,4 @@ mlai.write_animation(anim, 'binary-dynamics-animation.html',
 - The constraint $h_1 + h_2 = C$ is maintained at every instant (right panel)
 
 This provides intuitive confirmation of the SUFFICIENCY result: the constraint structure ensures global degeneracy automatically.}
-
-\endif
-
 \endif

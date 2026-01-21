@@ -352,6 +352,4 @@ $$
 
 \addreading{@Marsden:book99}{Chapter 2.6: Hamiltonian Flows}
 \addreading{@Marsden:book99}{Chapter 5.4: Hamiltonian Systems}
-
-\endif
 \endif

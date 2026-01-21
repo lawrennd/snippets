@@ -191,7 +191,4 @@ For ML practitioners: if you can compute matrix exponentials and traces, you can
 
 If you can do matrix exp + trace, you can do quantum exp families!
 }
-
-\endif
-
 \endif

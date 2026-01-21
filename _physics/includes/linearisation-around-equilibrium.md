@@ -224,6 +224,4 @@ $$
 
 **Next:** Decompose $M = S + A$ $\rightarrow$ Conservative/Dissipative split
 }
-
-\endif
 \endif

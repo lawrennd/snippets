@@ -191,7 +191,4 @@ The punchline: if you know exponential families + Fisher information + natural g
 
 **If you know exp. families + Fisher info, you're 90% there.**
 }
-
-\endif
-
 \endif

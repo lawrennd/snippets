@@ -191,6 +191,4 @@ is the shadow of a deeper structural message:
 - ``noncommutativity + reversibility $\Rightarrow$ unitarity $\Rightarrow$ commutator flow''.
 
 We will now develop Poisson brackets as a concrete, classical calculus for this reversible sector.}
-
-\endif
 \endif

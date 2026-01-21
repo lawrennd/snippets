@@ -130,6 +130,4 @@ Again: the "Lie closure" choice is an implementation trick for computation, not 
 - and the ordering parameters (like $s\in[0,1]$) that appear in Duhamel/Kubo--Mori representations.
 
 In this course, we treat $s$ as a purely computational ordering parameter. It is not a dynamical clock.}
-
-\endif
 \endif

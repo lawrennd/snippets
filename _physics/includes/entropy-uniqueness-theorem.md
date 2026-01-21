@@ -379,6 +379,4 @@ Moreover, if $H = C$ (constant joint entropy), the dynamics would preserve $H$, 
    - Gives automatic thermodynamic consistency}
 
 \notes{**Combined with Part 1:** We now have necessity for $\sum h_i = C$ as the unique constraint giving automatic GENERIC degeneracy in exponential families.}
-
-\endif
 \endif

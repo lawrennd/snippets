@@ -271,6 +271,4 @@ The next lecture (Lecture 5) will introduce the Poisson bracket structure, showi
 
 **Next:** Poisson brackets (conservation structure)
 }
-
-\endif
 \endif

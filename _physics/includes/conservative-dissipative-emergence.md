@@ -241,7 +241,4 @@ $$
 }
 
 \notes{**Summary:** The GENERIC structure—decomposition into dissipative and conservative parts. This is not assumed but *derived* from constrained maximum entropy production. The symmetric part emerges at second order (Gaussian regime), while the antisymmetric part appears at third order from non-Gaussian effects and constraint geometry. This decomposition reveals that information dynamics exhibit both thermodynamics (irreversible) and mechanics (reversible).}
-
-\endif
-
 \endif

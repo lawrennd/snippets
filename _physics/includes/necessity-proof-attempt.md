@@ -257,6 +257,4 @@ In a strictly product family with globally block-diagonal $G$, any $\sum_i C_i(\
 🔄 **Completeness**: Systematic proof that we've exhausted all possible functional forms (not just tested natural alternatives).
 
 **Overall Assessment**: The proof is at the level of a strong mathematical argument with rigorous core components. The main logic is sound and publication-ready.}
-
-\endif
 \endif

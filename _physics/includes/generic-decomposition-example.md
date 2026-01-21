@@ -426,7 +426,4 @@ This is exactly the GENERIC structure: the symmetric part drives irreversible en
 \notes{**Summary:** This computational example demonstrates that the GENERIC decomposition $M = S + A$ isn't just abstract mathematics, it reveals the local structure of dynamical flow in parameter space. The symmetric part $S$ controls growth/decay directions, while the antisymmetric part $A$ controls rotation and oscillation. Together they describe how perturbations evolve in the neighborhood of the analysis point.
 
 The linearization $M = \partial F/\partial \boldsymbol{\theta}$ varies across the parameter manifold (both $G(\boldsymbol{\theta})$ and $a(\boldsymbol{\theta})$ depend on position), making the GENERIC decomposition truly local. However, the insight holds everywhere: information dynamics naturally decompose into dissipative (thermodynamic) and conservative (mechanical) components, with the balance between them varying across the manifold depending on local geometry and constraint tightness.}
-
-\endif
-
 \endif

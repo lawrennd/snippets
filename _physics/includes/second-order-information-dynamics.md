@@ -169,7 +169,4 @@ Eigenvalues determine behavior:
 \notes{**Summary:** At second order (Gaussian regime), the dynamics near equilibrium are purely dissipative. The symmetric matrix $S$ drives entropy production and relaxation toward equilibrium. This is standard perturbation theory, but it's not the full story. In the next section, we'll see how non-Gaussian effects and constraint geometry introduce conservative dynamics at higher order.
 
 **Note on locality:** This analysis is a local linearisation around a reference point (typically, but not necessarily, an equilibrium). For general systems, the matrices $S$, $A$, and $M$ vary with position on the manifold as both the Fisher information $G(\boldsymbol{\theta})$ and the constraint gradient $a(\boldsymbol{\theta})$ depend on $\boldsymbol{\theta}$. The GENERIC decomposition applies locally at each point, revealing how the balance between dissipative and conservative dynamics varies across parameter space.}
-
-\endif
-
 \endif

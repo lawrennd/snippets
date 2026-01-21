@@ -353,6 +353,4 @@ $$
 \addreading{@Marsden:book99}{Chapter 2.6: Hamiltonian Flows}
 \addreading{@Marsden:book99}{Chapter 5.4: Hamiltonian Systems}
 \addreading{@Marsden:book99}{Chapter 10.3: Properties of Hamiltonian Flows}
-
-\endif
 \endif

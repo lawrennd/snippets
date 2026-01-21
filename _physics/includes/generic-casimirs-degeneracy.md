@@ -278,7 +278,4 @@ What happens if a Casimir value changes (e.g., injecting or removing particles, 
 }
 
 \notes{**Summary:** Casimirs are the most fundamental conserved quantities in GENERIC, conserved by both reversible and irreversible dynamics. They create degeneracy in the operators, stratify phase space into symplectic leaves, and encode the system's fundamental constraints. For information dynamics, marginal entropy conservation $\sum h_i = C$ is the primary Casimir, arising directly from the axioms and defining the constraint manifold on which all dynamics occur.}
-
-\endif
-
 \endif

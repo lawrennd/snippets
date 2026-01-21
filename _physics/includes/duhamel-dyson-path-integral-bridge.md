@@ -125,6 +125,4 @@ ordering matters
 
 $s$ (Duhamel) / $\mathcal{T}$ (Dyson) / time-slices (path integral)
 }
-
-\endif
 \endif

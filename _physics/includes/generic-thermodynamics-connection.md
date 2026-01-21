@@ -346,7 +346,4 @@ Information dynamics = coarse-grained stat-mech!
 }
 
 \notes{**Summary:** GENERIC generalizes classical thermodynamics to arbitrary non-equilibrium dynamics. The laws of thermodynamics, Onsager reciprocity, entropy production, fluctuation-dissipation, and maximum entropy production all emerge as consequences of GENERIC structure. For information dynamics, Fisher information plays the role of thermodynamic friction, connecting information theory to the foundations of statistical mechanics and thermodynamics. The framework we built from axioms (Lectures 1-7) is not just mathematically consistent—it's thermodynamically fundamental.}
-
-\endif
-
 \endif

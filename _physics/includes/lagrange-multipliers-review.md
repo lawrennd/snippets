@@ -257,6 +257,4 @@ In the next sections, we'll explore the properties of $\nu(t)$, how it evolves, 
 
 **Next:** Properties of $\nu(t)$ and equilibria
 }
-
-\endif
 \endif

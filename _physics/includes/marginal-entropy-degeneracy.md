@@ -460,7 +460,4 @@ The constraint $\sum h_i = C$ is *sufficient* for automatic thermodynamic consis
 
 **Open question:** Is it also necessary (unique)?
 }
-
-\endif
-
 \endif

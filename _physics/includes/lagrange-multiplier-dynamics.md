@@ -268,6 +268,4 @@ Understanding $\nu(t)$ is key when analysing the behaviour of constrained inform
 
 *Bridge between gradient flow and constrained geometry*
 }
-
-\endif
 \endif

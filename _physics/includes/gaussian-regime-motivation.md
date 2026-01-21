@@ -82,6 +82,4 @@ Standard technique: $\int e^{-Nf(x)} \text{d}x$ dominated by minimum of $f(x)$
 3. Perturbation analysis is valid (Laplace approximation)
 
 This is why we focus on linearisation around equilibrium in Gaussian regimes.}
-
-\endif
 \endif
