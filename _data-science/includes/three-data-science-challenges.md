@@ -13,5 +13,6 @@
 2. Quantifying the Value of Data
 3. Privacy, loss of control, marginalization
 
+\addatomic{System Zero}{242-7, 306, 309, 329, 350, 355, 359, 361, 363, 364}
 
 \endif

@@ -22,6 +22,8 @@ For further thoughts see \addguardian{marketing in the internet era}{2015/jul/23
 
 \addreading{@Lawrence-atomic24}{Chapter 8}
 
+\addatomic{System Zero}{242-7, 306, 309, 329, 350, 355, 359, 361, 363, 364}
+
 \include{_data-science/includes/new-flow-of-information.md}
 
 \endif

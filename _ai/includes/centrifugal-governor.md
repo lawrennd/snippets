@@ -27,5 +27,8 @@
 
 The first wave of automation did bring about sabotage as a worker's response. But if machinery was sabotaged, for example, if the linkage between sensor (the spinning balls) and action (the valve closure) was broken, this would be obvious to the engine operator at start up time. The machine could be repaired before operation.}
 
+\addatomic{Watt's governor}{122-5, 127, 131, 143, 144, 184, 198, 202-3, 206, 207, 221, 231, 234, 251, 254, 256-7, 263}
+\addatomic{cybernetics founded by}{131, 143, 306}
+
 
 \endif

@@ -76,4 +76,7 @@ In reality, the challenge is that our computers cannot be human enough. They can
 
 The real danger is that computers don’t anthropomorphize. They’ll make decisions in isolation from us without our supervision because they can’t communicate truly and deeply with us.}
 
+\addatomic{telepathy}{248-50}
+\addatomic{anthropomorphization (‘anthrox’)}{30-31, 90-91, 93-4, 100, 132, 148, 153, 163, 216-17, 239, 276, 326, 342}
+
 \endif

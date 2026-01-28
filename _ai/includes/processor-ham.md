@@ -15,4 +15,7 @@
 
 \notes{These machines are to humans what the MONIAC was the British economy. Not a replacement, but an analogue computer that captures some aspects of humanity while providing advantages of high bandwidth of the machine.}
 
+\addatomic{ignorance: HAMs}{347}
+\addatomic{test pilot}{163-8, 189, 190, 192-3, 196, 197, 200, 211, 245}
+
 \endif
