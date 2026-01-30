@@ -6,6 +6,7 @@
 \subsection{The GENERIC Framework}
 
 \notes{We've seen something emerge from lectures 5-7:
+
 - **Lecture 5:** Hamiltonian/Poisson structure describes energy-conserving dynamics (antisymmetric operators)
 - **Lecture 6:** Linearisation around equilibrium reveals structure of dynamics
 - **Lecture 7:** Any dynamics matrix decomposes uniquely as $M = S + A$ where $S$ is symmetric (dissipative) and $A$ is antisymmetric (conservative)
