@@ -9,7 +9,7 @@
 
 \slides{\figure{\includediagram{\diagramsDir/data-science/new-flow-of-information001}{70%}}{}{new-flow-of-information-1}}
 
-\newslide
+\newslide{New Flow of Information}
 
 \slides{\figure{\includediagram{\diagramsDir/data-science/new-flow-of-information001a}{70%}}{}{new-flow-of-information-1a}}
 

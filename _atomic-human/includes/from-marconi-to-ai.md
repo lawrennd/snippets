@@ -3,7 +3,7 @@
   
 \editme
   
-\newslide{From Marconi to AI}
+\subsection{From Marconi to AI}
   
 \slides{
 * Marconi made *communication* wireless and scalable
@@ -17,7 +17,7 @@
   
 \notes{That's why the right frame isn't magic or sentience, but governance: when do we delegate, when do we supervise, and how do we keep accountability when the system is complex?}
   
-\newslide{Security and Creativity}
+\subsection{Security and Creativity}
   
 \slides{
 * **Security**: where do we place trust when systems act at machine speed?
@@ -25,7 +25,7 @@
 * **Culture** is the interface: institutions, norms, and art shape adoption
 }
   
-\notes{The panel that follows sits exactly at this junction. On the one hand, we have security: not only cyber-security, but epistemic security—how we know what is true when our information is mediated by machines.}
+\notes{On the one hand, we have security: not only cyber-security, but epistemic security, how we know what is true when our information is mediated by machines.}
   
 \notes{On the other hand, we have emulated creativity. Generative models can produce convincing images and text. But real creativity is also intention, context, responsibility, and lived experience. The atomic human part that doesn’t decompose into patterns alone.}
   
