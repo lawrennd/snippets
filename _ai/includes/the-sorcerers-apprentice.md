@@ -70,7 +70,7 @@ developments, such as code generation from large language models,
 offer a route to delivery.
 
 The open society is characterised by institutions that collaborate
-with each otherin the pragmatic pursuit of solutions to social
+with each other in the pragmatic pursuit of solutions to social
 problems. The large tech companies that have thrived because of the
 open society are now putting that ecosystem in peril. For the open
 society to survive it needs to embrace open development practices that
