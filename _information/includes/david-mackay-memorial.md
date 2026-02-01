@@ -11,8 +11,6 @@
 
 He later surprised me again, when I heard that he'd shifted away from this larger work and was focussing on energy. He did so because he believed that sustainable energy was the most important challenge humanity faced. He approache the subject with the same clarity of thinking and careful reasoning. Memorably underpinned by practical examples using phone chargers. "Sustainable Energy Without the Hot Air" [@MacKay-energy08] was published in 2008. In a video created as part of the 2009 Cambridge Campaign he went from phone chargers to sweeping national changes in the way we use energy.}
 
-\figure{\includeyoutube{UR8wRSp2IXs}{800}{600}}{A YouTube video featuring David's clarity of thought and the ideas behind sustainable energy from 2010.}{david-how-many-lightbulbs}
-
 
 \slides{
 **David MacKay (1967-2016)**
@@ -21,6 +19,11 @@ He later surprised me again, when I heard that he'd shifted away from this large
 * Sustainable energy and physical limits
 * Cut through hype with careful reasoning
 }
+
+\newslide{How many Lightbulbs?}
+
+\figure{\includeyoutube{UR8wRSp2IXs}{800}{600}}{A YouTube video featuring David's clarity of thought and the ideas behind sustainable energy from 2010.}{david-how-many-lightbulbs}
+
 
 \subsection{This Talk}
 
@@ -38,6 +41,25 @@ He later surprised me again, when I heard that he'd shifted away from this large
 * Use numbers to test claims
 
 *Today:* Ideas on applying this to information, energy and intelligence
+}
+
+
+\subsection{Playful}
+
+\notes{David was also a playful person, he enjoyed games, often rephrasing physics questions as puzzles, but also ultimate frisbee,[^ultimate] or ultimate for short. One aspect of ultimate he seemed to particularly like was the "spirit of the game". In ultimate there is no referee, no arbitration. Self arbitration is part of the spirit of the game.
+
+[^ultimate]: Have a look at the wonderful tributes to him on the [Cambridge Ultimate website](https://ultimate.soc.srcf.net/davidmackay). 
+}
+
+\figure{\includejpg{\slidesDiagrams/information/david-ultimate}{60%}}{David playing ultimate. Picture is taken from [one of his last blog posts](https://itila.blogspot.com/2016/04/perhaps-my-last-post-well-see.html).}{david-ultimate}
+
+\notes{In honour of this idea, we consider a similar principle for "zero player games". Games of the type of Conway's game of life (@Gardner-life70) or Wolfram's cellular automata (@Wolfram-cellular83). The principle is a conceptual constraint inspired by Russell's paradox: it demands that the rules of our system not appeal to external adjudicators or reference points just like ultimate.}
+
+\slides{* David was a playful person.
+* Physics puzzles
+* Ultimate Frisbee.
+  * Ultimate "spirit of the game"
+* Create a self-adjudicating zero-player information game
 }
 
 \endif

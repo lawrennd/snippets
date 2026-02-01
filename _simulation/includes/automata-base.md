@@ -47,10 +47,10 @@ from typing import Union, Tuple, Optional}
 \helpercode{def generate_grid_svg(grid: Union[Grid, np.ndarray], 
                         cell_size: int = 30,
                         highlight_cells: Optional[set] = None) -> str:
-    """Generate SVG visualization of a grid
+    """Generate SVG visualisation of a grid
     
     Args:
-        grid: Grid to visualize
+        grid: Grid to visualise
         cell_size: Size of each cell in pixels
         highlight_cells: Optional set of (x,y) coordinates to highlight
         
