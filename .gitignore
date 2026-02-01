@@ -1,2 +1,26 @@
 # Private Trent.AI files
 _trent/
+
+# --- Local/editor/temporary files (do not commit) ---
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editor backups / locks (Emacs, Vim, etc.)
+*~
+.\#*
+\#*\#
+
+# Workspace files
+*.code-workspace
+
+# Logs / scratch outputs
+*.log
+reference_report.txt
+
+# Project-local scratch makefiles (e.g. inside includes/)
+**/includes/makefile
