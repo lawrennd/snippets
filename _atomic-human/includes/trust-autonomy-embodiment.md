@@ -13,4 +13,5 @@
 \addatomic{embodiment factor}{13, 29, 35, 79, 87, 105, 197, 216-217, 249, 269, 327, 353, 363, 369}
 \addatomic{topography, information}{34-9, 43-8, 57, 62, 104, 115-16, 127, 140, 192, 196, 199, 291, 334, 354-5}
 
+\notes{See }\addatomicblog{Dan Andrews image from Chapter 3}{/images/dan-andrews-chapter-3/}\notes{.}
 \endif
