@@ -5,7 +5,7 @@
   
 \subsection{From Marconi to AI}
   
-\slides{
+\slidesincremental{
 * Marconi made *communication* wireless and scalable
 * AI makes *prediction and decision* scalable
 * The question shifts from "can we transmit?" to "what do we transmit *and trust*?"
@@ -19,7 +19,7 @@
   
 \subsection{Security and Creativity}
   
-\slides{
+\slidesincremental{
 * **Security**: where do we place trust when systems act at machine speed?
 * **Creativity**: what remains uniquely human when machines can mimic style?
 * **Culture** is the interface: institutions, norms, and art shape adoption
@@ -29,6 +29,6 @@
   
 \notes{On the other hand, we have emulated creativity. Generative models can produce convincing images and text. But real creativity is also intention, context, responsibility, and lived experience. The atomic human part that doesn’t decompose into patterns alone.}
   
-\notes{Digital twins are a great example of the overlap: they are extraordinary creative/engineering achievements, but they also move authority into models, so the key question is *how we keep humans in the loop, and on the hook*.}
+\notes{Digital twins are an example of the overlap: they are extraordinary creative/engineering achievements, but they also move authority into models, so the key question is *how we keep humans in the loop, and on the hook*.}
   
 \endif
