@@ -12,7 +12,15 @@
 > @Worldbank-work19]}
 
 \slides{* World Bank Human Capital Index 2020
-* *UK* outperforms USA and China
 * Measures *health* and *education*}
+
+\newslide
+
+\slidesincremental{* UK 0.78 11th globally 
+* Italy 0.73 30th globally
+* US 0.70 *35th* globally
+* China 0.65 45th globally}
+
+\notes{In the 2020 version of the index, the UK was ranked 11th, Italy 30th, US 35th and China 45th.}
 
 \endif
