@@ -7,8 +7,9 @@
 
 \notes{Traditional innovation models in technology assume that productivity improvements translate directly into financial returns. However, when it comes to deploying AI in sectors of public importance, this model often fails because the economic incentives don't align with societal needs.}
 
-\slides{
-* Traditional innovation flywheel: R&D → Innovation → Productivity → Economic Surplus → R&D
+\slidesincremental{
+* Traditional innovation flywheel: 
+  R&D $\rightarrow$ Innovation $\rightarrow$ Productivity $\rightarrow$ Economic Surplus $\rightarrow$ R&D
 * Problem: Misalignment with societal needs in healthcare, education, social care
 }
 
@@ -16,7 +17,7 @@
 
 \notes{The attention reinvestment cycle represents an alternative approach to innovation deployment. Instead of focusing primarily on financial returns, it recognizes that efficiency gains can be measured through the liberation of human attention - our most precious resource in the digital age.}
 
-\slides{
+\slidesincremental{
 * Attention Reinvestment Cycle liberates human attention
 * Freed attention reinvested in knowledge networks
 * Creates value through improved human services

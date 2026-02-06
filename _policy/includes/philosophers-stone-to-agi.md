@@ -17,6 +17,8 @@ much like perpetual motion machines or cold fusion.}
 * Both concepts promise magical transformation
 }
 
+\include{_economics/includes/philosophers-stone.md}
+
 \newslide{The AGI Misconception}
 
 \notes{The term artificial general intelligence builds on the notion
@@ -31,6 +33,8 @@ Galton's book "Hereditary Genius" @Galton-hereditary69.}
 * Like an "artificial general vehicle" for all journeys
 * Intelligence is context-specific, not universal
 }
+
+\include{_atomic-human/includes/artificial-general-vehicle-diagram.md}
 
 \notes{There are general principles underlying intelligence, but the
 notion of a rankable form of intelligence where one entity dominates

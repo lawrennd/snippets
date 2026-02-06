@@ -7,7 +7,7 @@
 
 \notes{In the 1970s and 1980s, significant investment in computing wasn't accompanied by a corresponding increase in economic productivity. This challenge was characterized as a "productivity paradox" by Erik Brynjolfsson in 1993, where benefits of computational investment lagged behind the investment itself [@Brynjolfsson-productivity93].}
 
-\slides{
+\slidesincremental{
 * Original productivity paradox: investment without returns
 * Required organizational restructuring to realize benefits
 * Example: Amazon's API mandate reorganized structure around software
@@ -17,7 +17,7 @@
 
 \notes{Part of the explanation for this lag was down to the need for organizations to adapt their corporate infrastructure to make best use of the new information infrastructure. This is a manifestation of Conway's law [@Conway-committees68], which suggests that organizations which design systems are constrained to create systems which mirror the organization's own communication structure.}
 
-\slides{
+\slidesincremental{
 * Modern AI paradox: misalignment of innovation with societal needs
 * Innovation concentrated in commercial, not social domains
 * Gap between technological advancement and social value creation

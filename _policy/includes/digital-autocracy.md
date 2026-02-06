@@ -7,7 +7,7 @@
 
 \notes{The digital revolution has shifted power into the hands of those who control data and algorithmic decision-making. In ancient societies, scribes preserved their power through strict controls on who could read and write, deciding what forms of writing were considered authoritative. In Europe, this institutional protection eroded with the emergence of printing in the fifteenth century, dispersing power through the modern professions @Fischer-writing01.}
 
-\slides{
+\slidesincremental{
 * Ancient scribes controlled information through restricted literacy
 * Modern digital oligarchy controls information through data asymmetries
 * Information control creates power imbalances in society
@@ -17,7 +17,7 @@
 
 \notes{Today, control has shifted into what we might call the digital oligarchy. The modern scribe is the software engineer and their guild is the tech company, but society has not yet evolved to align the power these entities have with the social responsibilities needed to ensure wise deployment @Lawrence-atomic24.}
 
-\slides{
+\slidesincremental{
 * Algorithmic attention rents: excess returns from data control
 * Human attention becomes the bottleneck in the system
 * Power without corresponding social responsibility

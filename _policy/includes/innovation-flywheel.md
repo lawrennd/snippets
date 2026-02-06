@@ -7,7 +7,7 @@
 
 \notes{The traditional model of technological innovation and value creation in commercial settings follows a self-reinforcing cycle often referred to as the innovation flywheel. This model has driven technological progress but tends to prioritise innovations with clear economic returns.}
 
-\slides{
+\slidesincremental{
 * Invests in R&D to produce technical innovations
 * Innovations deployed as productivity improvements
 * Improvements generate economic surplus
