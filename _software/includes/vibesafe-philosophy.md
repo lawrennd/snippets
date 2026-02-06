@@ -5,7 +5,7 @@
 
 \subsection{VibeSafe's Philosophy}
 
-\slides{
+\slidesincremental{
 * Make intent explicit **before** implementation
 * Catch misunderstandings early
 * Cost: editing markdown vs unwinding code
@@ -17,9 +17,9 @@ This isn't about creating overhead, it's about creating a checkpoint where human
 
 \subsection{Human-AI Collaboration}
 
-\slides{
-* AI systems: Powerful but literal
-* They follow instructions precisely
+\slidesincremental{
+* AI systems: Powerful but underspecified
+* They follow instructions and interpret
 * Missing: shared context and intent
 }
 

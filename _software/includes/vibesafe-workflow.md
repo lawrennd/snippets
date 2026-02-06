@@ -7,7 +7,7 @@
 
 \subsection{Example: Adding Authentication}
 
-\slides{
+\slidesincremental{
 1. Check tenets: Which principles apply?
 2. Write requirement: "Users must authenticate securely"
 3. Create CIP: JWT vs session-based approach
@@ -23,7 +23,7 @@ Next, you create a CIP to explore the HOW: JWT tokens? Session-based auth? OAuth
 
 \subsection{AI Natural Breakpoints}
 
-\slides{
+\slidesincremental{
 * After CIP creation → Review design
 * After acceptance → Create tasks?
 * After implementation → Validate
@@ -39,7 +39,7 @@ These aren't arbitrary, they're the points where human judgment is most valuable
 
 \subsection{The What's Next Script}
 
-\slides{
+\slidesincremental{
 * Project status at a glance
 * For humans and AI
 * "What should I work on?"
@@ -58,7 +58,7 @@ It's useful when an AI assistant or human starts the session, it gets immediate 
 
 \subsection{Documentation Compression}
 
-\slides{
+\slidesincremental{
 * After CIP is closed: compress into docs
 * Development history → permanent reference
 * Future developers understand **what**, not just **how**

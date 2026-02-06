@@ -7,7 +7,7 @@
 
 \subsection{Tenets: Your Project's Principles}
 
-\slides{
+\slidesincremental{
 * 5-7 guiding principles
 * Not rigid rules --- principles to balance
 * Example: "User Autonomy Over Prescription"
@@ -19,7 +19,7 @@ They're not rigid rules. When tenets conflict, you need judgment. For example, V
 
 \subsection{Requirements: What, Not How}
 
-\slides{
+\slidesincremental{
 * "Users can install with one command"
 * Not: "Create install-minimal.sh script"
 * Outcomes, not methods
@@ -33,7 +33,7 @@ This separation is crucial because it lets the AI (or you) explore multiple appr
 
 \subsection{CIPs: Design Before Implementation}
 
-\slides{
+\slidesincremental{
 * Code/Capability Improvement Plans
 * Document design rationale
 * Review before implementing
@@ -52,7 +52,7 @@ The key: you review and refine the CIP before writing code. When you discover th
 
 \subsection{Backlog: Execution Tasks}
 
-\slides{
+\slidesincremental{
 * Specific implementation tasks
 * Created when CIP is *accepted*
 * Not when it's proposed
@@ -64,7 +64,7 @@ Why wait? Because you don't want to create detailed implementation tasks for a d
 
 \subsection{Everything is Markdown + YAML}
 
-\slides{
+\slidesincremental{
 * Standard file formats
 * Works with any AI assistant
 * Cursor, Copilot, Claude Code, Codex...

@@ -7,7 +7,7 @@
 
 \subsection{What You Gain}
 
-\slides{
+\slidesincremental{
 * Catch misunderstandings early
 * Shared context across team
 * Better onboarding (humans and AI)
@@ -25,7 +25,7 @@
 
 \subsection{What It Costs}
 
-\slides{
+\slidesincremental{
 * Upfront documentation time
 * Learning curve for team
 * More files to maintain
@@ -41,7 +41,7 @@
 
 \subsection{When Does This Make Sense?}
 
-\slides{
+\slidesincremental{
 * Working with AI assistants
 * Complex systems with multiple engineers
 * Long-lived codebases
@@ -64,7 +64,7 @@ The question: Is the cost of potential misimplementation higher than the cost of
 
 \subsection{The Real Question}
 
-\slides{
+\slidesincremental{
 * Does this match how you actually work?
 * Or how you want to work?
 * What would you change?
