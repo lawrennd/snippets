@@ -13,7 +13,7 @@
 
 \notes{The representation of God in this form seems typical of the time, because elsewhere in the Vatican Museums there are similar representations.}
 
-\figure{\includejpg{\diagramsDir/art/michelangelo-the-creation-of-man-detail-god}{80%}}{Photo detail of God.}{the-creation-of-man-detail-god-michelangelo}
+\figure{\includejpg{\diagramsDir/art/michelangelo-the-creation-of-man-detail-god}{80%}}{Photo detail of God.}{michelangelo-the-creation-of-man-detail-god}
 
 \notes{Photo from <https://commons.wikimedia.org/wiki/File:Michelangelo,_Creation_of_Adam_04.jpg>.}
 
