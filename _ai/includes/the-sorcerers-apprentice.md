@@ -7,7 +7,7 @@
 
 \notes{See this }\addblog{The Open Society and its AI}{2024/02/09/the-sorcerors-apprentice}
 
-\figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}{60%}}{A young sorcerer learns his masters spells, and deploys them to perform his chores, but can't control the result.}{the-sorcerers-apprentice}
+\figure{\includepng{\diagramsDir/ai/sorcerers-apprentice}{60%}}{A young sorcerer learns his masters spells, and deploys them to perform his chores, but can't control the result. Illustration of Der Zauberlehrling. From: German book, "Goethe's Werke", 1882, drawing by Ferdinand Barth see <https://en.wikipedia.org/wiki/The_Sorcerer%27s_Apprentice#/media/File:Tovenaarsleerling_S_Barth.png>}{the-sorcerers-apprentice}
 
 
 \notes{In Goethe’s poem The Sorcerer’s Apprentice, a young sorcerer learns
