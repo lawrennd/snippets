@@ -5,7 +5,13 @@
 
 \subsection{Trust, Autonomy and Embodiment}
 
+\slidesincremental{* Trust is not a slogan
+* Trust is an infrastructure
+* Autonomy depends on Trust
+* Trust depends on shared culture}
+
 \include{_atomic-human/includes/trust-autonomy-embodiment-diagram.md}
+
 
 \notes{Trust is not a slogan; it is the infrastructure that allows autonomy to be devolved without losing control. Autonomy is always conditional: it depends on what information is available, what incentives shape behaviour, and whether escalation and accountability are real. In executive settings, the practical question is: where do we allow delegation (to people or machines), and where do we insist on human judgement and responsibility?}
 
