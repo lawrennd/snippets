@@ -15,7 +15,7 @@ prosecutor's fallacy.}{anne-llm-conversation}
 
 \newslide{In practice ...}
 
-\slides{* LLMs are already being used for robot planning @Huang-inner22
+\slidesincremental{* LLMs are already being used for robot planning @Huang-inner22
 
 * Ambiguities are reduced when the machine has had large scale access
   to human cultural understanding.}

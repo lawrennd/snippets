@@ -3,11 +3,22 @@
 
 \editme
 
-\newslides{Agentic debt}
+\subsection{Agentic Debt}
 
 \slidesincremental{
-* Agentic AI can *pay down* technical and intellectual debt.
+* Agentic AI could *pay down* technical and intellectual debt.
 * But it can create *agentic debt*: delegation without authority/authorship
+}
+
+\notes{Agentic AI could pay down the technical debt and intellectual
+debt that plauges our deployment of complex systems. But in doing so
+it could create a new form of debt: agentic debt.}
+
+\newslide{Agentic Debt}
+
+\slidesincremental{
+* Delegation of workflows without crisp boundaries.
+* Agentic debt is about unsafe or illegible delegation.
 }
 
 \notes{Agentic debt is the "new debt" introduced by systems that can

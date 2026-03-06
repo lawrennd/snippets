@@ -34,7 +34,7 @@ manner.}{human-analogue-machine}}
 
 \slides{\include{_ai/includes/processor-ham.md}}
 
-\slides{* A human-analogue machine is a machine that has created a
+\slidesincremental{* A human-analogue machine is a machine that has created a
 feature space that is analagous to the "feature space" our brain uses
 to reason.
 
@@ -53,12 +53,12 @@ people, a notion that the philosopher
 is where computers can represent themselves as human and fool people
 into doing things on that basis.}
 
-\slides{* Perils of this include *counterfeit people*.
+\slidesincremental{* Perils of this include *counterfeit people*.
 * Daniel Dennett has described the challenges these bring in [an article in The Atlantic](https://www.theatlantic.com/technology/archive/2023/05/problem-counterfeit-people/674075/).}
 
 \newslide{Psychological Representation of the Machine}
 
-\slides{* But if correctly done, the machine can be appropriately
+\slidesincremental{* But if correctly done, the machine can be appropriately
 "psychologically represented"
 
 * This might allow us to deal with the challenge of *intellectual
