@@ -7,7 +7,7 @@
 
 \notes{Sometimes it's useful to look back and see what we were thinking at a particular time. @Manning-deep15 covered the incoming deep learning tsunami.}
 
-\figure{\includepng{\diagramsDir/ai/rabbit-in-headlights-manning}{50%}}{Chris Manning quoting me in 2015 on the coming wave in Natural Language Processing in @Manning-deeep15.}{rabbit-in-headlights-manning}
+\figure{\includepng{\diagramsDir/ai/rabbit-in-headlights-manning}{50%}}{Chris Manning quoting me in 2015 on the coming wave in Natural Language Processing in @Manning-deep15.}{rabbit-in-headlights-manning}
 
 \newslide{ICML Deep Learning Workshop Panel 2015}
 
