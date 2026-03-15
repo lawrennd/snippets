@@ -5,6 +5,14 @@
 
 \subsection{What we did in DELVE}
 
+\slidesincremental{* Covid 19 Pandemic
+* Royal Society Community Response
+* Support Government SAGE Committee
+* Diversity of scientific and economic expertise
+* <https://rs-delve.github.io/>}
+
+\notes{The DELVE initiative was a UK Royal Society response to the 2020 Covid19 pandemic. It fed into the UK Government's SAGE committee. It was constructed to have a diversity of scientific and economic expertise. The details of the initiative are can be found at <https://rs-delve.github.io/>.}
+
 \include{_delve/includes/delve-timeline.md}
 
 \notes{Any policy question can be framed in a number of different

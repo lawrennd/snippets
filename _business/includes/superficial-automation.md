@@ -17,21 +17,21 @@
 * Projecting corporate culture 
 }
 
-\slides{
+\slidesincremental{
 * AI enables automation of surface-level tasks
 * Examples: Email writing, document summarization
 * Risk of losing deeper value in the process
 }
 
 \newslide{Hidden Value}
-\slides{
+\slidesincremental{
 * Email writing builds relationships
 * Documentation creates institutional memory  
 * Human pauses enable reflection
 }
 
 \newslide{The Automation Challenge}
-\slides{
+\slidesincremental{
 * Complex ≠ Complicated
 * Speed isn't always progress
 * Augment humans, don't replace them 

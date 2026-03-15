@@ -6,6 +6,16 @@
 
 \subsection{Separation of Concerns}
 
+\slidesincremental{* Decompose your complex problem/task into parts.
+* Each part manageable (e.g. by a small team)
+* Recompose to solve total problem}
+
+\newslide{Addresses Complex Challenge}
+
+\slidesincremental{* Highly successful approach to complex tasks.
+* Tuned to the human bandwidth limitation.
+* But the whole system still hard to understand.
+}
 \notes{To construct such complex systems an approach known as "separation of
 concerns" has been developed. The idea is that you architect your
 system, which consists of a large-scale complex task, into a set of
@@ -18,11 +28,14 @@ of a complex system. But who is concerned with the overall system?}
 
 \newslide{Intellectual Debt}
 
--   Technical debt is the inability to *maintain* your complex software
+\slidesincremental{
+* Technical debt is the inability to *maintain* your complex software
     system.
+* Intellectual debt is the inability to *explain* your software
+    system.
+}
 
--   Intellectual debt is the inability to *explain* your software
-    system.
+\notes{Technical debt is the inability to *maintain* your complex software system. Intellectual debt is the inability to explain your software system.}
 
 \notes{It is right there in our approach to software engineering. "Separation
 of concerns" means no one is concerned about the overall system itself.}

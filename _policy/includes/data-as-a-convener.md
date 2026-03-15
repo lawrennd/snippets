@@ -5,7 +5,7 @@
 
 \subsection{Data as a Convener}
 
-\slides{* Data allows externalisation of cognition.
+\slidesincremental{* Data allows externalisation of cognition.
 * Even when not existing, can ask: What data would we want?}
 
 \notes{To improve communication, we need to 'externalise cognition':

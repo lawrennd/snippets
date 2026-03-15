@@ -5,7 +5,7 @@
 
 \subsection{Executive Sponsorship}
 
-\slides{* Direct sponsorship from the most senior executive.
+\slidesincremental{* Direct sponsorship from the most senior executive.
   * This has a cultural effect as well as a direct effect.
 * Bring about through *involvement*
   * develops understanding of capabilities of data science in exec team.}
@@ -16,7 +16,7 @@
 
 \subsection{Pathfinder Projects}
 
-\slides{* In executive context: an important project that is interdepartmental.
+\slidesincremental{* In executive context: an important project that is interdepartmental.
 * Should involve the CEO, CFO, CIO and data science team (or equivalents).}
 
 \notes{I do exec education courses for the Judge Business School. One of my main recommendations there is that a project is developed that directly involves the CEO, the CFO and the CIO (or CDO, CTO ... whichever the appropriate role is) and operates on some aspect of critical importance for the business.}

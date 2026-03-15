@@ -11,10 +11,10 @@
 > 
 > @Worldbank-work19]}
 
-\slides{* World Bank Human Capital Index 2020
+\slidesincremental{* World Bank Human Capital Index 2020
 * Measures *health* and *education*}
 
-\newslide
+\newslide{Ranking}
 
 \slidesincremental{* UK 0.78 11th globally 
 * Italy 0.73 30th globally

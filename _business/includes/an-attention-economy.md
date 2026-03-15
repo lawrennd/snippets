@@ -5,11 +5,18 @@
 
 \subsection{An Attention Economy}
 
-\notes{I don't know what the future holds, but there are three things that (in the longer term) I think we can expect to be true.}
-
+\slidesincremental{
 1. Human attention will always be a "scarce resource" [See @Simon-information71]
 2. Humans will never stop being interested in other humans.
 3. Organisations will keep trying to "capture" the attention economy.
+}
+
+\notes{I don't know what the future holds, but there are three things that (in the longer term) I think we can expect to be true.}
+
+\notes{
+1. Human attention will always be a "scarce resource" [See @Simon-information71]
+2. Humans will never stop being interested in other humans.
+3. Organisations will keep trying to "capture" the attention economy.}
 
 
 \notes{Over the next few years our social structures will be significantly disrupted, and during periods of volatility it's difficult to predict what will be financially successful. But in the longer term the scarce resource in the economy will be the "capital" of human attention. Even if all traditionally "productive jobs" such as manufacturing were automated, and sustainable energy problems are resolved, human attention is still the bottle neck in the economy. See @Simon-information71}

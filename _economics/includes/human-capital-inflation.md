@@ -5,7 +5,7 @@
 
 \subsection{Inflation of Human Capital}
 
-\slides{* Strength in Human Capital double-edged sword.
+\slidesincremental{* Strength in Human Capital double-edged sword.
 * Automation creates efficiency.
 * But skills risk becoming redundant.}
 

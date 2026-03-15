@@ -26,7 +26,9 @@
 
 \newslide{Thoughtsday}
 
-\slides{* Dealing with highly *operational* decision making.}
+\slidesincremental{* Dealing with highly *operational* decision making.
+* A day of reflection choose e.g. Thursday.
+* Ensure meetings are longer-term thinking.}
 
 \notes{These challenges can be particularly difficult if your organisation is dominated by *operational concerns*. If rapid decision making is required, the Gorilla may be missed. And this may be mostly OK, for example, in Amazon's supply chain there are weekly business reviews that are looking at the international state of the supply chain. If there are problems, they often need quick actions to rectify them. When quick actions are required, 'command and control' tends to predominate over more collaorative decision making that we hope allows us to see the Gorilla. Unfortunately, it can be hard, even as senior leaders, to switch between this type of operational decision making, and the more inclusive decision making we need around complex data scenarios. One possibility is to reserve a day for meetings that are dealing with the more complex decision making. In Amazon later in the week was more appropriate for this type of meeting. So making, e.g. Thursday into a more thoughtful day (Thoughtsday if you will?) you can potentially switch modes of thinking and take a longer term view on a given day in the week.}
 

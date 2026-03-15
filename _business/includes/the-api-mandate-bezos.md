@@ -21,7 +21,7 @@
 
 \newslide{Duality of Corporation and Information}
 
-\slides{* What is less written about is *corporate structure*.
+\slidesincremental{* What is less written about is *corporate structure*.
 * This *information infrastructure* is reflected in the corporation.
 * Two pizza teams with *devolved autonomy*.
 * Bound together through *corporate culture*.}
