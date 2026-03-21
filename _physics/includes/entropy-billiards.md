@@ -15,7 +15,7 @@
     <div id="multiball-histogram-canvas" style="width:100%;height:250px"></div>
   </div>
 </div>
-<div style="margin-top:4px">
+<div style="margin-top:4px;display:flex;flex-wrap:wrap;gap:4px">
 <button id="multiball-newball">New Ball</button>
 <button id="multiball-pause">Pause</button>
 <button id="multiball-skip">Skip 1000s</button>
