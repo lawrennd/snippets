@@ -6,12 +6,12 @@
 \subsection{Kappenball}
 
 \figure{
-<div style="width:100%;max-width:800px">
+<div style="width:100%;max-width:900px">
 <div style="display:flex;justify-content:space-between">
 <div>Score: <output id="kappenball-score"></output></div>
 <div>Energy: <output id="kappenball-energy"></output></div>
 </div>
-<canvas id="kappenball-canvas" width="800" height="450" style="border:1px solid black;display:block;width:100%"></canvas>
+<canvas id="kappenball-canvas" width="900" height="450" style="border:1px solid black;display:block;width:100%"></canvas>
 <div>
 <input type="range" min="0" max="100" value="0" class="slider" id="kappenball-stochasticity" style="width:100%;"/>
 </div>
