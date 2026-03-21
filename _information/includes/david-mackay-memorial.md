@@ -51,7 +51,7 @@ He later surprised me again, when I heard that he'd shifted away from this large
 [^ultimate]: Have a look at the wonderful tributes to him on the [Cambridge Ultimate website](https://ultimate.soc.srcf.net/davidmackay). 
 }
 
-\figure{\includejpg{\slidesDiagrams/information/david-ultimate}{60%}}{David playing ultimate. Picture is taken from [one of his last blog posts](https://itila.blogspot.com/2016/04/perhaps-my-last-post-well-see.html).}{david-ultimate}
+\figure{\includejpg{\diagramsDir/information/david-ultimate}{60%}}{David playing ultimate. Picture is taken from [one of his last blog posts](https://itila.blogspot.com/2016/04/perhaps-my-last-post-well-see.html).}{david-ultimate}
 
 \notes{In honour of this idea, we consider a similar principle for "zero player games". Games of the type of Conway's game of life (@Gardner-life70) or Wolfram's cellular automata (@Wolfram-cellular83). The principle is a conceptual constraint inspired by Russell's paradox: it demands that the rules of our system not appeal to external adjudicators or reference points just like ultimate.}
 
