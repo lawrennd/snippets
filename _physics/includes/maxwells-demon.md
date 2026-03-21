@@ -29,16 +29,16 @@
   <div style="flex:1 1 400px;min-width:0">
     <canvas id="maxwell-canvas" width="700" height="500" style="border:1px solid black;display:block;width:100%"></canvas>
   </div>
-  <div style="flex:0 1 280px;min-width:0">
+  <div style="flex:0 1 280px;min-width:0;display:flex;flex-direction:column;gap:6px">
     <div>Velocity-bin entropy: <output id="maxwell-entropy"></output></div>
     <div id="maxwell-histogram-canvas" style="width:100%;height:250px"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px">
+      <button id="maxwell-newball">New Ball</button>
+      <button id="maxwell-pause">Pause</button>
+      <button id="maxwell-skip">Skip 1000s</button>
+      <button id="maxwell-histogram">Histogram</button>
+    </div>
   </div>
-</div>
-<div style="margin-top:4px;display:flex;flex-wrap:wrap;gap:4px">
-<button id="maxwell-newball">New Ball</button>
-<button id="maxwell-pause">Pause</button>
-<button id="maxwell-skip">Skip 1000s</button>
-<button id="maxwell-histogram">Histogram</button>
 </div>
 
 \include{_scripts/includes/maxwell-js.md}
