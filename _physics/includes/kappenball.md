@@ -6,7 +6,7 @@
 \subsection{Kappenball}
 
 \figure{
-<div style="max-width:800px">
+<div style="width:100%;max-width:800px">
 <div style="display:flex;justify-content:space-between">
 <div>Score: <output id="kappenball-score"></output></div>
 <div>Energy: <output id="kappenball-energy"></output></div>
