@@ -12,7 +12,9 @@
 
 
 \newslide{Loneliness}
-\setupplotcode{import mlai}
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot}
 
 \plotcode{# Generate diagrams for loneliness rule
 for i, state in enumerate(['before', 'after']):

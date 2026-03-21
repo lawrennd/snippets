@@ -102,7 +102,9 @@
 
 This base implementation will be essential when we combine it with Wolfram automata, as we'll need to modify the boundary conditions to interact with the Wolfram rules.}
 
-\setupplotcode{import matplotlib.pyplot as plt}
+\setupplotcode{import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot}
 
 \plotcode{# Demonstrate simple Life evolution with enhanced visualization
 # Create a simple oscillator (blinker)
