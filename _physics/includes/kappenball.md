@@ -5,6 +5,7 @@
 
 \subsection{Kappenball}
 
+<<<<<<< HEAD
 \figure{
 <div style="width:100%;max-width:900px">
 <div style="display:flex;justify-content:space-between">
@@ -20,6 +21,14 @@
 <button id="kappenball-pause">Pause</button>
 </div>
 <output id="kappenball-count"></output>
+=======
+\figure{<div><div style="width:800px;text-align:center;display:inline"><span style="float:left;">Score: <output id="kappenball-score"></output></span>
+<span style="float:right;">Energy: <output id="kappenball-energy"></output></span><div style="clear: both;"></div></div>
+<canvas id="kappenball-canvas" width="800" height="450" style="border:1px solid black;display:inline;text-align:center "></canvas>
+<div><input type="range" min="0" max="100" value="0" class="slider" id="kappenball-stochasticity" style="width:800px;"/></div>
+<div><button id="kappenball-newball" style="text-align:right">New Ball</button><button id="kappenball-pause" style="text-align:right">Pause</button></div>
+Balls: <output id="kappenball-count"></output>
+>>>>>>> 64ce095cbab6cb243a7d3a75d6fe1f77059c6500
 \include{_scripts/includes/kappenball-js.md}
 </div>}{Kappen Ball}{kappen-ball}
 
