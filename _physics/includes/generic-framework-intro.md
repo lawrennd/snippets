@@ -5,25 +5,9 @@
 
 \subsection{The GENERIC Framework}
 
-\notes{We've seen something emerge from lectures 5-7:
+\notes{}
 
-- **Lecture 5:** Hamiltonian/Poisson structure describes energy-conserving dynamics (antisymmetric operators)
-- **Lecture 6:** Linearisation around equilibrium reveals structure of dynamics
-- **Lecture 7:** Any dynamics matrix decomposes uniquely as $M = S + A$ where $S$ is symmetric (dissipative) and $A$ is antisymmetric (conservative)
-
-This emergence comes from the geometry of constrained information dynamics. The structure is *not unique to information theory*. It appears throughout physics whenever systems combine reversible and irreversible processes.}
-
-\slides{
-**What We've Seen Emerge**
-
-Lecture 5: Energy conservation $\rightarrow$ antisymmetric $A$
-
-Lecture 6-7: Linearisation $\rightarrow$ $M = S + A$ split
-
-**Question:** Is this structure universal?
-
-**Answer:** YES! $\rightarrow$ GENERIC framework
-}
+\slides{}
 
 \subsection{Historical Context: Non-Equilibrium Thermodynamics}
 
@@ -42,10 +26,15 @@ Two researchers, Miroslav Grmela and Hans Christian Öttinger, independently dev
 **Non-Equilibrium Challenge (1980s-90s)**
 
 Real systems are *both*:
+
 * Reversible (mechanics, conservation laws)
 * Irreversible (thermodynamics, dissipation)
 
+}
+\newslide{}
+\slides{
 **Examples:**
+
 * Fluids: momentum conservation + viscosity
 * Reactions: kinetics + diffusion
 * Materials: elasticity + plasticity
