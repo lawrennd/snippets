@@ -12,6 +12,7 @@
 
 
 \newslide{Loneliness}
+\setupplotcode{import mlai}
 
 \plotcode{# Generate diagrams for loneliness rule
 for state in ['before', 'after']:
