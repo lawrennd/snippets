@@ -10,21 +10,20 @@
 \newslide{}
 
 \figure{
-<div>
-<div style="width:68%;float:left">
-  <canvas id="maxwell-canvas" width="700" height="500" style="border:1px solid black;display:inline;text-align:left"></canvas>
-</div>
-<div style="width:28%;float:right;margin:auto">
-  <div style="float:right;width:100%;margin:auto">Velocity-bin entropy: <output id="maxwell-entropy"></output></div>
-  <div id="maxwell-histogram-canvas" style="width:300px;height:250px;display:inline-block;text-align:right;margin:auto">
+<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+  <div style="flex:1 1 400px;min-width:0">
+    <canvas id="maxwell-canvas" width="700" height="500" style="border:1px solid black;display:block;width:100%"></canvas>
+  </div>
+  <div style="flex:0 1 280px;min-width:0">
+    <div>Velocity-bin entropy: <output id="maxwell-entropy"></output></div>
+    <div id="maxwell-histogram-canvas" style="width:100%;height:250px"></div>
   </div>
 </div>
-</div>
-<div>
-<button id="maxwell-newball" style="text-align:right">New Ball</button>
-<button id="maxwell-pause" style="text-align:right">Pause</button>
-<button id="maxwell-skip" style="text-align:right">Skip 1000s</button>
-<button id="maxwell-histogram" style="text-align:right">Histogram</button>
+<div style="margin-top:4px">
+<button id="maxwell-newball">New Ball</button>
+<button id="maxwell-pause">Pause</button>
+<button id="maxwell-skip">Skip 1000s</button>
+<button id="maxwell-histogram">Histogram</button>
 </div>
 
 \include{_scripts/includes/maxwell-js.md}
