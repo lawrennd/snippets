@@ -15,7 +15,7 @@
   <canvas id="maxwell-canvas" width="700" height="500" style="border:1px solid black;display:inline;text-align:left"></canvas>
 </div>
 <div style="width:28%;float:right;margin:auto">
-  <div style="float:right;width:100%;margin:auto">Entropy: <output id="maxwell-entropy"></output></div>
+  <div style="float:right;width:100%;margin:auto">Velocity-bin entropy: <output id="maxwell-entropy"></output></div>
   <div id="maxwell-histogram-canvas" style="width:300px;height:250px;display:inline-block;text-align:right;margin:auto">
   </div>
 </div>
@@ -28,6 +28,6 @@
 </div>
 
 \include{_scripts/includes/maxwell-js.md}
-}{Maxwell's Demon. The demon decides balls are either cold (blue) or hot (red) according to their velocity. Balls are allowed to pass the green membrane from right to left only if they are cold, and from left to right, only if they are hot.}{maxwells-demon}
+}{Maxwell's Demon. The demon decides balls are either cold (blue) or hot (red) according to their velocity. Balls are allowed to pass the green membrane from right to left only if they are cold, and from left to right only if they are hot. The displayed entropy is the Shannon entropy of the velocity histogram (a coarse-grained proxy, not full thermodynamic entropy).}{maxwells-demon}
 
 \endif
