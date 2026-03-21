@@ -12,12 +12,13 @@
 
 
 \newslide{Loneliness}
+\setupplotcode{import mlai}
 
 \plotcode{# Generate diagrams for loneliness rule
-for state in ['before', 'after']:
+for i, state in enumerate(['before', 'after']):
     svg = generate_life_rule_diagram(f'loneliness-{state}')
-    filename = mlai.filename_join(f"life-rules-1-{0 if state == 'before' else 1}.svg", 
-                                "\writeDiagramsDir/simulation/")
+    filename = mlai.filename_join(f"life-rules-1-{i}.svg",
+                                  directory="\writeDiagramsDir/simulation/")
     with open(filename, 'w') as f:
         f.write(svg)}
 
@@ -28,10 +29,10 @@ for state in ['before', 'after']:
 \newslide{Crowding}
 
 \plotcode{# Generate diagrams for overcrowding rule
-for state in ['before', 'after']:
+for i, state in enumerate(['before', 'after']):
     svg = generate_life_rule_diagram(f'overcrowding-{state}')
-    filename = mlai.filename_join(f"life-rules-2-{0 if state == 'before' else 1}.svg", 
-                                "\writeDiagramsDir/simulation/")
+    filename = mlai.filename_join(f"life-rules-2-{i}.svg",
+                                  directory="\writeDiagramsDir/simulation/")
     with open(filename, 'w') as f:
         f.write(svg)}
 
@@ -42,10 +43,10 @@ for state in ['before', 'after']:
 \newslide{Birth}
 
 \plotcode{# Generate diagrams for birth rule
-for state in ['before', 'after']:
+for i, state in enumerate(['before', 'after']):
     svg = generate_life_rule_diagram(f'birth-{state}')
-    filename = mlai.filename_join(f"life-rules-3-{0 if state == 'before' else 1}.svg", 
-                                "\writeDiagramsDir/simulation/")
+    filename = mlai.filename_join(f"life-rules-3-{i}.svg",
+                                  directory="\writeDiagramsDir/simulation/")
     with open(filename, 'w') as f:
         f.write(svg)}
 
