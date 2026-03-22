@@ -29,7 +29,7 @@ Does the barber shave themselves?
 
 \notes{While this works for card games, it's unsatisfying for foundational mathematics. We want our game to be *internally consistent*, not requiring an external referee to resolve paradoxes.}
 
-\figure{\includejpg{\slidesDiagrams/information-game/Munchkin_game_cover}{40%}}{The Munchkin card came has both cards and rules. The game explicitly acknowledges that this can lead to inconsistencies which should be resolved by the game owner.}{munchkin-game-cover}
+\figure{\includejpg{\dirDiagrams/information-game/Munchkin_game_cover}{40%}}{The Munchkin card came has both cards and rules. The game explicitly acknowledges that this can lead to inconsistencies which should be resolved by the game owner.}{munchkin-game-cover}
 
 \slides{
 **Munchkin Card Game [@Jackson-munchkin01]:**
@@ -47,12 +47,8 @@ Does the barber shave themselves?
 
 \notes{The no-barber principle says that admissible rules must be *internally adjudicable*: they depend only on quantities definable from within the system's internal language, without requiring e.g. an external observer to define what's distinguishable, or a pre-specified outcome space or $\sigma$-algebra, a privileged decomposition into subsystems an externally defined time parameter or spatial coordinates.}
 
-\slides{
-**No-Barber Principle:**
+\slides{**Forbidden:**
 
-Rules must be *internally adjudicable*
-
-**Forbidden:**
 * External observer
 * Pre-specified outcome space
 * Privileged decomposition
@@ -67,10 +63,8 @@ Rules must be *internally adjudicable*
 
 \notes{This is an attempt to introduce a consistency requirement that prevents the rules from appealing to distinctions the game itself cannot represent.}
 
-\slides{
-**Entropic Exchangeability:**
+\slides{Admissible rules must:
 
-Admissible rules must:
 1. Use only reduced descriptions
 2. Be relabeling-invariant
 3. Not require global distinguishability
