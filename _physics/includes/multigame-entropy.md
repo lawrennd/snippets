@@ -84,8 +84,8 @@ Initialisation:
 <span style="font-family:sans-serif;font-size:0.9em;margin-left:6px">
 Display:
 <select id="multigame-display">
-<option value="2d">2D joint p(vₓ,vᵧ)</option>
 <option value="1d">1D marginals p(vₓ) &amp; p(vᵧ)</option>
+<option value="2d">2D joint p(vₓ,vᵧ)</option>
 </select>
 </span>
 </div>
