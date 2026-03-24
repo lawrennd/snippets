@@ -29,7 +29,7 @@ Does the barber shave themselves?
 
 \notes{While this works for card games, it's unsatisfying for foundational mathematics. We want our game to be *internally consistent*, not requiring an external referee to resolve paradoxes.}
 
-\figure{\includejpg{\dirDiagrams/information-game/Munchkin_game_cover}{40%}}{The Munchkin card came has both cards and rules. The game explicitly acknowledges that this can lead to inconsistencies which should be resolved by the game owner.}{munchkin-game-cover}
+\figure{\includejpg{\diagramsDir/information-game/Munchkin_game_cover}{40%}}{The Munchkin card came has both cards and rules. The game explicitly acknowledges that this can lead to inconsistencies which should be resolved by the game owner.}{munchkin-game-cover}
 
 \slides{
 **Munchkin Card Game [@Jackson-munchkin01]:**
