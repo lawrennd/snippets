@@ -13,8 +13,9 @@
 **Information Relaxation Principle:**
 
 Among all paths with $\sum h_i = C$:
-
-$$\text{Follow path that maximizes } \dot{H}$$
+$$
+\text{Follow path that maximizes } \dot{H}
+$$
 
 *Steepest entropy ascent on constraint surface*
 }
@@ -34,8 +35,9 @@ $$}
 
 \slides{
 **Unconstrained MEP:**
-
-$$\dot{\boldsymbol{\theta}} = \nabla H = -G(\boldsymbol{\theta})\boldsymbol{\theta}$$
+$$
+\dot{\boldsymbol{\theta}} = \nabla H = -G(\boldsymbol{\theta})\boldsymbol{\theta}
+$$
 
 * Natural gradient ascent
 * Flows to $\boldsymbol{\theta} = \mathbf{0}$ (max entropy)
@@ -48,14 +50,16 @@ $$\dot{\boldsymbol{\theta}} = \nabla H = -G(\boldsymbol{\theta})\boldsymbol{\the
 
 \notes{Using a Lagrangian formulation:
 $$
-\mathscr{L}(\boldsymbol{\theta}, \nu) = -H(\boldsymbol{\theta}) + \nu\left(\sum_{i=1}^n h_i - C\right)
+\mathscr{L}(\boldsymbol{\theta}, \nu) = -H(\boldsymbol{\theta}) + \nu\left(\sum_{i=1}^n h_i - C\right),
 $$
 where $\nu$ is a Lagrange multiplier (note we use $-H$ since Lagrangians are minimized by convention).}
 
 \slides{
 **Lagrangian Formulation:**
 
-$$\mathscr{L}(\boldsymbol{\theta}, \nu) = -H + \nu\left(\sum h_i - C\right)$$
+$$
+\mathscr{L}(\boldsymbol{\theta}, \nu) = -H + \nu\left(\sum h_i - C\right)
+$$
 
 * $\nu$: Lagrange multiplier
 * Enforces constraint
@@ -82,8 +86,9 @@ $$}
 \slides{
 **Constrained Dynamics:**
 
-$$\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} + \nu(\tau) \mathbf{a}$$
-
+$$
+\dot{\boldsymbol{\theta}} = -G\boldsymbol{\theta} + \nu(\tau) \mathbf{a}
+$$
 where $\mathbf{a} = \nabla\left(\sum_i h_i\right)$
 
 **Constraint maintenance:**
@@ -114,12 +119,15 @@ is the projection matrix onto the constraint tangent space.}
 \slides{
 **Solution:**
 
-$$\nu(\tau) = \frac{\mathbf{a}^\top G\boldsymbol{\theta}}{\|\mathbf{a}\|^2}$$
+$$
+\nu(\tau) = \frac{\mathbf{a}^\top G\boldsymbol{\theta}}{\|\mathbf{a}\|^2}
+$$
 
 **Projection Form:**
 
-$$\dot{\boldsymbol{\theta}} = -\Pi_\parallel G\boldsymbol{\theta}$$
-
+$$
+\dot{\boldsymbol{\theta}} = -\Pi_\parallel G\boldsymbol{\theta}
+$$
 where $\Pi_\parallel$ projects onto tangent space
 }
 
