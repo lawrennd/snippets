@@ -5,14 +5,18 @@
 \newslide{Sampling Two Dimensional Variables}
 
 \setupplotcode{import mlai.plot as plot}
-\plotcode{plot.independent_height_weight(num_samps=8, 
+\plotcode{plot.independent_gaussians_sample(
+                               mu_x=1.7, var_x=0.0225,
+                               mu_y=75, var_y=36, num_samps=8,
+                               xlabel='$h/m$', ylabel='$w/kg$',
+                               filestub="independent_height_weight",
                                diagrams='\writeDiagramsDir/ml')}
 							   
 							
 \setupdisplaycode{import notutils as nu
 from ipywidgets import IntSlider}
-\setupdisplaycode{import notutils as nu}
-\displaycode{nu.display_plots('independent_height_weight{fig:0>3}.svg', 
+\
+displaycode{nu.display_plots('independent_height_weight{fig:0>3}.svg', 
                             directory='\writeDiagramsDir/ml', 
 							fig=IntSlider(0, 0, 7, 1))}
 
