@@ -39,7 +39,6 @@ boundary between observer and observed.}
 <div style="margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap">
 <button id="observer-inside-reset">Reset</button>
 <button id="observer-inside-pause">Pause / Resume</button>
-<button id="observer-inside-skip">Skip 1000s</button>
 <span style="font-family:sans-serif;font-size:0.9em;margin-left:6px">
 Initialisation:
 <select id="observer-inside-init">
