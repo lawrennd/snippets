@@ -14,6 +14,7 @@ He later surprised me again, when I heard that he'd shifted away from this large
 
 \slides{
 **David MacKay (1967-2016)**
+
 * Information theory and inference
 * Neural networks and learning algorithms
 * Sustainable energy and physical limits
@@ -35,6 +36,7 @@ He later surprised me again, when I heard that he'd shifted away from this large
 
 \slides{
 **David's Approach:**
+
 * Start with fundamental principles
 * Build rigorous mathematical framework
 * Apply to real systems
