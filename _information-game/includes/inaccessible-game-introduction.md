@@ -8,7 +8,6 @@
 \notes{We call our framework the "inaccessible game" because the system is isolated from external observation: an outside observer cannot extract or inject information, making the game's internal state inaccessible.}
 
 \slides{
-**The Inaccessible Game:**
 * System isolated from observation
 * External observer cannot extract information
 * Internal state is inaccessible
@@ -25,6 +24,7 @@ F(f) = H(p) - H(q).
 $$}
 
 \notes{But if marginal entropies are conserved ($\sum h_i = C$), then an external observer sees:
+
 - Before observation: $\sum h_i = C$
 - After observation: $\sum h_i = C$  
 - Information gained: $\Delta(\sum h_i) = 0$
@@ -55,6 +55,7 @@ $$\Delta(\sum h_i) = 0 \Rightarrow \text{observer learns nothing!}$$
 
 \slides{
 **Game Characteristics:**
+
 * Zero-player game
 * State = probability distribution $p(\mathbf{x}|\boldsymbol{\theta})$
 * Rule = maximize entropy production
@@ -74,6 +75,7 @@ $$\Delta(\sum h_i) = 0 \Rightarrow \text{observer learns nothing!}$$
 
 \slides{
 **Physical Connections:**
+
 * GENERIC structure emerges
 * Energy ↔ Entropy equivalence
 * Landauer's principle derivable
