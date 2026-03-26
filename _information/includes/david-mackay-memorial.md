@@ -57,7 +57,7 @@ He later surprised me again, when I heard that he'd shifted away from this large
 
 \notes{In honour of this idea, we consider a similar principle for "zero player games". Games of the type of Conway's game of life (@Gardner-life70) or Wolfram's cellular automata (@Wolfram-cellular83). The principle is a conceptual constraint inspired by Russell's paradox: it demands that the rules of our system not appeal to external adjudicators or reference points just like ultimate.}
 
-\subsection{Ultimate}
+\newslide{Ultimate}
 
 \slidesincremental{* David was a playful person.
 * Physics puzzles
