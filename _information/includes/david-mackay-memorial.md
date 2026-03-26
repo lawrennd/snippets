@@ -46,7 +46,7 @@ He later surprised me again, when I heard that he'd shifted away from this large
 }
 
 
-\subsection{Playful}
+\subsection{Ultimate}
 
 \notes{David was also a playful person, he enjoyed games, often rephrasing physics questions as puzzles, but also ultimate frisbee,[^ultimate] or ultimate for short. One aspect of ultimate he seemed to particularly like was the "spirit of the game". In ultimate there is no referee, no arbitration. Self arbitration is part of the spirit of the game.
 
@@ -57,11 +57,13 @@ He later surprised me again, when I heard that he'd shifted away from this large
 
 \notes{In honour of this idea, we consider a similar principle for "zero player games". Games of the type of Conway's game of life (@Gardner-life70) or Wolfram's cellular automata (@Wolfram-cellular83). The principle is a conceptual constraint inspired by Russell's paradox: it demands that the rules of our system not appeal to external adjudicators or reference points just like ultimate.}
 
-\slides{* David was a playful person.
+\subsection{Ultimate}
+
+\slidesincremental{* David was a playful person.
 * Physics puzzles
 * Ultimate Frisbee.
   * Ultimate "spirit of the game"
-* Create a self-adjudicating zero-player information game
+* Ultimiate is a self-adjudicating game
 }
 
 \endif
