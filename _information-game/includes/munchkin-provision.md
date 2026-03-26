@@ -15,16 +15,14 @@
 
 \figure{\includejpg{\diagramsDir/information-game/Munchkin_game_cover}{40%}}{The Munchkin card came has both cards and rules. The game explicitly acknowledges that this can lead to inconsistencies which should be resolved by the game owner.}{munchkin-game-cover}
 
-\slidesincremental{
-**Munchkin Card Game [@Jackson-munchkin01]:**
+\newslide{Munchkin Card Game}
+\slides{
 
-*Rules may be inconsistent*
+Rules may be inconsistent ... so ...
 
-**Resolution:** "Loud arguments, with owner having last word"
+> Any other disputes should be settled by loud arguments, with the owner of the game having the last word.
+>
+> Munckin Rules [@Jackson-munchkin01]}
 
-**For foundations:** Need something better!
-
-*No external referee for mathematics*
-}
 
 \endif
