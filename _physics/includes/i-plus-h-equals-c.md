@@ -11,8 +11,7 @@ $$
 $$
 This conservation law is the heart of The Inaccessible Game, but to understand its dynamical implications, we need to rewrite it in a more revealing form.}
 
-\slides{
-**The Fourth Axiom:**
+\slidesincremental{
 $$
 \sum_{i=1}^N h_i = C
 $$
@@ -31,15 +30,15 @@ $$
 H = -\sum_{\mathbf{x}} p(\mathbf{x}) \log p(\mathbf{x}).
 $$
 
-The multi-information has a clear interpretation:
+The multi-information has a nice interpretation:
+
 - **$I = 0$**: The variables are completely independent. The joint entropy equals the sum of marginal entropies.
 - **$I > 0$**: The variables are correlated. Some information is "shared" between variables, so the joint entropy is less than the sum of marginals.
 - **$I$ is maximal**: The variables are maximally correlated (in the extreme case, deterministically related).
 
 Multi-information is always non-negative ($I \geq 0$) and measures how much knowing one variable tells you about others.}
 
-\slides{
-**Multi-Information:**
+\slidesincremental{
 $$
 I = \sum_{i=1}^N h_i - H
 $$
@@ -51,7 +50,7 @@ $$
 *Measures "shared information"*
 }
 
-\subsection{The Information Action Principle: $I + H = C$}
+\newslide{`Information Action'}
 
 \notes{Using the definition of multi-information, we can rewrite our conservation law. From $I = \sum_{i=1}^N h_i - H$, we have:
 $$
@@ -64,8 +63,7 @@ $$
 
 This is an *information action principle*. It says that multi-information plus joint entropy is conserved. This equation sits behind the dynamics of the Inaccessible Game.}
 
-\slides{
-**Information Action Principle:**
+\slidesincremental{
 $$
 I + H = C
 $$
@@ -103,7 +101,7 @@ Just as a classical system evolves from high potential energy to high kinetic en
 *System "rolls downhill" from correlation to entropy*
 }
 
-\subsection{The Information Relaxation Principle}
+\subsection{Information Relaxation}
 
 \notes{The $I + H = C$ structure suggests a *relaxation principle*: systems naturally evolve from states of high correlation (high $I$, low $H$) toward states of low correlation (low $I$, high $H$).
 
@@ -111,15 +109,15 @@ Why? Our inspiration is that the second law of thermodynamics tells us that entr
 
 This is analogous to how physical systems relax from non-equilibrium states (low $T$, high $V$) to equilibrium (high $T$, low $V$). A compressed spring releases its stored energy. A hot object in a cold room disperses its energy. In information systems, correlated structure dissipates into entropy.}
 
-\slides{
-**Information Relaxation:**
-
+\slidesincremental{
 * Second law: Entropy increases ($\dot{H} > 0$)
 * Conservation: $I + H = C$ (constant)
 * Therefore: Correlation decreases ($\dot{I} < 0$)
+}
 
-**Physical intuition:**
+\newslide{Physical intuition}
 
+\slidesincremental{
 * Compressed spring $\rightarrow$ released energy
 * Correlated variables $\rightarrow$ independent variables
 * Potential $\rightarrow$ kinetic
@@ -141,7 +139,7 @@ p(X_1, X_2) = 0.25 \text{ for all four combinations}
 $$
 The variables are independent. Marginal entropies: $h_1 = h_2 = 1$ bit. Joint entropy: $H = 2$ bits. Multi-information: $I = 1 + 1 - 2 = 0$ bits.
 
-The system relaxes from the first state to the second, conserving $I + H = 2$ bits throughout. Let's visualize this relaxation:}
+The system relaxes from the first state to the second, conserving $I + H = 2$ bits throughout. Let's visualise this relaxation:}
 
 \setupcode{import numpy as np}
 
@@ -256,59 +254,13 @@ mlai.write_figure(filename='i-plus-h-relaxation.svg',
 
 The marginal entropies $h_1$ and $h_2$ stay constant throughout this evolution. An external observer measuring only marginal entropies would see no change—the system is informationally isolated, hence "inaccessible."}
 
-\slides{
-**Key Features:**
-
+\slideincremental{
 * Multi-information $I$ decreases (correlations break)
 * Joint entropy $H$ increases (disorder grows)
 * Conservation: $I + H = C$ (black line)
 * Marginals: $h_1$, $h_2$ constant (inaccessible!)
 
 *Internal reorganisation invisible to external observer*
-}
-
-\subsection{Connection to Marginal Entropy Conservation}
-
-\notes{Why does this structure conserve marginal entropies? Recall that from Baez's axioms, any change in entropy of a subsystem represents "information loss" to an external observer. If the observer learns nothing about the system (information isolation), then
-$$
-\Delta\left(\sum_{i=1}^N h_i\right) = 0.
-$$
-The $I + H = C$ formulation provides our dynamics clear: as the system evolves, *correlations are traded for entropy*. The marginal entropies remain fixed (so an external observer learns nothing), while internally the system reorganises from a correlated state to an uncorrelated state.
-
-Importantly, information conservation doesn't mean nothing changes,  it means the changes are *internal redistributions* that leave marginal entropies (and hence external information) unchanged. The system is inaccessible to the outside because its dynamics preserve $\sum h_i$ which means they preserve $I + H$.}
-
-\slides{
-**Key Insight:**
-
-Conservation $\sum h_i = C$ $\iff$ $I + H = C$
-
-* External view: Marginals constant (inaccessible)
-* Internal view: $I \leftrightarrow H$ (dynamic redistribution)
-
-**Dynamics = trading correlation for entropy**
-}
-
-\subsection{Why This Matters for Dynamics}
-
-\notes{The $I + H = C$ structure immediately tells us:
-
-1. **Direction of evolution**: Systems move from high $I$ to high $H$ (correlation to entropy).
-
-2. **Constrained dynamics**: Not all paths through probability space are allowed. Only those preserving $I + H = C$ are accessible.
-
-3. **Physical interpretation**: The split into $I$ (correlation/potential) and $H$ (entropy/kinetic) gives us a sense of what's happening, later we will parameterise directly through natural parameters $\boldsymbol{\theta}$ (from Lecture 1).
-
-4. **Variational principle**: The action-like structure hints that we can derive dynamics from a variational principle, just as Lagrangian mechanics derives equations of motion from the principle of least action.
-
-In the next section, we'll see how information relaxation, i.e. the tendency to move from high $I$ to high $H$, leads to maximum entropy production dynamics in the natural parameter space.}
-
-\slides{
-**Implications:**
-
-1. Direction: High $I$ $\rightarrow$ High $H$
-2. Constraint: Only paths with $I + H = C$ allowed
-3. Coordinates: $I$ and $H$ are natural
-4. Variational principle: Derive dynamics from conservation
 }
 
 \endif
