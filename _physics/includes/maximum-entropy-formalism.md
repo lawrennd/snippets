@@ -29,5 +29,14 @@ The maximum attainable entropy is
 (S_I)_{max} = \log Z + \sum_{k=1}^m \lambda_k \langle f_k \rangle.
 \end{align}
 }
-
+\slides{
+$$
+p_i = \frac{1}{Z(\lambda_1,\ldots,\lambda_m)}\exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))
+$$
+$$
+Z(\lambda_1,\ldots,\lambda_m) = \sum_{i=1}^n \exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))
+$$
+$$
+\langle f_k \rangle = -\frac{\partial}{\partial \lambda_k}\log Z(\lambda_1,\ldots,\lambda_m) \quad k=1,2,\ldots,m.
+$$}
 \endif
