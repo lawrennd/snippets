@@ -48,9 +48,9 @@ velocities — and yet all nine panels converge to the same equilibrium blob.}
 of each ball's velocity is independent of the initial conditions and identical
 for all balls, even though the *path* to equilibrium differs.}
 
-\slides{**Thermalisation from Different Initial Conditions**
-
+\slides{
 * 9 balls on a $3 \times 3$ grid; 
+* Different starting conditions.
 }
 
 \newslide{}

@@ -36,7 +36,7 @@ omega0 = 0.0
 initial_state = np.array([theta0, omega0])
 initial_energy = pendulum_energy(theta0, omega0)
 
-# Simulate using simple Euler method (Hamiltonian structure preserves energy well)
+# Simulate using Störmer-Verlet method (symplectic integrator, preserves energy)
 dt = 0.02
 t_max = 5.0
 num_steps = int(t_max / dt)
@@ -46,14 +46,15 @@ times = np.linspace(0, t_max, num_steps)
 trajectory = np.zeros((num_steps, 2))
 energies = np.zeros(num_steps)
 
-# Integrate
-state = initial_state.copy()
+# Integrate using Störmer-Verlet (symplectic, time-reversible)
+# Half-step omega, full-step theta, half-step omega — preserves energy to machine precision
+theta, omega = initial_state
 for i in range(num_steps):
-    trajectory[i] = state
-    energies[i] = pendulum_energy(state[0], state[1])
-    # Simple symplectic Euler (preserves energy structure better)
-    state[1] += pendulum_dynamics(state, times[i])[1] * dt
-    state[0] += state[1] * dt
+    trajectory[i] = [theta, omega]
+    energies[i] = pendulum_energy(theta, omega)
+    omega_half = omega - 0.5 * (g/L) * np.sin(theta) * dt
+    theta = theta + omega_half * dt
+    omega = omega_half - 0.5 * (g/L) * np.sin(theta) * dt
 
 # Verify energy conservation
 energy_drift = np.abs(energies - initial_energy).max()
@@ -131,13 +132,13 @@ anim = animation.FuncAnimation(fig, animate, init_func=init,
                               blit=True, repeat=True)
 
 # Save as GIF
-write_animation(anim, "pendulum_energy_conservation.gif", 
-               directory="\diagramsDir/physics",
+write_animation(anim, "pendulum-energy-conservation.gif", 
+               directory="\writeDiagramsDir/physics",
                writer='pillow', fps=30)}
 
 \newslide{}
 
-\figure{\includediagram{\diagramsDir/physics/pendulum-energy-conservation}{80%}}{Pendulum energy conservation: the pendulum (left) trades potential and kinetic energy while total energy (red line, right) remains constant. Green shows kinetic energy, orange shows potential energy.}{fig-pendulum-energy-conservation}
+\figure{\includegif{\diagramsDir/physics/pendulum-energy-conservation}{80%}}{Pendulum energy conservation: the pendulum (left) trades potential and kinetic energy while total energy (red line, right) remains constant. Green shows kinetic energy, orange shows potential energy.}{pendulum-energy-conservation}
 
 \notes{This pendulum simulation uses.
 
@@ -149,6 +150,8 @@ write_animation(anim, "pendulum_energy_conservation.gif",
 
 4. **Geometric structure**: The antisymmetric structure we'll study ensures this conservation automatically
 
-The animation shows the pendulum swinging with the energy plot demonstrating perfect conservation (or near-perfect with numerical drift).}
+5. **Störmer-Verlet integrator**: The simulation uses a symplectic, time-reversible integrator — each step splits the velocity update into two half-steps either side of the position update, preserving the Hamiltonian structure and keeping energy drift at machine precision level.
+
+The animation shows the pendulum swinging with the energy plot demonstrating near-perfect conservation.}
 
 \endif

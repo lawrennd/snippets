@@ -17,7 +17,7 @@
 
 \newslide{Dice Example}
 
-\slides{
+\slidesincremental{
 * Dice example: Average result 4.5 instead of 3.5
 * Constraints:
   * $\sum_{n=1}^6 P_n = 1$ (normalization)

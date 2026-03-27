@@ -14,7 +14,7 @@ and maximises the entropy $S_I = -\sum_{i=1}^n p_i \log p_i$.}
 
 \notes{Using Lagrange multipliers, the solution is the generalised canonical distribution,
 \begin{align}
-p_i = \frac{1}{Z(\lambda_1,\ldots,\lambda_m)}\exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))
+p_i = \frac{\exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))}{Z(\lambda_1,\ldots,\lambda_m)}
 \end{align}
 where $Z(\lambda_1,\ldots,\lambda_m)$ is the partition function,
 \begin{align}
@@ -29,12 +29,12 @@ The maximum attainable entropy is
 (S_I)_{max} = \log Z + \sum_{k=1}^m \lambda_k \langle f_k \rangle.
 \end{align}
 }
-\slides{
+\slidesmall{
 $$
-p_i = \frac{1}{Z(\lambda_1,\ldots,\lambda_m)}\exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))
+p_i = \frac{\exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))}{Z(\lambda_1,\ldots,\lambda_m)}
 $$
 $$
-Z(\lambda_1,\ldots,\lambda_m) = \sum_{i=1}^n \exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))
+Z(\ldots) = \sum_{i=1}^n \exp(-\lambda_1 f_1(x_i) - \ldots - \lambda_m f_m(x_i))
 $$
 $$
 \langle f_k \rangle = -\frac{\partial}{\partial \lambda_k}\log Z(\lambda_1,\ldots,\lambda_m) \quad k=1,2,\ldots,m.

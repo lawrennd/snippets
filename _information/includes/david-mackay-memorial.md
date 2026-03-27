@@ -18,7 +18,8 @@ He later surprised me again, when I heard that he'd shifted away from this large
 * Information theory and inference
 * Neural networks and learning algorithms
 * Sustainable energy and physical limits
-* Cut through hype with careful reasoning
+
+*Cut through hype with careful reasoning*
 }
 
 \newslide{How many Lightbulbs?}
@@ -34,15 +35,13 @@ He later surprised me again, when I heard that he'd shifted away from this large
 
 \notes{In my best attempt to respect that spirit of inquiry, this work tries to ask: What fundamental information-theoretic constraints govern intelligent systems? Can we understand these constraints as rigorously as we understand thermodynamic constraints on engines?}
 
-\slides{
+\slidesincremental{
 **David's Approach:**
 
 * Start with fundamental principles
 * Build rigorous mathematical framework
 * Apply to real systems
 * Use numbers to test claims
-
-*Today:* Ideas on applying this to information, energy and intelligence
 }
 
 
@@ -57,7 +56,7 @@ He later surprised me again, when I heard that he'd shifted away from this large
 
 \notes{In honour of this idea, we consider a similar principle for "zero player games". Games of the type of Conway's game of life (@Gardner-life70) or Wolfram's cellular automata (@Wolfram-cellular83). The principle is a conceptual constraint inspired by Russell's paradox: it demands that the rules of our system not appeal to external adjudicators or reference points just like ultimate.}
 
-\newslide{Ultimate}
+\newslide{Games}
 
 \slidesincremental{* David was a playful person.
 * Physics puzzles
