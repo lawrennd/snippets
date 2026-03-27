@@ -28,18 +28,18 @@ avoids any unwarranted assumption beyond the available data.}
 \newslide{}
 
 \figure{
-<div style="width:100%;max-width:780px;font-family:sans-serif;font-size:0.9em">
-<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+<div style="width:100%;max-width:780px;font-family:sans-serif;font-size:0.82em">
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
 
-<div style="display:flex;flex-direction:column;align-items:center;gap:10px;min-width:190px">
-<canvas id="dieroll-die" width="180" height="180"
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px;min-width:160px">
+<canvas id="dieroll-die" width="150" height="150"
  style="display:block;cursor:pointer"></canvas>
 <div style="font-size:0.75em;color:#888;text-align:center">click die or button to roll</div>
 <div style="display:flex;gap:6px">
 <button id="dieroll-roll">Roll</button>
 <button id="dieroll-roll100">Roll ×100</button>
 </div>
-<div style="text-align:center;line-height:2;font-size:0.85em">
+<div style="text-align:center;line-height:1.6;font-size:0.85em">
 Rolls: <strong id="dieroll-count">0</strong><br>
 Sample mean: <span id="dieroll-mean">—</span><br>
 H(p): <span id="dieroll-entropy" style="color:#2ecc71">—</span>
@@ -47,10 +47,10 @@ H(p): <span id="dieroll-entropy" style="color:#2ecc71">—</span>
 <button id="dieroll-reset">Reset history</button>
 </div>
 
-<div style="flex:1;min-width:300px">
-<canvas id="dieroll-hist" width="500" height="260"
+<div style="flex:1;min-width:280px">
+<canvas id="dieroll-hist" width="500" height="210"
 style="display:block;width:100%;height:auto;border-radius:6px"></canvas>
-<div style="margin-top:10px">
+<div style="margin-top:6px">
 <div style="font-style:italic;margin-bottom:6px;color:#888">
 Outcome weights (auto-normalised to probabilities)
 </div>

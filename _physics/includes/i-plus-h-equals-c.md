@@ -50,7 +50,7 @@ $$
 *Measures "shared information"*
 }
 
-\newslide{`Information Action'}
+\newslide{'Information Action'}
 
 \notes{Using the definition of multi-information, we can rewrite our conservation law. From $I = \sum_{i=1}^N h_i - H$, we have:
 $$
