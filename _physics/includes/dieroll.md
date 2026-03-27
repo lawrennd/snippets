@@ -32,32 +32,35 @@ avoids any unwarranted assumption beyond the available data.}
 <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
 
 <div style="display:flex;flex-direction:column;align-items:center;gap:10px;min-width:190px">
-  <canvas id="dieroll-die" width="180" height="180"
-    style="display:block;cursor:pointer"></canvas>
-  <div style="font-size:0.75em;color:#888;text-align:center">click die or button to roll</div>
-  <button id="dieroll-roll">Roll</button>
-  <div style="text-align:center;line-height:2;font-size:0.85em">
-    Rolls: <strong id="dieroll-count">0</strong><br>
-    Sample mean: <span id="dieroll-mean">—</span><br>
-    H(p): <span id="dieroll-entropy" style="color:#2ecc71">—</span>
-  </div>
-  <button id="dieroll-reset">Reset history</button>
+<canvas id="dieroll-die" width="180" height="180"
+ style="display:block;cursor:pointer"></canvas>
+<div style="font-size:0.75em;color:#888;text-align:center">click die or button to roll</div>
+<div style="display:flex;gap:6px">
+<button id="dieroll-roll">Roll</button>
+<button id="dieroll-roll100">Roll ×100</button>
+</div>
+<div style="text-align:center;line-height:2;font-size:0.85em">
+Rolls: <strong id="dieroll-count">0</strong><br>
+Sample mean: <span id="dieroll-mean">—</span><br>
+H(p): <span id="dieroll-entropy" style="color:#2ecc71">—</span>
+</div>
+<button id="dieroll-reset">Reset history</button>
 </div>
 
 <div style="flex:1;min-width:300px">
-  <canvas id="dieroll-hist" width="500" height="260"
-    style="display:block;width:100%;height:auto;border-radius:6px"></canvas>
-  <div style="margin-top:10px">
-    <div style="font-style:italic;margin-bottom:6px;color:#888">
-      Outcome weights (auto-normalised to probabilities)
-    </div>
-    <div id="dieroll-sliders"></div>
-    <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-      <button id="dieroll-uniform">Uniform (mean 3.5)</button>
-      <button id="dieroll-jaynes">Jaynes: mean 4.5</button>
-      <button id="dieroll-low">Low-biased: mean 2</button>
-    </div>
-  </div>
+<canvas id="dieroll-hist" width="500" height="260"
+style="display:block;width:100%;height:auto;border-radius:6px"></canvas>
+<div style="margin-top:10px">
+<div style="font-style:italic;margin-bottom:6px;color:#888">
+Outcome weights (auto-normalised to probabilities)
+</div>
+<div id="dieroll-sliders"></div>
+<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+<button id="dieroll-uniform">Uniform (mean 3.5)</button>
+<button id="dieroll-jaynes">Jaynes: mean 4.5</button>
+<button id="dieroll-low">Low-biased: mean 2</button>
+</div>
+</div>
 </div>
 
 </div>
