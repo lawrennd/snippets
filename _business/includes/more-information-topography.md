@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{More Information Topography
+\subsection{More Information Topography}
 
 \newslide{Information and Money Flow Together}
 
