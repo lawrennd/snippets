@@ -60,10 +60,6 @@ So the configurations of the inaccessible game form a natural proset under von N
 
 \notes{This picture does not require us to know \emph{which} configuration the system is in at any rung, only \emph{how high} the system sits on the ladder. We can think of dynamics in the inaccessible game as being expressed as movement along this ladder.}
 
-\figure{\includediagram{\diagramsDir/information-game/entropy-ladder}{40%}}{The entropy ladder: each rung is an isoentropy class. Multiple configurations sit at the same rung. Dynamics move the system up the ladder (entropy increase) subject to the marginal entropy conservation constraint.}{entropy-ladder}
-
-\notes{The functor $S: \textsf{NCFinProb} \to (\mathbb{R}_{\geq 0}, \leq)$ that assigns von Neumann entropy to each configuration is the formal expression of this structure. It maps the category of configurations to the poset of non-negative reals, and it is the unique (up to rescaling) continuous, functorial measure of information loss in $\textsf{NCFinProb}$ [@Parzygnat-functorial22].}
-
 \slidesincremental{
 * Bottom ($S=0$): pure state — fully ordered, single configuration
 * Higher rungs: mixed states — more equivalence classes at each level
@@ -71,5 +67,12 @@ So the configurations of the inaccessible game form a natural proset under von N
 * Dynamics = movement along the ladder
 * Functor: $S : \textsf{NCFinProb} \to (\mathbb{R}_{\geq 0}, \leq)$
 }
+
+\newslide{The Entropy Ladder}
+
+\figure{\includediagram{\diagramsDir/information-game/entropy-ladder}{40%}}{The entropy ladder: each rung is an isoentropy class. Multiple configurations sit at the same rung. Dynamics move the system up the ladder (entropy increase) subject to the marginal entropy conservation constraint.}{entropy-ladder}
+
+\notes{The functor $S: \textsf{NCFinProb} \to (\mathbb{R}_{\geq 0}, \leq)$ that assigns von Neumann entropy to each configuration is the formal expression of this structure. It maps the category of configurations to the poset of non-negative reals, and it is the unique (up to rescaling) continuous, functorial measure of information loss in $\textsf{NCFinProb}$ [@Parzygnat-functorial22].}
+
 
 \endif
