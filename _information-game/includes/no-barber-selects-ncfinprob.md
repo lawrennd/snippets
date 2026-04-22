@@ -1,5 +1,5 @@
-\ifndef{noBarberSelectsNcfinProb}
-\define{noBarberSelectsNcfinProb}
+\ifndef{noBarberSelectsNcfinprob}
+\define{noBarberSelectsNcfinprob}
 \editme
 
 \subsection{Two Candidates for Information Loss}
