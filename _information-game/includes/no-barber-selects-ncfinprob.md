@@ -59,7 +59,7 @@ In a cartesian category this map exists for free, making the paradox constructib
 \slides{
 > The no-barber principle selects $\textsf{NCFinProb}$ over $\textsf{FinProb}$.
 
-* FinProb: cartesian $\rightarrow$ copying $\righarrow$ Lawvere $\rightarrow$ paradox $\rightarrow$ external adjudication
+* FinProb: cartesian $\rightarrow$ copying $\rightarrow$ Lawvere $\rightarrow$ paradox $\rightarrow$ external adjudication
 * NCFinProb: monoidal $\rightarrow$ no-cloning $\rightarrow$ diagonalisation blocked $\rightarrow$ internally adjudicable
 * Independently consistent with @Lawrence-origin26
 * Information loss $\equiv$ von Neumann entropy decrease
