@@ -254,7 +254,7 @@ mlai.write_figure(filename='i-plus-h-relaxation.svg',
 
 The marginal entropies $h_1$ and $h_2$ stay constant throughout this evolution. An external observer measuring only marginal entropies would see no change—the system is informationally isolated, hence "inaccessible."}
 
-\slideincremental{
+\slidesincremental{
 * Multi-information $I$ decreases (correlations break)
 * Joint entropy $H$ increases (disorder grows)
 * Conservation: $I + H = C$ (black line)
