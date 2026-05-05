@@ -54,7 +54,7 @@ for all balls, even though the *path* to equilibrium differs.}
 }
 
 \newslide{}
-\figure{
+\figure{\html{
 <div style="width:100%;max-width:1020px">
 <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">
 <div style="flex:1 1 260px">
@@ -91,7 +91,7 @@ Display:
 </div>
 </div>
 
-\include{_scripts/includes/multigame-js.md}}{Nine billiard balls on a 3×3 grid.
+\include{_scripts/includes/multigame-js.md}}}{Nine billiard balls on a 3×3 grid.
 The histogram grid tracks each ball's cumulative $(v_x, v_y)$ velocity
 distribution.  Entropy per ball rises from near zero (single bright dot at
 the initial velocity) to the Maxwell–Boltzmann value as collisions
