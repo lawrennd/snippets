@@ -5,7 +5,7 @@
 
 \subsection{Kappenball}
 
-\figure{
+\figure{\html{
 <div style="width:100%;max-width:900px">
 <div style="display:flex;justify-content:space-between">
 <div>Score: <output id="kappenball-score"></output></div>
@@ -21,7 +21,7 @@
 </div>
 <!--Balls: <output id="kappenball-count"></output>-->
 \include{_scripts/includes/kappenball-js.md}
-</div>}{Kappen Ball}{kappen-ball}
+</div>}}{Kappen Ball}{kappen-ball}
 
 \notes{If you want to complete a task, should you do it now or should you put it off until tomorrow? Despite being told to not delay tasks, many of us are deadline driven. Why is this?
 

@@ -32,7 +32,7 @@ boundary between observer and observed.}
 }
 
 \newslide{}
-\figure{
+\figure{\html{
 <div style="width:100%;max-width:700px">
 <canvas id="observer-inside-canvas" width="640" height="420"
   style="border:1px solid black;display:block;width:100%"></canvas>
@@ -53,7 +53,7 @@ Initialisation:
 </div>
 </div>
 
-\include{_scripts/includes/observer-inside-js.md}}{Nine billiard balls with the observer eye placed as an obstacle in the
+\include{_scripts/includes/observer-inside-js.md}}}{Nine billiard balls with the observer eye placed as an obstacle in the
 centre of the box.  Balls bounce off the eye elastically.  The pupil tracks
 the ball centroid — and flinches as they arrive.  The observer is no longer
 passive: its presence changes the trajectories of everything it was trying to

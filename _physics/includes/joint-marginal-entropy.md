@@ -63,7 +63,7 @@ $$\Delta\theta_i = \kappa \sin(\theta_{\mathrm{mean}} - \theta_i)$$
 * Breaks information isolation: coupling injects correlations at fixed rate
 }
 
-\figure{
+\figure{\html{
 <div style="width:100%;max-width:800px">
 <canvas id="jointentropy-canvas" width="800" height="450" style="border:1px solid black;display:block;width:100%"></canvas>
 <canvas id="jointentropy-stats" width="440" height="440" style="display:block;width:100%;max-width:440px;height:auto;margin-top:6px;border:1px solid #bbb"></canvas>
@@ -84,6 +84,6 @@ $$\Delta\theta_i = \kappa \sin(\theta_{\mathrm{mean}} - \theta_i)$$
 </div>
 </div>
 
-\include{_scripts/includes/jointentropy-js.md}}{The billiard gas starts with all particles moving in the same direction (maximally correlated, near-zero entropy).  Elastic collisions thermalise the gas: watch all entropies rise while the mean kinetic energy stays flat.  At equilibrium the mutual information $I(v_x;v_y)$ falls to zero.  Drag the coupling κ slider to add the Kuramoto mean-field interaction: each ball's velocity direction is nudged toward the mean direction by $\Delta\theta_i = \kappa\sin(\theta_\text{mean}-\theta_i)$, an intensive pairwise term ($O(1)$ per ball regardless of N).  With $\kappa > 0$ a nonzero $I(v_x;v_y)$ is maintained at steady state; above $\kappa_c \approx 0.1$ the order parameter $r\to 1$ as the gas synchronises.}{joint-marginal-entropy-js}
+\include{_scripts/includes/jointentropy-js.md}}}{The billiard gas starts with all particles moving in the same direction (maximally correlated, near-zero entropy).  Elastic collisions thermalise the gas: watch all entropies rise while the mean kinetic energy stays flat.  At equilibrium the mutual information $I(v_x;v_y)$ falls to zero.  Drag the coupling κ slider to add the Kuramoto mean-field interaction: each ball's velocity direction is nudged toward the mean direction by $\Delta\theta_i = \kappa\sin(\theta_\text{mean}-\theta_i)$, an intensive pairwise term ($O(1)$ per ball regardless of N).  With $\kappa > 0$ a nonzero $I(v_x;v_y)$ is maintained at steady state; above $\kappa_c \approx 0.1$ the order parameter $r\to 1$ as the gas synchronises.}{joint-marginal-entropy-js}
 
 \endif

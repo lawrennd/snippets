@@ -5,7 +5,7 @@
 
 \subsection{Entropy Billiards}
 
-\figure{
+\figure{\html{
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
 <div style="flex:1 1 400px;min-width:0">
 <canvas id="multiball-canvas" width="700" height="500" style="border:1px solid black;display:block;width:100%"></canvas>
@@ -22,7 +22,7 @@
 </div>
 </div>
 
-\include{_scripts/includes/multiball-js.md}}{Bernoulli's simple kinetic models of gases assume that the molecules of air operate like billiard balls. The displayed entropy is the Shannon entropy of the observed velocity histogram (a coarse-grained proxy, not full thermodynamic entropy).}{entropy-billiards-js}
+\include{_scripts/includes/multiball-js.md}}}{Bernoulli's simple kinetic models of gases assume that the molecules of air operate like billiard balls. The displayed entropy is the Shannon entropy of the observed velocity histogram (a coarse-grained proxy, not full thermodynamic entropy).}{entropy-billiards-js}
 
 
 \endif

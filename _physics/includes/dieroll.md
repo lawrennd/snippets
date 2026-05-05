@@ -18,16 +18,10 @@ P_n = \frac{e^{\lambda n}}{Z(\lambda)}, \qquad Z(\lambda) = \sum_{n=1}^6 e^{\lam
 where $\lambda > 0$ is chosen so the mean constraint is satisfied.  This
 avoids any unwarranted assumption beyond the available data.}
 
-\slides{
-* Click the die (or Roll button) to sample outcomes
-* Histogram shows empirical vs theoretical frequencies
-* Adjust outcome weights to explore non-uniform distributions
-* **Jaynes preset**: max-entropy distribution with mean 4.5
-}
 
 \newslide{}
 
-\figure{
+\figure{\html{
 <div style="width:100%;max-width:780px;font-family:sans-serif;font-size:0.82em">
 <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
 
@@ -66,7 +60,7 @@ Outcome weights (auto-normalised to probabilities)
 </div>
 </div>
 
-\include{_scripts/includes/dieroll-js.md}}{Interactive die-roll simulation.
+\include{_scripts/includes/dieroll-js.md}}}{Interactive die-roll simulation.
 Click the die or press Roll to sample from the configured distribution.
 The histogram shows empirical relative frequencies (coloured bars) overlaid
 on the theoretical probabilities (dashed outlines).  Use the sliders to set

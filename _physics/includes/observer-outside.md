@@ -26,7 +26,7 @@ the observer has nothing much to track.}
 }
 
 \newslide{}
-\figure{
+\figure{\html{
 <div style="width:100%;max-width:1020px">
 <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">
 <div style="flex:1 1 260px">
@@ -56,7 +56,7 @@ Initialisation:
 </div>
 </div>
 
-\include{_scripts/includes/observer-outside-js.md}}{Nine billiard balls with a classical observer eye to the right.  The
+\include{_scripts/includes/observer-outside-js.md}}}{Nine billiard balls with a classical observer eye to the right.  The
 pupil tracks the ball centroid: ordered initial conditions give a decisive
 sweep of the gaze; thermalised equilibrium leaves it nearly motionless.  The
 observer watches without perturbing the gas.}{observer-outside}

@@ -24,7 +24,7 @@
 
 \newslide{}
 
-\figure{
+\figure{\html{
 <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
 <div style="flex:1 1 400px;min-width:0">
 <canvas id="maxwell-canvas" width="700" height="500" style="border:1px solid black;display:block;width:100%"></canvas>
@@ -42,7 +42,7 @@
 </div>
 
 \include{_scripts/includes/maxwell-js.md}
-}{Maxwell's Demon. The demon decides balls are either cold (blue) or hot (red) according to their velocity. Balls are allowed to pass the green membrane from right to left only if they are cold, and from left to right only if they are hot. The displayed entropy is the Shannon entropy of the velocity histogram (a coarse-grained proxy, not full thermodynamic entropy).}{maxwells-demon}
+}}{Maxwell's Demon. The demon decides balls are either cold (blue) or hot (red) according to their velocity. Balls are allowed to pass the green membrane from right to left only if they are cold, and from left to right only if they are hot. The displayed entropy is the Shannon entropy of the velocity histogram (a coarse-grained proxy, not full thermodynamic entropy).}{maxwells-demon}
 
 
 \notes{Maxwell's demon allows us to connect thermodynamics with information theory (see e.g. @Hosoya-demon15;@Hosoya-maxwell11;@Bub-maxwell01;@Brillouin-maxwell51;@Szilard-intelligenter29). @Landauer-irreversibility61 described a fundamental connection between information erasure and energy consumption .}

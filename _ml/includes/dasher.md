@@ -33,7 +33,7 @@ the language model's predictions tangible.}
 
 \newslide{}
 
-\figure{
+\figure{\html{
 <div style="width:100%;font-family:'Courier New',monospace;font-size:0.85em">
 
 <div style="display:flex;justify-content:space-between;align-items:center;
@@ -79,7 +79,7 @@ the language model's predictions tangible.}
 
 </div>
 
-\include{_scripts/includes/dasher-js.md}}{Dasher: continuous-zoom arithmetic coding interface.
+\include{_scripts/includes/dasher-js.md}}}{Dasher: continuous-zoom arithmetic coding interface.
 Move the mouse to the right to zoom toward the character at your
 vertical cursor position.  Character height is proportional to
 P(char | context), so common letters present large targets.
