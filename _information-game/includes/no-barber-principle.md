@@ -34,7 +34,7 @@ Does the barber shave themselves?
 \slidesincremental{**Forbidden:**
 
 * External observer
-* Pre-specified outcome space
+* Pre-specified outcome space/Hamiltonian
 * Privileged decomposition
 * External time parameter
 
