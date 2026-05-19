@@ -50,9 +50,7 @@ $$F(\lambda f \oplus (1-\lambda)g) = \lambda F(f) + (1-\lambda)F(g)$$
 
 \notes{**Axiom 3: Continuity** suggests that if we change a process slightly, the information lost changes only slightly, i.e. $F(f)$ is a continuous function of $f$.}
 
-\slides{
-
-* Small change in process
+\slides{* Small change in process
 * Small change in information loss
 * $F(f)$ continuous in $f$
 }
@@ -65,9 +63,7 @@ F(f) = c(H(p) -H(q))
 $$
 where $F(f)$ is the information loss in process $f: p\rightarrow q$ and $H(\cdot)$ is the Shannon entropy measured before and after the process is applied to the system.}
 
-\slides{
-
-Three axioms $\Rightarrow$ unique form:
+\slides{Three axioms $\Rightarrow$ unique form:
 $$F(f) = c(H(p) - H(q))$$
 
 * Information loss = scaled entropy difference
