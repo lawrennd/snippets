@@ -30,12 +30,30 @@ $$
 The constraint gradient $\mathbf{a}(\boldsymbol{\theta}^*) = \nabla_{\boldsymbol{\theta}} C\big|_{\boldsymbol{\theta}^*} = \mathbf{0}$ vanishes at the origin. The usual first-order tangency condition $\mathbf{a}^\top\dot{\boldsymbol{\theta}} = 0$ is trivially satisfied for any velocity — it no longer selects admissible directions. The constraint becomes a *second-order* geometric condition: admissible velocities must lie in the kernel of the constraint Hessian $\nabla^2 C(\boldsymbol{\theta}^*)$.}
 
 \slidesincremental{
-* At $C=C_{\max}$: every $s_i = \log d_i$ — at individual ceiling
-* Marginals locked: $s_i(\tau) = \log d_i$ for all time
-* Constraint gradient $\mathbf{a}=\mathbf{0}$ — first-order condition vacuous
-* Admissible velocities: $\dot{\boldsymbol{\theta}}\in\ker\nabla^2 C(\boldsymbol{\theta}^*)$
+* Marginal entropies linked: $s_1 + s_2 = C$ (conserved sum)
+* Individual ceilings: $s_i \leq \log d_i$
+* Trade-off: as one marginal rises, the other must fall
+}
 
-*Constraint becomes second-order only*
+\newslide{Linked Marginal Entropies}
+
+\figure{\includediagram{\diagramsDir/information-game/marginal-entropy-tradeoff}{70%}}{The marginal-entropy conservation constraint $s_1 + s_2 = C$ in the $(s_1,s_2)$ plane. The dashed lines mark the individual ceilings $s_i = \log d$. Along the constraint segment, increasing one marginal entropy forces a decrease in the other.}{marginal-entropy-tradeoff}
+
+\newslide{Saturation and Second Order}
+
+\slidesincremental{
+* At $C=C_{\max}$: every $s_i = \log d_i$ — each at its individual ceiling
+* Marginals locked: $s_i(\tau) = \log d_i$ for all time
+}
+
+\newslide{Saturation of Constraint}
+
+\figure{\includediagram{\diagramsDir/information-game/marginal-entropy-saturation}{70%}}{As $C$ increases toward $C_{\max} = \sum_i \log d_i$, the accessible constraint segment (coloured lines) shrinks. At $C = C_{\max}$ the constraint collapses to the single corner point (red dot), the LME origin, where every marginal entropy is individually at its ceiling and the constraint gradient vanishes.}{marginal-entropy-saturation}
+
+\newslide{Saturation of Constraint}
+
+\slidesincremental{* First-order condition vacuous
+* Admissible velocities: $\dot{\boldsymbol{\theta}}\in \ker\nabla^2 \sum_i h_i$
 }
 
 \subsection{GENERIC Dynamics at the Origin}
