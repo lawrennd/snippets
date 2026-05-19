@@ -15,14 +15,14 @@ foundational rules must not refer to anything outside themselves for
 adjudication or reference*. Or in other words there can be no
 *external structure*. We call this the "no-barber principle."}
 
-\slides{
+\slidesincremental{
 **Russell's Barber Paradox:**
 
-*Barber shaves all who don't shave themselves*
+* *Barber shaves all who don't shave themselves*
 
 Does the barber shave themselves?
 
-**Paradox:** Definition includes itself in scope
+* **Paradox:** Definition includes itself in scope
 }
 
 \include{_information-game/includes/munchkin-provision.md}
