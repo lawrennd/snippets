@@ -55,6 +55,6 @@ $$
 * Provided by @Parzygnat-functorial22 (quantum analogue of @Baez-characterisation11)
 }
 
-\notes{This is the point where we are forced to move to noncommutative, quantum, probability. This is not  an additional assumption, but because classical probability *structurally forbids* the required origin. Von Neumann entropy and entangled pure states provide exactly what is needed: a pure global state ($S=0$) with arbitrarily large marginal entropies ($s_i > 0$). This is not a modelling choice but a mathematical necessity [@Lawrence-origin26].}
+\notes{Within this programme, the move to noncommutative probability is not an arbitrary modelling choice: it is forced if we insist on an origin with zero global entropy and positive marginal entropies. Von Neumann entropy and entangled pure states provide exactly what is needed, i.e. a pure global state ($S=0$) with positive marginal entropies ($s_i > 0$), and this configuration is provably unreachable in the classical framework [@Lawrence-origin26].}
 
 \endif
