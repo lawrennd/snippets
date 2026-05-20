@@ -6,7 +6,7 @@
 
 \subsection{The Inaccessible Game Setup}
 
-\slidesincremental{
+\slides{
 * Avoid external structure.
 * Represent information loss
 * Enforce information conservation
