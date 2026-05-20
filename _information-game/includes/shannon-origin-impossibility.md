@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{The Classical Obstruction at the Origin}
+\subsection{Classical Obstruction at the Origin}
 
 \notes{The information relaxation dynamics suggest that the game begins at the origin: the state of maximum multi-information, $I = C$, with zero joint entropy, $H = 0$. Playing forward, multi-information is relaxed and joint entropy increases until $H = C$ and $I = 0$.
 
@@ -14,15 +14,13 @@ $$
 because conditional entropy measures residual uncertainty after conditioning, which cannot be negative. This constraint has an immediate consequence for multi-information.}
 
 \slides{
-Information relaxation starts at:
-$$I = C, \quad H = 0 \quad \text{(maximally correlated, zero joint entropy)}$$
-
-Classical Shannon: $H_{X_1|X_2} \geq 0$ always.
-
-*This forbids $H=0$ with positive marginals.*
+* Boundary Condition
+$$
+I = C, \quad H = 0
+$$
+* Conditional Shannon entropies always $\geq 0$.
+* Prohibits $H=0$ with positive marginals.
 }
-
-\newslide{Why Shannon Fails}
 
 \notes{For a two-variable system, multi-information is
 $$
@@ -36,15 +34,6 @@ More generally, for $N$ variables the Shannon conditional entropy constraint for
 
 The Baez--Fritz--Leinster axioms (functoriality, convex linearity, continuity) uniquely select Shannon entropy [@Baez-characterisation11], but Shannon entropy structurally forbids the game's natural origin [@Lawrence-origin26].}
 
-\slidesincremental{
-* $I_{1,2} = H_1 - H_{1|2} \leq H_1$ (since $H_{1|2}\geq 0$)
-* Origin needs $H_{1,2}=0 \Rightarrow I_{1,2} = H_1+H_2$
-* But $I_{1,2} \leq H_1$ requires $H_2 = 0$, and vice versa
-* Classical origin $\Rightarrow$ all marginals zero $\Rightarrow$ no game
-
-*Shannon entropy structurally forbids the game's natural origin*
-}
-
 \subsection{Von Neumann Entropy Resolution}
 
 \notes{The resolution is to replace Shannon entropy with von Neumann entropy. For a bipartite quantum system with density matrix $\rho$, the von Neumann conditional entropy $S_{A|B} = S_{AB} - S_B$ *can be negative* when the subsystems are entangled. A globally pure entangled state has $S(\rho) = 0$ while its marginal states $\rho_A$ and $\rho_B$ may each have positive entropy — precisely the configuration the game needs at its origin.
@@ -52,13 +41,16 @@ The Baez--Fritz--Leinster axioms (functoriality, convex linearity, continuity) u
 An analogous axiomatic characterisation of information loss via von Neumann entropy is provided by @Parzygnat-functorial22. This extends the Baez--Fritz--Leinster framework from classical stochastic maps to quantum channels (unital completely positive maps on finite-dimensional $C^*$-algebras). Adopting the Parzygnat axioms resolves the origin paradox.}
 
 \slides{
-Von Neumann: $S_{A|B} = S_{AB} - S_B$ **can be negative** (entanglement).
+* Entanglement leads to negative conditional entropy.
 
-Pure entangled state:
-$$S(\rho_{AB}) = 0, \quad S(\rho_A) > 0, \quad S(\rho_B) > 0$$
-
-* Axiomatised by @Parzygnat-functorial22 (quantum analogue of BFL)
-* Origin = globally pure, maximally entangled state
+* Pure entangled state:
+$$
+S(\rho_{AB}) = 0, \quad S(\rho_A) > 0, \quad S(\rho_B) > 0
+$$
+}
+\newslide{Information Loss Axioms}
+\slides{
+* Provided by @Parzygnat-functorial22 (quantum analogue of BFL)
 }
 
 \endif
