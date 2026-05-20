@@ -22,11 +22,4 @@ How do we obtain a representation of information loss without including external
 
 \notes{In the game (@Lawrence-inaccessible25) we introduce information conservation based on these measures of information loss.}
 
-\notes{One caveat deserves emphasis: the choice of how to partition the system into subsystems $\{X_i\}$ is itself a form of model specification — it is not derived from within the game. The no-barber principle then applies to all structure *given* this partition; it does not eliminate the partition itself. This boundary between what counts as "game internals" and what counts as "model specification" is an important limitation throughout, and should be borne in mind whenever the argument claims to avoid external structure.}
-
-\slides{
-* Partition of system into subsystems $\{X_i\}$: model specification (not derived internally)
-* No-barber principle applies *within* this choice — the partition is an irreducible input
-}
-
 \endif
