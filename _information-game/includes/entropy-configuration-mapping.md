@@ -7,8 +7,6 @@
 
 \figure{\includediagram{\diagramsDir/information-game/configurations-to-entropy-line}{80%}}{Many configurations (density matrices $\rho$) map under von Neumann entropy $S$ to a single real number. Configurations with the same entropy value are isoentropy; they form an equivalence class. The quotient is a totally ordered chain of entropy levels.}{configurations-to-entropy-line}
 
-\newslide{The Entropy Ladder}
-
 \notes{Formally, von Neumann entropy first induces a preorder on configurations
 $$
 \rho \preceq_S \sigma \iff S(\rho) \leq S(\sigma).
@@ -22,15 +20,6 @@ produces a poset of entropy levels, which embeds into $(\mathbb{R}_{\geq 0}, \le
 \notes{We can picture the structure as a ladder: each rung corresponds to an entropy level $S = c$, and multiple configurations sit at the same rung. Moving up the ladder means increasing entropy, more mixed, less structured. Moving down means decreasing entropy, more ordered, more pure.}
 
 \notes{This picture does not require us to know \emph{which} configuration the system is in at any rung, only \emph{how high} the system sits on the ladder. We can think of dynamics in the inaccessible game as being expressed as movement along this ladder.}
-
-\slidesincremental{
-* Bottom ($S=0$): pure states — many configurations, one entropy class
-* Higher rungs: mixed states — many configurations per isoentropy class
-* No canonical top: maximum entropy grows with system dimension
-* Dynamics = movement along the ladder
-* Entropy induces a preorder: $\rho \preceq_S \sigma \iff S(\rho)\leq S(\sigma)$
-* Isoentropy quotient $\mathrm{Conf}/{\sim_S}$ is a totally ordered entropy ladder
-}
 
 \newslide{The Entropy Ladder}
 
