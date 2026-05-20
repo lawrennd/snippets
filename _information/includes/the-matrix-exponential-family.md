@@ -42,5 +42,16 @@ $$
 
 \notes{The structural parallel between the classical and matrix cases is exact, with one crucial difference: the non-commutativity of the operators $F_k$. In the classical case the sufficient statistics $T_k(\mathbf{x})$ are ordinary functions and commute freely. In the matrix case the Hermitian operators $F_k$ need not commute, $[F_j, F_k] \neq 0$, and the matrix exponential $\exp(\sum_k \theta_k F_k)$ does not factorise over the individual terms. This non-commutativity has two consequences. First, the BKM metric differs from its classical counterpart: it involves a symmetrised operator product averaged against the state $\rho$. Second, a pure state ($S(\rho) = 0$) can coexist with strictly positive marginal entropies, because the marginals of an entangled pure state are mixed. The classical exponential family has no analogue of this: a pure joint distribution has zero entropy everywhere.}
 
+\newslide{Faithful States}
+
+\notes{A density matrix $\rho$ is *faithful* if it is strictly positive definite, $\rho > 0$, meaning every eigenvalue is strictly positive. Every member of the matrix exponential family is faithful: since the matrix exponential $\exp(A)$ is positive definite for any Hermitian $A$, the density matrix $\rho(\boldsymbol{\theta})$ has strictly positive eigenvalues for all finite $\boldsymbol{\theta}$.
+
+Faithfulness matters for two reasons. First, the BKM metric $G(\boldsymbol{\theta})$ is only well-defined for faithful states — it involves expressions of the form $\int_0^1 \mathrm{tr}(\rho^t A \rho^{1-t} B)\,\mathrm{d}t$ that are singular when $\rho$ has a zero eigenvalue. Second, faithful states are the *interior* of the set of density matrices; pure states ($S(\rho) = 0$, rank 1) lie on the boundary. As a sequence of faithful states approaches a pure state, the natural parameters $\boldsymbol{\theta}$ diverge and the BKM metric degenerates. This is precisely why the LME origin — a pure state — lies at infinite BKM distance from any interior point and is unreachable in finite game time.}
+
+\slides{
+* Implies *faithful* states (full rank $\rho$)
+* Pure states are on *boundary* of family
+* BKM Metric is *divergent*
+}
 
 \endif
