@@ -16,9 +16,12 @@ $$
 and serves as the canonical Riemannian metric on the statistical manifold.}
 
 \slides{
-$$p(\mathbf{x}|\boldsymbol{\theta}) = \exp\!\left(\boldsymbol{\theta}^\top \mathbf{T}(\mathbf{x}) - \psi(\boldsymbol{\theta})\right)$$
+$$
+p(\mathbf{x}|\boldsymbol{\theta}) = \exp\!\left(\boldsymbol{\theta}^\top \mathbf{T}(\mathbf{x}) - \psi(\boldsymbol{\theta})\right)
+$$
 
 * $\boldsymbol{\theta}$: natural parameters
+* $\psi(\cdot)$: cumulant generating function 
 * $G(\boldsymbol{\theta}) = \nabla^2\psi(\boldsymbol{\theta})$: Fisher information
 }
 
