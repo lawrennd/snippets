@@ -11,7 +11,7 @@ $$
 $$
 This conservation law is the heart of The Inaccessible Game, but to understand its dynamical implications, we need to rewrite it in a more revealing form.}
 
-\slidesincremental{
+\slides{
 $$
 \sum_{i=1}^N h_i = C
 $$
@@ -38,16 +38,10 @@ The multi-information has a nice interpretation:
 
 Multi-information is always non-negative ($I \geq 0$) and measures how much knowing one variable tells you about others.}
 
-\slidesincremental{
+\slides{
 $$
 I = \sum_{i=1}^N h_i - H
 $$
-
-* $I = 0$: Independent variables
-* $I > 0$: Correlated variables
-* Larger $I$ = more correlation
-
-*Measures "shared information"*
 }
 
 \newslide{'Information Action'}
@@ -63,43 +57,35 @@ $$
 
 This is an *information action principle*. It says that multi-information plus joint entropy is conserved. This equation sits behind the dynamics of the Inaccessible Game.}
 
-\slidesincremental{
+\slides{
 $$
 I + H = C
 $$
 
 *Conserved quantity splits into two parts*
+}
 
-**Analogy to classical mechanics:**
+\newslide{Analogy to classical mechanics}
 
-* Energy: $T + V = E$
+\slidesincremental{
+* Energy: $V + T = E$
 * Information: $I + H = C$
+* System "rolls downhill" from correlation to disorder
 }
 
 \newslide{Physical Analogy}
 
 \notes{This equation has the structure of an action principle in classical mechanics. In physics, total energy is conserved and splits into two parts,
 $$
-T + V = E,
+V + T = E,
 $$
-where $T$ is kinetic energy and $V$ is potential energy.
+where $V$ is potential energy and $T$ is kinetic energy.
 
 The analogy for The Inaccessible Game is.
 
-- **Multi-information $I$** plays the role of *potential energy*. It represents "stored" correlation structure. High $I$ means variables are tightly coupled, like a compressed spring.
-- **Joint entropy $H$** plays the role of *kinetic energy*. It represents "dispersed" or "free" information. High $H$ means the probability distribution is spread out, with maximal uncertainty.
+- **Multi-information** $I$ plays the role of *potential energy*. It represents "stored" correlation structure. High $I$ means variables are tightly coupled, like a compressed spring.
+- **Joint entropy** $H$ plays the role of *kinetic energy*. It represents "dispersed" or "free" information. High $H$ means the probability distribution is spread out, with maximal uncertainty.
 
 Just as a classical system evolves from high potential energy to high kinetic energy (a ball rolling down a hill), the idea in the Inaccessible Game will be that the information system evolves from high correlation (high $I$) to high entropy (high $H$).}
-
-\slides{
-| Classical Mechanics | Information System |
-|---------------------|-------------------|
-| Kinetic energy $T$ | Joint entropy $H$ |
-| Potential energy $V$ | Multi-information $I$ |
-| Conservation: $T + V = E$ | Conservation: $H + I = C$ |
-
-*System "rolls downhill" from correlation to entropy*
-}
-
 
 \endif
