@@ -19,12 +19,6 @@ The origin is selected up to local-unitary equivalence [@Lawrence-origin26].}
 * Implies each marginal maximally mixed: $s_i = \log d_i$
 }
 
-\newslide{Boundary}
-
-\slides{* Not faithful
-* Trajectory can never have been there
-* But origin selects a unique trajectory}
-
 \subsection{Constraint Saturation and the Gibbs Lock}
 
 \notes{At the LME origin the marginal-entropy sum is saturated termwise: every $s_i = \log d_i$ is at its individual upper bound. This has a remarkable consequence. Since each marginal is already at its ceiling, *none can increase further and none can decrease without violating the sum*. The marginal entropies are locked at their maximum values for the entire trajectory:
@@ -88,9 +82,8 @@ $$\dot{\boldsymbol{\theta}} \propto \underbrace{-\Pi_{\mathrm{marg}}\boldsymbol{
 
 The game is axiomatically directed *towards* an origin that acts as a limit, not a starting point that was literally occupied. The trajectory is uniquely distinguished by its asymptotic direction — the steepest-entropy-ascent direction in the Fisher metric — even though the origin itself is unreachable [@Lawrence-origin26].}
 
-\slidesincremental{
-* Origin: boundary of natural-parameter space
-* $\|\boldsymbol{\theta}\|\to\infty$ as $\rho\to\rho_{\mathrm{pure}}$
+\slides{
+* $\|\boldsymbol{\theta}\|\to\infty$ as $\rho\to\rho_{\text{pure}}$
 * Fisher (BKM) metric degenerates at boundary
 * Infinite Fisher distance — never literally reached
 * *Trajectory distinguished by its asymptotic origin, not a literal start*
