@@ -38,7 +38,7 @@ The Baez--Fritz--Leinster axioms (functoriality, convex linearity, continuity) u
 
 \notes{The resolution is to replace Shannon entropy with von Neumann entropy. For a bipartite quantum system with density matrix $\rho$, the von Neumann conditional entropy $S_{A|B} = S_{AB} - S_B$ *can be negative* when the subsystems are entangled. A globally pure entangled state has $S(\rho) = 0$ while its marginal states $\rho_A$ and $\rho_B$ may each have positive entropy — precisely the configuration the game needs at its origin.
 
-An analogous axiomatic characterisation of information loss via von Neumann entropy is provided by @Parzygnat-functorial22. This extends the Baez--Fritz--Leinster framework from classical stochastic maps to quantum channels (unital completely positive maps on finite-dimensional $C^*$-algebras). Adopting the Parzygnat axioms resolves the origin paradox.}
+An analogous axiomatic characterisation of information loss via von Neumann entropy is provided by @Parzygnat-functorial22. This extends the Baez--Fritz--Leinster framework from classical finite probability  to noncommutative probability. Adopting the Parzygnat axioms resolves the origin paradox.}
 
 \slides{
 * Entanglement leads to negative conditional entropy.
@@ -50,7 +50,7 @@ $$
 }
 \newslide{Information Loss Axioms}
 \slides{
-* Provided by @Parzygnat-functorial22 (quantum analogue of BFL)
+* Provided by @Parzygnat-functorial22 (quantum analogue of @Baez-characterisation11)
 }
 
 \endif
