@@ -15,11 +15,15 @@ The origin is selected up to local-unitary equivalence [@Lawrence-origin26].}
 
 \slides{
 * Globally pure state: $S(\rho)=0$
-* Each marginal maximally mixed: $s_i = \log d_i$
 * $C = C_{\max} = \sum_i \log d_i$ (axiomatically distinguished)
-
-*Maximally entangled pure state — selected without external structure*
+* Implies each marginal maximally mixed: $s_i = \log d_i$
 }
+
+\newslide{Boundary}
+
+\slides{* Not faithful
+* Trajectory can never have been there
+* But origin selects a unique trajectory}
 
 \subsection{Constraint Saturation and the Gibbs Lock}
 
@@ -29,7 +33,7 @@ s_i(\tau) = \log d_i \quad \forall i, \;\forall \tau.
 $$
 The constraint gradient $\mathbf{a}(\boldsymbol{\theta}^*) = \nabla_{\boldsymbol{\theta}} C\big|_{\boldsymbol{\theta}^*} = \mathbf{0}$ vanishes at the origin. The usual first-order tangency condition $\mathbf{a}^\top\dot{\boldsymbol{\theta}} = 0$ is trivially satisfied for any velocity — it no longer selects admissible directions. The constraint becomes a *second-order* geometric condition: admissible velocities must lie in the kernel of the constraint Hessian $\nabla^2 C(\boldsymbol{\theta}^*)$.}
 
-\slidesincremental{
+\slides{
 * Marginal entropies linked: $s_1 + s_2 = C$ (conserved sum)
 * Individual ceilings: $s_i \leq \log d_i$
 * Trade-off: as one marginal rises, the other must fall
