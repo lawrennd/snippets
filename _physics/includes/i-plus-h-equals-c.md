@@ -73,7 +73,6 @@ $$
 * System "rolls downhill" from correlation to disorder
 }
 
-\newslide{Physical Analogy}
 
 \notes{This equation has the structure of an action principle in classical mechanics. In physics, total energy is conserved and splits into two parts,
 $$
