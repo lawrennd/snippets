@@ -13,7 +13,7 @@ quantifies over a totality that includes the defining rule itself.}
 \notes{We propose a similar constraint for the inaccessible game: *the
 foundational rules must not refer to anything outside themselves for
 adjudication or reference*. Or in other words there can be no
-*external structure*. We call this the "no-barber principle."}
+*external structure*. We call this the "no-barber principle" [@Lawrence-nobarber26].}
 
 \slides{
 **Russell's Barber Paradox:**

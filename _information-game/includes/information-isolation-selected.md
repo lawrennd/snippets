@@ -5,7 +5,7 @@
 
 \subsection{Information Isolation: Selected, Not Assumed}
 
-\notes{In our earlier presentation [@Lawrence-inaccessible25], we introduced information isolation $\sum_i h_i = C$ as a fourth independent axiom. But more recent work suggests this is better understood as **selected by the no-barber principle** rather than assumed.}
+\notes{In our earlier presentation [@Lawrence-inaccessible25], we introduced information isolation $\sum_i h_i = C$ as a fourth independent axiom. But in @Lawrence-nobarber26 this is reframed as **selected by the no-barber principle** rather than assumed.}
 
 \slides{
 **Earlier:** Fourth axiom (assumed)

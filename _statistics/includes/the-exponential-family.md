@@ -11,7 +11,7 @@ p(\dataVector| \naturalParameterVector) = \exp(\naturalParameterVector^\top \suf
 $$
 where $\naturalParameterVector$ is known as the \emph{natural parameters}, $\sufficientStatistics(\dataVector)$ is known as the \emph{sufficient statistics} and $\cumulantGeneratingFunction$ is the the log partition function, or the \emph{cumulant generating function} and $\baseMeasure(\cdot)$ is known as the base measure.}
 
-\notes{For the moment we'll ignore the base measure as for several of the distributions we'll considere it's constant, so we will consider the form 
+\notes{For the moment we'll ignore the base measure as for several of the distributions we'll consider it's constant, so we will consider the form 
 $$
 p(\dataVector| \naturalParameterVector) = \exp(\naturalParameterVector^\top \sufficientStatistics - \cumulantGeneratingFunction(\naturalParameterVector)).
 $$
@@ -24,5 +24,15 @@ $$
 \nabla_\naturalParameterVector L(\naturalParameterVector) = \sufficientStatistics - \expDist{\sufficientStatistics}{p(\dataVector|\naturalParameterVector)}.
 $$
 where $\expDist{\cdot}{p(\cdot)} denotes the expecttion under the distribution $p(\cdot)$.}
+
+\slides{
+$$
+p(\dataVector|\naturalParameters) = \exp\!\left(\naturalParameters^\top \sufficientStatistics(\dataVector) - \cumulantGeneratingFunction(\naturalParameters)\right)
+$$
+
+* $\naturalParameters$: natural parameters
+* $\cumulantGeneratingFunction(\cdot)$: cumulant generating function 
+* $G(\naturalParameters) = \nabla^2\cumulantGeneratingFunction(\naturalParameters)$: Fisher information
+}
 
 \endif
