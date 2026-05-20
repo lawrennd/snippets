@@ -10,10 +10,8 @@
 The key condition is a structural alignment of the modular generator $K(\boldsymbol{\theta}) = \log\rho(\boldsymbol{\theta})$ (in trace gauge) with a fixed operator direction. When this alignment holds, we say the system is in a *Gibbs-locked* region [@Lawrence-hamiltonian26].}
 
 \slides{
-The inaccessible game has **no Hamiltonian** in its axioms.
-
-Yet in metastable *Gibbs-locked* regions, an effective Hamiltonian description emerges from the information geometry.
-
+* No imposed Hamiltonian
+* Gibbs-locked regions, effective Hamitonian emergence
 *(Work in preparation)*
 }
 
@@ -30,10 +28,8 @@ This condition reverses the usual explanatory order: rather than postulating tim
 \slides{
 $$K(\boldsymbol{\theta}) \approx -\beta(\boldsymbol{\theta})\,H$$
 
-* $H$: approximately fixed operator direction
+* $H$: fixed operator 
 * $\beta(\boldsymbol{\theta})$: smoothly varying inverse temperature
-* Exact lock: $\rho_0 = e^{-\beta_0 H}/Z$ (Gibbs state), reversible flow stops
-* $H$ **not assumed** — selected from modular generator
 }
 
 \subsection{The Hamiltonian Clock}
@@ -46,14 +42,9 @@ This Hamiltonian clock is a derived conversion of entropy time, not an independe
 
 These results are conditional on the trajectory entering a Gibbs-locked region. The threshold for these conditional results to carry observational content is $W_{\mathcal{R}} \gg 1$, a Boltzmann-style multiplicity of action-resolution cells inside the locked basin — essentially the regime in which equilibrium statistical mechanics applies empirically [@Lawrence-hamiltonian26].}
 
-\slidesincremental{
-* Hamiltonian clock: $\text{d}\tau_H = \beta(t)\,\text{d}t$
-* Derived from entropy time — not independent
-* $\beta(t)$: conversion between entropy-time and Hamiltonian phase
-* Within locked frame: reversible Lax sector + uniform dephasing
-* Operational: requires $W_{\mathcal{R}} \gg 1$
-
-*Effective Hamiltonian mechanics as a local, emergent, conditional description*
+\slides{
+* Has an associated Hamiltonian clock
+* $\beta(t)$: conversion between entropy-time and Hamiltonian clock
 }
 
 \endif
