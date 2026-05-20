@@ -37,7 +37,7 @@ $$\frac{\text{d}S}{\text{d}t} = c \quad \text{(constant entropy production)}$$
 }
 
 
-\notes{The entropy time parametrisation is axiomatically distinguished in the sense of the inaccessible game: it is uniquely identifiable from within the game's axioms, without introducing any additional external choice. Information isolation forbids a background Newtonian time, a temperature scale, spatial coordinates, or a Hamiltonian. Entropy time requires none of these — it is defined purely by the constrained information dynamics and the BFL/Parzygnat information-loss functionals.
+\notes{Within the inaccessible game framework, the entropy time parametrisation is axiomatically distinguished: it is uniquely identifiable from within the game's axioms, without introducing any additional external choice. Information isolation forbids a background Newtonian time, a temperature scale, spatial coordinates, or a Hamiltonian. Entropy time requires none of these — it is defined purely by the constrained information dynamics and the BFL/Parzygnat information-loss functionals.
 
 Crucially, the game does not assume an external time and then derive that entropy increases monotonically. Instead, it singles out a preferred parametrisation of the information flow in which the irreversible (dissipative) sector is uniformised. This is Jaynes's programme taken to its logical conclusion [@Jaynes-information57a,@Jaynes-minimum80]: take the conservation law exact, let the dynamics emerge, and measure progress by the entropy produced.}
 

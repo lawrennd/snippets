@@ -71,6 +71,6 @@ $$F(f) = c(H(p) - H(q))$$
 * No other measure satisfies all three
 }
 
-\notes{This provides a foundational justification for using entropy as our measure of information. It's not just a convenient choice, it's the unique measure that satisfies natural requirements for measuring information loss.}
+\notes{This provides a foundational justification for using entropy as our measure of information. It is not just a convenient choice — it is the unique measure satisfying these natural requirements for measuring information loss. This is a theorem [@Baez-characterisation11]. The quantum analogue — replacing finite probability spaces and Shannon entropy with finite-dimensional noncommutative probability spaces and von Neumann entropy — is established by @Parzygnat-functorial22.}
 
 \endif

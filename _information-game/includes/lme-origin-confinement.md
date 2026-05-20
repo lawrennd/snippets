@@ -69,11 +69,10 @@ $$
 where $\Pi_{\mathrm{marg}}$ is the Fisher-orthogonal projector onto marginal-preserving directions and $\mathrm{ad}_\xi$ is the adjoint action corresponding to $\dot{\rho} = -\mathrm{i}[\xi,\rho]$. The reversible sector has the structure of a Lax equation; the irreversible sector realises steepest entropy ascent within the correlation degrees of freedom.}
 
 \slides{
-$$\dot{\boldsymbol{\theta}} \propto \underbrace{-\Pi_{\mathrm{marg}}\boldsymbol{\theta}}_{\text{dissipative}} + \underbrace{\mathrm{ad}_\xi\,\boldsymbol{\theta}}_{\text{reversible (Lax)}}$$
+At the LME origin, constraint geometry produces a GENERIC decomposition [@Lawrence-origin26]:
 
-* Reversible: $\dot{\rho} = -\mathrm{i}[K,\rho]$ — von Neumann equation emerges
-* Irreversible: steepest entropy ascent in marginal-preserving subspace
-* No Hamiltonian assumed — it emerges from constraint geometry
+* Reversible (Lax): $\dot{\rho} = -\mathrm{i}[K,\rho]$ — von Neumann equation emerges
+* Irreversible (SEA): steepest entropy ascent in marginal-preserving subspace
 }
 
 \subsection{The Origin is Unreachable}

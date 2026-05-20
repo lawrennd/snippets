@@ -5,7 +5,7 @@
 
 \subsection{Axiomatically Distinguished}
 
-\notes{The direction of maximum entropy ascent is the unique steepest-ascent direction in the Fisher (Riemannian) metric. No external structure — no Hamiltonian, no clock, no spatial coordinates — is needed to specify it. The trajectory is *axiomatically distinguished*: uniquely identifiable from within the game's own axioms [@Lawrence-inaccessible25].}
+\notes{The direction of maximum entropy ascent is the unique steepest-ascent direction in the Fisher (Riemannian) metric. No external structure — no Hamiltonian, no clock, no spatial coordinates — is needed to specify it. Within the inaccessible game framework, this trajectory is *axiomatically distinguished*: uniquely identifiable under the stated axioms, without introducing external structure [@Lawrence-inaccessible25].}
 
 \slides{
 > A choice is axiomatically distinguished if it is uniquely identifiable within the game's axioms — without external structure such as Hamiltonians, clocks, or coordinates.

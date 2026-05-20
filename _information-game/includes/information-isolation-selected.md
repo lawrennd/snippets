@@ -54,7 +54,7 @@
 
 \newslide{The Unique Internal Choice}
 
-\notes{The constraint $\sum_i h_i = C$ (constant) has special properties:
+\notes{We argue that the following five properties suggest $\sum_i h_i = C$ among all entropy-based isolation constraints [@Lawrence-nobarber26]. The constraint $\sum_i h_i = C$ (constant) has special properties:
 
 1. **Exchangeable:** Treats all subsystems identically (depends only on marginal entropies)
 2. **Extensive:** Scales linearly with system size

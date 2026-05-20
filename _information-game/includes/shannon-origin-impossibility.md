@@ -5,6 +5,8 @@
 
 \subsection{Classical Obstruction at the Origin}
 
+\notes{We now reach the central mathematical obstacle. Everything so far has been built on classical probability and Shannon entropy. The game's natural origin — zero joint entropy with positive marginal entropies — is provably impossible in that framework.}
+
 \notes{The information relaxation dynamics suggest that the game begins at the origin: the state of maximum multi-information, $I = C$, with zero joint entropy, $H = 0$. Playing forward, multi-information is relaxed and joint entropy increases until $H = C$ and $I = 0$.
 
 This natural starting point — zero joint entropy with positive marginal entropies — cannot be represented by classical Shannon entropy. The problem is the *non-negativity of conditional Shannon entropy*: for any two classical random variables $X_1$ and $X_2$,
@@ -52,5 +54,7 @@ $$
 \slides{
 * Provided by @Parzygnat-functorial22 (quantum analogue of @Baez-characterisation11)
 }
+
+\notes{This is the point where we are forced to move to noncommutative, quantum, probability. This is not  an additional assumption, but because classical probability *structurally forbids* the required origin. Von Neumann entropy and entangled pure states provide exactly what is needed: a pure global state ($S=0$) with arbitrarily large marginal entropies ($s_i > 0$). This is not a modelling choice but a mathematical necessity [@Lawrence-origin26].}
 
 \endif
