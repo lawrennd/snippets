@@ -28,6 +28,8 @@ $$
 $$
 where $\mathbf{a}(\boldsymbol{\theta}) = \nabla\!\sum_i h_i$ is the constraint gradient and $\nu(\tau)$ is determined by requiring $\mathbf{a}^\top\dot{\boldsymbol{\theta}} = 0$ (the constraint is maintained). Here $\tau$ is *game time*, the affine parameter tracking progress along the trajectory.}
 
+\newslide{Maximum Entropy Production}
+
 \slides{
 Maximise
 $$
@@ -53,6 +55,7 @@ where $S = \tfrac{1}{2}(M + M^\top)$ is symmetric (positive-semidefinite) and $A
 \slides{
 $$\dot{\mathbf{q}} = M\mathbf{q}$$
 where $M = S + A$
+
 * $S$ is symmetric and irreversible (entropy production)
 * *$A$ is antisymmetric and reversible (entropy-conserving)
 }
