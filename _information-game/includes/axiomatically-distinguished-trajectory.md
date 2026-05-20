@@ -3,26 +3,7 @@
 
 \editme
 
-\subsection{Natural Parameters and the Exponential Family}
-
-\notes{The information relaxation dynamics are expressed using the exponential family. A probability distribution in the exponential family is written as
-$$
-p(\mathbf{x}|\boldsymbol{\theta}) = \exp\left(\boldsymbol{\theta}^\top \mathbf{T}(\mathbf{x}) - \psi(\boldsymbol{\theta})\right),
-$$
-where $\boldsymbol{\theta}$ are the *natural parameters*, $\mathbf{T}(\mathbf{x})$ are sufficient statistics, and $\psi(\boldsymbol{\theta})$ is the cumulant generating function (log partition function). The Fisher information matrix is the Hessian of the cumulant generating function,
-$$
-G(\boldsymbol{\theta}) = \nabla\nabla \psi(\boldsymbol{\theta}),
-$$
-and serves as the canonical Riemannian metric on the statistical manifold.}
-
-\slidesincremental{
-$$p(\mathbf{x}|\boldsymbol{\theta}) = \exp\!\left(\boldsymbol{\theta}^\top \mathbf{T}(\mathbf{x}) - \psi(\boldsymbol{\theta})\right)$$
-
-* $\boldsymbol{\theta}$: natural parameters
-* $G(\boldsymbol{\theta}) = \nabla^2\psi(\boldsymbol{\theta})$: Fisher information
-}
-
-\newslide{Constrained Maximum Entropy Production}
+\subsection{Axiomatically Distinguished Trajectory}
 
 \notes{The information relaxation principle says the game evolves by maximising joint entropy production subject to the marginal entropy constraint $\sum_i h_i = C$. In natural parameter space the joint entropy gradient is
 $$
