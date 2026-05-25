@@ -5,6 +5,8 @@
 
 \subsection{Classical Obstruction at the Origin}
 
+\narration{Here's what I think is the most interesting result from the origin paper. We want the game to start from some origin state. Thinking about it like thermodynamics, you start with zero entropy — the most ordered state possible — and the system evolves towards maximum entropy. In the classical world, the origin would be a probability distribution with zero joint entropy, which means a point mass, a delta function. But a delta function has zero marginal entropies too. }
+
 \notes{We now reach the central mathematical obstacle. Everything so far has been built on classical probability and Shannon entropy. The game's natural origin — zero joint entropy with positive marginal entropies — is provably impossible in that framework.}
 
 \notes{The information relaxation dynamics suggest that the game begins at the origin: the state of maximum multi-information, $I = C$, with zero joint entropy, $H = 0$. Playing forward, multi-information is relaxed and joint entropy increases until $H = C$ and $I = 0$.
@@ -14,6 +16,10 @@ $$
 H_{X_1|X_2} = H_{1,2} - H_2 \geq 0,
 $$
 because conditional entropy measures residual uncertainty after conditioning, which cannot be negative. This constraint has an immediate consequence for multi-information.}
+
+\narration{So if the marginal entropies sum to a constant, and the constant is $C$, then $\sum_i h_i = C > 0$. We've derived that the marginal entropies must be positive at the origin. But classical probability cannot give zero joint entropy with positive marginal entropies — information sub-additivity means the joint entropy is at least as large as each marginal.}
+
+
 
 \slides{
 * Boundary Condition
@@ -38,6 +44,8 @@ The Baez--Fritz--Leinster axioms (functoriality, convex linearity, continuity) u
 
 \subsection{Von Neumann Entropy Resolution}
 
+\narration{The only way out is von Neumann entropy and entanglement. An entangled pure state has zero joint entropy and positive marginal entropies. That is the mathematical necessity of going to von Neumann. Within this programme, the move is forced.}
+
 \notes{The resolution is to replace Shannon entropy with von Neumann entropy. For a bipartite quantum system with density matrix $\rho$, the von Neumann conditional entropy $S_{A|B} = S_{AB} - S_B$ *can be negative* when the subsystems are entangled. A globally pure entangled state has $S(\rho) = 0$ while its marginal states $\rho_A$ and $\rho_B$ may each have positive entropy — precisely the configuration the game needs at its origin.
 
 An analogous axiomatic characterisation of information loss via von Neumann entropy is provided by @Parzygnat-functorial22. This extends the Baez--Fritz--Leinster framework from classical finite probability  to noncommutative probability. Adopting the Parzygnat axioms resolves the origin paradox.}
@@ -56,5 +64,6 @@ $$
 }
 
 \notes{Within this programme, the move to noncommutative probability is not an arbitrary modelling choice: it is forced if we insist on an origin with zero global entropy and positive marginal entropies. Von Neumann entropy and entangled pure states provide exactly what is needed, i.e. a pure global state ($S=0$) with positive marginal entropies ($s_i > 0$), and this configuration is provably unreachable in the classical framework [@Lawrence-origin26].}
+
 
 \endif

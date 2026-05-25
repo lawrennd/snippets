@@ -5,6 +5,8 @@
 
 \subsection{Information Relaxation Dynamics}
 
+\narration{A toy example illustrates this. Start with a bivariate Gaussian with correlation $\rho$ close to one — highly correlated, low entropy. The system evolves to decorrelate. The multi-information decreases, the entropy increases, and the total $I + H$ stays constant. The marginal entropies don't change throughout. If you were only monitoring the marginals you'd see nothing — the system is inaccessible. The dynamics are happening in the correlations, which the outside observer can't see.}
+
 \notes{Consider a simple two-variable system with binary variables $X_1$ and $X_2$:
 
 **High correlation state** (high $I$, low $H$):
@@ -132,5 +134,7 @@ mlai.write_figure(filename='i-plus-h-relaxation.svg',
 \notes{The visualisation shows the trade-off: as the system relaxes, correlation structure (multi-information) is converted into entropy. The total $I + H = C$ remains constant (black dashed line), but the system evolves from a state dominated by correlation to one dominated by entropy.
 
 The marginal entropies $h_1$ and $h_2$ stay constant throughout this evolution. An external observer measuring only marginal entropies would see no change—the system is informationally isolated, hence "inaccessible."}
+
+
 
 \endif

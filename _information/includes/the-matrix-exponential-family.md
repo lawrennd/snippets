@@ -5,6 +5,8 @@
 
 \subsection{The Matrix Exponential Family}
 
+\narration{In the quantum version, the probability distribution is replaced by a density matrix. The exponential family becomes the matrix exponential family. The natural parameters now label operators, and the state is $\rho = \exp(K - \psi I)$ where $K$ is a Hermitian operator. The BKM metric — the Bogoliubov–Kubo–Mori metric — plays the role of the Fisher information.}
+
 \notes{The matrix exponential family is the non-commutative analogue of the classical exponential family. A density matrix $\rho$ belongs to the matrix exponential family if it can be written as
 $$
 \rho(\boldsymbol{\theta}) = \exp\!\left(\sum_k \theta_k F_k - \cumulantGeneratingFunction(\boldsymbol{\theta})\,\mathbf{I}\right),
@@ -44,6 +46,8 @@ $$
 
 \newslide{Faithful States}
 
+\narration{And the faithful states, the ones where $\rho$ is strictly positive definite, are the interior of this family. The boundary consists of pure states, and the BKM metric diverges at the boundary. This is what makes the pure-state origin special — it is infinitely distant in the BKM metric.}
+
 \notes{A density matrix $\rho$ is *faithful* if it is strictly positive definite, $\rho > 0$, meaning every eigenvalue is strictly positive. Every member of the matrix exponential family is faithful: since the matrix exponential $\exp(A)$ is positive definite for any Hermitian $A$, the density matrix $\rho(\boldsymbol{\theta})$ has strictly positive eigenvalues for all finite $\boldsymbol{\theta}$.
 
 Faithfulness matters for two reasons. First, the BKM metric $G(\boldsymbol{\theta})$ is only well-defined for faithful states — it involves expressions of the form $\int_0^1 \text{tr}(\rho^t A \rho^{1-t} B)\,\text{d}t$ that are singular when $\rho$ has a zero eigenvalue. Second, faithful states are the *interior* of the set of density matrices; pure states ($S(\rho) = 0$, rank 1) lie on the boundary. As a sequence of faithful states approaches a pure state, the natural parameters $\boldsymbol{\theta}$ diverge and the BKM metric degenerates. This is precisely why the LME origin — a pure state — lies at infinite BKM distance from any interior point and is unreachable in finite game time.}
@@ -53,5 +57,6 @@ Faithfulness matters for two reasons. First, the BKM metric $G(\boldsymbol{\thet
 * Pure states are on *boundary* of family
 * BKM Metric is *divergent*
 }
+
 
 \endif

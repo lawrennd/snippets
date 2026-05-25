@@ -5,6 +5,8 @@
 
 \subsection{The $I + H = C$ Structure}
 
+\narration{So here's the key relationship. From $\sum_i h_i = C$, with a little algebra — using the fact that for a joint distribution the joint entropy equals the sum of marginal entropies minus the multi-information — I can show that $I + H = C$.}
+
 \notes{We have established four axioms, with the fourth axiom stating that the sum of marginal entropies is conserved,
 $$
 \sum_{i=1}^N h_i = C.
@@ -43,8 +45,11 @@ $$
 I = \sum_{i=1}^N h_i - H
 $$
 }
+\narration{So the multi-information $I$ and the joint entropy $H$ sum to a constant. The joint entropy is basically how spread out the distribution is. The multi-information is how correlated the variables are.} 
 
 \newslide{'Information Action'}
+
+\narration{So you have this trade-off: you can have maximum correlation, or maximum entropy, but not both at the same time. The game will be about converting multi-information into entropy.}
 
 \notes{Using the definition of multi-information, we can rewrite our conservation law. From $I = \sum_{i=1}^N h_i - H$, we have:
 $$
@@ -86,5 +91,10 @@ The analogy for The Inaccessible Game is.
 - **Joint entropy** $H$ plays the role of *kinetic energy*. It represents "dispersed" or "free" information. High $H$ means the probability distribution is spread out, with maximal uncertainty.
 
 Just as a classical system evolves from high potential energy to high kinetic energy (a ball rolling down a hill), the idea in the Inaccessible Game will be that the information system evolves from high correlation (high $I$) to high entropy (high $H$).}
+
+\narration{Think of it like potential energy and kinetic energy: the correlation is potential energy, the entropy is kinetic energy. In equilibrium you'd have an equal mix. But we start in a highly correlated state — that's what I mean by the origin — and the system evolves to maximize entropy.}
+
+\narration{So now I have the game. I've got $I + H = C$. And I want the dynamics of the system to maximise $H$. But to set up what those dynamics look like, I need to parameterise the configuration space. }
+
 
 \endif

@@ -5,6 +5,8 @@
 
 \subsection{Entropy Time}
 
+\narration{One of the things that the no-barber principle prohibits is an external time parameter. So there's no external clock. Instead, we use entropy as a measure of progress. You can reparameterise the trajectory so that entropy increases by a fixed amount per unit of the new parameter — entropy-time. This is an internally defined clock.}
+
 \notes{The natural parameter space carries a preferred affine parameter, game time $\tau$, which tracks progress along the constrained flow. However, as the system approaches the LME origin, the natural parameters diverge ($\|\boldsymbol{\theta}\|\to\infty$) and the entropy production rate with respect to game time tends to zero. The origin is at infinite affine distance. This creates a degenerate parametrisation: infinite game time elapses while the system covers a finite range of entropy values.
 
 The resolution is an *axiomatically distinguished reparametrisation*. An external clock is forbidden by information isolation. But there is one quantity internal to the game that provides a natural measure of progress: the entropy itself. We define *entropy time* $t$ by the condition that entropy production is constant [@Lawrence-origin26].}
@@ -45,5 +47,7 @@ Crucially, the game does not assume an external time and then derive that entrop
 * No external clock, temperature, or Hamiltonian
 * Progress measured by entropy produced
 }
+
+\narration{In any reparameterisation, what you really care about is the rate at which entropy is produced per unit entropy-time. Once you do this, you get a very clean separation between the reversible dynamics and the irreversible dynamics, because the irreversible part is the one that produces entropy. The reversible part — the antisymmetric part — produces no entropy. It's pure rotation.}
 
 \endif

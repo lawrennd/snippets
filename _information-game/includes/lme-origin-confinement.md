@@ -5,6 +5,10 @@
 
 \subsection{The LME Origin}
 
+\narration{There's a beautiful consequence of all this. The LME origin — the locally maximally entangled state — is the unique pure state where all marginal entropies are at their maximum allowed value. It's the state that saturates the constraint. When you compute the BKM distance from any mixed state to this pure state, you get infinity — it's infinitely far away in the quantum information geometry.}
+
+\narration{But what should the value of $C$ be? By our axiomatically distinguished principle we should set it to some unique number. For example the maximum value.}
+
 \notes{The game's natural origin is an axiomatically distinguished pure state. Since von Neumann entropy admits states with $S(\rho)=0$ and positive marginal entropies, the origin is a *globally pure* state with maximally mixed reduced states on each subsystem. These are the *locally maximally entangled* (LME) states.
 
 To single out a canonical origin without introducing external structure we apply an additional axiomatic selection: among all globally pure states, choose those that maximise the conserved marginal-entropy sum. Since each marginal entropy is bounded by $s_i \leq \log d_i$ (where $d_i$ is the dimension of subsystem $i$), this forces every reduced state to be maximally mixed, fixing
@@ -20,6 +24,8 @@ The origin is selected up to local-unitary equivalence [@Lawrence-origin26].}
 }
 
 \subsection{Constraint Saturation and the Gibbs Lock}
+
+\narration{So the trajectory that maximises entropy production approaches this state only asymptotically as you go backwards in time. The origin is never actually reached; it is a distinguished asymptote. And the saturation diagrams show this: the marginal entropies are constrained to sum to $C$, and they can't both be individually at their maximum unless the system is at the LME state, which would require zero joint entropy. That's the second-order constraint kicking in: as the system approaches the saturation boundary, a new constraint is activated.}
 
 \notes{At the LME origin the marginal-entropy sum is saturated termwise: every $s_i = \log d_i$ is at its individual upper bound. This has a remarkable consequence. Since each marginal is already at its ceiling, *none can increase further and none can decrease without violating the sum*. The marginal entropies are locked at their maximum values for the entire trajectory:
 $$
@@ -87,5 +93,6 @@ The game is axiomatically directed *towards* an origin that acts as a limit, not
 * Infinite Fisher distance — never literally reached
 * *Trajectory distinguished by its asymptotic origin, not a literal start*
 }
+
 
 \endif
