@@ -19,4 +19,6 @@ Think of joint entropy as a scoring system: every configuration gets a number me
 * But we know it has a joint entropy
 }
 
+\narration{Now imagine that the observer is not integrated. They cannot see inside the system. They don't have access to the outcome space. We don't see the individual outcomes; we just know there's a joint entropy associated with the system. The observer has a marginal entropy for each variable they interact with, but they don't have access to the joint. This is the inaccessible part — the inner workings are hidden. The observer has their own perspective, not direct access to the internals of the game.}
+
 \endif

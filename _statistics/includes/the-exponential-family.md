@@ -35,4 +35,6 @@ $$
 * $G(\naturalParameters) = \nabla^2\cumulantGeneratingFunction(\naturalParameters)$: Fisher information
 }
 
+\narration{The standard exponential family is the right parameterisation for working with entropy on this configuration space. The normaliser is what machine learners would call the evidence — the cumulant generating function. The natural parameters are what you'd use to label where you are in the information geometry. The Fisher information matrix $G$ is the second derivative of the cumulant generating function with respect to the natural parameters. This is the metric on the configuration space. It tells you the local geometry of the space. And the natural gradient is the direction you move in this space that maximises entropy production most efficiently in terms of Fisher information. This becomes the core of the dynamics.}
+
 \endif
