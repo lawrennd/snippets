@@ -10,7 +10,7 @@
 \notes{Well, of course that didn't happen. But I sometimes wonder if what we're seeing today 100 years later is the modern equivalent of that. In 2025 billions are being invested in promises of superintelligence and artificial general intelligence that will transform everything.}
 
 \slidesincremental{
-* 1925: Promises of perpetual motion cars
+* 1925: Motor vehicles (no perpetual motion)
 * 2025: Promises of superintelligence singularity
 * Same fundamental impossibility?
 }
