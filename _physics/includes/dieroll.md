@@ -39,6 +39,13 @@ Sample mean: <span id="dieroll-mean">—</span><br>
 H(p): <span id="dieroll-entropy" style="color:#2ecc71">—</span>
 </div>
 <button id="dieroll-reset">Reset history</button>
+<hr style="width:100%;border:none;border-top:1px solid #444;margin:4px 0">
+<div style="display:flex;flex-direction:column;gap:4px;width:100%">
+<button id="dieroll-uniform">Uniform (mean 3.5)</button>
+<button id="dieroll-jaynes">Jaynes: mean 4.5</button>
+<button id="dieroll-simple">Simple 50/50: mean 4.5</button>
+<button id="dieroll-low">Low-biased: mean 2</button>
+</div>
 </div>
 
 <div style="flex:1;min-width:280px">
@@ -49,11 +56,6 @@ style="display:block;width:100%;height:auto;border-radius:6px"></canvas>
 Outcome weights (auto-normalised to probabilities)
 </div>
 <div id="dieroll-sliders"></div>
-<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-<button id="dieroll-uniform">Uniform (mean 3.5)</button>
-<button id="dieroll-jaynes">Jaynes: mean 4.5</button>
-<button id="dieroll-low">Low-biased: mean 2</button>
-</div>
 </div>
 </div>
 
@@ -65,7 +67,8 @@ Click the die or press Roll to sample from the configured distribution.
 The histogram shows empirical relative frequencies (coloured bars) overlaid
 on the theoretical probabilities (dashed outlines).  Use the sliders to set
 arbitrary outcome weights, or click a preset to load the uniform distribution
-(mean 3.5), the Jaynes maximum-entropy distribution (mean 4.5), or a
+(mean 3.5), the Jaynes maximum-entropy distribution (mean 4.5), the simple
+50/50 distribution (faces 4 and 5 equally, mean 4.5 with minimal entropy), or a
 low-biased distribution (mean 2).}{dieroll-simulation}
 
 \endif
