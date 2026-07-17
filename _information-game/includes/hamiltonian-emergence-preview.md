@@ -40,7 +40,7 @@ the common kernel of all single-site partial traces. On this tangent space the l
 * Back-fitted Hamiltonian iff connection is *exact* (vertex potential exists)
 * This is the criterion, not an assumption
 }
-
+<!--
 \subsection{Compliance Dichotomy and the Dressing Field}
 
 \notes{Saturated modes split into two compliance classes. *Vacuously compliant* modes (those with at least two traceless site factors) already lie in $\mathcal{C}$: the constraint cannot see them and they oscillate at their bare modular gaps. *Actively compliant* modes must be projected, dragging a compensating admixture; they pay a spectral price, i.e.\ a *dressing factor* $\lambda_\kappa < 1$, so that
@@ -76,5 +76,6 @@ Locality emerges from the no-barber principle itself. A global clock across $N$ 
 There's a beautiful compliance dichotomy. Modes with at least two traceless site factors are invisible to every marginal — the constraint cannot see them, so they pass through undressed and oscillate at the bare modular gap. These are the thermal-time modes. Single-site modes must be projected to stay within the correlation sector; they pay a spectral price, the dressing factor $\lambda_\kappa$. For qubits, $\lambda_\kappa = 0$ — no clock. For qutrits, you get the minimal bipartite clock.
 
 Composite backgrounds create a multigraph with parallel edges: a digon connecting the same level pair at two different frequencies — dressed and bare. The connection curves. There are two rival flat subgraphs. And locality emerges from the no-barber principle: a global clock across $N$ parties would require a flat frame connection on a cyclic party graph, which only an external frame could enforce. Pairwise and cluster clocks are forests — no cycles, no coordination, no barber needed.}
+-->
 
 \endif
