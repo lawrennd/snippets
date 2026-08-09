@@ -41,7 +41,7 @@ import pods}
 
 
 \slides{
-\startanimation{olympic_loo_LM_polynomial}{0}{1}{fold}
+\startanimation{olympic_loo_LM_polynomial}{0}{5}{fold}
 \newframe{
   \startanimation{olympic_loo000_LM_polynomial}{1}{11}{num basis}
   \newframe{\includediagram{\diagramsDir/ml/olympic_loo000_LM_polynomial_number001}}{olympic_loo000_LM_polynomial}

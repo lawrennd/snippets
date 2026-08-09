@@ -39,7 +39,7 @@ import pods}
                             number=IntSlider(1, 1, max_basis, 1))}
 
 \slides{
-\startanimation{olympic_5cv_LM_polynomial}{0}{1}{fold}
+\startanimation{olympic_5cv_LM_polynomial}{0}{5}{fold}
 \newframe{
   \startanimation{olympic_5cv00_LM_polynomial}{1}{11}{num basis}
   \newframe{\includediagram{\diagramsDir/ml/olympic_5cv00_LM_polynomial_number001}}{olympic_5cv00_LM_polynomial}
