@@ -5,7 +5,7 @@
 
 \subsection{Universities as Innovation Bridges}
 
-\notes{}
+\slides{
 * Neutral conveners bringing together diverse expertise
 * Access to research and human capital
 * Creating spaces for collaboration
@@ -13,7 +13,7 @@
 
 \newslide{Key University Roles}
 
-\notes{
+\slides{
 * Connecting developers with users
 * Facilitating ethical oversight
 * Supporting knowledge transfer
