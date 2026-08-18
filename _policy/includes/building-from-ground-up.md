@@ -5,7 +5,7 @@
 
 \subsection{Building from the Ground Up}
 
-\notes{
+\slides{
 * Greater Cambridge Shared Planning: AI analyzing consultations
 * NHS England East: Resource allocation during COVID-19
 * Cancer diagnosis: Clinician-led AI development
@@ -13,7 +13,7 @@
 
 \newslide{Success Factors}
 
-\notes{
+\slides{
 * Local expertise drives development
 * Solutions address real operational needs
 * Professional judgment enhanced, not replaced
