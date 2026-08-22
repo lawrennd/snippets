@@ -45,7 +45,7 @@
 
 \slidesincremental{
 
-Erasing 1 bit requires: $Q \geq k_BT\log 2$
+Erasing 1 bit requires: $Q \geq k_B T \log 2$
 
 * Not engineering limitation
 * Fundamental thermodynamic bound
