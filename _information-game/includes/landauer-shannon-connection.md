@@ -64,4 +64,6 @@ $$}
 
 \notes{The connection between Landauer's limit and Shannon's channel capacity is intriguing but still remains speculative. For Landauer's original work see @Landauer-irreversibility61, Bennett's review and developments see @Bennet-thermodynamics82, and for a more recent overview and connection to developments in non-equilibrium thermodynamics @Parrondo-thermodynamics15.}
 
+\addreading{@Landauer-irreversibility61}{the whole paper}
+
 \endif 

@@ -39,4 +39,7 @@ $$
 $$
 \langle f_k \rangle = -\frac{\partial}{\partial \lambda_k}\log Z(\lambda_1,\ldots,\lambda_m) \quad k=1,2,\ldots,m.
 $$}
+
+\addreading{@Jaynes-probability03}{Chapters 11--12}
+
 \endif

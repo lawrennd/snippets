@@ -96,5 +96,6 @@ Just as a classical system evolves from high potential energy to high kinetic en
 
 \narration{So now I have the game. I've got $I + H = C$. And I want the dynamics of the system to maximise $H$. But to set up what those dynamics look like, I need to parameterise the configuration space. }
 
+\addreading{@Watanabe-multiinformation60}{the whole paper}
 
 \endif

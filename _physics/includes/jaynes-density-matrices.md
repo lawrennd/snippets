@@ -36,4 +36,6 @@ where $A_i$ are the operators corresponding to measured observables, $\lambda_i$
 
 \notes{Jaynes further noted that "strictly speaking, all this should be restated in terms of quantum theory using the density matrix formalism. This will introduce the $N!$ permutation factor, a natural zero for entropy, alteration of numerical values if discreteness of energy levels becomes comparable to $k_BT$, etc."}
 
+\addreading{@Jaynes-information63}{the Brandeis lectures}
+
 \endif 

@@ -176,4 +176,7 @@ Understanding Fisher information as *geometry*, not just as a statistical tool, 
 
 *Fisher information as geometry → key to everything*
 }
+
+\addreading{@Amari-information16}{Chapters 1--2}
+
 \endif

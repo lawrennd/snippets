@@ -47,4 +47,6 @@ In the entropy game, each question can be viewed as a control action that steers
   * Planning as constructing information bridges to goals
 }
 
+\addreading{@Peyre-cuturi19}{Chapters 1--2}
+
 \endif 

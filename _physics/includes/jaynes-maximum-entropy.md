@@ -11,4 +11,6 @@
 \include{_physics/includes/dieroll.md}
 \include{_physics/includes/maximum-entropy-formalism.md}
 
+\addreading{@Jaynes-information57}{the whole paper}
+
 \endif 
