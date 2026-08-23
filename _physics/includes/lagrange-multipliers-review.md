@@ -2,8 +2,10 @@
 \define{lagrangeMultipliersReview}
 
 \editme
-<!— TODO this needs a rewrite just as Lagrange multipliers, nothing to do with inaccessible game —>
-\subsection{Lagrange Multipliers: A Primer}
+
+\subsection{Lagrange Multipliers: Constrained Dynamics}
+
+\comment{This snippet develops Lagrange multipliers for **constrained information dynamics** (The Inaccessible Game). For the static optimisation primer used in MaxEnt lectures, see \texttt{lagrange-multipliers.md}.}
 
 \notes{In Lecture 3, we derived the maximum entropy production dynamics $\dot{\boldsymbol{\theta}} = -G(\boldsymbol{\theta})\boldsymbol{\theta}$ and noted this assumes the system structure automatically preserves marginal entropies. For more general cases, we need to **explicitly enforce** the conservation constraint $\sum h_i = C$.
 
