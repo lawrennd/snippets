@@ -5,7 +5,7 @@
 
 \notes{\subsection{GAIST on the Wasserstein and Schrödinger Geometries}}
 
-\notes{Chapter 14 of [@Welling-generative26] is the discrete-time Schrödinger bridge: minimise $D_{\mathrm{KL}}[Q\|P]$ subject to fixed endpoint marginals $q_0 = \mu$ and $q_{t_f} = \nu$. When the reference $P$ is uniform this is Jaynes' maximum caliber --- MaxEnt over paths. The algorithm is iterative proportional fitting. Chapter 22 retells the same story in continuous time: Wasserstein distance via Monge, Kantorovich and Benamou--Brenier (Section 22.2); dissipated work as the OT action (Section 22.3); the Schrödinger bridge as OT plus an osmotic Fisher-information term (Section 22.6).}
+\notes{Chapter 14 of [@Welling-generative26] is the discrete-time Schrödinger bridge: minimise $D_{\mathrm{KL}}[Q\|P]$ subject to fixed endpoint marginals $q_0 = \mu$ and $q_{t_f} = \nu$. When the reference $P$ is uniform this is Jaynes' maximum caliber --- MaxEnt over paths. The algorithm is iterative proportional fitting: Sinkhorn--Knopp on the Gibbs kernel $K_{ij}=\exp(-C_{ij}/\varepsilon)$. Chapter 22 retells the same story in continuous time: Wasserstein distance via Monge, Kantorovich and Benamou--Brenier (Section 22.2); dissipated work as the OT action (Section 22.3); the Schrödinger bridge as OT plus an osmotic Fisher-information term (Section 22.6).}
 
 \notes{Section 22.3 states a thermodynamic speed limit
 $$
@@ -17,11 +17,12 @@ and a finite-time correction to Landauer [@Landauer-irreversibility61], followin
 
 \slidesincremental{
 * Ch.~14 and 22: Schrödinger bridge and $W_2$
+* Discrete algorithm: IPF / Sinkhorn
 * Speed limit there is $W_2^2/(T\tau)$, not $\mathcal{L}^2/\tau$
 * Finite-time Landauer is Section 22.3
 }
 
-\notes{Read Chapter 14 and Sections 22.2--22.3 for the Wasserstein and Schrödinger prescriptions. Keep Crooks (2007) for Fisher--Rao. Peyré and Cuturi remain the place to get the OT intuition without the physics.}
+\notes{Read Chapter 14 and Sections 22.2--22.3 for the Wasserstein and Schrödinger prescriptions. Keep Crooks (2007) for Fisher--Rao. Peyré and Cuturi remain the place to get the OT intuition without the physics: Chapters 1--2 for Wasserstein; §4.2 for Sinkhorn, if you want the iteration. Sinkhorn computes the Schrödinger / entropic coupling. It is not Crooks' geodesic.}
 
 \addreading{@Welling-generative26}{Chapter 14 and Sections 22.2--22.3}
 

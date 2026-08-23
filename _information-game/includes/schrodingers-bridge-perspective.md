@@ -24,6 +24,7 @@ In the entropy game, each question can be viewed as a control action that steers
   * Find most likely stochastic process between two distributions
   * Minimum relative entropy solution
   * Optimal transport of probability mass
+  * Discrete MaxEnt coupling: Sinkhorn / IPF
 
 * Entropy game parallel:
   * Initial state: Maximum uncertainty (uniform distribution)
@@ -47,6 +48,6 @@ In the entropy game, each question can be viewed as a control action that steers
   * Planning as constructing information bridges to goals
 }
 
-\addreading{@Peyre-cuturi19}{Chapters 1--2}
+\addreading{@Peyre-cuturi19}{Chapters 1--2; §4.2 (Sinkhorn, optional)}
 
 \endif 
