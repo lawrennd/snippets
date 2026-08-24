@@ -7,22 +7,22 @@
 
 \notes{The Boltzmann occupation can be written in two ways,
 $$
-p_i = \frac{e^{-E_i/kT}}{Z}
+p_i = \frac{e^{-E_i/k_B T}}{Z}
 = \frac{e^{-\beta E_i}}{Z},
 \qquad
-\beta = \frac{1}{kT}.
+\beta = \frac{1}{k_B T}.
 $$
 The mathematics is the same, but the emphasis is different.}
 
 \slidesincremental{
 * $T$: the bath, the thermometer
-* $\beta = 1/kT$: coldness
+* $\beta = 1/k_B T$: coldness
 * Same occupation; entropy sits in a different place
 }
 
 \notes{$T$ is the variable of the bath. It is what a thermometer reports, and it is the intensive parameter in the Helmholtz accounting $F = U - TS$. In that representation energy comes first and entropy is the correction: $TS$ is the cut the second law takes from $U$.}
 
-\notes{$\beta$ is *coldness*. It is the variable conjugate to energy. In that representation entropy comes first: you maximise $S$ (or write a generating function in $\beta$) and energy is the constraint. Temperature is then a derived reading, $T = 1/k\beta = (\partial S/\partial U)^{-1}$.}
+\notes{$\beta$ is *coldness*. It is the variable conjugate to energy. In that representation entropy comes first: you maximise $S$ (or write a generating function in $\beta$) and energy is the constraint. Temperature is then a derived reading, $T = 1/k_B\beta = (\partial S/\partial U)^{-1}$.}
 
 \newslide{Two Representations}
 
