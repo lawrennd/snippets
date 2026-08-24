@@ -3,9 +3,12 @@
 
 \editme
 
+
+\notes{\subsection{Laplace's Determism}}
+
 \newslide{}
 
-\includegooglebook{1YQPAAAAQAAJ}{PR17-IA2}
+\figure{\includegooglebook{1YQPAAAAQAAJ}{PR17-IA2}}{Laplace's determinism book reference.}{laplaces-determinism-google-books}
 
 \notes{Famously, Laplace considered the idea of a deterministic Universe, one in which the model is *known*, or as the below translation refers to it, "an intelligence which could comprehend all the forces by which nature is animated". He speculates on an "intelligence" that can submit this vast data to analysis and propsoses that such an entity would be able to predict the future.
 
@@ -34,7 +37,7 @@
 
 \newslide{}
 
-\includegooglebook{1YQPAAAAQAAJ}{PR17-IA4}
+\figure{\includegooglebook{1YQPAAAAQAAJ}{PR17-IA4}}{Laplace's gremlin in the original French.}{laplaces-gremlin-google-books}
 
 \newslide{}
 
