@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Entropy Forbids; Probability Prescribes}
+\subsection{Entropy and Probability}
 
 \notes{I've spent most of my career in machine learning thinking about uncertainty, and very often that's been through probability. For so-called "Bayesian" researchers, one of the most important texts is Ed Jaynes's "Probability, the Logic of Science" [@Jaynes-probability03], which has become almost akin to a religious text. However, alongside probability, and also in Jaynes's work there's been a recurring theme of entropy and information arising.}
 
@@ -23,7 +23,6 @@
 
 \notes{Here's the problem with probability. Every time I specify a probability distribution, I need to specify all that happens. I don't get to say that the distribution looks like a bell curve on the right, but I don't know what's going on on the left.  I need my probability to both cover the things I'm interested in in, and the things I might not be interested in. It feels like with probability I have to specify everything that's going to happen.[^probability-specify] Entropy however is different. With entropy, it feels like I get to talk about what's *not* going to happen. In information theory forms of entropy help us understand "no-go" areas, like the amount of information a channel is *not* going to carry per second ... or at least an upper bound on the information that the channel will carry. In physics, the second law of thermodynamics helps us understand that perpetual motion won't happen. It doesn't tell us the mechanism by which a system will lose energy and eventually slow and stop. It doesn't tell us when it will happen (unless we start looking at rates of energy to entropy conversion) it just tells us that it's going to happen.}
 
-
 \notes{[^probability-specify]: THat's not strictly true because I can marginalise things I'm not interested in ... but gives me a challenge of integrating over those variables which can lead to mathematical (or computational) headaches.}
 
 \notes{I find that intriguing.}
@@ -42,7 +41,7 @@
 
 \notes{[^practical]: Fortunately, even if I'm totally wrong, the tools are widely deployed in a number of domains and your efforts in understanding them will bear fruit in one domain or another.}
 
-When modelling in practice, we often account for this with cost functions. We There's a funny thing about entropy too. A friustrating thing about modellingSo why should we look at entropy?  One idea that will emerge across the course is the notion that probability tells us what a system will do. But entropy (somehow) tells us what a system won't do.  For example, we know that perpetual motion machines can't exist because, by the second law of thermodynamics, the cause entropy to be produced.  This tells us that if we see a wheel spinning, and we are not injecting energy into the wheel, eventually the wheel will stop spinning.  It doesn't tell us the dynamics by which the spinning will stop.  It doesn't tell us when it will stop.  It just tells us that it won't keep spinning for ever.  If we had the probability distribution that described the system, that would tell us when the wheel was likely to stop. So somehow probability tells us what's going to happen, where as entropy tells us whats not going to happen.  We'll explore this intuition as we go through the course, but its behind the idea why we might look to entropy to place limits on the performance of an intelligent system.}
+\notes{When modelling in practice, we often account for this with cost functions. We There's a funny thing about entropy too. A friustrating thing about modellingSo why should we look at entropy?  One idea that will emerge across the course is the notion that probability tells us what a system will do. But entropy (somehow) tells us what a system won't do.  For example, we know that perpetual motion machines can't exist because, by the second law of thermodynamics, the cause entropy to be produced.  This tells us that if we see a wheel spinning, and we are not injecting energy into the wheel, eventually the wheel will stop spinning.  It doesn't tell us the dynamics by which the spinning will stop.  It doesn't tell us when it will stop.  It just tells us that it won't keep spinning for ever.  If we had the probability distribution that described the system, that would tell us when the wheel was likely to stop. So somehow probability tells us what's going to happen, where as entropy tells us whats not going to happen.  We'll explore this intuition as we go through the course, but its behind the idea why we might look to entropy to place limits on the performance of an intelligent system.}
 
 \slidesincremental{
 * Entropy: no-go theorems
