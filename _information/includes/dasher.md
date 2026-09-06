@@ -7,10 +7,12 @@
 
 \notes{Dasher is a writing interface invented by David MacKay [@MacKay-dasher98]
 that makes the connection between arithmetic coding and character prediction
-viscerally concrete.  The key insight: if we arrange a character set
-vertically with each character occupying space proportional to its
-probability, then *selecting a character* is equivalent to *zooming into
-its interval* in the arithmetic code.
+viscerally concrete.  Having seen MacKay's Algorithm 6.3 — nested intervals
+on $[0,1)$ whose lengths are predictive probabilities
+[@MacKay-information03, Ch.~6] — we can read Dasher as *drawing* that
+algorithm: if we arrange a character set vertically with each character
+occupying space proportional to its probability, then *selecting a character*
+is equivalent to *zooming into its interval* in the arithmetic code.
 
 Moving the mouse to the right zooms toward whichever letter the cursor
 is pointing at.  Because common letters (e, t, a, space) have large
@@ -83,6 +85,7 @@ the language model's predictions tangible.}
 <div style="position:relative;width:min(100%,480px);height:480px;margin:0 auto;
             cursor:crosshair;overflow:hidden">
   <canvas id="dasher-canvas" width="480" height="480"
+    data-dasher-lm="\scriptsDir/dasher/dasher-lm.json"
     style="display:block;width:100%;height:100%"></canvas>
 </div>
 
