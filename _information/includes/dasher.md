@@ -25,9 +25,9 @@ the language model's predictions tangible.}
 
 \slides{
 * Letters sized by P(char | context) — large target = common = cheap
-* Move mouse **right** to zoom toward your chosen letter
-* Move mouse **left** to back up
-* Character committed when zoomed close enough
+* Move pointer **right** of centre: boxes enlarge and stream **left**
+* Move pointer **left** of centre to zoom out / unwrite
+* Character written when its box crosses the centre crosshair
 * *Ease of selection ∝ probability ∝ 1 / information cost*
 }
 
@@ -41,7 +41,7 @@ the language model's predictions tangible.}
   <span style="color:#4ecdc4;letter-spacing:3px;font-size:14px">DASHER</span>
   <span style="color:#404068;font-style:italic;font-size:10px;flex:1;margin:0 12px;
                overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-    screen height ∝ probability ∝ ease of selection ∝ low information
+    screen height ∝ probability · boxes stream left across the crosshair
   </span>
   <button id="dasher-reset"
     style="background:#1a1a2e;border:1px solid #2a2a3e;color:#505080;
@@ -66,23 +66,25 @@ the language model's predictions tangible.}
     H(next): <span id="dasher-entropy" style="color:#ffd93d">—</span></span>
 </div>
 
-<div style="position:relative;width:100%;height:380px;cursor:crosshair;overflow:hidden">
-  <canvas id="dasher-canvas" style="display:block;width:100%;height:100%"></canvas>
+<div style="position:relative;width:min(100%,480px);height:480px;margin:0 auto;
+            cursor:crosshair;overflow:hidden">
+  <canvas id="dasher-canvas" width="480" height="480"
+    style="display:block;width:100%;height:100%"></canvas>
 </div>
 
 <div style="padding:5px 14px;background:#0f0f1e;border-top:1px solid #1e1e32;
             font-size:9px;color:#303055;text-align:center">
-  Move mouse <strong style="color:#4ecdc460">right</strong> to write ·
-  <strong style="color:#4ecdc460">left</strong> to erase ·
-  vertical position aims · Backspace removes last · Escape resets
+  Pointer <strong style="color:#4ecdc460">right</strong> of centre zooms
+  (boxes stream left) ·
+  <strong style="color:#4ecdc460">left</strong> zooms out ·
+  Backspace unwrites · Escape resets
 </div>
 
 </div>
 
 \include{_scripts/includes/dasher-js.md}}}{Dasher: continuous-zoom arithmetic coding interface.
-Move the mouse to the right to zoom toward the character at your
-vertical cursor position.  Character height is proportional to
-P(char | context), so common letters present large targets.
-Try typing "th" — 'e' expands to fill nearly the whole display.}{dasher-visualisation}
+Move the pointer right of centre — boxes enlarge and stream left across
+the crosshair.  Character height is proportional to P(char | context).
+Try "th": after 't' and 'h', 'e' swells to dominate the display.}{dasher-visualisation}
 
 \endif
