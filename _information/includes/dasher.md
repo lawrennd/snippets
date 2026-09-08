@@ -6,31 +6,28 @@
 \subsection{Dasher: Arithmetic Coding as Interface}
 
 \notes{Dasher is a writing interface invented by David MacKay [@MacKay-dasher98]
-that makes the connection between arithmetic coding and character prediction
-viscerally concrete.  Having seen MacKay's Algorithm 6.3 — nested intervals
+that visualises the connection between arithmetic coding and character prediction.  Having seen MacKay's Algorithm 6.3 — nested intervals
 on $[0,1)$ whose lengths are predictive probabilities
-[@MacKay-information03, Ch.~6] — we can read Dasher as *drawing* that
-algorithm: if we arrange a character set vertically with each character
-occupying space proportional to its probability, then *selecting a character*
-is equivalent to *zooming into its interval* in the arithmetic code.
+[@MacKay-information03, Ch.~6]. If we arrange a character set vertically with each character
+occupying space proportional to its probability, then selecting a character
+is equivalent to zooming into its interval in the arithmetic code.
 
 Moving the mouse to the right zooms toward whichever letter the cursor
 is pointing at.  Because common letters (e, t, a, space) have large
 probability, they occupy large screen area — they are easy to aim at.
-Rare letters (q, z, x) have tiny probability, occupy tiny screen area,
+Rare letters (q, z, x) have tiny probability, occupy smaller screen area,
 and are correspondingly hard to hit.  Ease of selection equals
 low information content, which equals efficiency.
 
-After typing "th", notice how 'e' swells to dominate the display;
-after "q", 'u' fills almost the entire screen.  The visualisation makes
+If you select "th", notice how 'e' grows to dominate the display. It's hard to select 'q', a rarer letter, but if you do 'u' dominates the next box.  The visualisation makes
 the language model's predictions tangible.}
 
 \slides{
-* Letters sized by P(char | context) — large target = common = cheap
+* Letters sized by $P(\texttt{char} | \texttt{context})$. A large target = common = cheap
 * Move pointer **right** of centre: boxes enlarge and stream **left**
 * Move pointer **left** of centre to zoom out / unwrite
 * Character written when its box crosses the centre crosshair
-* *Ease of selection ∝ probability ∝ 1 / information cost*
+* *Ease of selection $\propto$ probability $\propto$ 1 / information cost*
 }
 
 \newslide{}
@@ -66,7 +63,7 @@ the language model's predictions tangible.}
 </div>
 \include{_scripts/includes/dasher-js.md}}}{Dasher: continuous-zoom arithmetic coding interface.
 Move the pointer right of centre — boxes enlarge and stream left across
-the crosshair.  Character height is proportional to P(char | context).
+the crosshair.  Character height is proportional to $P(\texttt{char} | \texttt{context})$.
 Try "th": after 't' and 'h', 'e' swells to dominate the display.}{dasher-visualisation}
 
 \endif

@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{The Horizon Scandal}
+\subsection{The Horizon scandal}
 
 \notes{In the UK we saw these effects play out in the Horizon scandal:
 the accounting system of the national postal service was computerized
