@@ -50,7 +50,7 @@ the language model's predictions tangible.}
 </div>
 <div style="display:flex;align-items:center;gap:12px;padding:5px 14px;background:#0f0f1e;border-bottom:1px solid #1e1e32;min-height:34px">
 <div style="font-size:9px;color:#404068;flex-shrink:0">TYPED:</div>
-<div id="dasher-text" style="font-size:16px;color:#4ecdc4;letter-spacing:2px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">▋</div>
+<div id="dasher-text" style="font-size:16px;color:#4ecdc4;letter-spacing:2px;flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-align:right">▋</div>
 <div style="display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0">
 <span style="background:#131320;border:1px solid #2a2a3e;border-radius:3px;padding:2px 7px;font-size:11px;color:#505080;white-space:nowrap">bits: <span id="dasher-bits" style="color:#ffd93d">0.0</span></span>
 <span style="background:#131320;border:1px solid #2a2a3e;border-radius:3px;padding:2px 7px;font-size:11px;color:#505080;white-space:nowrap">avg: <span id="dasher-avgbits" style="color:#ffd93d">—</span> b/ch</span>
