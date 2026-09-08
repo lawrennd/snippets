@@ -21,16 +21,16 @@ Rare letters (q, z, x) have tiny probability, occupy tiny screen area,
 and are correspondingly hard to hit.  Ease of selection equals
 low information content, which equals efficiency.
 
-After typing "th", notice how 'e' swells to dominate the display;
+After selecting "th", notice how 'e' grows to dominate the display;
 after "q", 'u' fills almost the entire screen.  The visualisation makes
 the language model's predictions tangible.}
 
 \slides{
-* Letters sized by P(char | context) — large target = common = cheap
+* Letters sized by $P(\textt{char} | \textt{context})$ — large target = common = cheap
 * Move pointer **right** of centre: boxes enlarge and stream **left**
 * Move pointer **left** of centre to zoom out / unwrite
 * Character written when its box crosses the centre crosshair
-* *Ease of selection ∝ probability ∝ 1 / information cost*
+* *Ease of selection $\propto$ probability $\propto$ 1 / information cost*
 }
 
 \newslide{}
