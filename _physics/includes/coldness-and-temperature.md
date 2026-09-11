@@ -29,9 +29,9 @@ The mathematics is the same, but the emphasis is different.}
 \slidesincremental{
 * $T$-first: $F = U - TS$
 * $\beta$-first: $Z(\beta)$, then $U = -\partial_\beta\log Z$
-* Week 4: $\beta$ is the Lagrange multiplier
+* Week 5: $\beta$ is the Lagrange multiplier
 }
 
-\notes{We will use both. Weeks 1--2 keep $T$ in view so the bath is familiar, and they already compute in $\beta$ because that is the natural argument of $Z$. Week 4 makes the $\beta$-first order honest: the Lagrange multiplier on a mean-energy constraint *is* coldness, and it is the natural parameter of the exponential family. Weeks 5--6 then treat $\beta$ as a coordinate on that family. A student who still hears $\beta$ as ``one over the thermometer'' will miss why the geometry is written in those coordinates.}
+\notes{We will use both. Weeks 1--2 keep $T$ in view so the bath is familiar, and they already compute in $\beta$ because that is the natural argument of $Z$. Week 5 makes the $\beta$-first order honest: the Lagrange multiplier on a mean-energy constraint *is* coldness, and it is the natural parameter of the exponential family. Weeks 6--7 then treat $\beta$ as a coordinate on that family. A student who still hears $\beta$ as ``one over the thermometer'' will miss why the geometry is written in those coordinates.}
 
 \endif

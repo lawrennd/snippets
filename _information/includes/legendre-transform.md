@@ -91,13 +91,13 @@ $$
 
 \newslide{Two Charts, Named for Later}
 
-\notes{The pair $(\boldsymbol{\theta},\boldsymbol{\eta})$ is two coordinate systems on the same manifold. Amari calls them $e$-coordinates and $m$-coordinates. Dual flatness is the statement that each chart is affine for one of the two connections, and that the two potentials $A(\boldsymbol{\theta})$ and $A^*(\boldsymbol{\eta})$ generate the metric as Hessians. Week 5 defines that geometry. Week 6 uses it: MaxEnt is an $m$-projection because the constraint is written in $\boldsymbol{\eta}$, while the exponential family itself is a straight line in $\boldsymbol{\theta}$. Week 7 repeats the same transform for the matrix exponential family: von Neumann entropy is the Legendre conjugate of the quantum log-partition. Define the transform today. Do not yet ask what a dual connection is.}
+\notes{The pair $(\boldsymbol{\theta},\boldsymbol{\eta})$ is two coordinate systems on the same manifold. Amari calls them $e$-coordinates and $m$-coordinates. Dual flatness is the statement that each chart is affine for one of the two connections, and that the two potentials $A(\boldsymbol{\theta})$ and $A^*(\boldsymbol{\eta})$ generate the metric as Hessians. Week 6 defines that geometry. Week 7 uses it: MaxEnt is an $m$-projection because the constraint is written in $\boldsymbol{\eta}$, while the exponential family itself is a straight line in $\boldsymbol{\theta}$. Week 8 repeats the same transform for the matrix exponential family: von Neumann entropy is the Legendre conjugate of the quantum log-partition. Define the transform today. Do not yet ask what a dual connection is.}
 
 \slidesincremental{
 * $\boldsymbol{\theta}$: $e$-coordinates (natural parameters)
 * $\boldsymbol{\eta}$: $m$-coordinates (moments)
-* Dual flatness: week 5
-* $m$-projection: week 6
+* Dual flatness: week 6
+* $m$-projection: week 7
 }
 
 \endif
