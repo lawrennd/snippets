@@ -5,14 +5,14 @@
 
 \subsection{The Legendre Transform}
 
-\notes{You have already performed a Legendre transform. In week 1 the Helmholtz free energy
+\notes{You have already performed a Legendre transform. In week 2 the Helmholtz free energy
 $$
 F = U - TS
 $$
-changed the independent variable from entropy to temperature. The same subtraction, of a product of a conjugate pair, is what relates the log-partition function of an exponential family to its entropy. The object has a name. It is the reason the exponential family has two coordinate charts, and it is why the geometry of weeks 5--6 is *dually* flat rather than merely Riemannian.}
+changed the independent variable from entropy to temperature. The same subtraction, of a product of a conjugate pair, is what relates the log-partition function of an exponential family to its entropy. The object has a name. It is the reason the exponential family has two coordinate charts, and it is why the geometry of weeks 6--7 is *dually* flat rather than merely Riemannian.}
 
 \slidesincremental{
-* Week 1: $F = U - TS$
+* Week 2: $F = U - TS$
 * Same subtraction, new name
 * Why the exponential family has two charts
 }
@@ -38,15 +38,31 @@ $$
 
 \notes{Internal energy $U$ is naturally a function of entropy. Temperature is the slope, $T = \partial U/\partial S$. Helmholtz free energy
 $$
-F(T) = U - TS
+F(T,V,N) = U - TS
 $$
-is the Legendre transform that makes $T$ the independent variable. That is why a bath, which fixes temperature rather than entropy, is described by $F$ and not by $U$. Week 1's accounting $F = U - TS = -kT\log Z$ is this transform plus the Boltzmann occupation.}
+is the Legendre transform that makes $T$ the independent variable. That is why a bath, which fixes temperature rather than entropy, is described by $F$ and not by $U$. Week 2's accounting $F = U - TS = -kT\log Z$ is this transform plus the Boltzmann occupation.}
 
 \slidesincremental{
-* $U(S)$: energy as a function of entropy
+* $U(S,V,N)$: energy as a function of entropy
 * $T = \partial U/\partial S$: the slope
-* $F(T) = U - TS$: same physics, bath coordinates
+* $F(T,V,N) = U - TS$: same physics, bath coordinates
 }
+
+\newslide{Helmholtz Versus Gibbs}
+
+\notes{Which potential you use is which variables the bath fixes. Helmholtz $F(T,V,N)$ is natural when temperature and volume are controlled — the canonical ensemble, and the setting for almost everything in this module. Gibbs free energy
+$$
+G(T,P,N) = F + PV = U - TS + PV = H - TS
+$$
+is the further Legendre transform that swaps volume for pressure. Chemistry and open-flask reactions typically hold $T$ and $P$ fixed, so they minimise $G$; the chemical potential is $\mu = (\partial G/\partial N)_{T,P}$. We stay with $F$ and $Z$ because our baths are temperature baths on a fixed discrete state space: there is no piston, and ``volume'' is not an independent control. Name $G$ so a chemistry textbook does not look like a different subject. Do not derive the full chemical-potential calculus here.}
+
+\slidesincremental{
+* Potential $\leftrightarrow$ which variables the bath fixes
+* $F(T,V,N)=U-TS$: fixed $T$, fixed volume (our setting; $Z$)
+* $G(T,P,N)=F+PV=H-TS$: fixed $T$, fixed pressure (chemistry; $\mu$)
+}
+
+\speakernotes{One slide only. Chemists minimise $G$ at fixed $T,P$; we minimise $F$ / maximise entropy at fixed $T$ and fixed state space. Same Legendre idea. No grand canonical, no mixing entropy unless a student asks.}
 
 \newslide{Entropy as Conjugate of the Log-Partition}
 
