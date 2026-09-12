@@ -5,37 +5,41 @@
 
 \subsection{Lagrange Multipliers}
 
-\notes{Many problems in physics, engineering and machine learning ask us to optimise a function subject to constraints. For example, we free energy minimisation, or maximising entropy while matching observed averages.[^free-entropy] Lagrange multipliers turn such constrained problems into unconstrained ones.}
+\notes{Many problems in physics, engineering and machine learning ask us to optimise a function subject to constraints. For example, we free energy minimisation, or maximising entropy while matching observed averages.[^free-entropy] Principal component analysis can be formulated as finding directions in data of maximum variance. Each direction is constrained to be orthogonal to the previous one. Lagrange multipliers turn these constrained problems into unconstrained ones.}
 
 \notes{[^free-entropy]: Although because total energy is given by free energy plus temperature-scaled entropy, these two optimisations are two sides of the same coin.}
 
 \slides{
-* Constrained optimisation appears throughout inference and physics
+* Constrained optimisation appears throughout physics, engineering and machine learning.
 * Lagrange multipliers convert constraints into terms in an auxiliary function
 * At the optimum, the objective gradient is normal to the constraint surface
 }
 
 \subsection{One Equality Constraint}
 
-\notes{Consider
-$$
-\text{extremise } f(\mathbf{x}) \quad \text{subject to } g(\mathbf{x}) = c.
-$$
-Introduce a multiplier $\lambda$ and form the Lagrangian
+\notes{If we want to find a stationary point of a function, $f(\mathbf{x})$, and we know that another function $g(\mathbf{x}) = c$ is constrained such that $g(\mathbf{x}) = c$ we 
+introduce a *Lagrange multiplier*, often denoted by $\lambda$ and form the *Lagrangian*,
 $$
 \mathscr{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda\bigl(g(\mathbf{x}) - c\bigr).
 $$
-At a constrained extremum (under standard regularity conditions) we require
-\begin{align}
-\nabla_{\mathbf{x}} \mathscr{L} &= \nabla f + \lambda \nabla g = 0, \\
-\frac{\partial \mathscr{L}}{\partial \lambda} &= g(\mathbf{x}) - c = 0.
-\end{align}
-The first condition says that $\nabla f$ is parallel to $\nabla g$: the gradient of the objective is perpendicular to the constraint surface. The second condition enforces the constraint itself.}
+We are optimising with respect to $\mathbf{x}$ and the gradient of the Lagrangian is given by
+$$
+\nabla_{\mathbf{x}} \mathscr{L} &= \nabla f + \lambda \nabla g,
+$$
+but we now also have the gradient of the Lagrangian with respect to the Lagrange multiplier,
+$$
+\frac{\partial \mathscr{L}}{\partial \lambda} &= g(\mathbf{x}) - c.
+$$
+Think about what happens when we set both gradients to zero (as we would do if we were looking for a stationary point of an unconstrained function). The first equation is now
+$$
+\nabla f + \lambda \nabla g = \mathbf{0}
+$$
+which tells us that $\nabla f$ is parallel to $\nabla g$, and therefore the gradient of the objective, $\nabla f$, is perpendicular to the constraint surface.}
 
 \slides{
 **Single constraint:**
 $$
-\mathscr{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda\bigl(g(\mathbf{x}) - c\bigr)
+\mathscr{L}(\mathbf{x}, \lambda) = f(\mathbf{x}) + \lambda\left(g(\mathbf{x}) - c\right)
 $$
 
 **Stationarity:**
@@ -43,6 +47,19 @@ $$
 \nabla f + \lambda \nabla g = 0, \qquad g(\mathbf{x}) = c
 $$
 }
+\newslide{}
+
+\setupplotcode{import matplotlib.pyplot as plt
+import numpy as np
+import mai}
+\plotcode{% Drawing of two vectors in same direction, one scaled smaller
+% Second plot. When second is scaled by \lambda they are identical}
+
+\notes{The second condition, 
+$$
+g(\mathbf{x}) - c = 0,
+$$
+just enforces the constraint itself ($g(\mathbf{x}) = c$).}
 
 \newslide{Geometric picture}
 
