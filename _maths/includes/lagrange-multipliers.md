@@ -24,11 +24,11 @@ $$
 $$
 We are optimising with respect to $\mathbf{x}$ and the gradient of the Lagrangian is given by
 $$
-\nabla_{\mathbf{x}} \mathscr{L} &= \nabla f + \lambda \nabla g,
+\nabla_{\mathbf{x}} \mathscr{L} = \nabla f + \lambda \nabla g,
 $$
 but we now also have the gradient of the Lagrangian with respect to the Lagrange multiplier,
 $$
-\frac{\partial \mathscr{L}}{\partial \lambda} &= g(\mathbf{x}) - c.
+\frac{\partial \mathscr{L}}{\partial \lambda} = g(\mathbf{x}) - c.
 $$
 Think about what happens when we set both gradients to zero (as we would do if we were looking for a stationary point of an unconstrained function). The first equation is now
 $$
@@ -47,13 +47,36 @@ $$
 \nabla f + \lambda \nabla g = 0, \qquad g(\mathbf{x}) = c
 $$
 }
-\newslide{}
+\newslide{Stationarity: parallel gradients}
 
-\setupplotcode{import matplotlib.pyplot as plt
-import numpy as np
-import mai}
-\plotcode{% Drawing of two vectors in same direction, one scaled smaller
-% Second plot. When second is scaled by \lambda they are identical}
+\setupplotcode{import mlai.plot as plot}
+
+\plotcode{plot.lagrange_parallel_vectors(diagrams='\writeDiagramsDir/physics/')}
+
+\setupdisplaycode{import notutils as nu
+from ipywidgets import IntSlider}
+\displaycode{nu.display_plots('lagrange-parallel-vectors{sample:0>3}.svg',
+                                          directory='\writeDiagramsDir/physics',
+                                          sample=IntSlider(0, 0, 12, 1))}
+
+\slides{\define{width}{70%}
+\startanimation{lagrange-parallel-vectors}{0}{13}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors000}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors001}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors002}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors003}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors004}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors005}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors006}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors007}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors008}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors009}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors010}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors011}{\width}}{lagrange-parallel-vectors}
+\newframe{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors012}{\width}}{lagrange-parallel-vectors}
+\endanimation}
+
+\notes{\figure{\includediagram{\diagramsDir/physics/lagrange-parallel-vectors012}{70%}}{At stationarity, $\nabla f + \lambda\nabla g = \mathbf{0}$: the objective gradient is balanced by the constraint gradient scaled by $\lambda$ (here $\lambda = -\frac{1}{2}$ in the worked example).}{lagrange-parallel-vectors-figure}}
 
 \notes{The second condition, 
 $$
