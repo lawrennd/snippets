@@ -5,7 +5,9 @@
 
 \subsection{Lagrange Multipliers}
 
-\notes{Many problems in physics and machine learning ask us to optimise a function subject to constraints. We might minimise energy while holding volume fixed, or maximise entropy while matching observed averages. Lagrange multipliers turn such constrained problems into unconstrained ones.}
+\notes{Many problems in physics, engineering and machine learning ask us to optimise a function subject to constraints. For example, we free energy minimisation, or maximising entropy while matching observed averages.[^free-entropy] Lagrange multipliers turn such constrained problems into unconstrained ones.}
+
+\notes{[^free-entropy]: Although because total energy is given by free energy plus temperature-scaled entropy, these two optimisations are two sides of the same coin.}
 
 \slides{
 * Constrained optimisation appears throughout inference and physics
