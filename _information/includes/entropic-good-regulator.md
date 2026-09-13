@@ -5,7 +5,7 @@
 
 \subsection{Purely Entropic Good Regulator}
 
-\notes{Conant and Ashby define successful regulation by minimising the entropy of the outcome $Z$: $H(Z)\to\min$ [@Conant-Ashby70]. A regulator is a policy $\pi(a\mid s)=p(a\mid s)$. The theorem proper is not an information-bottleneck slogan and not the course punchline. It is an existence result earned from the concavity of Shannon entropy: among optimal regulators there is a simplest one with zero conditional action entropy, $H(A\mid S)=0$, equivalently $A=h(S)$. That is the sense in which the regulator is a ``model'' of the system --- a deliberately weak sense, as the caveats below make precise.}
+\notes{Conant and Ashby define successful regulation by minimising the entropy of the outcome $Z$: $H(Z)\to\min$ [@Conant-Ashby70]. A regulator is a policy $\pi(a\mid s)=p(a\mid s)$.  This is an existence result that comes from the concavity of Shannon entropy: among optimal regulators there is a simplest one with zero conditional action entropy, $H(A\mid S)=0$, equivalently $A=h(S)$. That is the sense in which the regulator is a ``model'' of the system --- a deliberately weak sense, as the caveats below make precise.}
 
 \newslides{Requisite Variety, Entropically}
 
