@@ -5,18 +5,18 @@
 
 \subsection{Fisher Information as Geometry}
 
-\notes{In the previous section, we saw that for exponential families, the Fisher information matrix appears as the second derivative of the log partition function
+\notes{We already have three readings of the same matrix: Fisher's expected squared score, Fréchet–Rao–Cramér identifiability, and --- for exponential families --- the Hessian
 $$
 G(\boldsymbol{\theta}) = \nabla^2 \mathcal{A}(\boldsymbol{\theta}) = \mathrm{Cov}_{\boldsymbol{\theta}}[T(\mathbf{x})].
 $$
-We now develop the geometric interpretation: the Fisher information matrix defines a *metric* on the space of probability distributions.}
+We now develop the geometric interpretation: that matrix defines a *metric* on the space of probability distributions.}
 
 \slides{
-**From last section:**
+**Same $G$, three origins:**
 $$
 G(\boldsymbol{\theta}) = \nabla^2 \mathcal{A}(\boldsymbol{\theta}) = \mathrm{Cov}_{\boldsymbol{\theta}}[T(\mathbf{x})]
 $$
-* Now: What does this *mean* geometrically?
+* Fisher / CR / Hessian --- now as Riemannian metric
 }
 
 \subsubsection{The Statistical Manifold}
@@ -52,23 +52,19 @@ $$
 
 \subsubsection{Connection to Statistical Estimation}
 
-\notes{This geometric picture connects directly to Fisher's original motivation. The *Cramér-Rao bound* states that for any unbiased estimator $\hat{\boldsymbol{\theta}}$ of parameters $\boldsymbol{\theta}$,
+\notes{The geometric picture restates the Fréchet–Rao–Cramér bound. For any unbiased estimator $\hat{\boldsymbol{\theta}}$,
 $$
 \text{cov}(\hat{\boldsymbol{\theta}}) \succeq G^{-1}(\boldsymbol{\theta}),
 $$
-where $\succeq$ denotes that the left side minus the right side is positive semidefinite.
-
-Geometrically, this means: higher Fisher information (stronger metric) implies tighter bounds on estimation. The inverse $G^{-1}$ gives the *minimum possible* covariance of any unbiased estimator, it's the fundamental limit on how well we can estimate parameters from data.}
+where $\succeq$ denotes that the left side minus the right side is positive semidefinite. Higher Fisher information (stronger metric) means tighter estimation; $G^{-1}$ is the error ellipsoid.}
 
 \slides{
-*Cramér-Rao Bound:*
+*Cramér–Rao (restated geometrically):*
 $$
 \text{cov}(\hat{\boldsymbol{\theta}}) \succeq G^{-1}(\boldsymbol{\theta})
 $$
-* $G^{-1}$ = best possible estimator covariance
-* High $G$ → small $G^{-1}$ → tight estimation
-* Low $G$ → large $G^{-1}$ → loose estimation
-* Geometric picture: $G^{-1}$ is "error ellipsoid"
+* $G^{-1}$ = error ellipsoid
+* High $G$ → tight estimation; low $G$ → loose
 }
 
 \newslide{Why This Matters for Dynamics}
