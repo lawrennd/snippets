@@ -5,18 +5,20 @@
 
 \subsection{Derivation of the Boltzmann Distribution}
 
-\notes{For a given mean energy $U$. Among all distributions with the right $U$, pick the one 
-with largest entropy.}
-\slides{For given fixed $U$ maximum entropy constraints}
+\notes{For a given mean energy $U$, among all distributions with that $U$, pick the one with largest entropy. Week 2 named the Gibbs--Boltzmann occupation; this is the MaxEnt derivation that earns it.}
+
+\slides{For fixed mean energy $U$, maximum entropy recovers Boltzmann weights.}
 \slidesincremental{
 * Constraints: $\sum_i p_i = 1$ and $\sum_i p_i E_i = U$
 * MaxEnt: $p_i \propto e^{-\beta E_i}$ with coldness $\beta = 1/k_B T$
 * Normalise: $Z(\beta)=\sum_i e^{-\beta E_i}$, so $p_i = e^{-\beta E_i}/Z$
 }
 
-<!-- include derivation of the board. Lagrange multipliers → Boltzmann. Coldness $\beta$ next; $T$ is the bath reading. Derive on the board. Two-state occupations for intuition; three-state free-energy plot below. -->
+<!-- Board derivation: Lagrange multipliers → Boltzmann. Coldness $\beta$ is the multiplier on mean energy; $T$ is the bath reading. Two-state occupations for intuition. -->
 
-\notes{Maximum entropy subject to normalisation and fixed mean energy gives $p_i = e^{-\beta E_i}/Z$.}
+\speakernotes{LO5. This is the derivation postponed from week 2. Board the Lagrange multipliers; do not treat the formula as new.}
+
+\notes{Maximum entropy subject to normalisation and fixed mean energy gives $p_i = e^{-\beta E_i}/Z$. The Lagrange multiplier on the energy constraint *is* coldness $\beta$ from weeks 1--2.}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
