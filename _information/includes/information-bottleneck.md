@@ -26,7 +26,7 @@ p(t\mid x) \propto p(t)\,\exp\bigl(-\beta\,\mathrm{KL}\bigl(p(y\mid x)\,\|\,p(y\
 $$
 the same Boltzmann form as week 4, now with a KL sufficient statistic. We do not run Blahut--Arimoto. The point is the pair: DPI is the no-go; the bottleneck is how you spend $I$.}
 
-\notes{Week 4 asked for the least-committal $p$ given moments. Here the constraint is a mutual information. Same Lagrange move, different constraint. Week 8 will use the bottleneck to evaluate intelligence claims: a system that keeps only what is relevant for action is making an IB statement. Requisite variety and the Good Regulator remain named colour; this is a theorem.}
+\notes{Week 4 asked for the least-committal $p$ given moments. Here the constraint is a mutual information. Same Lagrange move, different constraint. Later in this session the bottleneck evaluates intelligence claims: a system that keeps only what is relevant for action is making an IB statement. In control language the same move is $\min I(S;R)$ subject to $H(Z)\le\epsilon$ --- build the smallest model that still regulates. Requisite variety and the Good Regulator remain named colour for that second-half reading; the information bottleneck itself is a theorem.}
 
 \addreading{@Tishby:bottleneck99}{the method; optional}
 
