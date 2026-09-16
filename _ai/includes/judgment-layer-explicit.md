@@ -3,9 +3,8 @@
 
 \editme
 
-\subsection{The Judgment Layer}
 
-\newslide{Organisations as emulsions}
+\subsection{Judgment Layer: Organisations as emulsions}
 
 \slidesincremental{
 * Organisations are a stable mixture: automatable *routines* and irreducible *human context*.
