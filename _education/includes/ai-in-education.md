@@ -18,8 +18,7 @@ whose AiEd Certified framework gives schools and colleges a structured way
 to audit AI practice, appoint champions, draft policy and share evidence.
 The Explorer workbook asks narrative, context-specific questions rather
 than chasing a perfect score. Early evaluation with participating
-institutions reports rising confidence and clearer strategic direction
-@Alcock-edulearn26.}
+institutions reports rising confidence and clearer strategic direction.}
 
 \newslide{Document: AiEd Certified}
 
@@ -31,8 +30,7 @@ institutions reports rising confidence and clearer strategic direction
 * Book a discovery call: [ai-in-education.co.uk/book-a-meeting](https://www.ai-in-education.co.uk/book-a-meeting)
 }
 
-\notes{Sarah Alcock, Chris Goodall and Alex Russell describe the framework
-in @Alcock-edulearn26. For this audience the point is documentation as
+\notes{For this audience the point is documentation as
 capability-building: schools that write down what they are doing can
 compare practice, celebrate progress and avoid becoming passive
 customers of vendor narratives. Prefer the discovery-call link over an
