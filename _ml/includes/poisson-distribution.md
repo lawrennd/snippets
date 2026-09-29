@@ -7,7 +7,7 @@
 
 \slides{
 * Poisson distribution is used for 'count data'. For non-negative integers, $y$, 
-  $$P(y) = \frac{\lambda^y}{y!}\exp(-y)$$
+  $$P(y) = \frac{\lambda^y}{y!}\exp(-\lambda)$$
 * Here $\lambda$ is a *rate* parameter that can be thought of as the number of arrivals per unit time.
 * Poisson distributions can be used for disease count data. E.g. number of incidence of malaria in a district.
 }
