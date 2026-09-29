@@ -16,17 +16,17 @@
 * Fair coin: $H=1$ bit; certain outcome: $H=0$
 }
 
-\notes{This is a *review* of the definition, not the axiomatic derivation (that is week 3 / LO2). You need enough fluency to ask an LLM about entropy without confusing the symbol $H$ with heat, and to probe whether a claim is about uncertainty, coding length, or thermodynamic irreversibility. The expectations example above already computed $H$ as $\mathbb{E}[-\log P(y)]$.}
+\notes{This is a *review* of the definition, not an axiomatic derivation. Enough fluency is needed to talk about entropy without confusing the symbol $H$ with heat, and to ask whether a claim is about uncertainty, coding length, or thermodynamic irreversibility. The expectations example above already computed $H$ as $\mathbb{E}[-\log P(y)]$.}
 
 \newslides{What $H$ Is Not (Yet)}
 
 \slidesincremental{
 * Not yet Clausius's thermodynamic entropy — same formula, different job
 * Not yet a channel-capacity theorem
-* Operational split for this course: entropy often *forbids*; probability *prescribes*
+* Operational split: entropy often *forbids*; probability *prescribes*
 }
 
-\notes{Thermodynamic entropy $S$ and Shannon $H$ will be connected formally in week 3 ($S = kH$ in equilibrium statistical mechanics). Today, treat $H$ as uncertainty of a discrete distribution. When an LLM says "entropy," ask: entropy of *what*, under *which* operational reading?}
+\notes{Thermodynamic entropy $S$ and Shannon $H$ share a functional form; in equilibrium statistical mechanics one often writes $S = kH$. Here, treat $H$ as uncertainty of a discrete distribution. When someone says "entropy," ask: entropy of *what*, under *which* operational reading?}
 
 \newslides{Joint, Conditional, Chain Rule (Names Only)}
 
@@ -36,6 +36,6 @@
 * Chain rule: $H(X,Y)=H(X)+H(Y\mid X)$
 }
 
-\speakernotes{Do not prove the chain rule today. Name it so Worksheet 1 probes can use the vocabulary.}
+\speakernotes{Do not prove the chain rule here. Name it so later discussion can use the vocabulary.}
 
 \endif

@@ -38,7 +38,7 @@ $$
 * $P(x)=\sum_y P(x\mid y)P(y)$ when $y$ is discrete
 }
 
-\notes{Bayes is not a third axiom; it is the product rule rearranged. Quiz 1 will ask you to apply it on a small discrete example (barrels, coins, two hypotheses).}
+\notes{Bayes is not a third axiom; it is the product rule rearranged. The barrels example below is a small discrete inversion of the conditioning.}
 
 \include{_ml/includes/bayes-rule-barrels-example.md}
 

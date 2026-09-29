@@ -32,6 +32,6 @@
          = & \frac{20/24 \times 0.5}{7/12} = 5/7
   \end{aligned}$$}
 
-\notes{Work the numbers on the board if time allows. Quiz 1 will ask a similar discrete inversion (barrels, coins, or two hypotheses).}
+\notes{Work the numbers on the board if time allows. The same pattern applies to coins, medical tests, or any two-hypothesis discrete update.}
 
 \endif

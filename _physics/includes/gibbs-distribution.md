@@ -5,7 +5,7 @@
 
 \subsection{The Gibbs--Boltzmann Distribution}
 
-\notes{Week 1 seeded $p_i\propto e^{-\beta E_i}$. Today we name the object and fix the formula. The MaxEnt derivation that *earns* those weights waits for week 5: deriving the occupation from Lagrange multipliers before Shannon $H$ and Jaynes would put the cart before the horse.}
+\notes{Name the object and fix the formula. The MaxEnt derivation that *earns* these weights is a separate step: deriving the occupation from Lagrange multipliers before Shannon $H$ and Jaynes would put the cart before the horse.}
 
 \newslides{Gibbs--Boltzmann Occupation}
 
@@ -17,7 +17,7 @@
 * $\log Z$ is the cumulant generating function of the energy
 }
 
-\speakernotes{LO1. Introduce and use, do not derive. Board the formula. Week 5: MaxEnt with fixed mean energy recovers the same $p_i$.}
+\speakernotes{Introduce and use, do not derive. Board the formula. MaxEnt with fixed mean energy recovers the same $p_i$.}
 
 \notes{Write the equilibrium occupation of a discrete system with energies $\{E_i\}$ as
 $$
@@ -25,7 +25,7 @@ p_i = \frac{e^{-\beta E_i}}{Z(\beta)},
 \qquad
 Z(\beta)=\sum_j e^{-\beta E_j}.
 $$
-Physicists call $p_i$ the *Boltzmann distribution* (or Boltzmann weights) and, for a system exchanging energy with a bath at fixed $T$, the *Gibbs distribution* or *canonical ensemble*. The three names point at the same formula. The normalisation $Z(\beta)$ is the *partition function*. Its logarithm $\log Z(\beta)$ is the cumulant generating function for the energy under this exponential family: derivatives of $\log Z$ recover the mean energy, the variance (heat capacity, up to factors of $\beta$), and higher cumulants. That generating-function reading is why weeks 3 and 5 treat $Z$ as more than a normalisation constant.}
+Physicists call $p_i$ the *Boltzmann distribution* (or Boltzmann weights) and, for a system exchanging energy with a bath at fixed $T$, the *Gibbs distribution* or *canonical ensemble*. The three names point at the same formula. The normalisation $Z(\beta)$ is the *partition function*. Its logarithm $\log Z(\beta)$ is the cumulant generating function for the energy under this exponential family: derivatives of $\log Z$ recover the mean energy, the variance (heat capacity, up to factors of $\beta$), and higher cumulants. That generating-function reading is why $Z$ is more than a normalisation constant.}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -52,15 +52,14 @@ mlai.write_figure('two-state-boltzmann.svg', directory='\writeDiagramsDir/physic
 \slides{The same energy-and-occupation grammar reappears in associative memory and early deep learning.}
 
 \slidesincremental{
-* Hopfield (1982): energy over binary configurations; recall as settling
-* Boltzmann machine (1985): make those weights *learnable*
-* Week 4: one physical bit as an equal double well (Landauer)
+* Hopfield (1982): fixed-weight energy; recall as settling
+* Boltzmann machine (1985): make those couplings *learnable*
+* Pairwise energy: $E(\mathbf{s})=-\sum_i b_i s_i-\sum_{i<j}W_{ij}s_i s_j$
 }
 
-\speakernotes{Colour only. Not a new outcome. Nobel 2024 (Hopfield and Hinton) names the line. Week 4 draws the one-bit well; week 5 returns with the two-spin Boltzmann machine.}
+\speakernotes{Colour only. Nobel 2024 (Hopfield and Hinton) names the line. Do not divert into training algorithms or Landauer here.}
 
-\notes{The Gibbs--Boltzmann occupation is not only a statement about gases and magnets. Hopfield networks [@Hopfield:neural82] assign an energy to every binary configuration of a recurrent net and treat recall as a descent toward low-energy states --- equilibrium statistics are again Gibbs. Ackley, Hinton and Sejnowski [@Ackley-boltzmann85] made the weights of that energy *learnable*: a Boltzmann machine is an undirected model whose distribution over configurations is exactly $p(s)\propto e^{-E(s)/T}$. The 2024 Nobel Prize in Physics, awarded to John Hopfield and Geoffrey Hinton, recognised that physical-systems reading of computation and learning. Name the lineage here so the formula does not feel confined to nineteenth-century heat baths; do not divert the lecture into training algorithms. Week 4 will draw the physical one-bit substrate --- a thermal particle in an equal-depth double well --- when Landauer prices erasure; week 5 meets the smallest Boltzmann machine as a two-spin MaxEnt model with a correlation constraint.}
-
+\notes{The Gibbs--Boltzmann occupation is not only a statement about gases and magnets. Hopfield networks [@Hopfield:neural82] assign an energy to every binary configuration of a recurrent net and treat recall as a descent toward low-energy states --- equilibrium statistics are again Gibbs. Ackley, Hinton and Sejnowski [@Ackley-boltzmann85] made the weights of that energy *learnable*: a Boltzmann machine is an undirected model whose distribution over configurations is exactly $p(s)\propto e^{-E(s)/T}$. The 2024 Nobel Prize in Physics, awarded to John Hopfield and Geoffrey Hinton, recognised that physical-systems reading of computation and learning. Name the lineage so the formula does not feel confined to nineteenth-century heat baths; do not divert into training algorithms.}
 \addreading{@Ackley-boltzmann85}{Boltzmann machines (optional colour)}
 \addreading{@Hopfield:neural82}{Hopfield networks (optional colour)}
 

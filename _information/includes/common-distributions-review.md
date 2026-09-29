@@ -6,9 +6,9 @@
 
 \newslides{Named Distributions You Need}
 
-\slides{Five families appear throughout the course. Know the support, the parameter, and one generative story for each.}
+\slides{Five families recur across modelling. Know the support, the parameter, and one generative story for each.}
 
-\notes{These are prerequisites restated, not new theory. Quiz 1 will ask recognition and simple calculations. Later weeks recover several of them as maximum-entropy distributions.}
+\notes{These are prerequisites restated, not new theory. Several of them reappear later as maximum-entropy distributions under moment constraints.}
 
 \newslides{Bernoulli and Binomial}
 
@@ -18,7 +18,7 @@
 * Mean $np$, variance $np(1-p)$
 }
 
-\notes{A fair coin is Bernoulli($1/2$). The two-state thermal system you meet next week is Bernoulli in disguise once energies are fixed.}
+\notes{A fair coin is Bernoulli($1/2$). A two-state thermal system with fixed energies is Bernoulli once occupation probabilities are written down.}
 
 \newslides{Poisson and Multinomial}
 
@@ -34,11 +34,11 @@
 
 \slidesincremental{
 * $\mathcal{N}(\mu,\sigma^2)$: continuous density on $\mathbb{R}$
-* Fixed by mean and variance; MaxEnt under those constraints (week 5)
+* Fixed by mean and variance; MaxEnt under those constraints
 * Multivariate form: mean vector and covariance matrix
 }
 
-\notes{Differential entropy of a Gaussian grows with $\sigma$ and can be negative — that subtlety waits until week 6. Today: recognise the density and the two parameters.}
+\notes{Differential entropy of a Gaussian grows with $\sigma$ and can be negative. For a review, recognise the density and the two parameters.}
 
 \include{_ml/includes/univariate-gaussian.md}
 
