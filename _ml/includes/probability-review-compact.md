@@ -14,7 +14,7 @@
 
 \notes{Notation: we often write $P(x,y)$ for $P(X=x,Y=y)$. Unlike a generic bivariate function, $P(x,y)=P(y,x)$.}
 
-\newslides{Product Rule and Sum Rule}
+\newslide{Product Rule and Sum Rule}
 
 \slidesincremental{
 * Product: $P(x,y)=P(x\mid y)P(y)$
@@ -24,7 +24,7 @@
 
 \notes{The product rule relates joint and conditional. The sum rule recovers a marginal by summing out the variable you do not care about. Continuous analogues replace sums by integrals.}
 
-\newslides{Bayes' Rule}
+\newslide{Bayes' Rule}
 
 \slides{
 $$
