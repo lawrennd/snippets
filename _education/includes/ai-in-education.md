@@ -36,8 +36,4 @@ compare practice, celebrate progress and avoid becoming passive
 customers of vendor narratives. Prefer the discovery-call link over an
 email address when pointing people onward.}
 
-\speakernotes{Flag that Sarah Alcock is presenting earlier in the Summit
-(Responsible AI implementation), alongside Explorer-certified Hills Road
-Sixth Form College.}
-
 \endif
