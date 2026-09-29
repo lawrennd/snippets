@@ -4,11 +4,15 @@
 
 \subsection{From Loss Landscapes to Hamiltonians}
 
-\notes{The energies of the previous section --- quadratic residual, cross-entropy, Boltzmann-machine pairwise score --- are not only static formulae. Training *moves* on them. This section reconnects that movement to classical mechanics: the loss is a potential, gradient descent is walking downhill, practice is stochastic, and Hamiltonian Monte Carlo restores the missing kinetic energy.}
+\notes{Seeing standard energies from machine learning as simply the logarithm of the probability leads to a form of static energy. It's only the "potential energy" of a system. The aim is to find the minimum potential energy, and that is what we call learning. So what of "kinetic energy".}
+
+\notes{We can think of the movement of the system as being the *learning dynamics*. The training is the movement of the parameters towards the minimum. That movement could have mass, and therefore momentum and kinetic energy.}
+
+\notes{Sometimes this analogy is proposed, like in momentum variables for stochastic gradient descent, but the analogy seems loose. One place where it's tight is *Hamiltonian Monte-Carlo*. }
 
 \newslides{Walking Down an Energy}
 
-\slides{Gradient descent on a loss is walking downhill on an energy surface.}
+\slides{Gradient descent: 'walking downhill'}
 
 \slidesincremental{
 * Contours of $E(\mathbf{w})$ = elevation lines on a hill
@@ -16,7 +20,9 @@
 * Same $E$ as least squares / negative log-likelihood
 }
 
-\notes{Imagine standing on a hillside in fog and wanting the bottom. You cannot see the whole landscape, but you can feel the steepest downward slope at your feet. Repeated steps opposite the gradient reach a local minimum. That is gradient descent on $E(\mathbf{w})$ --- for linear least squares, the bowl is convex and the minimum is unique.}
+\notes{Imagine a mass on a hill. It is sensitive to the pull of gravity as transmitted to it through the local slope. This is the potential energy, $E(\mathbf{w})$, acting as a force. The force is taken by the gradient of the potential energy which gives the slope, $\nabla E(\mathbf{w})$.}
+
+\notes{In gradient descent we take repeated steps opposite the gradient to reach a local minimum. We consider a little example below where the loss surface, the energy, is taken from a small regression problem where the true line has a gradient of $m=1.4$ and an offset of $c=-3.1$. We sample some data from that line by adding noise with a standard deviation of $0.15$. Then we show the energy landscape for this system.}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -43,6 +49,8 @@ mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 
 \figure{\includediagram{\diagramsDir/ml/loss-energy-contour}{55%}}{Contours of the least-squares energy $E(m,c)=\sum_n(y_n-mx_n-c)^2$. Steepest descent walks toward the bowl.}{loss-energy-contour}
 
+\notes{In physics the parameters would be the position, $q$, instead of the weights, $w$. And typically (for a Hamiltonian) we denote the potential energy in physics by $V(\cdot)$, so instead of $E(\mathbf{w})$ we have $V(\mathbf{q})$.}
+
 \newslides{Potential Energy}
 
 \slides{The loss is a *potential energy* $V(\mathbf{q})$ on parameter space.}
@@ -53,11 +61,17 @@ mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 * Common analogy: ball in a bowl; GD is the overdamped limit
 }
 
-\notes{In mechanics, potential energy $V(\mathbf{q})$ depends on position. Gravity on a landscape is the everyday example; electrostatic energy of a charge configuration is another. Gradient descent treats model parameters as a position $\mathbf{q}$ and the training objective as $V(\mathbf{q})$. The update $\mathbf{q}\leftarrow\mathbf{q}-\eta\nabla V$ is the discrete, friction-dominated limit of a particle sliding on that potential --- no inertia, only the force from $V$.}
+\notes{So in mechanics, potential energy $V(\mathbf{q})$ depends on position, $q$. Gravity on a landscape is the everyday example mentioned above. But there are other forms of potential energy, for example the electrostatic energy of a charge configuration. Or the displacement of a spring. Gradient descent treats model parameters as a position $\mathbf{q}$ and the training objective as $V(\mathbf{q})$. The update $\mathbf{q}\leftarrow\mathbf{q}-\eta\nabla V$ is a discrete, \emph{friction}-dominated limit of a particle sliding on a potential. There is no inertia, there is only force from $V(\cdot)$.}
 
 \newslides{In Practice: Stochastic}
 
-\slides{Large-scale training estimates $\nabla V$ from a random mini-batch --- stochastic gradient descent.}
+\notes{Modern neural network models train when the number of data points is very large. This makes computing the exact gradients very computationally expensive. The energy is typically decomposed as a sum over data points,
+$$
+E(\mathbf{w}, \mathbf{X}) = \sum_i E(\mathbf{w}, \mathbf{x}_i)
+$$
+where the full data $\mathbf{X} = \{ \mathbf{x}_i\}_{i=1}^\numData$.}
+
+\slides{SGD estimates $\nabla V$ from a random mini-batch}
 
 \slidesincremental{
 * Full-batch $\nabla V$: exact force, expensive
@@ -65,25 +79,27 @@ mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 * Noise can help escape shallow traps (less relevant for convex bowls)
 }
 
-\notes{When $n$ is huge, summing the residual energy over every datum each step is prohibitive. Stochastic gradient descent replaces $\nabla V$ by an unbiased estimate from one example or a mini-batch. The walk is no longer smooth: the particle feels a jittering force. That is still dynamics on a *potential*; only the force estimate is random.}
+\notes{So when $\numData$ is huge, the sum becomes prophibitive. Stochastic gradient descent replaces $\nabla V$ by an unbiased estimate from one example or a mini-batch. The walk is no longer smooth: the particle feels a jittering force. That is still dynamics on a *potential*; only the force estimate is random.}
+
+\notes{The closely related stochastic gradient with Langevin dynamics (SGLD, @Welling-langevin11) makes this connection very explicit. There the descent is taken to be a descent in a high friction regime which is subject to *thermal noise*. Thermal noise is the response of the descending particle to being bumped by particles of a surrounding fluid, like in Brownian motion. So SGLD is like Brownian motion in a potential well.}
 
 \newslides{Where Is the Kinetic Energy?}
 
-\slides{Potential alone is only half of classical mechanics. Where is the kinetic energy?}
+\slides{Where is the kinetic energy?}
 
 \slidesincremental{
-* GD / SGD: overdamped --- friction, no momentum inventory
+* GD / SGD: overdamped---friction, no momentum inventory
 * Momentum methods (heavy ball, Adam): heuristic inertia
-* Physics: kinetic energy $K(\mathbf{p})$ lives on *momentum* $\mathbf{p}$
+* Physics: kinetic energy $T(\mathbf{p})$ lives on *momentum* $\mathbf{p}$
 }
 
-\notes{A Newtonian particle has both potential and kinetic energy. Pure gradient descent never tracks a momentum conjugate to $\mathbf{q}$; each step forgets velocity. Momentum SGD and Adam reintroduce inertia heuristically. Hamiltonian mechanics does it properly: introduce momentum $\mathbf{p}$ and a kinetic energy $K(\mathbf{p})$, usually $\frac{1}{2}\mathbf{p}^\top M^{-1}\mathbf{p}$.}
+\notes{A classical particle has both potential and kinetic energy. Pure gradient descent never tracks a momentum conjugate to $\mathbf{q}$; each step forgets velocity. Momentum SGD and Adam reintroduce inertia heuristically. Hamiltonian mechanics does it properly: introduce momentum $\mathbf{p}$ and a kinetic energy $T(\mathbf{p})$, usually $\frac{1}{2}\mathbf{p}^\top M^{-1}\mathbf{p}$.}
 
 \newslides{The Hamiltonian}
 
 \slides{
 $$
-H(\mathbf{q},\mathbf{p}) = K(\mathbf{p}) + V(\mathbf{q})
+H(\mathbf{q},\mathbf{p}) = T(\mathbf{p}) + V(\mathbf{q})
 $$
 }
 
@@ -93,7 +109,9 @@ $$
 * $H$ conserved along the flow (ideal, frictionless case)
 }
 
-\notes{The Hamiltonian $H$ is the sum of kinetic and potential energies. Hamilton's equations generate a flow on the joint $(\mathbf{q},\mathbf{p})$ space that conserves $H$ when the system is isolated. For sampling, one chooses $V(\mathbf{q})=-\log p(\mathbf{q})$ (up to a constant) so that the marginal on $\mathbf{q}$ under the Boltzmann weight $e^{-H}$ recovers the target density $p(\mathbf{q})$.}
+\notes{The Hamiltonian $H$ is the sum of kinetic and potential energies. Hamilton's equations are a mainstay of mechanics. They generate a flow on the joint $(\mathbf{q},\mathbf{p})$ space that conserves $H$ when the system is isolated. For sampling, one chooses $V(\mathbf{q})=-\log p(\mathbf{q})$ (up to a constant) so that the marginal on $\mathbf{q}$ under the Boltzmann weight $e^{-H}$ recovers the target density $p(\mathbf{q})$.}
+
+\addreading{Welling-generative26}{Section 3.2.1}
 
 \newslides{Hamiltonian Monte Carlo}
 
@@ -105,7 +123,13 @@ $$
 * Marginal samples of $\mathbf{q}$ target $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$
 }
 
-\notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities --- exactly the setting of Bayesian neural network weights. For a modern textbook account that places HMC among MCMC kernels in the same free-energy language as this course, see Section 11.4.2 of [@Welling-generative26] (with the Hamiltonian preliminaries in Section 3.2.1).}
+\notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities. The method was originally developed for Bayesian sampling of  neural network weights.}
+
+\notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $E(\mathbf{w})$.} 
+
+\addreading{Welling-generative26}{Section 11.4.2}
+
+\newslides{Radford Neal}
 
 \figure{\includejpg{\diagramsDir/people/radford-neal}{35%}}{Radford M. Neal (University of Toronto).}{radford-neal}
 
@@ -119,11 +143,13 @@ $$
 * PhD thesis: Bayesian neural nets; infinite width $\to$ GP [@Neal:bayesian94]
 }
 
-\notes{Radford Neal is a Canadian computer scientist at the University of Toronto whose work sits at the junction of Bayesian statistics and neural networks. In 1992 he showed how to train backpropagation networks with the hybrid Monte Carlo method [@Neal:hmc92] --- Hamiltonian dynamics as a proposal mechanism for posterior sampling over weights. His 1994 thesis [@Neal:bayesian94] remains a model of clarity: Bayesian neural nets in finite width, and the observation that infinite-width nets with suitable priors become Gaussian processes. HMC is the bridge from "energy as loss" to "energy as the potential in a physical sampler."}
+\notes{Radford Neal is a Canadian computer scientist at the University of Toronto who (along with David MacKay) introduced ideas form Bayesian statistics into machine learning and neural networks. He introduced the hybrid Monte Varlo method for training neural networks with backpropagation [@Neal:hmc92]. The Hamiltonian dynamics act as a proposal mechanism for posterior sampling over weights. His 1994 thesis [@Neal:bayesian94] is still worth reading today. Alongside the benefits of the HMC approach he showed how infinite-width nets with suitable priors become Gaussian processes. Over time the term Hamiltonian was preferred to hybrid, and this allows us to really see the connection between "energy as loss" and "energy as the potential in a physical sampler." Meaning that our sampling algorithm is being built by an analogy to a well-understood physical system.}
 
-\newslides{Hamiltonian Monte Carlo in ``mlai``}
+\addreading{@Neal:hmc92}{Hybrid Monte Carlo for backpropagation networks}
+\addreading{@Neal:bayesian94}{Bayesian Learning for Neural Networks (thesis)}
 
-\slides{Teachable HMC: invent momentum, leapfrog on $H$, Metropolis on $\Delta H$.}
+
+\subsection{Hamiltonian Monte Carlo Example}
 
 \slidesincremental{
 * Target: $V(\mathbf{q})=-\log p(\mathbf{q}\mid\mathcal{D})$ (loss as potential)
@@ -131,7 +157,7 @@ $$
 * Contrast: SGD point estimate vs HMC posterior samples
 }
 
-\notes{The reusable component lives in ``mlai.hmc`` (CIP-0008): diagonal-mass kinetic energy, leapfrog proposals, and a Metropolis correction on $\Delta H$. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl), then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
+\notes{The reusable component lives in ``mlai.hmc``. It has diagonal-mass kinetic energy, leapfrog proposals, and a Metropolis correction on $\Delta H$. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl), then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
 
 \code{# 2D quadratic potential: V(q)=0.5||q||^2  (standard normal target).
 # Leapfrog trajectories on the same contour language as regression_contour.
@@ -164,6 +190,8 @@ plot.hmc_contour_trajectories(
 )
 ax.set_title(f'HMC leapfrog paths (accept rate {result.accept_rate:.2f})')
 mlai.write_figure('hmc-quadratic-trajectories.svg', directory='\writeDiagramsDir/ml')}
+
+\newslide{}
 
 \figure{\includediagram{\diagramsDir/ml/hmc-quadratic-trajectories}{55%}}{Leapfrog trajectories and samples from teachable HMC on $V(\mathbf{q})=\tfrac12\|\mathbf{q}\|^2$. Accept/reject keeps the chain on the Boltzmann target $e^{-V}$.}{hmc-quadratic-trajectories}
 
@@ -204,12 +232,11 @@ axes[0].set_title(
 mlai.write_figure('hmc-logistic-traces.svg', directory='\writeDiagramsDir/ml')
 print('SGD:', q_sgd, 'HMC mean:', hmc_result.samples.mean(axis=0))}
 
+\newslide{}
+
 \figure{\includediagram{\diagramsDir/ml/hmc-logistic-traces}{70%}}{Hamiltonian and weight traces for logistic regression. $V(\mathbf{w})=-\log p(\mathbf{w}\mid\mathcal{D})$; SGD gives one downhill point, HMC a cloud of posterior samples.}{hmc-logistic-traces}
 
 \speakernotes{Name kinetic energy and Neal; show the trajectory figure if builds are available. Emphasise V = -log posterior, not a new loss species.}
 
-\addreading{@Neal:hmc92}{Hybrid Monte Carlo for backpropagation networks}
-\addreading{@Neal:bayesian94}{Bayesian Learning for Neural Networks (thesis)}
-\addreading{@Welling-generative26}{Section 11.4.2 (Hamiltonian Monte Carlo); cf. Section 3.2.1}
 
 \endif
