@@ -20,7 +20,7 @@
 
 \slides{
 $$
-E(\mathbf{w})=\sum_n\bigl(y_n-\mathbf{w}^\top\mathbf{x}_n\bigr)^2
+E(\mathbf{w})=\sum_n\left(y_n-\mathbf{w}^\top\mathbf{x}_n\right)^2
 $$
 }
 
@@ -30,7 +30,7 @@ $$
 * Gauss already linked this quadratic energy to the normal density
 }
 
-\notes{Under $y_n=\mathbf{w}^\top\mathbf{x}_n+\varepsilon_n$ with $\varepsilon_n\sim\mathcal{N}(0,\sigma^2)$, the negative log-likelihood is $\frac{1}{2\sigma^2}E(\mathbf{w})$ plus constants. So ordinary least squares *is* maximum likelihood for a Gaussian --- equivalently, minimising a quadratic energy.}
+\notes{Under $y_n=\mathbf{w}^\top\mathbf{x}_n+\varepsilon_n$ with $\varepsilon_n\sim\gaussianSamp{0}{\sigma^2}$, the negative log-likelihood is $\frac{1}{2\sigma^2}E(\mathbf{w})$ plus constants. So ordinary least squares *is* maximum likelihood for a Gaussian or equivalently, minimising a quadratic energy.}
 
 \newslides{Cross-Entropy Energy (Classification)}
 
