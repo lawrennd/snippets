@@ -111,7 +111,7 @@ $$
 
 \notes{The Hamiltonian $H$ is the sum of kinetic and potential energies. Hamilton's equations are a mainstay of mechanics. They generate a flow on the joint $(\mathbf{q},\mathbf{p})$ space that conserves $H$ when the system is isolated. For sampling, one chooses $V(\mathbf{q})=-\log p(\mathbf{q})$ (up to a constant) so that the marginal on $\mathbf{q}$ under the Boltzmann weight $e^{-H}$ recovers the target density $p(\mathbf{q})$.}
 
-\addreading{Welling-generative26}{Section 3.2.1}
+\addreading{@Welling-generative26}{Section 3.2.1}
 
 \newslides{Hamiltonian Monte Carlo}
 
@@ -127,7 +127,7 @@ $$
 
 \notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $E(\mathbf{w})$.} 
 
-\addreading{Welling-generative26}{Section 11.4.2}
+\addreading{@Welling-generative26}{Section 11.4.2}
 
 \newslides{Radford Neal}
 
