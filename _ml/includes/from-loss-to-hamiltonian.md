@@ -105,7 +105,7 @@ $$
 * Marginal samples of $\mathbf{q}$ target $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$
 }
 
-\notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities --- exactly the setting of Bayesian neural network weights.}
+\notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities --- exactly the setting of Bayesian neural network weights. For a modern textbook account that places HMC among MCMC kernels in the same free-energy language as this course, see Section 11.4.2 of [@Welling-generative26] (with the Hamiltonian preliminaries in Section 3.2.1).}
 
 \figure{\includejpg{\diagramsDir/people/radford-neal}{35%}}{Radford M. Neal (University of Toronto).}{radford-neal}
 
@@ -121,27 +121,95 @@ $$
 
 \notes{Radford Neal is a Canadian computer scientist at the University of Toronto whose work sits at the junction of Bayesian statistics and neural networks. In 1992 he showed how to train backpropagation networks with the hybrid Monte Carlo method [@Neal:hmc92] --- Hamiltonian dynamics as a proposal mechanism for posterior sampling over weights. His 1994 thesis [@Neal:bayesian94] remains a model of clarity: Bayesian neural nets in finite width, and the observation that infinite-width nets with suitable priors become Gaussian processes. HMC is the bridge from "energy as loss" to "energy as the potential in a physical sampler."}
 
-\newslides{Placeholder: Neural Net + HMC}
+\newslides{Hamiltonian Monte Carlo in ``mlai``}
 
-\slides{Teaching demo (to land with CIP teachable HMC): fit a small net by HMC, not SGD.}
+\slides{Teachable HMC: invent momentum, leapfrog on $H$, Metropolis on $\Delta H$.}
 
 \slidesincremental{
-* Target: posterior over weights, $V(\mathbf{w})=-\log p(\mathbf{w}\mid\mathcal{D})$
-* Leapfrog + Metropolis; trace $H$ and accept rate
+* Target: $V(\mathbf{q})=-\log p(\mathbf{q}\mid\mathcal{D})$ (loss as potential)
+* ``HamiltonianMonteCarlo`` in ``mlai``; trace $H$ and accept rate
 * Contrast: SGD point estimate vs HMC posterior samples
 }
 
-\code{# PLACEHOLDER — teachable HMC (see mlai CIP-0008)
-# from mlai.hmc import HamiltonianMonteCarlo
-# model = SmallNet(...)
-# hmc = HamiltonianMonteCarlo(potential=model.neg_log_posterior,
-#                             mass=1.0, step_size=0.01, leapfrog_steps=10)
-# samples = hmc.run(w0, n_samples=1000)
-# Predictive draws from samples, not a single SGD point.}
+\notes{The reusable component lives in ``mlai.hmc`` (CIP-0008): diagonal-mass kinetic energy, leapfrog proposals, and a Metropolis correction on $\Delta H$. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl), then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
 
-\speakernotes{Do not implement leapfrog live today. Name the missing kinetic energy, show Neal, leave the demo slot. The CIP tracks the reusable mlai component.}
+\code{# 2D quadratic potential: V(q)=0.5||q||^2  (standard normal target).
+# Leapfrog trajectories on the same contour language as regression_contour.
+from mlai import HamiltonianMonteCarlo
+
+potential = lambda q: 0.5 * np.dot(q, q)
+grad_potential = lambda q: np.asarray(q, dtype=float)
+
+hmc = HamiltonianMonteCarlo(
+    potential=potential,
+    grad_potential=grad_potential,
+    step_size=0.15,
+    n_steps=10,
+)
+result, trajectories = hmc.sample(
+    q0=np.zeros(2), n_samples=40, random_state=0, return_trajectory=True
+)
+
+q1 = np.linspace(-3, 3, 80)
+q2 = np.linspace(-3, 3, 80)
+Q1, Q2 = np.meshgrid(q1, q2)
+V_grid = 0.5 * (Q1 ** 2 + Q2 ** 2)
+
+fig, ax = plt.subplots(figsize=(5, 5))
+plot.hmc_contour_trajectories(
+    ax, q1, q2, V_grid,
+    trajectories=trajectories[:12],
+    samples=result.samples,
+    fontsize=16,
+)
+ax.set_title(f'HMC leapfrog paths (accept rate {result.accept_rate:.2f})')
+mlai.write_figure('hmc-quadratic-trajectories.svg', directory='\writeDiagramsDir/ml')}
+
+\figure{\includediagram{\diagramsDir/ml/hmc-quadratic-trajectories}{55%}}{Leapfrog trajectories and samples from teachable HMC on $V(\mathbf{q})=\tfrac12\|\mathbf{q}\|^2$. Accept/reject keeps the chain on the Boltzmann target $e^{-V}$.}{hmc-quadratic-trajectories}
+
+\code{# SGD point estimate vs HMC samples for logistic regression.
+# Potential V(w) = -log p(w|D) with a flat prior (negative log-likelihood).
+from mlai import LR, Basis, linear, HamiltonianMonteCarlo
+
+rng = np.random.default_rng(0)
+X = rng.normal(size=(60, 1))
+y = (1.5 * X[:, 0] + 0.25 * rng.normal(size=60) > 0).astype(float).reshape(-1, 1)
+model = LR(X, y, Basis(linear, number=2))
+
+def potential(q):
+    model.parameters = q
+    return -float(model.log_likelihood())
+
+def grad_potential(q):
+    model.parameters = q
+    return np.asarray(model.gradients, dtype=float)
+
+# Point estimate by steepest descent on V
+q_sgd = np.zeros(2)
+for _ in range(250):
+    q_sgd = q_sgd - 0.05 * grad_potential(q_sgd)
+
+hmc = HamiltonianMonteCarlo(
+    potential=potential, grad_potential=grad_potential,
+    step_size=0.04, n_steps=10,
+)
+hmc_result = hmc.sample(q0=q_sgd, n_samples=300, random_state=1)
+
+fig, axes = plt.subplots(3, 1, figsize=(6, 5), sharex=True)
+plot.hmc_traces(axes, hmc_result, param_indices=[0, 1], fontsize=12)
+axes[0].set_title(
+    f'Logistic HMC traces (accept {hmc_result.accept_rate:.2f}); '
+    f'SGD point = ({q_sgd[0]:.2f}, {q_sgd[1]:.2f})'
+)
+mlai.write_figure('hmc-logistic-traces.svg', directory='\writeDiagramsDir/ml')
+print('SGD:', q_sgd, 'HMC mean:', hmc_result.samples.mean(axis=0))}
+
+\figure{\includediagram{\diagramsDir/ml/hmc-logistic-traces}{70%}}{Hamiltonian and weight traces for logistic regression. $V(\mathbf{w})=-\log p(\mathbf{w}\mid\mathcal{D})$; SGD gives one downhill point, HMC a cloud of posterior samples.}{hmc-logistic-traces}
+
+\speakernotes{Name kinetic energy and Neal; show the trajectory figure if builds are available. Emphasise V = -log posterior, not a new loss species.}
 
 \addreading{@Neal:hmc92}{Hybrid Monte Carlo for backpropagation networks}
 \addreading{@Neal:bayesian94}{Bayesian Learning for Neural Networks (thesis)}
+\addreading{@Welling-generative26}{Section 11.4.2 (Hamiltonian Monte Carlo); cf. Section 3.2.1}
 
 \endif
