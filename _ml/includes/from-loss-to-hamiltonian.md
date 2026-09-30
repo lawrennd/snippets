@@ -15,12 +15,12 @@
 \slides{Gradient descent: 'walking downhill'}
 
 \slidesincremental{
-* Contours of $E(\mathbf{w})$ = elevation lines on a hill
-* Steepest descent: step opposite $\nabla E$
-* Same $E$ as least squares / negative log-likelihood
+* Contours of $\objectiveFunction(\weightVector)$ = elevation lines on a hill
+* Steepest descent: step opposite $\nabla \objectiveFunction$
+* Same $\objectiveFunction$ as least squares / negative log-likelihood
 }
 
-\notes{Imagine a mass on a hill. It is sensitive to the pull of gravity as transmitted to it through the local slope. This is the potential energy, $E(\mathbf{w})$, acting as a force. The force is taken by the gradient of the potential energy which gives the slope, $\nabla E(\mathbf{w})$.}
+\notes{Imagine a mass on a hill. It is sensitive to the pull of gravity as transmitted to it through the local slope. This is the potential energy, $\objectiveFunction(\weightVector)$, acting as a force. The force is taken by the gradient of the potential energy which gives the slope, $\nabla \objectiveFunction(\weightVector)$.}
 
 \notes{In gradient descent we take repeated steps opposite the gradient to reach a local minimum. We consider a little example below where the loss surface, the energy, is taken from a small regression problem where the true line has a gradient of $m=1.4$ and an offset of $c=-3.1$. We sample some data from that line by adding noise with a standard deviation of $0.15$. Then we show the energy landscape for this system.}
 
@@ -47,16 +47,16 @@ fig, ax = plt.subplots(figsize=(5, 5))
 plot.regression_contour(fig, ax, m_vals, c_vals, E_grid)
 mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 
-\figure{\includediagram{\diagramsDir/ml/loss-energy-contour}{55%}}{Contours of the least-squares energy $E(m,c)=\sum_n(y_n-mx_n-c)^2$. Steepest descent walks toward the bowl.}{loss-energy-contour}
+\figure{\includediagram{\diagramsDir/ml/loss-energy-contour}{55%}}{Contours of the least-squares energy $\objectiveFunction(m,c)=\sum_n(y_n-mx_n-c)^2$. Steepest descent walks toward the bowl.}{loss-energy-contour}
 
-\notes{In physics the parameters would be the position, $q$, instead of the weights, $w$. And typically (for a Hamiltonian) we denote the potential energy in physics by $V(\cdot)$, so instead of $E(\mathbf{w})$ we have $V(\mathbf{q})$.}
+\notes{In physics the parameters would be the position, $q$, instead of the weights, $w$. And typically (for a Hamiltonian) we denote the potential energy in physics by $V(\cdot)$, so instead of $\objectiveFunction(\weightVector)$ we have $V(\mathbf{q})$.}
 
 \newslides{Potential Energy}
 
 \slides{The loss is a *potential energy* $V(\mathbf{q})$ on parameter space.}
 
 \slidesincremental{
-* Configuration $\mathbf{q}=\mathbf{w}$: where the system sits
+* Configuration $\mathbf{q}=\weightVector$: where the system sits
 * Force $\propto -\nabla V$: direction of steepest descent
 * Common analogy: ball in a bowl; GD is the overdamped limit
 }
@@ -67,7 +67,7 @@ mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 
 \notes{Modern neural network models train when the number of data points is very large. This makes computing the exact gradients very computationally expensive. The energy is typically decomposed as a sum over data points,
 $$
-E(\mathbf{w}, \mathbf{X}) = \sum_i E(\mathbf{w}, \mathbf{x}_i)
+\objectiveFunction(\weightVector, \mathbf{X}) = \sum_i \objectiveFunction(\weightVector, \mathbf{x}_i)
 $$
 where the full data $\mathbf{X} = \{ \mathbf{x}_i\}_{i=1}^\numData$.}
 
@@ -125,7 +125,7 @@ $$
 
 \notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities. The method was originally developed for Bayesian sampling of  neural network weights.}
 
-\notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $E(\mathbf{w})$.} 
+\notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $\objectiveFunction(\weightVector)$.} 
 
 \addreading{@Welling-generative26}{Section 11.4.2}
 
@@ -234,7 +234,7 @@ print('SGD:', q_sgd, 'HMC mean:', hmc_result.samples.mean(axis=0))}
 
 \newslide{}
 
-\figure{\includediagram{\diagramsDir/ml/hmc-logistic-traces}{70%}}{Hamiltonian and weight traces for logistic regression. $V(\mathbf{w})=-\log p(\mathbf{w}\mid\mathcal{D})$; SGD gives one downhill point, HMC a cloud of posterior samples.}{hmc-logistic-traces}
+\figure{\includediagram{\diagramsDir/ml/hmc-logistic-traces}{70%}}{Hamiltonian and weight traces for logistic regression. $V(\weightVector)=-\log p(\weightVector\mid\mathcal{D})$; SGD gives one downhill point, HMC a cloud of posterior samples.}{hmc-logistic-traces}
 
 \speakernotes{Name kinetic energy and Neal; show the trajectory figure if builds are available. Emphasise V = -log posterior, not a new loss species.}
 
