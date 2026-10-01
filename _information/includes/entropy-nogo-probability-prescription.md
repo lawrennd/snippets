@@ -33,7 +33,7 @@
 
 \notes{Today things are shifting rapidly, my community has developed tools that allow the comptuer to communicate directly in natural language with humans and program for them. We have finally created computer systems that can be driven by anyone through natural language, just as my mechanical engineering predecessors created cars that could be driven by anyone without having to have an understanding of how a connecting rod is connected to a crank shaft.}
 
-\notes{The field is changing rapidly. But students are being taught thermodynamics today from books that are the same as it was taught from 60 years ago.}
+\notes{The field is changing rapidly. But students are being taught thermodynamics today from books that are the same as those it was taught from 60 years ago.}
 
 \notes{It's my instinct that those books provide important theory that tell us about the limits of computing machines. Today there are many making promises about superintelligent AGI machines that do all we can do more rapidly and more capably. A world where cognitive decision making knows no bounds. This course is built on the following premise. That premise is that there will be bounds and that those bounds will be dictated by information theory. Or more precisely, the information dynamics of the system.}
 
