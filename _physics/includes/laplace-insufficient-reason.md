@@ -3,37 +3,37 @@
 
 \editme
 
-\subsection{Laplace and the Principle of Insufficient Reason}
+\subsection{Principle of Insufficient Reason}
 
 \include{_physics/includes/laplace-portrait.md}
 
-\newslides{Principle of Insufficient Reason}
+\notes{From Laplace's perspective we use probability to deal with our ignorance about the data, the physical lawas and the computation. This is Laplace's gremlin. But how do we estimate probabilities? How do we assign $p$ when we know almost nothing?}
 
-\slides{Week 1: Laplace suggested that we treat ignorance with probability. He applied this idea in his estimates of probabilities. He asked himself the question how should we assign $p$ when we know almost nothing?}
+\notes{Laplace's principle of insufficient reason suggestd that if we have mutually exclusive outcomes and nothing distinguishes one from the other then we should asign them equal probability, i.e. $p_i = \tfrac{1}{\numData}$.}
+
+\newslide{Principle of Insufficient Reason}
 
 \slidesincremental{
+* How to assign probability?
 * $n$ mutually exclusive, exhaustive outcomes
 * Nothing distinguishes one from another
 * Assign equal probability: $p_i = 1/n$
 }
 
-\speakernotes{Bridge from week 1 (gremlin / ignorance as probability) to MaxEnt. Keep this short: insufficient reason is the zero-constraint special case.}
-
-\notes{In the *Philosophical Essay on Probabilities* [@Laplace-essai14], Laplace argues that probability is relative in part to our ignorance and in part to our knowledge. When we know only that one of $n$ mutually exclusive and exhaustive outcomes must occur, and nothing induces us to prefer one over another, we should assign
+\notes{The *Philosophical Essay on Probabilities* [@Laplace-essai14] argued that probability is relative in part to our ignorance and in part to our knowledge. So when we know that only one of $\numData$  mutually exclusive and exhaustive outcomes must occur we don't have any reason to prefer one over the other. This suggests that we should assign
 \begin{align}
-p_i = \frac{1}{n}, \qquad i = 1,\ldots,n.
+p_i = \frac{1}{\numData}, \qquad i = 1,\ldots,\numData.
 \end{align}
-This is his *principle of insufficient reason* (also called the principle of indifference). It is the least-committal assignment consistent with the information we have: namely, none beyond the list of possibilities and normalisation.}
+This known as Laplace's *principle of insufficient reason* or the principle of indifference. It's an assignment athat is 'least-commital' but consistent with the information we have. In this case the information we have is the different possibilities (the $\numData$ outcomes) and the need for normalisation.}
 
-\notes{The same idea appears in the passage we called Laplace's gremlin in week 1: if several cases are equally possible and nothing favours one, we cannot announce any particular outcome with certainty, and the natural probability weights them equally.}
+\subsection{Example: Will the sun rise tomorrow?}
 
-\newslides{Example: Will the sun rise tomorrow?}
 
-\slides{This is Laplace's example from: *Philosophical Essay on Probabilities* [@Laplace-essai14].}
+\notes{As an example Laplace considered what the probability that the sun rises tomorrow is. To our knowledge, the sun has risen every day. So is the probability 100%? The example comes from  *Philosophical Essay on Probabilities* [@Laplace-essai14].}
 
 \includegooglebook{1YQPAAAAQAAJ}{PA16}
 
-\notes{Laplace wondered, what is the probability that the sun will rise tomorrow? We've seen it rise every day so is it 100%?}
+\newslide{}
 
 \slidesincremental{
 * Unknown daily rate $\theta\in[0,1]$; insufficient reason $\Rightarrow$ uniform prior on $\theta$
@@ -152,9 +152,11 @@ n_frames = frame}
 \newframe{\includediagram{\diagramsDir/ml/laplace-succession012}{\width}}{laplace-succession}
 \endanimation}
 
-\notes{\figure{\includediagram{\diagramsDir/ml/laplace-succession012}{70%}}{Each update is belief $\times$ likelihood $\rightarrow$ posterior; a reset frame then promotes the posterior to the new prior (likelihood cleared). Early steps use one more sunrise ($\propto\theta$); the jump to $n=20$ uses the likelihood for $17$ further rises ($\propto\theta^{17}$).}{laplace-succession-figure}}
+\newslide{}
 
-\newslides{Entropy Day by Day}
+\figure{\includediagram{\diagramsDir/ml/laplace-succession012}{70%}}{Each update is belief $\times$ likelihood $\rightarrow$ posterior; a reset frame then promotes the posterior to the new prior (likelihood cleared). Early steps use one more sunrise ($\propto\theta$); the jump to $n=20$ uses the likelihood for $17$ further rises ($\propto\theta^{17}$).}{laplace-succession-figure}
+
+\newslide{Entropy Day by Day}
 
 \slides{Track differential entropy of the belief $p(\theta)$ as sunrises arrive.}
 
@@ -207,9 +209,9 @@ ax.legend(fontsize=14)
 ax.set_title(r'Belief entropy and information gained per sunrise')
 mlai.write_figure('laplace-succession-entropy.svg', directory='\writeDiagramsDir/ml')}
 
-\slides{
+\newslide{}
+
 \includediagram{\diagramsDir/ml/laplace-succession-entropy}{70%}
-}
 
 \notes{\figure{\includediagram{\diagramsDir/ml/laplace-succession-entropy}{70%}}{Differential entropy $H_n$ of $p(\theta)$ after $n$ sunrises, and the information $I_n$ gained on day $n$. The prior sits at $H_0=0$; each success drives $H_n$ downward.}{laplace-succession-entropy-figure}}
 
@@ -237,7 +239,7 @@ This is *Laplace's rule of succession* (the same “$+1$, $+2$” that later app
 
 \notes{So the preliminary example already shows the pattern we need: insufficient reason supplies the prior of ignorance; each success updates it and peels a little more mass away from small $\theta$; the predictive probability is not the raw frequency $n/n=1$.}
 
-\newslides{From Insufficient Reason to MaxEnt}
+\newslide{From Insufficient Reason to MaxEnt}
 
 \slidesincremental{
 * Insufficient reason: uniform when we know only the outcomes (or only $\theta\in[0,1]$)
