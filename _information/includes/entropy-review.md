@@ -27,10 +27,14 @@
 
 \newslide{Entropy: physical and anthropomorphic}
 
-\slidesincremental{
+\slidesincremental{<!-- TODO FILL SUMMARISING BELOW -->>
 }
 
-\notes{Thermodynamic entropy $S$ and Shannon $H$ have a shared functional form, in equilibrium we can write $S = k_BH$, where $k_B$ is Boltzmann's constant, $k_B = 1.380649 \times 10^{-23} \tfrac{\text{kg}\text{m}^2 }{\text{s}^2 \text{K}}$. So there are two parts to a thermodynamic entropy, one is the uncertainty of a (discrete) distribution. The other translates that into units of work ($\text{J} = \tfrac{\text{kg}\text{m}^2 }{\text{s}^2}$) per Kelvin ($\tfrac{text{J}}{\text{K}}$). Boltzmann's constant makes entropy physical. When we multiply $S$ by temperature $T$ (in degrees Kelvin) we recover energy. But this also implies that there is a *choice*. @Jaynes-gibbs65 refers to this as the '"anthropomorphic" nature of entropy". A remark he credits to Eugene Wigner. He gives the example of thermodynamic steam tables.}
+\notes{Thermodynamic entropy $S$ and Shannon $H$ have a shared functional form, in equilibrium we can write $S = k_BH$, where $k_B$ is Boltzmann's constant, $k_B = 1.380649 \times 10^{-23} \tfrac{\text{kg}\text{m}^2 }{\text{s}^2 \text{K}}$. 
+
+So there are two parts to a thermodynamic entropy, one is the uncertainty of a (discrete) distribution. The other translates that entropy into units of 'work' i.e. ($\text{J} = \tfrac{\text{kg}\,\text{m}^2 }{\text{s}^2}$) per Kelvin ($\tfrac{\text{J}}{\text{K}}$). Boltzmann's constant makes entropy physical. When we multiply $S$ by temperature $T$ (in degrees Kelvin) we recover a term that has units of energy. 
+
+But the dependence of entropy on the states of a distribution, or the probability across those states, also implies that there is a *choice* in terms of which states we consider. In classical mechanics we have states like position and velocity (or momentum). But quantum mechanics also leads to other properties of materials such as the *spin* of an electron. Choice of which variables you consider when computing e.g. the entropy of an electron, was referred to as the '"anthropomorphic" nature of entropy' by @Jaynes-gibbs65. He credits this remark originally to Eugene Wigner. One example that Jaynes gives is thermodynamic steam tables.}
 
 \notes{> If we work with a \emph{thermodynamic} system of \emph{n} degrees of freedom,
 > the experimental entropy is a function $S_{0}(X_{1}\ldots X_{n})$ of
