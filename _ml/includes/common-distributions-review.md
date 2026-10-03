@@ -4,13 +4,13 @@
 
 \subsection{Common Distributions}
 
-\newslides{Named Distributions You Need}
+\newslide{Named Distributions You Need}
 
 \slides{Five families recur across modelling. Know the support, the parameter, and one generative story for each.}
 
 \notes{These are prerequisites restated, not new theory. Several of them reappear later as maximum-entropy distributions under moment constraints.}
 
-\newslides{Bernoulli and Binomial}
+\newslide{Bernoulli and Binomial}
 
 \slidesincremental{
 * Bernoulli($p$): single binary trial; $P(X=1)=p$
@@ -20,7 +20,7 @@
 
 \notes{A fair coin is Bernoulli($1/2$). A two-state thermal system with fixed energies is Bernoulli once occupation probabilities are written down.}
 
-\newslides{Poisson and Multinomial}
+\newslide{Poisson and Multinomial}
 
 \slidesincremental{
 * Poisson($\lambda$): counts in a fixed interval; mean $=$ variance $=\lambda$
@@ -30,7 +30,7 @@
 
 \include{_ml/includes/poisson-distribution.md}
 
-\newslides{Gaussian}
+\newslide{Gaussian}
 
 \slidesincremental{
 * $\mathcal{N}(\mu,\sigma^2)$: continuous density on $\mathbb{R}$
