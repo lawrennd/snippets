@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Information, energy and intelligence course notebook setup}
+\notes{\subsection{Information, energy and intelligence course notebook setup}}
 
 \notes{We install some bespoke code for creating and saving plots as well as loading data sets.}
 
