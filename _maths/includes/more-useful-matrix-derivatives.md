@@ -109,7 +109,7 @@ because we can see that each row of this matrix contains the derivative of $b_i 
 
 \slidesmall{$$\frac{\text{d}}{\text{d} \mathbf{a}} \mathbf{A} \mathbf{x} = \mathbf{x}^\top \otimes \eye_{m}$$}
 
-\slides{* **Change**: $\mathbf{a} = \vec{\mathbf{A}}$ (column stacking)
+\slides{* **Change**: $\mathbf{a} = \vecop{\mathbf{A}}$ (column stacking)
 * **Method**: reverse Kronecker product order
 * **Result**: $\mathbf{x}^\top \otimes \eye_{m}$}
 
@@ -123,7 +123,7 @@ x_1 \eye_m & x_2 \eye_m & \cdots & x_n \eye_m
 * **Size**: $m \times mn$ matrix
 * **Correct**: for column stacking of $\mathbf{A}$}
 
-\notes{Now, to get the gradient with respect to $\mathbf{a} = \vec{\mathbf{A}}$ instead of with respect to $\mathbf{a}^\prime$ we reverse the order of the Kronecker product
+\notes{Now, to get the gradient with respect to $\mathbf{a} = \vecop{\mathbf{A}}$ instead of with respect to $\mathbf{a}^\prime$ we reverse the order of the Kronecker product
 $$
 \frac{\text{d}}{\text{d} \mathbf{a}} \mathbf{A} \mathbf{x} = \mathbf{x}^\top \otimes \eye_{m} 
 $$
