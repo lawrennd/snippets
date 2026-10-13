@@ -52,6 +52,8 @@ mlai.write_figure('multinomial-entropy-panels.svg', directory='\writeDiagramsDir
 
 \figure{\includediagram{\diagramsDir/information/multinomial-entropy-panels}{85%}}{The four-outcome distribution from the expectation example, now in bits. Right-hand summands total $H$; category $y=3$ is rarest (highest surprisal) but contributes modestly because $P(3)$ is small.}{multinomial-entropy-panels}
 
+\newslide{Categorical Entropy}
+
 \slidesincremental{
 * One multinomial trial $=$ categorical: $H=-\sum_k p_k\log_2 p_k$
 * Uniform on $K$ symbols: $H=\log_2 K$ --- maximal
