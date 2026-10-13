@@ -62,6 +62,8 @@ mlai.write_figure('bernoulli-energy-overlay.svg', directory='\writeDiagramsDir/m
 
 \figure{\includediagram{\diagramsDir/ml/bernoulli-energy-overlay}{60%}}{Same Bernoulli: probability (bars, left axis) and energy (markers, right axis). Where $P$ is high, $E$ is low.}{bernoulli-energy-overlay}
 
+\newslide{Bernoulli Energy}
+
 \slidesincremental{
 * $E_0=-\log(1-p)$,\quad $E_1=-\log p$
 * Fair coin: degenerate energies $E_0=E_1=\log 2$

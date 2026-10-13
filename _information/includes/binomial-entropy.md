@@ -46,6 +46,8 @@ mlai.write_figure('binomial-entropy-panels.svg', directory='\writeDiagramsDir/in
 
 \figure{\includediagram{\diagramsDir/information/binomial-entropy-panels}{85%}}{Binomial($n=12$, $p=0.4$). The right-hand panel sums to $H$; tails contribute little because $P(k)$ is small even when surprisal is large.}{binomial-entropy-panels}
 
+\newslide{Binomial Entropy}
+
 \slidesincremental{
 * Same visual grammar as Bernoulli: $P$, $-\log_2 P$, $-P\log_2 P$
 * Surprisal is largest in the tails; weight $P(k)$ suppresses them in $H$

@@ -67,6 +67,8 @@ mlai.write_figure('gaussian-energy-overlay.svg', directory='\writeDiagramsDir/ml
 
 \figure{\includediagram{\diagramsDir/ml/gaussian-energy-overlay}{60%}}{Same Gaussian: density (left axis) and energy (right axis). The mode of $p$ is the bottom of the energy well.}{gaussian-energy-overlay}
 
+\newslide{Gaussian Energy}
+
 \slidesincremental{
 * $E(y)=\frac{(y-\mu)^2}{2\sigma^2}$ up to an additive constant absorbed in $Z$
 * Least-squares regression uses the same quadratic energy on residuals

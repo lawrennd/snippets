@@ -61,6 +61,8 @@ mlai.write_figure('gaussian-entropy-panels.svg', directory='\writeDiagramsDir/in
 
 \figure{\includediagram{\diagramsDir/information/gaussian-entropy-panels}{85%}}{Univariate Gaussian (height example). Middle: $-\log_2 p(y)$\ifdef{gaussianEnergyFromDistribution} --- quadratic energy in bits\endif; dips below zero where the density exceeds $1$. Right: the integrand whose integral is differential entropy $h$.}{gaussian-entropy-panels}
 
+\newslide{Gaussian Differential Entropy}
+
 \ifdef{gaussianEnergyFromDistribution}
 \slidesincremental{
 * Same height Gaussian as the energy overlay: middle panel is the parabola in bits

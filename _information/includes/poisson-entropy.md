@@ -49,6 +49,8 @@ mlai.write_figure('poisson-entropy-panels.svg', directory='\writeDiagramsDir/inf
 
 \figure{\includediagram{\diagramsDir/information/poisson-entropy-panels}{85%}}{Poisson($\lambda=4$). Mid: surprisal rises in the tails\ifdef{poissonEnergyFromDistribution} (energy in bits)\endif. Right: the probability weight cuts those tails back, so $H$ is dominated by the bulk.}{poisson-entropy-panels}
 
+\newslide{Poisson Entropy}
+
 \ifdef{poissonEnergyFromDistribution}
 \slidesincremental{
 * Same $\lambda=4$ as the energy overlay: middle panel is $E$ in bits

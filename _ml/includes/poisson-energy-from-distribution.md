@@ -62,6 +62,8 @@ mlai.write_figure('poisson-energy-overlay.svg', directory='\writeDiagramsDir/ml'
 
 \figure{\includediagram{\diagramsDir/ml/poisson-energy-overlay}{60%}}{Same Poisson: probability (bars) against energy (markers). Tails are high-energy, low-probability states.}{poisson-energy-overlay}
 
+\newslide{Poisson Energy}
+
 \slidesincremental{
 * $E(k)=-\log P(k)=\lambda-k\log\lambda+\log(k!)$ (up to the usual reading of Stirling)
 * Mode of $P$ $=$ minimizer of $E$
