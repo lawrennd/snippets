@@ -16,7 +16,7 @@ and then explain what changes in field theory (infinite-dimensional, unbounded o
 and why Euclidean signatures are technically friendlier than Minkowski).}
 
 \slides{
-\newslides{QFT as exponential calculus (for CS)}
+\newslide{QFT as exponential calculus (for CS)}
 \begin{itemize}
 \item \textbf{Mechanism:} derivatives of \(X\mapsto e^X\) (Fr\'echet/Duhamel)
 \item \textbf{Then:} \(Z=\mathrm{tr}(e^X)\), \(W=\log Z\) give moments vs cumulants
@@ -43,7 +43,7 @@ block upper-triangular matrix exponential. This is the same trick used in numeri
 linear algebra and autodiff through \texttt{expm}.}
 
 \slides{
-\newslides{Exact prototype: matrix exp + Duhamel}
+\newslide{Exact prototype: matrix exp + Duhamel}
 \begin{itemize}
 \item Want: \(\frac{\mathrm{d}}{\mathrm{d}\lambda}e^{H+\lambda V}\big|_0\)
 \item Noncommuting case: can't "pull \(V\) down"
@@ -68,7 +68,7 @@ In other words: the Dyson series is the exponential map, differentiated/expanded
 presence of noncommuting insertions.}
 
 \slides{
-\newslides{Dyson series = simplex integrals}
+\newslide{Dyson series = simplex integrals}
 \begin{itemize}
 \item Time-dependent: \(U(t)=\mathcal{T}\exp(\int_0^t A(\tau)\,d\tau)\)
 \item Expand \(\exp\): integrals over ordered times (simplices)
@@ -93,7 +93,7 @@ BKM/Kubo--Mori in the quantum case). All of these are still derivatives of
 \(\exp\) composed with \(\mathrm{tr}\) and \(\log\).}
 
 \slides{
-\newslides{Generating functionals = log-trace-exp}
+\newslide{Generating functionals = log-trace-exp}
 \begin{itemize}
 \item \(Z(\theta)=\mathrm{tr}\,e^{H(\theta)}\), \(W(\theta)=\log Z(\theta)\)
 \item \(\nabla W\): expectations; \(\nabla^2 W\): connected correlations/metrics
@@ -122,7 +122,7 @@ manipulations can stop corresponding to well-defined objects.
 \end{itemize}}
 
 \slides{
-\newslides{QFT caveat: infinite dimensions}
+\newslide{QFT caveat: infinite dimensions}
 \begin{itemize}
 \item QFT needs regulators: unbounded ops, traces may diverge
 \item Euclidean: \(e^{-\beta H}\) (heat-like) keeps positivity/control

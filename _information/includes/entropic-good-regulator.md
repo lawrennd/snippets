@@ -7,7 +7,7 @@
 
 \notes{Conant and Ashby define successful regulation by minimising the entropy of the outcome $Z$: $H(Z)\to\min$ [@Conant-Ashby70]. A regulator is a policy $\pi(a\mid s)=p(a\mid s)$.  This is an existence result that comes from the concavity of Shannon entropy: among optimal regulators there is a simplest one with zero conditional action entropy, $H(A\mid S)=0$, equivalently $A=h(S)$. That is the sense in which the regulator is a ``model'' of the system --- a deliberately weak sense, as the caveats below make precise.}
 
-\newslides{Requisite Variety, Entropically}
+\newslide{Requisite Variety, Entropically}
 
 \slides{Residual outcome uncertainty is disturbance entropy minus information the regulator has about the disturbance.}
 
@@ -29,7 +29,7 @@ H(E)\ge H(D)-I(D;R).
 $$
 Verbally: residual uncertainty after regulation is at least the uncertainty in the disturbance minus the information the regulator has about that disturbance. Having many controller states helps only when those states are correlated with $D$. Large $H(R\mid D)$ is large wasted variety. Requisite variety asks how much regulatory information is required. The Good Regulator Theorem asks how that information may be structured.}
 
-\newslides{Setup: Regulate by Minimising $H(Z)$}
+\newslide{Setup: Regulate by Minimising $H(Z)$}
 
 \slides{One shot, not an MDP: choose a policy $\pi(a\mid s)$ to minimise outcome entropy.}
 
@@ -43,7 +43,7 @@ Verbally: residual uncertainty after regulation is at least the uncertainty in t
 
 \notes{Fix $p(s)$ and a channel $p(z\mid s,a)$. Regulation is the choice of a conditional $\pi(a\mid s)$. There is no time index and no value function: a single decision. Success is $\min H(Z)$, not reward maximisation. Define $A$ to be a model of $S$ when $H(A\mid S)=0$, equivalently when there is a function $h$ with $A=h(S)$ almost surely. That definition is operational and weak; optimality, not the definition, will force which maps matter.}
 
-\newslides{Concentration: Concavity of Entropy}
+\newslide{Concentration: Concavity of Entropy}
 
 \slides{Randomising between outcome-distinct actions cannot minimise $H(Z)$.}
 
@@ -65,7 +65,7 @@ g''(\alpha)=-\frac{1}{u-\alpha}-\frac{1}{v+\alpha}<0.
 $$
 So $g$ is strictly concave. An interior mixture cannot be a minimum of $H(Z)$: move mass in one of the two directions and entropy falls. Contradiction. Therefore, at an optimum, whenever the policy randomises in state $s$, all actions in the support must produce the same outcome. Equivalently, for deterministic $\psi$, every optimal policy satisfies $H(Z\mid S=s)=0$ for every $s$ with $p(s)>0$.}
 
-\newslides{Good Regulator Theorem}
+\newslide{Good Regulator Theorem}
 
 \slides{Among $H(Z)$-minimisers there exists a deterministic policy: $H(A\mid S)=0$.}
 
@@ -81,7 +81,7 @@ So $g$ is strictly concave. An interior mixture cannot be a minimum of $H(Z)$: m
 
 \notes{The deterministic-$\psi$ assumption is not needed for existence. With a genuinely stochastic channel $p(z\mid s,a)$, the marginal $p(z)$ is linear in the policy $\pi$. The space of policies is a product of probability simplices; its extreme points are exactly the deterministic policies. Since $H(Z)$ is concave in $p(z)$, $H(Z)$ is concave as a function of $\pi$. A concave function on a compact polytope attains a minimum at an extreme point. Hence there always exists a deterministic entropy-minimising policy, and $H(A\mid S)=0$ survives even when the world is stochastic. What does not survive is the stronger claim $H(Z\mid S=s)=0$: irreducible environmental noise can leave $Z$ uncertain.}
 
-\newslides{Two Caveats}
+\newslide{Two Caveats}
 
 \slides{The theorem is weaker than the popular slogan.}
 
@@ -97,7 +97,7 @@ So $g$ is strictly concave. An interior mixture cannot be a minimum of $H(Z)$: m
 
 \notes{Minimising $H(Z)$ only makes the result predictable. It does not make the result desirable. A controller that reliably produces catastrophe has $H(Z)=0$. If $G$ denotes good outcomes, maximising $\Pr(Z\in G)$ and minimising $H(Z)$ are different objectives. Either maximise goal achievement first and entropy second, or define $Z$ as an error variable so that concentration at $Z=0$ coincides with success. Keep that fence in front of the phrase ``Good Regulator.''}
 
-\newslides{After the Theorem: IB Gloss}
+\newslide{After the Theorem: IB Gloss}
 
 \slides{IB gloss, not the theorem: keep only distinctions that matter for action.}
 

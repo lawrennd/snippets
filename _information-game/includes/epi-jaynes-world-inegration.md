@@ -1,6 +1,6 @@
 \ifndef{epiJaynesWorldInegration}
 \define{epiJaynesWorldInegration}
-\newslides{System Definition}
+\newslide{System Definition}
 
 \slides{
 * State space $Z$ containing all system variables
@@ -21,7 +21,7 @@ Let us begin by formally defining our system in terms compatible with both frame
 The joint probability distribution over these variables is denoted by $\rho(Z) = \rho(X,M)$.
 }
 
-\newslides{Fisher Information Formulation}
+\newslide{Fisher Information Formulation}
 
 \slides{
 * Fisher information central to EPI framework
@@ -46,7 +46,7 @@ In the context of our partitioned system, this becomes:
 $$I(X|\theta) = \int \rho(X|\theta) \left[\frac{\partial}{\partial\theta} \ln \rho(X|\theta)\right]^2 dX$$
 }
 
-\newslides{EPI Principle Application}
+\newslide{EPI Principle Application}
 
 \slides{
 * Minimize difference $I - J$
@@ -64,7 +64,7 @@ $$\Delta = I(X|\theta) - J(M|\theta)$$
 This minimization is subject to constraints including normalization of probabilities and any physical constraints on the system.
 }
 
-\newslides{Connection to Entropy Dynamics}
+\newslide{Connection to Entropy Dynamics}
 
 \slides{
 * System entropy: $S(Z) = S(X,M) = S(X|M) + S(M)$
@@ -90,7 +90,7 @@ $$\nabla_\theta S(Z) = g = \nabla^2_\theta A(\theta(M))$$
 This establishes a direct relationship between entropy gradients and Fisher information.
 }
 
-\newslides{Dynamical Equations}
+\newslide{Dynamical Equations}
 
 \slides{
 * EPI principle leads to continuity equation:
@@ -112,7 +112,7 @@ $$\Delta\theta = \eta g$$
 where $\eta$ is the learning rate and $g$ is the entropy gradient.
 }
 
-\newslides{Information Reservoirs}
+\newslide{Information Reservoirs}
 
 \slides{
 * System separates into regions:
@@ -140,7 +140,7 @@ $$\Delta\theta(M) \cdot \Delta c(M) \geq k$$
 This can be derived directly from the properties of Fisher information and is mathematically equivalent to the uncertainty relations Frieden derives from EPI.
 }
 
-\newslides{Quantum-Classical Transition}
+\newslide{Quantum-Classical Transition}
 
 \slides{
 * Transition characterized by ratio $I(X|\theta)/J(M|\theta)$:
@@ -159,7 +159,7 @@ The transition between quantum-like and classical behavior can be characterized 
 This provides a precise mathematical characterization of the transition Lawrence describes.
 }
 
-\newslides{Energy-Information Relationship}
+\newslide{Energy-Information Relationship}
 
 \slides{
 * Modified second law with information terms:
@@ -177,7 +177,7 @@ $$W_{ext} \leq -\Delta F + k_B T \cdot I(X;M)$$
 Here, the mutual information $I(X;M)$ represents how much information the memory variables contain about observable variables. This term directly relates to the difference between $I(X|\theta)$ and $J(M|\theta)$ in our EPI formulation.
 }
 
-\newslides{Hierarchical Memory Organization}
+\newslide{Hierarchical Memory Organization}
 
 \slides{
 * Eigenvalue spectrum reveals natural hierarchy:
@@ -199,7 +199,7 @@ The hierarchical memory organization Lawrence describes emerges naturally from t
 This hierarchy creates a natural flow of information from slow-changing to fast-changing variables, with conditional independence structures that optimize information processing efficiency.
 }
 
-\newslides{Unified Framework}
+\newslide{Unified Framework}
 
 \slides{
 * Lawrence's information engines and Frieden's EPI:

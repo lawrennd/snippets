@@ -7,7 +7,7 @@
 
 \notes{Sadi Carnot (1796–1832) asked, in 1824, what limits the efficiency of a heat engine. Rudolf Clausius (1822–1888) built on Carnot and Kelvin to state the second law of thermodynamics in several equivalent forms, and in 1865 he coined the name *entropy* for the state function that tracks irreversibility. Boltzmann and Gibbs, later in the same century, gave the microscopic count behind Clausius's macroscopic $S$. Shannon and Jaynes, in the twentieth century, reuse the same functional form with different operational readings. The historical chain is: engines first, then entropy as a named quantity, then statistics, then information.}
 
-\newslides{Before Boltzmann: Heat Engines}
+\newslide{Before Boltzmann: Heat Engines}
 
 \slidesincremental{
 * Carnot (1824): no real engine beats a reversible cycle between two baths
@@ -17,7 +17,7 @@
 
 \speakernotes{Carnot is the efficiency question; Clausius is the second law and the word entropy. Perpetual motion fails because it tries to evade that toll.}
 
-\newslides{Clausius and the No-Go}
+\newslide{Clausius and the No-Go}
 
 \slides{Clausius: the entropy of the universe tends to a maximum.}
 

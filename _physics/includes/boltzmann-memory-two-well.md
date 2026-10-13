@@ -7,7 +7,7 @@
 
 \notes{Parrondo, Horowitz and Sagawa insist that memory is physical: outcomes live in metastable states with broken ergodicity [@Parrondo-thermodynamics15]. Draw that claim. A thermal particle in a symmetric double well --- equal depth, barrier high compared with $k_BT$ --- is one bit of Gibbs memory. The bit is *which well*, not an energy bias between the wells.}
 
-\newslides{One Bit as Two Equal Wells}
+\newslide{One Bit as Two Equal Wells}
 
 \slides{Equal depth isolates information from energetics: $E_L=E_R$, so $p_L=p_R=\tfrac12$ at equilibrium.}
 
@@ -84,7 +84,7 @@ mlai.write_figure('boltzmann-memory-two-well.svg', directory='\writeDiagramsDir/
 \includediagram{\diagramsDir/physics/boltzmann-memory-two-well}{80%}
 }
 
-\newslides{Landauer on This Geometry}
+\newslide{Landauer on This Geometry}
 
 \slides{Erasing an equiprobable bit compresses two basins into one: $H\to 0$ costs at least $k_BT\ln 2$.}
 
@@ -98,7 +98,7 @@ mlai.write_figure('boltzmann-memory-two-well.svg', directory='\writeDiagramsDir/
 
 \notes{Landauer's bound applies to the logically irreversible map that sends both labels to a standard state. If the controller already knows the bit and it sits in the target well, there is nothing to compress. If the bit is unknown and equiprobable, phase-space volume halves and the bath must take at least $k_BT\ln 2$. Equal depth makes that statement sharp: there is no free-energy difference between $0$ and $1$ to confuse with the informational cost [@Landauer-irreversibility61; @Bennett-thermodynamics82].}
 
-\newslides{Information Reservoir, One Cell}
+\newslide{Information Reservoir, One Cell}
 
 \slides{A tape of equal-depth bits exchanges entropy, not energy, with the rest of the ledger.}
 

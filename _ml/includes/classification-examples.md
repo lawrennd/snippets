@@ -20,7 +20,7 @@
 
 \notes{While the MNIST data doesn't capture all the nuances of the challenges we face in modern machine learning. It has been an important benchmark data set for and can still be a useful data set for learning about classfication algorithms.}
 
-\newslides{Classification Examples}
+\newslide{Classification Examples}
 
 \slides{
 * Classifying type of cancer given gene expression data.

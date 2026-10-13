@@ -5,7 +5,7 @@
 
 \subsection{From Fluctuation Theorem to Length}
 
-\newslides{Crooks (1999): Fluctuation Theorem}
+\newslide{Crooks (1999): Fluctuation Theorem}
 
 \slides{Before length: the exact nonequilibrium relation that the second law and the $\mathcal{L}^2/\tau$ bound sit inside.}
 
@@ -27,7 +27,7 @@ $$
 $$
 where $\Delta F$ is the free-energy difference of those endpoints. This is an exact statement about *trajectories*, not yet a length on the equilibrium manifold.}
 
-\newslides{Jarzynski and the Second Law}
+\newslide{Jarzynski and the Second Law}
 
 \slidesincremental{
 * Integrate Crooks $\Rightarrow$ Jarzynski: $\langle e^{-\beta W}\rangle = e^{-\beta\Delta F}$
@@ -41,7 +41,7 @@ $$
 $$
 Jensen's inequality on the convex map $x\mapsto e^{-\beta x}$ then gives $\langle W\rangle \ge \Delta F$: the second law for isothermal work, as an *average* over trajectories. Define excess work $W_{\mathrm{ex}}=W-\Delta F$. Then $\langle W_{\mathrm{ex}}\rangle\ge 0$, with equality only for reversible protocols.}
 
-\newslides{Near Equilibrium: Length Appears}
+\newslide{Near Equilibrium: Length Appears}
 
 \slidesincremental{
 * Far from equilibrium: Crooks/Jarzynski (exact, distributional)
@@ -55,7 +55,7 @@ $$
 $$
 yields the bound $\langle W_{\mathrm{ex}}\rangle \ge \mathcal{L}^2/\tau$ [@Crooks-length07]. Geodesics of $\mathcal{I}$ are therefore the leading-order minimum-dissipation protocols --- the geometric consequence of the fluctuation relation, not a separate postulate.}
 
-\newslides{Two Papers, One Story}
+\newslide{Two Papers, One Story}
 
 \slidesincremental{
 * Crooks (1999): $P(W)/P_R(-W)=e^{\beta(W-\Delta F)}$ --- exact

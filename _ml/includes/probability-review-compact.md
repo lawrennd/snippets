@@ -4,7 +4,7 @@
 
 \subsection{Probability Review}
 
-\newslides{Joint, Marginal, Conditional}
+\newslide{Joint, Marginal, Conditional}
 
 \slidesincremental{
 * Joint $P(x,y)$: both

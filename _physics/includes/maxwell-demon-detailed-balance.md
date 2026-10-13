@@ -5,7 +5,7 @@
 
 \subsection{Detailed Balance Across the Membrane}
 
-\newslides{What Does the Membrane Do?}
+\newslide{What Does the Membrane Do?}
 
 \slides{The JavaScript demon is a *selective membrane*: one speed threshold $v_\star$, opposite rules on each side.}
 
@@ -19,7 +19,7 @@
 
 \notes{In the simulation the membrane does not move. A ball on the left is allowed through only when its speed exceeds $v_\star$; a ball on the right is allowed through only when its speed is at most $v_\star$. Between crossings, elastic collisions redistribute energy, so a ball that is cold now can become hot later and then cross. The question is not whether sorting begins — it does — but where the *net* particle and energy flows settle.}
 
-\newslides{Steady State $=$ Balanced Fluxes}
+\newslide{Steady State $=$ Balanced Fluxes}
 
 \slides{In a steady state the number of balls leaving left equals the number leaving right — detailed balance of membrane crossings.}
 
@@ -137,7 +137,7 @@ print(f'T_L={T_L:.3f}, T_R={T_R:.3f}, S0={S0:.2f}, S_ss={S_ss:.2f}, dS={delta_S:
 
 \figure{\includediagram{\diagramsDir/physics/maxwell-membrane-detailed-balance}{85%}}{Left: temperatures on each side of the selective membrane from particle-flux detailed balance at equal populations (simulation energy budget). Right: entropy of the two-Maxwellian state minus the single-temperature equilibrium. The red point is the simulation threshold $v_\star=3$.}{maxwell-membrane-detailed-balance}
 
-\newslides{Temperatures Split; Entropy Falls}
+\newslide{Temperatures Split; Entropy Falls}
 
 \slides{For the simulation budget, particle-flux balance at equal $N$ yields $T_L\approx 1.9$, $T_R\approx 23$ ($k_B=1$) — a large split.}
 
@@ -155,7 +155,7 @@ S(N,\beta)=N\left[2+\log\frac{A}{N}-\log\frac{\beta}{2\pi}\right]
 $$
 falls by about $24$ nats relative to the single-temperature state at the same $N$ and $E$. That drop is the thermodynamic content of the sorting you see on the canvas: hot accumulates on the right, cold on the left, and the joint distribution over $(\mathrm{side},\mathbf{v})$ is more concentrated than the unconstrained Maxwellian.}
 
-\newslides{Maxwellians Are Only an Approximation}
+\newslide{Maxwellians Are Only an Approximation}
 
 \slides{Particle balance and energy balance cannot both hold for two Maxwellians — the true steady state depletes velocity tails.}
 
@@ -170,7 +170,7 @@ falls by about $24$ nats relative to the single-temperature state at the same $N
 
 \notes{A Maxwellian is symmetric in a way the membrane is not. Conditioning on $v>v_\star$ selects a high-energy set; conditioning on $v\le v_\star$ selects a low-energy set. When the two *number* fluxes match, the *energy* fluxes generally do not. The true non-equilibrium steady state therefore cannot be a pair of perfect Maxwellians: the left hot tail is depleted by leakage, the right cold body is depleted by leakage the other way, and collisions continually refill those sets. The local-temperature calculation remains the right first cut — it predicts a cold left, a hot right, and a lower gas entropy — but the precise $(T_L,T_R)$ pair is an approximation to a non-Maxwellian steady state.}
 
-\newslides{Where Did the Entropy Go?}
+\newslide{Where Did the Entropy Go?}
 
 \slides{The membrane implements Maxwell's sorting policy. The gas entropy falls; Clausius is not repealed.}
 

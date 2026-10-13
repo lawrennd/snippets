@@ -7,7 +7,7 @@
 
 \notes{Name the object and fix the formula. The MaxEnt derivation that *earns* these weights is a separate step: deriving the occupation from Lagrange multipliers before Shannon $H$ and Jaynes would put the cart before the horse.}
 
-\newslides{Gibbs--Boltzmann Occupation}
+\newslide{Gibbs--Boltzmann Occupation}
 
 \slides{Same formula, three names: Boltzmann weights, Gibbs distribution, canonical ensemble.}
 
@@ -47,7 +47,7 @@ mlai.write_figure('two-state-boltzmann.svg', directory='\writeDiagramsDir/physic
 
 \figure{\includediagram{\diagramsDir/physics/two-state-boltzmann}{75%}}{Occupation of a two-state system as coldness increases. At low $\beta$ both states are populated; at high $\beta$ the ground state dominates.}{two-state-boltzmann}
 
-\newslides{Aside: Hopfield, Boltzmann Machines, Nobel 2024}
+\newslide{Aside: Hopfield, Boltzmann Machines, Nobel 2024}
 
 \slides{The same energy-and-occupation grammar reappears in associative memory and early deep learning.}
 

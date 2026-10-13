@@ -13,7 +13,7 @@ $$
 $$
 and a finite-time correction to Landauer [@Landauer-irreversibility61], following Proesmans, Ehrich and Bechhoefer (2020). That inequality is tight in the Wasserstein geometry. It is *not* Crooks' $\mathcal{L}^2/\tau$ bound. GAIST presents $W_2^2/(T\tau)$ as the thermodynamic speed limit because the book is working in overdamped dissipative dynamics with a ground-cost interpretation. We are not collapsing the three geometries: Fisher--Rao / Crooks remains the near-equilibrium length on the equilibrium manifold; Wasserstein is minimum ground-cost of moving mass; the Schrödinger bridge is the maximum-entropy interpolation.}
 
-\newslides{GAIST on Week 8}
+\newslide{GAIST on Week 8}
 
 \slidesincremental{
 * Ch.~14 and 22: Schrödinger bridge and $W_2$

@@ -7,7 +7,7 @@
 
 \notes{The data-processing inequality forbids creating information by processing. It does not say which information to keep. The information bottleneck [@Tishby:bottleneck99] is the prescription: given an observation $X$ and a relevance variable $Y$, choose a representation $T$ of $X$ that keeps $I(T;Y)$ and discards the rest of $I(X;T)$.}
 
-\newslides{Information Bottleneck}
+\newslide{Information Bottleneck}
 
 \slides{Least-committal $T$ given a relevance constraint --- MaxEnt, now on mutual information.}
 

@@ -7,7 +7,7 @@
 
 \notes{Mutual information is the pairwise case of multi-information: $I(X;Y)=H(X)-H(X|Y)=H(Y)-H(Y|X)=H(X)+H(Y)-H(X,Y)$. Week 2 defined it from the chain rule and stated the data-processing inequality. We prove it now, because this week's object is $I$.}
 
-\newslides{Data-Processing Inequality}
+\newslide{Data-Processing Inequality}
 
 \slides{If $X\to Y\to Z$ is a Markov chain, processing cannot create information about $X$.}
 
