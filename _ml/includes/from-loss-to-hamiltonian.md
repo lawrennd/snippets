@@ -10,7 +10,7 @@
 
 \notes{Sometimes this analogy is proposed, like in momentum variables for stochastic gradient descent, but the analogy seems loose. One place where it's tight is *Hamiltonian Monte-Carlo*. }
 
-\newslides{Walking Down an Energy}
+\newslide{Walking Down an Energy}
 
 \slides{Gradient descent: 'walking downhill'}
 
@@ -51,7 +51,7 @@ mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 
 \notes{In physics the parameters would be the position, $q$, instead of the weights, $w$. And typically (for a Hamiltonian) we denote the potential energy in physics by $V(\cdot)$, so instead of $\objectiveFunction(\weightVector)$ we have $V(\mathbf{q})$.}
 
-\newslides{Potential Energy}
+\newslide{Potential Energy}
 
 \slides{The loss is a *potential energy* $V(\mathbf{q})$ on parameter space.}
 
@@ -63,7 +63,7 @@ mlai.write_figure('loss-energy-contour.svg', directory='\writeDiagramsDir/ml')}
 
 \notes{So in mechanics, potential energy $V(\mathbf{q})$ depends on position, $q$. Gravity on a landscape is the everyday example mentioned above. But there are other forms of potential energy, for example the electrostatic energy of a charge configuration. Or the displacement of a spring. Gradient descent treats model parameters as a position $\mathbf{q}$ and the training objective as $V(\mathbf{q})$. The update $\mathbf{q}\leftarrow\mathbf{q}-\eta\nabla V$ is a discrete, \emph{friction}-dominated limit of a particle sliding on a potential. There is no inertia, there is only force from $V(\cdot)$.}
 
-\newslides{In Practice: Stochastic}
+\newslide{In Practice: Stochastic}
 
 \notes{Modern neural network models train when the number of data points is very large. This makes computing the exact gradients very computationally expensive. The energy is typically decomposed as a sum over data points,
 $$
@@ -83,7 +83,7 @@ where the full data $\mathbf{X} = \{ \mathbf{x}_i\}_{i=1}^\numData$.}
 
 \notes{The closely related stochastic gradient with Langevin dynamics (SGLD, @Welling-langevin11) makes this connection very explicit. There the descent is taken to be a descent in a high friction regime which is subject to *thermal noise*. Thermal noise is the response of the descending particle to being bumped by particles of a surrounding fluid, like in Brownian motion. So SGLD is like Brownian motion in a potential well.}
 
-\newslides{Where Is the Kinetic Energy?}
+\newslide{Where Is the Kinetic Energy?}
 
 \slides{Where is the kinetic energy?}
 
@@ -95,7 +95,7 @@ where the full data $\mathbf{X} = \{ \mathbf{x}_i\}_{i=1}^\numData$.}
 
 \notes{A classical particle has both potential and kinetic energy. Pure gradient descent never tracks a momentum conjugate to $\mathbf{q}$; each step forgets velocity. Momentum SGD and Adam reintroduce inertia heuristically. Hamiltonian mechanics does it properly: introduce momentum $\mathbf{p}$ and a kinetic energy $T(\mathbf{p})$, usually $\frac{1}{2}\mathbf{p}^\top M^{-1}\mathbf{p}$.}
 
-\newslides{The Hamiltonian}
+\newslide{The Hamiltonian}
 
 \slides{
 $$
@@ -113,27 +113,55 @@ $$
 
 \addreading{@Welling-generative26}{Section 3.2.1}
 
-\newslides{Hamiltonian Monte Carlo}
+\newslide{Hamiltonian Monte Carlo}
 
 \slides{HMC: invent momentum, simulate Hamiltonian dynamics, accept/reject.}
 
 \slidesincremental{
-* Draw $\mathbf{p}\sim\mathcal{N}(0,M)$; simulate leapfrog steps on $H$
-* Propose $(\mathbf{q}',\mathbf{p}')$; Metropolis test on $H$
+* Draw $\mathbf{p}\sim\mathcal{N}(0,M)$; integrate Hamilton's equations for a short fictitious time
+* Propose the *endpoint* $(\mathbf{q}',\mathbf{p}')$; Metropolis test on $H$
 * Marginal samples of $\mathbf{q}$ target $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$
 }
 
-\notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities. The method was originally developed for Bayesian sampling of  neural network weights.}
+\notes{Hamiltonian Monte Carlo (originally *hybrid* Monte Carlo) uses fictitious momentum variables so proposals move far in parameter space while staying near level sets of $H$. The continuous flow cannot be integrated in closed form for a general $V$, so we discretise. Discretisation error is corrected by a Metropolis accept/reject on the Hamiltonian. The method turns gradient information about $V$ into efficient exploration of high-dimensional densities. The method was originally developed for Bayesian sampling of neural network weights.}
 
-\notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $\objectiveFunction(\weightVector)$.} 
+\notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $\objectiveFunction(\weightVector)$.}
+
+\newslide{Why Leapfrog?}
+
+\slides{Hamilton's equations are continuous. A computer must take discrete steps.}
+
+\slidesincremental{
+* Naive Euler breaks time-reversibility and volume preservation --- Metropolis rejects almost everything
+* Leapfrog (velocity Verlet): staggered updates of $\mathbf{p}$ and $\mathbf{q}$
+* Symplectic and reversible; $H$ drifts only slowly, so accept rates stay high
+}
+
+\notes{The continuous Hamiltonian flow is ideal: it is reversible, preserves phase-space volume (Liouville), and conserves $H$ exactly. Any numerical integrator only approximates that flow. Forward Euler is a poor choice here: it is neither reversible nor volume-preserving, so the Metropolis correction based on $\Delta H$ fails and almost every proposal is rejected. Leapfrog --- half-step momentum, full-step position, half-step momentum --- is a second-order symplectic integrator. It is exactly reversible and (approximately) conserves $H$ over many steps. That is why HMC uses leapfrog rather than an arbitrary ODE solver: the discretisation must respect the geometric structure that makes the accept/reject cheap.}
+
+\speakernotes{One blackboard sketch of leapfrog staggering is enough. Do not derive the symplectic condition; name reversibility + volume preservation as the reason Euler fails.}
+
+\newslide{Trajectories Propose; Endpoints Sample}
+
+\slides{The leapfrog *path* is not a sequence of posterior samples.}
+
+\slidesincremental{
+* $L$ leapfrog steps build one proposal from $(\mathbf{q},\mathbf{p})$ to $(\mathbf{q}',\mathbf{p}')$
+* Intermediate points on the path are integrator waypoints --- discard them
+* Only the accepted endpoint (after Metropolis) enters the Markov chain
+}
+
+\notes{This is the confusion the trajectory figure invites. Hamiltonian dynamics explore a level set of $H$ to *construct a proposal*. The sample from the target $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$ is the position $\mathbf{q}'$ *if* the Metropolis test accepts. Reject, and the chain stays at $\mathbf{q}$. Either way, the green curve on the contour plot is scaffolding for one move, not a cloud of draws. Fresh momentum is drawn for the next proposal; the chain of accepted $\mathbf{q}$ values is what estimates posterior expectations.}
+
+\speakernotes{Point at the quadratic figure: curves = proposals; markers = accepted samples only. Say it twice if needed.}
 
 \addreading{@Welling-generative26}{Section 11.4.2}
 
-\newslides{Radford Neal}
+\newslide{Radford Neal}
 
 \figure{\includejpg{\diagramsDir/people/radford-neal}{35%}}{Radford M. Neal (University of Toronto).}{radford-neal}
 
-\newslides{Radford Neal}
+\newslide{Radford Neal}
 
 \slides{Radford Neal brought Hamiltonian Monte Carlo into Bayesian neural nets.}
 
@@ -157,7 +185,7 @@ $$
 * Contrast: SGD point estimate vs HMC posterior samples
 }
 
-\notes{The reusable component lives in ``mlai.hmc``. It has diagonal-mass kinetic energy, leapfrog proposals, and a Metropolis correction on $\Delta H$. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl), then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
+\notes{The reusable component lives in ``mlai.hmc``. It has diagonal-mass kinetic energy, leapfrog *proposals*, and a Metropolis correction on $\Delta H$. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl) --- read the curves as proposal trajectories, the markers as accepted samples --- then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
 
 \code{# 2D quadratic potential: V(q)=0.5||q||^2  (standard normal target).
 # Leapfrog trajectories on the same contour language as regression_contour.
@@ -193,7 +221,7 @@ mlai.write_figure('hmc-quadratic-trajectories.svg', directory='\writeDiagramsDir
 
 \newslide{}
 
-\figure{\includediagram{\diagramsDir/ml/hmc-quadratic-trajectories}{55%}}{Leapfrog trajectories and samples from teachable HMC on $V(\mathbf{q})=\tfrac12\|\mathbf{q}\|^2$. Accept/reject keeps the chain on the Boltzmann target $e^{-V}$.}{hmc-quadratic-trajectories}
+\figure{\includediagram{\diagramsDir/ml/hmc-quadratic-trajectories}{55%}}{Leapfrog *trajectories* (curves) are proposals, not samples. Markers are accepted endpoints only. Target $V(\mathbf{q})=\tfrac12\|\mathbf{q}\|^2$; Metropolis on $\Delta H$ keeps the chain on $e^{-V}$.}{hmc-quadratic-trajectories}
 
 \code{# SGD point estimate vs HMC samples for logistic regression.
 # Potential V(w) = -log p(w|D) with a flat prior (negative log-likelihood).
@@ -236,7 +264,7 @@ print('SGD:', q_sgd, 'HMC mean:', hmc_result.samples.mean(axis=0))}
 
 \figure{\includediagram{\diagramsDir/ml/hmc-logistic-traces}{70%}}{Hamiltonian and weight traces for logistic regression. $V(\weightVector)=-\log p(\weightVector\mid\mathcal{D})$; SGD gives one downhill point, HMC a cloud of posterior samples.}{hmc-logistic-traces}
 
-\speakernotes{Name kinetic energy and Neal; show the trajectory figure if builds are available. Emphasise V = -log posterior, not a new loss species.}
+\speakernotes{Name kinetic energy and Neal; show the trajectory figure if builds are available. Emphasise V = -log posterior, not a new loss species. Re-state: path = proposal; samples = accepted endpoints.}
 
 
 \endif
