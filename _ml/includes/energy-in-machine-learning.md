@@ -4,11 +4,17 @@
 
 \subsection{Energy in Machine Learning}
 
-\notes{An *energy* in machine learning is a scalar score on a configuration: parameters, predictions, or binary states. Lower is preferred. An *energy-based model* turns that score into a distribution by the same exponential map used in statistical physics: $p(x)\propto e^{-E(x)}$. Training often amounts to shaping $E$ so that observed configurations sit in low-energy valleys. The examples below are familiar losses rewritten in that language --- not new algorithms.}
+\notes{An *energy* in machine learning is a scalar score on a configuration: parameters, predictions, or binary states. Often an energy is equivalent to an objective function or an error function. In this respect lower is preferred. Energy-based models turn that score into a distribution by the same exponential map used in statistical physics,
+\[
+p(x)\propto e^{-E(x)}.
+\]
+Training normally then amounts to shaping $E$ so that observed configurations sit in low-energy valleys.}
+
+\notes{We can reinterpret many machine learning algorithms in this way by simply writing familiar loss functions in the energy language. Note these are not new algorithms, just the energy interpretation.}
 
 \newslide{Energy as a Score}
 
-\slides{In ML, an *energy* is a scalar assigned to a configuration: lower means preferred.}
+\slides{In ML, an *energy* is (often) a scalar assigned to a configuration: lower means preferred.}
 
 \slidesincremental{
 * Losses are energies over parameters or predictions

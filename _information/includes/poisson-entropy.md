@@ -8,7 +8,7 @@
 $$
 P(k)=\frac{\lambda^k e^{-\lambda}}{k!}.
 $$
-Entropy again has no elementary closed form; numerically $H=\sum_k -P(k)\log_2 P(k)$. For large $\lambda$, $H\approx\tfrac12\log_2(2\pi e\lambda)$ bits.}
+Entropy again has no elementary closed form; numerically $H=\sum_k -P(k)\log_2 P(k)$. For large $\lambda$, $H\approx\tfrac12\log_2(2\pi e\lambda)$ bits.\ifdef{poissonEnergyFromDistribution} The $\lambda=4$ panels reuse the count distribution from the energy overlay: surprisal is that energy in bits; the right panel is the average that defines $H$.\endif}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -47,12 +47,21 @@ mlai.write_figure('poisson-entropy-panels.svg', directory='\writeDiagramsDir/inf
 
 \newslide{Poisson Entropy}
 
-\figure{\includediagram{\diagramsDir/information/poisson-entropy-panels}{85%}}{Poisson($\lambda=4$). Mid: surprisal rises in the tails. Right: the probability weight cuts those tails back, so $H$ is dominated by the bulk.}{poisson-entropy-panels}
+\figure{\includediagram{\diagramsDir/information/poisson-entropy-panels}{85%}}{Poisson($\lambda=4$). Mid: surprisal rises in the tails\ifdef{poissonEnergyFromDistribution} (energy in bits)\endif. Right: the probability weight cuts those tails back, so $H$ is dominated by the bulk.}{poisson-entropy-panels}
 
+\ifdef{poissonEnergyFromDistribution}
+\slidesincremental{
+* Same $\lambda=4$ as the energy overlay: middle panel is $E$ in bits
+* Right panel: $H=\mathbb{E}[E]$ --- high-energy tails are down-weighted by $P(k)$
+* Large-$\lambda$ approximation: $H\approx\tfrac12\log_2(2\pi e\lambda)$ bits
+}
+\else
 \slidesincremental{
 * Count distributions: same three-panel reading as Bernoulli / binomial
 * Large-$\lambda$ approximation: $H\approx\tfrac12\log_2(2\pi e\lambda)$ bits
 * Entropy grows only logarithmically with the rate
 }
+\endif
+
 
 \endif

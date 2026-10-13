@@ -12,7 +12,7 @@ is called *differential* entropy. It can be negative, and it is not invariant to
 $$
 h = \tfrac12\log_2\bigl(2\pi e\sigma^2\bigr)
 $$
-bits. The panels below use the height example ($\mu=1.7$, $\sigma^2=0.0225$): density, surprisal $-\log_2 p(y)$, and the integrand $-p(y)\log_2 p(y)$.}
+bits. The panels below use the height example ($\mu=1.7$, $\sigma^2=0.0225$): density, surprisal $-\log_2 p(y)$, and the integrand $-p(y)\log_2 p(y)$.\ifdef{gaussianEnergyFromDistribution} That is the same height Gaussian as the quadratic-energy overlay: the middle curve is $E=-\log p$ in bits (still a parabola); the right panel integrates $p\,E$ to differential entropy.\endif}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -59,8 +59,17 @@ mlai.write_figure('gaussian-entropy-panels.svg', directory='\writeDiagramsDir/in
 
 \newslide{Gaussian Differential Entropy}
 
-\figure{\includediagram{\diagramsDir/information/gaussian-entropy-panels}{85%}}{Univariate Gaussian (height example). Middle: $-\log_2 p(y)$ dips below zero where the density exceeds $1$. Right: the integrand whose integral is differential entropy $h$.}{gaussian-entropy-panels}
+\figure{\includediagram{\diagramsDir/information/gaussian-entropy-panels}{85%}}{Univariate Gaussian (height example). Middle: $-\log_2 p(y)$\ifdef{gaussianEnergyFromDistribution} --- quadratic energy in bits\endif; dips below zero where the density exceeds $1$. Right: the integrand whose integral is differential entropy $h$.}{gaussian-entropy-panels}
 
+\ifdef{gaussianEnergyFromDistribution}
+\slidesincremental{
+* Same height Gaussian as the energy overlay: middle panel is the parabola in bits
+* Differential entropy $h=\mathbb{E}[E]$ (bits) --- closed form $\tfrac12\log_2(2\pi e\sigma^2)$
+* Can be negative; not the same object as discrete Shannon $H$
+}
+
+\speakernotes{Callback to the quadratic well. Flag the continuous caveat once: discrete $H\ge 0$; differential $h$ is a relative measure.}
+\else
 \slidesincremental{
 * Closed form: $h=\tfrac12\log_2(2\pi e\sigma^2)$ bits
 * Grows with $\sigma$; independent of $\mu$
@@ -68,5 +77,6 @@ mlai.write_figure('gaussian-entropy-panels.svg', directory='\writeDiagramsDir/in
 }
 
 \speakernotes{Flag the continuous caveat once. Do not dwell; the three-panel analogy is the point. Discrete $H\ge 0$; differential $h$ is a relative measure.}
+\endif
 
 \endif
