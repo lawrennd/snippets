@@ -52,6 +52,8 @@ mlai.write_figure('bernoulli-entropy-panels.svg', directory='\writeDiagramsDir/i
 
 \figure{\includediagram{\diagramsDir/information/bernoulli-entropy-panels}{85%}}{Bernoulli($p=0.3$). Left: the distribution. Middle: surprisal $-\log_2 P(x)$\ifdef{bernoulliEnergyFromDistribution} --- energy in bits\endif. Right: the summands $-P(x)\log_2 P(x)$; their total is the entropy $H$.}{bernoulli-entropy-panels}
 
+\newslide{Bernoulli Entropy}
+
 \ifdef{bernoulliEnergyFromDistribution}
 \slidesincremental{
 * Same coin as the energy overlay: $E=-\log P$ (nats) $\Leftrightarrow$ surprisal in bits
