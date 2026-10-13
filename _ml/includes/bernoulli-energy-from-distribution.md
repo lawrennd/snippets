@@ -2,8 +2,6 @@
 \define{bernoulliEnergyFromDistribution}
 \editme
 
-\subsection{Bernoulli: Distribution and Energy}
-
 \notes{A Bernoulli($p$) on $\{0,1\}$ has energies $E(x)=-\log P(x)$ (nats). High probability is low energy. The panels below use a biased coin $p=0.3$: first $P$ and $E$ side by side, then the same two curves overlaid on twin axes so the inverse relationship is visible in one frame.}
 
 \setupplotcode{import numpy as np
