@@ -2,8 +2,6 @@
 \define{gaussianEnergyFromDistribution}
 \editme
 
-\subsection{Gaussian: Distribution and Energy}
-
 \notes{The univariate Gaussian already written as
 $$
 p(y)\propto\exp\!\left(-\frac{(y-\mu)^2}{2\sigma^2}\right)

@@ -2,8 +2,6 @@
 \define{poissonEnergyFromDistribution}
 \editme
 
-\subsection{Poisson: Distribution and Energy}
-
 \notes{A Poisson($\lambda$) on the non-negative integers has
 $$
 P(k)=\frac{\lambda^k e^{-\lambda}}{k!},\qquad E(k)=-\log P(k)
