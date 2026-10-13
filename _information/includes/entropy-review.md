@@ -4,11 +4,15 @@
 
 \subsection{Entropy Review}
 
+\include{_information/includes/information-game-guessing.md}
+
+\include{_information/includes/mackay-weighing-problem.md}
+
 \include{_ml/includes/expectation-entropy-example.md}
 
 \newslide{Uncertainty as a Number}
 
-\slides{Shannon entropy turns a distribution into a *scalar* measure of uncertainty.}
+\slides{Shannon entropy turns a distribution into a *scalar* measure of uncertainty --- the average number of fair yes/no questions under optimal play.}
 
 \slidesincremental{
 * Discrete: $H(p) = -\sum_i p_i \log p_i$
@@ -16,7 +20,9 @@
 * Fair coin: $H=1$ bit; certain outcome: $H=0$
 }
 
-\notes{Under Shannon's definition, entropy is dimensionless. It is the expectation of the negative log surprisal, $-\expSamp{\log P(\dataScalar)}$.}
+\notes{Under Shannon's definition, entropy is dimensionless. It is the expectation of the negative log surprisal, $-\expSamp{\log P(\dataScalar)}$. The information game and MacKay's balance give the operational reading: $H$ is how much uncertainty you must remove; the log alphabet size of your instrument bounds how much each query can buy.}
+
+\include{_information/includes/common-distributions-entropy.md}
 
 \newslide{Shannon's definition is not yet ...}
 

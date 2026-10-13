@@ -6,6 +6,8 @@
 
 \slides{* There are two barrels in front of you. Barrel One contains 20 apples and 4 oranges. Barrel Two other contains 4 apples and 8 oranges. You choose a barrel randomly and select a fruit. It is an apple. What is the probability that the barrel was Barrel One?}
 
+\figure{\includediagram{\diagramsDir/ml/bayes-two-barrels}{80%}}{Two barrels: Barrel One holds 20 apples and 4 oranges; Barrel Two holds 4 apples and 8 oranges. A barrel is chosen uniformly at random and a single fruit is drawn.}{bayes-two-barrels}
+
 \newslide{Bayes’ Rule Example: Answer I}
 
 \slides{

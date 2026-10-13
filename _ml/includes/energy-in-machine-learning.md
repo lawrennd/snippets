@@ -16,6 +16,8 @@
 * Minimising $E$ is the zero-temperature / MAP limit
 }
 
+\include{_ml/includes/energy-from-distributions-examples.md}
+
 \newslides{Quadratic Energy (Regression)}
 
 \slides{
