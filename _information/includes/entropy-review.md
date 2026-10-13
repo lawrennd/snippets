@@ -6,7 +6,7 @@
 
 \include{_ml/includes/expectation-entropy-example.md}
 
-\newslides{Uncertainty as a Number}
+\newslide{Uncertainty as a Number}
 
 \slides{Shannon entropy turns a distribution into a *scalar* measure of uncertainty.}
 
