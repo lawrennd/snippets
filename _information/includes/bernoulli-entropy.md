@@ -8,7 +8,7 @@
 $$
 H(X) = -p\log_2 p - (1-p)\log_2(1-p)
 $$
-bits. The panels below show, for a fixed $p$, the distribution, the pointwise surprisal $-\log_2 P(x)$, and the summands $-P(x)\log_2 P(x)$ whose total is $H$.}
+bits. The panels below show, for a fixed $p$, the distribution, the pointwise surprisal $-\log_2 P(x)$, and the summands $-P(x)\log_2 P(x)$ whose total is $H$.\ifdef{bernoulliEnergyFromDistribution} The same $p=0.3$ coin appeared in the energy overlay: middle panel is that energy in bits; the right panel averages it to $H$.\endif}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
@@ -50,12 +50,21 @@ mlai.write_figure('bernoulli-entropy-panels.svg', directory='\writeDiagramsDir/i
 
 \newslide{Bernoulli Entropy}
 
-\figure{\includediagram{\diagramsDir/information/bernoulli-entropy-panels}{85%}}{Bernoulli($p=0.3$). Left: the distribution. Middle: surprisal $-\log_2 P(x)$. Right: the summands $-P(x)\log_2 P(x)$; their total is the entropy $H$.}{bernoulli-entropy-panels}
+\figure{\includediagram{\diagramsDir/information/bernoulli-entropy-panels}{85%}}{Bernoulli($p=0.3$). Left: the distribution. Middle: surprisal $-\log_2 P(x)$\ifdef{bernoulliEnergyFromDistribution} --- energy in bits\endif. Right: the summands $-P(x)\log_2 P(x)$; their total is the entropy $H$.}{bernoulli-entropy-panels}
 
+\ifdef{bernoulliEnergyFromDistribution}
+\slidesincremental{
+* Same coin as the energy overlay: $E=-\log P$ (nats) $\Leftrightarrow$ surprisal in bits
+* Entropy $H=\mathbb{E}[E]$ in bits --- fair coin $p=\tfrac12$ gives $H=1$ bit (maximal)
+* As $p\to 0$ or $1$: $H\to 0$ --- the deep well makes the outcome nearly certain
+}
+\else
 \slidesincremental{
 * Fair coin $p=\tfrac12$: $H=1$ bit --- maximal for a binary variable
 * As $p\to 0$ or $1$: $H\to 0$ --- the outcome is nearly certain
 * Closed form: $H=-p\log_2 p-(1-p)\log_2(1-p)$
 }
+\endif
+
 
 \endif

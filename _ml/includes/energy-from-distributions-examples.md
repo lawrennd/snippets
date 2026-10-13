@@ -8,7 +8,7 @@
 $$
 E_i = -\log p_i
 $$
-(up to an additive constant that cancels in the normalisation). High probability is low energy. The numbers below reuse examples from earlier in the lecture.}
+(up to an additive constant that cancels in the normalisation). High probability is low energy. The numbers below reuse examples from earlier in the lecture. For each classic family we plot $P$ (or $p$) beside $E=-\log P$, then overlay the two on twin axes.}
 
 \newslide{From $p$ to $E$: the Four Outcomes}
 
@@ -35,17 +35,19 @@ $E(y)=-\log P(y)$ | 1.204 | 1.609 | 2.302 | 0.916
 
 \slides{A coin with $P(H)=p$, $P(T)=1-p$ is a two-state energy model.}
 
-\slidesincremental{
-* $E_H = -\log p$,\quad $E_T = -\log(1-p)$
-* Fair coin $p=\tfrac12$: $E_H=E_T=\log 2$ --- degenerate energies
-* Biased coin: the favoured face sits lower in energy
-}
+\include{_ml/includes/bernoulli-energy-from-distribution.md}
 
 \notes{A fair coin has equal energies on heads and tails; uncertainty is maximal. A biased coin tilts the energy landscape. The same grammar appears as a two-level thermal system: fix energies $E_0,E_1$ and coldness $\beta$, then
 $$
 p_1 = \frac{e^{-\beta E_1}}{e^{-\beta E_0}+e^{-\beta E_1}},
 $$
 which is Bernoulli with that success probability. Week 2 returns to this as the Schottky / two-state seed.}
+
+\newslide{Poisson: Count Energy}
+
+\slides{A Poisson($\lambda$) is the same map $E=-\log P$ on the non-negative integers.}
+
+\include{_ml/includes/poisson-energy-from-distribution.md}
 
 \newslide{Gaussian: Quadratic Energy}
 
@@ -59,14 +61,10 @@ E(y)=\frac{(y-\mu)^2}{2\sigma^2}
 $$
 }
 
-\slidesincremental{
-* Height example: $\mu=1.7$, $\sigma^2=0.0225$ --- $E$ is a parabola about $1.7$
-* Least-squares regression uses the same quadratic energy on residuals
-* Normaliser $(2\pi\sigma^2)^{-1/2}$ is the partition function for this $E$
-}
+\include{_ml/includes/gaussian-energy-from-distribution.md}
 
 \notes{Reading the Gaussian density as $p\propto e^{-E}$ makes the link to regression immediate: minimising $\sum_n(y_n-\mathbf{w}^\top\mathbf{x}_n)^2$ is minimising a sum of quadratic energies, which is maximum likelihood under independent Gaussian noise. The continuous normaliser plays the role of $Z$.}
 
-\speakernotes{One board sketch of the parabola $E(y)$ under the height Gaussian is enough. Then jump to the least-squares slide with recognition rather than a new idea.}
+\speakernotes{One look at the parabola under the height Gaussian is enough. Then jump to the least-squares slide with recognition rather than a new idea.}
 
 \endif
