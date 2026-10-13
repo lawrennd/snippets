@@ -33,7 +33,11 @@
 
 \newslide{Entropy: physical and anthropomorphic}
 
-\slidesincremental{<!-- TODO FILL SUMMARISING BELOW -->>
+\slidesincremental{
+* Thermodynamic $S$ and Shannon $H$: same form; in equilibrium $S = k_B H$
+* $k_B$ gives physical units (J/K); $TS$ has units of energy
+* Which degrees of freedom you count is a *choice* (Jaynes / Wigner: ``anthropomorphic'')
+* Steam tables: untampered extras (e.g.\ electric field) or apparent second-law violations
 }
 
 \notes{Thermodynamic entropy $S$ and Shannon $H$ have a shared functional form, in equilibrium we can write $S = k_BH$, where $k_B$ is Boltzmann's constant, $k_B = 1.380649 \times 10^{-23} \tfrac{\text{kg}\text{m}^2 }{\text{s}^2 \text{K}}$. 
