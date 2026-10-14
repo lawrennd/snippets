@@ -4,6 +4,8 @@
 
 \newslide{Structures for Extracting Information from Data}
 
+\installcode{daft}
+
 \setupplotcode{}
 
 \plotcode{pgm = plot.vertical_chain(depth=5)

@@ -30,6 +30,8 @@
 
 \figure{\includediagram{\diagramsDir/dimred/nonlinear-mapping-2d-plot}{60%}}{A one dimensional line mapped into two dimensions by two separate independent functions. Each point can be mapped exactly through the mappings.}{non-linear-mapping-2d-plot}
 
+\installcode{daft}
+
 \plotcode{plot.non_linear_difficulty_plot_1(diagrams='\writeDiagramsDir/dimred')}
 
 \newslide{Difficulty for Probabilistic Approaches}

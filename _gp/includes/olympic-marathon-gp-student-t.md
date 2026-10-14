@@ -31,7 +31,8 @@ display(model)}
 
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
-model.plot(ax=ax)
+# Plot latent function (Student-$t$ predictive moments currently fail in GPy under NumPy/SciPy).
+model.plot(ax=ax, plot_raw=True)
 
 mlai.write_figure('olympic-marathon-gp-student-t.svg', directory='\writeDiagramsDir/gp')}
 

@@ -9,7 +9,7 @@
                               mu_x=1.7, var_x=0.0225,
                               mu_y=75, var_y=36, num_samps=8,
                               xlabel='$h/m$', ylabel='$w/kg$',
-                              filestub='correlated_height_weight'
+                              filestub='correlated_height_weight',
                               diagrams='\writeDiagramsDir/ml')}
 
 \setupdisplaycode{import notutils as nu

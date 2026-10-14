@@ -12,6 +12,8 @@
   $$
 \notes{Or if we view it from the probabilistic perspective we can see that a deep Gaussian process is specifying a factorization of the joint density, the standard deep model takes the form of a Markov chain.}
 
+\installcode{daft}
+
 \setupplotcode{from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica'],'size':30})
