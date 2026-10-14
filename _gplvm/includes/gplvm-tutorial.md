@@ -24,7 +24,7 @@ To run PCA on the digits we have to reshape (Hint: np.reshape ) digits . }
 
 
 \code{from GPy.util import pca
-p = pca.pca(Y) # create PCA class with digits dataset}
+p = pca.PCA(Y) # create PCA class with digits dataset}
 
 \notes{The resulting plot will show the lower dimensional representation of the digits in 2 dimensions.}
 
@@ -32,7 +32,7 @@ p = pca.pca(Y) # create PCA class with digits dataset}
 \plotcode{
 p.plot_fracs(20) # plot first 20 eigenvalue fractions
 p.plot_2d(Y,labels=labels.flatten(), colors=colors)
-pb.legend()}
+plt.legend()}
 
 
 \subsection{Gaussian Process Latent Variable Model}
@@ -48,7 +48,7 @@ m.optimize(messages=1, max_iters=1000) # optimize for 1000 iterations}
 
 \plotcode{m.kern.plot_ARD()
 plot_model(m.X, m.linear.variances.argsort()[-2:], labels.flatten())
-pb.legend()}
+plt.legend()}
 
 \notes{As you can see the solution with a linear kernel is the same as the PCA solution with the exception of rotational changes and axis flips.}
 

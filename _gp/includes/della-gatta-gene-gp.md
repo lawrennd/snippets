@@ -99,7 +99,7 @@ mlai.write_figure(figure=fig,
 
 \setupplotcode{import mlai.plot as plot}
 
-\plotcode{plot.multiple_optima(diagrams='\writeDiagramsDir/gp')}
+\plotcode{plot.multiple_optima(directory='\writeDiagramsDir/gp')}
 
 \newslide{Multiple Optima}
 

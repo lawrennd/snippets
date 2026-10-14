@@ -6,7 +6,7 @@
 
 \setupplotcode{import mlai.plot as plot}
 \plotcode{plot.stack_gp_sample(kernel=GPy.kern.Linear,
-                     diagrams="\writeDiagramsDir/deepgp")}
+                     directory="\writeDiagramsDir/deepgp")}
 
 \setupdisplaycode{import notutils as nu}
 \setupdisplaycode{import notutils as nu}

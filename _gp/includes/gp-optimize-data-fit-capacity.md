@@ -7,7 +7,7 @@
 
 \setupplotcode{import mlai.plot as plot
 import mlai
-from mlai import gp_tutorial
+from mlai import Kernel, eq_cov, GP, gp_tutorial
 import os}
 
 \plotcode{np.random.seed(125)
@@ -65,9 +65,9 @@ counter = 0
 for i, ls in enumerate(lengthscales):
     gp.kernel.parameters["lengthscale"] = ls
     gp.update_kernel_matrix() 
-    err[i] = 0.5*(gp.logdetK + y.T@gp.Kinv@y)
-    err_log_det[i] = 0.5*gp.logdetK
-    err_fit[i] = 0.5*y.T@gp.Kinv@y
+    err[i] = float(np.asarray(0.5*(gp.logdetK + y.T@gp.Kinv@y)).squeeze())
+    err_log_det[i] = float(np.asarray(0.5*gp.logdetK).squeeze())
+    err_fit[i] = float(np.asarray(0.5*y.T@gp.Kinv@y).squeeze())
     ypred_mean, ypred_var = gp.predict(xtest)
     ypred_sd = np.sqrt(ypred_var)
     ax[0].clear()

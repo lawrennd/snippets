@@ -4,11 +4,13 @@
 
 \notes{The deep Gaussian process code we are using is research code by Andreas Damianou. 
 
-To extend the research code we introduce some approaches to initialization and optimization that we'll use in examples. These approaches can be found in the ```deepgp_tutorial.py``` file.}
+To extend the research code we introduce some approaches to initialization and optimization that we'll use in examples. These approaches live in the ```mlai.deepgp_tutorial``` module.}
+
+\installcode{mlai}
 
 \notes{Deep Gaussian process models also can require some thought in the initialization. Here we choose to start by setting the noise variance to be one percent of the data variance.}
 
-\loadcode{initialize}{deepgp_tutorial}
+\loadcode{initialize}{mlai.deepgp_tutorial}
 
 \notes{Secondly, we introduce a staged optimization approach.}
 
@@ -21,19 +23,19 @@ Next an optimization of the kernel function parameters at each layer is performe
 
 Finally, all parameters of the model are optimized together.}
 
-\loadcode{staged_optimize}{deepgp_tutorial}
+\loadcode{staged_optimize}{mlai.deepgp_tutorial}
 
 \notes{The next code is for visualizing the intermediate layers of the deep model. This visualization is only appropriate for models with intermediate layers containing a single latent variable.}
 
-\loadcode{visualize}{deepgp_tutorial}
+\loadcode{visualize}{mlai.deepgp_tutorial}
 
 \notes{The pinball visualization is to bring the pinball-analogy to life in the model. It shows how a ball would fall through the model to end up in the right pbosition. This visualization is only appropriate for models with intermediate layers containing a single latent variable.}
 
-\loadcode{visualize_pinball}{deepgp_tutorial}
+\loadcode{visualize_pinball}{mlai.deepgp_tutorial}
 
 \notes{The ```posterior_sample``` code allows us to see the output sample locations for a given input. This is useful for visualizing the non-Gaussian nature of the output density.}
 
-\loadcode{posterior_sample}{deepgp_tutorial}
+\loadcode{posterior_sample}{mlai.deepgp_tutorial}
 
 \notes{Finally, we bind these methods to the DeepGP object for ease of calling.}
 

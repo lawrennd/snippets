@@ -20,7 +20,7 @@ import mlai.plot as plot
 import mlai}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-model.plot_latent(ax=ax, X[:, 0], X[:, 1], data['labels'], '<>^vsd')
+plot_labels(ax, X[:, 0], X[:, 1], data['labels'], '<>^vsd')
 
 mlai.write_figure('singlecell-lle.svg', directory='\writeDiagramsDir/dimred')}
 

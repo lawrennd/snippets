@@ -19,7 +19,7 @@ import mlai
 import mlai.plot as plot}
 
 \plotycode{fig, ax=plt.subplots(figsize=plot.big_wide_figsize)
-plot.model_output(m_full, output_dim=output_dim, scale=scale, offset=offset, ax=ax, 
+plot.model_output(m_full, output_dim=0, scale=scale, offset=offset, ax=ax, 
                   xlabel='time', ylabel='signal strength', fontsize=20, portion=0.5)
 ax.set_ylim(ylim)
 ax.set_xlim(xlim)
