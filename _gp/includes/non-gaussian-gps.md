@@ -10,14 +10,24 @@
 
 \setupcode{from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
-import cPickle as pickle
-import urllib}
+from pathlib import Path
+import pickle
+import urllib.request}
 
-\code{urllib.urlretrieve('http://staffwww.dcs.sheffield.ac.uk/people/M.Zwiessele/gpss/lab2/EastTimor.pickle', 'EastTimor2.pickle')}
+\code{# Load East Timor language regions (local copy preferred; remote host is unreliable)
+data_path = Path('data/EastTimor2.pickle')
+if not data_path.exists():
+    data_path = Path('EastTimor2.pickle')
+if not data_path.exists():
+    url = 'http://staffwww.dcs.shef.ac.uk/people/M.Zwiessele/gpss/lab2/EastTimor.pickle'
+    urllib.request.urlretrieve(url, 'EastTimor2.pickle')
+    data_path = Path('EastTimor2.pickle')
 
-\code{# Load the data
-with open("./EastTimor2.pickle","rb") as f:
-    X,y,polygons = pickle.load(f)}
+with open(data_path, 'rb') as f:
+    try:
+        X, y, polygons = pickle.load(f, encoding='latin1')
+    except TypeError:
+        X, y, polygons = pickle.load(f)}
 
 \notes{Now we will create a map of East Timor and, using GPy, plot the data on top of it. 
 A classification model can be defined in a similar way to the regression model, but now using `GPy.models.GPClassification`. However, once we've define the model, we also need to update the approximation to the likelihood. This runs the Expectation propagation updates.}

@@ -50,6 +50,8 @@ This probabilistic formulation, developed by Tipping and Bishop [@Tipping-probpc
 
 \newslide{Graphical model representing probabilistic PCA}
 
+\installcode{daft}
+
 \setupplotcode{from mlai import plot
 import mlai
 from matplotlib import pyplot as plt}

@@ -33,7 +33,7 @@
     * or are unable to model such private information.
 * Solution: Model shared and private information  @Klami:group11,@Ek:ambiguity08,@Leen:gplvmcca06,@Klami:local07,@Klami:probabilistic08,@Tucker:battery58
 
-\plotcode{    \begin{center}
+\slides{    \begin{center}
       \begin{tikzpicture}
         % Define nodes
         \draw node[latent] (XS1) {$\mathbf{Z}^{(1)}$};

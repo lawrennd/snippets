@@ -8,6 +8,7 @@
 In practice we shouldn't be using matrix inverse directly to solve the GP system. One more stable way is to compute the *Cholesky decomposition* of the kernel matrix. The log determinant of the covariance can also be derived from the Cholesky decomposition.
 
 \setupcode{import scipy.linalg as la}
+\loadcode{GP}{mlai}
 \loadcode{update_inverse}{mlai}
 
 \code{# Bind the updated inverse to our GP model

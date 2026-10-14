@@ -10,7 +10,9 @@ if shutil.which('latex') is None:
     plt.rcParams['text.usetex'] = False
 else:
     plt.rcParams['text.usetex'] = True
-    plt.rcParams['text.latex.preamble']=r'\usepackage{amsmath}'
+    plt.rcParams['text.latex.preamble'] = (
+        r'\usepackage{amsmath}\usepackage{amssymb}\usepackage{mathrsfs}'
+    )
 
 plt.rcParams.update({'font.size': 22})}
 

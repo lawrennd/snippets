@@ -12,7 +12,7 @@
 \plotcode{plot.gp_optimize_quadratic(
     lambda1=3,
     lambda2=1, 
-    diagrams='\writeDiagramsDir/gp',
+    directory='\writeDiagramsDir/gp',
     fontsize=20,
     plot_width=0.6,
     generate_frames=True
