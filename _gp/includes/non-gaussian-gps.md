@@ -108,7 +108,7 @@ import mlai.plot as plot
 import mlai}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_figsize)
-ax.imshow(m.Z.gradient[0].reshape(64,64,order='F'),interpolation='nearest',cmap=pb.cm.gray)
+ax.imshow(model.Z.gradient[0].reshape(64,64,order='F'),interpolation='nearest',cmap=plt.cm.gray)
 
 mlai.write_figure('olivetti-inducing-variable-gradients.png', directory='\writeDiagramsDir/gp')}
 

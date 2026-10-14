@@ -68,7 +68,7 @@ from ipywidgets import IntSlider}
 \newslide{Computing Covariance}
 
 \setupplotcode{import numpy as np
-from mlai import exponentiated_quadratic, Kernel
+from mlai import Kernel
 import mlai.plot as plot}
 
 \plotcode{formula = r"$k(x_i, x_j)=\alpha\exp\left(-\frac{\left|\left|x_i-x_j\right|\right|^{2}}{2\ell^{2}}\right)$"
@@ -125,7 +125,7 @@ from ipywidgets import IntSlider}
 \newslide{Computing Covariance}
 
 \setupplotcode{import numpy as np
-from mlai import exponentiated_quadratic, Kernel
+from mlai import Kernel
 import mlai.plot as plot}
 
 \plotcode{formula = r"$k(x_i, x_j)=\alpha\exp\left(-\frac{\left|\left|x_i-x_j\right|\right|^{2}}{2\ell^{2}}\right)$"

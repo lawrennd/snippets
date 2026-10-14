@@ -20,7 +20,7 @@ m.initialize()}
 \code{m.staged_optimize(messages=(True,True,True))}
 
 \displaycode{fig, ax=plt.subplots(figsize=plot.big_wide_figsize)
-plot.model_output(m, output_dim=output_dim, scale=scale, offset=offset, ax=ax, 
+plot.model_output(m, output_dim=0, scale=scale, offset=offset, ax=ax, 
                   xlabel='time', ylabel='signal strength', fontsize=20, portion=0.5)
 ax.set_ylim(ylim)
 ax.set_xlim(xlim)
@@ -32,7 +32,7 @@ mlai.write_figure(figure=fig, filename='\writeDiagramsDir/deepgp/robot-wireless-
 \figure{\includediagram{\diagramsDir/deepgp/robot-wireless-deep-gp-dim-1}{80%}}{Fit of the deep Gaussian process to dimension 1 of the robot wireless data.}{robot-wireless-deep-gp-dim-1}
 
 \displaycode{fig, ax=plt.subplots(figsize=plot.big_wide_figsize)
-plot.model_sample(m, output_dim=output_dim, scale=scale, offset=offset, samps=10, ax=ax,
+plot.model_sample(m, output_dim=0, scale=scale, offset=offset, samps=10, ax=ax,
                   xlabel='time', ylabel='signal strength', fontsize=20, portion=0.5)
 ax.set_ylim(ylim)
 ax.set_xlim(xlim)

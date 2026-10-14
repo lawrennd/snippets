@@ -53,6 +53,12 @@ mlai.write_figure(figure=fig,
                 filename='robot-wireless-dim-' + str(output_dim) + '.svg', 
                 directory='\writeDiagramsDir/datasets')}
 
+\code{x = np.linspace(0, 1, data['Y'].shape[0])[:, np.newaxis]
+y = data['Y'][:, output_dim:output_dim+1]
+offset = y.mean()
+scale = np.sqrt(y.var())
+yhat = (y - offset)/scale}
+
 
 \subsection{Robot WiFi Data}
 

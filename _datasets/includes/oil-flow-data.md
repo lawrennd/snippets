@@ -89,14 +89,13 @@ import numpy as np}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 # Plot first two dimensions of the data
-classes = np.unique(labels)
+class_names = ["homogeneous", "annular", "stratified"]
 colors = ['r', 'g', 'b']
-labels = ["homogeneous", "annular", "stratified"]
 
-for i, cls in enumerate(classes):
-    idx = labels == cls
+for i, name in enumerate(class_names):
+    idx = labels == i
     ax.plot(data['X'][idx, 0], data['X'][idx, 1], colors[i] + '.', 
-            markersize=10, label=f'{labels[i]}')
+            markersize=10, label=name)
 ax.set_xlabel('1st dimension')
 ax.set_ylabel('2nd dimension')
 ax.legend()

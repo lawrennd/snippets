@@ -58,7 +58,7 @@ mlai.write_figure(figure=fig, filename='\writeDiagramsDir/wisuvt.svg')
 
 \includediagram{\writeDiagramsDir/wisuvt}
 
-\plotcode{plot.deep_nn_bottleneck(diagrams='\writeDiagramsDir/deepgp')}
+\plotcode{plot.deep_nn_bottleneck(directory='\writeDiagramsDir/deepgp')}
 
 \subsection{Deep Neural Network}
 
