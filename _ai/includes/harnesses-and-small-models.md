@@ -35,21 +35,7 @@ progress is not about "always use the largest model" it is more building harness
 \notes{A language model alone produces text and responses. A harness supplies tools,
 context, verification, and termination. The orchestration comes through the harness and is where much of the value is recovered.}
 
-\newslide{Example: OSCAR}
-
-\slidesincremental{
-* [OSCAR](https://www.local.gov.uk/case-studies/oscar-orchestrated-service-citizen-ai-router): Orchestrated Service & Citizen AI Router
-* Peterborough City Council — led by Julian Patmore (Digital & Customer Access)
-* A governed harness: routes requests to specialist services; staff keep the judgment
-}
-
-\notes{OSCAR is a real-world harness, not a frontier-model demo. At Peterborough
-City Council, Julian Patmore and colleagues are building an orchestrated
-front door that routes resident requests to specialist services under
-central governance (such as guardrails, audit, and escalation) while leaving
-high-stakes judgment with council staff. That is the pattern: the people
-who know the role specify and monitor the harness. See e.g. the [LGA case
-study](https://www.local.gov.uk/case-studies/oscar-orchestrated-service-citizen-ai-router).}
+\include{_ai/includes/oscar-citizen-ai-router.md}
 
 \include{_ai/includes/local-government-ai-accelerator.md}
 
