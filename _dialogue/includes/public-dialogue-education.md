@@ -5,7 +5,7 @@
 
 \subsection{AI in Education: Public Perspectives}
 
-\slides{* Support for reducing teacher workload.
+\slidesincremental{* Support for reducing teacher workload.
 * Concerns about screen time and support for human interaction.}
 
 \notes{In education discussions, participants strongly supported AI's potential to reduce teacher workload but expressed significant concerns about screen time and the importance of human interaction in learning.}
