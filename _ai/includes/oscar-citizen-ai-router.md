@@ -5,7 +5,6 @@
 
 \subsection{Example: OSCAR}
 
-\newslide{Example: OSCAR}
 
 \slidesincremental{
 * [OSCAR](https://www.local.gov.uk/case-studies/oscar-orchestrated-service-citizen-ai-router): Orchestrated Service & Citizen AI Router
