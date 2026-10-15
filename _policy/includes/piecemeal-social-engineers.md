@@ -2,11 +2,10 @@
 \define{piecemealSocialEngineers}
 \editme
 
-\section{Piecemeal Social Engineers}
+\subsection{Piecemeal Social Engineers}
 
-\notes{Karl Popper introduced the concept of "piecemeal social engineering" in his seminal work "The Open Society and Its Enemies". This approach advocates for incremental, careful changes to social institutions rather than wholesale revolutionary transformations. The piecemeal social engineer recognizes that we cannot predict all consequences of our actions and therefore must proceed carefully, learning from mistakes.}
+\notes{Karl Popper introduced the concept of "piecemeal social engineers" in his seminal work "The Open Society and Its Enemies". This approach advocates for incremental, careful changes to social institutions rather than wholesale revolutionary transformations. The piecemeal social engineer recognizes that we cannot predict all consequences of our actions and therefore must proceed carefully, learning from mistakes.}
 
-\slides{Piecemeal social engineering (Popper)}
 \slidesincremental{
 * Incremental changes vs revolutionary transformation
 * Learning from mistakes
