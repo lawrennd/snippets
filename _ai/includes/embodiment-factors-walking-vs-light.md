@@ -5,7 +5,7 @@
 
 \editme
 
-\newslide{Communication Bandwidth}
+\newslide{Atomic Human: Communication Bandwidth}
 
 \slidesincremental{
   * Human communication: walking pace (2000 bits/minute)
