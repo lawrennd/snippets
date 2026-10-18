@@ -101,7 +101,7 @@ ax.imshow(model.Z.gradient[0].reshape(64,64,order='F'),interpolation='nearest',c
 mlai.write_figure('olivetti-inducing-variable-gradients.png', directory='\writeDiagramsDir/gp')}
 
 
-\figure{\includepng{'\diagramsDir/datasets/olivetti-inducing-variable-gradients}{60%}}{The gradients of the inducing variable.}{olivetti-inducing-variable-gradients}
+\figure{\includepng{\diagramsDir/gp/olivetti-inducing-variable-gradients}{60%}}{The gradients of the inducing variable.}{olivetti-inducing-variable-gradients}
 
 
 \codeAssignment{Write some code to evaluate the model's performance, using the held-out data that we separated earlier. How is the error rate? Is that better than random guessing? *Hint:* `GPy.util.classification.conf_matrix(prob_estimate,ytest)`}{}{10}
