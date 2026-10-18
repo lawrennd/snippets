@@ -21,13 +21,13 @@ plt.rcParams.update({'font.size': 22})}
 \setupplotcode{import mlai.plot as plot}
 \plotcode{plot.deep_nn(directory="\writeDiagramsDir/deepnn")}
 
-\figure{\includediagram{\diagramsDir/deepnn/deep-neural-network}{50%}}{A deep neural network}{deep-neural-network}
+\figure{\includediagram{\diagramsDir/deepnn/deep-nn1}{50%}}{A deep neural network}{deep-neural-network}
 
 \newslide{Deep Neural Network}
 
-\slides{\includediagram{\diagramsDir/deepgp/deep-nn2}{50%}}
+\slides{\includediagram{\diagramsDir/deepnn/deep-nn2}{50%}}
 
-\notes{\figure{\includediagram{\diagramsDir/deepgp/deep-nn2}{70%}}{A deep neural network. Input nodes are shown at the bottom. Each hidden layer is the result of applying an affine transformation to the previous layer and placing through an activation function.}{deep-neural-network}}
+\notes{\figure{\includediagram{\diagramsDir/deepnn/deep-nn2}{70%}}{A deep neural network. Input nodes are shown at the bottom. Each hidden layer is the result of applying an affine transformation to the previous layer and placing through an activation function.}{deep-neural-network}}
 
 \newslide{Mathematically}
 

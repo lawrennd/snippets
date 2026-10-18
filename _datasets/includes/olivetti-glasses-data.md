@@ -39,7 +39,7 @@ mlai.write_figure("olivetti-glasses-image.png",
 
 \newslide{}
 
-\figure{\includepng{'\diagramsDir/datasets/olivetti-glasses-image}{60%}}{Image from the Oivetti glasses data sets.}{olivetti-glasses-image}
+\figure{\includepng{\diagramsDir/datasets/olivetti-glasses-image}{60%}}{Image from the Oivetti glasses data sets.}{olivetti-glasses-image}
 
 
 \endif
