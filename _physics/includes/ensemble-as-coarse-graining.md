@@ -15,11 +15,11 @@
 
 \speakernotes{Name coarse-graining without measure theory. Link: billiard histogram bins are a toy coarse-graining; $T,V,P$ are the physicist's. After the information game and MacKay we make the accounting precise with a die: $H=H(w)+\sum_i w_i H(p_i)$. Gibbs distribution later today is one ensemble (canonical). Do not derive MaxEnt.}
 
-\notes{Laplace's demon would integrate every molecular trajectory. Laplace's gremlin says we lack the information and the compute. Statistical mechanics answers by changing the object of study. A *microstate* is a point in the high-dimensional space of all positions and momenta --- the collection of curves. A *macrostate* is what we can actually hold fixed or measure: particle number, volume, energy, or temperature and pressure. An *ensemble* is a probability distribution over microstates consistent with that macrostate. We replace ignorance of the path with a measure on the set of paths. That replacement *is* a coarse-graining: many micro-histories are declared equivalent for the purpose of prediction. The price of that move --- how much uncertainty the macro description throws away --- is calculated explicitly after MacKay's balance, with a fair die.}
+\notes{Laplace's demon would integrate every molecular trajectory. Laplace's gremlin says we don't have the data or the compute (even if we accept elastic collisions as the laws). In statistical mechanics we move from the mechanical description to a probabilistic one. A *microstate* is a point in the high-dimensional space of all positions and momenta, i.e. a collection of curves. A *macrostate* is what we can actually hold fixed or measure: particle number, volume, energy, or temperature and pressure. An *ensemble* is a probability distribution over microstates that is consistent with the macrostate. So in statistical mechanics we replace ignorance of the path with a distribution (or measure) on the set of paths. That replacement is a *coarse-graining*. Many micro-histories are treated as equivalent for the purpose of prediction. The cost of that move is how much uncertainty the macro description throws away.}
 
 \newslide{Coarse-Graining Is a Choice of Description}
 
-\slides{Temperature and pressure are sufficient statistics of the swarm --- not decorations on the truth.}
+\slides{Temperature and pressure are sufficient statistics of the swarm}
 
 \slidesincremental{
 * Histogram bins: keep some velocity detail, discard the rest
@@ -27,7 +27,7 @@
 * The uncertainty we write as entropy lives at the chosen grain
 }
 
-\notes{The billiard canvas already coarse-grains: it reports a velocity-bin Shannon entropy, not the full thermodynamic entropy of the gas. Maxwell, Boltzmann and Gibbs elevate the same move. Once the macroscopic constraints are fixed, the remaining uncertainty over microstates is what their $S$ counts. The fight over atoms was partly a fight over whether that microscopic sample space was real. The mathematical move --- probability over an ensemble --- survives either reading, and it is the move this course will keep using when energy becomes a score and $p_i\propto e^{-\beta E_i}$ becomes an occupation.}
+\notes{The billiard canvas coarse-grains: it reports a velocity-bin Shannon entropy, not the full thermodynamic entropy of the gas. Maxwell, Boltzmann and Gibbs elevate the same move. Once the macroscopic constraints are fixed, the remaining uncertainty over microstates is what their entropy, $S$, counts. The fight over atoms was partly a fight over whether this microscopic sample space was real. The mathematical move, i.e. a probability over an ensemble, survives either reading. That is the move this course will keep using when energy becomes a score and $p_i\propto e^{-\beta E_i}$ becomes an occupation.}
 
 \newslide{Bridge to Maxwell, Boltzmann, Gibbs}
 
@@ -39,6 +39,6 @@
 * Gibbs: ensembles as the systematic language
 }
 
-\notes{What follows in this lecture is not a new ontology so much as the bookkeeping that makes the ensemble usable: Gibbs--Boltzmann occupation, free energy $F=U-TS$, and the bath that justifies fixing $T$. The molecular hypothesis will win historically; the course needs the *abstraction* today.}
+\notes{What follows in this lecture is not a new ontology so much as the bookkeeping that makes the ensemble usable: Gibbs--Boltzmann occupation, free energy $F=U-TS$, and the bath that justifies fixing $T$. The molecular hypothesis wins historically, but the course needs the *abstraction* today.}
 
 \endif
