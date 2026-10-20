@@ -29,7 +29,7 @@ when each group has relaxed to its own conditional stationary law $\pi_i$ and on
 * Week 3: name local equilibrium --- $p_i\approx\pi_i$, $w(t)$ may move
 * Week 4: demon sorts groups; Landauer wells freeze $w_i$
 * Weeks 6--7: finite-time driving moves $w$ on the equilibrium manifold
-* Week 8: $D(p_t\|\pi)$ falls; same split for approach to equilibrium
+* Week 8: relative entropy $D(p_t\|\pi)$ (KL) falls; same split for approach to equilibrium
 }
 
 \endif

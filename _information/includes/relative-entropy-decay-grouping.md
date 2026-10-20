@@ -5,9 +5,10 @@
 
 \subsection{Relative Entropy Decay and Grouping}
 
-\slides{Under Markov dynamics, $D(p_t\|\pi)$ falls --- coarse-graining in time.}
+\slides{Under Markov dynamics, relative entropy $D(p_t\|\pi)=D_{\mathrm{KL}}(p_t\|\pi)$ falls --- coarse-graining in time.}
 
 \slidesincremental{
+* Same object as week 3 KL --- ``relative entropy'' is the physics name
 * Data-processing for distributions: each step cannot increase divergence to equilibrium
 * Same grouping split as the die, now for approach to $\pi$:
 }
@@ -18,9 +19,9 @@ D(p\|\pi)=D(w\|w_\pi)+\sum_i w_i\, D(p_i\|\pi_i)
 $$
 }
 
-\speakernotes{After proving DPI for mutual information, give the dynamical face. Board the split: between-group redistribution versus within-group relaxation. Hamiltonian aside: fine-grained $H$ conserved; only coarse-grained entropy grows (Ehrenfest).}
+\speakernotes{After proving DPI for mutual information, give the dynamical face. Name the synonym once: $D\equiv D_{\mathrm{KL}}\equiv\text{KL}$ from week 3; not a discrete/continuous split. Board the split: between-group redistribution versus within-group relaxation. Hamiltonian aside: fine-grained $H$ conserved; only coarse-grained entropy grows (Ehrenfest).}
 
-\notes{For a Markov process with stationary distribution $\pi$, the relative entropy $D(p_t\|\pi)$ is nonincreasing --- the data-processing inequality applied to the evolving law. Decompose $p$ into group weights $w$ and conditionals $p_i$, and likewise $\pi$ into $w_\pi$ and $\pi_i$. Then
+\notes{Relative entropy here is Kullback--Leibler divergence --- the same functional introduced in week 3 as $\text{KL}(p\|q)$ and written $D(\cdot\|\cdot)$ when discussing reparametrisation invariance. The two names are synonyms in this course; we do not reserve one for discrete and the other for continuous. For a Markov process with stationary distribution $\pi$, $D(p_t\|\pi)$ is nonincreasing --- the data-processing inequality applied to the evolving law. Decompose $p$ into group weights $w$ and conditionals $p_i$, and likewise $\pi$ into $w_\pi$ and $\pi_i$. Then
 \begin{align}
 D(p\|\pi)=D(w\|w_\pi)+\sum_i w_i\, D(p_i\|\pi_i).
 \end{align}
