@@ -5,7 +5,7 @@
 
 \subsection{Hydrodynamica}
 
-\notes{Daniel Bernoulli (1700--1782) is the kinetic link behind Laplace's ``molecule of air.'' He belongs to a prodigious mathematical family; his main work is *Hydrodynamica* (1738). Laplace's wording inherits this corpuscular tradition --- not a nineteenth-century chemical proof of atoms.}
+\notes{When Laplace spoke of the curve of a simple molecule of air, he may well have been thinking of Daniel Bernoulli (1700-1782). Daniel Bernoulli was one name in a prodigious family. His father and brother were both mathematicians. Daniel's main work was known as *Hydrodynamica*. It is the kinetic link to Laplace's ``molecule of air.''  }
 
 
 
