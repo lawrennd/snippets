@@ -14,6 +14,8 @@
 
 \include{_information/includes/coarse-graining-intelligence.md}
 
+\include{_information/includes/grouping-static-vs-ensemble.md}
+
 \include{_ml/includes/expectation-entropy-example.md}
 
 \newslide{Uncertainty as a Number}
