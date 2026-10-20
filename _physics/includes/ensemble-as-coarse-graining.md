@@ -13,9 +13,9 @@
 * Ensemble: a probability over the microstates compatible with the macrostate
 }
 
-\speakernotes{Name coarse-graining without measure theory. Link: billiard histogram bins are a toy coarse-graining; $T,V,P$ are the physicist's. Gibbs distribution later today is one ensemble (canonical). Do not derive MaxEnt.}
+\speakernotes{Name coarse-graining without measure theory. Link: billiard histogram bins are a toy coarse-graining; $T,V,P$ are the physicist's. After the information game and MacKay we make the accounting precise with a die: $H=H(w)+\sum_i w_i H(p_i)$. Gibbs distribution later today is one ensemble (canonical). Do not derive MaxEnt.}
 
-\notes{Laplace's demon would integrate every molecular trajectory. Laplace's gremlin says we lack the information and the compute. Statistical mechanics answers by changing the object of study. A *microstate* is a point in the high-dimensional space of all positions and momenta --- the collection of curves. A *macrostate* is what we can actually hold fixed or measure: particle number, volume, energy, or temperature and pressure. An *ensemble* is a probability distribution over microstates consistent with that macrostate. We replace ignorance of the path with a measure on the set of paths. That replacement *is* a coarse-graining: many micro-histories are declared equivalent for the purpose of prediction.}
+\notes{Laplace's demon would integrate every molecular trajectory. Laplace's gremlin says we lack the information and the compute. Statistical mechanics answers by changing the object of study. A *microstate* is a point in the high-dimensional space of all positions and momenta --- the collection of curves. A *macrostate* is what we can actually hold fixed or measure: particle number, volume, energy, or temperature and pressure. An *ensemble* is a probability distribution over microstates consistent with that macrostate. We replace ignorance of the path with a measure on the set of paths. That replacement *is* a coarse-graining: many micro-histories are declared equivalent for the purpose of prediction. The price of that move --- how much uncertainty the macro description throws away --- is calculated explicitly after MacKay's balance, with a fair die.}
 
 \newslide{Coarse-Graining Is a Choice of Description}
 

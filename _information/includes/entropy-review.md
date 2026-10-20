@@ -8,6 +8,12 @@
 
 \include{_information/includes/mackay-weighing-problem.md}
 
+\include{_information/includes/die-coarse-graining.md}
+
+\include{_information/includes/entropy-grouping-composition.md}
+
+\include{_information/includes/coarse-graining-intelligence.md}
+
 \include{_ml/includes/expectation-entropy-example.md}
 
 \newslide{Uncertainty as a Number}
@@ -109,13 +115,17 @@ $$
 H(Y \mid X) = H(X \mid Y) + H(Y) - H(X).
 $$}
 
-\newslide{Joint, Conditional, Chain Rule (Names Only)}
+\newslide{Joint, Conditional, Chain Rule}
+
+\slides{The die grouping *was* the chain rule with $G=g(X)$.}
 
 \slidesincremental{
 * $H(X,Y)$ joint uncertainty
 * $H(X\mid Y)$ residual uncertainty after observing $Y$
-* Chain rule: $H(X,Y)=H(X\mid Y) + H(Y)$
+* Chain rule: $H(X,Y)=H(Y)+H(X\mid Y)$
+* Grouping: $H(X)=H(G)+H(X\mid G)$ when $G$ is a function of $X$
 }
 
+\speakernotes{Tie the earlier die board to this slide. Do not prove Khinchin. Worksheet 1 probes can already use joint / conditional / chain-rule vocabulary.}
 
 \endif
