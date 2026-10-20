@@ -5,7 +5,7 @@
 
 \subsection{Hydrodynamica}
 
-\notes{When Laplace spoke of the curve of a simple molecule of air, he may well have been thinking of Daniel Bernoulli (1700-1782). Daniel Bernoulli was one name in a prodigious family. His father and brother were both mathematicians. Daniel's main work was known as *Hydrodynamica*.}
+\notes{When Laplace spoke of the curve of a simple molecule of air, he may well have been thinking of Daniel Bernoulli (1700-1782). Daniel Bernoulli was one name in a prodigious family. His father and brother were both mathematicians. Daniel's main work was known as *Hydrodynamica*. It is the kinetic link to Laplace's ``molecule of air.''  }
 
 
 

@@ -5,9 +5,12 @@
 
 
 \editme
+\include{_physics/includes/laplace-molecule-anachronism.md}
 \include{_physics/includes/daniel-bernoulli-hydrodynamica.md}
+\include{_physics/includes/bernoulli-kinetic-assumptions.md}
 \include{_physics/includes/entropy-billiards.md}
 \include{_physics/includes/entropy-histogram.md}
+\include{_physics/includes/ensemble-as-coarse-graining.md}
 
 \newslide{}
 
