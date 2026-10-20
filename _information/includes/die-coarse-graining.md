@@ -5,7 +5,9 @@
 
 \subsection{Coarse-Graining a Die}
 
-\slides{A fair die has $H(X)=\log_2 6\approx 2.58$ bits. Stage the question --- does every yes/no cost one bit?}
+\slides{A fair die has $H(X)=\log_2 6\approx 2.58$ bits. }
+
+\speakernotes{Stage the question: does every yes/no cost one bit?}
 
 \slidesincremental{
 * First cut: odd or even?
