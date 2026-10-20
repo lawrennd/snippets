@@ -19,7 +19,7 @@
 \begin{align}
 S = H(w) + \sum_i w_i H(\pi_i)
 \end{align}
-when each group has relaxed to its own conditional stationary law $\pi_i$ and only the coarse weights remain to carry slow change. Dynamics \emph{inside} and \emph{between} groups --- local equilibrium, lumpability, broken ergodicity, and the decay of relative entropy --- return in weeks 3--4 and 8.}
+when each group has relaxed to its own conditional stationary law $\pi_i$ and only the coarse weights remain to carry slow change. Dynamics \emph{inside} and \emph{between} groups --- local equilibrium, lumpability, broken ergodicity, and the decay of KL --- return in weeks 3--4 and 8.}
 
 \newslide{What Comes Next}
 
@@ -29,7 +29,7 @@ when each group has relaxed to its own conditional stationary law $\pi_i$ and on
 * Week 3: name local equilibrium --- $p_i\approx\pi_i$, $w(t)$ may move
 * Week 4: demon sorts groups; Landauer wells freeze $w_i$
 * Weeks 6--7: finite-time driving moves $w$ on the equilibrium manifold
-* Week 8: $D(p_t\|\pi)$ falls; same split for approach to equilibrium
+* Week 8: $\KL{p_t}{\pi}$ falls; same split for approach to equilibrium
 }
 
 \endif

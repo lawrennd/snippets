@@ -18,14 +18,14 @@
 \slides{Comparing two distributions needs a functional that is always sensible.}
 
 \slidesincremental{
-* $\text{KL}(p\|q) = \sum_i p_i \log(p_i/q_i)$ discrete; $\int p\log(p/q)\,dx$ continuous
-* Always $\text{KL}(p\|q) \ge 0$; zero iff $p = q$ (same support)
+* $\KL{p}{q} = \sum_i p_i \log(p_i/q_i)$ discrete; $\int p\log(p/q)\,dx$ continuous
+* Always $\KL{p}{q} \ge 0$; zero iff $p = q$ (same support)
 * Extra surprise when $q$ stands in for $p$ — not a metric, but a directed cost
 }
 
-\speakernotes{LO8 setup. Board: $\text{KL}(p\|q)\neq\text{KL}(q\|p)$. Jaynes die week 5 minimised $\text{KL}(p\|r)$ without naming it. Week 7: $m$-projection.}
+\speakernotes{LO8 setup. Use $\KL{p}{q}$ throughout. Physics synonym: relative entropy. Board: $\KL{p}{q}\neq\KL{q}{p}$. Jaynes die week 5 minimised $\KL{p}{r}$ without naming it. Week 7: $m$-projection.}
 
-\notes{KL divergence measures information lost when $q$ is used instead of $p$. It is non-negative in both discrete and continuous settings (with common support). Unlike Shannon entropy, it is defined relative to a reference. MaxEnt and $m$-projections minimise $\text{KL}(\cdot\|r)$; that is why week 4's die optimisation used $\sum_i p_i\log(p_i/r_i)$.}
+\notes{KL divergence $\KL{\cdot}{\cdot}$ measures information lost when $q$ is used instead of $p$. It is non-negative in both discrete and continuous settings (with common support). Unlike Shannon entropy, it is defined relative to a reference. MaxEnt and $m$-projections minimise $\KL{\cdot}{r}$; that is why week 4's die optimisation used $\sum_i p_i\log(p_i/r_i)$.}
 
 \newslide{Differential Entropy Is a Different Object}
 
