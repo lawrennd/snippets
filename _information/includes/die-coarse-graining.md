@@ -49,7 +49,7 @@ H(G_{\mathrm{parity}})+H(X\mid G_{\mathrm{parity}})
   = H(X).
 \end{align}}
 
-\newslide{``Is It a Six?'': Not One Bit}
+\newslide{"Is It a Six?": Not One Bit}
 
 \slides{A yes/no question is one bit only when the two answers are equiprobable.}
 
