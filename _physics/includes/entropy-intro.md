@@ -5,15 +5,18 @@
 
 
 \editme
+\include{_physics/includes/laplace-molecule-anachronism.md}
 \include{_physics/includes/daniel-bernoulli-hydrodynamica.md}
+\include{_physics/includes/bernoulli-kinetic-assumptions.md}
 \include{_physics/includes/entropy-billiards.md}
 \include{_physics/includes/entropy-histogram.md}
+\include{_physics/includes/ensemble-as-coarse-graining.md}
 
 \newslide{}
 
 \figure{\threeColumns{\includepng{\diagramsDir/physics/james-clerk-maxwell}{100%}{}{left}}{\includejpg{\diagramsDir/physics/boltzmann2}{100%}{}{center}}{\includejpg{\diagramsDir/physics/j-w-gibbs}{100%}{}{right}}{30%}{30%}{30%}}{James Clerk Maxwell (1831-1879), Ludwig Boltzmann (1844-1906) Josiah Willard Gibbs (1839-1903)}{maxwell-boltzmann-gibbs}
 
-\notes{Many of the ideas of early statistical physicists were rejected by a cadre of physicists who didn't believe in the notion of a molecule. The stress of trying to have his ideas established caused Boltzmann to commit suicide in 1906, only two years before the same ideas became widely accepted.}
+\notes{Many of the ideas of early statistical physicists were rejected by colleagues who did not believe in molecules --- the anachronism we opened with, now as lived controversy. The stress of that fight is part of Boltzmann's tragedy: he died in 1906, only two years before Perrin's experiments made the molecular hypothesis widely unavoidable.}
 
 \newslide{}
 
