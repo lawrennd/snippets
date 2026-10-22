@@ -40,13 +40,13 @@ When we go into the thermodynamic entropy I will tend to use $S$ for the physica
 \newslide{Entropy: physical and anthropomorphic}
 
 \slidesincremental{
-* Thermodynamic $S$ and Shannon $H$: same form; in equilibrium $S = k_B H$
+* Thermodynamic $S$ and Shannon $H$: same form; in equilibrium $S = k_B H$ in nats ($S = k_B \ln 2 \cdot H$ in bits)
 * $k_B$ gives physical units (J/K); $TS$ has units of energy
 * Which degrees of freedom you count is a *choice* (Jaynes / Wigner: "anthropomorphic")
 * Steam tables: untampered extras (e.g.\ electric field) or apparent second-law violations
 }
 
-\notes{Thermodynamic entropy $S$ and Shannon $H$ have a shared functional form, in equilibrium we can write $S = k_BH$, where $k_B$ is Boltzmann's constant, $k_B = 1.380649 \times 10^{-23} \tfrac{\text{kg}\text{m}^2 }{\text{s}^2 \text{K}}$. 
+\notes{Thermodynamic entropy $S$ and Shannon $H$ have a shared functional form. In equilibrium we can write $S = k_B H$ when $H$ is in nats. If $H$ is computed in bits ($\log_2$), the conversion is $S = k_B \ln 2 \cdot H$. Boltzmann's constant is $k_B = 1.380649 \times 10^{-23} \tfrac{\text{kg}\text{m}^2 }{\text{s}^2 \text{K}}$. 
 
 So there are two parts to a thermodynamic entropy, one is the uncertainty of a (discrete) distribution. The other translates that entropy into units of 'work' i.e. ($\text{J} = \tfrac{\text{kg}\,\text{m}^2 }{\text{s}^2}$) per Kelvin ($\tfrac{\text{J}}{\text{K}}$). Boltzmann's constant makes entropy physical. When we multiply $S$ by temperature $T$ (in degrees Kelvin) we recover a term that has units of energy. That $TS$ has units of energy is also why entropy must be extensive: if I have $N$ independent copies, $H$ scales with $N$, and so does $TS$.
 
@@ -104,15 +104,15 @@ can be decomposed as the entropy of the marginal and the entropy of the conditio
 $$
 H(X, Y) = H(X \mid Y) + H(Y)
 $$
-where 
+where
 $$
-H(Y \mid X) = - \sum_{X, Y} P(X, Y) \log P(X \mid Y) 
+H(X \mid Y) = - \sum_{X, Y} P(X, Y) \log P(X \mid Y)
 $$
 and
 $$
 H(Y) = - \sum_{Y} P(Y) \log P(Y).
 $$
-This is known as the *chain rule* of entropy. And it follows from the product rule.
+This is known as the *chain rule* of entropy [@Cover:elements91]. And it follows from the product rule.
 
 The equivalent of Bayes' rule is 
 $$
