@@ -35,6 +35,10 @@ Conservation of mechanical effect (energy in later language) lets him relate mic
 * Next: make the discarded detail a probability --- the ensemble
 }
 
-\notes{Even at the birth of kinetic theory, the useful object is not the full list of paths. Bernoulli averages. The statistical physicists who follow --- Maxwell, Boltzmann, Gibbs --- will turn that averaging into an explicit probability over microstates. The billiard simulation is Bernoulli's assumption made visible; the Shannon entropy of the velocity histogram is already a coarse-grained proxy for how much velocity detail we are keeping.}
+\notes{Even at the birth of kinetic theory, the useful object is not the full list of paths. Bernoulli averages. He is not tracking Laplace's curve for every particle --- he predates Laplace --- but he is summarising a swarm of motion. Individual trajectories are discarded, and what remains is a mechanical story for pressure. That pressure is macroscopic and measurable: when a vessel explodes, it is the pressure we are talking about, and that is a function of particles hitting the walls. There is a great deal of energy stored in that.
+
+The statistical physicists who follow --- Maxwell, Boltzmann, Gibbs --- will turn that averaging into an explicit probability over microstates. The billiard simulation is Bernoulli's assumption made visible; the Shannon entropy of the velocity histogram is already a coarse-grained proxy for how much velocity detail we are keeping.
+
+I think Bernoulli is probably the first person to start doing this move that we are going to see throughout the course. It sits at the heart of entropy, and at the heart of intelligence. The move is coarse-graining.}
 
 \endif

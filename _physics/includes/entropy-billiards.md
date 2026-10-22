@@ -22,7 +22,7 @@
 </div>
 </div>
 
-\include{_scripts/includes/multiball-js.md}}}{Bernoulli's simple kinetic models of gases assume that the molecules of air operate like billiard balls. The displayed entropy is the Shannon entropy of the observed velocity histogram (a coarse-grained proxy, not full thermodynamic entropy).}{entropy-billiards-js}
+\include{_scripts/includes/multiball-js.md}}}{Bernoulli's simple kinetic models of gases assume that the molecules of air operate like billiard balls. Without small variations in the initial conditions they would never bump into each other. The displayed entropy is the Shannon entropy of the observed *discrete* velocity histogram (a coarse-grained proxy, not the differential entropy of a Gaussian, and not full thermodynamic entropy).}{entropy-billiards-js}
 
 
 \endif

@@ -16,7 +16,11 @@
 
 \figure{\threeColumns{\includepng{\diagramsDir/physics/james-clerk-maxwell}{100%}{}{left}}{\includejpg{\diagramsDir/physics/boltzmann2}{100%}{}{center}}{\includejpg{\diagramsDir/physics/j-w-gibbs}{100%}{}{right}}{30%}{30%}{30%}}{James Clerk Maxwell (1831-1879), Ludwig Boltzmann (1844-1906) Josiah Willard Gibbs (1839-1903)}{maxwell-boltzmann-gibbs}
 
-\notes{Many of the ideas of early statistical physicists were rejected by a cadre of physicists who didn't believe in the notion of a molecule. The stress of trying to have his ideas established caused Boltzmann to commit suicide in 1906, only two years before the same ideas became widely accepted.}
+\notes{Many of the ideas of early statistical physicists were rejected by physicists who did not believe in the notion of a molecule. When Boltzmann was writing, it was still unclear whether heat was a fluid --- it has fluid-like properties because it seems to flow. The Graz paper is a foundation paper in the kinetic theory of gases. It was a radical change of perspective.
+
+Max Planck took the work up early. Boltzmann had persistent trouble with German physicists, including Mach. Planck was a champion of his. The reason Planck talks about scientific theories proceeding one funeral at a time is that this perspective was so radical. You can see why the existing community resisted it. A lot of physics is about fields, continuous fields --- still is today --- and particle theories were obnoxious to that clean, continuous picture.
+
+The stress of trying to have his ideas established led Boltzmann to take his own life in 1906, only two years before those ideas became widely accepted.}
 
 \newslide{}
 
@@ -33,7 +37,13 @@
 
 \newslide{}
 
-\notes{The same Eddington is also famous for dismissing the ideas of a young Chandrasekhar who had come to Cambridge to study in the Cavendish lab. Chandrasekhar demonstrated the limit at which a star would collapse under its own weight to a singularity, but when he presented the work to Eddington, he was dismissive suggesting that there "must be some natural law that prevents this abomination from happening".}
+\notes{The same Eddington dismissed the ideas of a young Chandrasekhar, who had come from India to Cambridge to study in the Cavendish. Chandrasekhar presented the limit at which a star would collapse under its own weight and form a black hole --- he did not call it that. Eddington carried his ideas too far. He humiliated Chandrasekhar, saying the result contradicted the second law of thermodynamics. Chandrasekhar was deeply upset, later received the Nobel prize for the work, and disliked the controversy that followed him.
+
+Why would Eddington dislike the theory? All the mass of the universe ending up in black holes is not the maximum-entropy state. The maximum-entropy state is like the gas in this room: heat death. What he apparently said was that there must be some natural law that prevents this abomination from happening. Chandrasekhar experienced the exchange as racially charged. That reading is understandable; it is not, on the evidence we have of Eddington --- who was open across the First World War to German physicists --- the best explanation. My belief is that he thought he saw the limit contradict the second law, and so he said to Chandrasekhar: that cannot happen.
+
+That confuses mechanism with the law. Black holes evaporate: Hawking radiation. They do not stay in this state, but the evaporation takes a very long time. The second law still applies, as a slow leakage away from this concentration of mass. The better response would have been: the physics shows that this happens; I expect maximum entropy to apply in the long time; what is the mechanism through which this undoes itself?
+
+I can believe in the second law of thermodynamics. I should not humiliate a student who comes up with a mechanism that initially seems to contradict it, because the two arguments work at different levels. Eddington would not have felt he was humiliating. He would have thought that he was teaching. There is a way of teaching, when you are a very senior physicist, that can be very damaging.}
 
 \figure{\columns{\includepng{\diagramsDir/physics/natureofphysical00eddi_100}{80%}{}{left}}{\includepng{\diagramsDir/physics/ChandraNobel}{100%}{}{right}}{49%}{49%}}{Chandrasekhar (1910-1995) derived the limit at which a star collapses in on itself. Eddington's confidence in the 2nd law may have been what drove him to dismiss Chandrasekhar's ideas, humiliating a young scientist who would later receive a Nobel prize for the work.}{physical-world-chandra}
 
@@ -41,5 +51,5 @@
 
 \figure{\includepng{\diagramsDir/physics/natureofphysical00eddi_100_cropped}{60%}}{Eddington makes his feelings about the primacy of the second law clear. This primacy is perhaps because the second law can be demonstrated mathematically, building on the work of Maxwell, Gibbs and Boltzmann. @Eddington:nature29}{deepest-humiliation-eddington-cropped}
 
-\notes{Presumably he meant that the creation of a black hole seemed to transgress the second law of thermodynamics, although later Hawking was able to show that blackholes do evaporate, but the time scales at which this evaporation occurs is many orders of magnitude slower than other processes in the universe.}
+\notes{The cropped quote is the one I paraphrase: if your theory contradicts Maxwell's equations, so much for Maxwell's equations; if it does not match experiment, well, experimentalists do bungle things at times; but if your theory contradicts the second law of thermodynamics, I have nothing but the deepest humiliation for you. The second law holds, he thinks, the supreme position amongst the laws of nature. Hawking radiation is the slow mechanism. Do not confuse teaching with humiliation.}
 \endif
