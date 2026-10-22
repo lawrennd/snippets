@@ -47,7 +47,7 @@ The Greek atomists, around 400 BC, said you reach a point where you cannot cut, 
 
 The notion in *The Atomic Human* is the same idea in our cognitive landscape. Every time a machine does something that used to be unique to humans, it is slicing into us. Cut something away. Does that process go on forever, or is there a point at which it stops?
 
-In a public-understanding talk I pause, and you have to find your own answers. Ask computer scientists, and very often they say there is no point at which it stops, and humans disappear. That is a bleak answer. Ask other people, and they say there is a point at which it stops. They offer empathy, or --- one of the answers I return to --- suffering. Another, even though I am not religious, was my relationship with God. It is a question anyone can ask, and you can ask yourself.}
+In a public-understanding talk I pause, and you have to find your own answers. Ask computer scientists, and some will say there is no point at which it stops, and humans disappear. I think that is a bleak answer. Ask other people, and they say there is a point at which it stops. They offer "true empathy", or --- one of the answers I return to --- suffering. Another answer I return to, even though I am not religious, was "my relationship with God". I think both these answers are informative. But I'm not saying their's a single right answer. I'm saying It is a question anyone can ask, and you can ask yourself.}
 
 \newslide{What the Machine Cannot Have}
 
