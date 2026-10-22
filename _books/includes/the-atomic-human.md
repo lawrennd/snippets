@@ -39,7 +39,7 @@ Then the question becomes: is the notion of artificial general intelligence vali
 * Other answers: empathy, suffering, God
 }
 
-\speakernotes{Democritus, not a physics lecture. Accelerators splitting the atom just means we misnamed the atom: quarks sit below. Pause in a public talk; here keep moving. Do not mark students for their own answer.}
+\speakernotes{Democritus, not a physics lecture. Accelerators splitting the atom just means we misnamed the atom: quarks sit below. In a public-understanding talk, pause here.}
 
 \notes{I do not know how to define intelligence, but there is a process we can go through. It is equivalent to Democritus's atoms --- which, I presume, later inspired the corpuscles. If I cut this table in half, describe one half, cut the next piece in half, and keep going: can I do that forever, or do I reach a point where I cannot cut?
 
@@ -47,7 +47,7 @@ The Greek atomists, around 400 BC, said you reach a point where you cannot cut, 
 
 The notion in *The Atomic Human* is the same idea in our cognitive landscape. Every time a machine does something that used to be unique to humans, it is slicing into us. Cut something away. Does that process go on forever, or is there a point at which it stops?
 
-In a public-understanding talk I pause, and you have to find your own answers. Ask computer scientists, and some will say there is no point at which it stops, and humans disappear. I think that is a bleak answer. Ask other people, and they say there is a point at which it stops. They offer "true empathy", or --- one of the answers I return to --- suffering. Another answer I return to, even though I am not religious, was "my relationship with God". I think both these answers are informative. But I'm not saying their's a single right answer. I'm saying It is a question anyone can ask, and you can ask yourself.}
+In a public-understanding talk I pause, and you have to find your own answers. Ask computer scientists, and some will say there is no point at which it stops, and humans disappear. I think that is a bleak answer. Ask other people, and they say there is a point at which it stops. They offer "true empathy", or --- one of the answers I return to --- suffering. Another answer I return to, even though I am not religious, was "my relationship with God". I think both these answers are informative. But I'm not saying there's a single right answer. I'm saying it is a question anyone can ask, and you can ask yourself.}
 
 \newslide{What the Machine Cannot Have}
 
@@ -56,12 +56,10 @@ In a public-understanding talk I pause, and you have to find your own answers. A
 \slidesincremental{
 * Anything I can score, I can emulate
 * Vulnerabilities and limitations are fundamental
-* Key among them, for this course: communicate versus compute
+* Key among them: communicate versus compute
 }
 
-\notes{My specific answer is that the thing the machine cannot have is our weaknesses and our vulnerabilities, because they are intrinsic to us. I can emulate an entity. I can recreate my capabilities --- anything I can score. The vulnerabilities and limitations I have are fundamental to us.
-
-What has that got to do with information theory? Key among those limitations is one we are not going to treat in this course --- I'd suggest death remains the domain of theology --- but it is true: we are all going to die. But the difference this course will focus on handle is what I think of as the embodiment factor: my ability to communicate versus my ability to compute, and yours as well.}
+\notes{My specific answer is that the thing the machine cannot have is our weaknesses and our vulnerabilities, because they are intrinsic to us. I can emulate an entity. I can recreate my capabilities --- anything I can score. The vulnerabilities and limitations I have are fundamental to us.}
 
 \newslide{Culture Is Compression}
 
@@ -73,13 +71,13 @@ What has that got to do with information theory? Key among those limitations is 
 * You can emulate it, but it is not the same
 }
 
-\speakernotes{Students do not lose marks for believing in AGI. The argument here is Shannon's bits: set aside conversation about intelligence and ask how much information is coming in over what time. Machine already six orders of magnitude better off by the physics.}
+\speakernotes{The argument is Shannon's bits: set aside conversation about intelligence and ask how much information is coming in over what time. The machine is already six orders of magnitude better off by the physics.}
 
-\notes{That limitation is one of the dominant reasons our intelligence is the way it is. Instead of dumping the contents of a computation, I have to stand here and say: it is a bit like Boltzmann did this; here is another story of Gibbs; this person took his own life. I have to turn these things into things you might be able to relate to, in order to communicate very complex subjects.
+\notes{That limitation is one of the dominant reasons our intelligence is the way it is. Instead of dumping the contents of a computation, we have to turn these things into things other people might be able to relate to, in order to communicate very complex subjects.
 
-The cultural landscape we sit in is something we constructed, so that I can, with very few bits of information, point to an idea that you already know and say: this is like this. Why that works remains something of a mystery. Why do analogies work? As you go deeper into it, I am not sure there is a derived principle. But they do work --- you might disagree about how well they worked today --- and that is how we communicate. So much of our intelligence is about building up this world around us.
+The cultural landscape we sit in is something we constructed, so that I can, with very few bits of information, point to an idea that you already know and say: this is like this. Why that works remains something of a mystery. Why do analogies work? As you go deeper into it, I am not sure there is a derived principle. But they do work, and that is how we communicate. So much of our intelligence is about building up this world around us.
 
-The notion of AGI, on this argument, does not survive. Unless you have that limitation embedded, it is not a general intelligence; it is specific to us and our context. You can emulate it, but it is not the same. You do not lose marks for believing in AGI, superintelligence, and existential catastrophe. I think the claim is empty.
+The notion of AGI, on this argument, does not survive. Unless you have that limitation embedded, it is not a general intelligence; it is specific to us and our context. You can emulate it, but it is not the same. I think the claim is empty.
 
 My arguments on that are all based on Shannon's bits. I set aside conversation about intelligence, and I asked: how much information is coming in over what time? That is why I think information is powerful in this space. We can see that the machine is already six orders of magnitude better off than us, just by the physics of it. The things we are seeing today are a consequence of that.}
 
