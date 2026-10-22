@@ -61,7 +61,7 @@ In a public-understanding talk I pause, and you have to find your own answers. A
 
 \notes{My specific answer is that the thing the machine cannot have is our weaknesses and our vulnerabilities, because they are intrinsic to us. I can emulate an entity. I can recreate my capabilities --- anything I can score. The vulnerabilities and limitations I have are fundamental to us.
 
-What has that got to do with information theory? Key among those limitations is one we are not going to treat in this course --- we would need theology for death and injury. It is true: we are all going to die. The difference this course can handle is what I think of as the embodiment factor: my ability to communicate versus my ability to compute, and yours as well.}
+What has that got to do with information theory? Key among those limitations is one we are not going to treat in this course --- I'd suggest death remains the domain of theology --- but it is true: we are all going to die. But the difference this course will focus on handle is what I think of as the embodiment factor: my ability to communicate versus my ability to compute, and yours as well.}
 
 \newslide{Culture Is Compression}
 
