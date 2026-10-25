@@ -15,12 +15,15 @@
 \installcode{daft}
 
 \setupplotcode{from matplotlib import rc
+from mlai import plot
+import mlai
 
-rc("font", **{'family':'sans-serif','sans-serif':['Helvetica'],'size':30})
-rc("text", usetex=True)}
+rc("font", **{'family':'sans-serif','sans-serif':['Helvetica'],'size':30})}
 
 \plotcode{pgm = plot.horizontal_chain(depth=5)
-pgm.render().figure.savefig("\writeDiagramsDir/deepgp/deep-markov.svg", transparent=True)}
+mlai.write_figure('deep-markov.svg',
+                  figure=pgm.render().figure,
+                  directory='\writeDiagramsDir/deepgp')}
 
 \newslide{Equivalent to Markov Chain}
 \slides{
@@ -32,11 +35,15 @@ pgm.render().figure.savefig("\writeDiagramsDir/deepgp/deep-markov.svg", transpar
 \figure{\includediagram{\diagramsDir/deepgp/deep-markov}{80%}}{Probabilistically the deep Gaussian process can be represented as a Markov chain. Indeed they can even be analyzed in this way [@Dunlop:deep2017].}{deep-markov}
 
 \setupplotcode{from matplotlib import rc
-rc("font", **{'family':'sans-serif','sans-serif':['Helvetica'], 'size':15})
-rc("text", usetex=True)}
+from mlai import plot
+import mlai
+
+rc("font", **{'family':'sans-serif','sans-serif':['Helvetica'], 'size':15})}
 
 \plotcode{pgm = plot.vertical_chain(depth=5)
-pgm.render().figure.savefig("\writeDiagramsDir/deepgp/deep-markov-vertical.svg", transparent=True)}
+mlai.write_figure('deep-markov-vertical.svg',
+                  figure=pgm.render().figure,
+                  directory='\writeDiagramsDir/deepgp')}
 
 \newslide{}
 
@@ -67,12 +74,16 @@ A one off discontinuity is easy to model with a Gaussian process, or even multip
 
 \slides{\includediagram{\diagramsDir/deepgp/deep-markov-vertical}}
 
-\setupplotcode{import daft}
+\setupplotcode{import daft
+from mlai import plot
+import mlai}
 
 \plotcode{pgm = plot.vertical_chain(depth=5, shape=[2, 7])
 pgm.add_node(daft.Node('y_2', r'$\mathbf{y}_2$', 1.5, 3.5, observed=True))
 pgm.add_edge('f_2', 'y_2')
-pgm.render().figure.savefig("\writeDiagramsDir/deepgp/deep-markov-vertical-side.svg", transparent=True)}
+mlai.write_figure('deep-markov-vertical-side.svg',
+                  figure=pgm.render().figure,
+                  directory='\writeDiagramsDir/deepgp')}
 
 \newslide{}
 
