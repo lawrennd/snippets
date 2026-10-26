@@ -44,7 +44,7 @@ $$
 \setupcode{import scipy as sp}
 \code{Q, R = np.linalg.qr(\designVariable)
 w = sp.linalg.solve_triangular(R, Q.T@y) 
-w = pd.DataFrame(w, index=\designVariable.columns)
+w = pd.DataFrame(w, index=getattr(\designVariable, "columns", None))
 w}
 
 \endif
