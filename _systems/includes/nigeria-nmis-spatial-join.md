@@ -18,8 +18,7 @@ There are special databases for storing this type of information, the database w
 
 \include{_datasets/includes/nigerian-administrative-zones-data.md}
 
-\code{zones_gdf = data
-zones_gdf['admin1Name_en'] = zones_gdf.index}
+\code{zones_gdf = data.reset_index()}
 
 \notes{Now we have this data of the outlines of the different states in Nigeria. 
 
@@ -53,9 +52,9 @@ hosp_gdf.crs = "EPSG:4326"}
 Now we have the data in the `GeoPandas` format, we can start converting into states. We will use the [`fiona`](https://pypi.org/project/Fiona/) library for reading the right layers from the files. Before we do the join, lets plot the location of health centers and states on the same map.}
 
 
-\code{world_gdf = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-world_gdf.crs = "EPSG:4326"
-nigeria_gdf = world_gdf[(world_gdf['name'] == 'Nigeria')]}
+\code{nigeria_gdf = zones_gdf.dissolve()
+if nigeria_gdf.crs is None:
+    nigeria_gdf.crs = "EPSG:4326"}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
