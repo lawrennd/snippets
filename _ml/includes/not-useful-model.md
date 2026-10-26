@@ -66,7 +66,7 @@ or the cell, or human health) then almost all the data is missing.}
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 1],
                origin=[0, 0], 
