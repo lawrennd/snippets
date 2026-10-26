@@ -3,7 +3,7 @@
 
 \editme
 
-\newslide{}
+\subsection{Velocity Histogram}
 
 \setupcode{import numpy as np}
 
@@ -27,9 +27,9 @@ mlai.write_figure('gaussian-histogram.svg', directory='\writeDiagramsDir/ml')}
 
 \figure{\includediagram{\diagramsDir/ml/gaussian-histogram}{80%}}{Maxwell (1831--1879): each *Cartesian velocity component* of an ideal-gas particle is Gaussian. Speed $v=|\mathbf{v}|$ is not --- it picks up a $v^2$ Jacobian.}{gaussian-histogram}
 
-\newslides{Gaussian Components, Not Speed}
+\newslide{Gaussian Components, Not Speed}
 
-\slides{The histogram above is one component $v_x$. The Maxwell *speed* distribution is different.}
+\slides{The histogram above is one component $v_x$. The Maxwell *speed* distribution is different, $|v|$.}
 
 \slidesincremental{
 * Component $v_x$: Gaussian (what we plotted)
@@ -39,6 +39,6 @@ mlai.write_figure('gaussian-histogram.svg', directory='\writeDiagramsDir/ml')}
 
 \speakernotes{Forward pointer only. Do not derive the Jacobian entropy shift today --- that is week 3 (differential entropy and KL). Week 5 returns with MaxEnt against a reference measure.}
 
-\notes{Both facts are Maxwell--Boltzmann physics. Confusing them is easy because textbooks say ``Maxwell--Boltzmann distribution'' for either object. The geometric factor $v^2$ is a change of variables. Continuous entropy is not invariant under that map; relative entropy is. We return to the calculation when differential entropy and KL are on the board.}
+\notes{The distribution of speed and velocities are Maxwell--Boltzmann physics. Confusing them is easy because textbooks say "Maxwell--Boltzmann distribution" for either object. The geometric factor $v^2$ is a change of variables. The transformation is also revealing. Continuous entropy is not invariant under the transformation, but relative entropy (or KL divergence) is. We will use this example to help explain why differential entropy is needed in the continuous case.}
 
 \endif
