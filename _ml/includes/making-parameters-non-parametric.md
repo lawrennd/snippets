@@ -20,7 +20,7 @@ posterior distribution, indeed we typically derive it through a variational appr
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 2],
                origin=[0, 0], 
@@ -97,7 +97,7 @@ and memory demands manageable and appropriate to the task at hand.}
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 2],
                origin=[0, 0], 
@@ -172,7 +172,7 @@ $$
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 \plotcode{pgm = daft.PGM(shape=[2, 3],
                origin=[0, 0], 
                grid_unit=5, 
@@ -216,7 +216,7 @@ $$
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 3],
                origin=[0, 0], 
@@ -254,7 +254,7 @@ $\inducingVector^*$.}
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 3],
                origin=[0, 0], 
@@ -281,7 +281,7 @@ pgm.render().figure.savefig("\writeDiagramsDir/ml/u-to-f_i-to-y_i.svg", transpar
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 3],
                origin=[0, 0], 
@@ -308,7 +308,7 @@ pgm.render().figure.savefig("\writeDiagramsDir/ml/given-u-to-f_i-to-y_i.svg", tr
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[2, 3],
                origin=[0, 0], 

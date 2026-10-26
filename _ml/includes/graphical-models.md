@@ -14,7 +14,7 @@ $$p(\dataVector) = p(\dataScalar_\numData | \dataScalar_{\numData-1}) p(\dataSca
 from matplotlib import rc
 
 rc("font", **{'family':'sans-serif','sans-serif':['Helvetica']}, size=30)
-rc("text", usetex=True)}
+rc("text", usetex=False)}
 
 \plotcode{pgm = daft.PGM(shape=[3, 1],
                origin=[0, 0], 
