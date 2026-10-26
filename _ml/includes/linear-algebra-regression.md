@@ -3,9 +3,9 @@
 
 \editme
 
-\subsection{Regression: Linear Releationship}
+\subsection{Regression: Linear Relationship}
 
-\notes{For many their first encounter with what might be termed a machine learning method is fitting a straight line. A straight line is characterized by two parameters, the scale, $m$, and the offset $c$.}
+\notes{For many their first encounter with what might be termed a machine learning method is fitting a straight line. A straight line is characterised by two parameters, the scale, $m$, and the offset $c$.}
 
 $$\dataScalar_i = m \inputScalar_i + c$$
 
@@ -16,7 +16,7 @@ pace.
 
 * $m$ : rate of improvement over time.
 
-* $c$ : winning time at year 0.}
+* $c$ : winning pace at year 0.}
 
 \notes{For the olympic marathon example $\dataScalar_i$ is the winning pace and it is given as a function of the year which is represented by $\inputScalar_i$. There are two further parameters of the prediction function. For the olympics example we can interpret these parameters, the scale $m$ is the rate of improvement of the olympic marathon pace on a yearly basis. And $c$ is the winning pace as estimated at year 0.}
 
