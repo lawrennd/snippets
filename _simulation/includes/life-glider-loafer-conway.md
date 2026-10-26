@@ -65,31 +65,54 @@ Each pattern can be characterized by:
 
 
 
-\helpercode{# Define classic patterns
+\helpercode{def rle_to_cells(rle: str) -> List[Tuple[int, int]]:
+    """Decode a LifeWiki RLE pattern into live-cell (x, y) coordinates."""
+    cells: List[Tuple[int, int]] = []
+    x = y = 0
+    count = 0
+    for char in rle.strip():
+        if char.isdigit():
+            count = count * 10 + int(char)
+            continue
+        n = count if count else 1
+        count = 0
+        if char == 'o':
+            cells.extend((x + i, y) for i in range(n))
+            x += n
+        elif char == 'b':
+            x += n
+        elif char == '$':
+            y += n
+            x = 0
+        elif char == '!':
+            break
+    return cells}
+
+\helpercode{# Classic patterns from LifeWiki RLE (https://conwaylife.com)
 GLIDER = LifePattern(
     name="Glider",
-    pattern=[(0,1), (1,2), (2,0), (2,1), (2,2)],
+    pattern=rle_to_cells("bob$2bo$3o!"),
     period=4,
-    translation=(1,1),
+    translation=(1, 1),
     discovery_year=1969,
     discoverer="Richard K. Guy"
 )
 
 LOAFER = LifePattern(
     name="Loafer",
-    pattern=[(0,2), (1,0), (1,2), (2,1), (2,2), (3,2), (4,2)],
+    pattern=rle_to_cells("b2o2bob2o$o2bo2b2o$bobo$2bo$8bo$6b3o$5bo$6bo$7b2o!"),
     period=7,
-    translation=(1,0),
+    translation=(-1, 0),
     discovery_year=2013,
     discoverer="Josh Ball"
 )
 
 GOSPER_GLIDER_GUN = LifePattern(
     name="Gosper Glider Gun",
-    pattern=[(0,2), (0,3), (1,2), (1,3), (8,3), (8,4), (9,2), (9,4), 
-             (10,2), (10,3), (16,4), (16,5), (16,6), (17,4), (18,5),
-             (22,1), (22,2), (23,0), (23,2), (24,0), (24,1), (24,2),
-             (25,0), (25,1), (34,3), (34,4), (35,3), (35,4)],
+    pattern=rle_to_cells(
+        "24bo$22bobo$12b2o6b2o12b2o$11bo3bo4b2o12b2o$"
+        "2o8bo5bo3b2o$2o8bo3bob2o4bobo$10bo5bo7bo$11bo3bo$12b2o!"
+    ),
     period=30,
     discovery_year=1970,
     discoverer="Bill Gosper"
@@ -110,36 +133,42 @@ from matplotlib.animation import FuncAnimation}
         size: Grid size
         interval: Animation interval in milliseconds
     """
-    # Initialize with pattern
+    # Fixed boundaries keep spaceships from wrapping around the grid.
     history = run_life(
         size, size,
         steps=steps,
-        initial_state=pattern.to_grid(size).grid
+        initial_state=pattern.to_grid(size).grid,
+        boundary='fixed',
     )
-    
-    # Create figure and axis
-    fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
+
+    fig, ax = plt.subplots(figsize=(5, 5))
     fig.set_facecolor('white')
-    
-    # Plot initial state
-    plot_automata_grid(history[0], ax)
-    
+    im = ax.imshow(
+        history[0].grid, cmap='binary', interpolation='none', vmin=0, vmax=1
+    )
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_aspect('equal')
+    title = ax.set_title(f"{pattern.name} - Step 0")
+
     def animate(frame):
-        ax.clear()
-        plot_automata_grid(history[frame], ax)
-        ax.set_title(f"{pattern.name} - Step {frame}")
-        return ax,
-    
+        im.set_data(history[frame].grid)
+        title.set_text(f"{pattern.name} - Step {frame}")
+        return im, title
+
     anim = FuncAnimation(
         fig, animate, frames=len(history),
-        interval=interval, blit=True
+        interval=interval, blit=False
     )
-    
-    # Save animation
-    filename = pattern.name.lower().replace(" ", "-")
-    anim.save(mlai.filename_join(f'{filename}.gif',
-                                '\writeDiagramsDir/simulation'),
-              writer='pillow')}
+
+    filename = pattern.name.lower().replace(" ", "-") + '.gif'
+    mlai.write_animation(
+        anim, filename,
+        directory='\writeDiagramsDir/simulation',
+        writer='pillow',
+        dpi=80,
+    )
+    plt.close(fig)}
 
 \
 \notes{John Horton Conway, as the creator of the game of life, could be seen somehow as the god of this small universe. He created the rules. The rules are so simple that in many senses he, and we, are all-knowing in this space. But despite our knowledge, this world can still 'surprise' us. From the simple rules, emergent patterns of behaviour arise.}
