@@ -3,6 +3,7 @@
 
 \include{_simulation/includes/automata-base.md}
 \include{_simulation/includes/life-implementation.md}
+\include{_simulation/includes/automata-diagrams.md}
 
 \editme
 
@@ -143,12 +144,7 @@ from matplotlib.animation import FuncAnimation}
 
     fig, ax = plt.subplots(figsize=(5, 5))
     fig.set_facecolor('white')
-    im = ax.imshow(
-        history[0].grid, cmap='binary', interpolation='none', vmin=0, vmax=1
-    )
-    ax.set_xticks([])
-    ax.set_yticks([])
-    ax.set_aspect('equal')
+    im = plot_automata_grid(history[0], ax)
     title = ax.set_title(f"{pattern.name} - Step 0")
 
     def animate(frame):

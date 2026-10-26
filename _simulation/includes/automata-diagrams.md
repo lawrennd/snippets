@@ -188,7 +188,7 @@ from typing import List, Tuple, Dict, Optional}
     height, width = grid.grid.shape
     
     # Plot cells
-    ax.imshow(grid.grid, cmap='binary', interpolation='none')
+    im = ax.imshow(grid.grid, cmap='binary', interpolation='none', vmin=0, vmax=1)
     
     # Add grid lines
     for x in range(width + 1):
@@ -204,7 +204,8 @@ from typing import List, Tuple, Dict, Optional}
     ax.set_facecolor('white')
     # Extend grid lines to edge of plot
     ax.set_xlim(-0.5, width - 0.5)
-    ax.set_ylim(height - 0.5, -0.5)  # Flip y-axis to match SVG orientation}
+    ax.set_ylim(height - 0.5, -0.5)  # Flip y-axis to match SVG orientation
+    return im}
 
 
 \notes{These diagram generation functions maintain consistent styling while providing
