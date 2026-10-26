@@ -16,4 +16,7 @@
 
 
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.hospitalized_covid()["X"]}
 \endif

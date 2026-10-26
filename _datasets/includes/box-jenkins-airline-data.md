@@ -48,4 +48,14 @@ mlai.write_figure(filename='box-jenkins-airline.svg',
 \figure{\includediagram{\diagramsDir/datasets/box-jenkins-airline}{80%}}{Box-Jenkins data set on airline passenger numbers.}{box-jenkins-airline}
 
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.boxjenkins_airline()
+x = data['X']
+y = data['Y']
+xtest = data['Xtest']
+ytest = data['Ytest']
+offset = y.mean()
+scale = np.sqrt(y.var())}
 \endif

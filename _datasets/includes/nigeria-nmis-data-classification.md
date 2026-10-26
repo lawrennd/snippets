@@ -52,4 +52,34 @@ for htype in types:
 
 \code{X.describe()}
 
+\else
+\include{_datasets/includes/nigeria-nmis-data.md}
+\setupcode{import pandas as pd
+import numpy as np}
+\code{data = data[~pd.isnull(data['maternal_health_delivery_services'])]
+data = data.dropna()
+X = data[['emergency_transport',
+		  'num_chews_fulltime',
+		  'phcn_electricity',
+          'child_health_measles_immun_calc',
+          'num_nurses_fulltime',
+          'num_doctors_fulltime',
+		  'improved_water_supply',
+		  'improved_sanitation',
+          'antenatal_care_yn',
+		  'family_planning_yn',
+          'malaria_treatment_artemisinin',
+		  'latitude',
+		  'longitude']].copy()
+y = data['maternal_health_delivery_services']==True
+s = data['facility_type_display'].apply(pd.Series).stack()
+s.index = s.index.droplevel(-1)
+types = s.unique()
+type_names = []
+for htype in types:
+    index = s[s==htype].index.tolist()
+    type_col=htype.replace(' ', '_').replace('/','-').lower()
+    type_names.append(type_col)
+    X.loc[:, type_col] = 0.0
+    X.loc[index, type_col] = 1.0}
 \endif

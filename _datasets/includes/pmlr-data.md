@@ -15,4 +15,7 @@ data = pods.datasets.pmlr()}
 
 \code{data['Y'].describe()}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.pmlr()}
 \endif

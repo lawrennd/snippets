@@ -23,4 +23,7 @@
 
 \code{data['Y'].describe()}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.lee_yeast_ChIP()}
 \endif

@@ -23,11 +23,11 @@
     neg_mean = [[0, -0.5],[0,-0.5],[0,-0.5]]
     neg_cov = [[prec, 0.], [0., prec]]
     for mean in pos_mean:
-        X.append(np.random.multivariate_normal(mean=mean, cov=pos_cov, size=per_class))
-        y.append(np.ones((per_class, 1)))
+        X.append(np.random.multivariate_normal(mean=mean, cov=pos_cov, size=per_cluster))
+        y.append(np.ones((per_cluster, 1)))
     for mean in neg_mean:
-        X.append(np.random.multivariate_normal(mean=mean, cov=neg_cov, size=per_class))
-        y.append(np.zeros((per_class, 1)))
+        X.append(np.random.multivariate_normal(mean=mean, cov=neg_cov, size=per_cluster))
+        y.append(np.zeros((per_cluster, 1)))
     return np.vstack(X), np.vstack(y).flatten()}
 		
 \notes{Helper function for plotting the decision boundary of the SVM.}
@@ -52,9 +52,6 @@
                      levels=[Z.min(), 0, Z.max()], 
                      colors=[[0.5, 1.0, 0.5], [1.0, 0.5, 0.5]])
     return out}
-
-\downloadcode{mlai}
-
 
 \setuphelpercode{import mlai
 import os}
@@ -125,10 +122,10 @@ for samp in range(num_samps):
     xlim, ylim = decision_boundary_plot(models, X, y, 
                            axs=ax, 
                            filename='bias-variance{samp:0>3}.svg'.format(samp=samp), 
-						   directory='\writeDiagramsDir/ml'
+                           directory='\writeDiagramsDir/ml',
                            titles=titles,
-                          xlim=xlim,
-                          ylim=ylim)}
+                           xlim=xlim,
+                           ylim=ylim)}
 
 \include{_data-science/includes/pods-install.md}
 

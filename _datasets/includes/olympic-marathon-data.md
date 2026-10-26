@@ -54,4 +54,13 @@ mlai.write_figure(filename='olympic-marathon.svg',
 
 \notes{Things to notice about the data include the outlier in 1904, in that year the Olympics was in St Louis, USA. Organizational problems and challenges with dust kicked up by the cars following the race meant that participants got lost, and only very few participants completed. More recent years see more consistently quick marathons.}
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.olympic_marathon_men()
+x = data['X']
+y = data['Y']
+offset = y.mean()
+scale = np.sqrt(y.var())
+yhat = (y - offset)/scale}
 \endif

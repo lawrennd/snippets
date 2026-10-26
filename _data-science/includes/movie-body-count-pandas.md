@@ -17,7 +17,7 @@ system and github is a website that hosts code that can be accessed through git.
 As well as accessing the code
 via github you can also [download the zip file](https://github.com/sjmgarnier/R-vs-Python/archive/master.zip).}
 
-\include{_datasets/include/movie-body-count-data.md}
+\include{_datasets/includes/movie-body-count-data.md}
 
 \notes{In jupyter and jupyter notebook it is possible to see a list of
 all possible functions and attributes by typing the name of the object

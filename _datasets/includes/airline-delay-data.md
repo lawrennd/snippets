@@ -33,4 +33,7 @@ data['Ytest'].shape}
 print()
 print(data['details'])}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.airline_delay()}
 \endif

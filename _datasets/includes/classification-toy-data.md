@@ -30,4 +30,9 @@ mlai.write_figure("artificial-classification-example.svg", directory="\writeDiag
 
 \figure{\includediagram{\diagramsDir/ml/artificial-classification-example}{80%}}{Red crosses and green circles are sampled from two separate Gaussian distributions with 30 examples of each.}{artificial-classification-examples}
 
+\else
+\setupcode{import numpy as np}
+\code{np.random.seed(seed=1000001)
+x_plus = np.random.normal(loc=1.3, size=(30, 2))
+x_minus = np.random.normal(loc=-1.3, size=(30, 2))}
 \endif

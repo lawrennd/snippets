@@ -25,4 +25,12 @@ gender = y[:, 0]}
 \code{print('BMI mean is {mean}.'.format(mean=bmi.mean()))}
 
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.bmi_steps()
+X = data['X']
+y = data['Y']
+steps = X[:, 0]
+bmi = X[:, 1]
+gender = y[:, 0]}
 \endif

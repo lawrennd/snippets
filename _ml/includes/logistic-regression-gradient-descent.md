@@ -12,20 +12,30 @@ indices = np.random.permutation(X.shape[0])
 num_train = int(np.ceil(X.shape[0]/2))
 train_indices = indices[:num_train]
 test_indices = indices[num_train:]
-X_train = X.iloc[train_indices]
-y_train = y.iloc[train_indices]==True
-X_test = X.iloc[test_indices]
-y_test = y.iloc[test_indices]==True}
+if hasattr(X, "iloc"):
+    X_train = X.iloc[train_indices]
+    X_test = X.iloc[test_indices]
+else:
+    X_train = X[train_indices]
+    X_test = X[test_indices]
+if hasattr(y, "iloc"):
+    y_train = y.iloc[train_indices]==True
+    y_test = y.iloc[test_indices]==True
+else:
+    y_train = np.asarray(y).flatten()[train_indices]==True
+    y_test = np.asarray(y).flatten()[test_indices]==True}
 
 
 \setupcode{import numpy as np}
 \code{# gradient descent algorithm
 w_vals = np.random.normal(size=(X.shape[1]+1, 1), scale = 0.001)
 # Convert weights to a pandas DataFrame with column names
-if typeof(X_train) is pd.DataFrame:
+if type(X_train) is pd.DataFrame:
 	w = pd.DataFrame(data=w_vals, 
 	                 index=['Eins'] + list(X_train.columns), 
 					 columns=['weight'])
+else:
+	w = w_vals
 
 eta = 1e-9
 iters = 10000

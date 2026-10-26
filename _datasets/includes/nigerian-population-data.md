@@ -46,4 +46,7 @@ data = data.set_index("admin1Name_en")
 \code{data.head()}
 
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.nigerian_population()["Y"]}
 \endif

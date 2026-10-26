@@ -28,7 +28,7 @@ mu_x, C_x = posterior(Y, U, ell, sigma2)}
 
 \code{gene_list = Y.T
 gene_list['oscilation'] = np.sqrt(U[:, 3]**2)
-gene_list.sort(columns='oscilation', ascending=False).index[:4]}
+gene_list.sort_values('oscilation', ascending=False).index[:4]}
 
 \notes{We can look up the first three genes in this list which now ranks the genes according to how strongly they respond to the fourth latent dimension. [The NCBI gene database](http://www.ncbi.nlm.nih.gov/gene/) allows us to search for the function of these genes. Looking at the function of the four genes that respond most strongly to the third latent variable they are all genes that encode [histone](http://en.wikipedia.org/wiki/Histone) proteins. The histone is thesupport scaffold for the DNA that ensures it folds correctly within the cell creating the nucleosomes. It seems to make sense that production of histone proteins should be strongly correlated with the cell cycle, as when the cell divides it needs to create a large number of histone proteins for creating the duplicated nucleosomes. The relevant links giving the descriptions of each gene given here: [YDR224C](http://www.ncbi.nlm.nih.gov/gene/851810), [YDR225W](http://www.ncbi.nlm.nih.gov/gene/851811), [YBL003C](http://www.ncbi.nlm.nih.gov/gene/852283) and [YNL030W](http://www.ncbi.nlm.nih.gov/gene/855701).}
 

@@ -30,4 +30,7 @@ data['Y2'].shape}
 \code{print(data['info'])
 print()
 print(data['details'])}
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.cmu_mocap_high_five()}
 \endif

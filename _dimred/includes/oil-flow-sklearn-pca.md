@@ -12,7 +12,6 @@
 
 \include{_datasets/includes/oil-flow-data.md}
 
-
 \installcode{scikit-learn}
 
 \setupcode{from sklearn.decomposition import PCA}

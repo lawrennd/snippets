@@ -114,4 +114,9 @@ mlai.write_figure('oil-flow-data.svg', directory='\writeDiagramsDir/datasets')}
 
 \code{X = data['X']
 Y = data['Y']}
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.oil()
+X = data['X']
+Y = data['Y']}
 \endif

@@ -42,4 +42,11 @@ mlai.write_figure("olivetti-glasses-image.png",
 \figure{\includepng{\diagramsDir/datasets/olivetti-glasses-image}{60%}}{Image from the Oivetti glasses data sets.}{olivetti-glasses-image}
 
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.olivetti_glasses()
+X = data['X']
+y = data['Y']
+Xtest = data['Xtest']
+ytest = data['Ytest']}
 \endif

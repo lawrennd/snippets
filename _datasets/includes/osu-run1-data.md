@@ -88,4 +88,7 @@
 
 
 \code{print(data['details'])}
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.osu_run1()}
 \endif

@@ -30,4 +30,9 @@ motion=['01']}
 \code{print(data['info'])
 print()
 print(data['details'])}
+\else
+\setupcode{import pods}
+\code{subject='35'
+motion=['01']
+data = pods.datasets.cmu_mocap(subject, motion)}
 \endif

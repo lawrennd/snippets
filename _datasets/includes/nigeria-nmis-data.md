@@ -68,4 +68,7 @@ mlai.write_figure('nigerian-health-facilities.png', directory='\writeDiagramsDir
 
 \figure{\includepng{\diagramsDir/ml/nigerian-health-facilities}{60%}}{Location of the over thirty-four thousand health facilities registered in the NMIS data across Nigeria. Each facility plotted according to its latitude and longitude.}{nigerian-health-facilities}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.nigeria_nmis()['Y']}
 \endif

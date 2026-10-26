@@ -67,4 +67,10 @@ mlai.write_figure('olympic-sprint-data.svg', directory='\writeDiagramsDir/datase
 \notes{In the plot above red is women's events, blue is men's. Squares are 400 m, crosses 200m and circles 100m. Not all events were run in all years, for example the women's 400 m only started in 1964.}
 
 
+\else
+\setupcode{import pods
+import numpy as np}
+\code{data = pods.datasets.olympic_sprints()
+X = data['X']
+y = data['Y']}
 \endif
