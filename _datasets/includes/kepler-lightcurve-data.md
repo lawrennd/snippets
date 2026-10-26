@@ -67,4 +67,13 @@ mlai.write_figure("barycentric-time-difference.svg", directory='./datasets')}
 \figure{\includediagram{\diagramsDir/datasets/barycentric-time-difference}{60%}}{Difference between Barycentric time values for Kepler ID 001720554 and Kepler ID 002696955.}{barycentric-time-difference}
 
 
+\else
+\setupcode{import pandas as pd
+import pods}
+\code{data = pods.datasets.kepler_lightcurves()
+dataset = data["Y"].columns[0]
+kepler_id0 = data["datasets"][dataset][0]
+kepler_id1 = data["datasets"][dataset][1]
+X0 = data["Y"][dataset][kepler_id0]
+X1 = data["Y"][dataset][kepler_id1]}
 \endif

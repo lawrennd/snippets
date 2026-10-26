@@ -43,4 +43,22 @@ Y /= 255}
 
 \include{_datasets/includes/mnist-digits-plot.md}
 
+\else
+\setupcode{from sklearn.datasets import fetch_openml
+import numpy as np}
+\code{mnist = fetch_openml('mnist_784', version=1, as_frame=False, parser='liac-arff')
+np.random.seed(0)
+digits = [0,1,2,3,4]
+N_per_digit = 100
+Y = []
+labels = []
+data = np.asarray(mnist.data)
+target = np.asarray(mnist.target).astype(str)
+for d in digits:
+    imgs = data[target == str(d)]
+    Y.append(imgs[np.random.permutation(len(imgs))[:N_per_digit]])
+    labels.append(np.ones(N_per_digit)*d)
+Y = np.vstack(Y).astype(np.float64)
+labels = np.hstack(labels)
+Y /= 255}
 \endif

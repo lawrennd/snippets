@@ -122,4 +122,7 @@ mlai.write_figure('grid-corpos-vowels-data.svg', directory='\writeDiagramsDir/da
 print()
 print(data['details'])}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.grid_corpous_vowels()}
 \endif

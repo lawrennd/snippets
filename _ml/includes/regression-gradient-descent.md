@@ -236,7 +236,7 @@ Each frame shows:
 Watch how the algorithm follows a curved path that eventually spiral into the minimum, demonstrating the iterative nature of gradient-based optimisation.}
 
 \setupplotcode{import mlai.plot as plot}
-\plot{num_plots = plot.regression_contour_fit(x, y, diagrams='\writeDiagramsDir/ml')}
+\plotcode{num_plots = plot.regression_contour_fit(x, y, diagrams='\writeDiagramsDir/ml')}
 
 \setupdisplaycode{import notutils as nu
 from ipywidgets import IntSlider}

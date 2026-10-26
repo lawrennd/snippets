@@ -48,4 +48,8 @@ mlai.write_figure('nigerian-state-borders.svg', directory='\writeDiagramsDir/ml'
 
 \figure{\includediagram{\diagramsDir/ml/nigerian-state-borders}{60%}}{Border locations for the thirty-six different states of Nigeria.}{nigerian-state-borders}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.nigerian_administrative_zones()['Y']
+data.set_index("admin1Name_en", inplace=True)}
 \endif

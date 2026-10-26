@@ -100,4 +100,7 @@ mlai.write_figure('spellman-yeast-data.svg', directory='\writeDiagramsDir/datase
 print()
 print(data['details'])}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.spellman_yeast_cdc15()}
 \endif

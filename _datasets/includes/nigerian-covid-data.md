@@ -54,4 +54,7 @@ mlai.write_figure('nigerian-covid-data.svg', directory='\writeDiagramsDir/datase
 
 \figure{\includediagram{\diagramsDir/datasets/nigerian-covid-data}{80%}}{Evolution of COVID-19 cases in Nigeria.}{nigerian-covid-data}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.nigerian_covid()['Y']}
 \endif

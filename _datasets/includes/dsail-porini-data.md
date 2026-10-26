@@ -35,4 +35,18 @@ porini_file = download_if_not_exists(
 
 \code{porini_df = pd.read_excel(porini_file)
 porini_df.head()}
+\else
+\setupcode{import os
+import requests
+import pandas as pd}
+\code{porini_file = 'camera_trap_dataset_annotation.xlsx'
+if not os.path.exists(porini_file):
+    response = requests.get(
+        'https://data.mendeley.com/public-files/datasets/6mhrhn7rxc/files/641e83c9-16a3-485c-b247-b5701f8a5540/file_downloaded',
+        stream=True)
+    response.raise_for_status()
+    with open(porini_file, "wb") as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            f.write(chunk)
+porini_df = pd.read_excel(porini_file)}
 \endif

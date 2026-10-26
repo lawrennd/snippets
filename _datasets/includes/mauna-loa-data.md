@@ -85,4 +85,16 @@ print(data['details'])}
 
 \code{print(data['license'])}
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.mauna_loa()
+x = data['X']
+y = data['Y']
+offset = y.mean()
+scale = np.sqrt(y.var())
+xtest = data['Xtest']
+ytest = data['Ytest']
+yhat = (y-offset)/scale
+ytesthat = (ytest-offset)/scale}
 \endif

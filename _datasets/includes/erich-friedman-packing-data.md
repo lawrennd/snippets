@@ -42,4 +42,10 @@ mlai.write_figure(filename='squares-in-squares.svg',
 
 \figure{\includediagram{\diagramsDir/datasets/squares-in-squares}{80%}}{Plot of minimum side length known as a function of number of squares inside.}{squares-in-squares}
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.erich_friedman_packing_data()
+x = data['X']
+y = data['Y']}
 \endif

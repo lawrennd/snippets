@@ -66,4 +66,14 @@ yhat = (y - offset)/scale}
 
 \figure{\includediagram{\diagramsDir/datasets/robot-wireless-dim-1}{60%}}{Output dimension 1 from the robot wireless data. This plot shows signal strength changing over time.}{robot-wireless-data-dim-1}
 
+\else
+\setupcode{import pods
+import numpy as np}
+\code{data=pods.datasets.robot_wireless()
+output_dim=1
+x = np.linspace(0, 1, data['Y'].shape[0])[:, np.newaxis]
+y = data['Y'][:, output_dim:output_dim+1]
+offset = y.mean()
+scale = np.sqrt(y.var())
+yhat = (y - offset)/scale}
 \endif

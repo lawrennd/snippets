@@ -75,4 +75,8 @@ plot_labels(ax, U[:, 0], U[:, 1], data['labels'], '<>^vsd')
 mlai.write_figure('singlecell-data-pca.svg', directory='\writeDiagramsDir/datasets')}
 
 \figure{\includediagram{\diagramsDir/datasets/singlecell-data-pca}{60%}}{First two principal compoents of the @Guo:fate10 blastocyst development data.}{singlecell-data-pca}
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.singlecell()
+Y = data['Y']}
 \endif

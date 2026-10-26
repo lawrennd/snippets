@@ -44,4 +44,12 @@ mlai.write_figure(figure=fig,
 
 
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.della_gatta_TRP63_gene_expression(data_set='della_gatta',gene_number=937)
+x = data['X']
+y = data['Y']
+offset = y.mean()
+scale = np.sqrt(y.var())}
 \endif

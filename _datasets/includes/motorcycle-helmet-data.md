@@ -30,4 +30,13 @@ mlai.write_figure(filename='motorcycle-helmet.svg', directory='\writeDiagramsDir
 
 \figure{\includediagram{\diagramsDir/datasets/motorcycle-helmet}{80%}}{Motorcycle helmet data. The data consists of acceleration readings on a motorcycle helmet undergoing a collision. The data exhibits heteroschedastic (time varying) noise levles and non-stationarity.}{motorcycle-helment-data}
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.mcycle()
+x = data['X']
+y = data['Y']
+scale=np.sqrt(y.var())
+offset=y.mean()
+yhat = (y - offset)/scale}
 \endif

@@ -20,4 +20,8 @@ movies = data['Y']}
 
 \notes{Once it is loaded in the data can be summarized using the `describe` method in pandas.}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.movie_body_count()
+movies = data['Y']}
 \endif

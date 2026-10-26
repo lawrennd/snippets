@@ -57,4 +57,12 @@ mlai.write_figure(filename='olympic-100m.svg',
 
 \figure{\includediagram{\diagramsDir/datasets/olympic-100m}{80%}}{Olympic 100m wining times since 1896.}{olympic-100m}
 
+\else
+\setupcode{import numpy as np
+import pods}
+\code{data = pods.datasets.olympic_100m_men()
+x = data['X']
+y = data['Y']
+offset = y.mean()
+scale = np.sqrt(y.var())}
 \endif

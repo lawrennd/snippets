@@ -42,4 +42,7 @@ mlai.write_figure('ceres-data.svg', directory='\writeDiagramsDir/datasets')}
 
 \notes{The [Dawn Mission](http://en.wikipedia.org/wiki/Dawn_%28spacecraft%29) arrived at at Ceres in April 2015. [Here](http://astronomynow.com/2015/05/11/ceres-mysterious-white-spots-resolved-in-latest-dawn-images/) is a report from Astronomy Now showing a set of images from May 2015.}
 
+\else
+\setupcode{import pods}
+\code{data = pods.datasets.ceres()['data']}
 \endif
