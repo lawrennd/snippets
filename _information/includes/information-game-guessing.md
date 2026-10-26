@@ -37,6 +37,6 @@ questions in the worst case. Twenty questions reach a million possibilities: $2^
 
 \notes{If the prior is not uniform, the best question is no longer a literal half-split of the *count* of remaining objects. It is a half-split of their *probability*. The average number of questions under optimal play becomes the Shannon entropy $H = -\sum_i p_i\log_2 p_i$. We will meet that formula next; the game already shows what the number is counting.}
 
-\slides{The same idea with a three-outcome instrument comes next --- MacKay's balance.}
+\slides{The same idea, with a different instrument, comes next --- MacKay's balance.}
 
 \endif
