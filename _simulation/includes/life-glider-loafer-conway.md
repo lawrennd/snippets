@@ -145,12 +145,11 @@ from matplotlib.animation import FuncAnimation}
     fig, ax = plt.subplots(figsize=(5, 5))
     fig.set_facecolor('white')
     im = plot_automata_grid(history[0], ax)
-    title = ax.set_title(f"{pattern.name} - Step 0")
+    fig.tight_layout()
 
     def animate(frame):
         im.set_data(history[frame].grid)
-        title.set_text(f"{pattern.name} - Step {frame}")
-        return im, title
+        return (im,)
 
     anim = FuncAnimation(
         fig, animate, frames=len(history),

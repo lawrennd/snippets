@@ -119,7 +119,6 @@ fig.set_facecolor('white')  # White background for entire figure
 
 for i, grid in enumerate(history):
     plot_automata_grid(grid, axes[i])
-    axes[i].set_title(f'Step {i}')
 
 plt.tight_layout()
 
