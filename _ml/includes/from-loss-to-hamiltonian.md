@@ -127,33 +127,271 @@ $$
 
 \notes{In these systems time is introduced as a "fictitious variable" representing the evolution of the algorithm and the momentum variables are known as "auxiliary variables". The idea is to show that as time increases the system converges to the stationary distribution associated with the energy function, $\objectiveFunction(\weightVector)$.}
 
-\newslide{Why Leapfrog?}
+\newslide{Why Stay on a Contour of $H$?}
 
-\slides{Hamilton's equations are continuous. A computer must take discrete steps.}
+\slides{Moving along a contour of $H$ costs nothing.}
 
 \slidesincremental{
-* Naive Euler breaks time-reversibility and volume preservation --- Metropolis rejects almost everything
-* Leapfrog (velocity Verlet): staggered updates of $\mathbf{p}$ and $\mathbf{q}$
-* Symplectic and reversible; $H$ drifts only slowly, so accept rates stay high
+* Target on $(\mathbf{q},\mathbf{p})$: $\pi\propto e^{-H(\mathbf{q},\mathbf{p})}$
+* Along a contour $H$ is constant, so $\pi$ is constant
+* Metropolis accepts with $\min(1,e^{-\Delta H})$: $\Delta H\approx 0$ means accept
 }
 
-\notes{The continuous Hamiltonian flow is ideal: it is reversible, preserves phase-space volume (Liouville), and conserves $H$ exactly. Any numerical integrator only approximates that flow. Forward Euler is a poor choice here: it is neither reversible nor volume-preserving, so the Metropolis correction based on $\Delta H$ fails and almost every proposal is rejected. Leapfrog --- half-step momentum, full-step position, half-step momentum --- is a second-order symplectic integrator. It is exactly reversible and (approximately) conserves $H$ over many steps. That is why HMC uses leapfrog rather than an arbitrary ODE solver: the discretisation must respect the geometric structure that makes the accept/reject cheap.}
+\notes{We want samples from $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$. Hamiltonian Monte Carlo
+works on an enlarged space, adding a momentum $\mathbf{p}$ so that the joint density is
+$\pi(\mathbf{q},\mathbf{p})\propto e^{-H(\mathbf{q},\mathbf{p})}=e^{-V(\mathbf{q})}e^{-T(\mathbf{p})}$.
+The $\mathbf{q}$ marginal is the target we care about, and $\mathbf{p}$ is a nuisance variable we discard.
 
-\speakernotes{One blackboard sketch of leapfrog staggering is enough. Do not derive the symplectic condition; name reversibility + volume preservation as the reason Euler fails.}
+Now ask what makes a good proposal. A Metropolis step accepts with probability
+$\min(1,e^{-\Delta H})$ (given the map is reversible and volume preserving, which is the
+next section's business). A proposal is cheap to accept when it lands where $\pi$ is about
+as large as where it started, which means $\Delta H\approx 0$. Along a contour of $H$ the
+joint density $\pi$ does not change at all, so a move that stays on the contour is one the
+target is indifferent to.
+
+Compare random-walk Metropolis. A big step in a random direction usually goes uphill in
+$V$, the density drops, and the step is rejected. So the step size has to stay small, and
+the walk diffuses. A contour of $H$ is different: it can be long, and you can travel all
+the way round it at no cost in acceptance.}
+
+\newslide{Contours Are Not Contours of $V$}
+
+\slides{Staying on a level of $H$ is not staying at a level of $V$.}
+
+\slidesincremental{
+* $H=V(\mathbf{q})+T(\mathbf{p})$: kinetic energy converts to potential and back
+* Up the side of the bowl, $\mathbf{p}$ shrinks; back down, it grows
+* Fresh $\mathbf{p}\sim\mathcal{N}(0,M)$ jumps to a new level of $H$
+}
+
+\notes{It would be a mistake to read this as keeping $\mathbf{q}$ at constant $V$. A particle
+on a level set of $H$ rolls up the side of the well, slowing as it goes, and rolls back
+down. Kinetic energy $T$ and potential energy $V$ trade off while their sum stays fixed. So
+$\mathbf{q}$ travels a long way and visits many values of $V$, and that is exactly the
+exploration we want.
+
+What the flow cannot do is change the level of $H$. That job goes to the momentum refresh.
+Drawing $\mathbf{p}\sim\mathcal{N}(0,M)$ afresh is an exact Gibbs update of
+$\pi(\mathbf{p}\mid\mathbf{q})$, and it changes $T$, hence $H$, while leaving $\mathbf{q}$ alone.
+Each iteration therefore has two parts: a random hop between levels, and a deterministic,
+free-of-charge trip around the level we landed on. Together they cover the joint space.}
+
+\code{import numpy as np
+import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot
+
+fig, ax = plt.subplots(figsize=(5, 5))
+plot.hmc_level_refresh(ax, hamiltonians=(0.5, 1.0, 2.0), fontsize=16)
+mlai.write_figure('hmc-level-refresh.svg', directory='\writeDiagramsDir/ml')}
+
+\figure{\includediagram{\diagramsDir/ml/hmc-level-refresh}{55%}}{Unit harmonic oscillator, $H=(q^2+p^2)/2$. Circles are levels of $H$. The solid arc rides one level (Hamiltonian flow). The dashed jump at fixed $q$ is a momentum refresh onto a new level.}{hmc-level-refresh}
+
+\speakernotes{Solid = free trip around a contour. Dashed = Gibbs update of $p$, which changes $H$ and leaves $q$ alone.}
+
+\newslide{Why Not Just Descend?}
+
+\slides{Descent crosses contours of $V$. Sampling must not.}
+
+\slidesincremental{
+* Descent goes toward the mode: great for a point estimate, wrong for a distribution
+* Each descent step changes $V$ a lot, so $\pi$ changes a lot, so it gets rejected
+* High dimensions: typical samples sit away from the mode
+}
+
+\notes{This ties back to the energy story. When $V$ was a loss, crossing its contours was the
+whole point: that is how we reach the bottom of the bowl. When $e^{-V}$ is a distribution
+the bottom is just the single most probable point, and in high dimensions most of the
+probability mass lies in a shell around it rather than at it. Samples have to be spread over
+that shell, so a move that keeps dropping to lower $V$ is working against us. The Hamiltonian flow
+gives us a way to travel without changing the density, which is the one thing descent
+cannot do.
+
+The shell is not a metaphor. For $q\sim\mathcal{N}(0,I_d)$ we have $\|q\|^2\sim\chi^2_d$, with mean $d$ and variance $2d$. The relative width of that law is $\sqrt{2/d}$, so as $d$ grows the mass concentrates near $\|q\|^2=d$, a spherical shell of radius $\sqrt{d}$, not at the mode $q=0$. Descent toward the mode is walking *out* of the typical set.}
+
+\code{import numpy as np
+import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot
+
+fig, ax = plt.subplots(figsize=(6, 4))
+plot.chi2_concentration(ax, dims=(2, 10, 50), fontsize=16)
+mlai.write_figure('chi2-concentration.svg', directory='\writeDiagramsDir/ml')}
+
+\figure{\includediagram{\diagramsDir/ml/chi2-concentration}{60%}}{Density of $\|q\|^2/d$ for $q\sim\mathcal{N}(0,I_d)$. Mean is $1$ for every $d$; the mass tightens around that value. Typical samples sit in a shell, not at the mode.}{chi2-concentration}
+
+\speakernotes{Point at $d=50$: almost all the mass is near $\|q\|^2=d$. The mode of the Gaussian is still the origin. Descent heads for a point that is not where samples live.}
+
+\newslide{Why Leapfrog?}
+
+\slides{We now know we want to follow a contour of $H$. The computer cannot follow a curve, it takes steps.}
+
+\slidesincremental{
+* A descent-shaped step walks off the level: $H$ grows, and Metropolis fights the drift
+* The discrete map must be reversible and volume-preserving, or the accept/reject is no longer a small correction
+}
+
+\notes{The computer cannot follow a contour as a curve. It takes steps. We already know why those steps have to stay near a level of $H$: that move is free, and Metropolis accepts it. The remaining question is which discrete map keeps us there.
+
+A careless step has the same shape as gradient descent: evaluate the field, move. That was the right move when $V$ was a loss. Here it walks off the contour, $H$ grows, and Metropolis is asked to undo a structural failure.}
+
+\speakernotes{The contour argument is done. This slide is the discrete-step problem. Then Euler leaving the circle, then leapfrog.}
+
+\newslide{Euler Leaves the Orbit}
+
+\slides{Forward Euler on a quadratic well: each step is a shear, the circle inflates.}
+
+\slidesincremental{
+* $q\leftarrow q+\varepsilon p$, $p\leftarrow p-\varepsilon q$
+* $H$ grows at every step
+* Metropolis on $\Delta H$ then rejects almost everything
+}
+
+\notes{Forward Euler is the descent-shaped integrator: evaluate the field, take a step. On the harmonic well $V(q)=q^2/2$ the true motion in $(q,p)$ is a circle. Euler does
+$$
+q\leftarrow q+\varepsilon p,\qquad p\leftarrow p-\varepsilon q
+$$
+using the *old* $q$ in the momentum update. Each step is a shear. The radius grows. $H$ at the end is larger than $H$ at the start. Run Metropolis on that $\Delta H$ and you are fighting a systematic pump of energy.
+
+The continuous flow was reversible and volume-preserving: a small cloud of possible $(q,p)$ --- an ensemble of microstates --- kept its area as it rode around the circle (Liouville). Euler inflates the cloud and cannot be run backwards by the same rule. The Metropolis correction that was supposed to mop up a small discretisation error is then asked to undo a structural failure, and it cannot.}
+
+\newslide{Leapfrog Stays Near It}
+
+\slides{Leapfrog: half-step $\mathbf{p}$, full-step $\mathbf{q}$, half-step $\mathbf{p}$.}
+
+\slidesincremental{
+* Reversible: flip $\mathbf{p}$, replay, flip $\mathbf{p}$
+* Each substep has $\det J=1$ --- a cloud of states keeps its area
+* $H$ wobbles without a secular drift, so accept rates stay high
+}
+
+\notes{Leapfrog (velocity Verlet) splits the momentum update around the position update: a half-step of $\mathbf{p}$, a full-step of $\mathbf{q}$, a half-step of $\mathbf{p}$. Reverse the tape by flipping the sign of $\mathbf{p}$, taking the same steps, flipping $\mathbf{p}$ again. Each substep is a shear whose Jacobian is triangular with ones on the diagonal, so a blob of possible $(\mathbf{q},\mathbf{p})$ keeps its area. $H$ still wobbles --- the map is not the true flow --- but the wobble does not accumulate a drift. Metropolis then sees a small $\Delta H$ and the accept rate stays usable.
+
+That is the reason for leapfrog. Not that it is a more accurate ODE solver in the usual sense. A high-order Runge--Kutta can track the circle more closely and still fail reversibility or volume, and then the Metropolis correction is no longer a small mopping-up. The discretisation has to respect the geometry that made the continuous flow a valid proposal in the first place.}
+
+\speakernotes{Do not derive the symplectic form. The figure is the argument: Euler walks off the circle, leapfrog stays. Name reversible + volume-preserving; stop.}
+
+\code{import numpy as np
+import matplotlib.pyplot as plt
+import mlai
+
+# Harmonic oscillator H = (q^2 + p^2)/2. Exact motion is the unit circle
+# from (1, 0). Euler inflates it; leapfrog stays nearby.
+eps = 0.3
+n_steps = 40
+q0, p0 = 1.0, 0.0
+
+def euler_path(q, p, eps, n):
+    qs, ps = [q], [p]
+    for _ in range(n):
+        q_new = q + eps * p
+        p_new = p - eps * q
+        q, p = q_new, p_new
+        qs.append(q)
+        ps.append(p)
+    return np.array(qs), np.array(ps)
+
+def leapfrog_path(q, p, eps, n):
+    qs, ps = [q], [p]
+    for _ in range(n):
+        p = p - 0.5 * eps * q
+        q = q + eps * p
+        p = p - 0.5 * eps * q
+        qs.append(q)
+        ps.append(p)
+    return np.array(qs), np.array(ps)
+
+q_eu, p_eu = euler_path(q0, p0, eps, n_steps)
+q_lf, p_lf = leapfrog_path(q0, p0, eps, n_steps)
+theta = np.linspace(0, 2 * np.pi, 200)
+
+fig, ax = plt.subplots(figsize=(5, 5))
+ax.set_aspect('equal')
+ax.plot(np.cos(theta), np.sin(theta), 'k--', linewidth=1, label='exact $H$')
+ax.plot(q_eu, p_eu, 'C1-o', markersize=3, linewidth=1, label='Euler')
+ax.plot(q_lf, p_lf, 'C0-o', markersize=3, linewidth=1, label='leapfrog')
+ax.plot([q0], [p0], 'ko', markersize=5)
+ax.set_xlabel('$q$')
+ax.set_ylabel('$p$')
+ax.set_xlim(-2.2, 2.2)
+ax.set_ylim(-2.2, 2.2)
+ax.legend(frameon=False, loc='upper right')
+mlai.write_figure('leapfrog-vs-euler.svg', directory='\writeDiagramsDir/ml')}
+
+\figure{\includediagram{\diagramsDir/ml/leapfrog-vs-euler}{55%}}{Harmonic oscillator $H=(q^2+p^2)/2$, forty steps of size $0.3$ from $(1,0)$. The exact motion is the dashed circle. Euler inflates $H$; leapfrog stays near the level set.}{leapfrog-vs-euler}
+
+\newslide{The Algorithm: Hop, Ride, Correct}
+
+\slides{Each iteration: hop to a new level, ride around it, correct.}
+
+\slidesincremental{
+1. **Hop:** draw $\mathbf{p}\sim\mathcal{N}(0,M)$ (changes $H$, not $\mathbf{q}$)
+2. **Ride:** $L$ leapfrog steps from $(\mathbf{q},\mathbf{p})$ to $(\mathbf{q}',\mathbf{p}')$
+3. **Correct:** accept with probability $\min(1,e^{-\Delta H})$, else stay at $\mathbf{q}$
+}
+
+\notes{Each move alone fails. The momentum refresh moves between levels of $H$
+but leaves $\mathbf{q}$ where it was. The leapfrog ride moves $\mathbf{q}$ a long way but
+stays on one level, so alone it could never visit the others. Both leave
+$e^{-H}$ invariant, and alternating them covers the joint space: a random hop
+between levels, then a nearly free trip around the level we landed on.
+
+The Metropolis step is the safety net. Leapfrog does not follow the level exactly,
+so $\Delta H$ is small but not zero, and the accept/reject removes the bias that
+would otherwise leave us sampling the wrong density.
+
+Two knobs. The step size $\varepsilon$ sets how well leapfrog stays on the level,
+and so the accept rate. The number of steps $L$ sets how far round the level we
+travel. Too few and the chain is a random walk. Too many and the orbit curves
+back toward where it started, which wastes computation.}
+
+\code{# One HMC iteration. V, grad_V: potential and its gradient.
+# Leapfrog matches mlai.hmc.leapfrog with unit mass.
+def hmc_step(q, V, grad_V, eps, L, rng):
+    p = rng.standard_normal(q.shape)           # 1. hop: new level of H
+    H0 = V(q) + 0.5 * p @ p
+
+    q_new, p_new = q.copy(), p.copy()          # 2. ride: leapfrog
+    p_new -= 0.5 * eps * grad_V(q_new)
+    for _ in range(L - 1):
+        q_new += eps * p_new
+        p_new -= eps * grad_V(q_new)
+    q_new += eps * p_new
+    p_new -= 0.5 * eps * grad_V(q_new)
+    p_new = -p_new                             # flip: makes the map reversible
+
+    H1 = V(q_new) + 0.5 * p_new @ p_new        # 3. correct: Metropolis on dH
+    if np.log(rng.uniform()) < H0 - H1:
+        return q_new, True
+    return q, False}
+
+\speakernotes{Say it as three verbs: hop, ride, correct. Then point at the trajectory
+figure: the curves are step 2, the markers are what survives step 3.}
+
+\code{import numpy as np
+import matplotlib.pyplot as plt
+import mlai
+import mlai.plot as plot
+
+fig, ax = plt.subplots(figsize=(5, 5))
+plot.hmc_hop_ride(ax, hamiltonians=(0.5, 1.0, 2.0), step_size=0.25, n_steps=12, fontsize=16)
+mlai.write_figure('hmc-hop-ride.svg', directory='\writeDiagramsDir/ml')}
+
+\figure{\includediagram{\diagramsDir/ml/hmc-hop-ride}{55%}}{Hop, ride, correct on $H=(q^2+p^2)/2$. Dashed verticals: momentum refresh (hop). Marked polylines: leapfrog (ride). Large markers: accepted endpoints (correct).}{hmc-hop-ride}
 
 \newslide{Trajectories Propose; Endpoints Sample}
 
-\slides{The leapfrog *path* is not a sequence of posterior samples.}
+\slides{Curves are step 2; markers are what survives step 3.}
 
 \slidesincremental{
-* $L$ leapfrog steps build one proposal from $(\mathbf{q},\mathbf{p})$ to $(\mathbf{q}',\mathbf{p}')$
-* Intermediate points on the path are integrator waypoints --- discard them
-* Only the accepted endpoint (after Metropolis) enters the Markov chain
+* The leapfrog path builds one proposal --- waypoints are discarded
+* Only the accepted endpoint enters the chain
+* Next iteration hops again: fresh $\mathbf{p}$, new level of $H$
 }
 
-\notes{This is the confusion the trajectory figure invites. Hamiltonian dynamics explore a level set of $H$ to *construct a proposal*. The sample from the target $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$ is the position $\mathbf{q}'$ *if* the Metropolis test accepts. Reject, and the chain stays at $\mathbf{q}$. Either way, the green curve on the contour plot is scaffolding for one move, not a cloud of draws. Fresh momentum is drawn for the next proposal; the chain of accepted $\mathbf{q}$ values is what estimates posterior expectations.}
+\notes{With the algorithm in place this is a reading of the figure, not a new warning. Hamiltonian dynamics explore a level set of $H$ to construct a proposal (the ride). The sample from $p(\mathbf{q})\propto e^{-V(\mathbf{q})}$ is the position $\mathbf{q}'$ if Metropolis accepts (the correct). Reject, and the chain stays at $\mathbf{q}$. Either way the curve is scaffolding for one move, not a cloud of draws. The next iteration hops: a fresh $\mathbf{p}$ lands on a new level, and we ride again.}
 
-\speakernotes{Point at the quadratic figure: curves = proposals; markers = accepted samples only. Say it twice if needed.}
+\speakernotes{Point at the quadratic figure: curves = step 2; markers = step 3. The three circles were the same loop in $(q,p)$.}
 
 \addreading{@Welling-generative26}{Section 11.4.2}
 
@@ -185,7 +423,7 @@ $$
 * Contrast: SGD point estimate vs HMC posterior samples
 }
 
-\notes{The reusable component lives in ``mlai.hmc``. It has diagonal-mass kinetic energy, leapfrog *proposals*, and a Metropolis correction on $\Delta H$. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl) --- read the curves as proposal trajectories, the markers as accepted samples --- then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
+\notes{The reusable component lives in ``mlai.hmc``. It has diagonal-mass kinetic energy, leapfrog *proposals*, and a Metropolis correction on $\Delta H$ --- hop, ride, correct, as above. Below we first overlay leapfrog paths on a 2D quadratic potential (standard normal / least-squares bowl) --- curves are the ride, markers are what the correct kept --- then contrast an SGD point estimate with HMC samples for a small logistic regression --- the same energy language as the lecture.}
 
 \code{# 2D quadratic potential: V(q)=0.5||q||^2  (standard normal target).
 # Leapfrog trajectories on the same contour language as regression_contour.
@@ -264,7 +502,7 @@ print('SGD:', q_sgd, 'HMC mean:', hmc_result.samples.mean(axis=0))}
 
 \figure{\includediagram{\diagramsDir/ml/hmc-logistic-traces}{70%}}{Hamiltonian and weight traces for logistic regression. $V(\weightVector)=-\log p(\weightVector\mid\mathcal{D})$; SGD gives one downhill point, HMC a cloud of posterior samples.}{hmc-logistic-traces}
 
-\speakernotes{Name kinetic energy and Neal; show the trajectory figure if builds are available. Emphasise V = -log posterior, not a new loss species. Re-state: path = proposal; samples = accepted endpoints.}
+\speakernotes{Name kinetic energy and Neal. Hop, ride, correct is the loop. Euler leaves the circle, leapfrog stays. Trajectory figure: curves = ride; markers = correct. $V=-\log$ posterior, not a new loss species.}
 
 
 \endif
