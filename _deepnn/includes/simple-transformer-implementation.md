@@ -205,12 +205,11 @@ mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagrams
 
 \helpercode{def visualise_attention_weights(model, X, filename="attention-weights.svg", directory="../diagrams"):
     """Visualise attention weights from the multi-head attention model."""
-    # Get attention weights
-    X_embedded = np.random.randn(1, X.shape[1], model.d_model)
-    _, attn_weights = model.forward(X_embedded, X_embedded, X_embedded)
-    
-    # Get first head, first sample
-    attn_weights = attn_weights[0, 0]  # First head, first sample
+    attention_layer = model.layers[0]
+    X_embedded = np.random.randn(1, X.shape[1], attention_layer.d_model)
+    model.forward(X_embedded)
+    # First head, first sample
+    attn_weights = attention_layer.attention_heads[0].last_attention_weights[0]
     
     # Plot
     fig, ax = plt.subplots(figsize=plot.big_figsize)
@@ -235,25 +234,33 @@ d_model = 64
 seq_length = 8
 
 for n_heads in [1, 2, 4, 8]:
-    multi_head_attention = MultiHeadAttention(d_model, n_heads)
+    multi_head_attention = MultiHeadAttentionLayer(d_model, n_heads)
     X_test = np.random.randn(2, seq_length, d_model)
-    
-    output, attn_weights = multi_head_attention.forward(X_test, X_test, X_test)
+    output = multi_head_attention.forward(X_test)
+    attn_weights = multi_head_attention.attention_heads[0].last_attention_weights
     
     print(f"n_heads={n_heads}: output shape={output.shape}, attn shape={attn_weights.shape}")
     print(f"  Each head processes {d_model//n_heads} dimensions")}
 
 \subsection{Test Different Activation Functions}
 
-\loadcode{SoftmaxActivation}{mlai}
+\loadcode{SoftmaxActivation}{mlai.neural_networks}
 
-\loadcode{SigmoidAttentionActivation}{mlai}
+\helpercode{class SigmoidAttentionActivation:
+    """Sigmoid attention weights, normalised so each query sums to one."""
 
-\loadcode{IdentityMinusSoftmaxActivation}{mlai}
+    def forward(self, x, axis=-1):
+        s = 1.0 / (1.0 + np.exp(-np.clip(x, -40.0, 40.0)))
+        return s / np.sum(s, axis=axis, keepdims=True)}
+
+\helpercode{class IdentityMinusSoftmaxActivation:
+    """Contrast attention: I - softmax, so each query sums to zero."""
+
+    def forward(self, x, axis=-1):
+        softmax = SoftmaxActivation().forward(x, axis=axis)
+        return np.eye(x.shape[axis]) - softmax}
 
 \code{# Compare different activation functions for attention
-from mlai import SoftmaxActivation, SigmoidAttentionActivation, IdentityMinusSoftmaxActivation
-
 d_model = 32
 seq_length = 4
 X_test = np.random.randn(1, seq_length, d_model)
@@ -262,8 +269,9 @@ print("Comparing Attention Activation Functions:")
 print("=" * 50)
 
 # Standard softmax attention
-softmax_attention = Attention(d_model, activation=SoftmaxActivation())
-output_softmax, weights_softmax = softmax_attention.forward(X_test, X_test, X_test)
+softmax_attention = AttentionLayer(d_model, activation=SoftmaxActivation())
+output_softmax = softmax_attention.forward(X_test)
+weights_softmax = softmax_attention.last_attention_weights
 
 print("1. SoftmaxActivation (Standard):")
 print(f"   Weights sum: {weights_softmax.sum(axis=-1)[0, 0]:.6f}")
@@ -271,8 +279,9 @@ print(f"   Weights range: [{weights_softmax.min():.6f}, {weights_softmax.max():.
 print(f"   Attention matrix:\n{weights_softmax[0, :, :]}")
 
 # Sigmoid with normalization
-sigmoid_attention = Attention(d_model, activation=SigmoidAttentionActivation())
-output_sigmoid, weights_sigmoid = sigmoid_attention.forward(X_test, X_test, X_test)
+sigmoid_attention = AttentionLayer(d_model, activation=SigmoidAttentionActivation())
+output_sigmoid = sigmoid_attention.forward(X_test)
+weights_sigmoid = sigmoid_attention.last_attention_weights
 
 print("\n2. SigmoidAttentionActivation:")
 print(f"   Weights sum: {weights_sigmoid.sum(axis=-1)[0, 0]:.6f}")
@@ -280,8 +289,9 @@ print(f"   Weights range: [{weights_sigmoid.min():.6f}, {weights_sigmoid.max():.
 print(f"   Attention matrix:\n{weights_sigmoid[0, :, :]}")
 
 # Identity minus softmax (interesting alternative)
-identity_attention = Attention(d_model, activation=IdentityMinusSoftmaxActivation())
-output_identity, weights_identity = identity_attention.forward(X_test, X_test, X_test)
+identity_attention = AttentionLayer(d_model, activation=IdentityMinusSoftmaxActivation())
+output_identity = identity_attention.forward(X_test)
+weights_identity = identity_attention.last_attention_weights
 
 print("\n3. IdentityMinusSoftmaxActivation:")
 print(f"   Weights sum: {weights_identity.sum(axis=-1)[0, 0]:.6f}")
@@ -317,8 +327,9 @@ print("  de-emphasizing connections to other positions.")}
     fig, axes = plt.subplots(1, 3, figsize=(15, 4))
     
     for i, (name, activation) in enumerate(activations):
-        attention = Attention(d_model, activation=activation)
-        _, weights = attention.forward(X_test, X_test, X_test)
+        attention = AttentionLayer(d_model, activation=activation)
+        attention.forward(X_test)
+        weights = attention.last_attention_weights
         
         # Get attention matrix for first sample
         attn_matrix = weights[0, :, :]
@@ -540,12 +551,12 @@ print("Benefits of the New Layered Architecture:")
 print("=" * 50)
 
 # 1. Composable layers
-from mlai import LayeredNeuralNetwork, MultiHeadAttentionLayer, PositionalEncodingLayer, LinearLayer, ReLUActivation
+from mlai import LayeredNeuralNetwork, MultiHeadAttentionLayer, PositionalEncodingLayer, LinearLayer
 
 # Create different layer combinations
 layers1 = [PositionalEncodingLayer(d_model), MultiHeadAttentionLayer(d_model, n_heads)]
-layers2 = [PositionalEncodingLayer(d_model), MultiHeadAttentionLayer(d_model, n_heads), 
-           LinearLayer(d_model, d_model), ReLUActivation()]
+layers2 = [PositionalEncodingLayer(d_model), MultiHeadAttentionLayer(d_model, n_heads),
+           LinearLayer(d_model, d_model)]
 
 model1 = LayeredNeuralNetwork(layers1)
 model2 = LayeredNeuralNetwork(layers2)
