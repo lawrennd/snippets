@@ -5,7 +5,7 @@
 
 \subsection{Joule and the Mechanical Equivalent}
 
-\notes{James Prescott Joule (1818--1889) gives the answer to Rumford's riddle. He theorises that a measured quantity of mechanical work could *create* a measured quantity of heat. If it can then heat is not a conserved fluid. This would imply that Carnot's mill becomes a special case, not the general law. Joule is a Manchester brewer whoe tries this experiment with a paddle wheel [@Joule-equivalent50].}
+\notes{James Prescott Joule (1818--1889) gives the answer to Rumford's riddle. He theorises that a measured quantity of mechanical work could *create* a measured quantity of heat. If it can then heat is not a conserved fluid. This would imply that Carnot's mill becomes a special case, not the general law. Joule is a Manchester brewer who tries this experiment with a paddle wheel [@Joule-equivalent50].}
 
 \newslide{James Prescott Joule}
 
@@ -19,7 +19,7 @@
 
 \figure{\includepng{\diagramsDir/physics/joule-apparatus-harpers}{48%}}{Joule's apparatus for the mechanical equivalent of heat. A falling weight turns a paddle in water; the work is known, the rise in temperature is measured. Engraving from *Harper's New Monthly Magazine*, August 1869 (Wikimedia Commons, public domain).}{joule-apparatus-harpers}
 
-\notes{In Joules' apparatus weights descend and turn a paddle in a can of water. The paddle moves against the water's resistance. When the weights have run down they are wound up and the motion is repeated. The thermometer is read after multiple descents. The work is easily calculated as the weight ($\text{mg}) multiplied by the height ($\text{h})$. The heat is the rise in temperature times the capacity of the water. Mechanical power is being *spent*, and heat appears.}
+\notes{In Joule's apparatus weights descend and turn a paddle in a can of water. The work associated with dropping a mass through a height is $mgh$. It is coiled around a bearing; there is a water paddle in a tank. To do the experiment you try to get rid of friction in the spindle. He did not drop it once: he had to drop it multiple times to show how much work converted into heat. It is a very similar experiment to Rumford's, but he has a better thermometer --- mercury, not air, by the look of the apparatus --- and he is measuring the specific heat capacity of water. Mechanical power is being *spent*, and heat appears. Finally people realise that heat energy and work can transform into one another. That is the 1840s. Not very long ago.}
 
 \speakernotes{Mechanism: falling weights, paddle, thermometer. Maths: work against heat, a ratio. Contrast with Carnot's mill still in the students' heads.}
 
@@ -59,7 +59,9 @@
 * What can be kept: a *limit* that depends only on the two temperatures
 }
 
-\notes{The contradiction is the cue, not the resolution. Clausius in 1850, and Thomson in 1851, will keep Carnot's *limit* and drop conservation of heat. We take Clausius first: two laws, and $\mathrm{d}Q/T$. Thomson then returns to rewrite the scale so that it has a bottom.}
+\notes{You will hear people say that when they built steam engines they had no theory of thermodynamics. That is not true. They had theories of thermodynamics. They did not have *complete* theories. We may not have a complete theory of thermodynamics today. This is where we are with machine learning: we do not have good theories of what is going on in the models, and we do not even have good definitions of intelligence. People can go around saying AGI or superintelligence, and it does not mean very much. Caloric is better defined. At least caloric is a notion you can look at and say: it is not conserved. It is telling you something specific you should expect. It is falsifiable. If you do not define your terms, you cannot do falsifiability.}
+
+\notes{Once you realise that Joule converts work to heat, you also get the sense that heat converts to work. You can convert all your work into heat. You cannot get all the heat back as work. Carnot is assuming that the work comes from the fall, as in a mill. Here the heat itself converts. You cannot keep that theory of heat engines and Joule's demonstration as general laws. Clausius in 1850, and Thomson in 1851, will keep Carnot's *limit* and drop conservation of heat. We take Clausius first: two laws, and $\mathrm{d}Q/T$. Thomson then returns to rewrite the scale so that it has a bottom.}
 
 \addreading{@Joule-equivalent45}{The 1845 letter: paddle wheel shown at the British Association, Cambridge; equivalent still scattered around 817 foot-pounds}
 \addreading{@Joule-equivalent50}{The 1850 *Phil.\ Trans.* paper: $772$ foot-pounds; the settled equivalent}

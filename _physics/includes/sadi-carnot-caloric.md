@@ -5,7 +5,7 @@
 
 \subsection{Sadi Carnot and the Fall of Heat}
 
-\notes{Black made heat a quantity you can measure, mix and hide. Once it is a quantity, it looks like a fluid you can account for. From our perspective, the next step comes from Sadi Carnot (1796--1832). Carnot has a practical question, he's not focussed on what heat is made of, he wants to understand the limits of a steam engine.}
+\notes{Black made heat a quantity you can add, mix and hide. From our perspective, the next step comes from Sadi Carnot (1796--1832). Carnot has a practical question, he's not focussed on what heat is made of, he wants to understand the limits of a steam engine.}
 
 \newslide{Sadi Carnot}
 
@@ -25,7 +25,7 @@
 * Carnot: is there a *limit*? Does the choice of fluid matter?
 }
 
-\notes{After his time in Glasgow, James Watt had moved to Birmingham and together with Matthew Boulton, commercialised a more efficient steam engine. By the 1820s the steam engine was widely used in mines, mills, looms and forges. Carnot beleives that one day it will serve as a universal motor, but he notes that it doesn't have a theory of mechanics. France is watching Britain do steam better. The so-called "practical men" are improving the capabilities of the machine, but Carnot wants to know whether any of that can be unbounded, or whether there is a ceiling independent of the machine and of the substance that runs through it.}
+\notes{After his time in Glasgow, James Watt had moved to Birmingham and together with Matthew Boulton, commercialised a more efficient steam engine. By the 1820s the steam engine was widely used in mines, mills, looms and forges. Carnot believes that one day it will serve as a universal motor, but he notes that it doesn't have a theory of mechanics. France is watching Britain do steam better. Watt's engines are a few percent. One reason they stay that low is that he refused high-pressure steam: he thought it was dangerous, and his patent covered engines that were not high-pressure. He was probably right about the boilers they could manufacture then. Later, corrugated boilers, high temperature and high pressure, and a modern steam turbine is about sixty percent. The so-called "practical men" are improving the machine, but Carnot wants to know whether any of that can be unbounded, or whether there is a ceiling independent of the machine and of the substance that runs through it. That is the same kind of question we would like to be able to ask of intelligence. We are in almost the same position he was in: a load of our quantities are not defined.}
 
 \newslide{The Réflexions}
 
@@ -45,7 +45,7 @@
 * Two reservoirs. Nothing is used up.
 }
 
-\notes{Carnot's own comparison: the motive power of heat can be compared to that of a waterfall. A waterfall has a maximum you cannot exceed, whatever machine you put in the stream. The power depends on the quantity of water and the height of the fall. Heat, likewise, depends on the quantity of caloric and on what he calls the height of its fall --- the difference of temperature between the bodies exchanging it. In a steam engine the boiler is the upper reservoir, the condenser the lower. Carnot's own plate is that mill: body $A$ the furnace, body $B$ the refrigerator, the cylinder the wheel. The caloric developed in the firebox is taken up by the steam, passes through the cylinder, and is given up to the cold water. The mill turns because the caloric *moves*. The same quantity that left the hot reservoir arrives at the cold one. That is Black's ledger, used as the mechanics of an engine: a conserved fluid falling between two baths.}
+\notes{Carnot's own comparison: the motive power of heat can be compared to that of a waterfall. A waterfall has a maximum you cannot exceed, whatever machine you put in the stream. The power depends on the quantity of water and the height of the fall. Heat, likewise, depends on the quantity of caloric and on what he calls the height of its fall --- the difference of temperature between the bodies exchanging it. In English, *mill* until relatively recently also meant a factory; the picture here is a water mill. In a steam engine the boiler is the upper reservoir, the condenser the lower. Carnot's own plate is that mill: body $A$ the furnace, body $B$ the refrigerator, the cylinder the wheel. The caloric developed in the firebox is taken up by the steam, passes through the cylinder, and is given up to the cold water. The mill turns because the caloric *moves*. The same quantity that left the hot reservoir arrives at the cold one: heat moving like water does in a waterfall. Conceptually he is thinking of the fall of water driving a wheel, rather than a direct conversion of some of the heat into the work. He is honest that he does not fully understand how the work comes from the fall of caloric. Watt already knows, from Black, that steam carries latent heat around and gives it up when it condenses. What is surprising, looking back, is that this conservation theory of heat exists *before* conservation of energy.}
 
 \speakernotes{Point at $A$ and $B$. Furnace and refrigerator. Same caloric in, same caloric out. The piston is the mill wheel, not heat being turned into something else. Do not mention Joule. Students may want to correct him. Hold that.}
 
@@ -58,7 +58,7 @@
 * Clapeyron recasts the argument in 1834
 }
 
-\notes{In the summer of 1832 Carnot falls ill; he dies of cholera on 24 August, at Ivry, aged 36. The *Réflexions* have made no impression. Two years later Émile Clapeyron, another polytechnicien, writes the argument in the language of indicator diagrams, and the book becomes findable.}
+\notes{He pays for six hundred copies. In the summer of 1832 he falls ill; he dies of cholera on 24 August, at Ivry, aged 36. The book, and the work, almost vanish with him. Two years later Émile Clapeyron, another polytechnicien, recasts the argument in 1834 in the language of indicator diagrams, and people form what becomes known as the caloric theory of heat --- the dominant theory, a conservation theory before conservation of energy.}
 
 \speakernotes{Stop. Do not derive $\mathrm{d}Q/T$. Next is Rumford's cannon.}
 

@@ -13,7 +13,7 @@
 * Jacobian $d^3v = v^2\,dv\,d\Omega$ supplies the $v^2$ factor
 }
 
-\speakernotes{Both statements are Maxwell--Boltzmann. The histogram of one component is Gaussian; the histogram of speed peaks away from zero. Board the spherical shell volume briefly.}
+\speakernotes{First look, as taught: Maxwell--Boltzmann is a Gaussian in the velocities. Then: the histogram of one component is Gaussian; the histogram of speed peaks away from zero. Board the spherical shell volume briefly. Both statements are Maxwell--Boltzmann.}
 
 \notes{Write the joint density on Cartesian velocities as isotropic,
 \begin{align}
