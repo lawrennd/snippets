@@ -159,17 +159,13 @@ and the gradient can be computed as
 \newslide{Objective Gradient}
 \slides{Multiplying everything out leads to 
 $$
-\begin{aligned}
-\frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = & -\sum_{i=1}^\numData 
-\dataScalar_i- \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\basisVector(\inputVector_i).
+\frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData \left(\dataScalar_i - \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right)\right)\basisVector(\inputVector_i).
 $$
 }
 
 \notes{Multiplying everything out leads to 
 $$
-\begin{aligned}
-\frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = & -\sum_{i=1}^\numData 
-\dataScalar_i- \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector)\basisVector(\inputVector_i).
+\frac{\text{d}E(\mappingVector)}{\text{d}\mappingVector} = -\sum_{i=1}^\numData \left(\dataScalar_i - \transformationFunction\left(\mappingVector^\top \basisVector(\inputVector_i)\right)\right)\basisVector(\inputVector_i).
 $$
 }
 
