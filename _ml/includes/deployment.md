@@ -4,6 +4,7 @@
 \editme
 
 \subsection{Deployment}
+
 \slides{
 * Introduced almost in order of difficulty of deployment.
 * Supervised learning requires more data annotation, but more straightforward to deploy.
@@ -23,6 +24,7 @@ You can also check my \addblog{Data Readiness Levels}{2017/01/12/data-readiness-
 [^ngquote]: The quote can be found in the Harvard Business Review Article ["What Artificial Intelligence Can and Can't Do Right Now"](https://hbr.org/2016/11/what-artificial-intelligence-can-and-cant-do-right-now).
 
 \subsection{Is this Right?}
+
 \slides{* Broadly agree with this quote but only in the context of supervised learning.
 * The picture with regard to unsupervised learning and reinforcement learning is more clouded.}
 \notes{I would broadly agree with this quote but only in the context of supervised learning. If a human expert takes around that amount of time, then it's also likely we can acquire the data necessary to build a supervised learning algorithm that can emulate that human's response.
@@ -39,12 +41,14 @@ You can check my \addblog{New Directions in Kernels and Gaussian Processes}{2016
 
 
 \newslide{Getting Easier}
+
 \slides{
 * We seem to be moving beyond the era where very deep machine learning expertise is required to deploy methods.
 * Just require a  solid understanding of machine learning (say to Masters level)
 }
 
 \newslide{Streaming Data}
+
 \slides{
 * Supervised machine learning solutions are normally trained offline.
 * They do not adapt when deployed because this makes them less verifiable.
@@ -55,23 +59,10 @@ In practice there can be challenges with the false dichotomy between reproducibi
 
 
 \subsection{Model Choice}
+
 \slides{
 * For  all machine learning methods is the initial choice of useful classes of functions.
 * The deep learning revolution is associated with a particular class of mathematical functions.}
 \notes{Common to all machine learning methods is the initial choice of useful classes of functions. The deep learning revolution is associated with a particular class of mathematical functions that is proving very successful in what were seen to be challenging domains: speech, vision, language. This has meant that significant advances in problems that have been seen as hard have occurred in artificial intelligence.}
-
-
-\endif
-
-
-<!-- Machine learning solutions When we deploy our solutions in the real world, we find that the situation is more complex. ThereAnother potential problem with our rush to supervised learning solutions is the false dichotomy between reproducibility and performance. Across Amazon we are using data science to design solutions which are deployed into production.  -->
-
-
-<!-- It also requires more expertise on the machine learning side to develop and deploy solutions in un, and requires more expertise.  -->
-
-<!-- such as avoiding a crash, to deliberately ram into another vehicle -->
-<!-- To deliver complex solutions, like self driving cars, many sub-components from a  -->
-
-<!-- Domain expertise becomWith regard to deIn particular, we are moving beyond the era where there is a short -->
 
 \endif
