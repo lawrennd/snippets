@@ -10,7 +10,7 @@
 \newslide{Before Boltzmann: Heat Engines}
 
 \slidesincremental{
-* Carnot (1824): no real engine beats a reversible cycle between two baths
+* Carnot's mill: no real engine beats a reversible fall between two baths
 * Clausius (1850s): heat cannot flow from cold to hot without work
 * Clausius (1865): names *entropy* — the state's transformation content
 }
