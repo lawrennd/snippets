@@ -45,7 +45,7 @@ this algorithm as principal component analysis. However, that
 algorithm also finds the linear directions of maximum variance in the
 data. Seeking directions of maximum variance in the data was not the
 objective of Hotelling, but it is related to a challenge posed by
-@Pearson:01 who sought a variant of regression that predicted
+@Pearson-lines01 who sought a variant of regression that predicted
 symmetrically regardless of which variable was considered to be the
 covariate and which variable the response. Coincidentally the
 algorithm for this model is also the eigenvector decomposition of the

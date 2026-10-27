@@ -374,7 +374,7 @@ $$
 \newslide{Linear Latent Variable Model II}
   *Probabilistic PCA Max. Likelihood Soln* (@Tipping-probpca99)
 
-\figure{\includediagram{\diagramsDir/dimred/ppca_graphical}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical}
+\figure{\includediagram{\diagramsDir/dimred/ppca_graphical_model}{40%}}{Graphical model representing probabilistic PCA.}{ppca-graphical}
 
 $$p\left(\dataMatrix|\mappingMatrix\right)=\prod_{i=1}^{\numData}\gaussianDist{\dataVector_{i, :}}{\zerosVector}{\mappingMatrix\mappingMatrix^{\top}+\noiseStd^{2}\eye}$$
 
