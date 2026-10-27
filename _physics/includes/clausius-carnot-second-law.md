@@ -11,7 +11,7 @@
 
 \figure{\includejpg{\diagramsDir/physics/rudolf-clausius}{40%}}{Rudolf Clausius (1822--1888). Photograph from the AIP Emilio Segrè Visual Archives, Lande Collection (Wikimedia Commons, CC0).}{rudolf-clausius}
 
-\notes{Clausius is a mathematical physicist, first in Berlin, later Zurich, Würzburg and Bonn. In 1850, independently of Thomson's 1851 dynamical theory, he writes the two laws that keep Joule and Carnot in the same ledger [@Clausius-motive50]. The first law is Joule's equivalent made universal: heat is a form of work. The second is what remains of the mill: heat does not pass from cold to hot by itself, and no cyclic engine converts the heat of a single bath entirely into work.}
+\notes{Clausius is a mathematical physicist, first in Berlin, later Zurich, Würzburg and Bonn. It is quite close between Kelvin and Clausius to get to the formula. In 1850, independently of Thomson's 1851 dynamical theory, he writes the two laws [@Clausius-motive50]. He holds on to Joule's equivalent between work and energy, keeps Carnot's limit, and drops the notion that heat is conserved. He is doing all this without a notion of conservation of energy, which is gobsmacking. Bernoulli too: $PV=NRT$ is later; he was doing it with momentum. The first law is Joule's equivalent made universal: heat is a form of work. The second is what remains of the mill: heat does not pass from cold to hot by itself, and no cyclic engine converts the heat of a single bath entirely into work.}
 
 \speakernotes{Portrait, 1850, two laws. Do not start with Boltzmann. The question is still engines: if heat is not conserved, what is the leftover identity?}
 
@@ -37,13 +37,13 @@
 * Heat does not balance. Heat over temperature does
 }
 
-\notes{Thomson's 1851 scale is this statement: the absolute temperatures stand in the same ratio as the two heats. Write it the other way up and the books close. The heat that leaves the hot bath, divided by $T_h$, equals the heat that arrives at the cold bath, divided by $T_c$. The *difference* of the heats is the work. The *quotient* of each heat by its temperature is the same number. That number is the transformation. Clausius's 1854 paper calls it the equivalence-value of the transformation [@Clausius-equivalence54]. We are looking at a two-bath cycle; the same accounting will apply to a loop assembled from many small exchanges.}
+\notes{Thomson's 1851 scale is this statement: the absolute temperatures stand in the same ratio as the two heats. What Clausius notices is that in a reversible engine the heat energy at the hot temperature, divided by that temperature, equals the heat energy at the cold temperature, divided by that temperature, as you go around. If the cycle is reversible, that quantity is conserved: the integral of the small changes in heat, over the whole loop, is zero. That is what Clausius told us. The second law then says it can also be positive: a non-reversible process. Clausius's 1854 paper calls the quantity the equivalence-value of the transformation [@Clausius-equivalence54].}
 
 \speakernotes{Put $Q_h/T_h = Q_c/T_c$ on the board. Both $Q$s positive. The gap $Q_h-Q_c$ is the work. The thing that matches is $Q/T$.}
 
 \newslide{The Loop}
 
-\slides{A reversible cycle is a closed path. The $Q/T$ account closes with it.}
+\slides{A reversible cycle is a closed path. If it is reversible, the integral is zero.}
 
 \slides{
 $$\oint \frac{\mathrm{d}Q}{T} = 0 \qquad \text{(reversible cycle)}$$
@@ -86,19 +86,19 @@ Heat $\mathrm{d}Q$ is not a state function: the heat you put in depends on the p
 * $\displaystyle\oint \mathrm{d}Q/T < 0$, and the entropy of the universe increases
 }
 
-\notes{An irreversible cycle is still a cycle: the working substance returns, so its $S$ is unchanged. What has changed is the baths. You took $Q_h$ from the hot bath and, because some of the fall was wasted, you delivered *more* than the reversible $Q_c$ to the cold bath. The integral $\oint \mathrm{d}Q/T$, with $\mathrm{d}Q$ the heat absorbed by the working substance, is then strictly negative [@Clausius-equivalence54]. Equivalently, the entropy lost by the hot bath is less than the entropy gained by the cold bath. The difference was produced. That is the second law as an accounting inequality, not as a prohibition in words.}
+\notes{An irreversible cycle is still a cycle: the working substance returns, so its $S$ is unchanged. What has changed is the baths. You took $Q_h$ from the hot bath and, because some of the fall was wasted, you delivered *more* than the reversible $Q_c$ to the cold bath. The integral $\oint \mathrm{d}Q/T$, with $\mathrm{d}Q$ the heat absorbed by the working substance, is then strictly negative [@Clausius-equivalence54]. Equivalently, the entropy lost by the hot bath is less than the entropy gained by the cold bath. The difference was produced. The second law says this integral can also be positive: that is a non-reversible process.}
 
 \newslide{The Name}
 
 \figure{\includejpg{\diagramsDir/physics/clausius-coins-entropy}{62%}}{Clausius names entropy, 1865. English translation of the memoir: $\int \mathrm{d}Q/T = S-S_0$, from Greek τροπή, *transformation*. He forms the word to sit beside *energy*.}{clausius-coins-entropy}
 
-\notes{In 1865 he gives the state function a name [@Clausius-entropy65]. *Verwandlungsinhalt*, the transformation content, would have done; he prefers a Greek root, τροπή, so that the word can pass unchanged between languages, and so that it sits next to *energy*. The two quantities, he says, are so nearly allied in their physical meanings that a similarity in designation appears desirable. Energy is the first-law account. Entropy is the second-law account. His summary of the two laws: the energy of the universe is constant; the entropy of the universe tends to a maximum.}
+\notes{In 1865 he gives the state function a name [@Clausius-entropy65]. Clausius writes that we might call $S$ the transformational content of the body, just as we term the magnitude $U$ its thermal and ergonal content, the inner energy; but that it is better to borrow terms for important magnitudes from the ancient languages, so that they may be adopted unchanged in all modern languages. He proposes to call $S$ the *entropy* of the body, from the Greek word τροπή, *transformation*. He has put an $n$ on the front. He says explicitly that he has formed the word to be as similar as possible to *energy*, because the two magnitudes are so nearly allied in their physical meanings that a certain similarity of designation appears desirable. They are not allied because of the division by $T$. There is no Boltzmann's constant here yet: this is a macroscopic property, something he can derive from measuring what was lost, or noticing it is not lost in a reversible cycle. He has no notion underneath it that this is anything to do with uncertainty. He just says: I need this piece to fit the puzzle. The assumption, coming at it afterwards, is that they were looking at energy conserved and therefore this piece is missing. It is not quite like that.}
 
 \speakernotes{Show the page. Transformation, not disorder, not uncertainty. Worksheet 1 payoff: this is what Clausius was measuring. Boltzmann's count and Shannon's $H$ come later, and they reuse a functional form, not this operational meaning.}
 
 \newslide{Not Uncertainty}
 
-\slides{Clausius's $S$ is an accounting identity for heat and temperature.}
+\slides{Clausius's $S$ is the piece that fits the puzzle: heat divided by temperature.}
 
 \slidesincremental{
 * Macroscopic: $S$ from $\mathrm{d}Q_{\mathrm{rev}}/T$; a reversible cycle produces none
@@ -106,7 +106,9 @@ Heat $\mathrm{d}Q$ is not a state function: the heat you put in depends on the p
 * Information, later: Shannon, Jaynes reuse the functional form for a different job
 }
 
-\notes{Clausius did not give the Boltzmann distribution, and he did not make entropy a measure of uncertainty. He gave the macroscopic balance that any later prescription must respect. When we write $p_i \propto e^{-\beta E_i}/Z$ and later derive it from MaxEnt, read it as a statistical answer to a constraint he already framed: fixed mean energy, maximum entropy, no perpetual motion. The historical chain is engines, then the equivalent, then this integral, then statistics, then information.}
+\notes{Clausius did not give the Boltzmann distribution, and he did not make entropy a measure of uncertainty. He gave the macroscopic balance that any later prescription must respect. $S$ is a macroscopic measurement that is *extensive*: the entropy of a system increases as we increase the size of the system. Temperature is *intensive*: it does not. When we write $p_i \propto e^{-\beta E_i}/Z$ and later derive it from MaxEnt, read it as a statistical answer to a constraint he already framed: fixed mean energy, maximum entropy, no perpetual motion. The historical chain is engines, then the equivalent, then this integral, then statistics, then information.}
+
+\notes{Later, Maxwell, then Boltzmann and Gibbs, come to the same sort of conclusions. This century, Shannon and Jaynes reuse the functional form for what might be said to be a different job. Shannon is always discrete. Wiener is continuous. Wiener never drops the mechanism behind the entropy: he always thinks about what drives the distribution. In Shannon you just say it is a probability. A lot of the theory does not have to specify what the probability *is*; you use that it normalises to one and is positive, and you derive a lot from that. That is mathematics. The other bit, where you have to talk about mechanism, is physics.}
 
 \addreading{@Clausius-motive50}{The 1850 paper: two laws, Carnot's limit without conserved heat}
 \addreading{@Clausius-entropy65}{The 1865 memoir: $\mathrm{d}S = \mathrm{d}Q_{\mathrm{rev}}/T$, and the name entropy}

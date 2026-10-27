@@ -9,7 +9,7 @@
 $$
 p(x)=\frac{e^{-\beta E(x)}}{Z},\qquad Z=\sum_x e^{-\beta E(x)}
 $$
-is given, we can derive the macroscopic formulae that characterise the gas. They come to us from Helmholtz. We can compute them through the expectation of that occupation of the given engergies, taken at equilibrium. The relationship between energy and probability is $p_i\propto e^{-\beta E_i}$. Here we will identify the "inner energy" or "total energy" with $\expSamp{E}$ and read off $F=U-TS$.}
+is given, we can derive the macroscopic formulae that characterise the gas. They come to us from Helmholtz. We can compute them through the expectation of that occupation of the given energies, taken at equilibrium. The relationship between energy and probability is $p_i\propto e^{-\beta E_i}$. Here we will identify the "inner energy" or "total energy" with $\expSamp{E}$ and read off $F=U-TS$. $Z$ is German: it comes from Boltzmann, the sum of states, Summe der Zustände. That is why it is $Z$, because it is a sum. If the system were continuous, a Gaussian, $Z$ would be an integral.}
 
 \newslide{From Occupation to Accounting}
 
@@ -21,7 +21,7 @@ is given, we can derive the macroscopic formulae that characterise the gas. They
 * Algebra then *defines* $F$ and $S$
 }
 
-\speakernotes{LO1. Board the log of $p$, then take the expectation. Do not invoke MaxEnt --- that is week 5. The occupation is given; we are reading it.}
+\speakernotes{LO1. Board the occupation with $Z$, name Summe der Zustände, take the log, take the expectation. Watch the signs. Why the exponential: equilibrium. What $\log Z$ is: available energy, the work you can get out. Do not invoke MaxEnt --- that is week 5. The occupation is given; we are reading it.}
 
 \newslide{Take the Logarithm}
 
@@ -40,7 +40,7 @@ $$
 $$
 \log p(x)=-\beta E(x)-\log Z.
 $$
-Note that nothing statistical has happened here, this is an identity for every probability that is a member of the exponential family, which in physics we think of as the Gibbs distribution. It's valid for every configuration $x$ that the Gibbs distribution supports. If we solve for the energy of that configuration we can restore temperature through recognising that$\beta=1/(k_BT)$,
+Note that nothing statistical has happened here, this is an identity for every probability that is a member of the exponential family, which in physics we think of as the Gibbs distribution. It's valid for every configuration $x$ that the Gibbs distribution supports. If we solve for the energy of that configuration we can restore temperature through recognising that $\beta=1/(k_BT)$,
 $$
 E(x)=-k_BT\log p(x)-k_BT\log Z.
 $$
@@ -64,7 +64,7 @@ $$
 $$
 U\equiv\expSamp{E}=\sum_x p(x)\,E(x).
 $$
-This is where the *ensemble* is entering in physics. The ensemble that comes to us from Boltzmann, Maxwell, Gibbs, and Einstein made. The idea is that the system is not in one configuration. The energy we write in the "thermodynamic ledger" is an average over the different occupations. Substitute the identity for $E(x)$,
+This is where the *ensemble* is entering in physics. The ensemble that comes to us from Boltzmann, Maxwell, Gibbs, and Einstein. The idea is that the system is not in one configuration. When we coarse-grain this room we are not going to look at the actual energy of every particle. There are of order $10^{23}$ of them; at that scale the variance around the expectation does not show. That expected energy becomes, at this scale, the total energy of the gas in the room. The index $i$ is the *space* --- discrete energy levels, which is one of the challenges Boltzmann received: what *is* this discrete space? That is where the phase-volume arguments come from. We will just assume it is discrete; an expectation is a sum or an integral. Substitute the identity for $E(x)$,
 \begin{align}
 U
 &= \sum_x p(x)\bigl(-k_BT\log p(x)-k_BT\log Z\bigr) \nonumber\\
@@ -98,7 +98,11 @@ U=F+TS\qquad\text{or}\qquad F=U-TS.
 $$
 Helmholtz originally wrote $A=U-TS$, with $A$ for *Arbeit*, the work still available. This module uses $F$ for the same quantity, because week 5 needs $A(\boldsymbol{\theta})$ for the log-partition of an exponential family. But Helmholtz's $A$ and our $F$ are the same object; $U$ is the inner energy $\expSamp{E}$, not a free energy. The fact that they are different is down to energy that is stored as entropy. It's in this term that we can find Black's latent heat.
 
-From the physics and thermodynamics perspective $U$ is the energy in the system, $TS$ is the "cut" that entropy takes from that total energy. It is the tied up in the uncertainty of the occupation, unavailable as work. Then $F$ is what the thermodynamic bath still allows you to do. Ggiven the Gibbs occupation, the macroscopic split $F=U-TS$ is an identity.}
+From the physics and thermodynamics perspective $U$ is the energy in the system, $TS$ is the "cut" that entropy takes from that total energy. It is tied up in the uncertainty of the occupation, unavailable as work. Then $F$ is what the thermodynamic bath still allows you to do. Given the Gibbs occupation, the macroscopic split $F=U-TS$ is an identity.
+
+The point of the derivation, boarded, is that inner energy is composed of the entropy plus the available energy. Entropy is now your bookkeeping device for why you cannot get all the work back out of the heat. You can convert all your work into heat and produce the inner energy with your motion. Then the motion is going in different directions. The energy is still there at the particle level. Maxwell's demon is an attempt to reverse that by seeing where the particles are. The scale we have just written assumes an ensemble. Dive into the ensemble and play with it, and you cross levels of coarse graining. That is easy to do in modelling, and it is what goes on in a lot of Maxwell's-demon arguments. It is not always clear at which point you are allowed to cross. Week 4 is the treatment; here it is the warning.
+
+Watch the signs on the board. Boltzmann's constant is of order $10^{-23}\,\mathrm{J\,K}^{-1}$. There is a $10^{-23}$ scaling on these numbers, and then of order $10^{23}$ particles, so you get back to joules. The units of $k_B$ are joules per kelvin --- joules per degree. $S=k_B H$ takes a dimensionless functional of a probability and converts it into the units we speak about. If you think of $H$ as the more fundamental object, coldness $\beta$ is the more natural parameter than $T$. The reason we usually write it the other way around is that it was discovered in Clausius's way: energy first, then entropy times temperature.}
 
 \newslide{Two Temperatures, One Identity}
 
@@ -108,7 +112,15 @@ From the physics and thermodynamics perspective $U$ is the energy in the system,
 * Same numbers; week 5 makes $\beta$ a Lagrange multiplier
 }
 
-\notes{The $T$-first reading puts energy first and treats entropy as a correction. The $\beta$-first reading treats $\log Z$ as a generating function: $U=-\partial_\beta\log Z$ and $S=\beta(U-F)$, which we compute from $Z$ later. Both are the identity just derived. Later we will derive the occupation from MaxEnt and identify $\beta$ as the Lagrange multiplier on the mean-energy constraint; until then the occupation is given and the accounting follows.}
+\notes{The $T$-first reading puts energy first and treats entropy as a correction. The $\beta$-first reading treats $\log Z$ as a generating function: $U=-\partial_\beta\log Z$ and $S=\beta(U-F)$, which we compute from $Z$ later. Both are the identity just derived. Later we will derive the occupation from MaxEnt and identify $\beta$ as the Lagrange multiplier on the mean-energy constraint; until then the occupation is given, and we are reading it.}
+
+\notes{If you have a process whose entropy has not changed, inner energy and available energy are the same. That is a reversible system: you have not taken work and converted it into inner energy. Under this definition $\beta\,\mathrm{d}S = \mathrm{d}Q$: the thing they were measuring the flow of, when they talked about conservation, was entropy. That is the caloric they thought was conserved. If the entropy is conserved you are looking at a reversible system, which is what Carnot was trying to look at, and why his engine is the most efficient you can be.}
+
+\notes{The ideal Carnot cycle on a $T$--$S$ diagram is a square. Temperature stays constant while entropy increases (expansion); then a rapid cool; then entropy comes back down at constant temperature (contraction); then a rapid heat. The work extracted is $\Delta T\times\Delta S$, the area of the square. In a motor-car engine the same loop is a four-stroke: ignition, piston down, exhaust, compression --- the implementation of the theory, not the theory. In practice none of those legs happen quite as described, so you get a smaller loop inside the square, and the ratio of the areas is the efficiency. Engineers also draw this on a pressure--volume chart, with isotherms; it does not look like a square, and it is harder to see the energy extracted. Temperature--entropy is the square. I do not think this is how Carnot thought about it, but it is an equivalent of his waterfall: the difference in height is what he cared about, and he did not talk about entropy.}
+
+\notes{Once you see the bookkeeping, the Industrial Revolution is an information revolution. It is about learning how to convert heat --- which is one type of entropy --- into work.}
+
+\notes{A short history-of-science aside, boarded before the algebra. A lot of the *practice* of science in this period --- what we might call engineering --- is in Birmingham, Glasgow, Aberdeen, driven by application. Late nineteenth century, a rising capability in Germany. After the Great Exhibition of 1851 there was a royal commission to ask why Oxford and Cambridge had contributed so little. The result of that inquiry was the Cavendish Laboratory (1870) and the Natural Sciences Tripos. Maxwell is the scientist this thread is heading towards; we skip him for a moment.}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt

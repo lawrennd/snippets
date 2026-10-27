@@ -31,7 +31,7 @@
 * Named here. Developed later, if at all. Our no-go remains $S$
 }
 
-\speakernotes{Karl Friston, not a third thermodynamics. Students will hear ``free energy principle'' and think it is a different $F$. It is the same algebra under a recognition density. Sit down. Next is the entropy game.}
+\speakernotes{Karl Friston, not a third thermodynamics. Students will hear ``free energy principle'' and think it is a different $F$. It is the same algebra under a recognition density. If $H$ is the more fundamental object, coldness is the more natural parameter. Sit down. Entropy game if there is time.}
 
 \notes{Karl Friston's free-energy principle treats the same variational free energy as an account of brains and of action: perception as inference that lowers a bound on surprise [@Friston-free10]. Under a trial distribution $q$ the functional is again $U[q]-TS[q]$, which is Helmholtz's split with the occupation replaced by $q$. That is why it belongs in this lecture, and why it does not get a derivation today. We stay with entropy. Entropy is the cut that forbids perpetual motion. Free energy is what you can still do once that cut is taken. Inner energy is what you started with. Three names, one identity.}
 
