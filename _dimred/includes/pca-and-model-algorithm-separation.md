@@ -18,7 +18,7 @@ ellipsoid have been known since the middle of the 19th century as the principal
 axes of the elipsoid, and they arise through the following additional ideas:
 seeking the orthogonal directions of *maximum variance* in a dataset. Pearson in
 1901 arrived at the same algorithm driven by a desire to seek a *symmetric
-regression* between two covariate/response variables $x$ and $y$ [@Pearson:01]. He is,
+regression* between two covariate/response variables $x$ and $y$ [@Pearson-lines01]. He is,
 therefore, often credited with the invention of principal component analysis,
 but to me this seems disengenous. His aim was very different from Hotellings, it
 was just happened that the optimal solution for his model was coincident with

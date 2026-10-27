@@ -148,7 +148,7 @@ for i, angle in enumerate(show_angles):
 \newframe{\includediagram{\diagramsDir/dimred/six_rotate005}{\width}}{six-rotate}
 \endanimation}
 
-\notes{\figure{\threeColumns{\includediagram{\diagramsDir/dimred/six_rotate001}{100%}}{\includediagram{\diagramsDir/dimred/six_rotate003}{100%}}{\includepng{\diagramsDir/dimred/six_rotate005}{100%}}{30%}{30%}{30%}}{Rotate a prototype six to form a set of plausible sixes.}{six-rotate-summary}}
+\notes{\figure{\threeColumns{\includediagram{\diagramsDir/dimred/six_rotate001}{100%}}{\includediagram{\diagramsDir/dimred/six_rotate003}{100%}}{\includediagram{\diagramsDir/dimred/six_rotate005}{100%}}{30%}{30%}{30%}}{Rotate a prototype six to form a set of plausible sixes.}{six-rotate-summary}}
 
 
 \subsection{PCA of Rotated Sixes}
