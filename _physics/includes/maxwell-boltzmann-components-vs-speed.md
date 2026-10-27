@@ -42,7 +42,7 @@ $$
 
 \slidesincremental{
 * The $v^2$ is not an energy correction — it is geometry
-* Continuous entropy will shift under this map (next)
+* Each component is the quadratic $E=mv_x^2/2$ whose expectation we split next
 }
 
 \endif

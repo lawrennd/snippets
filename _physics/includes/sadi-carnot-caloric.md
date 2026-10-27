@@ -17,12 +17,12 @@
 
 \newslide{Why Look at Heat Engines?}
 
-\slides{Steam is already doing the work of a nation. Nobody has a theory of it.}
+\slides{Steam already drives mills, mines, and looms. Nobody has a theory of it.}
 
 \slidesincremental{
-* Watt's engines are a British industrial fact; typical efficiency is a few per cent
-* Engineers try higher pressure, and other working fluids than steam
-* Carnot's questions: is there a *limit*? Does the choice of fluid matter?
+* Watt's engines are a British industrial fact
+* Engineers try higher pressure, and other fluids than steam
+* Carnot: is there a *limit*? Does the choice of fluid matter?
 }
 
 \notes{After his time in Glasgow, James Watt had moved to Birmingham and together with Matthew Boulton, commercialised a more efficient steam engine. By the 1820s the steam engine was widely used in mines, mills, looms and forges. Carnot beleives that one day it will serve as a universal motor, but he notes that it doesn't have a theory of mechanics. France is watching Britain do steam better. The so-called "practical men" are improving the capabilities of the machine, but Carnot wants to know whether any of that can be unbounded, or whether there is a ceiling independent of the machine and of the substance that runs through it.}
@@ -35,31 +35,19 @@
 
 \newslide{A Heat Engine Is a Mill}
 
-\slides{Work comes from the *fall* of caloric, not from destroying it.}
+\slides{Caloric falls from hot to cold. The same caloric arrives at the bottom.}
+
+\figure{\includepng{\diagramsDir/physics/carnot-1824-fig1}{32%}}{Carnot's own figure of the mill (1824). The cylinder $ab$ holds the working body; $cd$ is the piston. Body $A$ is the furnace, body $B$ the refrigerator --- two reservoirs of caloric at different temperatures. Caloric taken from $A$ is given up to $B$. Vectorised from the plate in *Réflexions sur la puissance motrice du feu* (Wikimedia Commons, public domain).}{carnot-1824-fig1}
 
 \slidesincremental{
-* Water mill: quantity of water, height of the fall
-* Heat engine: quantity of caloric, difference of temperature
-* The caloric that leaves the boiler arrives in the condenser
+* Water mill: quantity of water, height of the fall; the same water arrives below
+* Heat engine: quantity of caloric, difference of temperature; the same caloric arrives in the condenser
+* Two reservoirs. Nothing is used up.
 }
 
-\notes{Carnot's own comparison: the motive power of heat can be compared to that of a waterfall. A waterfall has a maximum you cannot exceed, whatever machine you put in the stream. The power depends on the quantity of water and the height of the fall. Heat, likewise, depends on the quantity of caloric and on what he calls the height of its fall --- the difference of temperature between the bodies exchanging it. In a steam engine the boiler is the upper reservoir, the condenser the lower. The caloric developed in the firebox is taken up by the steam, does something in the cylinder, and is given up to the cold water. In that picture heat is conserved because that is what a mill requires: the same working fluid in, the same working fluid out, work from the drop. He is not claiming to have weighed heat against work. He is taking Black's ledger and using it as the mechanics of an engine.}
+\notes{Carnot's own comparison: the motive power of heat can be compared to that of a waterfall. A waterfall has a maximum you cannot exceed, whatever machine you put in the stream. The power depends on the quantity of water and the height of the fall. Heat, likewise, depends on the quantity of caloric and on what he calls the height of its fall --- the difference of temperature between the bodies exchanging it. In a steam engine the boiler is the upper reservoir, the condenser the lower. Carnot's own plate is that mill: body $A$ the furnace, body $B$ the refrigerator, the cylinder the wheel. The caloric developed in the firebox is taken up by the steam, passes through the cylinder, and is given up to the cold water. The mill turns because the caloric *moves*. The same quantity that left the hot reservoir arrives at the cold one. That is Black's ledger, used as the mechanics of an engine: a conserved fluid falling between two baths.}
 
-\speakernotes{The mill is the slide. Quantity conserved, work from the height. Students will want to correct him. Hold that. Conservation of heat is the assumption that fits *his* question.}
-
-\newslide{Not Joule's Question}
-
-\slides{Carnot is looking at a *cycle* between two baths. He is not looking at conversion.}
-
-\slidesincremental{
-* His object is an engine: maximum work from a fall of heat
-* Joule's object will be a paddle wheel: how much work makes how much heat
-* Conservation of caloric is an assumption that fits the mill. It is not an answer to Joule
-}
-
-\notes{This is the distinction to keep. Carnot's focus is cyclic conversion of a temperature difference into work. He needs two reservoirs, a working substance, and a closed loop. On that loop, Black's accounting --- heat hidden in steam, recovered in the condenser --- looks like conservation. Joule, twenty years later, will ask whether mechanical work can *create* heat at a definite rate. That is a different experiment, and a different question. We do not yet know that energy is conserved. We do not yet know that heat *is* energy. Carnot's conservation of heat will turn out to be a special case, not the general law. Manuscripts found after his death show him beginning to doubt caloric. The book he published does not.}
-
-\speakernotes{Do not introduce the mechanical equivalent here. Plant the gap: mill versus paddle wheel. Next will be Kelvin's scale from this picture, then Joule's twist.}
+\speakernotes{Point at $A$ and $B$. Furnace and refrigerator. Same caloric in, same caloric out. The piston is the mill wheel, not heat being turned into something else. Do not mention Joule. Students may want to correct him. Hold that.}
 
 \newslide{A Short Life}
 
@@ -68,12 +56,11 @@
 \slidesincremental{
 * Six hundred copies, paid for by the author, unread
 * Clapeyron recasts the argument in 1834
-* Kelvin and Clausius will read it later --- and will have to keep the limit after the mill's working fluid is given up
 }
 
-\notes{In the summer of 1832 Carnot falls ill; he dies of cholera on 24 August, at Ivry, aged 36. The *Réflexions* have made no impression. Two years later Émile Clapeyron, another polytechnicien, writes the argument in the language of indicator diagrams, and the book becomes findable. Kelvin will take the mill and make a temperature scale from it. Clausius will have to keep what was right in Carnot --- there is a limit, and it depends only on the two temperatures --- once heat is no longer a conserved fluid. We are not there yet.}
+\notes{In the summer of 1832 Carnot falls ill; he dies of cholera on 24 August, at Ivry, aged 36. The *Réflexions* have made no impression. Two years later Émile Clapeyron, another polytechnicien, writes the argument in the language of indicator diagrams, and the book becomes findable.}
 
-\speakernotes{Stop. Do not derive $\mathrm{d}Q/T$. The next move in the thread is Kelvin's scale, still under conservation of heat, then Joule.}
+\speakernotes{Stop. Do not derive $\mathrm{d}Q/T$. Next is Rumford's cannon.}
 
 \addreading{@Carnot-reflexions24}{The mill analogy: motive power of heat compared to a waterfall}
 
