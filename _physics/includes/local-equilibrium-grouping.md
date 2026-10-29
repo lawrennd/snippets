@@ -34,7 +34,7 @@ Macroscopic thermodynamics lives in this picture: the within-group sum is the en
 \slidesincremental{
 * MaxEnt / canonical ensemble fix $\pi$, not $\dot\pi$
 * The die was the static analogue: one $p$, no roll dynamics
-* Next week: a demon that sorts on group labels while assuming fast mixing inside
+* Next: a demon that sorts on group labels while assuming fast mixing inside
 }
 
 \endif
