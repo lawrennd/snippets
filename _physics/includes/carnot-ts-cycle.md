@@ -49,7 +49,7 @@
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Rectangle
+from matplotlib.patches import FancyArrowPatch, Polygon, Rectangle
 import mlai}
 
 \plotcode{diagrams = '\writeDiagramsDir/physics'
@@ -189,20 +189,22 @@ ax.text(0.5 * (Sc + Sh), 0.5 * (Tc + Th),
         color=ink, fontsize=15)
 _save(7)
 
-# 008: real engine, smaller rounded loop
-fig, ax = _axes('In practice: a smaller loop inside the square')
+# 008: real engine cuts the other two corners; same ΔT, same ΔS
+fig, ax = _axes('In practice: cut two corners, not a smaller square')
 ax.add_patch(Rectangle(
     (Sc, Tc), Sh - Sc, Th - Tc,
     facecolor=work_c, alpha=0.12, edgecolor='none', zorder=1))
-_dot(ax, A, hot_c)
 for lg in legs:
     _draw_leg(ax, lg['p0'], lg['p1'], lg['color'], arrow=False, lw=1.6)
-pad = 0.18
-inner = FancyBboxPatch(
-    (Sc + pad, Tc + pad), Sh - Sc - 2 * pad, Th - Tc - 2 * pad,
-    boxstyle='round,pad=0,rounding_size=0.16',
-    facecolor='#55A868', alpha=0.35, edgecolor='#2E7D4F', lw=2.2, zorder=2)
+T2 = Tc + (2.0 / 3.0) * (Th - Tc)
+T4 = Th + Tc - T2
+inner = Polygon(
+    [(Sc, Tc), (Sc, T2), (Sh, Th), (Sh, T4)],
+    closed=True, facecolor='#55A868', alpha=0.35,
+    edgecolor='#2E7D4F', lw=2.2, zorder=2)
 ax.add_patch(inner)
+_dot(ax, (Sh, Th), hot_c)
+_dot(ax, (Sc, Tc), cold_c)
 ax.text(0.5 * (Sc + Sh), 0.5 * (Tc + Th),
         r'$\eta\sim$ area ratio', ha='center', va='center',
         color=ink, fontsize=14)
@@ -411,15 +413,17 @@ from ipywidgets import IntSlider}
 
 \newslide{Four-Stroke, and the Smaller Loop}
 
-\slides{The four-stroke is the implementation. The square is the theory.}
+\slides{The four-stroke is the implementation. The square is the theory. Same $\Delta T$, same $\Delta S$: you cut two corners.}
 
-\figure{\includediagram{\diagramsDir/physics/carnot-ts008}{70%}}{In practice none of the legs happen quite as described. A real engine traces a smaller loop inside the square. The ratio of the areas is the efficiency.}{carnot-ts-efficiency}
+\figure{\includediagram{\diagramsDir/physics/carnot-ts008}{70%}}{A real engine between the same reservoirs, with the same entropy swing, does not shrink the square. It still visits the top-right and the bottom-left. Heat is not taken in along the whole top, nor rejected along the whole bottom, so those two corners are cut off. The remaining area over the square is the efficiency.}{carnot-ts-efficiency}
 
-\notes{In a motor-car engine the same loop is a four-stroke: ignition, piston down, exhaust, compression. This is known as the Otto cycle. But this is the mechanism behind the theory, or one possible mechanism.  What the theory says is that the maximum energy you can get out is the area of the square. In practice none of those legs happen quite as described, so you end up with a smaller loop inside. The size of that inner area over the square is the efficiency of the engine.}
+\notes{In a motor-car engine the same loop is a four-stroke: ignition, piston down, exhaust, compression. This is known as the Otto cycle. But this is the mechanism behind the theory, or one possible mechanism. What the theory says is that the maximum energy you can get out is the area of the square.}
+
+\notes{The inner loop is easy to draw wrongly. You do not scale the square down. The fall is still $T_h$ to $T_c$, and the entropy change of the working body is still $S_c$ to $S_h$: those are known. So the top-right corner stays, and the bottom-left stays. What you lose is the other two. Heat does not go in isothermally along the whole top, nor come out along the whole bottom, and the area that remains, over the square, is the efficiency of the engine.}
 
 \notes{As an undergraduate mechanical engineer one learns these diagrams without anyone saying that the energy is stored in probability, or that this is the form of what entropy is. When you realise that the engine is at the heart of the industrial revolution and that it's really converting entropy into work, then there is an argument that at its heart even the Industrial Revolution is an information revolution. That is, of course, if you accept the interpretation of entropy as information.}
 
-\speakernotes{Four-stroke is a courtesy to anyone who did engineering. Do not overfit the mapping. Land on: the square is the ceiling; the inner loop is what you actually get.}
+\speakernotes{Four-stroke is a courtesy to anyone who did engineering. Do not overfit the mapping. Do not shrink the square: that would be a different fall. Point at top-right and bottom-left. Same $\Delta T$, same $\Delta S$; two corners cut. Land on: the square is the ceiling; the remaining area is what you actually get.}
 
 \newslide{The $p$-$V$ Chart}
 
