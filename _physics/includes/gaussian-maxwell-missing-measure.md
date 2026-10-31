@@ -5,7 +5,7 @@
 
 \subsection{Gaussian, Maxwell--Boltzmann, and the Missing Measure}
 
-\speakernotes{Composition wrapper only. Children carry the figures. Stop before MaxEnt / Lagrange / the die.}
+\speakernotes{Composition wrapper only. Children carry the figures. The die has already paid grouping; these figures are the continuous remainder and the undeclared $m$. Stop before MaxEnt / Lagrange.}
 
 \include{_physics/includes/gaussian-histogram-discrete-entropy.md}
 \include{_physics/includes/pushed-bins-same-entropy.md}
