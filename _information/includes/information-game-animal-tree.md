@@ -39,16 +39,16 @@ import mlai}
         draw_yesno_tree(ax, child, x_child, y_child, dx / 2, dy)
 
 animal_tree = {
-    'label': 'Four legs?',
+    'label': 'Two legs?',
     'no': {
-        'label': 'Wings?',
-        'no': {'label': 'Snake', 'leaf': True},
-        'yes': {'label': 'Owl', 'leaf': True},
+        'label': 'Reptile?',
+        'no': {'label': 'Fox', 'leaf': True},
+        'yes': {'label': 'Snake', 'leaf': True},
     },
     'yes': {
-        'label': 'Storybook?',
-        'no': {'label': 'Fox', 'leaf': True},
-        'yes': {'label': 'Gruffalo', 'leaf': True},
+        'label': 'Wings?',
+        'no': {'label': 'Gruffalo', 'leaf': True},
+        'yes': {'label': 'Owl', 'leaf': True},
     },
 }
 

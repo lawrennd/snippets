@@ -5,7 +5,7 @@
 
 \subsection{The Information Game}
 
-\notes{The information game is the following idea. One player thinks of an object drawn from a known finite list. For example, "I'm thinking of an animal". The other may ask only yes/no questions. For example "Does your animal have four legs?". If we assume that the choice is uniform across that list, and if we can ask optimal questions, what number of questions do you need to guarantee the answer? How does information theory help us with this?}
+\notes{The information game is the following idea. One player thinks of an object drawn from a known finite list. For example, "I'm thinking of an animal". The other may ask only yes/no questions. For example "Does your animal have two legs?". If we assume that the choice is uniform across that list, and if we can ask optimal questions, what number of questions do you need to guarantee the answer? How does information theory help us with this?}
 
 \newslide{The Information Game}
 
