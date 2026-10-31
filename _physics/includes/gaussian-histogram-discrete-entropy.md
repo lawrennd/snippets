@@ -66,7 +66,7 @@ ax.hist(velocity_x, bins=edges, density=True, color='#4C72B0', alpha=0.6,
         label='equal-$\\Delta v$ histogram')
 ax.plot(xs, np.exp(-0.5 * xs**2 / velocity_sigma**2)
         / np.sqrt(2.0 * np.pi * velocity_sigma**2),
-        color='#C44E52', lw=2, label='$\\mathcal{N}(0,\\dataStd^2)$')
+        color='#C44E52', lw=2, label='$\\mathcal{N}(0,\\sigma^2)$')
 ax.set_xlim(-vx_lim, vx_lim)
 ax.set_xlabel('$v_x$')
 ax.set_ylabel('density')
