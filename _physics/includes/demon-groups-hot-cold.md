@@ -13,9 +13,9 @@
 * Local-equilibrium assumption: mixing inside each side is fast vs crossings
 }
 
-\speakernotes{Callback to the die: the demon pays attention to $H(w)$ over coarse velocity sets and hopes the within-group term stays near equilibrium. The detailed-balance calculation above already used that hypothesis.}
+\speakernotes{Callback to the die *and* to the extra partitions. Maxwellians are licensed in the distant bulks, not at the gate. Hot versus cold is a second grouping, now in velocity, on top of the spatial one. The number-flux $T_L$, $T_R$ split already used local equilibrium as a hypothesis --- and the energy ledger forbade extending it to the membrane.}
 
-\notes{Maxwell's sorting rule partitions velocity space into coarse sets --- ``hot enough to cross'' versus ``cold enough to cross'' --- and applies different gates to each set. That is exactly week 2's grouping: a deterministic label $G=g(\mathbf{v})$ plus residual uncertainty inside each label. The membrane calculation assumed each chamber stays close to a Maxwellian at its own $T$ --- local equilibrium, timescale separation between collisions and crossings. When that fails, the true steady state is no longer a pair of perfect Maxwellians (tails deplete). Information engines and demons play on the tension between moving probability among groups ($H(w)$) and the within-group bath term $\sum w_i H(p_i)$ that thermodynamics prices.}
+\notes{Maxwell's sorting rule partitions velocity space into coarse sets --- ``hot enough to cross'' versus ``cold enough to cross'' --- and applies different gates to each set. That is week 2's grouping again, now stacked on the spatial compartments: a deterministic label $G=g(\mathbf{v})$ plus residual uncertainty inside each label. Local equilibrium --- timescale separation between collisions and crossings --- is the claim we already restricted to the *distant* bulks. Extending it through the kinetic layers is what made number balance and energy balance incompatible. When that extension fails, the true steady state is no longer a pair of perfect Maxwellians (tails deplete). Information engines and demons play on the tension between moving probability among groups ($H(w)$) and the within-group bath term $\sum w_i H(p_i)$ that thermodynamics prices.}
 
 \newslide{Lumpability (Pointer)}
 
