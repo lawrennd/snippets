@@ -8,7 +8,7 @@
 
 \slides{Five families recur across modelling. Know the support, the parameter, and one generative story for each.}
 
-\notes{These are prerequisites restated, not new theory. Several of them reappear later as maximum-entropy distributions under moment constraints.}
+\notes{These are prerequisites restated, not new theory. The Gaussian (and the categorical) reappear later as maximum-entropy distributions under ordinary moment constraints. The Poisson is maximum-entropy only relative to the base measure $1/k!$, and the binomial only relative to $\binom{n}{k}$. Among distributions on the non-negative integers with a fixed mean, the maximum-entropy one is the geometric. Week 4's point that ``the discretisation is the measure'' --- Jaynes's $m$ --- is the reason those caveats exist.}
 
 \newslide{Bernoulli and Binomial}
 
@@ -18,7 +18,7 @@
 * Mean $np$, variance $np(1-p)$
 }
 
-\notes{A fair coin is Bernoulli($1/2$). A two-state thermal system with fixed energies is Bernoulli once occupation probabilities are written down.}
+\notes{A fair coin is Bernoulli($1/2$). A two-state thermal system with fixed energies is Bernoulli once occupation probabilities are written down. Binomial$(n,p)$ is $n$ independent Bernoulli trials, $P(K=k)=\binom{n}{k}p^k(1-p)^{n-k}$, with mean $np$.}
 
 \newslide{Poisson and Multinomial}
 
@@ -27,6 +27,8 @@
 * Multinomial($n,\mathbf{p}$): $n$ trials into $K$ categories; generalises the binomial
 * Categories are exclusive; $\sum_k p_k = 1$
 }
+
+\notes{Poisson$(\lambda)$ is a count model with mean equal to variance. Multinomial$(n,\mathbf{p})$ is $n$ trials into $K$ exclusive categories; the binomial is the $K=2$ case.}
 
 \include{_ml/includes/poisson-distribution.md}
 

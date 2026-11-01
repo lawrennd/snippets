@@ -4,21 +4,21 @@
 \editme
 
 
-\notes{\subsection{Laplace's Determism}}
+\notes{\subsection{Laplace's Determinism}}
 
 \newslide{}
 
 \figure{\includegooglebook{1YQPAAAAQAAJ}{PR17-IA2}}{Laplace's determinism book reference.}{laplaces-determinism-google-books}
 
-\notes{Famously, Laplace considered the idea of a deterministic Universe, one in which the model is *known*, or as the below translation refers to it, "an intelligence which could comprehend all the forces by which nature is animated". He speculates on an "intelligence" that can submit this vast data to analysis and propsoses that such an entity would be able to predict the future.
+\notes{Famously, Laplace considered the idea of a deterministic Universe, one in which the model is *known*, or as the below translation refers to it, "an intelligence which could comprehend all the forces by which nature is animated". He speculates on an "intelligence" that can submit this vast data to analysis and proposes that such an entity would be able to predict the future.
 
->Given for one instant an intelligence which could comprehend all the forces by which nature is animated and the respective situation of the beings who compose it---an intelligence sufficiently vast to submit these data to analysis---it would embrace in the same formulate the movements of the greatest bodies of the universe and those of the lightest atom; for it, nothing would be uncertain and the future, as the past, would be present in its eyes.}
+>Given for one instant an intelligence which could comprehend all the forces by which nature is animated and the respective situation of the beings who compose it---an intelligence sufficiently vast to submit these data to analysis---it would embrace in the same formula the movements of the greatest bodies of the universe and those of the lightest atom; for it, nothing would be uncertain and the future, as the past, would be present in its eyes. --- Pierre-Simon Laplace, *A Philosophical Essay on Probabilities*, trans.\ F.\ W.\ Truscott and F.\ L.\ Emory (1902).}
 
 \notes{This notion is known as *Laplace's demon* or *Laplace's superman*.}
 
 \newslide{}
 
-\figure{\includepng{\diagramsDir/physics/laplacesDeterminismEnglish}{60%}}{Laplace's determinsim in English translation.}{laplaces-determinism-english}
+\figure{\includepng{\diagramsDir/physics/laplacesDeterminismEnglish}{60%}}{Laplace's determinism in English translation.}{laplaces-determinism-english}
 
 \newslide{}
 
@@ -27,9 +27,7 @@
 
 <!--\includepdfclip{\diagramsDir/physics/philosophicaless00lapliala.pdf}{0cm 6cm 0cm 3.2cm}{16}{80%}{}-->}
 
-\subsection{Laplace's Gremlin}
-
-\notes{Unfortunately, most analyses of his ideas stop at that point, whereas his real point is that such a notion is unreachable. Not so much *superman* as *strawman*. Just three pages later in the "Philosophical Essay on Probabilities" [@Laplace-essai14], Laplace goes on to observe:
+\notes{Unfortunately, most analyses of his ideas stop at that point, whereas his real point is that such a notion is unreachable. Not so much *superman* as *strawman*. A few pages later in the same Truscott and Emory translation, Laplace goes on to observe:}
 
 > The curve described by a simple molecule of air or vapor is regulated in a manner just as certain as the planetary orbits; the only difference between them is that which comes from our ignorance.
 >

@@ -50,11 +50,11 @@ $$
 
 \slidesincremental{
 * Cross-entropy / log-loss scores the predictive distribution
-* Softmax: $\hat{y}_c\propto e^{-E_c}$ --- class scores as energies
+* Softmax: $\hat{y}_c\propto e^{-E_c}$ --- logits are *negative* energies
 * Same arithmetic as $\mathbb{E}[-\log p]$ (Shannon entropy of a model)
 }
 
-\notes{When $y$ is a one-hot label and $\hat{y}$ a categorical prediction, cross-entropy is the energy of that pair. Softmax turns a vector of class energies (or logits) into a distribution. The functional $-\log\hat{y}_c$ is the same one that appears in Shannon entropy $\mathbb{E}[-\log P(y)]$, applied to a *model* distribution rather than the data distribution.}
+\notes{When $y$ is a one-hot label and $\hat{y}$ a categorical prediction, cross-entropy is the energy of that pair. Softmax turns a vector of logits into a distribution. Logits are *negative* energies: if $E_c$ is the class energy then $\hat{y}=\mathrm{softmax}(-E)$. The functional $-\log\hat{y}_c$ is the same one that appears in Shannon entropy $\mathbb{E}[-\log P(y)]$, applied to a *model* distribution rather than the data distribution.}
 
 \newslide{Boltzmann Machine: Pairwise Energy}
 
