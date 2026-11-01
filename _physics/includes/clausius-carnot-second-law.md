@@ -37,7 +37,7 @@
 * Heat does not balance. Heat over temperature does
 }
 
-\notes{Thomson's 1851 scale is this statement: the absolute temperatures stand in the same ratio as the two heats. What Clausius notices is that in a reversible engine the heat energy at the hot temperature, divided by that temperature, equals the heat energy at the cold temperature, divided by that temperature, as you go around. If the cycle is reversible, that quantity is conserved: the integral of the small changes in heat, over the whole loop, is zero. That is what Clausius told us. The second law then says it can also be positive: a non-reversible process. Clausius's 1854 paper calls the quantity the equivalence-value of the transformation [@Clausius-equivalence54].}
+\notes{Thomson and Joule's 1854 scale is this statement: the absolute temperatures stand in the same ratio as the two heats. What Clausius notices is that in a reversible engine the heat energy at the hot temperature, divided by that temperature, equals the heat energy at the cold temperature, divided by that temperature, as you go around. If the cycle is reversible, that quantity is conserved: the integral of the small changes in heat, over the whole loop, is zero. That is what Clausius told us. If the cycle is irreversible, the same integral, with $\mathrm{d}Q$ the heat absorbed by the working substance, is strictly negative. It is never positive on that convention. Clausius's 1854 paper calls the quantity the equivalence-value of the transformation [@Clausius-equivalence54]; his uncompensated transformation is the negative of the integral, and is $\ge 0$.}
 
 \speakernotes{Put $Q_h/T_h = Q_c/T_c$ on the board. Both $Q$s positive. The gap $Q_h-Q_c$ is the work. The thing that matches is $Q/T$.}
 
@@ -86,7 +86,7 @@ Heat $\mathrm{d}Q$ is not a state function: the heat you put in depends on the p
 * $\displaystyle\oint \mathrm{d}Q/T < 0$, and the entropy of the universe increases
 }
 
-\notes{An irreversible cycle is still a cycle: the working substance returns, so its $S$ is unchanged. What has changed is the baths. You took $Q_h$ from the hot bath and, because some of the fall was wasted, you delivered *more* than the reversible $Q_c$ to the cold bath. The integral $\oint \mathrm{d}Q/T$, with $\mathrm{d}Q$ the heat absorbed by the working substance, is then strictly negative [@Clausius-equivalence54]. Equivalently, the entropy lost by the hot bath is less than the entropy gained by the cold bath. The difference was produced. The second law says this integral can also be positive: that is a non-reversible process.}
+\notes{An irreversible cycle is still a cycle: the working substance returns, so its $S$ is unchanged. What has changed is the baths. You took $Q_h$ from the hot bath and, because some of the fall was wasted, you delivered *more* than the reversible $Q_c$ to the cold bath. The integral $\oint \mathrm{d}Q/T$, with $\mathrm{d}Q$ the heat absorbed by the working substance, is then strictly negative [@Clausius-equivalence54]. Equivalently, the entropy lost by the hot bath is less than the entropy gained by the cold bath. The difference was produced. Clausius's uncompensated transformation is the negative of this integral: it is $\ge 0$, and it is strictly positive when the cycle is irreversible.}
 
 \newslide{The Name}
 

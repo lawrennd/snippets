@@ -5,7 +5,7 @@
 
 \subsection{The Carnot Cycle on $T$-$S$}
 
-\notes{A reversible engine is the most efficient you can be, such an engine is what Carnot studied. Under the Helmholtz split, $\beta\,\mathrm{d}S=\mathrm{d}Q$. When they talked about heat flow and conservation, what they were actually measuring the flow of was entropy. This was the source of the caloric that they believed to be conserved. The ideal Carnot cycle makes that visible. It can be drawn on a temperature-entropy diagram as a square. That square is our picture, not his. Before drawing it, it is worth hearing what he actually asked.}
+\notes{A reversible engine is the most efficient you can be, such an engine is what Carnot studied. Along a reversible path $\mathrm{d}Q_{\mathrm{rev}}=T\,\mathrm{d}S$, so the heat they treated as flowing with the mill is temperature times an entropy transfer. When they talked about heat flow and conservation, what they were actually measuring the flow of was entropy. This was the source of the caloric that they believed to be conserved. The ideal Carnot cycle makes that visible. It can be drawn on a temperature-entropy diagram as a square. That square is our picture, not his. Before drawing it, it is worth hearing what he actually asked.}
 
 \newslide{The Fall of Caloric}
 
