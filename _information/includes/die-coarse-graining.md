@@ -73,15 +73,17 @@ $$
 H(G_{\mathrm{six}})
   = h_2\Bigl(\tfrac16\Bigr)
   = -\tfrac16\log_2\tfrac16-\tfrac56\log_2\tfrac56
-  \approx 0.650 \text{ bits},
+  \approx 0.650 \text{ bits}.
 \end{align}
-\emph{not} one bit. After a ``yes'' the face is known ($H=0$). After a ``no'' five faces remain ($H=\log_2 5$). Averaging,
+That is not one bit. After a "yes" the face is known ($H=0$). After a "no" five faces remain ($H=\log_2 5$). Averaging,
 \begin{align}
 H(X\mid G_{\mathrm{six}})
   = \tfrac16\cdot 0 + \tfrac56\log_2 5
   \approx 1.935 \text{ bits}.
 \end{align}
-Again $H(G_{\mathrm{six}})+H(X\mid G_{\mathrm{six}})=H(X)$. Note that ``$\ge 4$?'' on a fair die is *also* a balanced cut ($\{1,2,3\}$ vs $\{4,5,6\}$), so it *is* one bit --- the unbalanced example has to be chosen carefully.}
+Again $H(G_{\mathrm{six}})+H(X\mid G_{\mathrm{six}})=H(X)$. Note that "$\ge 4$?" on a fair die is *also* a balanced cut ($\{1,2,3\}$ vs $\{4,5,6\}$), so it *is* one bit --- the unbalanced example has to be chosen carefully.
+
+Nothing about the cube stops you asking "odd?" after "low?". The question can be asked; it cannot be *balanced* ($h_2(1/3)\approx 0.918$ bits). A Huffman strategy on the six faces needs $8/3\approx 2.667$ questions on average against $H=\log_2 6\approx 2.585$. The physical point about the *balance* is an instrument with a fixed alphabet. The die point is atoms that are not a power of two.}
 
 \newslide{Same Total, Different First Cut}
 

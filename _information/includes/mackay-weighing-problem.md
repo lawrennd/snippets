@@ -5,11 +5,11 @@
 
 \subsection{MacKay's Balance and Balls}
 
-\notes{David MacKay opens the compression half of *Information Theory, Inference, and Learning Algorithms* with a weighing puzzle [@MacKay-information03, Exercise~4.1]. State the puzzle first. Do not yet say that the instrument is ternary. The information-game habit is to ask how we should proceed --- what we must name --- and then to try the instrument as if it had two readings, like a yes/no question. Keep the *mechanism* (what we put on the pans) on a different slide from the *maths* (how many bits that use can return). Only after that sequence do we notice that the balance has a third reading.}
+\notes{David MacKay opens the compression half of *Information Theory, Inference, and Learning Algorithms* with a weighing puzzle, Exercise 4.1 [@MacKay-information03]. State the puzzle first. Do not yet say that the instrument is ternary. The information-game habit is to ask how we should proceed --- what we must name --- and then to try the instrument as if it had two readings, like a yes/no question. Keep the *mechanism* (what we put on the pans) on a different slide from the *maths* (how many bits that use can return). Only after that sequence do we notice that the balance has a third reading.}
 
 \newslide{Twelve Balls, One Odd}
 
-\slides{MacKay's weighing problem [@MacKay-information03, Ex.~4.1]: twelve balls; exactly one is odd; it may be heavier *or* lighter.}
+\slides{MacKay's weighing problem, Exercise 4.1 [@MacKay-information03]: twelve balls; exactly one is odd; it may be heavier *or* lighter.}
 
 \figure{\includediagram{\diagramsDir/information/mackay-balance-balls}{80%}}{A two-pan balance and twelve identical balls.}{mackay-balance-balls}
 
@@ -70,7 +70,7 @@ At the end we need a single named hypothesis: $H_{\mathrm{end}} = 0$. The *defic
 $$
 2^4 = 16 < 24 \le 32 = 2^5,
 $$
-so five uses can suffice on paper and four cannot. Whether a physical balance *achieves* that one bit is a different question: it depends on what we put on the pans.}
+so five uses are not ruled out on paper and four cannot suffice. Whether a physical balance *achieves* that one bit is a different question: it depends on what we put on the pans.}
 
 \newslide{Maths: Two Readings}
 
@@ -84,7 +84,7 @@ $$
 
 \slidesincremental{
 * Four uses cannot name 24 hypotheses
-* Five uses can, *if* each use really returns one bit
+* Five uses are not ruled out, *if* each use really returns one bit
 * That ``if'' is mechanism, not maths
 }
 
@@ -214,7 +214,7 @@ $$
 
 \speakernotes{Let them say the three readings. Then go straight to the new budget. Do not start the 4 vs 4 tree.}
 
-\notes{A two-pan balance has a ternary alphabet. The reading ``level'' is not an annoyance to be designed out; it is a symbol that can carry information. The first move of the two-outcome story, 6 vs 6, sets the probability of that symbol to zero: with exactly one odd ball among the twelve, the pans cannot balance. We spent a mechanism choice to turn a three-outcome device into a two-outcome device, and then paid further mechanism taxes (the known ball) to keep the third symbol from coming back.}
+\notes{A two-pan balance has a ternary alphabet. The reading "level" is not an annoyance to be designed out; it is a symbol that can carry information. The first move of the two-outcome story, 6 vs 6, sets the probability of that symbol to zero: with exactly one odd ball among the twelve, the pans cannot balance. We spent a mechanism choice to turn a three-outcome device into a two-outcome device, and then paid further mechanism taxes (the known ball) to keep the third symbol from coming back.}
 
 \newslide{Maths: Three Readings}
 
@@ -243,7 +243,7 @@ $$
 3^3 &= 27 \ge 24.
 \end{align*}
 $$
-Two weighings cannot suffice no matter how clever the groupings. Three weighings *can*: there is spare capacity of three unused leaves ($27-24=3$). In bits,
+Two weighings cannot suffice no matter how clever the groupings. Three weighings *can*: after naming the 24 hypotheses, three paths are left over ($27-24=3$). Those leftover paths are not a thirteenth ball --- $13\times 2=26$ still sits under $27$, but three weighings cannot identify an odd ball among thirteen without a known genuine. In bits,
 $$
 3\log_2 3 \approx 4.75 > \log_2 24 \approx 4.58.
 $$
@@ -273,8 +273,8 @@ The gap is small. That is why the puzzle feels tight. It is the same comparison 
 
 \speakernotes{Stop here. Invite them to try Exercise 4.1 before reading MacKay's solution figure. Optional aside: 1--6 vs 7--12 can never balance, so it yields only one bit and is already suboptimal *once we know there are three readings*.}
 
-\notes{We stop at the existence argument. Constructing the adaptive tree --- which balls on which pan at each step --- is MacKay's exercise, and solving it is the best way to feel what ``informative experiment'' means. What the lecture owns is the split between ledgers: $\log_2 24$ versus $\log_2 2$ or $\log_2 3$ is the information account; 6 vs 6, 4 vs 4, and padding with a known ball are the mechanical account. The two are not the same, and the known-ball tax is the exhibit.}
+\notes{We stop at the existence argument. Constructing the adaptive tree --- which balls on which pan at each step --- is MacKay's exercise, and solving it is the best way to feel what "informative experiment" means. What the lecture owns is the split between ledgers: $\log_2 24$ versus $\log_2 2$ or $\log_2 3$ is the information account; 6 vs 6, 4 vs 4, and padding with a known ball are the mechanical account. The two are not the same, and the known-ball tax is the exhibit.}
 
-\addreading{MacKay-information03}{Exercise 4.1 and the discussion on pp.~69--70}
+\addreading{@MacKay-information03}{Exercise 4.1 and the discussion on pp. 69--70}
 
 \endif

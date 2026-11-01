@@ -55,9 +55,9 @@ because $G$ is a function of $X$ (so $H(G\mid X)=0$) and $H(X\mid G)=\sum_i w_i 
 \slidesincremental{
 * Any partition: $H(w)+\sum_i w_i H(p_i)$ returns the same $H(X)$
 * That consistency is special to the Shannon form (Khinchin; later Baez--Fritz--Leinster)
-* Pointer only today --- week 3 derives $H$ from axioms
+* Pointer only today --- grouping is Shannon's third requirement in 1948; the axioms stay parked
 }
 
-\notes{The die paid $\log_2 6$ whichever cut came first. That invariance under regrouping is not an accident of base-two logarithms; it is part of what characterises Shannon entropy among candidate uncertainty measures [@Khinchin-information57]. Categorical accounts make the same demand precise [@Baez-entropy11]. For this lecture it is enough that staged questions *add*, so coarse-graining has a well-defined price.}
+\notes{The die paid $\log_2 6$ whichever cut came first. That invariance under regrouping is not an accident of base-two logarithms; it is part of what characterises Shannon entropy among candidate uncertainty measures (Shannon's third requirement in 1948, [@Shannon-mathematical48]; [@Khinchin-information57]). Categorical accounts make the same demand precise (Baez, Fritz and Leinster). The axioms themselves stay parked. For this lecture it is enough that staged questions *add*, so coarse-graining has a well-defined price.}
 
 \endif

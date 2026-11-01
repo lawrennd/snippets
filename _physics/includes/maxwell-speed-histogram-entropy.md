@@ -29,7 +29,11 @@ That is the Maxwell speed law. Its differential entropy is
 \begin{align}
 h(s)=\log\bigl(\dataStd\sqrt{2\pi}\bigr)+\gamma-\tfrac12,
 \end{align}
-where $\gamma$ is Euler's constant. A single Cartesian component has $h(v_x)=\tfrac12\log(2\pi e\dataStd^2)$. For $\dataStd=1$ these are approximately $0.996$ and $1.419$ nats. They disagree because they are entropies of different random variables, each written against Lebesgue measure in its own coordinate. An equal-$\Delta s$ histogram of the sampled speeds tracks $h(s)-\log\Delta s$, just as the Gaussian histogram tracked $h(v_x)-\log\Delta v$.}
+where $\gamma$ is Euler's constant. A single Cartesian component has $h(v_x)=\tfrac12\log(2\pi e\dataStd^2)$. For $\dataStd=1$ these are approximately $0.996$ and $1.419$ nats. The like-for-like comparison is three-dimensional velocity against speed: $h(\mathbf{v})=3h(v_x)\approx 4.257$ nats, and
+\begin{align}
+h(\mathbf{v})=h(s)+\log 4\pi+\mathbb{E}[\log s^2].
+\end{align}
+The $\mathbb{E}[\log s^2]$ term is the Jacobian. The $\log 4\pi$ term is the entropy of *direction*, which the speed map throws away --- a grouping, not a change of measure. An equal-$\Delta s$ histogram of the sampled speeds tracks $h(s)-\log\Delta s$, just as the Gaussian histogram tracked $h(v_x)-\log\Delta v$.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot

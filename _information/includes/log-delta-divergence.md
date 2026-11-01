@@ -23,7 +23,7 @@ H(X^\Delta)
   = -\sum_i p_i\log p_i
   \approx h - \log\Delta.
 \end{align}
-Plotting $H$ against $-\log\Delta$ gives a line of slope one, offset by the constant $h=\tfrac12\log(2\pi e\dataStd^2)$. The discrete entropy diverges as the bins shrink because each mass $p_i\approx f\Delta$ contributes an extra $-\log\Delta$. Differential entropy is defined to be the $\Delta$-independent remainder. The continuous functional therefore *ignores a term that is driving to $+\infty$*. That is why $h$ can be negative, and why it is not a code-length bound.}
+Plotting $H$ against $-\log\Delta$ gives a line of slope one, offset by the constant $h=\tfrac12\log(2\pi e\dataStd^2)$. The discrete entropy diverges as the bins shrink because each mass $p_i\approx f\Delta$ contributes an extra $-\log\Delta$. Differential entropy is defined to be the $\Delta$-independent remainder. The continuous functional therefore *ignores a term that is driving to $+\infty$*. Differential entropy $h$ can be negative because densities can exceed $1$ (mass concentrated below the unit scale). Dropping $-\log\Delta$ *permits* that; it is not the cause. And $h$ is not a code-length bound.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
