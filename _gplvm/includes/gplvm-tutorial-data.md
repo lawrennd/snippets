@@ -36,6 +36,8 @@ import mlai}
 \notes{For this lab, we'll use a data set containing all handwritten digits from $0 \cdots 9$ handwritten, provided by @deCampos-character09. We will only use some of the digits for the demonstrations in this lab class, but you can edit the code below to select different subsets of the digit data as you wish.}
 
 
+\setupcode{import pods}
+
 \code{which = [0,1,2,6,7,9] # which digits to work on
 data = pods.datasets.decampos_digits(which_digits=which)
 Y = data['Y']

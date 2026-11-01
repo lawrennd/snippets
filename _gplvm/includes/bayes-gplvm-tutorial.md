@@ -14,6 +14,8 @@
 \notes{For the moment we'll run a short experiment applying the Bayesian GP-LVM with an exponentiated quadratic covariance function.}
 
 
+\code{Yn = Y}
+
 \code{
 # Model optimization
 input_dim = 5 # How many latent dimensions to use
@@ -26,7 +28,7 @@ m.optimize(messages=1)}
 
 \plotcode{# Plotting the model
 plot_model(m.X.mean, m.rbf.lengthscale.argsort()[:2], labels.flatten())
-pb.legend()
+plt.legend()
 m.kern.plot_ARD()
 # Saving the model:
 m.pickle('digit_bgplvm_rbf.pickle')}
@@ -71,7 +73,8 @@ You can select different latent dimensions to vary by clicking on the correspond
 This will also cause the latent space to be projected on the selected latent dimensions in the other figure.}
 
 
-\setupcode{import urllib2, os, sys}
+\setupcode{from urllib.request import urlopen
+import os, sys}
 
 \code{model_path =  'digit_bgplvm_demo.pickle' # local name for model file
 status = ""
@@ -82,46 +85,54 @@ if len(sys.argv) == 2:
 
 if re or not os.path.exists(model_path): # only download the model new, if it was not already
     url = 'http://staffwww.dcs.sheffield.ac.uk/people/M.Zwiessele/gpss/lab3/digit_bgplvm_demo.pickle'
-    with open(model_path, 'wb') as f:
-        u = urllib2.urlopen(url)
-        meta = u.info()
-        file_size = int(meta.getheaders("Content-Length")[0])
-        print "Downloading: %s" % (model_path)
+    try:
+        with urlopen(url) as u, open(model_path, 'wb') as f:
+            file_size = int(u.headers.get('Content-Length') or 0)
+            print("Downloading: %s" % (model_path))
 
-        file_size_dl = 0
-        block_sz = 8192
-        while True:
-            buff = u.read(block_sz)
-            if not buff:
-                break
-            file_size_dl += len(buff)
-            f.write(buff)
+            file_size_dl = 0
+            block_sz = 8192
+            while True:
+                buff = u.read(block_sz)
+                if not buff:
+                    break
+                file_size_dl += len(buff)
+                f.write(buff)
+                sys.stdout.write(" "*(len(status)) + "\r")
+                if file_size:
+                    status = r"{:7.3f}/{:.3f}MB [{: >7.2%}]".format(file_size_dl/(1.*1e6), file_size/(1.*1e6), float(file_size_dl)/file_size)
+                    sys.stdout.write(status)
+                    sys.stdout.flush()
             sys.stdout.write(" "*(len(status)) + "\r")
-            status = r"{:7.3f}/{:.3f}MB [{: >7.2%}]".format(file_size_dl/(1.*1e6), file_size/(1.*1e6), float(file_size_dl)/file_size)
-            sys.stdout.write(status)
-            sys.stdout.flush()
-        sys.stdout.write(" "*(len(status)) + "\r")
-        print status
+            print(status)
+    except Exception as e:
+        print("Could not download pre-optimized model:", e)
 else:
     print("Already cached, to reload run with 'reload' as the only argument")}
 
-\code{import cPickle as pickle
-with open('./digit_bgplvm_demo.pickle', 'rb') as f:
-    m = pickle.load(f)}
+\code{import pickle
+try:
+    with open('./digit_bgplvm_demo.pickle', 'rb') as f:
+        m = pickle.load(f)
+except Exception as e:
+    print("Could not load pre-optimized model:", e)}
 
 \notes{Prepare for plotting of this model. If you run on a webserver the interactive plotting will not work. Thus, you can skip to the next codeblock and run it on your own machine, later.}
 
 
-\plotcode{fig = pb.figure('Latent Space & Scales', figsize=(16,6))
-ax_latent = fig.add_subplot(121)
-ax_scales = fig.add_subplot(122)
+\plotcode{try:
+    fig = plt.figure('Latent Space & Scales', figsize=(16,6))
+    ax_latent = fig.add_subplot(121)
+    ax_scales = fig.add_subplot(122)
 
-fig_out = pb.figure('Output', figsize=(1,1))
-ax_image  = fig_out.add_subplot(111)
-fig_out.tight_layout(pad=0)
+    fig_out = plt.figure('Output', figsize=(1,1))
+    ax_image  = fig_out.add_subplot(111)
+    fig_out.tight_layout(pad=0)
 
-data_show = GPy.plotting.matplot_dep.visualize.image_show(m.Y[0:1, :], dimensions=(16, 16), transpose=0, invert=0, scale=False, axes=ax_image)
-lvm_visualizer = GPy.plotting.matplot_dep.visualize.lvm_dimselect(m.X.mean.copy(), m, data_show, ax_latent, ax_scales, labels=labels.flatten())}
+    data_show = GPy.plotting.matplot_dep.visualize.image_show(m.Y[0:1, :], dimensions=(16, 16), transpose=0, invert=0, scale=False, axes=ax_image)
+    lvm_visualizer = GPy.plotting.matplot_dep.visualize.lvm_dimselect(m.X.mean.copy(), m, data_show, ax_latent, ax_scales, labels=labels.flatten())
+except Exception as e:
+    print("Interactive visualizer skipped:", e)}
 
 \subsubsection{Observations}
 
@@ -134,7 +145,7 @@ lvm_visualizer = GPy.plotting.matplot_dep.visualize.lvm_dimselect(m.X.mean.copy(
 \notes{You can also run the dimensionality reduction example}
 
 
-\code{GPy.examples.dimensionality_reduction.bgplvm_simulation()}
+\code{GPy.examples.dimensionality_reduction.bgplvm_simulation(plot=False)}
 
 
 \subsubsection{Questions}
