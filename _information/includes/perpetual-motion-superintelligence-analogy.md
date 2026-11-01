@@ -22,17 +22,12 @@ superintelligence and artificial general intelligence that will transform everyt
 
 \newslide{Why Perpetual Motion Failed}
 
-\notes{We know why perpetual motion is impossible: the second law of thermodynamics tells us that 
-entropy always increases. So we can't have motion without entropy production. No matter how clever 
-the design, you cannot extract energy from nothing, and you cannot create a closed system that does 
-useful work indefinitely without an external energy source.}
+\notes{We know why perpetual motion is impossible, but the two slogans often mixed together belong to different laws. Perpetual motion of the *first kind* would extract energy from nothing: that is forbidden by the first law. Perpetual motion of the *second kind* would extract useful work from a single heat bath, with no colder reservoir to dump heat into: that is the Kelvin--Clausius form of the second law. Frictionless motion produces no entropy. Organised motion that you can sell as an engine, indefinitely, from one bath, does. For an isolated system the entropy does not decrease --- almost always, because the law is statistical.}
 
 \slidesincremental{
-$$\frac{\text{d}H}{\text{d}t} \geq 0$$
-
-* Entropy always increases
-* No motion without entropy production
-* No work without energy input
+* First kind: energy from nothing --- first law
+* Second kind: work from a single bath --- Kelvin--Clausius
+* Isolated entropy does not decrease (almost always)
 }
 
 \newslide{An Equivalent Statement for Intelligence?}

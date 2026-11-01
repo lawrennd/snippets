@@ -8,7 +8,7 @@
 
 \slides{\figure{\includepng{\diagramsDir/physics/philosophicaless00lapliala_18_cropped}{60%}}{To Laplace, determinism is a strawman. Ignorance of mechanism and data leads to uncertainty which should be dealt with through probability.}{probability-relative-in-part}
 >
-> *Philosophical Essay on Probabilities* @Laplace-essai14 pg 5
+> *A Philosophical Essay on Probabilities*, [@Laplace-essai14], pg 5
 }
 
 \notes{
@@ -24,16 +24,16 @@
 > occur because we see several cases equally possible which exclude its
 > occurrence, while only a single one favors it.
 >
-> --- Pierre-Simon Laplace [@Laplace-essai14], pg 5
+> --- Pierre-Simon Laplace, [@Laplace-essai14], pg 5
 }
 
 \speakernotes{I like to refer to this notion as "Laplace's Gremlin", because the lack of knowledge is the "gremlin of uncertainty" that inhibits the "deterministic demon"}
 
-\notes{The representation of ignorance through probability is the true message of Laplace, I refer to this message as "Laplace's gremlin", because it is the gremlin of uncertainty that interferes with the demon of determinism to mean that our predictions are not deterministic. 
+\notes{The representation of ignorance through probability is the true message of Laplace. I refer to this message as "Laplace's gremlin", because it is the gremlin of uncertainty that interferes with the demon of determinism to mean that our predictions are not deterministic.
 
-Our separation of the uncertainty into the data, the model and the computation give us three domains in which our doubts can creep into our ability to predict. Over the last three lectures we've introduced some of the basic tools we can use to unpick this uncertainty. You've been introduced to, (or have yow reviewed) *Bayes' rule*. The rule, which is a simple consequence of the product rule of probability, is the foundation of how we update our beliefs in the presence of new information.}
+Our separation of the uncertainty into the data, the model and the computation gives three domains in which doubt can enter a prediction. Bayes' rule, a rearrangement of the product rule, is the foundation of how we update beliefs in the presence of new information. We review it later in this lecture.}
 
-\notes{The real point of Laplace's essay was that we don't have access to all the data, we don't have access to a complete physical understanding, and as the example of the Game of Life shows, even if we did have access to both (as we do for "Conway's universe") we still don't have access to all the compute that we need to make deterministic predictions. There is uncertainty in the system which means we can't make precise predictions.}
+\notes{The real point of Laplace's essay was that we do not have access to all the data, we do not have access to a complete physical understanding, and even if we did we still would not have the compute needed for deterministic predictions. There is uncertainty in the system which means we cannot make precise predictions.}
 
 
 \notes{Gremlins are imaginary creatures used as an explanation of failure in aircraft, causing crashes. In that sense the Gremlin represents the uncertainty that a pilot felt about what might go wrong in a plane which might be "theoretically sound" but in practice is poorly maintained or exposed to conditions that take it beyond its design criteria. Laplace's gremlin is all the things that your model, data and ability to compute don't account for bringing about failures in your ability to predict. Laplace's gremlin is the uncertainty in the system.}

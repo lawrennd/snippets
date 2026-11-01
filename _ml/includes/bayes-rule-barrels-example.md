@@ -34,6 +34,6 @@
          = & \frac{20/24 \times 0.5}{7/12} = 5/7
   \end{aligned}$$}
 
-\notes{Work the numbers on the board if time allows. The same pattern applies to coins, medical tests, or any two-hypothesis discrete update.}
+\notes{Work the numbers on the board if time allows. $P(\text{apple})=7/12$, $P(\text{Barrel One}\mid\text{apple})=5/7$, and $P(\text{Barrel One}\mid\text{orange})=1/5$. The same pattern applies to coins, medical tests, or any two-hypothesis discrete update.}
 
 \endif

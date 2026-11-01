@@ -22,7 +22,7 @@
 * Both are normalising bookkeeping, not modelling assumptions
 }
 
-\notes{The product rule relates joint and conditional. The sum rule recovers a marginal by summing out the variable you do not care about. Continuous analogues replace sums by integrals.}
+\notes{The product rule relates joint and conditional. The sum rule recovers a marginal by summing out the variable you do not care about. Continuous analogues replace sums by integrals. Expectation of a discrete random variable is $\mathbb{E}[f(Y)]=\sum_y f(y)P(y)$. The four-outcome energy table later in the lecture is that average with $f=-\log P$.}
 
 \newslide{Bayes' Rule}
 

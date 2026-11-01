@@ -8,11 +8,11 @@
 $$
 E_i = -\log p_i
 $$
-(up to an additive constant that cancels in the normalisation). High probability is low energy. The numbers below reuse examples from earlier in the lecture. For each classic family we plot $P$ (or $p$) beside $E=-\log P$, then overlay the two on twin axes.}
+(up to an additive constant that cancels in the normalisation). High probability is low energy. For each classic family we plot $P$ (or $p$) beside $E=-\log P$, then overlay the two on twin axes.}
 
-\newslide{From $p$ to $E$: the Four Outcomes}
+\newslide{From $p$ to $E$: Four Outcomes}
 
-\slides{Earlier we tabulated $-\log P(y)$ for a four-outcome distribution. Those values *are* energies.}
+\slides{Tabulate $-\log P(y)$ for a four-outcome distribution. Those values *are* energies.}
 
 \slides{
 $y$               |   1   |   2   |   3   |   4
@@ -24,12 +24,12 @@ $E(y)=-\log P(y)$ | 1.204 | 1.609 | 2.302 | 0.916
 \slidesincremental{
 * Most probable outcome $y=4$ has the *lowest* energy
 * Rarest $y=3$ has the *highest* energy
-* Shannon entropy was $\mathbb{E}[E(y)] = 1.280$ nats --- average energy under $p$
+* Shannon entropy is $\mathbb{E}[E(y)] = 1.280$ nats --- average energy under $p$
 }
 
-\notes{Exponentiating recovers the distribution (natural units): $p(y)=e^{-E(y)}$ already normalises here because we took $E=-\log p$ exactly. In general one writes $p_i = e^{-E_i}/Z$ with $Z=\sum_j e^{-E_j}$. The entropy calculation from the review is therefore also an average energy.}
+\notes{Exponentiating recovers the distribution (natural units): $p(y)=e^{-E(y)}$ already normalises here because we took $E=-\log p$ exactly. In general one writes $p_i = e^{-E_i}/Z$ with $Z=\sum_j e^{-E_j}$. Shannon entropy of this table is therefore also an average energy.}
 
-\speakernotes{Point at the same table from the entropy expectation slide. Do not recompute; only rename $-\log p$ as $E$.}
+\speakernotes{Do not recompute; only rename $-\log p$ as $E$.}
 
 \newslide{Bernoulli / Fair Coin}
 
@@ -41,7 +41,7 @@ $E(y)=-\log P(y)$ | 1.204 | 1.609 | 2.302 | 0.916
 $$
 p_1 = \frac{e^{-\beta E_1}}{e^{-\beta E_0}+e^{-\beta E_1}},
 $$
-which is Bernoulli with that success probability. Week 2 returns to this as the Schottky / two-state seed.}
+which is Bernoulli with that success probability. Week 2 returns to the two-state occupation.}
 
 \newslide{Poisson: Count Energy}
 
