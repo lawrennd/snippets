@@ -8,7 +8,7 @@
 
 \slides{Five families recur across modelling. Know the support, the parameter, and one generative story for each.}
 
-\notes{These are prerequisites restated, not new theory. The Gaussian (and the categorical) reappear later as maximum-entropy distributions under ordinary moment constraints. The Poisson is maximum-entropy only relative to the base measure $1/k!$, and the binomial only relative to $\binom{n}{k}$. Among distributions on the non-negative integers with a fixed mean, the maximum-entropy one is the geometric. Week 4's point that ``the discretisation is the measure'' --- Jaynes's $m$ --- is the reason those caveats exist.}
+\notes{These are prerequisites restated, not new theory. The Gaussian (and the categorical) reappear later as maximum-entropy distributions under ordinary moment constraints. The Poisson is maximum-entropy only relative to the base measure $1/k!$, and the binomial only relative to $\binom{n}{k}$. Among distributions on the non-negative integers with a fixed mean, the maximum-entropy one is the geometric. Week 4's point that "the discretisation is the measure" (Jaynes's $m$) is the reason those caveats exist.}
 
 \newslide{Bernoulli and Binomial}
 
