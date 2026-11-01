@@ -24,7 +24,7 @@
 > occur because we see several cases equally possible which exclude its
 > occurrence, while only a single one favors it.
 >
-> --- Pierre-Simon Laplace, *A Philosophical Essay on Probabilities*, trans.\ F.\ W.\ Truscott and F.\ L.\ Emory (1902)
+> --- Pierre-Simon Laplace, [@Laplace-essai14], pg 5
 }
 
 \speakernotes{I like to refer to this notion as "Laplace's Gremlin", because the lack of knowledge is the "gremlin of uncertainty" that inhibits the "deterministic demon"}
