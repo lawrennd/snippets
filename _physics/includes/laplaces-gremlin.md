@@ -8,7 +8,7 @@
 
 \slides{\figure{\includepng{\diagramsDir/physics/philosophicaless00lapliala_18_cropped}{60%}}{To Laplace, determinism is a strawman. Ignorance of mechanism and data leads to uncertainty which should be dealt with through probability.}{probability-relative-in-part}
 >
-> *A Philosophical Essay on Probabilities*, trans.\ Truscott and Emory (1902)
+> *A Philosophical Essay on Probabilities*, [@Laplace-essai14], pg 5
 }
 
 \notes{
