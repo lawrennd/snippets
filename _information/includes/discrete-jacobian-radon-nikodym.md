@@ -33,7 +33,7 @@ h(s)-h(u)
 \end{align}
 That ratio $\Delta s_i/\Delta u_i$ is called the discrete Radon-Nikodym derivative of Lebesgue-on-speed with respect to Lebesgue-on-volume. In the continuum limit it becomes the Jacobian $1/(3s^2)$. Probability conservation $f_s(s)\,{\mathrm{d}}s = f_u(u)\,{\mathrm{d}}u$ is the same statement.
 
-The Maxwell speed density relative to three-dimensional Lebesgue is the shell factor $4\pi s^2$:
+The Maxwell speed density relative to three-dimensional Lebesgue is the shell factor $4\pi s^2$. Equivalently, the pushforward of Lebesgue measure on $\mathbb{R}^3$ has density $4\pi s^2$ in $s$:
 \begin{align}
 f_s(s)\,{\mathrm{d}}s = f(\mathbf{v})\,{\mathrm{d}}^3v,
 \qquad

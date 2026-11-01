@@ -36,7 +36,7 @@
 $$
 f(\mathbf{v}\mid\beta)=\frac{\beta}{2\pi}\exp\!\left(-\tfrac{1}{2}\beta v^2\right),\qquad \beta=\frac{1}{k_B T},
 $$
-with mean kinetic energy $k_B T$ per ball (two quadratic degrees of freedom). The one-way effusion flux through a unit aperture is $\Phi_{\mathrm{tot}}=n/\sqrt{2\pi\beta}$. Restricting to the hot or cold set gives
+with mean kinetic energy $k_B T$ per ball (two quadratic degrees of freedom). The one-way effusion flux through a unit aperture is $\Phi_{\mathrm{tot}}=n/\sqrt{2\pi\beta}$. Those formulae assume a small aperture relative to the mean free path (Knudsen). In the billiard simulation with large balls that may not hold. Restricting to the hot or cold set gives
 \begin{align}
 \Phi^{\mathrm{hot}}(n,\beta)
 &= \frac{n}{\pi}\left[v_\star e^{-\beta v_\star^2/2}+\int_{v_\star}^\infty e^{-\beta v^2/2}\,\mathrm{d}v\right],\\
@@ -47,7 +47,7 @@ Particle-number detailed balance across the membrane is
 $$
 \Phi^{\mathrm{hot}}(n_L,\beta_L)=\Phi^{\mathrm{cold}}(n_R,\beta_R).
 $$
-Total ball number $N=N_L+N_R$ and total energy $E=N_L k_B T_L+N_R k_B T_R$ are conserved. For the simulation parameters ($v_\star=3$, mean kinetic energy $12.5$ in code units, equal populations $N_L=N_R$) this fixes the temperatures uniquely.}
+Total ball number $N=N_L+N_R$ and total energy $E=N_L k_B T_L+N_R k_B T_R$ are conserved. For the simulation parameters ($v_\star=3$, mean kinetic energy $12.5$ in code units, equal populations $N_L=N_R=N/2$ with $N=39$) this fixes the temperatures uniquely. The equal-$N$ slice is a cut, not the whole story: a search over $N_L/N$ (with $T_L<T_R$) finds no Maxwellian pair that balances both number and energy flux.}
 
 \setupplotcode{import numpy as np
 from scipy.special import erfc
@@ -143,17 +143,19 @@ print(f'T_L={T_L:.3f}, T_R={T_R:.3f}, S0={S0:.2f}, S_ss={S_ss:.2f}, dS={delta_S:
 
 \slidesincremental{
 * Unconstrained equilibrium: one $T_0=\langle\mathrm{KE}\rangle$, entropy $S_0$
-* Membrane steady state: $S_{\mathrm{ss}}<S_0$ (here $\Delta S\approx -24$ nats)
+* Membrane steady state: $S_{\mathrm{ss}}<S_0$ (here $\Delta S\approx -24$ nats at $N=39$)
 * The gas alone looks like a second-law violation
 }
 
 \speakernotes{Live the numbers from the plotcode printout. Canvas entropy is a coarse velocity-bin proxy; this $S$ is the ideal-gas Shannon entropy of two Maxwellians.}
 
-\notes{With $k_B=1$, equal populations, $v_\star=3$ and total energy matching the simulation's mean kinetic energy $12.5$, particle-flux detailed balance gives $T_L\approx 1.94$ and $T_R\approx 23.1$. The ideal-gas Shannon entropy of a 2D Maxwellian chamber (position Stirling term plus velocity differential entropy)
+\notes{With $k_B=1$, equal populations, $N=39$, $v_\star=3$ and total energy matching the simulation's mean kinetic energy $12.5$, particle-flux detailed balance gives $T_L\approx 1.94$ and $T_R\approx 23.1$. Those temperatures are the equal-$N$ slice. The ideal-gas Shannon entropy of a 2D Maxwellian chamber (position Stirling term plus velocity differential entropy)
 $$
 S(N,\beta)=N\left[2+\log\frac{A}{N}-\log\frac{\beta}{2\pi}\right]
 $$
-falls by about $24$ nats relative to the single-temperature state at the same $N$ and $E$. That drop is the thermodynamic content of the sorting you see on the canvas: hot accumulates on the right, cold on the left, and the joint distribution over $(\mathrm{side},\mathbf{v})$ is more concentrated than the unconstrained Maxwellian.}
+falls by about $24$ nats relative to the single-temperature state at the same $N$ and $E$ --- about $-0.63$ nats per ball. That drop is the thermodynamic content of the sorting you see on the canvas: hot accumulates on the right, cold on the left, and the joint distribution over $(\mathrm{side},\mathbf{v})$ is more concentrated than the unconstrained Maxwellian.
+
+The compartments, kinetic layers, and two-ledger closure are this course's construction, not a result in Leff and Rex. Worksheet 3 builds on them.}
 
 \newslide{Maxwellians Are Only an Approximation}
 
@@ -177,11 +179,11 @@ falls by about $24$ nats relative to the single-temperature state at the same $N
 \slidesincremental{
 * Prescription: the velocity gate (who may cross)
 * No-go: you cannot harvest that $\Delta S$ for free in a cycle
-* Next: Szilard makes the bit explicit; Landauer prices erasure
+* Next: Szilard priced measurement; Landauer priced erasure; Bennett (1982) made the erasure resolution
 }
 
 \speakernotes{Bridge forward. Ellis locates dissipation at measurement/gating; information ledger locates it at stored outcomes and erasure. Same Clausius, different bookkeeping.}
 
-\notes{The selective membrane is Maxwell's demon written as a dynamical rule. The detailed-balance calculation shows that the rule really does drive the gas toward a lower-entropy steady state. Restoring Clausius requires putting the membrane — or the memory that controls an equivalent trap door — on the thermodynamic ledger. Szilard's engine isolates one bit of that ledger; Landauer's principle prices erasing it. The simulation's ``velocity-bin entropy'' is a coarse proxy for the same story: as sorting proceeds, the displayed histogram entropy typically drops relative to the unsorted gas.}
+\notes{The selective membrane is Maxwell's demon written as a dynamical rule. The detailed-balance calculation shows that the rule really does drive the gas toward a lower-entropy steady state. Restoring Clausius requires putting the membrane — or the memory that controls an equivalent trap door — on the thermodynamic ledger. Szilard (1929) put the cost in *measurement* [@Szilard-intelligenter29]. Landauer (1961) priced *erasure* but did not apply it to the demon [@Landauer-irreversibility61]. Bennett (1982) made the erasure resolution and argued that measurement can be reversible --- not one continuous story [@Bennett-thermodynamics82]. Earman and Norton (1998--99) is one of the dissenting books. The simulation's "velocity-bin entropy" is a coarse proxy for the same story: as sorting proceeds, the displayed histogram entropy typically drops relative to the unsorted gas.}
 
 \endif
