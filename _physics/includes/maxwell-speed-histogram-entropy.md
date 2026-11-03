@@ -67,6 +67,8 @@ ax.spines['right'].set_visible(False)
 mlai.write_figure('maxwell-speed-histogram-entropy.svg',
                   directory='\writeDiagramsDir/physics')}
 
+\newslide{Entropy of the Maxwell Speed Law}
+
 \figure{\includediagram{\diagramsDir/physics/maxwell-speed-histogram-entropy}{80%}}{Equal-width histogram of speed from the same 3D Gaussian sample. Discrete $H$ tracks $h(s)-\log\Delta$. The Maxwell $h(s)$ is not the Gaussian $h(v_x)$.}{maxwell-speed-histogram-entropy}
 
 \endif

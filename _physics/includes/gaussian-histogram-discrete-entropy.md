@@ -19,7 +19,7 @@
 
 \subsection{Histograms as Riemann Sums}
 
-\slides{A histogram replaces $f(x)$ by a piecewise-constant function: height $f(x_i)$ on each bin of width $\Delta$.}
+\slides{A histogram replaces $f(x)$ by a piecewise-constant function: height $f(x_i)=f_i$ on each bin of width $\Delta$.}
 
 \slidesincremental{
 * Bin mass $p_i = \int_{\text{bin } i} f(x)\,\text{d}x \approx f(x_i)\Delta$ (midpoint rule)
@@ -30,7 +30,7 @@
 
 \speakernotes{Draw the Gaussian, overlay rectangles of width $\Delta$ and height $f(x_i)$, shade one rectangle and label its area $p_i$. Then split $\log(f_i\Delta)$ on the board. Point out that the second sum is not a Riemann sum of anything finite as $\Delta\to 0$, which is why $H$ diverges while $h$ doesn't.}
 
-\notes{Approximating a density by its value at the centre of each bin is a piecewise-constant (midpoint-rule) approximation to the integral. We call the corresponding sums Riemann sums. Writing $p_i\approx f(x_i)\Delta$ inside the entropy gives
+\notes{Approximating a density by its value at the centre of each bin is a piecewise-constant (midpoint-rule) approximation to the integral. We call the corresponding sums Riemann sums. Writing $p_i\approx f(x_i)\Delta\equiv f_i \Delta$ inside the entropy gives
 \begin{align}
 H = -\sum_i f_i\Delta\log f_i - \log\Delta\sum_i f_i\Delta \approx h - \log\Delta,
 \end{align}
@@ -80,6 +80,8 @@ ax.spines['right'].set_visible(False)
 mlai.write_figure('gaussian-histogram-discrete-entropy.svg',
                   directory='\writeDiagramsDir/physics')}
 
-\figure{\includediagram{\diagramsDir/physics/gaussian-histogram-discrete-entropy}{80%}}{Equal-width histogram of one Cartesian velocity component. Discrete $H$ matches $h-\log\Delta$; $h$ itself is the remainder after the bin-width term is subtracted.}{gaussian-histogram-discrete-entropy}
+\newslide{Histograms as Riemann Summs}
+
+\figure{\includediagram{\diagramsDir/physics/gaussian-histogram-discrete-entropy}{60%}}{Equal-width histogram of one Cartesian velocity component. Discrete $H$ matches $h-\log\Delta$; $h$ itself is the remainder after the bin-width term is subtracted.}{gaussian-histogram-discrete-entropy}
 
 \endif

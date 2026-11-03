@@ -10,6 +10,7 @@ n_histogram_bins = 40
 velocities = rng.normal(0.0, velocity_sigma, size=(n_velocities, 3))
 speed = np.linalg.norm(velocities, axis=1)
 velocity_x = velocities[:, 0]
+speed_1d = np.abs(velocity_x)
 
 
 def discrete_entropy(counts):
@@ -20,6 +21,14 @@ def discrete_entropy(counts):
 
 def gaussian_differential_entropy(sigma):
     return 0.5 * np.log(2.0 * np.pi * np.e * sigma**2)
+
+
+def half_normal_pdf(s, sigma):
+    # Folded |N(0, sigma^2)| on s >= 0; mode remains at zero.
+    return (
+        np.sqrt(2.0 / (np.pi * sigma**2))
+        * np.exp(-s**2 / (2.0 * sigma**2))
+    )
 
 
 def maxwell_speed_pdf(s, sigma):

@@ -8,8 +8,8 @@
 \slides{Keeping $\{1,2,3\}$ versus $\{4,5,6\}$ and refusing the face is the same move as a macrostate.}
 
 \slidesincremental{
-* The group label is what we keep; $\sum_i w_i H(p_i)$ is what we refuse
-* Macroscopic variables: extensive $N,V,E,S$; intensive $T,P$
+* The group label is what we keep; $\sum_i w_i H(p_i)$ is what we ignore
+* Macroscopic variables: extensive $N$,$V$,$E$,$S$; intensive $T$,$P$
 * We cannot follow Laplace's curves, so we keep a few numbers
 }
 

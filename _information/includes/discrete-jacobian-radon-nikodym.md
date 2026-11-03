@@ -35,9 +35,9 @@ That ratio $\Delta s_i/\Delta u_i$ is called the discrete Radon-Nikodym derivati
 
 The Maxwell speed density relative to three-dimensional Lebesgue is the shell factor $4\pi s^2$. Equivalently, the pushforward of Lebesgue measure on $\mathbb{R}^3$ has density $4\pi s^2$ in $s$:
 \begin{align}
-f_s(s)\,{\mathrm{d}}s = f(\mathbf{v})\,{\mathrm{d}}^3v,
+f_s(s)\,{\mathrm{d}}s = f(\mathbf{v})\,{\mathrm{d}}^{3}v,
 \qquad
-\frac{{\mathrm{d}}^3v}{{\mathrm{d}}s} = 4\pi s^2.
+\frac{{\mathrm{d}}^{3}v}{{\mathrm{d}}s} = 4\pi s^2.
 \end{align}
 The Gaussian $h(v_x)$ and the Maxwell $h(s)$ disagree because they are different coordinates *and* because each $h$ is taken against a different *undeclared* Lebesgue measure.}
 
@@ -82,6 +82,8 @@ ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 mlai.write_figure('discrete-jacobian-radon-nikodym.svg',
                   directory='\writeDiagramsDir/information')}
+
+\newslide{Bin Widths are a Radon-Nikodym Derivative}
 
 \figure{\includediagram{\diagramsDir/information/discrete-jacobian-radon-nikodym}{80%}}{Width ratio of the pushed equal-volume cells, against the Jacobian $1/(3s^2)$. The average log-ratio converts $h(u)$ into $h(s)$. That ratio is the discrete Radon-Nikodym derivative.}{discrete-jacobian-radon-nikodym}
 

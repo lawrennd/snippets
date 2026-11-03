@@ -64,7 +64,7 @@ At the end we need a single named hypothesis: $H_{\mathrm{end}} = 0$. The *defic
 * Maths stays on its own slides --- the two accounts can disagree
 }
 
-\speakernotes{Say ``log two bits'' --- one bit if the two readings are equally likely. Do not yet mention a third reading. Board 6 vs 6 as the move people reach for from twenty questions.}
+\speakernotes{Say "log two bits" --- one bit if the two readings are equally likely. Do not yet mention a third reading. Board 6 vs 6 as the move people reach for from twenty questions.}
 
 \notes{A two-outcome instrument, used optimally, returns at most $\log_2 2 = 1$ bit per measurement. The information budget then says
 $$
@@ -85,7 +85,7 @@ $$
 \slidesincremental{
 * Four uses cannot name 24 hypotheses
 * Five uses are not ruled out, *if* each use really returns one bit
-* That ``if'' is mechanism, not maths
+* That "if" is the mechanism, not *entropy*/*information* maths
 }
 
 \notes{Write two columns if you can: left, the information budget; right, the pans. The left column does not know about equal group sizes, leftover balls, or borrowing a ball of known mass. Those constraints live on the right. The rest of this block is the right-hand column, scored afterwards by the left.}
@@ -100,13 +100,13 @@ $$
 * Six balls remain under that story
 }
 
-\speakernotes{Ask what we actually learned. Under ``it is heavier'', 12 balls become 6, one bit toward which ball. We do *not* know the direction. The down pan is six maybe-heavies; the up pan is six maybe-lights. All twelve balls are still in play. Maths next.}
+\speakernotes{Ask what we actually learned. Under "it is heavier", 12 balls become 6, one bit toward which ball. We do *not* know the direction. The down pan is six maybe-heavies; the up pan is six maybe-lights. All twelve balls are still in play. Maths next.}
 
-\notes{The move 6 vs 6 is the binary-search instinct. If we already knew the odd ball was heavier, it would be a perfect split of twelve balls. We do not know that. A down-left reading means ``one of the left six is heavy, *or* one of the right six is light'': twelve of the original twenty-four hypotheses remain. One bit toward the 24, and *no* ball has been eliminated. Mechanism and maths have already come apart: the pans moved, the pile of balls did not shrink.}
+\notes{The move 6 vs 6 is the binary-search instinct. If we already knew the odd ball was heavier, it would be a perfect split of twelve balls. We do not know that. A down-left reading means "one of the left six is heavy, *or* one of the right six is light": twelve of the original twenty-four hypotheses remain. One bit toward the 24, and *no* ball has been eliminated. Mechanism and maths have already come apart: the pans moved, the pile of balls did not shrink.}
 
 \newslide{Maths: What 6 vs 6 Bought}
 
-\slides{*Maths.* Score the same physical act on the 24 hypotheses.}
+\slides{*Maths.* Score the result of the action on the 24 hypotheses.}
 
 \slidesincremental{
 * 24 $\to$ 12 remaining hypotheses: exactly $\log_2 2$ bits
@@ -124,9 +124,12 @@ $$
 * Under the heavier-side story, three balls remain
 * Same move, smaller pile
 * We are still not asking about light versus heavy
+* Are there only two possibilities with 3 vs 3?
 }
 
-\notes{This is the sequence people sketch on the board: 6 vs 6, then 3 vs 3. It is the right mechanism for a different puzzle --- twelve balls, one *heavier*. Hold that sequence, because the next move is where the pans refuse to cooperate.}
+\notes{This is the sequence people often initially sketch on the board: 6 vs 6, then 3 vs 3. It is the right mechanism for a different puzzle --- twelve balls, one *heavier*. Hold that sequence, because this is where the mechanism starts departing from our assumptions.}
+
+\notes{Firstly, what are the possible outcomes for this 3 vs 3. What if we choose the pile that doesn't contain the odd ball?}
 
 \newslide{Mechanism: Three Left}
 
@@ -140,65 +143,7 @@ $$
 
 \speakernotes{Make them say the known ball out loud. Ask: how many bits do we get from 2 vs 2 now? Do not calculate before they see that the split of three remaining balls cannot be even.}
 
-\notes{With three suspects we have two mechanical choices. Weigh 1 vs 1 and leave one off: the left-off ball is the odd one *if the pans balance*. That reading is not in the two-outcome story we are trying to tell. Or weigh 2 vs 2 by padding with a ball already known to be normal: A,B against C plus a normal. The pans are now full, so in the heavier-only story they must tip, and we have not used a third symbol. We have changed the split.}
-
-\newslide{Maths: The Known Ball Taxes the Bit}
-
-\slides{*Maths.* Three remaining heavier-suspects; pans are 2 vs 1+known.}
-
-\slidesmall{
-$$
-\left(\tfrac{2}{3},\tfrac{1}{3}\right)
-\quad\Rightarrow\quad
-H = h_2\!\left(\tfrac{2}{3}\right) \approx 0.92 < 1 \text{ bit}
-$$
-}
-
-\slidesincremental{
-* The even split was $\log_2 2$; the pans cannot make it
-* Padding with a known ball is a mechanism patch
-* Information gain falls because the *probabilities* are no longer equal
-}
-
-\notes{If A,B,C are the three remaining heavier-suspects and N is known normal, the reading A,B down leaves two hypotheses and has probability $2/3$; C,N down names C and has probability $1/3$. Binary entropy $h_2(2/3)\approx 0.92$ bits. The deficit $1-0.92$ is exactly the price of the mechanical constraint ``equal numbers on the pans, and no third reading''. We did not lose those bits because the mathematics of two outcomes changed. We lost them because the mechanism could not realise an equiprobable two-way split of three objects.}
-
-\newslide{Mechanism: 1 vs 1}
-
-\slides{*Mechanism.* If two suspects remain, weigh them against each other.}
-
-\slidesincremental{
-* Now the split *can* be even
-* Under the heavier story, this names the ball
-* We still have not asked light versus heavy
-}
-
-\notes{1 vs 1 of two remaining heavier-suspects returns the missing bit: the down pan is the odd ball, if the heavier-side story is true. The sequence of *acts* was 6 vs 6, 3 vs 3, 2 vs 2 with a known, then 1 vs 1. The sequence of *gains* was 1, 1, $0.92$, 1 --- already not four bits. And this named a ball only inside the heavier-side story.}
-
-\newslide{Mechanism: Lighter or Heavier?}
-
-\slides{*Mechanism.* We have a candidate ball. Can we name the direction?}
-
-\slidesincremental{
-* Weigh the candidate against a known normal
-* Two outcomes name heavy versus light --- *if* it tips
-* If it *balances*, our heavier-side story was wrong
-}
-
-\speakernotes{This is the crack in the two-outcome attempt. A known-normal comparison is the natural test for direction, and it keeps offering a third reading: level. The instrument was never a yes/no question. Pause, then the aha slide.}
-
-\notes{To finish the original task we must name the direction as well as the ball. The obvious mechanism is candidate versus known normal. If the two-outcome story were true, this use would return the last bit: heavy or light. But if we followed the down pan all the way and the odd ball was actually light, the candidate may be normal --- and then the pans *balance*. The third reading has been sitting in the mechanism whenever a known ball appears. We cannot keep it out without lying about what the device does. That is the cue to abandon the two-outcome model, not to patch it again.}
-
-\newslide{Two Accounts, One Experiment}
-
-\slides{Keep the columns separate.}
-
-\slidesincremental{
-* *Maths:* $\log_2 24$ to close; at most $\log_2 2$ per two-outcome use
-* *Mechanism:* 6 vs 6, 3 vs 3, 2 vs 2 with a known, 1 vs 1, then direction
-* The known ball, and the unused ``level'' reading, are mechanism --- they change the gain
-}
-
-\notes{The moral is not that the binary budget is wrong. It is that an information budget is silent about pans. Equal group sizes, leftover balls, and borrowed normals are constraints on the *channel we actually have*. Score every weighing twice: what the device did, then how many bits that split was worth.}
+\notes{OK, so that's revealed a flaw in our reasoning a balance actually has 3 outcomes.}
 
 \subsection{Three Readings}
 
@@ -208,7 +153,6 @@ $$
 
 \slidesincremental{
 * The instrument was never a yes/no question
-* 6 vs 6 made the third reading impossible
 * That was a mechanism choice that *threw away* a symbol
 }
 
@@ -229,7 +173,7 @@ $$
 \slidesincremental{
 * Two uses cannot name 24 hypotheses
 * Three uses can, *if* each use really returns $\log_2 3$
-* Same ``if'' as before: mechanism must realise the split
+* Same "if" as before: mechanism must realise the split
 }
 
 \notes{A binary question yields at most one bit. If the three readings are equiprobable, one weighing contributes

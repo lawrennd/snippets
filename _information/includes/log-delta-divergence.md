@@ -58,6 +58,8 @@ ax.spines['right'].set_visible(False)
 mlai.write_figure('log-delta-divergence.svg',
                   directory='\writeDiagramsDir/information')}
 
+\newslide{The Continuous Limit Drops $\log \Delta$}
+
 \figure{\includediagram{\diagramsDir/information/log-delta-divergence}{80%}}{Discrete entropy of an equal-width Gaussian histogram against $-\log\Delta$. The points track $h-\log\Delta$; $h$ is the finite part. The continuous limit discards a term that diverges.}{log-delta-divergence}
 
 \endif

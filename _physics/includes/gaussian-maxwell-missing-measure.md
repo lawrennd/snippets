@@ -8,6 +8,8 @@
 \speakernotes{Composition wrapper only. Children carry the figures. Stop before MaxEnt / Lagrange / the die.}
 
 \include{_physics/includes/gaussian-histogram-discrete-entropy.md}
+\include{_physics/includes/velocity-vs-modulus-1d.md}
+\include{_physics/includes/velocity-vs-speed-3d.md}
 \include{_physics/includes/pushed-bins-same-entropy.md}
 \include{_information/includes/log-delta-divergence.md}
 \include{_physics/includes/maxwell-speed-histogram-entropy.md}
