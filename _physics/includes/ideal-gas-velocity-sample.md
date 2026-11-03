@@ -19,6 +19,29 @@ def discrete_entropy(counts):
     return -np.sum(p * np.log(p))
 
 
+def discrete_entropy_from_masses(p):
+    p = np.asarray(p, dtype=float)
+    p = p[p > 0]
+    return -np.sum(p * np.log(p))
+
+
+def bin_midpoints(edges):
+    return 0.5 * (edges[:-1] + edges[1:])
+
+
+def riemann_masses(pdf_at_mids, widths):
+    # Midpoint masses p_i ≈ f(x_i) Δ_i, renormalised on the truncated support.
+    mass = np.asarray(pdf_at_mids, dtype=float) * np.asarray(widths, dtype=float)
+    total = mass.sum()
+    if total <= 0.0:
+        return mass
+    return mass / total
+
+
+def gaussian_pdf(x, sigma):
+    return np.exp(-0.5 * x**2 / sigma**2) / np.sqrt(2.0 * np.pi * sigma**2)
+
+
 def gaussian_differential_entropy(sigma):
     return 0.5 * np.log(2.0 * np.pi * np.e * sigma**2)
 

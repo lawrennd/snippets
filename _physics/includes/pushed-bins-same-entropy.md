@@ -32,9 +32,10 @@ import mlai}
 \plotcode{s_max = speed_range_max(speed)
 edges_s = equal_volume_speed_edges(s_max, n_histogram_bins)
 delta_s = np.diff(edges_s)
-counts, _ = np.histogram(speed, bins=edges_s)
-p = counts / float(counts.sum())
-H = discrete_entropy(counts)
+mids = bin_midpoints(edges_s)
+f_mids = maxwell_speed_pdf(mids, velocity_sigma)
+p = riemann_masses(f_mids, delta_s)
+H = discrete_entropy_from_masses(p)
 idx = np.arange(n_histogram_bins)
 fig, ax = plt.subplots(figsize=plot.one_figsize)
 ax.bar(idx, p, color='#4C72B0', width=0.9)
@@ -49,14 +50,13 @@ mlai.write_figure('pushed-bins-same-entropy-masses.svg',
                   directory='\writeDiagramsDir/physics')}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.one_figsize)
-ax.bar(edges_s[:-1], np.divide(p, delta_s, out=np.zeros_like(p),
-                               where=delta_s > 0),
-       width=delta_s, align='edge', color='#DD8452', alpha=0.85)
+ax.bar(edges_s[:-1], f_mids, width=delta_s, align='edge',
+       color='#DD8452', alpha=0.85, label='midpoint Riemann $f$')
 ss = np.linspace(1e-3, s_max, 400)
 ax.plot(ss, maxwell_speed_pdf(ss, velocity_sigma),
         color='#C44E52', lw=2)
 ax.set_xlabel('$s=|\\mathbf{v}|$')
-ax.set_ylabel('density $p_i/\\Delta s_i$')
+ax.set_ylabel('density')
 ax.text(0.02, 0.95, f'$H={H:.3f}$', transform=ax.transAxes,
         va='top', fontsize=12,
         bbox=dict(boxstyle='round', facecolor='white', alpha=0.9))
@@ -65,6 +65,6 @@ ax.spines['right'].set_visible(False)
 mlai.write_figure('pushed-bins-same-entropy-density.svg',
                   directory='\writeDiagramsDir/physics')}
 
-\figure{\columns{\includediagram{\diagramsDir/physics/pushed-bins-same-entropy-masses}{100%}}{\includediagram{\diagramsDir/physics/pushed-bins-same-entropy-density}{100%}}{50%}{50%}}{Equal-volume shells in 3D velocity, written two ways. Left: probability masses. Right: the same masses as a density on the speed axis. The bins change shape; $H$ does not.}{pushed-bins-same-entropy}
+\figure{\columns{\includediagram{\diagramsDir/physics/pushed-bins-same-entropy-masses}{100%}}{\includediagram{\diagramsDir/physics/pushed-bins-same-entropy-density}{100%}}{50%}{50%}}{Equal-volume shells in 3D velocity, written two ways. Left: midpoint masses $p_i$. Right: the same partition as a piecewise-constant density on the speed axis. The bins change shape; $H$ does not.}{pushed-bins-same-entropy}
 
 \endif

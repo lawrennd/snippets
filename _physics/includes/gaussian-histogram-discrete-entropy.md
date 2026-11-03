@@ -10,12 +10,12 @@
 \slides{Equal-width bins of one Cartesian component. Discrete $H$ is a sum over masses.}
 
 \slidesincremental{
-* $p_i = n_i/N$ from equal-$\Delta v$ bins of $v_x\sim\gaussianSamp{0}{\dataStd^2}$
+* Midpoint rule: $p_i\approx f(x_i)\Delta$ on equal-$\Delta v$ bins of $v_x\sim\gaussianSamp{0}{\dataStd^2}$
 * $H=-\sum_i p_i \log p_i$ depends only on those masses
-* Analytic $h=\tfrac12\log(2\pi e \dataStd^2)$; the histogram tracks $h-\log\Delta$
+* Analytic $h=\tfrac12\log(2\pi e \dataStd^2)$; the Riemann partition tracks $h-\log\Delta$
 }
 
-\speakernotes{Callback to the week-2 velocity histogram. Board $p_i\approx f\Delta$ once. The two numbers on the figure should agree; $h$ itself is smaller by $\log\Delta$ (and is negative if $\Delta$ is large). Nats throughout.}
+\speakernotes{Callback to the week-2 velocity histogram, then switch to the Riemann picture. Board $p_i\approx f\Delta$ once. The figure is the piecewise-constant midpoint approximation, not a sample histogram. The two numbers should agree; $h$ itself is smaller by $\log\Delta$ (and is negative if $\Delta$ is large). Nats throughout.}
 
 \subsection{Histograms as Riemann Sums}
 
@@ -36,19 +36,19 @@ H = -\sum_i f_i\Delta\log f_i - \log\Delta\sum_i f_i\Delta \approx h - \log\Delt
 \end{align}
 with both sums converging to integrals as $\Delta\to 0$.}
 
-\notes{If we sample isotropic three-dimensional velocities and histogram one Cartesian component with equal-width bins. The discrete Shannon entropy of the occupancy is
+\notes{Take one Cartesian component of an isotropic three-dimensional velocity and partition it with equal-width bins. The discrete Shannon entropy of the midpoint masses is
 \begin{align}
 H = -\sum_i p_i\log p_i,
 \qquad
-p_i = n_i/N.
+p_i\approx f(x_i)\Delta.
 \end{align}
-Note that empty bins don't contribute to the entropy. For a smooth density and a fine equal-width partition, $p_i\approx f(x_i)\Delta$ and
+(Empirical occupancy $n_i/N$ estimates the same masses.) For a smooth density and a fine equal-width partition,
 \begin{align}
 H \approx h - \log \Delta,
 \qquad
 h = \tfrac12\log(2\pi e\dataStd^2).
 \end{align}
-The figure below reports both numbers. Note that they agree up to sampling and tail truncation. From this we can see that the differential entropy, $h$, is the $\Delta$-independent remainder. It is not the entropy of the histogram.}
+The figure below is the piecewise-constant midpoint approximation of $f$, not a sample histogram. Both numbers agree up to tail truncation. The differential entropy $h$ is the $\Delta$-independent remainder. It is not the entropy of the partition.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -57,15 +57,17 @@ import mlai}
 \plotcode{vx_lim = 4.0
 edges = np.linspace(-vx_lim, vx_lim, n_histogram_bins + 1)
 delta = edges[1] - edges[0]
-counts, _ = np.histogram(velocity_x, bins=edges)
-H = discrete_entropy(counts)
+widths = np.diff(edges)
+mids = bin_midpoints(edges)
+f_mids = gaussian_pdf(mids, velocity_sigma)
+p = riemann_masses(f_mids, widths)
+H = discrete_entropy_from_masses(p)
 h = gaussian_differential_entropy(velocity_sigma)
 xs = np.linspace(-vx_lim, vx_lim, 400)
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
-ax.hist(velocity_x, bins=edges, density=True, color='#4C72B0', alpha=0.6,
-        label='equal-$\\Delta v$ histogram')
-ax.plot(xs, np.exp(-0.5 * xs**2 / velocity_sigma**2)
-        / np.sqrt(2.0 * np.pi * velocity_sigma**2),
+ax.bar(edges[:-1], f_mids, width=widths, align='edge', color='#4C72B0',
+       alpha=0.6, label='midpoint Riemann $f$')
+ax.plot(xs, gaussian_pdf(xs, velocity_sigma),
         color='#C44E52', lw=2, label='$\\mathcal{N}(0,\\sigma^2)$')
 ax.set_xlim(-vx_lim, vx_lim)
 ax.set_xlabel('$v_x$')
@@ -80,8 +82,8 @@ ax.spines['right'].set_visible(False)
 mlai.write_figure('gaussian-histogram-discrete-entropy.svg',
                   directory='\writeDiagramsDir/physics')}
 
-\newslide{Histograms as Riemann Summs}
+\newslide{Histograms as Riemann Sums}
 
-\figure{\includediagram{\diagramsDir/physics/gaussian-histogram-discrete-entropy}{60%}}{Equal-width histogram of one Cartesian velocity component. Discrete $H$ matches $h-\log\Delta$; $h$ itself is the remainder after the bin-width term is subtracted.}{gaussian-histogram-discrete-entropy}
+\figure{\includediagram{\diagramsDir/physics/gaussian-histogram-discrete-entropy}{60%}}{Equal-width midpoint Riemann approximation of a Gaussian velocity component. Discrete $H$ matches $h-\log\Delta$; $h$ itself is the remainder after the bin-width term is subtracted.}{gaussian-histogram-discrete-entropy}
 
 \endif

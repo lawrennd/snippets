@@ -15,9 +15,9 @@
 * Why is this number not the Gaussian's $h$?
 }
 
-\speakernotes{Overlay the Maxwell curve on an equal-$\Delta s$ histogram of the same 3D sample. Read both numbers. The Gaussian $h$ was for $v_x$; this $h$ is for $s$. Different variable *and* different Lebesgue measure. Leave the Jacobian for the next snippet.}
+\speakernotes{Overlay the Maxwell curve on equal-$\Delta s$ midpoint Riemann rectangles. Read both numbers. The Gaussian $h$ was for $v_x$; this $h$ is for $s$. Different variable *and* different Lebesgue measure. Leave the Jacobian for the next snippet.}
 
-\notes{The same isotropic Gaussian sample has speed $s=|\mathbf{v}|$ with density
+\notes{The same isotropic Gaussian law has speed $s=|\mathbf{v}|$ with density
 \begin{align}
 f(s)
   = 4\pi s^2 \bigl(2\pi\dataStd^2\bigr)^{-3/2}
@@ -33,7 +33,7 @@ where $\gamma$ is Euler's constant. A single Cartesian component has $h(v_x)=\tf
 \begin{align}
 h(\mathbf{v})=h(s)+\log 4\pi+\mathbb{E}[\log s^2].
 \end{align}
-The $\mathbb{E}[\log s^2]$ term is the Jacobian. The $\log 4\pi$ term is the entropy of *direction*, which the speed map throws away --- a grouping, not a change of measure. An equal-$\Delta s$ histogram of the sampled speeds tracks $h(s)-\log\Delta s$, just as the Gaussian histogram tracked $h(v_x)-\log\Delta v$.}
+The $\mathbb{E}[\log s^2]$ term is the Jacobian. The $\log 4\pi$ term is the entropy of *direction*, which the speed map throws away --- a grouping, not a change of measure. An equal-$\Delta s$ midpoint Riemann partition of $f(s)$ tracks $h(s)-\log\Delta s$, just as the Gaussian partition tracked $h(v_x)-\log\Delta v$.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot
@@ -42,15 +42,18 @@ import mlai}
 \plotcode{s_max = speed_range_max(speed)
 edges = equal_delta_speed_edges(s_max, n_histogram_bins)
 delta = edges[1] - edges[0]
-counts, _ = np.histogram(speed, bins=edges)
-H = discrete_entropy(counts)
+widths = np.diff(edges)
+mids = bin_midpoints(edges)
+f_mids = maxwell_speed_pdf(mids, velocity_sigma)
+p = riemann_masses(f_mids, widths)
+H = discrete_entropy_from_masses(p)
 h = maxwell_speed_differential_entropy(velocity_sigma)
 h_vx = gaussian_differential_entropy(velocity_sigma)
 ss = np.linspace(1e-3, s_max, 400)
 
 fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
-ax.hist(speed, bins=edges, density=True, color='#4C72B0', alpha=0.6,
-        label='equal-$\\Delta s$ histogram')
+ax.bar(edges[:-1], f_mids, width=widths, align='edge', color='#4C72B0',
+       alpha=0.6, label='midpoint Riemann $f$')
 ax.plot(ss, maxwell_speed_pdf(ss, velocity_sigma),
         color='#C44E52', lw=2, label='Maxwell speed law')
 ax.set_xlim(0.0, s_max)
@@ -69,6 +72,6 @@ mlai.write_figure('maxwell-speed-histogram-entropy.svg',
 
 \newslide{Entropy of the Maxwell Speed Law}
 
-\figure{\includediagram{\diagramsDir/physics/maxwell-speed-histogram-entropy}{80%}}{Equal-width histogram of speed from the same 3D Gaussian sample. Discrete $H$ tracks $h(s)-\log\Delta$. The Maxwell $h(s)$ is not the Gaussian $h(v_x)$.}{maxwell-speed-histogram-entropy}
+\figure{\includediagram{\diagramsDir/physics/maxwell-speed-histogram-entropy}{80%}}{Equal-width midpoint Riemann approximation of Maxwell speed. Discrete $H$ tracks $h(s)-\log\Delta$. The Maxwell $h(s)$ is not the Gaussian $h(v_x)$.}{maxwell-speed-histogram-entropy}
 
 \endif
