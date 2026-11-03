@@ -8,9 +8,11 @@
 \notes{For an in-class test or timed exercise, insert a full-bleed
 countdown slide with the lamd macro `classtimer`, passing the duration
 as its argument. Examples: ten minutes as `10:00`, fifteen minutes as
-`900` seconds, or one and a half hours as `1:30:00`. An optional second
-argument sets the on-timer label (for example `Quiz 2`) so the heading
-stays readable on the dark background.}
+`900` seconds, or one and a half hours as `1:30:00`. Use
+`classtimertitled` when the countdown needs an on-timer label (for
+example `Quiz 2`) so the heading stays readable on the dark background.
+GPP cannot overload `classtimer` by arity, so the titled form is a
+separate macro.}
 
 \notes{On HTML slides the timer fills the viewport with Start,
 Pause/Resume and Reset controls, and flashes when time is up. Arrow keys
@@ -21,7 +23,7 @@ placeholder naming the duration. The page is served from
 
 \slides{
 * Full-bleed countdown for class tests
-* `\classtimer{10:00}` or `\classtimer{10:00}{Quiz 2}`
+* `\classtimer{10:00}` or `\classtimertitled{10:00}{Quiz 2}`
 * Space starts/pauses; arrows still move the deck
 }
 
