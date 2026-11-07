@@ -5,7 +5,7 @@
 
 \subsection{A Compartment Model of the Demon}
 
-\slides{Draw the box as compartments, not as one fluent Maxwellian.}
+\slides{The box as compartments, not as one fluent Maxwellian.}
 
 \slidesincremental{
 * Left bulk: roughly local equilibrium at a cold $T_L$
@@ -14,9 +14,9 @@
 * Optional fourth: the gate itself (the velocity rule)
 }
 
-\speakernotes{As taught: three compartments, maybe four. The bulks are far enough from the membrane that collisions restore a Maxwellian; the band at the gate is where the sorting rule acts. Do not resolve the demon here --- name the bookkeeping Worksheet 3 will press.}
+\speakernotes{Three compartments, maybe four. The bulks are far enough from the membrane that collisions restore a Maxwellian; the band at the gate is where the sorting rule acts. We do not resolve the demon here: Worksheet 3 presses the particle-flux versus energy-flux bookkeeping.}
 
-\notes{Maxwell's sentence is a selective membrane. The useful first cut for Worksheet 3 is to *compartmentalise* that picture. Treat each bulk --- left of the gate, and right of the gate --- as a region that is close to local equilibrium at its own temperature, provided one stays a mean free path or more away from the membrane. Between those bulks sits a kinetic layer where the velocity rule continually removes hot particles one way and cold particles the other. That layer is not a Maxwellian. Counting the membrane itself as a fourth compartment is optional: it is the place where the microscopic gate rule lives. Compartmentalisation here is coarse-graining --- assigning a legal description to each region. The transition across the gate is the microscopic detailed balance one then tries to write. The two ledgers that follow ask whether particle flux and energy flux can both close under those descriptions.}
+\notes{Maxwell's sentence is a selective membrane. The useful first cut for Worksheet 3 is to *compartmentalise* that picture. Treat each bulk (left of the gate, and right of the gate) as a region that is close to local equilibrium at its own temperature, provided one stays a mean free path or more away from the membrane. Between those bulks sits a kinetic layer where the velocity rule continually removes hot particles one way and cold particles the other. That layer is not a Maxwellian. Counting the membrane itself as a fourth compartment is optional: it is the place where the microscopic gate rule lives. Compartmentalisation here is coarse-graining (assigning a legal description to each region). The transition across the gate is the microscopic detailed balance one then tries to write. The two ledgers that follow ask whether particle flux and energy flux can both close under those descriptions.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches

@@ -15,8 +15,7 @@
 * Concentric rings: shell circumference grows as $s$ --- more cells at larger speed
 }
 
-\speakernotes{Board this before the 3D histograms if a student asks why speed peaks away from zero. Point at a ring: more grid cells sit at larger $s$, so even an isotropic Gaussian piles probability away from the origin once you bin by speed. Two dimensions is enough for the geometry; three dimensions replaces rings by spherical shells ($s^2$).}
-
+\speakernotes{If a student asks why speed peaks away from zero, this figure is the answer before the 3D histograms. A ring at larger $s$ holds more grid cells, so even an isotropic Gaussian piles probability away from the origin once you bin by speed. Two dimensions is enough for the geometry; three dimensions replaces rings by spherical shells ($s^2$).}
 \notes{Harry's question --- why does the speed histogram peak away from zero when each Cartesian component peaks at zero? --- is answered by a change of variables in velocity space, not by folding alone. Draw the plane of two components $(v_x,v_y)$. An isotropic Gaussian is a circular cloud centred at the origin. Partition that plane with an equal-$\Delta v$ grid: every square has the same area. Now draw concentric circles of radius $s=|\mathbf{v}|$. The ring between $s$ and $s+\Delta s$ contains more and more grid cells as $s$ grows, because its circumference is $2\pi s$. Counting samples by which ring they fall in therefore weights larger speeds more heavily than the Cartesian grid does. That circumferential factor is the two-dimensional shell volume. In three dimensions the same geometry becomes a spherical shell of area $4\pi s^2$, which is the $s^2$ in the Maxwell speed law. Absolute value alone (the one-dimensional fold) never moves the mode; the shell volume does.}
 
 \setupplotcode{import matplotlib.pyplot as plt
