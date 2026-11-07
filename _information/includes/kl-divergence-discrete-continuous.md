@@ -23,9 +23,9 @@
 * Extra surprise when $q$ stands in for $p$ — not a metric, but a directed cost
 }
 
-\speakernotes{LO8 setup. Use $\KL{p}{q}$ throughout. Physics synonym: relative entropy. Board: $\KL{p}{q}\neq\KL{q}{p}$. Jaynes die week 5 minimised $\KL{p}{r}$ without naming it. Week 7: $m$-projection.}
+\speakernotes{Week 5 KL arc, step (4). Use $\KL{p}{q}$ throughout. Physics synonym: relative entropy. Asymmetry: $\KL{p}{q}\neq\KL{q}{p}$ — not a metric. MaxEnt after the break maximises $H$ or, equivalently, minimises $\KL{\cdot}{m}$. Week 7: $m$-projection.}
 
-\notes{KL divergence $\KL{\cdot}{\cdot}$ measures information lost when $q$ is used instead of $p$. It is non-negative in both discrete and continuous settings (with common support). Unlike Shannon entropy, it is defined relative to a reference. MaxEnt and $m$-projections minimise $\KL{\cdot}{r}$; that is why week 4's die optimisation used $\sum_i p_i\log(p_i/r_i)$.}
+\notes{KL divergence $\KL{\cdot}{\cdot}$ measures information lost when $q$ is used instead of $p$. It is non-negative in both discrete and continuous settings (with common support). Unlike Shannon entropy, it is defined relative to a reference. Overlapping coarse-graining already wrote mutual information as $\KL{p(x,i)}{p(x)p(i)}$. MaxEnt and $m$-projections minimise $\KL{\cdot}{r}$ to a reference; that is the continuous reading after the break.}
 
 \newslide{Differential Entropy Is a Different Object}
 
