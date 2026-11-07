@@ -10,6 +10,7 @@
 \include{_information/includes/information-game-guessing.md}
 \include{_information/includes/mackay-weighing-problem.md}
 \include{_information/includes/die-coarse-graining.md}
+\include{_information/includes/grouping-partition-exclusive.md}
 \include{_information/includes/entropy-grouping-composition.md}
 \include{_information/includes/grouping-as-macrostate.md}
 

@@ -15,7 +15,7 @@
 * The nonzero mode is geometry, not folding
 }
 
-\speakernotes{Side by side with the 1D pair still in mind. Left mode at zero; right mode at $\sigma\sqrt{2}$. Point at the $s^2$: that is the spherical shell in velocity space. Absolute value alone did not move the peak; the Jacobian does.}
+\speakernotes{Side by side with the 1D pair and the 2D grid-and-rings figure still in mind. Left mode at zero; right mode at $\sigma\sqrt{2}$. Point at the $s^2$: that is the spherical shell in velocity space --- the three-dimensional version of the concentric rings just drawn. Absolute value alone did not move the peak; the Jacobian does.}
 
 \notes{Keep the same isotropic three-dimensional sample. One Cartesian marginal is still Gaussian and peaks at the origin. Speed $s=|\mathbf{v}|$ has density
 \begin{align}
@@ -23,7 +23,7 @@ f(s)
   = \sqrt{\frac{2}{\pi}}\,\frac{s^2}{\dataStd^3}\,e^{-s^2/2\dataStd^2},
   \qquad s\ge 0.
 \end{align}
-The factor $s^2$ is the surface area of a sphere of radius $s$ in velocity space. Maximising $f(s)$ gives the most probable speed
+The factor $s^2$ is the surface area of a sphere of radius $s$ in velocity space --- the three-dimensional upgrade of the circumferential $s$ that the concentric rings made visible in two dimensions. Maximising $f(s)$ gives the most probable speed
 \begin{align}
 s_{\mathrm{mp}} = \dataStd\sqrt{2}.
 \end{align}

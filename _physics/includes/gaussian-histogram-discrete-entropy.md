@@ -15,7 +15,7 @@
 * Analytic $h=\tfrac12\log(2\pi e \dataStd^2)$; the Riemann partition tracks $h-\log\Delta$
 }
 
-\speakernotes{Callback to the week-2 velocity histogram, then switch to the Riemann picture. Board $p_i\approx f\Delta$ once. The figure is the piecewise-constant midpoint approximation, not a sample histogram. The two numbers should agree; $h$ itself is smaller by $\log\Delta$ (and is negative if $\Delta$ is large). Nats throughout.}
+\speakernotes{As taught: open from Harry's ``why isn't the speed peak at zero?'' and the anthropomorphic bridge, then this Riemann picture. Board $p_i\approx f\Delta$ once. The figure is the piecewise-constant midpoint approximation, not a sample histogram. The two numbers should agree; $h$ itself is smaller by $\log\Delta$ (and is negative if $\Delta$ is large). Nats throughout. The shell-geometry figure follows the 1D fold.}
 
 \subsection{Histograms as Riemann Sums}
 
