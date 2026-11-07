@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Detailed Balance Across the Membrane}
+\subsection{Flux Balance Across the Membrane}
 
 \newslide{What Does the Membrane Do?}
 
@@ -17,11 +17,11 @@
 
 \speakernotes{Match the canvas: red = hot, blue = cold, green strip = membrane. Threshold in the sim is $v_\star=3$ with initial speed $5$.}
 
-\notes{In the simulation the membrane does not move. A ball on the left is allowed through only when its speed exceeds $v_\star$; a ball on the right is allowed through only when its speed is at most $v_\star$. Between crossings, elastic collisions redistribute energy, so a ball that is cold now can become hot later and then cross. The question is not whether sorting begins --- it does --- but where the *net* particle and energy flows settle. The compartment schematic above is the bookkeeping: each bulk hopes to be locally Maxwellian; the kinetic layer at the gate is where that hope fails.}
+\notes{In the simulation the membrane does not move. A ball on the left is allowed through only when its speed exceeds $v_\star$; a ball on the right is allowed through only when its speed is at most $v_\star$. Between crossings, elastic collisions redistribute energy, so a ball that is cold now can become hot later and then cross. The question is not whether sorting begins --- it does --- but where the *net* particle and energy flows settle. The compartment schematic above is the bookkeeping: each bulk hopes to be locally Maxwellian; the kinetic layer at the gate is where that hope fails. Setting $\Phi^{\mathrm{hot}}(n_L,\beta_L)=\Phi^{\mathrm{cold}}(n_R,\beta_R)$ is *flux balance* (stationarity of number flux), not detailed balance: detailed balance would require each microscopic transition to be balanced by its reverse, and the velocity-selective gate is exactly what breaks that.}
 
 \newslide{Steady State $=$ Balanced Fluxes}
 
-\slides{In a steady state the number of balls leaving left equals the number leaving right — detailed balance of membrane crossings.}
+\slides{In a steady state the number of balls leaving left equals the number leaving right — flux balance of membrane crossings.}
 
 \slidesincremental{
 * Assume each side thermalises to a 2D Maxwellian at its own $T_L$, $T_R$
@@ -43,11 +43,11 @@ with mean kinetic energy $k_B T$ per ball (two quadratic degrees of freedom). Th
 \Phi^{\mathrm{cold}}(n,\beta)
 &= \Phi_{\mathrm{tot}}(n,\beta)-\Phi^{\mathrm{hot}}(n,\beta).
 \end{align}
-Particle-number detailed balance across the membrane is
+Particle-number flux balance (stationarity of the number ledger) across the membrane is
 $$
 \Phi^{\mathrm{hot}}(n_L,\beta_L)=\Phi^{\mathrm{cold}}(n_R,\beta_R).
 $$
-Total ball number $N=N_L+N_R$ and total energy $E=N_L k_B T_L+N_R k_B T_R$ are conserved. For the simulation parameters ($v_\star=3$, mean kinetic energy $12.5$ in code units, equal populations $N_L=N_R=N/2$ with $N=39$) this fixes the temperatures uniquely. The equal-$N$ slice is a cut, not the whole story: a search over $N_L/N$ (with $T_L<T_R$) finds no Maxwellian pair that balances both number and energy flux.}
+Total ball number $N=N_L+N_R$ and total energy $E=N_L k_B T_L+N_R k_B T_R$ are conserved. For the simulation parameters ($v_\star=3$, mean kinetic energy $12.5$ in code units, equal populations $N_L=N_R=N/2$ with even $N=40$) this fixes the temperatures uniquely. Continuum bookkeeping; $N$ need not match the discrete canvas. The equal-$N$ slice is a cut, not the whole story: a search over $N_L/N$ (with $T_L<T_R$) finds no Maxwellian pair that balances both number and energy flux.}
 
 \setupplotcode{import numpy as np
 from scipy.special import erfc
@@ -69,7 +69,7 @@ def side_entropy(N, beta, area=1.0):
     # Position (Stirling) + 2D Maxwellian differential entropy; k_B = 1
     return N * (2.0 + np.log(area / N) - np.log(beta / (2 * np.pi)))
 
-N = 39.0
+N = 40.0
 E_tot = N * 12.5
 v_star = 3.0
 N_L = N_R = N / 2.0
@@ -135,7 +135,7 @@ fig.tight_layout()
 mlai.write_figure('maxwell-membrane-detailed-balance.svg', directory='\writeDiagramsDir/physics')
 print(f'T_L={T_L:.3f}, T_R={T_R:.3f}, S0={S0:.2f}, S_ss={S_ss:.2f}, dS={delta_S:.2f}')}
 
-\figure{\includediagram{\diagramsDir/physics/maxwell-membrane-detailed-balance}{85%}}{Left: temperatures on each side of the selective membrane from particle-flux detailed balance at equal populations (simulation energy budget). Right: entropy of the two-Maxwellian state minus the single-temperature equilibrium. The red point is the simulation threshold $v_\star=3$.}{maxwell-membrane-detailed-balance}
+\figure{\includediagram{\diagramsDir/physics/maxwell-membrane-detailed-balance}{85%}}{Left: temperatures on each side of the selective membrane from particle-flux balance at equal populations (simulation energy budget). Right: entropy of the two-Maxwellian state minus the single-temperature equilibrium. The red point is the simulation threshold $v_\star=3$.}{maxwell-membrane-detailed-balance}
 
 \newslide{Temperatures Split; Entropy Falls}
 
@@ -143,19 +143,19 @@ print(f'T_L={T_L:.3f}, T_R={T_R:.3f}, S0={S0:.2f}, S_ss={S_ss:.2f}, dS={delta_S:
 
 \slidesincremental{
 * Unconstrained equilibrium: one $T_0=\langle\mathrm{KE}\rangle$, entropy $S_0$
-* Membrane steady state: $S_{\mathrm{ss}}<S_0$ (here $\Delta S\approx -24$ nats at $N=39$)
+* Membrane steady state: $S_{\mathrm{ss}}<S_0$ (here $\Delta S\approx -25$ nats at $N=40$)
 * The gas alone looks like a second-law violation
 }
 
 \speakernotes{Live the numbers from the plotcode printout. Canvas entropy is a coarse velocity-bin proxy; this $S$ is the ideal-gas Shannon entropy of two Maxwellians.}
 
-\notes{With $k_B=1$, equal populations, $N=39$, $v_\star=3$ and total energy matching the simulation's mean kinetic energy $12.5$, particle-flux detailed balance gives $T_L\approx 1.94$ and $T_R\approx 23.1$. Those temperatures are the equal-$N$ slice. The ideal-gas Shannon entropy of a 2D Maxwellian chamber (position Stirling term plus velocity differential entropy)
+\notes{With $k_B=1$, equal populations, $N=40$, $v_\star=3$ and total energy matching the simulation's mean kinetic energy $12.5$, particle-number flux balance gives $T_L\approx 1.94$ and $T_R\approx 23.1$. Those temperatures are the equal-$N$ slice. The ideal-gas Shannon entropy of a 2D Maxwellian chamber (position Stirling term plus velocity differential entropy)
 $$
 S(N,\beta)=N\left[2+\log\frac{A}{N}-\log\frac{\beta}{2\pi}\right]
 $$
-falls by about $24$ nats relative to the single-temperature state at the same $N$ and $E$ --- about $-0.63$ nats per ball. That drop is the thermodynamic content of the sorting you see on the canvas: hot accumulates on the right, cold on the left, and the joint distribution over $(\mathrm{side},\mathbf{v})$ is more concentrated than the unconstrained Maxwellian.
+falls by about $25$ nats relative to the single-temperature state at the same $N$ and $E$ --- about $-0.63$ nats per ball. That drop is the thermodynamic content of the sorting you see on the canvas: hot accumulates on the right, cold on the left, and the joint distribution over $(\mathrm{side},\mathbf{v})$ is more concentrated than the unconstrained Maxwellian.
 
-The compartments, kinetic layers, and two-ledger closure are this course's construction, not a result in Leff and Rex. Worksheet 3 builds on them.}
+The compartments, kinetic layers, and two-ledger closure are this course's construction, not a result in Leff and Rex [@Leff-maxwell03]. Worksheet 3 builds on them.}
 
 \newslide{Maxwellians Are Only an Approximation}
 
@@ -186,6 +186,6 @@ The canvas can *look* settled for a second reason that is an artefact, not therm
 
 \speakernotes{Bridge forward. Ellis locates dissipation at measurement/gating; information ledger locates it at stored outcomes and erasure. Same Clausius, different bookkeeping.}
 
-\notes{The selective membrane is Maxwell's demon written as a dynamical rule. The detailed-balance calculation shows that the rule really does drive the gas toward a lower-entropy steady state. Restoring Clausius requires putting the membrane — or the memory that controls an equivalent trap door — on the thermodynamic ledger. Szilard (1929) put the cost in *measurement* [@Szilard-intelligenter29]. Landauer (1961) priced *erasure* but did not apply it to the demon [@Landauer-irreversibility61]. Bennett (1982) made the erasure resolution and argued that measurement can be reversible --- not one continuous story [@Bennett-thermodynamics82]. Earman and Norton (1998--99) is one of the dissenting books. The simulation's "velocity-bin entropy" is a coarse proxy for the same story: as sorting proceeds, the displayed histogram entropy typically drops relative to the unsorted gas.}
+\notes{The selective membrane is Maxwell's demon written as a dynamical rule. The flux-balance calculation shows that the rule really does drive the gas toward a lower-entropy steady state. Restoring Clausius requires putting the membrane — or the memory that controls an equivalent trap door — on the thermodynamic ledger. Szilard (1929) put the cost in *measurement* [@Szilard-intelligenter29]. Landauer (1961) priced *erasure* but did not apply it to the demon [@Landauer-irreversibility61]. Bennett (1982) made the erasure resolution and argued that measurement can be reversible --- not one continuous story [@Bennett-thermodynamics82]. Earman and Norton (1998--99) dissent in a two-part article [@Earman-exorcist98; @Earman-exorcist99]. The simulation's "velocity-bin entropy" is a coarse proxy for the same story: as sorting proceeds, the displayed histogram entropy typically drops relative to the unsorted gas.}
 
 \endif

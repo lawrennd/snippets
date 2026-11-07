@@ -24,7 +24,7 @@ or equivalently maximising $h_m(f)=-D(f\|m)$, subject to mean kinetic energy $\l
 \begin{align}
 f(\mathbf{v})\propto m(\mathbf{v})\,e^{-\beta E(\mathbf{v})}.
 \end{align}
-If $m$ is Lebesgue on a Cartesian component $v_x$, the MaxEnt density is Gaussian. If $m$ is Lebesgue on three-dimensional velocity space, then in the speed coordinate the reference density is proportional to the shell volume $v^2$, and MaxEnt recovers the Maxwell--Boltzmann speed distribution. The $v^2$ factor is the density of states. Declaring $m$ makes the choice of ``equally likely a priori'' explicit instead of hiding it in the coordinate chart.}
+If $m$ is Lebesgue on a Cartesian component $v_x$, the MaxEnt density is Gaussian. If $m$ is Lebesgue on three-dimensional velocity space, then in the speed coordinate the reference density is proportional to the shell volume $v^2$, and MaxEnt recovers the Maxwell--Boltzmann speed distribution. The $v^2$ factor is the density of states. Declaring $m$ makes the choice of "equally likely a priori" explicit instead of hiding it in the coordinate chart.}
 
 \newslide{Same Principle, Declared Prior}
 

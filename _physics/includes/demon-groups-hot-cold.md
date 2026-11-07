@@ -13,11 +13,11 @@
 * Local-equilibrium assumption: mixing inside each side is fast vs crossings
 }
 
-\speakernotes{Callback to the die: the demon pays attention to $H(w)$ over coarse velocity sets and hopes the within-group term stays near equilibrium. The detailed-balance calculation above already used that hypothesis.}
+\speakernotes{Callback to the die: the demon pays attention to $H(w)$ over coarse velocity sets and hopes the within-group term stays near equilibrium. The flux-balance calculation above already used that hypothesis.}
 
-\notes{Maxwell's sorting rule partitions velocity space into coarse sets --- ``hot enough to cross'' versus ``cold enough to cross'' --- and applies different gates to each set. That is exactly this lecture's grouping: a deterministic label $G=g(\mathbf{v})$ plus residual uncertainty inside each label. The membrane calculation assumed each chamber stays close to a Maxwellian at its own $T$ --- local equilibrium, timescale separation between collisions and crossings. When that fails, the true steady state is no longer a pair of perfect Maxwellians (tails deplete). Information engines and demons play on the tension between moving probability among groups ($H(w)$) and the within-group bath term $\sum w_i H(p_i)$ that thermodynamics prices.
+\notes{Maxwell's sorting rule partitions velocity space into coarse sets --- "hot enough to cross" versus "cold enough to cross" --- and applies different gates to each set. That is exactly this lecture's grouping: a deterministic label $G=g(\mathbf{v})$ plus residual uncertainty inside each label. The membrane calculation assumed each chamber stays close to a Maxwellian at its own $T$ --- local equilibrium, timescale separation between collisions and crossings. When that fails, the true steady state is no longer a pair of perfect Maxwellians (tails deplete). Information engines and demons play on the tension between moving probability among groups ($H(w)$) and the within-group bath term $\sum w_i H(p_i)$ that thermodynamics prices.
 
-Compartmentalisation is the coarse-graining move: assign a legal description to each bulk and to the kinetic layer. The transition at the gate is then a microscopic detailed-balance question --- number flux and energy flux --- not a single fluent story about ``the demon.'' The compartments, kinetic layers, and two-ledger closure are this course's construction, not a result in Leff and Rex. Worksheet 3 builds on them. I will not mark you wrong for disagreeing with the bookkeeping; I will mark you wrong for treating it as a textbook theorem.}
+Compartmentalisation is the coarse-graining move: assign a legal description to each bulk and to the kinetic layer. The transition at the gate is then a question of number flux and energy flux --- not a single fluent story about "the demon." The compartments, kinetic layers, and two-ledger closure are this course's construction, not a result in Leff and Rex [@Leff-maxwell03]. Worksheet 3 builds on them. I will not mark you wrong for disagreeing with the bookkeeping; I will mark you wrong for treating it as a textbook theorem.}
 
 \newslide{Lumpability (Pointer)}
 
@@ -29,6 +29,6 @@ Compartmentalisation is the coarse-graining move: assign a legal description to 
 * Demon membrane: approximately lumpable only while local equilibrium holds
 }
 
-\notes{Kemeny--Snell lumpability is the precise condition under which a partition of a Markov chain induces another Markov chain on the groups. When it fails, the macro description needs memory of how the system entered the group. Name the issue; do not develop projection-operator formalism here.}
+\notes{Kemeny--Snell lumpability is the precise condition under which a partition of a Markov chain induces another Markov chain on the groups [@Kemeny-finite60]. When it fails, the macro description needs memory of how the system entered the group. Name the issue; do not develop projection-operator formalism here.}
 
 \endif

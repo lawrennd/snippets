@@ -15,7 +15,7 @@
 * Why is this number not the Gaussian's $h$?
 }
 
-\speakernotes{Overlay the Maxwell curve on equal-$\Delta s$ midpoint Riemann rectangles. Read both numbers. The Gaussian $h$ was for $v_x$; this $h$ is for $s$. Different variable *and* different Lebesgue measure. Leave the Jacobian for the next snippet.}
+\speakernotes{Overlay the Maxwell curve on equal-$\Delta s$ midpoint Riemann rectangles. Read both numbers. Headline the three-way split: different variable, grouping (direction), measure (Jacobian). Leave the pushforward density for the next snippets.}
 
 \notes{The same isotropic Gaussian law has speed $s=|\mathbf{v}|$ with density
 \begin{align}
@@ -29,11 +29,11 @@ That is the Maxwell speed law. Its differential entropy is
 \begin{align}
 h(s)=\log\bigl(\dataStd\sqrt{2\pi}\bigr)+\gamma-\tfrac12,
 \end{align}
-where $\gamma$ is Euler's constant. A single Cartesian component has $h(v_x)=\tfrac12\log(2\pi e\dataStd^2)$. For $\dataStd=1$ these are approximately $0.996$ and $1.419$ nats. The like-for-like comparison is three-dimensional velocity against speed: $h(\mathbf{v})=3h(v_x)\approx 4.257$ nats, and
+where $\gamma$ is Euler's constant. A single Cartesian component has $h(v_x)=\tfrac12\log(2\pi e\dataStd^2)$. For $\dataStd=1$ these are approximately $0.996$ and $1.419$ nats --- but that comparison mixes a 1D marginal with a 3D-derived quantity. The like-for-like comparison is three-dimensional velocity against speed: $h(\mathbf{v})=3h(v_x)\approx 4.257$ nats, and
 \begin{align}
 h(\mathbf{v})=h(s)+\log 4\pi+\mathbb{E}[\log s^2].
 \end{align}
-The $\mathbb{E}[\log s^2]$ term is the Jacobian. The $\log 4\pi$ term is the entropy of *direction*, which the speed map throws away --- a grouping, not a change of measure. An equal-$\Delta s$ midpoint Riemann partition of $f(s)$ tracks $h(s)-\log\Delta s$, just as the Gaussian partition tracked $h(v_x)-\log\Delta v$.}
+Three things have changed at once. The *variable* is now $s$ rather than $\mathbf{v}$ (or $v_x$). The $\log 4\pi$ term is the entropy of *direction*, which the speed map throws away --- a grouping. The $\mathbb{E}[\log s^2]$ term is the Jacobian --- a change of measure. Jaynes' reference density $m$ is responsible for only that last piece. An equal-$\Delta s$ midpoint Riemann partition of $f(s)$ tracks $h(s)-\log\Delta s$, just as the Gaussian partition tracked $h(v_x)-\log\Delta v$.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot

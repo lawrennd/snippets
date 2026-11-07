@@ -17,12 +17,7 @@
 
 \speakernotes{Side by side: same $f$, same $s_{\max}$, same number of bins. Only the edge placement changes. Midpoint Riemann rectangles; two values of $H$. Uniform-in-$s$ is Lebesgue on the speed axis; equal-volume is Lebesgue in 3D, written in $s$.}
 
-\notes{The previous figure kept one partition and only relabelled the axis, so $H$ could not change. Now we *rebin*. Take the same Maxwell density and the same number of cells, and compare
-\begin{enumerate}
-\item the pushed equal-volume partition (equal width in $u=s^3$),
-\item a uniform partition of $[0,s_{\max}]$ (equal $\Delta s$).
-\end{enumerate}
-These are different collections of midpoint masses $\{p_i\}$, so they have different discrete entropies. Uniform bins in $s$ are Lebesgue measure on the speed axis. Equal-volume bins are Lebesgue measure on $\mathbb{R}^3$, expressed in the speed coordinate. Choosing a discretisation is choosing a measure.}
+\notes{The previous figure kept one partition and only relabelled the axis, so $H$ could not change. Now we *rebin*. Take the same Maxwell density and the same number of cells, and compare two partitions: (i) the pushed equal-volume partition (equal width in $u=s^3$); (ii) a uniform partition of $[0,s_{\max}]$ (equal $\Delta s$). These are different collections of midpoint masses $\{p_i\}$, so they have different discrete entropies. Uniform bins in $s$ are Lebesgue measure on the speed axis. Equal-volume bins are Lebesgue measure on $\mathbb{R}^3$, expressed in the speed coordinate. Choosing a discretisation is choosing a measure.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot

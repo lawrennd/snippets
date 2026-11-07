@@ -33,13 +33,12 @@ h(s)-h(u)
 \end{align}
 That ratio $\Delta s_i/\Delta u_i$ is called the discrete Radon-Nikodym derivative of Lebesgue-on-speed with respect to Lebesgue-on-volume. In the continuum limit it becomes the Jacobian $1/(3s^2)$. Probability conservation $f_s(s)\,\mathrm{d}s = f_u(u)\,\mathrm{d}u$ is the same statement.
 
-The Maxwell speed density relative to three-dimensional Lebesgue is the shell factor $4\pi s^2$. Equivalently, the pushforward of Lebesgue measure on $\mathbb{R}^3$ has density $4\pi s^2$ in $s$:
+The pushforward of Lebesgue measure on $\mathbb{R}^3$ onto the speed coordinate has density $4\pi s^2$ with respect to $\mathrm{d}s$. Writing $f$ for the isotropic density on velocity space,
 \begin{align}
-f_s(s)\,\mathrm{d}s = f(\mathbf{v})\,\mathrm{d}^{3}v,
-\qquad
-\frac{\mathrm{d}^{3}v}{\mathrm{d}s} = 4\pi s^2.
+f_s(s)\,\mathrm{d}s
+  = f(\mathbf{v})\,4\pi s^2\,\mathrm{d}s.
 \end{align}
-The Gaussian $h(v_x)$ and the Maxwell $h(s)$ disagree because they are different coordinates *and* because each $h$ is taken against a different *undeclared* Lebesgue measure.}
+The Gaussian $h(v_x)$ and the Maxwell $h(s)$ disagree for three reasons at once: different variable, grouping of directions into shells, and a different undeclared reference measure. Only the last of these is Jaynes' $m$.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot

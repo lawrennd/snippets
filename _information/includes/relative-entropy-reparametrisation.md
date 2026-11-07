@@ -46,6 +46,6 @@ $$
 
 \speakernotes{This is the hinge for week 5 MaxEnt: maximising $h$ is maximising $-\KL{f}{m}$ for a forgotten $m$. Name Jaynes' limiting density of discrete points; do not digress into measure theory.}
 
-\notes{Differential entropy is KL divergence against a reference density $m$ that is usually left unwritten. Taking $m$ uniform (Lebesgue) in the coordinate $x$ recovers the textbook $h$. Jaynes' limiting density of discrete points is the same idea: the binning measure of the previous section, written as a density. Once $m$ is explicit, the Maxwell--Boltzmann story becomes: different choices of ``equally likely a priori'' yield different maximum-entropy distributions under the same energy constraint.}
+\notes{Differential entropy is KL divergence against a reference density $m$ that is usually left unwritten. Taking $m$ uniform (Lebesgue) in the coordinate $x$ recovers the textbook $h$. Jaynes' limiting density of discrete points is the same idea: the binning measure of the previous section, written as a density. Once $m$ is explicit, the Maxwell--Boltzmann story becomes: different choices of "equally likely a priori" yield different maximum-entropy distributions under the same energy constraint. Remember the three-way split from the speed map: variable, grouping, and measure --- $m$ is only the last.}
 
 \endif
