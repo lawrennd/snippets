@@ -19,7 +19,7 @@
 
 \notes{Discrete Shannon entropy depends only on the probability masses of a partition. Keep the cells and relabel the axis: the masses $\{p_i\}$ are unchanged, so $H$ is unchanged, while a density histogram $p_i/\Delta_i$ changes because the widths change.
 
-The Maxwell speed map $s=|\mathbf{v}|$ is not itself 1--1 --- equal Cartesian cubes that sit on one spherical shell are a *grouping*, and grouping drops entropy. The figure avoids that. Partition speed by *equal Cartesian volume*, i.e.\ equal-width bins in $u=s^3$. The map $u\mapsto s=u^{1/3}$ is strictly increasing on $s\ge 0$. Pushing the bin edges stretches them by
+The Maxwell speed map $s=|\mathbf{v}|$ is not itself 1--1 --- equal Cartesian cubes that sit on one spherical shell are a *grouping*, and grouping drops entropy. This figure does not rebin: the equal-$u$ cells are still spherical shells (directions remain grouped). What it avoids is *changing the partition*. Partition speed by *equal Cartesian volume*, i.e.\ equal-width bins in $u=s^3$. The map $u\mapsto s=u^{1/3}$ is strictly increasing on $s\ge 0$. Pushing the bin edges stretches them by
 \begin{align}
 \Delta s_i \approx \frac{1}{3s_i^2}\,\Delta u.
 \end{align}

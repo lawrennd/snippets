@@ -83,7 +83,7 @@ H(X\mid G_{\mathrm{six}})
 \end{align}
 Again $H(G_{\mathrm{six}})+H(X\mid G_{\mathrm{six}})=H(X)$. Note that "$\ge 4$?" on a fair die is *also* a balanced cut ($\{1,2,3\}$ vs $\{4,5,6\}$), so it *is* one bit --- the unbalanced example has to be chosen carefully.
 
-Nothing about the cube stops you asking "odd?" after "low?". The question can be asked; it cannot be *balanced* ($h_2(1/3)\approx 0.918$ bits). A Huffman strategy on the six faces needs $8/3\approx 2.667$ questions on average against $H=\log_2 6\approx 2.585$. The physical point about the *balance* is an instrument with a fixed alphabet. The die point is atoms that are not a power of two.}
+Nothing about the cube stops you asking "odd?" after "low?". The question can be asked; it cannot be *balanced* ($h_2(1/3)\approx 0.918$ bits). A Huffman strategy on the six faces needs $8/3\approx 2.667$ questions on average against $H=\log_2 6\approx 2.585$. The balance has a fixed ternary alphabet: each use returns one of three readings. The die has six faces that are not a power of two, so yes/no questions cannot hit $H$ exactly.}
 
 \newslide{Same Total, Different First Cut}
 

@@ -5,7 +5,9 @@
 
 \subsection{MacKay's Balance and Balls}
 
-\notes{David MacKay opens the compression half of *Information Theory, Inference, and Learning Algorithms* with a weighing puzzle, Exercise 4.1 [@MacKay-information03]. State the puzzle first. Do not yet say that the instrument is ternary. The information-game habit is to ask how we should proceed --- what we must name --- and then to try the instrument as if it had two readings, like a yes/no question. Keep the *mechanism* (what we put on the pans) on a different slide from the *maths* (how many bits that use can return). Only after that sequence do we notice that the balance has a third reading.}
+\notes{David MacKay opens the compression half of *Information Theory, Inference, and Learning Algorithms* with a weighing puzzle, Exercise 4.1 [@MacKay-information03]. The information-game habit is to ask how we should proceed --- what we must name --- and then to try the instrument as if it had two readings, like a yes/no question. Only after that sequence do we notice that the balance has a third reading.}
+
+\speakernotes{State the puzzle first. Do not yet say that the instrument is ternary. Keep the *mechanism* (what we put on the pans) on a different slide from the *maths* (how many bits that use can return).}
 
 \newslide{Twelve Balls, One Odd}
 
@@ -129,7 +131,7 @@ $$
 
 \notes{This is the sequence people often initially sketch on the board: 6 vs 6, then 3 vs 3. It is the right mechanism for a different puzzle --- twelve balls, one *heavier*. Hold that sequence, because this is where the mechanism starts departing from our assumptions.}
 
-\notes{Firstly, what are the possible outcomes for this 3 vs 3. What if we choose the pile that doesn't contain the odd ball?}
+\notes{Firstly, what are the possible outcomes for this 3 vs 3? What if we choose the pile that does not contain the odd ball?}
 
 \newslide{Mechanism: Three Left}
 
@@ -143,7 +145,7 @@ $$
 
 \speakernotes{Make them say the known ball out loud. Ask: how many bits do we get from 2 vs 2 now? Do not calculate before they see that the split of three remaining balls cannot be even.}
 
-\notes{OK, so that's revealed a flaw in our reasoning a balance actually has 3 outcomes.}
+\notes{OK, so that has revealed a flaw in our reasoning: a balance actually has three outcomes.}
 
 \subsection{Three Readings}
 
@@ -158,7 +160,7 @@ $$
 
 \speakernotes{Let them say the three readings. Then go straight to the new budget. Do not start the 4 vs 4 tree.}
 
-\notes{A two-pan balance has a ternary alphabet. The reading "level" is not an annoyance to be designed out; it is a symbol that can carry information. The first move of the two-outcome story, 6 vs 6, sets the probability of that symbol to zero: with exactly one odd ball among the twelve, the pans cannot balance. We spent a mechanism choice to turn a three-outcome device into a two-outcome device, and then paid further mechanism taxes (the known ball) to keep the third symbol from coming back.}
+\notes{A two-pan balance has a ternary alphabet. The reading "level" is not an annoyance to be designed out; it is a symbol that can carry information. The first move of the two-outcome story, 6 vs 6, sets the probability of that symbol to zero: with exactly one odd ball among the twelve, the pans cannot balance. We spent a mechanism choice to turn a three-outcome device into a two-outcome device, and then had to borrow a ball of known mass so that the three-ball endgame could still use the pans.}
 
 \newslide{Maths: Three Readings}
 
@@ -187,11 +189,19 @@ $$
 3^3 &= 27 \ge 24.
 \end{align*}
 $$
-Two weighings cannot suffice no matter how clever the groupings. Three weighings *can*: after naming the 24 hypotheses, three paths are left over ($27-24=3$). Those leftover paths are not a thirteenth ball --- $13\times 2=26$ still sits under $27$, but three weighings cannot identify an odd ball among thirteen without a known genuine. In bits,
+Two weighings cannot suffice no matter how clever the groupings. Three weighings *can* name the 24 hypotheses: after using 24 of the $3^3=27$ leaves, three paths are left over. Those leftovers are almost a thirteenth ball. The information bounds are
+$$
+\frac{3^n-3}{2}=12
+\quad\text{(ball and direction)},
+\qquad
+\frac{3^n-1}{2}=13
+\quad\text{(ball alone)}.
+$$
+With $n=3$, twenty-six directed hypotheses fit under twenty-seven leaves, so the *information* budget allows thirteen balls if you only need to name which one is odd. What the *mechanism* cannot always deliver is the direction for that thirteenth ball: if it is only ever left off the pans, it is never compared. The 26 fit under 27 on the information side; the mechanism cannot separate two of them. In bits,
 $$
 3\log_2 3 \approx 4.75 > \log_2 24 \approx 4.58.
 $$
-The gap is small. That is why the puzzle feels tight. It is the same comparison we already made with $\log_2 2$, with a larger per-use budget.}
+The gap is small. That is why the twelve-ball puzzle feels tight. It is the same comparison we already made with $\log_2 2$, with a larger per-use budget.}
 
 \newslide{Mechanism Must Collect $\log_2 3$}
 
@@ -203,7 +213,7 @@ The gap is small. That is why the puzzle feels tight. It is the same comparison 
 * Optimal play keeps the three readings as near equiprobable as possible
 }
 
-\notes{The first weighing that realises the ternary budget puts four against four and leaves four off. Level then means the odd ball is in the four left off; a tip couples a group of four with a direction, as 6 vs 6 did, but now the third symbol is alive. We do not give the rest of the tree. The design principle is the one already present in the information game: choose each measurement so that its outcomes are as nearly equiprobable as possible under the current posterior. That maximises expected information gain per weighing and is what makes the $3^3 \ge 24$ budget achievable in practice. Adding a known-normal ball, or arranging a weighing that can never balance, is the same kind of mechanism tax we already computed for $h_2(2/3)$.}
+\notes{The first weighing that realises the ternary budget puts four against four and leaves four off. Level then means the odd ball is in the four left off; a tip couples a group of four with a direction, as 6 vs 6 did, but now the third symbol is alive. We do not give the rest of the tree. The design principle is the one already present in the information game: choose each measurement so that its outcomes are as nearly equiprobable as possible under the current posterior. That maximises expected information gain per weighing and is what makes the $3^3 \ge 24$ budget achievable in practice. Adding a known-normal ball, or arranging a weighing that can never balance, spends mechanism capacity that the information budget was counting on.}
 
 \newslide{Doable in Three --- Strategy Deferred}
 
