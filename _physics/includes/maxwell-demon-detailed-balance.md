@@ -17,7 +17,7 @@
 
 \speakernotes{Match the canvas: red = hot, blue = cold, green strip = membrane. Threshold in the sim is $v_\star=3$ with initial speed $5$.}
 
-\notes{In the simulation the membrane does not move. A ball on the left is allowed through only when its speed exceeds $v_\star$; a ball on the right is allowed through only when its speed is at most $v_\star$. Between crossings, elastic collisions redistribute energy, so a ball that is cold now can become hot later and then cross. The question is not whether sorting begins — it does — but where the *net* particle and energy flows settle.}
+\notes{In the simulation the membrane does not move. A ball on the left is allowed through only when its speed exceeds $v_\star$; a ball on the right is allowed through only when its speed is at most $v_\star$. Between crossings, elastic collisions redistribute energy, so a ball that is cold now can become hot later and then cross. The question is not whether sorting begins --- it does --- but where the *net* particle and energy flows settle. The compartment schematic above is the bookkeeping: each bulk hopes to be locally Maxwellian; the kinetic layer at the gate is where that hope fails.}
 
 \newslide{Steady State $=$ Balanced Fluxes}
 
@@ -170,7 +170,9 @@ The compartments, kinetic layers, and two-ledger closure are this course's const
 
 \speakernotes{Do not oversell the numbers as exact NESS values. The point is the ledger: gas entropy down; cost elsewhere.}
 
-\notes{A Maxwellian is symmetric in a way the membrane is not. Conditioning on $v>v_\star$ selects a high-energy set; conditioning on $v\le v_\star$ selects a low-energy set. When the two *number* fluxes match, the *energy* fluxes generally do not. The true non-equilibrium steady state therefore cannot be a pair of perfect Maxwellians: the left hot tail is depleted by leakage, the right cold body is depleted by leakage the other way, and collisions continually refill those sets. The local-temperature calculation remains the right first cut — it predicts a cold left, a hot right, and a lower gas entropy — but the precise $(T_L,T_R)$ pair is an approximation to a non-Maxwellian steady state.}
+\notes{A Maxwellian is symmetric in a way the membrane is not. Conditioning on $v>v_\star$ selects a high-energy set; conditioning on $v\le v_\star$ selects a low-energy set. When the two *number* fluxes match, the *energy* fluxes generally do not. Equal number of crossings is not equal energy of crossings: the hot direction carries more energy per ball. That is the flaw in treating number balance alone as a stationary state. The true non-equilibrium steady state therefore cannot be a pair of perfect Maxwellians: the left hot tail is depleted by leakage, the right cold body is depleted by leakage the other way, and collisions continually refill those sets. The local-temperature calculation remains the right first cut --- it predicts a cold left, a hot right, and a lower gas entropy --- but the precise $(T_L,T_R)$ pair is an approximation to a non-Maxwellian steady state.
+
+The canvas can *look* settled for a second reason that is an artefact, not thermodynamics: a discrete-time billiard with finite resolution can stall, so fewer balls appear to move even when the continuous idealisation would keep exchanging. Treat apparent stationarity in the simulation as a prompt for the two-ledger question, not as proof that both ledgers have closed.}
 
 \newslide{Where Did the Entropy Go?}
 

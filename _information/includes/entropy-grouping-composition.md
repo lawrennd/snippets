@@ -19,7 +19,7 @@ $$
 * First term: cost of the coarse label; second: average residual detail
 }
 
-\speakernotes{This is the chain rule for a deterministic grouping $G=g(X)$: $H(X)=H(G)+H(X\mid G)$. Board that identification. Khinchin pointer only --- consistency under staged questions characterises Shannon $H$; no proof today.}
+\speakernotes{This is the chain rule for a deterministic grouping $G=g(X)$: $H(X)=H(G)+H(X\mid G)$. Board that identification. Khinchin pointer only --- consistency under staged questions characterises Shannon $H$; do not introduce mutual information today.}
 
 \notes{Partition the outcomes of $X$ into groups labelled by $i$, with group probabilities $w_i$ and within-group distributions $p_i$. Then
 \begin{align}
@@ -29,7 +29,7 @@ The die examples are the case check: $H(w)$ is the entropy of the coarse questio
 \begin{align}
 H(X)=H(G)+H(X\mid G),
 \end{align}
-because $G$ is a function of $X$ (so $H(G\mid X)=0$) and $H(X\mid G)=\sum_i w_i H(p_i)$.}
+because $G$ is a function of $X$ --- so $H(G\mid X)=0$ --- and $H(X\mid G)=\sum_i w_i H(p_i)$.}
 
 \newslide{Reverse Direction}
 
@@ -37,16 +37,19 @@ because $G$ is a function of $X$ (so $H(G\mid X)=0$) and $H(X\mid G)=\sum_i w_i 
 
 \slidesincremental{
 * $H(G\mid X)=0$: the coarse label is redundant given $X$
-* Information *extracted* by the group: $I(X;G)=H(G)$
-* Information *still to find*: $H(X\mid G)$
+* Cost of the coarse question: $H(G)$
+* Still to find after the group: $H(X\mid G)$
 }
 
-\notes{In the reverse direction, observing $X$ fixes $G$ with no leftover uncertainty. The mutual information $I(X;G)=H(G)-H(G\mid X)=H(G)$ is exactly the price of the coarse question. After you know the group, the remaining work is $H(X\mid G)$ --- which of the fine outcomes inside that group. Coarse-graining *keeps* $H(G)$ as your description and *discards* $H(X\mid G)$:
+\speakernotes{Board $H(G\mid X)=0$ for exclusive partitions --- that is today's assumption. Soft / overlapping mixtures leave a remainder $H(G\mid X)>0$; that derivation waits for week 5, once we treat the leftover term with mutual information.}
+
+\notes{In the reverse direction, observing $X$ fixes $G$ with no leftover uncertainty: $H(G\mid X)=0$. The price of the coarse question is then exactly $H(G)$. After you know the group, the remaining work is $H(X\mid G)$ --- which of the fine outcomes inside that group. Coarse-graining *keeps* $H(G)$ as your description and *discards* $H(X\mid G)$:
 \begin{align}
 \text{information lost by coarse-graining}
   = H(X\mid G)
   = \sum_i w_i\, H(p_i).
-\end{align}}
+\end{align}
+The exclusive case is special because $H(G\mid X)=0$. When components *overlap*, that conditional entropy is positive and the clean split $H=H(w)+\sum_i w_i H(p_i)$ fails. Week 5 writes the remainder in full and names it with mutual information.}
 
 \newslide{Why the Total Is Invariant}
 
