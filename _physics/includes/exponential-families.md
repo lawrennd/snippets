@@ -248,15 +248,4 @@ For the inaccessible game, exponential families provide the setting where inform
 * **Clean form for information dynamics**
 }
 
-\subsection{Looking Ahead}
-
-\notes{We'll see that the form $\nabla H = -G(\boldsymbol{\theta})\boldsymbol{\theta}$ is crucial for deriving the dynamics of the inaccessible game. The natural parameters will be our coordinates, the Fisher information will be our "information topography," and entropy gradients will drive the system's evolution.}
-
-\slides{
-**Next steps:**
-* Natural parameters → coordinate system
-* Fisher information → information topography  
-* Entropy gradients → drive dynamics
-* $\nabla H = -G(\boldsymbol{\theta})\boldsymbol{\theta}$ → key to everything
-}
 \endif
