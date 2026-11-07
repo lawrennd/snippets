@@ -5,15 +5,16 @@
 
 \subsection{When Coarse Graining Overlaps}
 
-\slides{Exclusive partitions gave $H(G\mid X)=0$. Soft mixtures leave leftover uncertainty about the label.}
+\slides{Revisit week 4's exclusive case. Soft mixtures leave leftover uncertainty about the label.}
 
 \slidesincremental{
+* Exclusive: $G=g(X)$ forced $H(G\mid X)=0$ and $H(X)=H(w)+\sum_i w_i H(p_i)$
 * Soft label $I$ with joint $p(x,i)$ (several $i$ can share the same $x$)
 * Chain rule always: $H(X,I)=H(I)+H(X\mid I)=H(X)+H(I\mid X)$
 * Rearrange: $H(X)=H(w)+\sum_i w_i H(p_i)-H(I\mid X)$
 }
 
-\speakernotes{In week 4 the log-sum collapsed only because non-overlap forced every face into one cell. The general identity keeps $H(I\mid X)$: leftover uncertainty about which component, given the face. Mutual information $I(X;I)$ is next.}
+\speakernotes{Week 4: the log-sum collapsed only because non-overlap forced every face into one cell. Keep $H(I\mid X)$: leftover uncertainty about which component, given the face. That leftover is mutual information next.}
 
 \notes{Week 4 derived
 \begin{align}
@@ -31,7 +32,7 @@ The new term $H(I\mid X)$ is zero precisely when the partition is exclusive: giv
 
 \newslide{Mutual Information}
 
-\slides{Mutual information measures how much the face still tells you about the soft label.}
+\slides{Name the leftover: mutual information.}
 
 \slidesmall{
 $$
@@ -45,7 +46,7 @@ $$
 * Same algebra: $H(X)=H(X\mid I)+I(X;I)$
 }
 
-\speakernotes{From the two chain-rule expansions, $I(X;I)=H(I)-H(I\mid X)$. Exclusive case recovers week 4: $I(X;G)=H(G)$. Soft case keeps a positive $H(I\mid X)$, so the grouping identity loses that term. DPI waits.}
+\speakernotes{From the two chain-rule expansions, $I(X;I)=H(I)-H(I\mid X)$. Exclusive case recovers week 4: $I(X;G)=H(G)$. Soft case keeps a positive $H(I\mid X)$. Next: the same $I$ is a KL.}
 
 \notes{Mutual information is the pairwise reading of that leftover term from the chain rule,
 \begin{align}
@@ -67,9 +68,9 @@ H(X)
 \end{align}
 because $I(X;I)=H(w)-H(I\mid X)$. Exclusive coarse-graining is the special case $H(I\mid X)=0$, so $I(X;I)=H(w)$ and the week-4 split returns. Overlapping coarse-graining keeps a positive $H(I\mid X)$: given $X$, you still do not know which component was responsible. That is why the log-sum refused to collapse in week 4.}
 
-\newslide{KL Reading (Named)}
+\newslide{Mutual Information Is a KL}
 
-\slides{The same $I$ is an expected KL between the joint and the product of marginals.}
+\slides{The same $I$ is KL between the joint and the product of marginals.}
 
 \slidesmall{
 $$
@@ -77,8 +78,14 @@ I(X;I)=\KL{p(x,i)}{p(x)\,p(i)}
 $$
 }
 
-\speakernotes{The same $I$ is $\KL{p(x,i)}{p(x)p(i)}$; week 6 will use that geometry. Fisher stays for then. MaxEnt today still maximises $H$ under constraints; soft partitions are bookkeeping, not a second MaxEnt proof.}
+\slidesincremental{
+* Write $I=\sum_{x,i} p(x,i)\log\dfrac{p(x,i)}{p(x)p(i)}$
+* Independence: $I=0$; exclusive labelling: $I=H(I)$
+* Soft partitions are bookkeeping; MaxEnt still maximises $H$ under constraints
+}
 
-\notes{Writing $I(X;I)=\sum_{x,i} p(x,i)\log\frac{p(x,i)}{p(x)p(i)}$ is exactly $\KL{p(x,i)}{p(x)p(i)}$. Independence is $I=0$; exclusive deterministic labelling saturates $I=H(I)$. The MaxEnt lecture elsewhere in this week still maximises Shannon $H$ under moment constraints; the overlapping identity is the bookkeeping for soft coarse-graining, not a rival prescription.}
+\speakernotes{Step (3) of today's KL arc: mutual information *is* a KL. Relative entropy to Jaynes' $m$ is next; then KL properties. Fisher geometry waits for week 6.}
+
+\notes{Writing $I(X;I)=\sum_{x,i} p(x,i)\log\frac{p(x,i)}{p(x)p(i)}$ is exactly $\KL{p(x,i)}{p(x)p(i)}$. Independence is $I=0$; exclusive deterministic labelling saturates $I=H(I)$. Soft-partition bookkeeping is not a rival to MaxEnt: MaxEnt still maximises Shannon $H$ under moment constraints. The overlapping identity simply names the leftover term that exclusive grouping set to zero.}
 
 \endif
