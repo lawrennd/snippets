@@ -33,8 +33,6 @@ This known as Laplace's *principle of insufficient reason* or the principle of i
 
 \includegooglebook{1YQPAAAAQAAJ}{PA16}
 
-\newslide{}
-
 \slidesincremental{
 * Unknown daily rate $\theta\in[0,1]$; insufficient reason $\Rightarrow$ uniform prior on $\theta$
 * Every day is a success: after $n$ rises, belief $\propto\theta^{n}$
@@ -136,6 +134,8 @@ for n_next in milestones:
 
 n_frames = frame}
 
+\newslide{Example: Will the sun rise tomorrow?}
+
 \slides{\define{width}{70%}
 \startanimation{laplace-succession}{1}{12}
 \newframe{\includediagram{\diagramsDir/ml/laplace-succession001}{\width}}{laplace-succession}
@@ -152,9 +152,8 @@ n_frames = frame}
 \newframe{\includediagram{\diagramsDir/ml/laplace-succession012}{\width}}{laplace-succession}
 \endanimation}
 
-\newslide{}
 
-\figure{\includediagram{\diagramsDir/ml/laplace-succession012}{70%}}{Each update is belief $\times$ likelihood $\rightarrow$ posterior; a reset frame then promotes the posterior to the new prior (likelihood cleared). Early steps use one more sunrise ($\propto\theta$); the jump to $n=20$ uses the likelihood for $17$ further rises ($\propto\theta^{17}$).}{laplace-succession-figure}
+\notes{\figure{\includediagram{\diagramsDir/ml/laplace-succession012}{70%}}{Each update is belief $\times$ likelihood $\rightarrow$ posterior; a reset frame then promotes the posterior to the new prior (likelihood cleared). Early steps use one more sunrise ($\propto\theta$); the jump to $n=20$ uses the likelihood for $17$ further rises ($\propto\theta^{17}$).}{laplace-succession-figure}}
 
 \newslide{Entropy Day by Day}
 
@@ -253,7 +252,7 @@ This is *Laplace's rule of succession* (the same “$+1$, $+2$” that later app
 
 \notes{The principle of insufficient reason, and the rule of succession built from it, answer the case where our information is a list of possibilities and (optionally) raw counts. As soon as we know more — a mean face value on a die, a mean energy, a variance — equal weights, or a uniform prior on a single rate, may fail to encode that information. Jaynes' maximum entropy principle extends Laplace's idea: among all distributions that match the stated constraints, choose the one that maximises Shannon entropy $H(p)=-\sum_i p_i\log p_i$. That choice is maximally noncommittal with respect to everything else.
 
-With only the normalisation constraint $\sum_i p_i=1$, MaxEnt recovers Laplace's uniform assignment $p_i=1/n$. With an additional mean-energy constraint, the same calculation yields Boltzmann weights. With mean and variance, it yields a Gaussian. The exponential family is therefore the family of distributions that generalise insufficient reason from “we know nothing” (or “we know only these counts”) to “we know these moments and nothing more.”}
+With only the normalisation constraint $\sum_i p_i=1$, MaxEnt recovers Laplace's uniform assignment $p_i=1/n$. With an additional mean-energy constraint, the same calculation yields Boltzmann weights. With mean and variance, it yields a Gaussian. The exponential family is therefore the family of distributions that generalise insufficient reason from "we know nothing" (or "we know only these counts") to "we know these moments and nothing more."}
 
 \notes{Critiques of bare indifference (Bertrand's paradox and related reparameterisation puzzles) motivate the need for an explicit state space and explicit constraints — which is exactly what the MaxEnt formalism supplies. We will not pursue those paradoxes here; the operational fix is to state what is held fixed before maximising $H$. Laplace's own sunrise caveat makes the same point in plain language: once you know the mechanism, you no longer pretend to know only the counts.}
 

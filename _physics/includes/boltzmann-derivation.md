@@ -8,6 +8,7 @@
 \notes{For a given mean energy $U$, among all distributions with that $U$, pick the one with largest entropy. Week 2 named the Gibbs--Boltzmann occupation; this is the MaxEnt derivation that earns it.}
 
 \slides{For fixed mean energy $U$, maximum entropy recovers Boltzmann weights.}
+
 \slidesincremental{
 * Constraints: $\sum_i p_i = 1$ and $\sum_i p_i E_i = U$
 * MaxEnt: $p_i \propto e^{-\beta E_i}$ with coldness $\beta = 1/k_B T$
@@ -37,6 +38,8 @@ ax.set_ylabel('occupation')
 ax.legend()
 ax.set_title('Two-state Boltzmann occupations')
 mlai.write_figure('two-state-boltzmann.svg', directory='\writeDiagramsDir/physics')}
+
+\newslide{}
 
 \figure{\includediagram{\diagramsDir/physics/two-state-boltzmann}{75%}}{Occupation of a two-state system as coldness increases. At low $\beta$ both states are populated; at high $\beta$ the ground state dominates.}{two-state-boltzmann}
 
