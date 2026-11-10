@@ -5,7 +5,7 @@
 
 \subsection{Lagrange Multipliers}
 
-\notes{Many problems in physics, engineering and machine learning ask us to optimise a function subject to constraints. For example, we free energy minimisation, or maximising entropy while matching observed averages.[^free-entropy] Principal component analysis can be formulated as finding directions in data of maximum variance. Each direction is constrained to be orthogonal to the previous one. Lagrange multipliers turn these constrained problems into unconstrained ones.}
+\notes{Many problems in physics, engineering and machine learning ask us to optimise a function subject to constraints. For example, free energy minimisation, or maximising entropy while matching observed averages.[^free-entropy] In machine learning, principal component analysis can be formulated as finding directions in data of maximum variance. Each direction is constrained to be orthogonal to the previous one. Lagrange multipliers turn these constrained problems into unconstrained ones.}
 
 \notes{[^free-entropy]: Although because total energy is given by free energy plus temperature-scaled entropy, these two optimisations are two sides of the same coin.}
 

@@ -20,72 +20,74 @@
 \begin{align}
 H(X)=H(w)+\sum_i w_i\, H(p_i)
 \end{align}
-under the exclusive assumption $G=g(X)$, which forces $H(G\mid X)=0$. Keep a soft label $I$ with joint $p(x,i)$ and cell weights $w_i=p(i)$, $p_i(x)=p(x\mid i)$. The chain rule on the joint always holds,
+under the exclusive assumption $G=g(x)$, where $g(x)$ is a funciton that maps each point $x$ to precisely 1 group. This means that we have $H(G\mid X=x)=0$, i.e. if we know $x$ we know $g$. 
+
+What if we consider a soft labelling, such that each point $x$ is mapped to a different group $g$ with some probability?. First we keep the probability of the different groups the same as it was before, with a *soft* label $g\in G$ with joint $p(x,g)$ and prior cell weights $w_g=p(g)$, with $p_g(x)=p(x\mid g)$. We can use the chain rule on the joint to show
 \begin{align}
-H(X,I)=H(I)+H(X\mid I)=H(X)+H(I\mid X).
+H(X,G)=H(G)+H(X\mid G)=H(X)+H(G\mid X).
 \end{align}
-Expand $H(X\mid I)=\sum_i w_i H(p_i)$ and $H(I)=H(w)$ to obtain
+Expand $H(X\mid G)=\sum_g w_g H(p_g)$ and the marginal entropy of $G$ just being the marginal entropy of the group's course graining, $H(G)=H(w)$ to obtain
 \begin{align}
-H(X)=H(w)+\sum_i w_i\, H(p_i)-H(I\mid X).
+H(X)=H(w)+\sum_g w_g\, H(p_g)-H(G\mid X).
 \end{align}
-The new term $H(I\mid X)$ is zero precisely when the partition is exclusive: given the face, you already know the cell. Soft mixtures (mixture of Gaussians, mixture of experts) leave $H(I\mid X)>0$: several components can still explain the same observation.}
+The new term $H(G\mid X)$ is zero (as before) when the partition is exclusive. I.e. when given $x$ you already know the group it's allocated to. In mixture modelling, for example soft mixtures (like mixture of Gaussians, mixture of experts) leave $H(G\mid X)>0$, meaning that an observation $x$ can be associated with different groups with some probability.}
 
 \newslide{Mutual Information}
 
-\slides{Name the leftover: mutual information.}
+\slides{We assess this with mutual information.}
 
 \slidesmall{
 $$
-I(X;I)=H(I)-H(I\mid X)=H(X)-H(X\mid I)
+I(X;G)=H(G)-H(G\mid X)=H(X)-H(X\mid G)
 $$
 }
 
 \slidesincremental{
-* Exclusive: $H(I\mid X)=0$ $\Rightarrow$ $I(X;I)=H(I)=H(w)$
-* Overlap: $0<I(X;I)<H(w)$ (the coarse label is no longer free given $X$)
-* Same algebra: $H(X)=H(X\mid I)+I(X;I)$
+* Exclusive: $H(G\mid X)=0$ $\Rightarrow$ $I(X;G)=H(G)=H(w)$
+* Overlap: $0<I(X;G)<H(w)$ (the coarse label is no longer free given $X$)
+* Same algebra: $H(X)=H(X\mid G)+I(X;G)$
 }
 
-\speakernotes{From the two chain-rule expansions, $I(X;I)=H(I)-H(I\mid X)$. Exclusive case recovers week 4: $I(X;G)=H(G)$. Soft case keeps a positive $H(I\mid X)$. Next: the same $I$ is a KL.}
+\speakernotes{From the two chain-rule expansions, $I(X;G)=H(G)-H(G\mid X)$. Exclusive case recovers week 4: $I(X;G)=H(G)$. Soft case keeps a positive $H(G\mid X)$. Next: the same $I$ is a KL.}
 
 \notes{Mutual information is the pairwise reading of that leftover term from the chain rule,
 \begin{align}
 I(X;I)
-  = H(I)-H(I\mid X)
-  = H(X)-H(X\mid I)
-  = H(X)+H(I)-H(X,I).
+  = H(G)-H(G\mid X)
+  = H(X)-H(X\mid G)
+  = H(X)+H(G)-H(X,G).
 \end{align}
 Substitute into the overlapping identity:
 \begin{align}
 H(X)
-  = H(X\mid I)+I(X;I)
-  = \sum_i w_i\, H(p_i)+I(X;I),
+  = H(X\mid G)+I(X;G)
+  = \sum_g w_g\, H(p_g)+I(X;G),
 \end{align}
 and equivalently
 \begin{align}
 H(X)
-  = H(w)+\sum_i w_i\, H(p_i)-H(I\mid X),
+  = H(w)+\sum_g w_g\, H(p_g)-H(G\mid X),
 \end{align}
-because $I(X;I)=H(w)-H(I\mid X)$. Exclusive coarse-graining is the special case $H(I\mid X)=0$, so $I(X;I)=H(w)$ and the week-4 split returns. Overlapping coarse-graining keeps a positive $H(I\mid X)$: given $X$, you still do not know which component was responsible. That is why the log-sum refused to collapse in week 4.}
+because $I(X;G)=H(w)-H(G\mid X)$. Exclusive coarse-graining is the special case where $H(I\mid X)=0$, which means that the mutual information is maximised, $I(X;I)=H(w)$, and the split we saw for the exclusive coarse-graining case in week-4 split is recovered. Overlapping coarse-graining keeps a positive $H(G\mid X)$: given $X$, i.e. even given $X=x$ you are not convident which group, $g$, it's allocated to. The relationship is no longer a function, $g(x)$ it's a stochastic relationship $p(g|x)$. }
 
-\newslide{Mutual Information Is a KL}
+\newslide{Mutual information is a KL divergence}
 
-\slides{The same $I$ is KL between the joint and the product of marginals.}
+\slides{This $I$ is KL between the joint and the product of marginals.}
 
 \slidesmall{
 $$
-I(X;I)=\KL{p(x,i)}{p(x)\,p(i)}
+I(X;G)=\KL{p(x,g)}{p(x)\,p(g)}
 $$
 }
 
 \slidesincremental{
-* Write $I=\sum_{x,i} p(x,i)\log\dfrac{p(x,i)}{p(x)p(i)}$
-* Independence: $I=0$; exclusive labelling: $I=H(I)$
+* Write $I=\sum_{x,g} p(x,g)\log\dfrac{p(x,g)}{p(x)p(g)}$
+* Independence: $I=0$; exclusive labelling: $I=H(G)$
 * Soft partitions are bookkeeping; MaxEnt still maximises $H$ under constraints
 }
 
 \speakernotes{Step (3) of today's KL arc: mutual information *is* a KL. Relative entropy to Jaynes' $m$ is next; then KL properties. Fisher geometry waits for week 6.}
 
-\notes{Writing $I(X;I)=\sum_{x,i} p(x,i)\log\frac{p(x,i)}{p(x)p(i)}$ is exactly $\KL{p(x,i)}{p(x)p(i)}$. Independence is $I=0$; exclusive deterministic labelling saturates $I=H(I)$. Soft-partition bookkeeping is not a rival to MaxEnt: MaxEnt still maximises Shannon $H$ under moment constraints. The overlapping identity simply names the leftover term that exclusive grouping set to zero.}
+\notes{Writing $I(X;G)=\sum_{x,g} p(x,g)\log\frac{p(x,g)}{p(x)p(g)}$ is a KL-divergence, $\KL{p(x,i)}{p(x)p(i)}$. Independence is when the divergence is zero, so $I=0$. Exclusive deterministic labelling saturates the KL divergence, the joint distribution is as different from the independent as possible (the mapping from $x$ to $g$ is deterministic) and therefore $I=H(G)$. }
 
 \endif
