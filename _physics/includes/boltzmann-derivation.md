@@ -19,7 +19,7 @@
 
 \speakernotes{LO5. This is the derivation postponed from week 2. Board the Lagrange multipliers; do not treat the formula as new.}
 
-\notes{Maximum entropy subject to normalisation and fixed mean energy gives $p_i = e^{-\beta E_i}/Z$. The Lagrange multiplier on the energy constraint *is* coldness $\beta$ from weeks 1--2.}
+\notes{Maximum entropy subject to normalisation and fixed mean energy gives $p_i = e^{-\beta E_i}/Z$. The Lagrange multiplier on the energy constraint *is* coldness $\beta$ from weeks 1--2. Equilibrium only: saturated entropy under an energy constraint does not give non-equilibrium dynamics. Mean and variance instead of energy recover the Gaussian --- the ideal-gas-in-the-room reading of the same Lagrange move.}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt
