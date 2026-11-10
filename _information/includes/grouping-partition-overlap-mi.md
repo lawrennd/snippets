@@ -8,17 +8,17 @@
 \slides{Revisit week 4's exclusive case. Soft mixtures leave leftover uncertainty about the label.}
 
 \slidesincremental{
-* Exclusive: $G=g(X)$ forced $H(G\mid X)=0$ and $H(X)=H(w)+\sum_i w_i H(p_i)$
-* Soft label $I$ with joint $p(x,i)$ (several $i$ can share the same $x$)
-* Chain rule always: $H(X,I)=H(I)+H(X\mid I)=H(X)+H(I\mid X)$
-* Rearrange: $H(X)=H(w)+\sum_i w_i H(p_i)-H(I\mid X)$
+* Exclusive: $G=g(x)$ forced $H(G\mid X)=0$ and $H(X)=H(w)+\sum_g w_g H(p_g)$
+* Soft label $G=g(x)$ with joint $p(x,g)$ (several $g$ can share the same $x$)
+* Chain rule always: $H(X,G)=H(G)+H(X\mid G)=H(X)+H(G\mid X)$
+* Rearrange: $H(X)=H(w)+\sum_g w_g H(p_g)-H(G\mid X)$
 }
 
-\speakernotes{Week 4: the log-sum collapsed only because non-overlap forced every face into one cell. Keep $H(I\mid X)$: leftover uncertainty about which component, given the face. That leftover is mutual information next.}
+\speakernotes{Week 4: the log-sum collapsed only because non-overlap forced every face into one cell. Keep $H(G\mid X)$: leftover uncertainty about which component, given the face. That leftover is mutual information next.}
 
 \notes{Week 4 derived
 \begin{align}
-H(X)=H(w)+\sum_i w_i\, H(p_i)
+H(X)=H(w)+\sum_g w_g\, H(p_g)
 \end{align}
 under the exclusive assumption $G=g(x)$, where $g(x)$ is a funciton that maps each point $x$ to precisely 1 group. This means that we have $H(G\mid X=x)=0$, i.e. if we know $x$ we know $g$. 
 
