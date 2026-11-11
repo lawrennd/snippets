@@ -5,7 +5,7 @@
 
 \subsection{Maximum Entropy Motivation}
 
-\notes{Ed Jaynes [@Jaynes-information57], proposed a foundation for statistical mechanics based on information theory. Jaynes recast that the problem of assigning probabilities in statistical mechanics as a problem of inference with incomplete information.}
+\notes{Ed Jaynes [@Jaynes-information57] proposed a foundation for statistical mechanics based on information theory. He recast the problem of assigning probabilities as inference with incomplete information: where do the distributions come from, and why $e^{-\beta E}$?}
 
 \slides{
 * @Jaynes-information57: Statistical mechanics as inference with incomplete information
@@ -13,7 +13,7 @@
 * Avoids unwarranted assumptions beyond available data
 }
 
-\notes{A central problem in statistical mechanics is assigning initial probabilities when our knowledge is incomplete. The canonical example is if we know only the average energy of a system, what probability distribution should we use? Jaynes argued that we should use the distribution that maximises entropy subject to the constraints of our knowledge.}
+\notes{A central problem in statistical mechanics is assigning initial probabilities when our knowledge is incomplete. The canonical example is if we know only the average energy of a system, what probability distribution should we use? Jaynes argued that we should use the distribution that maximises entropy subject to the constraints of our knowledge. The formalism is more general than energy: any expectation constraint; for energy the Lagrange multiplier is inverse temperature $\beta$. Physicists' skepticism (``we already knew that law'') and ML skepticism both sit here --- MaxEnt as a crossover that re-derives physics and underwrites the exponential family.}
 
 \newslide{Dice Example}
 
@@ -24,7 +24,7 @@
   * $\sum_{n=1}^6 nP_n = 4.5$ (observed average)
 }
 
-\notes{Jaynes illustrated the approach with a simple example. If a die has been tossed many times, with an average result of 4.5 rather than the expected 3.5 for a fair die. What probability assignment $P_n$ ($n=1,2,...,6$) should we make for the next toss?}
+\notes{Jaynes illustrated the approach with a simple example. If a die has been tossed many times, with an average result of 4.5 rather than the expected 3.5 for a fair die, what probability assignment $P_n$ ($n=1,2,\ldots,6$) should we make for the next toss? The same Lagrange move recovers Boltzmann weights under a mean-energy constraint and the Gaussian under mean and variance.}
 
 \notes{We need to satisfy two constraints
 \begin{align}

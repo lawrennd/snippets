@@ -20,17 +20,17 @@
 \begin{align}
 H(X)=H(w)+\sum_g w_g\, H(p_g)
 \end{align}
-under the exclusive assumption $G=g(x)$, where $g(x)$ is a funciton that maps each point $x$ to precisely 1 group. This means that we have $H(G\mid X=x)=0$, i.e. if we know $x$ we know $g$. 
+under the exclusive assumption $G=g(x)$, where $g(x)$ is a function that maps each point $x$ to precisely one group. This means that we have $H(G\mid X=x)=0$, i.e. if we know $x$ we know $g$.
 
-What if we consider a soft labelling, such that each point $x$ is mapped to a different group $g$ with some probability?. First we keep the probability of the different groups the same as it was before, with a *soft* label $g\in G$ with joint $p(x,g)$ and prior cell weights $w_g=p(g)$, with $p_g(x)=p(x\mid g)$. We can use the chain rule on the joint to show
+What if we consider a soft labelling, such that each point $x$ is mapped to a different group $g$ with some probability? Keep the cell weights as before, with a *soft* label $g\in G$, joint $p(x,g)$, prior cell weights $w_g=p(g)$, and $p_g(x)=p(x\mid g)$. The chain rule on the joint gives
 \begin{align}
 H(X,G)=H(G)+H(X\mid G)=H(X)+H(G\mid X).
 \end{align}
-Expand $H(X\mid G)=\sum_g w_g H(p_g)$ and the marginal entropy of $G$ just being the marginal entropy of the group's course graining, $H(G)=H(w)$ to obtain
+Expand $H(X\mid G)=\sum_g w_g H(p_g)$ and take the marginal entropy of the coarse label as $H(G)=H(w)$ to obtain
 \begin{align}
 H(X)=H(w)+\sum_g w_g\, H(p_g)-H(G\mid X).
 \end{align}
-The new term $H(G\mid X)$ is zero (as before) when the partition is exclusive. I.e. when given $x$ you already know the group it's allocated to. In mixture modelling, for example soft mixtures (like mixture of Gaussians, mixture of experts) leave $H(G\mid X)>0$, meaning that an observation $x$ can be associated with different groups with some probability.}
+The new term $H(G\mid X)$ is zero when the partition is exclusive: given $x$ you already know the group. Soft mixtures (mixture of Gaussians, mixture of experts) leave $H(G\mid X)>0$: an observation $x$ can still be associated with more than one group. That leftover uncertainty about the label is what mutual information names next.}
 
 \newslide{Mutual Information}
 
@@ -68,7 +68,7 @@ and equivalently
 H(X)
   = H(w)+\sum_g w_g\, H(p_g)-H(G\mid X),
 \end{align}
-because $I(X;G)=H(w)-H(G\mid X)$. Exclusive coarse-graining is the special case where $H(I\mid X)=0$, which means that the mutual information is maximised, $I(X;I)=H(w)$, and the split we saw for the exclusive coarse-graining case in week-4 split is recovered. Overlapping coarse-graining keeps a positive $H(G\mid X)$: given $X$, i.e. even given $X=x$ you are not convident which group, $g$, it's allocated to. The relationship is no longer a function, $g(x)$ it's a stochastic relationship $p(g|x)$. }
+because $I(X;G)=H(w)-H(G\mid X)$. Exclusive coarse-graining is the special case where $H(G\mid X)=0$, so mutual information is maximised, $I(X;G)=H(w)$, and the week-4 split is recovered. Overlapping coarse-graining keeps a positive $H(G\mid X)$: even given $X=x$ you are not confident which group $g$ it is allocated to. The relationship is no longer a function $g(x)$; it is a stochastic map $p(g\mid x)$. For Shannon that leftover, under the right conditions, is channel capacity --- the proof waits.}
 
 \newslide{Mutual information is a KL divergence}
 
