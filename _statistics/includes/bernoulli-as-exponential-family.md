@@ -10,6 +10,7 @@
 $$
 P(x\mid\theta)=\exp\bigl(x\,\theta-\psi(\theta)\bigr)\,h_0(x),\qquad x\in\{0,1\}
 $$
+
 * $\theta=\log\dfrac{\pi}{1-\pi}$,\quad $T(x)=x$
 * $\psi(\theta)=\log(1+e^{\theta})$,\quad $h_0(x)=1$ (counting on $\{0,1\}$)
 }
