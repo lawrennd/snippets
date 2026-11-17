@@ -10,6 +10,7 @@
 $$
 P(k\mid\theta)=\exp\bigl(k\,\theta-\psi(\theta)\bigr)\,h_0(k),\qquad k\in\mathbb{N}_0
 $$
+
 * $\theta=\log\lambda$,\quad $T(k)=k$,\quad $\psi(\theta)=e^{\theta}$
 * $h_0(k)=1/k!$ --- without it, mean-count MaxEnt is *geometric*, not Poisson
 }
