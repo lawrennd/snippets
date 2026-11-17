@@ -13,12 +13,12 @@
 \slidesincremental{
 * $Z(\beta) = \sum_i e^{-\beta E_i}$
 * $U = -\partial_\beta \log Z$, \quad $F = -\beta^{-1}\log Z$, \quad $S = \beta(U-F)$
-* Equilibrium = on the $\beta$-manifold; finite-time driving leaves it
+* Equilibrium identities on the $\beta$-manifold
 }
 
-\speakernotes{LO3. Work the two-state example on the board. Finite-time cost: named lecture 2, Crooks week 6.}
+\speakernotes{LO3. Work the two-state example on the board. These are equilibrium identities. Do not open finite-time dissipation or thermodynamic length from this slide.}
 
-\notes{The partition function $Z(\beta)=\sum_i e^{-\beta E_i}$ is a generating function: $U=-\partial_\beta\log Z$, $F=-\beta^{-1}\log Z$, $S=\beta(U-F)$. The canonical ensemble is an equilibrium construction; driving in finite time leaves that manifold.}
+\notes{The partition function $Z(\beta)=\sum_i e^{-\beta E_i}$ is a generating function: $U=-\partial_\beta\log Z$, $F=-\beta^{-1}\log Z$, $S=\beta(U-F)$. The canonical ensemble is an equilibrium construction. Thermodynamic length is not part of this calculation.}
 
 \setupplotcode{import numpy as np
 import matplotlib.pyplot as plt

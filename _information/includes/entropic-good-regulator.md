@@ -12,22 +12,22 @@
 \slides{Residual outcome uncertainty is disturbance entropy minus information the regulator has about the disturbance.}
 
 \slidesincremental{
-* Disturbance $D$, response $R$, essential variable $E$
-* $H(E)\ge H(D)-I(D;R)$
-* Useless variety appears as small $I(D;R)$
+* Disturbance $D$, action $A$, reguland $Z$
+* $H(Z)\ge H(D)-I(D;A)$
+* Useless variety appears as small $I(D;A)$
 }
 
-\speakernotes{Named tool for LO13, not a new outcome. Ashby's requisite variety in Shannon form [@Ashby-introduction56]. Quantity, not structure. Perfect regulation $H(E)=0$ forces $I(D;R)=H(D)$.}
+\speakernotes{Named tool for LO13. Ashby's requisite variety in Shannon form [@Ashby-introduction56], written with our letters: $A$ for action (classic texts often write $R$), $Z$ for the reguland / essential variable. Quantity, not structure. Perfect regulation $H(Z)=0$ forces $I(D;A)=H(D)$.}
 
-\notes{Write Ashby's law of requisite variety in Shannon form. With disturbance $D$, regulatory response $R$, and essential/outcome variable $E$, the usual bound is
+\notes{Write Ashby's law of requisite variety in Shannon form. With disturbance $D$, regulatory action $A$, and reguland $Z$, the usual bound is
 $$
-H(E)\ge H(D)+H(R\mid D)-H(R).
+H(Z)\ge H(D)+H(A\mid D)-H(A).
 $$
 Mutual information rewrites the last two terms at once:
 $$
-H(E)\ge H(D)-I(D;R).
+H(Z)\ge H(D)-I(D;A).
 $$
-Verbally: residual uncertainty after regulation is at least the uncertainty in the disturbance minus the information the regulator has about that disturbance. Having many controller states helps only when those states are correlated with $D$. Large $H(R\mid D)$ is large wasted variety. Requisite variety asks how much regulatory information is required. The Good Regulator Theorem asks how that information may be structured.}
+Verbally: residual uncertainty after regulation is at least the uncertainty in the disturbance minus the information the action carries about that disturbance. Having many controller states helps only when those states are correlated with $D$. Large $H(A\mid D)$ is large wasted variety. Requisite variety asks how much regulatory information is required. The Good Regulator Theorem asks how that information may be structured.}
 
 \newslide{Setup: Regulate by Minimising $H(Z)$}
 
@@ -48,14 +48,14 @@ Verbally: residual uncertainty after regulation is at least the uncertainty in t
 \slides{Randomising between outcome-distinct actions cannot minimise $H(Z)$.}
 
 \slidesincremental{
-* At state $s$, mix $a_1,a_2$ with $\psi(s,a_1)=z_1\ne z_2=\psi(s,a_2)$
+* At state $s$, mix $a_1,a_2$ with $\phi(s,a_1)=z_1\ne z_2=\phi(s,a_2)$
 * Transfer mass $\alpha$: $(u,v)\mapsto(u-\alpha,v+\alpha)$
 * $g''(\alpha)<0$: interior mixture is not a minimum
 }
 
-\speakernotes{Board $g(\alpha)=-(u-\alpha)\log(u-\alpha)-(v+\alpha)\log(v+\alpha)$. Strict concavity is the engine. Deterministic $\psi$ for this lemma.}
+\speakernotes{Board $g(\alpha)=-(u-\alpha)\log(u-\alpha)-(v+\alpha)\log(v+\alpha)$. Strict concavity is the engine. Deterministic $\phi$ for this lemma.}
 
-\notes{Assume first a deterministic outcome map $Z=\psi(S,A)$. Suppose an allegedly optimal policy randomises, at some $s$ with $p(s)>0$, between actions $a_1$ and $a_2$ that produce different outcomes $z_1\ne z_2$. Transfer probability $\alpha$ from $(s,a_1)$ to $(s,a_2)$. Only two probabilities in the marginal of $Z$ change: $(u,v)\mapsto(u-\alpha,v+\alpha)$. Their contribution to entropy is
+\notes{Assume first a deterministic outcome map $Z=\phi(S,A)$. Suppose an allegedly optimal policy randomises, at some $s$ with $p(s)>0$, between actions $a_1$ and $a_2$ that produce different outcomes $z_1\ne z_2$. Transfer probability $\alpha$ from $(s,a_1)$ to $(s,a_2)$. Only two probabilities in the marginal of $Z$ change: $(u,v)\mapsto(u-\alpha,v+\alpha)$. Their contribution to entropy is
 $$
 g(\alpha)=-(u-\alpha)\log(u-\alpha)-(v+\alpha)\log(v+\alpha),
 $$
@@ -63,7 +63,7 @@ with
 $$
 g''(\alpha)=-\frac{1}{u-\alpha}-\frac{1}{v+\alpha}<0.
 $$
-So $g$ is strictly concave. An interior mixture cannot be a minimum of $H(Z)$: move mass in one of the two directions and entropy falls. Contradiction. Therefore, at an optimum, whenever the policy randomises in state $s$, all actions in the support must produce the same outcome. Equivalently, for deterministic $\psi$, every optimal policy satisfies $H(Z\mid S=s)=0$ for every $s$ with $p(s)>0$.}
+So $g$ is strictly concave. An interior mixture cannot be a minimum of $H(Z)$: move mass in one of the two directions and entropy falls. Contradiction. Therefore, at an optimum, whenever the policy randomises in state $s$, all actions in the support must produce the same outcome. Equivalently, for deterministic $\phi$, every optimal policy satisfies $H(Z\mid S=s)=0$ for every $s$ with $p(s)>0$.}
 
 \newslide{Good Regulator Theorem}
 
@@ -79,7 +79,7 @@ So $g$ is strictly concave. An interior mixture cannot be a minimum of $H(Z)$: m
 
 \notes{If several actions at $s$ all produce the same $z^\ast(s)$, choose one of them and discard the unnecessary randomisation. Do this independently for every $s$ to obtain $A=h(S)$. The marginal of $Z$ is unchanged, so $H(Z)$ is unchanged: the new deterministic regulator remains optimal, and $H(A\mid S)=0$. That is the entropy form of the Good Regulator Theorem [@Conant-Ashby70].}
 
-\notes{The deterministic-$\psi$ assumption is not needed for existence. With a genuinely stochastic channel $p(z\mid s,a)$, the marginal $p(z)$ is linear in the policy $\pi$. The space of policies is a product of probability simplices; its extreme points are exactly the deterministic policies. Since $H(Z)$ is concave in $p(z)$, $H(Z)$ is concave as a function of $\pi$. A concave function on a compact polytope attains a minimum at an extreme point. Hence there always exists a deterministic entropy-minimising policy, and $H(A\mid S)=0$ survives even when the world is stochastic. What does not survive is the stronger claim $H(Z\mid S=s)=0$: irreducible environmental noise can leave $Z$ uncertain.}
+\notes{The deterministic-$\phi$ assumption is not needed for existence. With a genuinely stochastic channel $p(z\mid s,a)$, the marginal $p(z)$ is linear in the policy $\pi$. The space of policies is a product of probability simplices; its extreme points are exactly the deterministic policies. Since $H(Z)$ is concave in $p(z)$, $H(Z)$ is concave as a function of $\pi$. A concave function on a compact polytope attains a minimum at an extreme point. Hence there always exists a deterministic entropy-minimising policy, and $H(A\mid S)=0$ survives even when the world is stochastic. What does not survive is the stronger claim $H(Z\mid S=s)=0$: irreducible environmental noise can leave $Z$ uncertain.}
 
 \newslide{Two Caveats}
 
