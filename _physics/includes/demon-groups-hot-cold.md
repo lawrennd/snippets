@@ -29,6 +29,6 @@ Compartmentalisation is the coarse-graining move: assign a legal description to 
 * Demon membrane: approximately lumpable only while local equilibrium holds
 }
 
-\notes{Kemeny--Snell lumpability is the precise condition under which a partition of a Markov chain induces another Markov chain on the groups [@Kemeny-finite60]. When it fails, the macro description needs memory of how the system entered the group. Name the issue; do not develop projection-operator formalism here.}
+\notes{Kemeny--Snell lumpability is the precise condition under which a partition of a Markov chain induces another Markov chain on the groups [@Kemeny-finite60]. When it fails, the macro description needs memory of how the system entered the group. We don't develop the projection-operator formalism.}
 
 \endif

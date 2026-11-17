@@ -5,7 +5,7 @@
 
 \subsection{Derivation of the Boltzmann Distribution}
 
-\notes{For a given mean energy $U$, among all distributions with that $U$, pick the one with largest entropy. Week 2 named the Gibbs--Boltzmann occupation; this is the MaxEnt derivation that earns it.}
+\notes{For a given mean energy $U$, among all distributions with that $U$, pick the one with largest entropy. Week 2 introduced the Gibbs--Boltzmann occupation; this is the MaxEnt derivation of it.}
 
 \slides{For fixed mean energy $U$, maximum entropy recovers Boltzmann weights.}
 

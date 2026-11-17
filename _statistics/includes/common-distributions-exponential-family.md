@@ -16,7 +16,7 @@
 * Gaussian: Lebesgue (continuous counterpart of $\#$)
 }
 
-\notes{Week 1 named five families without writing them in natural coordinates: Bernoulli, binomial, Poisson, multinomial/categorical, and Gaussian. Each is MaxEnt for its moment constraints relative to an appropriate base measure $h_0$, so each belongs to the exponential family
+\notes{Week 1 introduced five families without writing them in natural coordinates: Bernoulli, binomial, Poisson, multinomial/categorical, and Gaussian. Each is MaxEnt for its moment constraints relative to an appropriate base measure $h_0$, so each belongs to the exponential family
 $$
 p(x\mid\boldsymbol{\theta})=\exp\bigl(\boldsymbol{\theta}\cdot T(x)-\psi(\boldsymbol{\theta})\bigr)\,h_0(x).
 $$

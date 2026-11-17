@@ -5,7 +5,7 @@
 
 \subsection{Two Sides of the Same Coin}
 
-\notes{We have just derived $F=U-TS$ from the Gibbs occupation, with inner energy $U=\expSamp{E}$. Helmholtz free energy is what remains after entropy's cut. That identity is the whole of the LO1 payload. It is also why two research programmes that sound opposed are not. Welling, Lu and Holdijk's *Generative AI and Stochastic Thermodynamics* was published this year. Its subtitle is *A Tale of Free Energies* [@Welling-generative26]. If that book had a slogan, it would be close to *free energy is all you need*. If this course had a slogan, it would be *entropy is all you need*. They are two sides of the same coin, and the coin is inner energy.}
+\notes{We have just derived $F=U-TS$ from the Gibbs occupation, with inner energy $U=\expSamp{E}$. Helmholtz free energy is what remains after entropy's cut. That identity is the key result. It is also why two research programmes that sound opposed are not. Welling, Lu and Holdijk's *Generative AI and Stochastic Thermodynamics* was published this year. Its subtitle is *A Tale of Free Energies* [@Welling-generative26]. If that book had a slogan, it would be close to *free energy is all you need*. If this course had a slogan, it would be *entropy is all you need*. They are two sides of the same coin, and the coin is inner energy.}
 
 \newslide{Welling's Book, This Course}
 
@@ -28,7 +28,7 @@
 \slidesincremental{
 * Friston: organisms minimise a *variational* free energy [@Friston-free10]
 * That functional is $U[q]-T S[q]$ under a trial distribution $q$
-* Named here. Developed later, if at all. Our no-go remains $S$
+* Our no-go remains $S$
 }
 
 \speakernotes{Karl Friston, not a third thermodynamics. Students will hear ``free energy principle'' and think it is a different $F$. It is the same algebra under a recognition density. If $H$ is the more fundamental object, coldness is the more natural parameter. Sit down. Entropy game if there is time.}

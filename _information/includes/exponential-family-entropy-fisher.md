@@ -56,6 +56,6 @@ The score has mean zero. Fisher's information matrix is the second moment of the
 $$
 G_{ij}(\boldsymbol{\theta})=\mathbb{E}_{\boldsymbol{\theta}}[\partial_i\log p\,\partial_j\log p]=\mathrm{Cov}_{\boldsymbol{\theta}}[T]_{ij}.
 $$
-Differentiating $\boldsymbol{\eta}=\nabla\psi$ once more yields the same matrix as a Hessian: $G=\nabla^2\psi$. So the cumulant-generating property *is* the Fisher metric on an exponential family --- earned from the entropy calculation, not postulated.}
+Differentiating $\boldsymbol{\eta}=\nabla\psi$ once more yields the same matrix as a Hessian: $G=\nabla^2\psi$. So the cumulant-generating property *is* the Fisher metric on an exponential family --- which follows from the entropy calculation.}
 
 \endif

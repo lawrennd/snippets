@@ -5,7 +5,7 @@
 
 \subsection{The Gibbs--Boltzmann Distribution}
 
-\notes{Name the object and fix the formula. The MaxEnt derivation that *earns* these weights is a separate step: deriving the occupation from Lagrange multipliers before Shannon $H$ and Jaynes would put the cart before the horse.}
+\notes{The MaxEnt derivation of these weights comes in Week 5.}
 
 \newslide{Gibbs--Boltzmann Occupation}
 
@@ -59,7 +59,7 @@ mlai.write_figure('two-state-boltzmann.svg', directory='\writeDiagramsDir/physic
 
 \speakernotes{Colour only. Nobel 2024 (Hopfield and Hinton) names the line. Do not divert into training algorithms or Landauer here.}
 
-\notes{The Gibbs--Boltzmann occupation is not only a statement about gases and magnets. Hopfield networks [@Hopfield:neural82] assign an energy to every binary configuration of a recurrent net and treat recall as a descent toward low-energy states --- equilibrium statistics are again Gibbs. Ackley, Hinton and Sejnowski [@Ackley-boltzmann85] made the weights of that energy *learnable*: a Boltzmann machine is an undirected model whose distribution over configurations is exactly $p(s)\propto e^{-E(s)/T}$. The 2024 Nobel Prize in Physics, awarded to John Hopfield and Geoffrey Hinton, recognised that physical-systems reading of computation and learning. Name the lineage so the formula does not feel confined to nineteenth-century heat baths; do not divert into training algorithms.}
+\notes{The Gibbs--Boltzmann occupation is not only a statement about gases and magnets. Hopfield networks [@Hopfield:neural82] assign an energy to every binary configuration of a recurrent net and treat recall as a descent toward low-energy states --- equilibrium statistics are again Gibbs. Ackley, Hinton and Sejnowski [@Ackley-boltzmann85] made the weights of that energy *learnable*: a Boltzmann machine is an undirected model whose distribution over configurations is exactly $p(s)\propto e^{-E(s)/T}$. The 2024 Nobel Prize in Physics, awarded to John Hopfield and Geoffrey Hinton, recognised that physical-systems reading of computation and learning. The formula is not confined to nineteenth-century heat baths.}
 \addreading{@Ackley-boltzmann85}{Boltzmann machines (optional colour)}
 \addreading{@Hopfield:neural82}{Hopfield networks (optional colour)}
 
