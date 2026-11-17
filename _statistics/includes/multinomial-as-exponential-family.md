@@ -10,6 +10,7 @@
 $$
 P(\mathbf{x}\mid\boldsymbol{\theta})=\exp\bigl(\boldsymbol{\theta}\!\cdot\! T(\mathbf{x})-\psi(\boldsymbol{\theta})\bigr)\,h_0(\mathbf{x})
 $$
+
 * $\theta_j=\log\dfrac{\pi_j}{\pi_K}$,\quad $T=(x_1,\ldots,x_{K-1})$
 * $\psi(\boldsymbol{\theta})=n\log\bigl(1+\sum_{j=1}^{K-1}e^{\theta_j}\bigr)$
 * Categorical: $n=1$, $h_0=1$; multinomial: $h_0=\dfrac{n!}{x_1!\cdots x_K!}$
