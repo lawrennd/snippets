@@ -10,6 +10,7 @@
 $$
 P(k\mid\theta)=\exp\bigl(k\,\theta-\psi(\theta)\bigr)\,h_0(k),\qquad k=0,\ldots,n
 $$
+
 * $\theta=\log\dfrac{\pi}{1-\pi}$,\quad $T(k)=k$
 * $\psi(\theta)=n\log(1+e^{\theta})$,\quad $h_0(k)=\binom{n}{k}$
 }
