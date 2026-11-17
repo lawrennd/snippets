@@ -10,6 +10,7 @@
 $$
 p(y\mid\boldsymbol{\theta})=\exp\bigl(\theta_1 y+\theta_2 y^2-\psi(\boldsymbol{\theta})\bigr)\,h_0(y)
 $$
+
 * $\theta_1=\dfrac{\mu}{\sigma^2}$,\quad $\theta_2=-\dfrac{1}{2\sigma^2}$,\quad $T(y)=(y,y^2)$
 * $h_0$: Lebesgue (continuum counterpart of counting $\#$)
 * $\psi(\theta_1,\theta_2)=-\dfrac{\theta_1^2}{4\theta_2}-\dfrac12\log(-2\theta_2)-\dfrac12\log(2\pi)$
