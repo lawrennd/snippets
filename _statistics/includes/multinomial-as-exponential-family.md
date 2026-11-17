@@ -29,6 +29,6 @@ $$
 $$
 and base measure $h_0(\mathbf{x})=n!/(x_1!\cdots x_K!)$. Softmax regression is this family with features in place of the raw one-hot.}
 
-\speakernotes{Categorical is $n=1$. Same log-sum-exp $\psi$ the students will meet as softmax. Do not open the unconstrained $K$-parameter chart live.}
+\speakernotes{Same two-point moral: categorical $h_0=1$ is counting on the labels; multinomial multiplicity is density of states again. Categorical is $n=1$. Same log-sum-exp $\psi$ as softmax. Do not open the unconstrained $K$-parameter chart live.}
 
 \endif
