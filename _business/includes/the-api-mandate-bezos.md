@@ -3,7 +3,9 @@
 
 \editme
 
+\ifndef{omitBezosMemoTitle}
 \newslide{Bezos memo to Amazon in 2002}
+\endif
 
 \subsection{The API Mandate}
 
@@ -26,11 +28,13 @@
 * Two pizza teams with *devolved autonomy*.
 * Bound together through *corporate culture*.}
 
+\ifndef{omitConwayLawSlide}
 \newslide{Conway's Law}
 
 > Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.
 >
 > @Conway-committees68
+\endif
 
 \notes{The law is cited in the classic software engineering text, The Mythical Man Month [@Brooks-mythical75].} 
 

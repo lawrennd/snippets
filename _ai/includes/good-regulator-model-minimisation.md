@@ -5,8 +5,6 @@
 
 \subsection{The Good Regulator Theorem}
 
-\newslide{The Good Regulator theorem}
-
 \slidesincremental{
 * Every good regulator of a system must be a *model* of that system.
 * The judgement layer is the regulator: it must still *model* what it oversees.
