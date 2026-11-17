@@ -34,7 +34,13 @@ with $\boldsymbol{\eta}=\nabla\psi$. In general the base survives as
 \begin{align}
 H(\boldsymbol{\theta})=\psi(\boldsymbol{\theta})-\boldsymbol{\theta}\cdot\boldsymbol{\eta}-\mathbb{E}_{\boldsymbol{\theta}}[\log h_0(X)],
 \end{align}
-so the short form $H=\psi-\theta\cdot\eta$ is the $h_0=1$ special case (Bernoulli, categorical, Jaynes' die), not a licence to drop $1/k!$ from a Poisson. Equivalently, when $h_0=1$, $H=-\psi^*(\boldsymbol{\eta})$ where $\psi^*$ is the Legendre conjugate of $\psi$. That is the form that makes the next differentiation step cheap.}
+so the short form $H=\psi-\theta\cdot\eta$ is the $h_0=1$ special case (Bernoulli, categorical, Jaynes' die), not a licence to drop $1/k!$ from a Poisson. Equivalently, when $h_0=1$, $H=-\psi^*(\boldsymbol{\eta})$ where $\psi^*$ is the Legendre conjugate of $\psi$. That is the form that makes the next differentiation step cheap.
+
+The coarse-graining picture explains the difference. Every micro state has probability $\exp(\theta k-\psi)$, so the *micro* entropy is $H_{\mathrm{micro}}=\psi-\theta\cdot\eta$. The *macro* entropy of $K$ (relative to counting measure on $k$) is $H(K)=\psi-\theta\cdot\eta-\mathbb{E}[\log h_0(K)]$. The chain rule relates them:
+\begin{align}
+H_{\mathrm{micro}}=H(K)+\underbrace{H(\mathrm{micro}\mid K)}_{\mathbb{E}[\log h_0(K)]},
+\end{align}
+because given $K=k$ the distribution is uniform over $h_0(k)$ micro states. So $\mathbb{E}[\log h_0]$ is the entropy lost by coarse-graining --- Boltzmann's $\log W$, averaged over macrostates. For the Poisson, $h_0=1/k!$ is a volume rather than a count, $\log h_0=-\log k!$ is negative, and $H(\mathrm{micro}\mid K)$ is a differential entropy: the short formula is then not a Shannon entropy of anything discrete, and plugging $h_0=1$ into it gives the wrong answer.}
 
 \newslide{Fisher from the Same $\log p$}
 
