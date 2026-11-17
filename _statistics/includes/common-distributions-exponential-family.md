@@ -12,8 +12,8 @@
 * Form: $p=\exp\bigl(\boldsymbol{\theta}\!\cdot\! T-\psi\bigr)\,h_0$
 * Two stories for $h_0$: counting prior ($h_0=1$) versus combinatorial / continuum measure
 * Bernoulli, categorical: plain counting on the labels
-* Binomial, Poisson, multinomial: $h_0=\binom{n}{k}$, $1/k!$, $n!/\prod x_j!$ --- discrete density of states
-* Gaussian: Lebesgue (continuous counterpart of $\#$)
+* Binomial, Poisson, multinomial: result is a macroscopic of a microscopic sum
+* Gaussian: Lebesgue (continuous counterpart of #)
 }
 
 \notes{Week 1 named five families without writing them in natural coordinates: Bernoulli, binomial, Poisson, multinomial/categorical, and Gaussian. Each is MaxEnt for its moment constraints relative to an appropriate base measure $h_0$, so each belongs to the exponential family
