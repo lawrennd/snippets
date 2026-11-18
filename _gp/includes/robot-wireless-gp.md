@@ -7,10 +7,12 @@
 
 \subsection{Gaussian Process Fit to Robot Wireless Data}
 
-\notes{Perform a Gaussian process fit on the data using GPy.}
+\notes{Perform a Gaussian process fit on the data using `mlai`.}
 
-\code{m_full = GPy.models.GPRegression(x,yhat)
-_ = m_full.optimize() # Optimize parameters of covariance function}
+\setupcode{from mlai import Kernel, eq_cov, GP, SCG}
+\code{kernel = Kernel(eq_cov)
+m_full = GP(x, yhat, sigma2=1.0, kernel=kernel)
+_ = SCG().optimize(m_full) # Optimize parameters of covariance function}
 
 \subsection{Robot WiFi Data GP}
 

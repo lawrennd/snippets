@@ -3,18 +3,19 @@
 \editme
 
 \include{_ml/includes/step-function-data.md}
-\include{_software/includes/gpy-software.md}
 
 \subsection{Step Function Data GP}
 
-\notes{We can fit a Gaussian process to the step function data using ```GPy``` as follows.}
+\notes{We can fit a Gaussian process to the step function data using ```mlai``` as follows.}
 
-\code{m_full = GPy.models.GPRegression(x,yhat)
-_ = m_full.optimize() # Optimize parameters of covariance function}
+\setupcode{from mlai import Kernel, eq_cov, GP, SCG}
+\code{kernel = Kernel(eq_cov)
+m_full = GP(x, yhat, sigma2=1.0, kernel=kernel)
+_ = SCG().optimize(m_full) # Optimize parameters of covariance function}
 
-\notes{Where ```GPy.models.GPRegression()``` gives us a standard GP regression model with exponentiated quadratic covariance function.}
+\notes{Where ```GP``` with an exponentiated quadratic kernel gives us a standard GP regression model.}
 
-\notes{The model is optimized using ```m_full.optimize()``` which calls an L-BGFS gradient based solver in python.}
+\notes{The model is optimized using ```SCG().optimize(m_full)``` which runs scaled conjugate gradients on the shared parameter surface (noise and kernel lengthscale/variance).}
 
 \displaycode{fig, ax=plt.subplots(figsize=plot.big_wide_figsize)
 plot.model_output(m_full, scale=scale, offset=offset, ax=ax, fontsize=20, portion=0.5)
