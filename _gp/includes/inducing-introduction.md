@@ -8,13 +8,16 @@ Take an extra $\numInducing$ points on the function,
 $\inducingVector = \mappingFunction(\inducingInputMatrix)$.
 $$p(\dataVector,\mappingFunctionVector,\inducingVector) = p(\dataVector\given \mappingFunctionVector) p(\mappingFunctionVector\given \inducingVector) p(\inducingVector)$$
 
+\setupplotcode{import mlai.plot as plot}
+\plotcode{plot.nystrom_covariance_inducing(diagrams='\writeDiagramsDir')}
+
 \newslide{Introducing $\inducingVector$}
 
-\includeimg{\diagramsDir/cov_inducing_withX.png}{60%}{negate}
+\figure{\includediagram{\diagramsDir/cov_inducing_withX}{60%}}{Joint covariance of $\mappingFunctionVector$ and $\inducingVector$: blocks $\Kff$, $\Kfu$, $\Kuf$, $\Kuu$.}{cov-inducing-withX}
 
 \newslide{Introducing $\inducingVector$}
 
-Take and extra $M$ points on the function,
+Take an extra $M$ points on the function,
 $\inducingVector = \mappingFunction(\inducingInputMatrix)$.
 $$p(\dataVector,\mappingFunctionVector,\inducingVector) = p(\dataVector\given \mappingFunctionVector) p(\mappingFunctionVector\given \inducingVector) p(\inducingVector)$$
 $$\begin{aligned}
@@ -29,7 +32,7 @@ $$\begin{aligned}
 \columns{
 $$\inputMatrix,\,\dataVector$$ $$\mappingFunction(\inputVector) \sim {\mathcal GP}$$ $$p(\mappingFunctionVector) = \gaussianSamp{\zerosVector}{\Kff}$$ $$p(\mappingFunctionVector\given \dataVector,\inputMatrix)$$
 }{
-\includeimg{\diagramsDir/nomenclature4}{90%}{negate}
+\includediagram{\diagramsDir/nomenclature4}{90%}
 }{30%}{70%}
 $$
 \begin{align}
@@ -41,5 +44,7 @@ $$
 \columns{
 $$\inputMatrix,\,\dataVector$$ $$\mappingFunction(\inputVector) \sim {\mathcal GP}$$ $$p(\mappingFunctionVector) = \gaussianSamp{\zerosVector}{\Kff}$$ $$p(\mappingFunctionVector\given \dataVector,\inputMatrix)$$ $$p(\inducingVector)  = \gaussianSamp{\zerosVector}{\Kuu}$$ $$\widetilde p({\color{red}\inducingVector}\given \dataVector,\inputMatrix)$$
 }{
-\includeimg{\diagramsDir/nomenclature5.png}{90%}{negate}
+\includediagram{\diagramsDir/nomenclature5}{90%}
+}{30%}{70%}
+
 \endif
