@@ -8,7 +8,7 @@
 Here we set up a simple one dimensional regression problem. The input locations, $\inputMatrix$, are in two separate clusters. The response variable, $\dataVector$, is sampled from a Gaussian process with an exponentiated quadratic covariance.}
 
 \setupcode{import numpy as np
-import GPy}
+from mlai import Kernel, eq_cov, GP, SparseGP, SCG}
 
 \setupcode{np.random.seed(101)}
 
@@ -19,13 +19,14 @@ X[:25, :] = np.linspace(0,3,25)[:,None] # First cluster of inputs/covariates
 X[25:, :] = np.linspace(7,10,25)[:,None] # Second cluster of inputs/covariates
 
 # Sample response variables from a Gaussian process with exponentiated quadratic covariance.
-k = GPy.kern.RBF(1)
-y = np.random.multivariate_normal(np.zeros(N),k.K(X)+np.eye(N)*np.sqrt(noise_var)).reshape(-1,1)}
+k = Kernel(eq_cov)
+y = np.random.multivariate_normal(np.zeros(N),k.K(X)+np.eye(N)*noise_var).reshape(-1,1)}
 
 \notes{First we perform a full Gaussian process regression on the data. We create a GP model, `m_full`, and fit it to the data, plotting the resulting fit.}
 
-\code{m_full = GPy.models.GPRegression(X,y)
-_ = m_full.optimize(messages=True) # Optimize parameters of covariance function}
+\code{kernel_full = Kernel(eq_cov)
+m_full = GP(X, y, sigma2=1.0, kernel=kernel_full)
+_ = SCG().optimize(m_full) # Optimize parameters of covariance function}
 
 \setupdisplaycode{import matplotlib.pyplot as plt
 import mlai
@@ -44,16 +45,14 @@ mlai.write_figure(figure=fig,
 
 \figure{\includediagram{\diagramsDir/gp/sparse-demo-full-gp}{80%}}{Full Gaussian process fitted to the data set.}{sparse-demo-full-gp}
 
-\notes{Now we set up the inducing variables, $\mathbf{u}$. Each inducing variable has its own associated input index, $\mathbf{Z}$, which lives in the same space as $\inputMatrix$. Here we are using the true covariance function parameters to generate the fit.}
+\notes{Now we set up the inducing variables, $\mathbf{u}$. Each inducing variable has its own associated input index, $\mathbf{Z}$, which lives in the same space as $\inputMatrix$. Here we are using the true covariance function parameters to generate the fit. With `optimize_Z=False`, the inducing inputs stay fixed while noise and kernel hyperparameters remain free.}
 
-\code{kern = GPy.kern.RBF(1)
+\code{kern = Kernel(eq_cov)
 Z = np.hstack(
         (np.linspace(2.5,4.,3),
         np.linspace(7,8.5,3)))[:,None]
-m = GPy.models.SparseGPRegression(X,y,kernel=kern,Z=Z)
-m.noise_var = noise_var
-m.inducing_inputs.constrain_fixed()
-display(m)}
+m = SparseGP(X, y, Z, sigma2=noise_var, kernel=kern, optimize_Z=False)
+print(m)}
 
 \displaycode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 plot.model_output(m, ax=ax, xlabel='$x$', ylabel='$y$', fontsize=20, portion=0.2, xlim=xlim, ylim=ylim)
@@ -65,8 +64,8 @@ mlai.write_figure(figure=fig,
 
 \figure{\includediagram{\diagramsDir/gp/sparse-demo-constrained-inducing-6-unlearned-gp}{80%}}{Sparse Gaussian process fitted with six inducing variables, no optimization of parameters or inducing variables.}{sparse-demo-constrained-inducing-6-unlearned-gp}
 
-\code{_ = m.optimize(messages=True)
-display(m)}
+\code{_ = SCG().optimize(m)
+print(m)}
 
 \displaycode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 plot.model_output(m, ax=ax, xlabel='$x$', ylabel='$y$', fontsize=20, portion=0.2, xlim=xlim, ylim=ylim)
@@ -78,9 +77,11 @@ mlai.write_figure(figure=fig,
 
 \figure{\includediagram{\diagramsDir/gp/sparse-demo-constrained-inducing-6-learned-gp}{80%}}{Gaussian process fitted with inducing variables fixed and parameters optimized}{sparse-demo-constrained-inducing-6-learned-gp}
 
-\code{m.randomize()
-m.inducing_inputs.unconstrain()
-_ = m.optimize(messages=True)}
+\notes{Next we free the inducing inputs. A new sparse model starts from the same $\mathbf{Z}$ and hyperparameters, now with `optimize_Z=True`, so scaled conjugate gradients can move the inducing locations as well.}
+
+\code{kern_free = Kernel(eq_cov, **dict(m.kernel.parameters))
+m = SparseGP(X, y, m.Z.copy(), sigma2=m.sigma2, kernel=kern_free, optimize_Z=True)
+_ = SCG().optimize(m)}
 
 \displaycode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 plot.model_output(m, ax=ax, xlabel='$x$', ylabel='$y$', fontsize=20, portion=0.2,xlim=xlim, ylim=ylim)
@@ -94,12 +95,11 @@ mlai.write_figure(figure=fig,
 
 \notes{Now we will vary the number of inducing points used to form the approximation.}
 
-\code{m.num_inducing=8
-m.randomize()
-M = 8
-m.set_Z(np.random.rand(M,1)*12)
-
-_ = m.optimize(messages=True)}
+\code{M = 8
+Z8 = np.random.rand(M,1)*12
+kern8 = Kernel(eq_cov, **dict(m.kernel.parameters))
+m = SparseGP(X, y, Z8, sigma2=m.sigma2, kernel=kern8, optimize_Z=True)
+_ = SCG().optimize(m)}
 
 \displaycode{fig, ax = plt.subplots(figsize=plot.big_wide_figsize)
 plot.model_output(m, ax=ax, xlabel='$x$', ylabel='$y$', fontsize=20, portion=0.2, xlim=xlim, ylim=ylim)
