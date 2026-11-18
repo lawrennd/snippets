@@ -20,7 +20,7 @@ X[25:, :] = np.linspace(7,10,25)[:,None] # Second cluster of inputs/covariates
 
 # Sample response variables from a Gaussian process with exponentiated quadratic covariance.
 k = Kernel(eq_cov)
-y = np.random.multivariate_normal(np.zeros(N),k.K(X)+np.eye(N)*noise_var).reshape(-1,1)}
+y = np.random.multivariate_normal(np.zeros(N),k.K(X)+np.eye(N)*np.sqrt(noise_var)).reshape(-1,1)}
 
 \notes{First we perform a full Gaussian process regression on the data. We create a GP model, `m_full`, and fit it to the data, plotting the resulting fit.}
 
