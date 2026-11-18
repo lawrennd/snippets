@@ -5,14 +5,15 @@
 
 \subsection{Gaussian Process Fit}
 
-\notes{Our first objective will be to perform a Gaussian process fit to the data, we'll do this using the [GPy software](https://github.com/SheffieldML/GPy).}
+\notes{Our first objective will be to perform a Gaussian process fit to the data, we'll do this using the [`mlai`](https://github.com/lawrennd/mlai) software.}
 
-\setupcode{import GPy}
-\code{m_full = GPy.models.GPRegression(x,yhat)
-_ = m_full.optimize() # Optimize parameters of covariance function}
+\setupcode{from mlai import Kernel, eq_cov, GP, SCG}
+\code{kernel = Kernel(eq_cov)
+m_full = GP(x, yhat, sigma2=1.0, kernel=kernel)
+_ = SCG().optimize(m_full) # Optimize parameters of covariance function}
 
-\notes{The first command sets up the model, then `m_full.optimize()`
-optimizes the parameters of the covariance function and the noise level of the model. Once the fit is complete, we'll try creating some test points, and computing the output of the GP model in terms of the mean and standard deviation of the posterior functions between 1870 and 2030. We plot the mean function and the standard deviation at 200 locations. We can obtain the predictions using
+\notes{The first commands set up the model with an exponentiated quadratic covariance, then `SCG().optimize(m_full)`
+optimizes the parameters of the covariance function and the noise level of the model using scaled conjugate gradients. Once the fit is complete, we'll try creating some test points, and computing the output of the GP model in terms of the mean and standard deviation of the posterior functions between 1870 and 2030. We plot the mean function and the standard deviation at 200 locations. We can obtain the predictions using
 `y_mean, y_var = m_full.predict(xt)`
 }
 
@@ -47,8 +48,9 @@ mlai.write_figure(figure=fig,
 \code{x_clean=np.vstack((x[0:2, :], x[3:, :]))
 y_clean=np.vstack((yhat[0:2, :], yhat[3:, :]))
 
-m_clean = GPy.models.GPRegression(x_clean,y_clean)
-_ = m_clean.optimize()}
+kernel_clean = Kernel(eq_cov)
+m_clean = GP(x_clean, y_clean, sigma2=1.0, kernel=kernel_clean)
+_ = SCG().optimize(m_clean)}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot as plot

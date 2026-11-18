@@ -23,12 +23,12 @@
 \newslide{}
 
 \notes{
-Our first objective will be to perform a Gaussian process fit to the data, we'll do this using the [GPy software](https://github.com/SheffieldML/GPy).}
+Our first objective will be to perform a Gaussian process fit to the data, we'll do this using the [`mlai`](https://github.com/lawrennd/mlai) software.}
 
-\setupcode{import GPy}
-\code{m_full = GPy.models.GPRegression(x,yhat)
-m_full.kern.lengthscale=50
-_ = m_full.optimize() # Optimize parameters of covariance function}
+\setupcode{from mlai import Kernel, eq_cov, GP, SCG}
+\code{kernel = Kernel(eq_cov, lengthscale=50.0)
+m_full = GP(x, yhat, sigma2=1.0, kernel=kernel)
+_ = SCG().optimize(m_full) # Optimize parameters of covariance function}
 
 \notes{Initialize the length scale parameter (which here actually represents a *time scale* of the covariance function) to a reasonable value. Default would be 1, but here we set it to 50 minutes, given points are arriving across zero to 250 minutes.}
 
@@ -55,9 +55,9 @@ mlai.write_figure(figure=fig,
 
 \notes{Now we try a model initialized with a longer length scale.}
 
-\code{m_full2 = GPy.models.GPRegression(x,yhat)
-m_full2.kern.lengthscale=2000
-_ = m_full2.optimize() # Optimize parameters of covariance function}
+\code{kernel2 = Kernel(eq_cov, lengthscale=2000.0)
+m_full2 = GP(x, yhat, sigma2=1.0, kernel=kernel2)
+_ = SCG().optimize(m_full2) # Optimize parameters of covariance function}
 
 \setupdisplaycode{import mlai.plot as plot}
 
@@ -76,10 +76,9 @@ mlai.write_figure(figure=fig,
 
 \notes{Now we try a model initialized with a lower noise.}
 
-\code{m_full3 = GPy.models.GPRegression(x,yhat)
-m_full3.kern.lengthscale=20
-m_full3.likelihood.variance=0.001
-_ = m_full3.optimize() # Optimize parameters of covariance function}
+\code{kernel3 = Kernel(eq_cov, lengthscale=20.0)
+m_full3 = GP(x, yhat, sigma2=0.001, kernel=kernel3)
+_ = SCG().optimize(m_full3) # Optimize parameters of covariance function}
 
 \setupdisplaycode{import mlai.plot as plot}
 
