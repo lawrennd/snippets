@@ -23,6 +23,8 @@ $$
 
 \subsubsection{Basic Multilayer Perceptron}
 
+\notes{Here every layer — including the output — applies the basis function $\basisVector(\cdot)$. Elsewhere (for example the deep-network diagram) the final layer is often taken to be linear. Both are valid; the choice depends on the loss and the prediction task.}
+
 $$
 \small
 \mappingFunction_\numLayers(\inputVector) = \basisVector\left(\biasVector_\numLayers + \mappingMatrix_\numLayers \basisVector\left(\biasVector_{\numLayers-1} + \mappingMatrix_{\numLayers-1} \basisVector\left( \cdots \basisVector\left(\biasVector_1 + \mappingMatrix_1 \inputVector\right) \cdots \right)\right)\right)
@@ -30,9 +32,11 @@ $$
 
 \subsubsection{Recursive MLP Definition}
 
+\notes{In this recursive view $\mappingFunction_\layerIndex$ is the *post-activation* output of layer $\layerIndex$. In the chain-rule section that follows, the same letter denotes the *pre-activation*; there the post-activation is written $\basisVector_\layerIndex$.}
+
 \slides{\small
 \begin{align}
-\mappingFunction_\layerIndex(\inputVector) &= \basisVector\left(\mappingMatrix_\layerIndex \mappingFunction_{\layerIndex-1}(\inputVector) + \biasVector_\layerIndex\right),\quad l=1,\dots,\numLayers\\
+\mappingFunction_\layerIndex(\inputVector) &= \basisVector\left(\mappingMatrix_\layerIndex \mappingFunction_{\layerIndex-1}(\inputVector) + \biasVector_\layerIndex\right),\quad \layerIndex=1,\dots,\numLayers\\
 \mappingFunction_0(\inputVector) &= \inputVector
 \end{align}}
 

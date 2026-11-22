@@ -79,7 +79,7 @@ analytical_grad = huber_loss.gradient(y_pred, y_true).flatten()
 results['Huber'] = verify_gradient_implementation(analytical_grad, numerical_grad)
 print(f"Huber Loss: {'PASS' if results['Huber'] else 'FAIL'}")}
     
-\code{# Test Binary Cross Entropy
+\code{# Test Binary Cross Entropy (single output)
 bce_loss = BinaryCrossEntropyLoss()
 y_pred_bce = np.array([[0.8], [0.3], [0.9]])
 y_true_bce = np.array([[1.0], [0.0], [1.0]])
@@ -90,7 +90,19 @@ def bce_func(pred):
 numerical_grad = finite_difference_jacobian(bce_func, y_pred_bce.flatten()).flatten()
 analytical_grad = bce_loss.gradient(y_pred_bce, y_true_bce).flatten()
 results['BCE'] = verify_gradient_implementation(analytical_grad, numerical_grad)
-print(f"Binary Cross Entropy: {'PASS' if results['BCE'] else 'FAIL'}")}
+print(f"Binary Cross Entropy: {'PASS' if results['BCE'] else 'FAIL'}")
+
+# Multi-column BCE: gradient must match mean over all elements
+y_pred_bce_multi = np.array([[0.8, 0.2], [0.3, 0.7], [0.9, 0.4]])
+y_true_bce_multi = np.array([[1.0, 0.0], [0.0, 1.0], [1.0, 0.0]])
+
+def bce_multi_func(pred):
+	return bce_loss.forward(pred.reshape(y_pred_bce_multi.shape), y_true_bce_multi)
+
+numerical_grad = finite_difference_jacobian(bce_multi_func, y_pred_bce_multi.flatten()).flatten()
+analytical_grad = bce_loss.gradient(y_pred_bce_multi, y_true_bce_multi).flatten()
+results['BCE_multi'] = verify_gradient_implementation(analytical_grad, numerical_grad)
+print(f"Binary Cross Entropy (multi-column): {'PASS' if results['BCE_multi'] else 'FAIL'}")}
 
 \loadcode{CrossEntropyLoss}{mlai.loss}
 

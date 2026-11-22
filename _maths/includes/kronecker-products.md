@@ -111,9 +111,9 @@ $$}
 * **Operations**: work with smaller component matrices
 * **Scaling**: $O(n^3)$ becomes $O(n_1^3 + n_2^3)$ for $n = n_1 n_2$}
 
-\notes{The Kronecker structure provides significant computational advantages
+\notes{The Kronecker structure provides significant computational advantages:
 
-1. **Memory efficiency**: Instead of storing an $n \times n$ matrix, we store smaller component matrices
-2. **Computational efficiency**: Matrix operations scale better with Kronecker structure
-3. **Numerical stability**: Often more stable than direct computation of large matrices}
+1. **Memory efficiency**: Instead of storing an $n \times n$ matrix, we store smaller component matrices.
+2. **Computational efficiency**: Factorisations and solves that would cost $O(n^3)$ for $n = n_1 n_2$ can often be reduced to work on the factors, scaling as $O(n_1^3 + n_2^3)$ (or better with structure).
+3. **Algebraic simplification**: Identities such as $(\mathbf{A} \otimes \mathbf{B})^{-1} = \mathbf{A}^{-1} \otimes \mathbf{B}^{-1}$ let us avoid forming the full product when applying the chain rule.}
 \endif

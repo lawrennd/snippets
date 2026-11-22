@@ -39,7 +39,7 @@ print(f"Number of parameters: {sum(w.size for w in network.weights) + sum(b.size
 }
 
 
-\subsection{Test Backpopagation}
+\subsection{Test Backpropagation}
 
 
 \code{# Forward pass
