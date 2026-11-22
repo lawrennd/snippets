@@ -34,7 +34,8 @@ X_seq, y_seq = create_interesting_sequence_data('arithmetic')
 print(f"Sequence data: {X_seq.shape} -> {y_seq.shape}")
 print(f"Sample sequence: {X_seq[0]}")
 print(f"Target sequence: {y_seq[0]}")
-print(f"Pattern: {X_seq[0]} -> {y_seq[0]} (arithmetic progression)")}
+print("The target is the input shifted by one place: at each position the task is")
+print("to predict the next token, the same task a language model is trained on.")}
 
 \subsection{Explore Different Sequence Types}
 
@@ -104,96 +105,121 @@ print(f"Input shape: {X_test.shape}")
 print(f"Output shape: {attn_output.shape}")
 print(f"Number of heads: {n_heads}")
 print(f"Model parameters: {len(multi_head_attention.parameters)}")
-print("This composes multiple AttentionLayer instances for true multi-head attention!")}
+print(f"Each head projects all {d_model} input features to its own {d_model // n_heads}-dimensional")
+print("queries, keys and values; the head outputs are concatenated and projected by W_o.")}
 
-\subsection{Test Chain Rule in Attention Layer}
+\subsection{Check the Attention Gradients}
 
-\code{# Test gradient flow through attention layer (demonstrating chain rule)
-from mlai import MeanSquaredError
+\notes{Before training with these layers we check the hand-derived gradients against finite differences. We use a small layer so the numerical gradient is quick to compute. We take a random linear function of the output as the "loss", so every output element contributes to the gradient.}
 
-X_test = np.random.randn(2, seq_length, d_model)
+\code{from mlai.utils import finite_difference_gradient, verify_gradient_implementation
 
-# Forward pass through attention layer
-output = attention_layer.forward(X_test)
+small_attention = AttentionLayer(d_model=4, causal=True)
+X_small = np.random.randn(2, 3, 4)
+G = np.random.randn(2, 3, 4)  # random weights defining the loss L = sum(G * output)
 
-# Create dummy loss using proper loss function (consistent with neural network)
-target = np.random.randn(2, seq_length, d_model)
-loss_fn = MeanSquaredError()
-loss_value = loss_fn.forward(output, target)
+def loss_of_input(x_flat):
+    return np.sum(small_attention.forward(x_flat.reshape(X_small.shape)) * G)
 
-# Backward pass (demonstrates three-path chain rule)
-loss_gradient = loss_fn.gradient(output, target)
-gradients = attention_layer.backward(loss_gradient)
+def loss_of_parameters(p):
+    small_attention.parameters = p
+    return np.sum(small_attention.forward(X_small) * G)
 
-print("Chain Rule Demonstration:")
-print(f"Loss value: {loss_value:.4f}")
-print(f"Input gradient shape: {gradients[0].shape}")
-print(f"Input gradient norm: {np.linalg.norm(gradients[0]):.4f}")
-print("This shows how gradients flow through Q, K, V transformations")
-print("The attention layer implements the three-path chain rule internally")
-print("Gradients are computed using our comprehensive gradient testing framework!")}
+p0 = small_attention.parameters.copy()
+numerical_input = finite_difference_gradient(loss_of_input, X_small.flatten())
+numerical_params = finite_difference_gradient(loss_of_parameters, p0)
+small_attention.parameters = p0
+
+# Analytical gradients from the backward pass
+small_attention.forward(X_small)
+analytical_input = small_attention.backward(G)[0].flatten()
+analytical_params = small_attention.gradients
+
+print("Input gradient (three-path chain rule) matches:",
+      verify_gradient_implementation(analytical_input, numerical_input, rtol=1e-4))
+print("W_q, W_k, W_v, W_o gradients match:",
+      verify_gradient_implementation(analytical_params, numerical_params, rtol=1e-4))}
 
 \subsection{Train Simple Attention Model with Layered Architecture}
 
-\helpercode{def train_attention_model(X, y, n_epochs=50, learning_rate=0.001):
-    """Train a simple attention model using the new layered architecture."""
-    from mlai import MeanSquaredError, LayeredNeuralNetwork, MultiHeadAttentionLayer
-    
-    # Create model using layered architecture
-    d_model = 64
-    n_heads = 4
-    vocab_size = 30
-    
-    # Create multi-head attention layer
-    attention_layer = MultiHeadAttentionLayer(d_model, n_heads)
-    
-    # Create layered neural network with attention layer
-    model = LayeredNeuralNetwork([attention_layer])
-    
-    # Convert to embeddings (simplified)
-    X_embedded = np.random.randn(len(X), X.shape[1], d_model)
-    y_embedded = np.random.randn(len(y), y.shape[1], d_model)
-    
-    # Loss function (consistent with neural network)
-    loss_fn = MeanSquaredError()
-    
-    # Training loop
+\notes{Tokens are integers, so we first represent each one as a one-hot vector. Multiplying a one-hot vector by a weight matrix picks out one row, so a `LinearLayer` applied to one-hot tokens is exactly an embedding layer. The model then adds positional encodings, applies causal multi-head self-attention, and maps each position to a score (logit) for every token in the vocabulary. We train with the softmax cross-entropy loss and plain minibatch gradient descent, using the gradients computed by the backward pass.}
+
+\helpercode{def train_sequence_model(model, X, y, n_epochs=100, learning_rate=0.05, batch_size=20, n_train=150):
+    """Train a next-token model with minibatch gradient descent.
+
+    The first n_train sequences are used for training and the rest for testing.
+    Returns the training losses, training accuracies and final test accuracy."""
+    from mlai import SoftmaxCrossEntropyLoss
+
+    vocab_size = int(max(X.max(), y.max())) + 1
+    X_onehot = np.eye(vocab_size)[X]
+    Y_onehot = np.eye(vocab_size)[y]
+    train_idx = np.arange(n_train)
+    test_idx = np.arange(n_train, len(X))
+
+    loss_fn = SoftmaxCrossEntropyLoss()
     losses = []
+    accuracies = []
+
+    def evaluate():
+        """Loss and accuracy on the training sequences."""
+        logits = model.forward(X_onehot[train_idx])
+        losses.append(loss_fn.forward(logits, Y_onehot[train_idx]))
+        accuracies.append(np.mean(np.argmax(logits, axis=-1) == y[train_idx]))
+
+    evaluate()  # performance with random weights, before training
     for epoch in range(n_epochs):
-        # Forward pass through layered network
-        output = model.forward(X_embedded)
-        
-        # Compute loss using proper loss function
-        loss = loss_fn.forward(output, y_embedded)
-        
-        # Backward pass (demonstrates chain rule through layers)
-        loss_gradient = loss_fn.gradient(output, y_embedded)
-        gradients = model.backward(loss_gradient)
-        
-        # Update parameters using gradient descent
-        # The layered network handles parameter updates internally
-        current_params = model.parameters
-        updated_params = current_params - learning_rate * np.gradient(current_params)
-        model.parameters = updated_params
-        
-        losses.append(loss)
-        
-        if epoch % 10 == 0:
-            print(f"Epoch {epoch:3d}: Loss = {loss:.4f}")
-    
-    return model, losses}
+        order = np.random.permutation(train_idx)
+        for start in range(0, len(order), batch_size):
+            batch = order[start:start + batch_size]
+            logits = model.forward(X_onehot[batch])
+            # Backward pass: the gradient of the loss with respect to the logits
+            # is propagated through every layer by the chain rule
+            model.set_output_gradient(loss_fn.gradient(logits, Y_onehot[batch]))
+            # Gradient descent step on all parameters
+            model.parameters = model.parameters - learning_rate * model.gradients
+
+        evaluate()
+        if epoch % 20 == 0:
+            print(f"Epoch {epoch:3d}: Loss = {losses[-1]:.4f}, Train accuracy = {accuracies[-1]:.3f}")
+
+    test_accuracy = np.mean(np.argmax(model.forward(X_onehot[test_idx]), axis=-1) == y[test_idx])
+    print(f"Test accuracy: {test_accuracy:.3f}")
+    return losses, accuracies, test_accuracy}
+
+\helpercode{def train_attention_model(X, y, d_model=32, n_heads=4, n_epochs=100, learning_rate=0.05):
+    """Train an attention-only next-token model: embedding, positions, causal attention, output."""
+    from mlai import LayeredNeuralNetwork, LinearLayer, PositionalEncodingLayer, MultiHeadAttentionLayer
+
+    vocab_size = int(max(X.max(), y.max())) + 1
+    model = LayeredNeuralNetwork([
+        LinearLayer(vocab_size, d_model),                          # token embedding
+        PositionalEncodingLayer(d_model),                          # add position information
+        MultiHeadAttentionLayer(d_model, n_heads, causal=True),    # attend to earlier positions
+        LinearLayer(d_model, vocab_size),                          # logits over the vocabulary
+    ])
+    losses, accuracies, test_accuracy = train_sequence_model(
+        model, X, y, n_epochs=n_epochs, learning_rate=learning_rate)
+    return model, losses, accuracies, test_accuracy}
 
 \code{X_seq, y_seq = create_interesting_sequence_data('arithmetic')
-model, losses = train_attention_model(X_seq, y_seq)}
+model, losses, accuracies, test_accuracy = train_attention_model(X_seq, y_seq)}
+
+\notes{The first prediction in each sequence cannot be made reliably: from a single number the model cannot know the step size, which is chosen at random from 1 to 4. One position in eight is therefore largely guesswork, so a test accuracy of around 90% is close to the best achievable on this data.}
 
 \setupplotcode{import matplotlib.pyplot as plt
 import mlai.plot}
 
-\plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
-ax.plot(losses, linewidth=2)
-ax.set_xlabel('Epoch')
-ax.set_ylabel('Loss')
-plt.grid(True, alpha=0.3)
+\plotcode{fig, (ax1, ax2) = plt.subplots(1, 2, figsize=plot.big_wide_figsize)
+ax1.plot(losses, linewidth=2)
+ax1.set_xlabel('Epoch')
+ax1.set_ylabel('Cross-entropy loss')
+ax1.grid(True, alpha=0.3)
+ax2.plot(accuracies, linewidth=2, color='orange')
+ax2.set_xlabel('Epoch')
+ax2.set_ylabel('Training accuracy')
+ax2.grid(True, alpha=0.3)
+plt.tight_layout()
 
 print(f"Final training loss: {losses[-1]:.4f}")
 
@@ -205,11 +231,12 @@ mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagrams
 
 \helpercode{def visualise_attention_weights(model, X, filename="attention-weights.svg", directory="../diagrams"):
     """Visualise attention weights from the multi-head attention model."""
-    attention_layer = model.layers[0]
-    X_embedded = np.random.randn(1, X.shape[1], attention_layer.d_model)
-    model.forward(X_embedded)
+    from mlai import MultiHeadAttentionLayer
+    attention_layer = [layer for layer in model.layers if isinstance(layer, MultiHeadAttentionLayer)][0]
+    vocab_size = model.layers[0].input_size
+    model.forward(np.eye(vocab_size)[X[:1]])
     # First head, first sample
-    attn_weights = attention_layer.attention_heads[0].last_attention_weights[0]
+    attn_weights = attention_layer.last_attention_weights[0, 0]
     
     # Plot
     fig, ax = plt.subplots(figsize=plot.big_figsize)
@@ -217,6 +244,7 @@ mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagrams
     
     ax.set_xlabel('Key Position')
     ax.set_ylabel('Query Position')
+    ax.set_title(f'Input: {X[0]}')
     
     plt.colorbar(im, ax=ax)
     plt.tight_layout()
@@ -225,7 +253,7 @@ mlai.write_figure("transformer-training-progress.svg", directory="\writeDiagrams
 
 \plotcode{visualise_attention_weights(model, X_seq, "attention-weights.svg", directory="\writeDiagramsDir/deepnn/")}
 
-\figure{\includediagram{\diagramsDir/deepnn/attention-weights}{60%}}{Attention weights visualisation from the first head showing which positions the model attends to}{attention-weights}
+\figure{\includediagram{\diagramsDir/deepnn/attention-weights}{60%}}{Attention weights from the first head of the trained model for one arithmetic sequence. The causal mask makes the matrix lower triangular: each position can only attend to itself and earlier positions.}{attention-weights}
 
 \subsection{Test Different Numbers of Heads}
 
@@ -237,10 +265,10 @@ for n_heads in [1, 2, 4, 8]:
     multi_head_attention = MultiHeadAttentionLayer(d_model, n_heads)
     X_test = np.random.randn(2, seq_length, d_model)
     output = multi_head_attention.forward(X_test)
-    attn_weights = multi_head_attention.attention_heads[0].last_attention_weights
+    attn_weights = multi_head_attention.last_attention_weights
     
-    print(f"n_heads={n_heads}: output shape={output.shape}, attn shape={attn_weights.shape}")
-    print(f"  Each head processes {d_model//n_heads} dimensions")}
+    print(f"n_heads={n_heads}: output shape={output.shape}, attention weights shape={attn_weights.shape}")
+    print(f"  Each head projects all {d_model} features to d_k = {d_model//n_heads} dimensions")}
 
 \subsection{Test Different Activation Functions}
 
@@ -399,7 +427,7 @@ print("This demonstrates different attention behaviors!")}
   * Contrast learning (positive vs negative weights)
   * Sparse attention patterns
 
-This demonstrates how different activation functions can create fundamentally different attention behaviors, even with the same underlying Q, K, V computation!}
+This demonstrates how different activation functions can create fundamentally different attention behaviors, even with the same underlying Q, K, V computation. To train with one of these alternatives, the activation also needs a `gradient(x, grad_output, axis)` method giving its vector-Jacobian product; the attention layer raises an error in the backward pass if it is missing.}
 
 \subsection{Positional Encoding Layer Test}
 
@@ -420,92 +448,47 @@ print("This is now a proper Layer that can be composed with other layers!")}
 
 \subsection{Build Transformer with Layered Architecture}
 
-\code{# Create transformer using the new layered architecture
-from mlai import LayeredNeuralNetwork, MultiHeadAttentionLayer, PositionalEncodingLayer
+\notes{A transformer block combines multi-head attention with a position-wise feed-forward network, which is the same small neural network applied separately at every position. Each of these sub-layers is wrapped in a residual connection, $\mathbf{y} = \mathbf{x} + f(\mathbf{x})$. Because $\mathbf{x}$ reaches the output by two paths, the chain rule again sums two contributions in the backward pass: $\frac{\partial \lossFunction}{\partial \mathbf{x}} = \frac{\partial \lossFunction}{\partial \mathbf{y}} + \frac{\partial \lossFunction}{\partial \mathbf{y}}\frac{\partial f}{\partial \mathbf{x}}$. Residual connections make deep stacks much easier to train because the gradient always has a direct path back to earlier layers. Full transformers also apply layer normalisation around each sub-layer, which we omit here for simplicity.}
 
-vocab_size = 30
-d_model = 64
-n_heads = 4
+\loadcode{ResidualLayer}{mlai}
 
-# Create layers for transformer
-pos_encoding = PositionalEncodingLayer(d_model)
-attention = MultiHeadAttentionLayer(d_model, n_heads)
+\helpercode{def build_transformer(vocab_size, d_model=32, n_heads=4, d_ff=64):
+    """A single-block causal transformer for next-token prediction."""
+    from mlai import (LayeredNeuralNetwork, LinearLayer, FullyConnectedLayer, ReLUActivation,
+                      PositionalEncodingLayer, MultiHeadAttentionLayer, ResidualLayer)
+    return LayeredNeuralNetwork([
+        LinearLayer(vocab_size, d_model),                                   # token embedding
+        PositionalEncodingLayer(d_model),
+        ResidualLayer(MultiHeadAttentionLayer(d_model, n_heads, causal=True)),
+        ResidualLayer([FullyConnectedLayer(d_model, d_ff, ReLUActivation()),  # feed-forward network
+                       LinearLayer(d_ff, d_model)]),
+        LinearLayer(d_model, vocab_size),                                   # logits
+    ])}
 
-# Build transformer using layered architecture
-transformer_layers = [pos_encoding, attention]
-transformer = LayeredNeuralNetwork(transformer_layers)
+\code{transformer = build_transformer(vocab_size=20)
 
-print("Layered Transformer Model Test:")
-print(f"Model dimension: {d_model}")
-print(f"Number of heads: {n_heads}")
-print(f"Number of layers: {len(transformer_layers)}")
+print("Layered Transformer Model:")
+print(f"Number of layers: {len(transformer.layers)}")
 print(f"Total parameters: {len(transformer.parameters)}")
-print(f"Layer types: {[type(layer).__name__ for layer in transformer_layers]}")
-print("This demonstrates the new modular layered architecture!")}
+print(f"Layer types: {[type(layer).__name__ for layer in transformer.layers]}")
 
-\code{# Test forward pass with layered architecture
-X_test = np.random.randn(2, 8, d_model)  # Embedded input
-output = transformer.forward(X_test)
-
-print("Layered Transformer Test:")
-print(f"Input shape: {X_test.shape}")
-print(f"Output shape: {output.shape}")
-print(f"Model parameters: {len(transformer.parameters)}")
-print("This demonstrates the new modular layered architecture!")
-print("Each layer can be composed and tested independently!")}
+# Forward pass on one-hot tokens
+tokens = X_seq[:2]
+logits = transformer.forward(np.eye(20)[tokens])
+print(f"Input tokens shape: {tokens.shape}")
+print(f"Output logits shape: {logits.shape}  (batch, sequence position, vocabulary)")}
 
 \subsection{Training Layered Transformer Model}
 
-\helpercode{def train_transformer_model(X, y, vocab_size, d_model=64, n_heads=4, n_epochs=100, learning_rate=0.001):
-    """Train the transformer model using the new layered architecture."""
-    from mlai import MeanSquaredError, LayeredNeuralNetwork, MultiHeadAttentionLayer, PositionalEncodingLayer
-    
-    # Create transformer using layered architecture
-    pos_encoding = PositionalEncodingLayer(d_model)
-    attention = MultiHeadAttentionLayer(d_model, n_heads)
-    transformer_layers = [pos_encoding, attention]
-    model = LayeredNeuralNetwork(transformer_layers)
-    
-    # Convert to embeddings (simplified)
-    X_embedded = np.random.randn(len(X), X.shape[1], d_model)
-    y_embedded = np.random.randn(len(y), y.shape[1], d_model)
-    
-    # Loss function
-    loss_fn = MeanSquaredError()
-    
-    losses = []
-    for epoch in range(n_epochs):
-        # Forward pass through layered network
-        output = model.forward(X_embedded)
-        
-        # Compute loss
-        loss = loss_fn.forward(output, y_embedded)
-        
-        # Backward pass through layers
-        loss_gradient = loss_fn.gradient(output, y_embedded)
-        gradients = model.backward(loss_gradient)
-        
-        # Update parameters using gradient descent
-        # The layered network handles parameter updates internally
-        current_params = model.parameters
-        # Simple gradient descent (in practice, you'd use proper optimization)
-        updated_params = current_params - learning_rate * np.random.randn(len(current_params)) * 0.01
-        model.parameters = updated_params
-        
-        losses.append(loss)
-        
-        if epoch % 20 == 0:
-            print(f"Epoch {epoch:3d}: Loss = {loss:.4f}")
-    
-    return model, losses}
-
-\code{X_seq, y_seq = create_interesting_sequence_data('pattern')
-transformer_model, transformer_losses = train_transformer_model(X_seq, y_seq, vocab_size=15)}
+\code{X_seq, y_seq = create_interesting_sequence_data('arithmetic')
+transformer_model = build_transformer(vocab_size=20)
+transformer_losses, transformer_accuracies, transformer_test_accuracy = train_sequence_model(
+    transformer_model, X_seq, y_seq, n_epochs=100, learning_rate=0.05)}
 
 \plotcode{fig, ax = plt.subplots(figsize=plot.wide_figsize)
 ax.plot(transformer_losses, linewidth=2)
 ax.set_xlabel('Epoch')
-ax.set_ylabel('Loss')
+ax.set_ylabel('Cross-entropy loss')
 plt.grid(True, alpha=0.3)
 
 print(f"Final training loss: {transformer_losses[-1]:.4f}")
@@ -516,33 +499,24 @@ mlai.write_figure("simple-transformer-training.svg", directory="\writeDiagramsDi
 
 \subsection{Compare Different Sequence Types}
 
-\code{# Train on different sequence types to see how transformers handle different patterns
+\code{# Train the same transformer on different sequence types
 print("Training Transformers on Different Sequence Types:")
 print("=" * 60)
 
-# Train on arithmetic sequences
-print("\n1. Arithmetic Sequences (Mathematical Patterns):")
-X_arith, y_arith = create_interesting_sequence_data('arithmetic')
-model_arith, losses_arith = train_attention_model(X_arith, y_arith)
-print(f"Final loss: {losses_arith[-1]:.4f}")
+results = {}
+for pattern_type in ['arithmetic', 'pattern', 'text']:
+    print(f"\n{pattern_type}:")
+    X_p, y_p = create_interesting_sequence_data(pattern_type)
+    vocab_size = int(max(X_p.max(), y_p.max())) + 1
+    losses_p, accuracies_p, test_accuracy_p = train_sequence_model(
+        build_transformer(vocab_size), X_p, y_p, n_epochs=100, learning_rate=0.05)
+    results[pattern_type] = (accuracies_p[-1], test_accuracy_p)
 
-# Train on pattern sequences  
-print("\n2. Pattern Sequences (Repeating Patterns):")
-X_pattern, y_pattern = create_interesting_sequence_data('pattern')
-model_pattern, losses_pattern = train_attention_model(X_pattern, y_pattern)
-print(f"Final loss: {losses_pattern[-1]:.4f}")
+print("\nSummary (train accuracy, test accuracy):")
+for pattern_type, (train_acc, test_acc) in results.items():
+    print(f"  {pattern_type:10s}: {train_acc:.3f}, {test_acc:.3f}")}
 
-# Train on text sequences
-print("\n3. Text Sequences (Natural Language Structure):")
-X_text, y_text = create_interesting_sequence_data('text')
-model_text, losses_text = train_attention_model(X_text, y_text)
-print(f"Final loss: {losses_text[-1]:.4f}")
-
-print(f"\nResults Analysis:")
-print(f"- Arithmetic sequences: Tests mathematical reasoning")
-print(f"- Pattern sequences: Tests memory and pattern recognition")
-print(f"- Text sequences: Tests natural language understanding")
-print(f"Lower loss indicates better learning of the underlying pattern!")}
+\notes{Comparing training and test accuracy shows how well each pattern has been learned. Arithmetic sequences use a rule (add the step) that the model can apply to sequences it has not seen, so training and test accuracy are similar. The repeating patterns are made of randomly chosen tokens. To predict them on new sequences the model must find the earlier occurrence of the current token and copy whatever followed it. That copying mechanism is hard for a single small attention block to learn from 150 examples, so it partly memorises the training sequences instead, and the test accuracy is much lower than the training accuracy. This is the gap between fitting and generalising that we discussed for overparameterised models. The text-like sequences are made of letters drawn uniformly at random, separated by spaces and occasional punctuation, so most next tokens cannot be predicted from the context at all. The only learnable structure is where words are likely to end, and accuracy stays low on both training and test data. Low accuracy here reflects the data, not a failure of the model.}
 
 \subsection{Benefits of the New Layered Architecture}
 
@@ -582,8 +556,8 @@ print("Each layer can be tested and debugged independently!")
 
 # 3. Gradient testing
 print("\nGradient Testing:")
-print("All layers have comprehensive gradient testing using finite differences")
-print("This ensures mathematical correctness of the implementations")
+print("Every layer's input and parameter gradients are checked against finite differences")
+print("in mlai's tests (tests/unit/test_layer_parameter_gradients.py)")
 
 # 4. Parameter management
 print("\nParameter Management:")
