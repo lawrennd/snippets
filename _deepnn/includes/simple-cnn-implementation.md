@@ -75,7 +75,7 @@ print(f"Input shape: {conv_output.shape}")
 print(f"Output shape: {pool_output.shape}")
 print(f"Pooling reduces spatial dimensions by factor of 2")
 print(f"Layer parameters: {len(pool_layer.parameters)} (no trainable parameters)")
-print("Max pooling helps with translation invariance and reduces computation!")}
+print("Max pooling adds tolerance to small shifts and reduces computation!")}
 
 \subsection{Test Flatten Layer}
 
@@ -94,41 +94,47 @@ print(f"Flattened size: {flatten_output.size}")
 print(f"Layer parameters: {len(flatten_layer.parameters)} (no trainable parameters)")
 print("Flatten layer converts spatial features to 1D for fully connected layers!")}
 
-\subsection{Test CNN Gradient Flow}
+\subsection{Check the CNN Gradients}
 
-\code{# Test gradient flow through CNN layers (demonstrating chain rule)
-from mlai import MeanSquaredError
+\notes{Before training we check the hand-derived gradients against finite differences. We push a small input through a convolution, pooling and flattening layer, take a random linear function of the output as the "loss", and compare the backward pass with numerical gradients, both for the input and for the filters and biases.}
 
-# Create a simple CNN
-conv = ConvolutionalLayer(input_channels=1, output_channels=2, kernel_size=3, padding=1)
+\code{from mlai.utils import finite_difference_gradient, verify_gradient_implementation
+from mlai import SoftReLUActivation
+
+conv = ConvolutionalLayer(input_channels=1, output_channels=2, kernel_size=3, padding=1,
+                          activation=SoftReLUActivation())
 pool = MaxPoolingLayer(pool_size=2, stride=2)
 flatten = FlattenLayer()
 
-# Test input
-X_test = np.random.randn(1, 1, 8, 8)
+X_small = np.random.randn(2, 1, 6, 6)
 
-# Forward pass through CNN
-conv_out = conv.forward(X_test)
-pool_out = pool.forward(conv_out)
-flatten_out = flatten.forward(pool_out)
+def cnn_forward(x):
+    return flatten.forward(pool.forward(conv.forward(x)))
 
-# Create dummy loss
-target = np.random.randn(flatten_out.shape[0], flatten_out.shape[1])
-loss_fn = MeanSquaredError()
-loss_value = loss_fn.forward(flatten_out, target)
+G = np.random.randn(*cnn_forward(X_small).shape)  # loss L = sum(G * output)
 
-# Backward pass (demonstrates chain rule through CNN)
-loss_gradient = loss_fn.gradient(flatten_out, target)
-flatten_grad = flatten.backward(loss_gradient)
-pool_grad = pool.backward(flatten_grad)
-conv_grad = conv.backward(pool_grad)
+def loss_of_input(x_flat):
+    return np.sum(cnn_forward(x_flat.reshape(X_small.shape)) * G)
 
-print("CNN Chain Rule Demonstration:")
-print(f"Loss value: {loss_value:.4f}")
-print(f"Input gradient shape: {conv_grad[0].shape}")
-print(f"Input gradient norm: {np.linalg.norm(conv_grad[0]):.4f}")
-print("This shows how gradients flow through convolution, pooling, and flattening")
-print("The CNN layers implement the chain rule for spatial feature extraction!")}
+def loss_of_parameters(p):
+    conv.parameters = p
+    return np.sum(cnn_forward(X_small) * G)
+
+p0 = conv.parameters.copy()
+numerical_input = finite_difference_gradient(loss_of_input, X_small.flatten())
+numerical_params = finite_difference_gradient(loss_of_parameters, p0)
+conv.parameters = p0
+
+# Backward pass: flatten -> pool -> conv (the chain rule, layer by layer)
+cnn_forward(X_small)
+grad = flatten.backward(G)
+grad = pool.backward(grad)
+grad_input = conv.backward(grad)[0]
+
+print("Input gradient matches:",
+      verify_gradient_implementation(grad_input.flatten(), numerical_input, rtol=1e-4))
+print("Filter and bias gradients match:",
+      verify_gradient_implementation(conv.gradients, numerical_params, rtol=1e-4))}
 
 \subsection{Build Complete CNN with Layered Architecture}
 
@@ -168,9 +174,12 @@ print("Each layer can be composed and tested independently!")}
 
 \subsection{Train CNN for Image Classification}
 
-\helpercode{def train_cnn_classification(X, y, n_epochs=50, learning_rate=0.001):
-    """Train a CNN for image classification using the new layered architecture."""
-    from mlai import MeanSquaredError, LayeredNeuralNetwork, ConvolutionalLayer, MaxPoolingLayer, FlattenLayer, FullyConnectedLayer, LinearLayer, ReLUActivation
+\notes{We now train the CNN with minibatch gradient descent. The network outputs a score (logit) for each class, and we use the softmax cross-entropy loss. After each forward pass, `set_output_gradient()` supplies the gradient of the loss with respect to the logits, and `gradients` runs the backward pass through every layer, returning the gradient for all the parameters in the same order as `parameters`. We hold out a third of the images to measure test accuracy.}
+
+\helpercode{def train_cnn_classification(X, y, n_epochs=20, learning_rate=0.1, batch_size=20, n_train=200):
+    """Train a CNN for image classification with minibatch gradient descent."""
+    from mlai import (SoftmaxCrossEntropyLoss, LayeredNeuralNetwork, ConvolutionalLayer, MaxPoolingLayer,
+                      FlattenLayer, FullyConnectedLayer, LinearLayer, ReLUActivation)
     
     # Create CNN using layered architecture
     cnn_layers = [
@@ -180,52 +189,55 @@ print("Each layer can be composed and tested independently!")}
         MaxPoolingLayer(pool_size=2, stride=2),
         FlattenLayer(),
         FullyConnectedLayer(16 * 4 * 4, 32, activation=ReLUActivation()),  # 16 channels * 4*4 spatial after pooling
-        LinearLayer(32, 3),  # 3 classes (no activation for final layer)
+        LinearLayer(32, 3),  # 3 class scores (logits)
     ]
     
     model = LayeredNeuralNetwork(cnn_layers)
     
     # Convert labels to one-hot encoding
-    y_onehot = np.eye(3)[y]
+    n_classes = 3
+    y_onehot = np.eye(n_classes)[y]
+    train_idx = np.arange(n_train)
+    test_idx = np.arange(n_train, len(y))
     
-    # Loss function
-    loss_fn = MeanSquaredError()
+    loss_fn = SoftmaxCrossEntropyLoss()
     
-    # Training loop
+    def evaluate():
+        """Loss and accuracy on the training set."""
+        output = model.forward(X[train_idx])
+        losses.append(loss_fn.forward(output, y_onehot[train_idx]))
+        accuracies.append(np.mean(np.argmax(output, axis=1) == y[train_idx]))
+    
+    # Record performance before training (random weights), then train
     losses = []
     accuracies = []
+    evaluate()
+    print(f"Before training: Loss = {losses[-1]:.4f}, Accuracy = {accuracies[-1]:.4f}")
     
     for epoch in range(n_epochs):
-        # Forward pass through CNN
-        output = model.forward(X)
+        order = np.random.permutation(train_idx)
+        for start in range(0, len(order), batch_size):
+            batch = order[start:start + batch_size]
+            
+            # Forward pass through CNN
+            output = model.forward(X[batch])
+            
+            # Backward pass: gradient of the loss with respect to every parameter
+            model.set_output_gradient(loss_fn.gradient(output, y_onehot[batch]))
+            
+            # Gradient descent step
+            model.parameters = model.parameters - learning_rate * model.gradients
         
-        # Compute loss
-        loss = loss_fn.forward(output, y_onehot)
-        
-        # Backward pass through CNN layers
-        loss_gradient = loss_fn.gradient(output, y_onehot)
-        gradients = model.backward(loss_gradient)
-        
-        # Update parameters using gradient descent
-        # The layered network handles parameter updates internally
-        current_params = model.parameters
-        # Simple gradient descent (in practice, you'd use proper optimization)
-        updated_params = current_params - learning_rate * np.random.randn(len(current_params)) * 0.01
-        model.parameters = updated_params
-        
-        # Calculate accuracy
-        predictions = np.argmax(output, axis=1)
-        accuracy = np.mean(predictions == y)
-        
-        losses.append(loss)
-        accuracies.append(accuracy)
-        
-        if epoch % 10 == 0:
-            print(f"Epoch {epoch:3d}: Loss = {loss:.4f}, Accuracy = {accuracy:.4f}")
+        evaluate()
+        if epoch % 5 == 0:
+            print(f"Epoch {epoch:3d}: Loss = {losses[-1]:.4f}, Accuracy = {accuracies[-1]:.4f}")
+    
+    test_accuracy = np.mean(np.argmax(model.forward(X[test_idx]), axis=1) == y[test_idx])
+    print(f"Test accuracy on {len(test_idx)} held-out images: {test_accuracy:.4f}")
     
     return model, losses, accuracies}
 
-\code{X_images, y_images = create_image_data(n_samples=200, image_size=16, n_classes=3)
+\code{X_images, y_images = create_image_data(n_samples=300, image_size=16, n_classes=3)
 cnn_model, cnn_losses, cnn_accuracies = train_cnn_classification(X_images, y_images)}
 
 \setupplotcode{import matplotlib.pyplot as plt
@@ -234,8 +246,8 @@ import mlai.plot}
 \plotcode{fig, (ax1, ax2) = plt.subplots(1, 2, figsize=plot.big_wide_figsize)
 
 ax1.plot(cnn_losses, linewidth=2, color='blue')
-ax1.set_xlabel('Epoch')
-ax1.set_ylabel('Loss')
+ax1.set_xlabel('Epoch (0 = before training)')
+ax1.set_ylabel('Cross-entropy loss')
 ax1.set_title('CNN Training Loss')
 ax1.grid(True, alpha=0.3)
 
@@ -351,7 +363,7 @@ cnn2 = LayeredNeuralNetwork([
     ConvolutionalLayer(input_channels=16, output_channels=32, kernel_size=3, activation=ReLUActivation()),
     MaxPoolingLayer(pool_size=2),
     FlattenLayer(),
-    LinearLayer(32 * 3 * 3, 10)
+    LinearLayer(32 * 2 * 2, 10)  # for 16x16 inputs: 16 -> 12 -> 6 -> 4 -> 2
 ])
 
 print(f"CNN 1 (Simple): {len(cnn1.parameters)} parameters")
@@ -375,8 +387,8 @@ print("Each layer can be tested and debugged independently!")
 
 # 3. Gradient testing
 print("\nGradient Testing:")
-print("All layers have comprehensive gradient testing using finite differences")
-print("This ensures mathematical correctness of the CNN implementations")
+print("Every layer's input and parameter gradients are checked against finite differences")
+print("in mlai's tests (tests/unit/test_layer_parameter_gradients.py)")
 
 # 4. Parameter management
 print("\nParameter Management:")
@@ -416,7 +428,7 @@ print("Layers are composable, testable, and mathematically verified!")}
 
 **6. CNN-Specific Benefits:**
 - **Spatial feature extraction** through convolutional layers
-- **Translation invariance** through max pooling
+- **Some invariance to small shifts** through max pooling
 - **Dimensionality reduction** through flattening
 - **Classification** through fully connected layers
 
@@ -463,7 +475,7 @@ print(f"  Output shape: {cnn_network.forward(X_test).shape}")
 print(f"\nKey Differences:")
 print(f"- CNN has fewer parameters due to weight sharing")
 print(f"- CNN preserves spatial structure through convolution")
-print(f"- CNN is translation invariant through pooling")
+print(f"- CNN feature maps shift with the input (equivariance); pooling adds tolerance to small shifts")
 print(f"- CNN is more efficient for image data")}
 
 \notes{**CNN vs Traditional Neural Networks:**
@@ -471,7 +483,7 @@ print(f"- CNN is more efficient for image data")}
 **Convolutional Neural Networks (CNNs):**
 - **Weight sharing**: Same filters applied across the entire image
 - **Spatial structure**: Preserves 2D relationships in images
-- **Translation invariance**: Robust to object position
+- **Translation equivariance**: Features are detected wherever they appear; pooling adds tolerance to small shifts
 - **Parameter efficiency**: Fewer parameters than fully connected networks
 - **Local connectivity**: Each neuron connects to a local region
 

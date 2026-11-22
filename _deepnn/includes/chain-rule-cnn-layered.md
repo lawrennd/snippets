@@ -5,185 +5,117 @@
 
 \subsection{Chain Rule for Layered CNN Architecture}
 
+\newslide{Why Convolution?}
+
+\slides{* **Locality**: each output depends on a small $K_h \times K_w$ patch of the input
+* **Weight sharing**: the same filter is applied at every position
+* **Equivariance**: shifting the input shifts the feature map
+* **Parameters**: $C_{out} C_{in} K_h K_w$, independent of image size}
+
+\notes{A fully connected layer applied to an image treats every pixel as unrelated to its neighbours and needs a separate weight for every input-output pair. Convolutional layers build in two assumptions about images. The first is *locality*: useful features, such as edges, depend on small neighbourhoods of pixels. The second is *weight sharing*: a feature detector that is useful in one part of the image is useful everywhere. Applying the same small filter at every position gives a layer whose number of parameters does not depend on the image size, and whose output shifts when the input shifts (translation equivariance). Pooling then adds some invariance to small shifts.}
+
 \newslide{CNN Chain Rule Overview}
 
-\slides{* **Layered Architecture**: Each layer implements `forward()`, `backward()`, `parameters`
-* **Spatial Operations**: Convolution, pooling, flattening require specialized gradients
-* **Composition**: CNN built by composing `ConvolutionalLayer`, `MaxPoolingLayer`, `FlattenLayer`
-* **Gradient Flow**: Each layer computes its own gradients independently
-* **Verification**: Finite difference testing ensures mathematical correctness}
+\slides{* **Layered architecture**: each layer implements `forward()`, `backward()`, `parameters`, `gradients`
+* **Spatial operations**: convolution, pooling and flattening need their own gradients
+* **Composition**: `ConvolutionalLayer`, `MaxPoolingLayer`, `FlattenLayer`, `FullyConnectedLayer`, `LinearLayer`
+* **Chain rule**: each layer maps $\frac{\partial \lossFunction}{\partial \text{output}}$ to $\frac{\partial \lossFunction}{\partial \text{input}}$ and its parameter gradients}
 
-\notes{Our layered CNN architecture provides a clean separation of concerns where each layer type has its own gradient computation. This makes the chain rule more modular and easier to understand than traditional CNN implementations.}
-
-\newslide{CNN Layer Types and Their Gradients}
-
-\slides{* **ConvolutionalLayer**: $\frac{\partial \lossFunction}{\partial \inputMatrix}$, $\frac{\partial \lossFunction}{\partial \filters}$, $\frac{\partial \lossFunction}{\partial \biases}$
-* **MaxPoolingLayer**: $\frac{\partial \lossFunction}{\partial \inputMatrix}$ (no parameters)
-* **FlattenLayer**: $\frac{\partial \lossFunction}{\partial \inputMatrix}$ (no parameters)
-* **FullyConnectedLayer**: Standard neural network gradients
-* **LinearLayer**: Linear transformation gradients}
-
-\notes{Each layer type in our CNN architecture has specific gradient computations. The convolutional layer is the most complex, requiring gradients for filters, biases, and input. Pooling and flattening layers are simpler but still require careful handling of spatial dimensions.}
+\notes{In the layered implementation each layer is responsible for two things in its backward pass. It converts the gradient of the loss with respect to its output into the gradient with respect to its input, which is passed to the previous layer. And it computes the gradient of the loss with respect to its own parameters. `LayeredNeuralNetwork` calls the layers' backward passes in reverse order and collects the parameter gradients.}
 
 \newslide{Convolutional Layer Forward Pass}
 
 \slides{* **Input**: $\inputMatrix$ of shape $(B, C_{in}, H, W)$
-* **Filters**: $\filters$ of shape $(C_{out}, C_{in}, K_h, K_w)$
-* **Output**: $\outputMatrix$ of shape $(B, C_{out}, H_{out}, W_{out})$
-* **Operation**: $\outputMatrix[b,c,h,w] = \sum_{i,j,k} \inputMatrix[b,k,h+i,w+j] \cdot \filters[c,k,i,j] + \biases[c]$}
+* **Filters**: $\mathbf{F}$ of shape $(C_{out}, C_{in}, K_h, K_w)$, biases $\mathbf{b}$ of shape $(C_{out})$
+* **Output**: $\mathbf{Z}$ of shape $(B, C_{out}, H_{out}, W_{out})$}
 
-\notes{The convolutional forward pass applies filters across the input image, computing dot products between filter weights and local image regions. This creates feature maps that detect specific patterns in the input.}
+$$
+z_{b,c,h,w} = \sum_{k=1}^{C_{in}}\sum_{i=1}^{K_h}\sum_{j=1}^{K_w} x_{b,k,h+i,w+j}\, f_{c,k,i,j} + b_c
+$$
+
+\notes{This is written for stride 1 and no padding. Strictly it is a cross-correlation rather than a convolution (a convolution would flip the filter), but since the filters are learned the distinction does not matter, and deep learning libraries all use this form. With padding $P$ and stride $S$ the output size is
+$$
+H_{out} = \left\lfloor \frac{H + 2P - K_h}{S} \right\rfloor + 1,
+$$
+and similarly for $W_{out}$, and the input index becomes $hS + i$ in the padded input.}
 
 \newslide{Convolutional Layer Backward Pass}
 
-\slides{* **Output gradient**: $\frac{\partial \lossFunction}{\partial \outputMatrix}$ from next layer
-* **Filter gradient**: $\frac{\partial \lossFunction}{\partial \filters[c,k,i,j]} = \sum_{b,h,w} \frac{\partial \lossFunction}{\partial \outputMatrix[b,c,h,w]} \cdot \inputMatrix[b,k,h+i,w+j]$
-* **Bias gradient**: $\frac{\partial \lossFunction}{\partial \biases[c]} = \sum_{b,h,w} \frac{\partial \lossFunction}{\partial \outputMatrix[b,c,h,w]}$
-* **Input gradient**: $\frac{\partial \lossFunction}{\partial \inputMatrix[b,k,h,w]} = \sum_{c,i,j} \frac{\partial \lossFunction}{\partial \outputMatrix[b,c,h-i,w-j]} \cdot \filters[c,k,i,j]$}
+$$
+\frac{\partial \lossFunction}{\partial f_{c,k,i,j}} = \sum_{b,h,w} \frac{\partial \lossFunction}{\partial z_{b,c,h,w}}\, x_{b,k,h+i,w+j},
+\qquad
+\frac{\partial \lossFunction}{\partial b_c} = \sum_{b,h,w} \frac{\partial \lossFunction}{\partial z_{b,c,h,w}}
+$$
 
-\notes{The convolutional backward pass requires careful indexing to ensure gradients flow correctly through the spatial dimensions. The filter gradient accumulates contributions from all spatial locations where the filter was applied.}
+$$
+\frac{\partial \lossFunction}{\partial x_{b,k,h,w}} = \sum_{c,i,j} \frac{\partial \lossFunction}{\partial z_{b,c,h-i,w-j}}\, f_{c,k,i,j}
+$$
+
+\notes{Because the same filter is used at every position, its gradient is a *sum* over every position (and every example in the batch) at which it was applied. This is the multiple-paths rule from the chain rule again: each filter weight affects the output through $B \times H_{out} \times W_{out}$ paths. The input gradient sums over every output whose receptive field contains the pixel $(h, w)$. Terms where $h-i$ or $w-j$ falls outside the output are zero. This sum is itself a convolution of the output gradient with the flipped filter. With padding, the filter gradient must be computed from the *padded* input, exactly as used in the forward pass, and the input gradient is cropped back to the unpadded size.}
 
 \newslide{Max Pooling Layer Gradients}
 
-\slides{* **Forward**: $\outputMatrix[b,c,h,w] = \max_{i,j \in \poolRegion} \inputMatrix[b,c,h \cdot \stride + i, w \cdot \stride + j]$
-* **Backward**: $\frac{\partial \lossFunction}{\partial \inputMatrix[b,c,h,w]} = \begin{cases} 
-\frac{\partial \lossFunction}{\partial \outputMatrix[b,c,h_{out},w_{out}]} & \text{if } (h,w) \text{ was the max in pool region} \\
-0 & \text{otherwise}
-\end{cases}$}
+$$
+y_{b,c,h,w} = \max_{(i,j) \in \mathcal{R}_{h,w}} x_{b,c,hS+i,\,wS+j}
+$$
 
-\notes{Max pooling gradients are sparse - only the maximum positions in each pooling region receive gradients. This creates a natural form of attention where only the most important features contribute to the gradient flow.}
+\slides{* Gradient goes only to the position that achieved the maximum
+* All other positions in the pooling region get zero gradient
+* No parameters}
+
+\notes{The max function passes its input through unchanged at the position of the maximum and ignores all others, so in the backward pass the gradient $\frac{\partial \lossFunction}{\partial y_{b,c,h,w}}$ is routed to the position in the pooling region $\mathcal{R}_{h,w}$ that achieved the maximum, and every other position receives zero. If pooling regions overlap (stride smaller than the pool size), one input can be the maximum of several regions, and its gradients are summed. When there is a tie the implementation picks one of the maximal positions (the max is not differentiable there).}
 
 \newslide{Flatten Layer Gradients}
 
-\slides{* **Forward**: $\outputMatrix = \inputMatrix.reshape(B, -1)$
-* **Backward**: $\frac{\partial \lossFunction}{\partial \inputMatrix} = \frac{\partial \lossFunction}{\partial \outputMatrix}.reshape(\inputShape)$}
+\slides{* **Forward**: reshape $(B, C, H, W) \to (B, CHW)$
+* **Backward**: reshape the gradient $(B, CHW) \to (B, C, H, W)$}
 
-\notes{The flatten layer simply reshapes the gradient to match the input shape. This is a straightforward operation but crucial for connecting convolutional layers to fully connected layers.}
+\notes{The flatten layer only rearranges values, so its gradient is the incoming gradient reshaped back to the input shape. It connects the convolutional layers to the fully connected layers.}
 
-\newslide{CNN Chain Rule Implementation}
+\newslide{Activation Functions}
 
-\slides{* **Layer-wise**: Each layer computes its own gradients independently
-* **Composition**: `LayeredNeuralNetwork` coordinates gradient flow between layers
-* **Spatial awareness**: Gradients preserve spatial structure through convolution
-* **Parameter updates**: Each layer manages its own parameter gradients}
+$$
+\frac{\partial \lossFunction}{\partial \mathbf{Z}} = \frac{\partial \lossFunction}{\partial \mathbf{H}} \odot \activationFunction'(\mathbf{Z}),
+\qquad \mathbf{H} = \activationFunction(\mathbf{Z})
+$$
 
-\notes{Our implementation uses a layered approach where each layer is responsible for its own gradient computation. The `LayeredNeuralNetwork` coordinates the flow of gradients between layers, ensuring that spatial information is preserved correctly.}
+\notes{Activation functions are applied element-wise at every spatial location and channel, so their gradient is an element-wise product. For the ReLU, $\activationFunction'(z) = 1$ for $z > 0$ and $0$ otherwise, so only positions with positive pre-activations pass gradient back.}
 
-\newslide{Multi-Path Gradient Flow in CNNs}
+\newslide{Complete CNN}
 
-\slides{* **Convolutional path**: $\inputMatrix \rightarrow \convOutput \rightarrow \poolOutput \rightarrow \flattenOutput$
-* **Parameter paths**: $\filters \rightarrow \convOutput$, $\biases \rightarrow \convOutput$
-* **Spatial paths**: Each spatial location has independent gradient flow
-* **Channel paths**: Each output channel has independent gradient computation}
+\slides{* **Convolution**: $\mathbf{H}_1 = \text{ReLU}(\text{conv}(\inputMatrix, \mathbf{F}) + \mathbf{b})$
+* **Pooling**: $\mathbf{P} = \text{maxpool}(\mathbf{H}_1)$
+* **Flatten**: $\mathbf{p} = \text{flatten}(\mathbf{P})$
+* **Dense**: $\mathbf{h}_2 = \text{ReLU}(\mathbf{p}\mathbf{W}_2 + \mathbf{b}_2)$
+* **Output**: $\mathbf{y} = \mathbf{h}_2\mathbf{W}_3 + \mathbf{b}_3$}
 
-\notes{CNNs have more complex gradient flow than standard neural networks because of the spatial structure. Each spatial location and channel can have independent gradients, creating a rich gradient landscape.}
-
-\newslide{Activation Function Integration}
-
-\slides{* **ReLU in convolution**: $\frac{\partial \lossFunction}{\partial \convOutput} = \frac{\partial \lossFunction}{\partial \activationOutput} \odot \frac{\partial \activationFunction}{\partial \convOutput}$
-* **ReLU gradient**: $\frac{\partial \reluFunction}{\partial x} = \begin{cases} 1 & \text{if } x > 0 \\ 0 & \text{if } x \leq 0 \end{cases}$
-* **Spatial activation**: Applied element-wise across all spatial locations}
-
-\notes{Activation functions in CNNs are applied element-wise across all spatial locations and channels. The ReLU activation creates sparse gradients where only positive activations contribute to the gradient flow.}
-
-\newslide{CNN Gradient Verification}
-
-\slides{* **Finite differences**: Compare analytical vs numerical gradients
-* **Spatial testing**: Verify gradients at different spatial locations
-* **Channel testing**: Verify gradients for different output channels
-* **End-to-end testing**: Verify complete CNN gradient flow}
-
-\notes{Our implementation includes comprehensive gradient testing using finite differences. This ensures that the complex spatial gradient computations are mathematically correct.}
-
-\newslide{Layered CNN Architecture Benefits}
-
-\slides{* **Modularity**: Each layer type has clear gradient responsibilities
-* **Testability**: Each layer can be tested independently
-* **Composability**: Layers can be combined in any order
-* **Educational**: Clear separation makes learning easier
-* **Maintainability**: Easy to add new layer types}
-
-\notes{The layered architecture makes CNN gradients much more manageable. Students can understand each component in isolation before seeing how they compose together. This is a significant advantage over monolithic CNN implementations.}
-
-\newslide{Complete CNN Gradient Flow}
-
-\slides{* **Input**: $\inputMatrix$ (batch of images)
-* **Convolution**: $\convOutput = \reluFunction(\convolution(\inputMatrix, \filters) + \biases)$
-* **Pooling**: $\poolOutput = \maxPool(\convOutput)$
-* **Flatten**: $\flattenOutput = \flatten(\poolOutput)$
-* **Dense**: $\denseOutput = \reluFunction(\denseOutput \cdot \denseWeights + \denseBiases)$
-* **Output**: $\outputMatrix = \denseOutput \cdot \outputWeights + \outputBiases$}
-
-\notes{The complete CNN forward pass shows how different layer types compose together. Each layer transforms the data in a specific way, and the gradients must flow back through each transformation correctly.}
+\notes{A complete CNN composes these layers. Each one transforms its input in a specific way, and the gradients flow back through each transformation in reverse order.}
 
 \newslide{CNN Gradient Chain Rule}
 
-\slides{* **Output to dense**: $\frac{\partial \lossFunction}{\partial \denseOutput} = \frac{\partial \lossFunction}{\partial \outputMatrix} \cdot \outputWeights^\top$
-* **Dense to flatten**: $\frac{\partial \lossFunction}{\partial \flattenOutput} = \frac{\partial \lossFunction}{\partial \denseOutput} \cdot \denseWeights^\top$
-* **Flatten to pool**: $\frac{\partial \lossFunction}{\partial \poolOutput} = \frac{\partial \lossFunction}{\partial \flattenOutput}.reshape(\poolShape)$
-* **Pool to conv**: $\frac{\partial \lossFunction}{\partial \convOutput} = \maxPoolGradient(\frac{\partial \lossFunction}{\partial \poolOutput})$
-* **Conv to input**: $\frac{\partial \lossFunction}{\partial \inputMatrix} = \convolutionGradient(\frac{\partial \lossFunction}{\partial \convOutput}, \filters)$}
+\slides{* **Output to dense**: $\frac{\partial \lossFunction}{\partial \mathbf{h}_2} = \frac{\partial \lossFunction}{\partial \mathbf{y}}\mathbf{W}_3^\top$
+* **Dense to flatten**: $\frac{\partial \lossFunction}{\partial \mathbf{p}} = \left(\frac{\partial \lossFunction}{\partial \mathbf{h}_2} \odot \text{ReLU}'\right)\mathbf{W}_2^\top$
+* **Flatten to pool**: reshape $\frac{\partial \lossFunction}{\partial \mathbf{p}}$ to the shape of $\mathbf{P}$
+* **Pool to conv**: route each gradient to its maximum position
+* **Conv to input**: $\odot\,\text{ReLU}'$, then the convolution input gradient}
 
-\notes{The CNN chain rule shows how gradients flow back through each layer type. Each layer implements its own gradient computation, and the `LayeredNeuralNetwork` coordinates the flow between layers.}
+\notes{Working backwards from the output, each layer applies its own backward rule. Note that the gradient through each dense layer must include the derivative of its activation function before multiplying by the transposed weights. Along the way each layer with parameters computes its own parameter gradients: $\frac{\partial \lossFunction}{\partial \mathbf{W}_3} = \mathbf{h}_2^\top \frac{\partial \lossFunction}{\partial \mathbf{y}}$ for the output layer, the corresponding expression for the dense layer, and the summed filter and bias gradients above for the convolution.}
 
-\newslide{Parameter Gradients in CNNs}
+\newslide{Verification and Code Mapping}
 
-\slides{* **Filter gradients**: $\frac{\partial \lossFunction}{\partial \filters} = \sum_{b,h,w} \frac{\partial \lossFunction}{\partial \convOutput[b,c,h,w]} \cdot \inputMatrix[b,k,h+i,w+j]$
-* **Bias gradients**: $\frac{\partial \lossFunction}{\partial \biases} = \sum_{b,h,w} \frac{\partial \lossFunction}{\partial \convOutput[b,c,h,w]}$
-* **Dense gradients**: Standard neural network parameter gradients
-* **Output gradients**: Final layer parameter gradients}
+\slides{* `ConvolutionalLayer`, `MaxPoolingLayer`, `FlattenLayer` implement the rules above
+* `LayeredNeuralNetwork.gradients` collects every layer's parameter gradients
+* Every gradient is checked against finite differences, layer by layer and end to end}
 
-\notes{Parameter gradients in CNNs include the specialized convolutional gradients for filters and biases, plus the standard gradients for fully connected layers. The convolutional gradients require spatial accumulation across all locations where each filter was applied.}
-
-\newslide{Implementation Verification}
-
-\slides{* **Layer testing**: Each layer tested independently with finite differences
-* **Composition testing**: Complete CNN tested end-to-end
-* **Spatial testing**: Gradients verified at different spatial locations
-* **Channel testing**: Gradients verified for different output channels
-* **Parameter testing**: All parameter gradients verified numerically}
-
-\notes{Our implementation includes comprehensive testing that verifies the mathematical correctness of all gradient computations. This ensures that the complex spatial gradient flow is implemented correctly.}
-
-\newslide{Educational Benefits}
-
-\slides{* **Clear separation**: Each layer type has distinct gradient responsibilities
-* **Modular learning**: Students can understand each component independently
-* **Visual debugging**: Easy to see where gradients flow and where they don't
-* **Mathematical rigor**: All gradients verified with finite differences
-* **Practical implementation**: Code directly maps to mathematical theory}
-
-\notes{The layered CNN architecture makes the chain rule much more accessible to students. They can see exactly how each layer type contributes to the overall gradient computation, and the modular design makes it easy to understand the complete system.}
+\notes{Each layer class implements the gradient computations described above, and `LayeredNeuralNetwork` coordinates the flow between layers. The tests in `test_layer_parameter_gradients.py` in the `mlai` package check the input and parameter gradients of every layer type, with and without padding and stride, and the gradients of a complete CNN, against central finite differences.}
 
 \newslide{Summary}
 
-\slides{* **Layered design**: Each CNN layer type has specialized gradient computation
-* **Spatial awareness**: Gradients preserve spatial structure through convolution
-* **Modular testing**: Each layer can be verified independently
-* **Educational clarity**: Clear separation of concerns makes learning easier
-* **Mathematical rigor**: All gradients verified with finite differences
-* **Practical implementation**: Code directly implements the mathematical theory}
+\slides{* **Weight sharing**: filter gradients sum over all positions and the batch
+* **Pooling**: routes gradient to the maximum; no parameters
+* **Flatten**: reshapes the gradient
+* **Modularity**: each layer's backward pass can be checked independently}
 
-\notes{The layered CNN architecture provides a clean, educational approach to understanding convolutional neural network gradients. Each layer type has clear responsibilities, and the modular design makes it easy to understand how the complete system works. The comprehensive testing ensures mathematical correctness while the clear separation of concerns makes the learning process much more accessible.}
-
-\newslide{Code Mapping}
-
-\slides{* **ConvolutionalLayer**: Implements spatial convolution with filter and bias gradients
-* **MaxPoolingLayer**: Implements max pooling with sparse gradient distribution
-* **FlattenLayer**: Implements spatial-to-vector conversion with shape preservation
-* **LayeredNeuralNetwork**: Coordinates gradient flow between all layer types
-* **Gradient testing**: Comprehensive finite difference verification}
-
-\notes{Students can directly map the mathematical theory to our implementation. Each layer class implements the specific gradient computations described in the chain rule, and the `LayeredNeuralNetwork` coordinates the flow between layers. The comprehensive testing ensures that the implementation matches the mathematical theory exactly.}
-
-\newslide{Verification with Our Implementation}
-
-\slides{* **Gradient testing**: Use `finite_difference_gradient` to verify analytical gradients
-* **Spatial verification**: Check gradients at different spatial locations
-* **Channel verification**: Verify gradients for different output channels
-* **End-to-end testing**: Complete CNN gradient flow verification
-* **Parameter testing**: All parameter gradients verified numerically}
-
-\notes{Students can verify the chain rule implementation using our comprehensive gradient testing framework. The tests in `test_convolutional_layers.py` and `test_neural_networks.py` demonstrate how to use finite differences to verify that our analytical gradients match the mathematical theory for CNNs.}
+\notes{Convolutional networks use the same chain rule as other neural networks. What is new is the spatial structure: because filters are shared across positions, their gradients accumulate contributions from every position where they are applied.}
 
 \endif
