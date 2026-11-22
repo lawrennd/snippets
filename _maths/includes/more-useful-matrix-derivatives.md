@@ -64,7 +64,7 @@ Recall that the gradient
 $$
 \frac{\text{d}\mathbf{a}_{i,:}^\top \mathbf{x}}{\text{d}\mathbf{a}_{i,:}} = \mathbf{x},
 $$ 
-where $\mathbf{a}_{i, :}$ is a vector formed from the $i$th column of $\mathbf{A}$. So this means means that we should expect our result to consist only of repeated versions of $\mathbf{x}$. From our definition of vector derivatives, we know we are looking for a result with $m$ rows and $nm$ columns. This is where the Kronecker product comes in.}
+where $\mathbf{a}_{i, :}$ is a vector formed from the $i$th *row* of $\mathbf{A}$. So this means that we should expect our result to consist only of repeated versions of $\mathbf{x}$. From our definition of vector derivatives, we know we are looking for a result with $m$ rows and $nm$ columns. This is where the Kronecker product comes in.}
 
 \newslide{Kronecker Product Tiling}
 
@@ -133,7 +133,7 @@ $$
 x_1 \eye_m & x_2 \eye_m & \cdots & x_n \eye_m
 \end{bmatrix}
 $$ 
-and is the correct for when we are stacking the columns of $\mathbf{A}.
+and is correct when we are stacking the columns of $\mathbf{A}$.
 }
 
 \endif

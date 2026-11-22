@@ -31,7 +31,7 @@ plt.rcParams.update({'font.size': 22})}
 
 \newslide{Mathematically}
 
-\notes{Mathematically, each layer of a neural network is given through computing the activation function, $\basisFunction(\cdot)$, contingent on the previous layer, or the inputs. In this way the activation functions, are composed to generate more complex interactions than would be possible with any single layer.}
+\notes{Mathematically, each layer of a neural network is given through computing the activation function, $\basisFunction(\cdot)$, contingent on the previous layer, or the inputs. In this way the activation functions, are composed to generate more complex interactions than would be possible with any single layer. The final layer is written as a linear readout (no activation): that matches regression and the pre-link activations used with an inverse-link / loss. The recursive MLP definition elsewhere applies $\basisVector(\cdot)$ at every layer, including the output --- useful when the network itself should produce bounded outputs (e.g.\ probabilities via a sigmoid).}
 $$
 \begin{align*}
     \hiddenVector_{1} &= \basisFunction\left(\mappingMatrix_1 \inputVector\right)\\

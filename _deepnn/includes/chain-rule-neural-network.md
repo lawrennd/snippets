@@ -37,21 +37,23 @@ where the basis vector at any given layer $\layerIndex$ is given by applying the
 $$
 \basisVector_{\layerIndex} = \basisVector_{\layerIndex}(\mappingFunctionVector_{\layerIndex}),
 $$
-where $\mappingFunctionVector_{\layerIndex}(\cdot)$ represents the form of the basis functions at the $\layerIndex$th layer.}
+where $\basisVector_{\layerIndex}(\cdot)$ represents the form of the basis functions at the $\layerIndex$th layer.
+
+Notation note: here $\mappingFunctionVector_\layerIndex$ is the *pre-activation* (affine transform of the previous layer). On the recursive MLP slide, the same letter is sometimes used for the *post-activation* output. In this section, post-activation quantities are always written $\basisVector_\layerIndex$ (or $\mathbf{h}$ at the final layer).}
 
 \newslide{First and Final Layers}
 
-\slidesmall{$$f_1 = \mappingMatrix_1 \inputVector$$}
+\slidesmall{$$\mappingFunctionVector_1 = \mappingMatrix_1 \inputVector$$}
 
 \slidesmall{$$\mathbf{\transformationFunction} = \mathbf{\transformationFunction}(\mappingFunctionVector_L)$$}
 
-\slides{* **First layer**: $f_1 = \mappingMatrix_1 \inputVector$
+\slides{* **First layer**: $\mappingFunctionVector_1 = \mappingMatrix_1 \inputVector$
 * **Final layer**: inverse link function
 * **Dummy basis**: $\mathbf{h} = \basisVector_L$}
 
 \notes{These two equations give us everything we need apart from the first layer and final layers where we have
 $$
-f_1 = \mappingMatrix_1 \inputVector
+\mappingFunctionVector_1 = \mappingMatrix_1 \inputVector
 $$
 for the first layer. Here we are *not* showing the index on the data point $i$ to avoid cluttering the notation. In the final layer we have the output of the network given by the inverse link function, 
 $$
@@ -80,23 +82,23 @@ gradients. First the activation gradient,}
 
 \newslide{Activation Gradient}
 
-\slidesmall{$$\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex} = \basisVector_{\ell-1}^\top \otimes \eye_{\layerDim_\layerIndex}$$}
+\slidesmall{$$\frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex} = \basisVector_{\layerIndex-1}^\top \otimes \eye_{\layerDim_\layerIndex}$$}
 
-\slides{* **Size**: $\layerDim_\layerIndex \times (\layerDim_{\layerIndex-1} \layerDim)$
+\slides{* **Size**: $\layerDim_\layerIndex \times (\layerDim_\layerIndex \layerDim_{\layerIndex-1})$
 * **Input**: $\mappingFunctionVector_\layerIndex$ and $\mappingVector_\layerIndex$
 * **Kronecker product**: key to the result}
 
 \notes{$\tfrac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex}$
-where we have defined $\mappingFunctionVector_\layerIndex =
-(\mappingFunctionVector_\layerIndex)\!:$. This gradient is between a
+where we have defined $\mappingVector_\layerIndex =
+(\mappingMatrix_\layerIndex)\!:$. This gradient is between a
 $\layerDim_\layerIndex$ dimensional vector,
-$\mappingFunctionVector_\layerIndex$, and a $(\layerDim_{\layerIndex
--1})\layerDim \times 1$ dimensional vector, so it produces a matrix
-that is $\layerDim_\layerIndex \times (\layerDim_{\layerIndex-1}
-\layerDim)$,
+$\mappingFunctionVector_\layerIndex$, and a $\layerDim_\layerIndex
+\layerDim_{\layerIndex-1} \times 1$ dimensional vector, so it produces a matrix
+that is $\layerDim_\layerIndex \times (\layerDim_\layerIndex
+\layerDim_{\layerIndex-1})$,
 $$
 \frac{\text{d}\mappingFunctionVector_\layerIndex}{\text{d}\mappingVector_\layerIndex}
-= \basisVector_{\ell-1}^\top \otimes \eye_{\layerDim_\layerIndex}.  
+= \basisVector_{\layerIndex-1}^\top \otimes \eye_{\layerDim_\layerIndex}.  
 $$
 }
 
@@ -184,15 +186,15 @@ which should be a $\layerDim_\layerIndex \times \layerDim_{\layerIndex -1}$ size
 
 \newslide{Complete Chain Rule}
 
-\slidesmall{$$\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right] \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d} \mappingVector_{\ell - k}}$$}
+\slidesmall{$$\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \left(\frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right)\right] \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d} \mappingVector_{\ell - k}}$$}
 
-\slides{* **Product**: of all intermediate gradients
+\slides{* **Product**: of all intermediate gradients ($i=0$ on the left)
 * **Chain**: from layer $\ell$ back to layer $\ell-k$
-* **Complete**: gradient computation for any layer}
+* **Complete**: gradient of activations w.r.t.\ earlier weights}
 
 \newslide{Substituted Matrix Form}
 
-\slidesmall{$$\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \mappingMatrix_{\ell - i} \basisMatrix^\prime_{\ell - i -1}\right] \basisVector_{\ell-k-1}^\top \otimes \eye_{\layerDim_{\ell-k}}$$}
+\slidesmall{$$\frac{\text{d} \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} = \left[\prod_{i=0}^{k-1} \left(\mappingMatrix_{\ell - i} \basisMatrix^\prime_{\ell - i -1}\right)\right] \left(\basisVector_{\ell-k-1}^\top \otimes \eye_{\layerDim_{\ell-k}}\right)$$}
 
 \slides{* **Weight matrices**: $\mappingMatrix_{\ell - i}$ for across-layer gradients
 * **Basis derivatives**: $\basisMatrix^\prime_{\ell - i -1}$ for activation derivatives
@@ -203,18 +205,32 @@ $\mappingMatrix_\ell$ in the model,
 $$
 \frac{\text{d}
 \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} =
-\left[\prod_{i=0}^{k-1} \frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right]
+\left[\prod_{i=0}^{k-1} \left(\frac{\text{d} \mappingFunctionVector_{\ell - i}}{\text{d} \basisVector_{\ell - i -1}}\frac{\text{d} \basisVector_{\ell - i -1}}{\text{d} \mappingFunctionVector_{\ell - i -1}}\right)\right]
 \frac{\text{d} \mappingFunctionVector_{\ell-k}}{\text{d}
 \mappingVector_{\ell - k}}
 $$
-Substituting the matrix derivatives we derived:
+with the product ordered so that $i=0$ appears on the left. Substituting the matrix derivatives we derived:
 $$
 \frac{\text{d}
 \mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}} =
-\left[\prod_{i=0}^{k-1} \mappingMatrix_{\ell - i} \basisMatrix^\prime_{\ell - i -1}\right]
-\basisVector_{\ell-k-1}^\top \otimes \eye_{\layerDim_{\ell-k}}
+\left[\prod_{i=0}^{k-1} \left(\mappingMatrix_{\ell - i} \basisMatrix^\prime_{\ell - i -1}\right)\right]
+\left(\basisVector_{\ell-k-1}^\top \otimes \eye_{\layerDim_{\ell-k}}\right)
 $$
-where $\basisMatrix^\prime_{\ell - i -1}$ is the derivative matrix for the basis functions at layer $\ell - i -1$. This gives us the complete gradient computation for any weight matrix in the network.}
+where $\basisMatrix^\prime_{\ell - i -1}$ is the derivative matrix for the basis functions at layer $\ell - i -1$.}
+
+\newslide{From Activations to the Loss}
+
+\slides{* **Still need**: $\frac{\text{d}\errorFunction}{\text{d}\mappingVector}$
+* **Tool**: $(\mathbf{E}:)^\top(\mathbf{F}\otimes\mathbf{G})$ identity
+* **Result**: multiply on the left by $\frac{\text{d}\errorFunction}{\text{d}\mappingFunctionVector_\ell}$}
+
+\notes{The formulae above give $\frac{\text{d}\mappingFunctionVector_\ell}{\text{d}\mappingVector_{\ell-k}}$. Training requires the loss gradient $\frac{\text{d}\errorFunction}{\text{d}\mappingVector_{\ell-k}}$. Using the stacking identity introduced earlier,
+$$
+(\mathbf{E}:)^{\top} (\mathbf{F} \otimes \mathbf{G}) = \bigl((\mathbf{G}^{\top} \mathbf{E} \mathbf{F}):\bigr)^{\top},
+$$
+we multiply on the left by the (row) gradient of the loss with respect to the layer activations. In code this left factor is the backpropagated `delta` / `output_gradient`.}
+
+\notes{**Notes versus code.** The derivation uses column vectors and $\mappingFunctionVector_\layerIndex = \mappingMatrix_\layerIndex \basisVector_{\layerIndex-1}$ without biases. The `NeuralNetwork` implementation uses a row-vector layout, $\mathbf{z} = \boldsymbol{\phi}\,@\,\mathbf{W} + \mathbf{b}$, so its weight matrix is the transpose of $\mappingMatrix_\layerIndex$ above, and biases are included. Under that layout the Kronecker term collapses to an outer product of the layer input and the backpropagated delta — which is what `backward` and `compute_gradient_for_layer` compute.}
 
 \subsection{Gradient Verification}
 
@@ -360,6 +376,32 @@ analytical_grad = network.compute_gradient_for_layer(0, output_gradient).flatten
 results['Sigmoid_Network'] = verify_gradient_implementation(analytical_grad, 
 numerical_grad, rtol=1e-4)
 print(f"Sigmoid Network: {'PASS' if results['Sigmoid_Network'] else 'FAIL'}")
-}    
+}
+
+\notes{The checks above only cover `compute_gradient_for_layer(0, ...)` for a single data point. The next cell verifies `backward` through the full `parameters` / `gradients` interface, including biases, deeper layers and a small batch.}
+
+\code{# Full-parameter check: weights, biases, deeper layers, batch
+from mlai.utils import finite_difference_gradient
+
+print("\nTesting full network.gradients against finite differences...")
+dimensions = [2, 4, 3, 1]
+activations = [ReLUActivation(), SigmoidActivation(), LinearActivation()]
+network = NeuralNetwork(dimensions, activations)
+X_batch = np.array([[1.0, 2.0], [0.5, -1.0], [-0.3, 0.8]])
+
+network.predict(X_batch)
+network.set_output_gradient(np.ones((X_batch.shape[0], 1)))
+analytical_grad = network.gradients
+
+def network_sum_output(params):
+	temp = NeuralNetwork(dimensions, activations)
+	temp.parameters = params
+	return np.sum(temp.predict(X_batch))
+
+numerical_grad = finite_difference_gradient(network_sum_output, network.parameters)
+results['Full_Parameters'] = verify_gradient_implementation(
+	analytical_grad, numerical_grad, rtol=1e-4)
+print(f"Full parameters (backward): {'PASS' if results['Full_Parameters'] else 'FAIL'}")
+}
 
 \endif

@@ -91,12 +91,12 @@ $$(\mathbf{E}:)^{\top} \mathbf{F} \otimes \mathbf{G}=\left(\left(\mathbf{G}^{\to
 * **Chain rule**: typically produces this form
 * **Key insight**: avoid direct Kronecker computation}
 
-\notes{In most cases Kronecker products they arise below they are
+\notes{In most cases where Kronecker products arise below, they are
 later removed using this relationship
 $$
 (\mathbf{E}:)^{\top} \mathbf{F} \otimes \mathbf{G}=\left(\left(\mathbf{G}^{\top} \mathbf{E F}\right):\right)^{\top}
 $$
-this form typically arises whenever the chain rule is applied,}
+This form typically arises whenever the chain rule is applied.}
 
 \newslide{Chain Rule Application}
 
@@ -146,9 +146,9 @@ $$\frac{\text{d} \errorFunction}{\text{d} \mathbf{J}:}=\left(\left(\frac{\text{d
 
 \notes{Generally we will use two ways of writing the derivative of a scalar
 with respect to a matrix, $\frac{\text{d} \errorFunction}{\text{d}
-\mathbf{J}}$ and $\frac{\text{d} \errorFunction}{\text{d}
-\mathbf{J}}$, the first being a row vector and the second is a matrix
-of the same dimension of $\mathbf{J}$. The second representation is
+\mathbf{J}:}$ and $\frac{\text{d} \errorFunction}{\text{d}
+\mathbf{J}}$, the first being a row vector and the second a matrix
+of the same dimension as $\mathbf{J}$. The second representation is
 more convenient for summarising the result, the first is easier to
 wield when computing the result. The equivalence of the
 representations is given by

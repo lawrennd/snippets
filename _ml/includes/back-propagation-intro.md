@@ -3,7 +3,7 @@
 
 \editme
 
-\subsection{Chain Rule and Back Propgation}
+\subsection{Chain Rule and Back Propagation}
 
 \newslide{Historical Context}
 
@@ -27,13 +27,13 @@
 * **Easy gradient**: $\frac{\text{d}\mappingFunction_i}{\text{d}\mappingVector} = \basisVector(\inputVector_i; \mappingMatrixTwo)$
 * **Hard gradient**: $\frac{\text{d}\mappingFunction_i}{\text{d}\mappingMatrixTwo}$}
 
-\notes{To compute derivatives we now need to compute the derivation of the system with respect to the basis functions.
+\notes{To compute derivatives we now need the derivative of the system with respect to the basis-function parameters.
 $$
 \mappingFunction(\inputVector_i) = \mappingVector^\top \basisVector(\inputVector_i; \mappingMatrixTwo).
 $$
-We already have the gradient with respect to $\mappingVector$, which is simply.
+We already have the gradient with respect to $\mappingVector$, which is simply
 $$
-\frac{\text{d}\mappingFunction_i}{\text{d}\mappingVector} = \basisVector(\inputVector_i; \mappingMatrixTwo),
+\frac{\text{d}\mappingFunction_i}{\text{d}\mappingVector} = \basisVector(\inputVector_i; \mappingMatrixTwo).
 $$}
 
 \newslide{Chain Rule Application}
@@ -46,7 +46,7 @@ $$\frac{\text{d}\mappingFunction_i}{\text{d}\mappingMatrixTwo} = \frac{\text{d}\
 * **New challenge**: $\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}$
 * **Problem**: derivative of *vector* with respect to *matrix*}
 
-\notes{we now need the gradient with respect to $\mappingVectorTwo$. This can be computed by the chain rule as,
+\notes{We now need the gradient with respect to $\mappingMatrixTwo$. This can be computed by the chain rule as,
 $$
 \frac{\text{d}\mappingFunction_i}{\text{d}\mappingMatrixTwo} = \frac{\text{d}\mappingFunction_i}{\text{d}\basisVector_i}\frac{\text{d}\basisVector_i}{\text{d} \mappingMatrixTwo}.
 $$
