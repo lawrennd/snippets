@@ -5,7 +5,11 @@
 
 \subsection{Good Regulator Overview}
 
-\notes{Overview only. Full Conant--Ashby development --- concavity argument, existence of a deterministic optimum, and the two caveats in depth --- is the Week 8 review. Today's job is the setup, the notation, and the slogan and its two caveats. Diagrams follow Joery's oneshot figure in the good-regulator notes: disturbance $D$, system state $S$, action $A$, reguland $Z$.}
+\notes{W. Ross Ashby was one of the founders of the field of cybernetics. Along with others such as Jack Good, Alan Turing, Horace Barlow and Donald MacKay he was a founder of the Ratio Club, a group of British cyberneticists.}
+
+\notes{One of his initial contributions was the law of requisite variety. It predates Shannon's entropy, but it can be viewed in entropic terms. The variety of a system is its number of distinct states. Simply put, the law highlights that a regulating system can only control as many elements in the regulated system as it has variety. Or if we have a regulator with $2^M$ distinct states and a reguland of $2^N$ distinct states, we can only control all those states if $M=N$. 
+
+\notes{Today we are looking at another of his important contributions, work with Roger Conant on the *good regulator theorem*. Our notation departs slightly from Conant and Ashby's they use $R$ instead of $A$ in teh below. We will consider a system with a disturbance $D$, system state $S$, action $A$, reguland $Z$.}
 
 \newslide{Notation: $D$, $S$, $A$, $Z$}
 
@@ -18,9 +22,7 @@
 * $Z$: reguland / outcome (Ashby's essential variable)
 }
 
-\speakernotes{Board the four letters once. Classic cybernetics used $R$ for the regulator; we use $A$ for action so the policy language matches Weeks 7--8. The log-partition / CGF is $\psi$, so there is no clash with action. Do not prove anything yet.}
-
-\notes{Conant and Ashby [@Conant-Ashby70] often label the regulator $R$. We write $A$ for the action so the policy $\pi(a\mid s)$ is first-class. The reguland --- the variable whose entropy successful regulation minimises --- is $Z$. The system state is $S$; the disturbance is $D$. The cumulant generating function earlier today was $\psi(\boldsymbol{\theta})=\log Z(-\boldsymbol{\theta})$; that $Z$ was the partition function, not the reguland --- different objects, same letter in the physics tradition.}
+\notes{Conant and Ashby [@Conant-Ashby70] often label the regulator $R$. We write $A$ for the action so the policy in reinforcement learning notation is $\pi(a\mid s)$. The reguland is the the variable whose entropy successful regulation minimises, Conant and Ashby use $Z$. The system state is $S$; the disturbance is $D$. The cumulant generating function earlier today was $\psi(\boldsymbol{\theta})=\log Z(-\boldsymbol{\theta})$; that $Z$ was the partition function, not the reguland --- different objects, same letter in the physics tradition.}
 
 \newslide{Two Setups}
 
