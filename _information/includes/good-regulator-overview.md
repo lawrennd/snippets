@@ -22,7 +22,7 @@
 * $Z$: reguland / outcome (Ashby's essential variable)
 }
 
-\notes{Conant and Ashby [@Conant-Ashby70] often label the regulator $R$. We write $A$ for the action so the policy in reinforcement learning notation is $\pi(a\mid s)$. The reguland is the the variable whose entropy successful regulation minimises, Conant and Ashby use $Z$. The system state is $S$; the disturbance is $D$. The cumulant generating function earlier today was $\psi(\boldsymbol{\theta})=\log Z(-\boldsymbol{\theta})$; that $Z$ was the partition function, not the reguland --- different objects, same letter in the physics tradition.}
+\notes{Conant and Ashby [@Conant-Ashby70] often label the regulator $R$. We write $A$ for the action so the policy in reinforcement learning notation is $\pi(a\mid s)$. The reguland is the the variable whose entropy successful regulation minimises, Conant and Ashby use $Z$. The system state is $S$; the disturbance is $D$. The cumulant generating function earlier today was $\psi(\boldsymbol{\theta})=\log Z(-\boldsymbol{\theta})$; that $Z$ was the partition function, not the reguland - different objects, same letter in the physics tradition.}
 
 \newslide{Two Setups}
 
